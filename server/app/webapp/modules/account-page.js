@@ -11,25 +11,26 @@ var cache = new DatabusCache(15);
 
 module.exports = function (router, protector) {
 
-  router.get('/app/account', protector.protect(), async function (req, res, next) {
+  router.get('/app/user', protector.protect(), async function (req, res, next) {
+
+    let userdb = protector.userdb;
+    let sub = req.databus.sub;
 
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    console.log(auth);
+    let accounts = await userdb.getAccountsBySub(sub);
+    let apiKeys = await userdb.getApiKeys(sub);
 
-    if (auth.info.accountName == undefined) {
-      // Let the user create an account here
-      res.render('account', {
-        title: 'Create Profile',
-        data: {
-          auth: auth
-        }
-      });
-      return;
+    console.log(accounts);
 
-    } else {
-      res.redirect('/' + auth.info.accountName);
-    }
+    res.render('user-settings', {
+      title: 'User Settings',
+      data: {
+        auth: auth,
+        accounts: accounts,
+        apiKeys: apiKeys,
+      }
+    });
   });
 
   router.get('/app/account/stats', async function (req, res, next) {
