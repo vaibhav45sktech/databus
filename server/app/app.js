@@ -1,6 +1,5 @@
 // This is the main application
 
-
 // External includes
 var bodyParser = require("body-parser");
 var path = require('path');
@@ -13,23 +12,23 @@ const ServerUtils = require('./common/utils/server-utils');
 const webdav = require('webdav-server').v2;
 const DatabusUtils = require("../../public/js/utils/databus-utils");
 var config = require("../config.json");
-const DatabusWebDAV = require("./webdav");
+const DatabusWebDAV = require("./api/webdav");
 var DatabusProtect = require('./common/protect/middleware');
 var serveIndex = require('serve-index');
 var cors = require('cors');
-const Constants = require("./common/constants");
-const defaultContext  = require("./common/res/context.jsonld");
-const jsonld = require('jsonld');
-const axios = require('axios');
 const JsonldLoader = require("./common/utils/jsonld-loader");
+const handle404 = require('./common/404');
 
-// Creation of the mighty server app
+// Create the main Express application instance
 var app = express();
 
+// Load the JSON-LD context and stringify it with indentation for readability
 var context = JSON.stringify(require('../app/common/res/context.jsonld'), null, 3);
-var titleColor = DatabusUtils.stringOrFallback(process.env.DATABUS_TITLE_COLOR, config.defaultColors.title);
+
+// Determine banner color from environment variable or fallback to config default
 var bannerColor = DatabusUtils.stringOrFallback(process.env.DATABUS_BANNER_COLOR, config.defaultColors.banner);
 
+// Set global app variables accessible in views and throughout the application
 app.locals = {
   databus: {
     version: config.version,
@@ -50,111 +49,98 @@ app.locals = {
   }
 };
 
-// Create a session memory store (server cache)
+// Create an in-memory session store to hold session data
 var memoryStore = new session.MemoryStore();
+
+// Initialize the custom protection middleware with the session store
+// All authentication and user data fetching happens in DatabusProtect
 var protector = new DatabusProtect(memoryStore);
+
+// Initialize the Databus WebDAV server module
 var webDAVModule = new DatabusWebDAV();
 
-// Initialize the express app
+// Call the initialization function and configure routes upon completion
 initialize(app, memoryStore).then(function () {
 
   try {
-    // Add webDAV
+    // Register the WebDAV route, protected with SSO and authentication middleware
     app.use('/dav', protector.checkSso(), webDAVModule.davAuth(),
       webdav.extensions.express('/', webDAVModule.webDAVServer));
 
-    // Fav Icon
+    // Serve the site favicon
     app.use(favicon(path.join(__dirname, '../../public/img', 'favicon.ico')));
 
+    // Create a new Express router for routing requests
+    // router is the root object that all HTTP routes are attached to
     var router = new express.Router();
 
-    // Use protection
+    // Apply authentication middleware globally
     app.use(protector.auth());
 
+    // Enable private mode protection if specified in environment variables
     if (process.env.DATABUS_PRIVATE_MODE == "true") {
       console.log(`Started cluster node in private mode`);
       app.all('*', protector.protect(true, function (req, res) {
-
         protector.sendError(req, res, 401, 'Unauthorized', "This Databus is private. Please log in.");
-        
-        /*
-        if (protector.isBrowserRequest(req)) {
-          var data = {}
-          data.auth = ServerUtils.getAuthInfoFromRequest(req);
-          res.status(401).render('unauthorized', {
-            title: 'Unauthorized',
-            data: data,
-          });
-        } else {
-          res.status(401).send();
-        }*/
       }));
     }
 
-    // Attach modules to router
+    // Load API route module and attach routes to the router
+    // Code for the API server is located in the ./api folder
+    require('./api/module')(router, protector, app.locals); 
 
-    // API "SERVER"
-    require('./api/module')(router, protector, app.locals); // API handlers
+    // Load page-rendering route module and attach to the same router
+    // Code for the HTML webapp is located in the ./webapp folder
+    require('./webapp/module')(router, protector);
 
-    // HTML & WEBAPP "SERVER"
-    require('./pages/module')(router, protector);// Web App handlers
-
-    // Attach router
+    // Attach the configured router to the main app
     app.use('/', router);
 
-    // Handle 404
-    app.use(protector.checkSso(), function (req, res, next) {
-      res.status(404);
-
-      // respond with html page
-      if (req.accepts('html')) {
-        var data = {}
-        data.auth = ServerUtils.getAuthInfoFromRequest(req);
-        res.render('404', { title: 'Not found', data: data });
-        return;
-      }
-
-      // respond with json
-      if (req.accepts('json')) {
-        res.json({ error: 'Not found', message: "The requested resource could not be found." });
-        return;
-      }
-
-      // default to plain-text. send()
-      res.type('txt').send('The requested resource could not be found.\n');
-    });
+    // Handle 404 - resource not found
+    app.use(protector.checkSso(), handle404);
 
   } catch (err) {
+    // Log any errors that occur during initialization
     console.log(err);
   }
-
-
 });
 
 /**
- * Express app initialization
- * @param {the express app} app 
+ * Initializes the Express application with middleware and configuration
+ * @param {object} app - The Express app instance
+ * @param {object} memoryStore - The session memory store
  */
 async function initialize(app, memoryStore) {
 
+  // Initialize JSON-LD context loader used for linked data parsing
   JsonldLoader.initialize();
   
   try {
+    // Enable trust proxy so Express knows it's behind a reverse proxy (e.g. nginx)
     app.set('trust proxy', true);
+
+    // Configure body parsing for form data and JSON, with large request limits
     app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
     app.use(bodyParser.json({ limit: '50mb', type: ['application/json', 'application/ld+json'] }));
 
-    // view engine setup
+    // Set view engine and templates directory for rendering dynamic HTML
     app.set('views', path.join(__dirname, '../../public/templates'));
     app.set('view engine', 'ejs');
+
+    // Use logging middleware for HTTP request logging
     app.use(logger('dev'));
+
+    // Add built-in body parsers for JSON and URL-encoded data
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
+
+    // Add cookie parsing middleware
     app.use(cookieParser());
+
+    // Serve static assets from the public directory (e.g., CSS, JS, images)
     app.use(express.static(path.join(__dirname, '../../public')));
 
-    app.use(logger('dev'));
-    // Setup the session memory store
+    // Set up session management using in-memory store and a hardcoded secret
     app.use(session({
       secret: 'asdifjasdf8asewj2aef23jdlkjs',
       resave: false,
@@ -162,28 +148,31 @@ async function initialize(app, memoryStore) {
       store: memoryStore
     }));
 
+    // Define the path to the local resource directory (SHACL, JSON-LD files, etc.)
     var resourceDirectory = `${__dirname}/common/res/`;
     console.log(resourceDirectory);
 
-    // Serve jsonld and shacl resources in the resource directory
+    // Serve files in the /res route with CORS enabled and proper content-type headers
     app.use('/res', cors(), express.static(resourceDirectory, {
       setHeaders : function(res, path, stat) {
-
         if(path.endsWith('.shacl')) {
           res.setHeader('Content-Type', 'text/turtle');
         }
-
         if(path.endsWith('.jsonld')) {
           res.setHeader('Content-Type', 'application/ld+json');
         }
       }
-    }), serveIndex(resourceDirectory, {
+    }),
+    // Enable directory listing for /res with a custom stylesheet
+    serveIndex(resourceDirectory, {
       stylesheet: `${__dirname}/../../public/css/serve-index.css`
     }));
 
   } catch (err) {
+    // Log initialization errors
     console.log(err);
   }
 }
 
+// Export the configured app instance for use in other modules
 module.exports = app;

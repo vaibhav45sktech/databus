@@ -1,6 +1,6 @@
 const webdav = require('webdav-server').v2;
-const ServerUtils = require('./common/utils/server-utils');
-const DatabusUtils = require("../../public/js/utils/databus-utils");
+const ServerUtils = require('../common/utils/server-utils');
+const DatabusUtils = require("../../../public/js/utils/databus-utils");
 const path = require('path');
 const fs = require('fs');
 

@@ -1,4 +1,4 @@
-const DatabusWebDAV = require("../../webdav");
+const DatabusWebDAV = require("../../api/webdav");
 const params = require('../test-user.json');
 const rp = require('request-promise');
 const fs = require('fs');

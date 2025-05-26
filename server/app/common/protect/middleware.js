@@ -197,9 +197,12 @@ class DatabusProtect {
     };
 
     oidcConfig.authorizationParams = {
-      response_type: "code",
       scope: "openid profile email roles"
     };
+    
+    if(process.env.DATABUS_OIDC_RESPONSE_TYPE != undefined) {
+       oidcConfig.authorizationParams.response_type = process.env.DATABUS_OIDC_RESPONSE_TYPE;
+    }
 
     return oidc.auth(oidcConfig);
   }
