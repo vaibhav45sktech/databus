@@ -206,7 +206,7 @@ class DatabusUserDatabase {
   async addAccount(sub, label, accountName) {
 
     if(this.debug) {
-      console.log(`ADD USER sub:${sub}, label:${label}, accountName:${accountName}`);
+      console.log(`ADD USER sub:${sub}, accountName:${accountName}`);
     }
 
     let user = await this.getUser(sub);
@@ -219,7 +219,6 @@ class DatabusUserDatabase {
 
     var result = await this.run(this.addAccountQuery, {
       SUB: sub,
-      LABEL: label,
       ACCOUNT_NAME: accountName
     });
 

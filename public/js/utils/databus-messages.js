@@ -22,6 +22,8 @@ class DatabusMessages {
   static ACCOUNT_API_KEY_CREATED = 'API key created';
 
   static ACCOUNT_WEBID_LINKED = 'External WebId has been linked to your profile';
+
+ 
 }
 
   module.exports = DatabusMessages;

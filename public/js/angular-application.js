@@ -37,6 +37,8 @@ const AccountHistoryController = require("./components/account-history/account-h
 const SparqlEditorController = require("./page-controller/sparql-editor-controller");
 const BetterDropdownController = require("./components/better-dropdown/better-dropdown");
 const NavSearchController = require("./components/nav-search/nav-search-controller");
+const EntityDropdownController = require("./components/entity-dropdown/entity-dropdown");
+const EntityApiViewController = require("./components/entity-api-view/entity-api-view");
 
 var databusApplication = angular.module("databusApplication", [])
   .controller("HeaderController", ["$scope", "$http", "collectionManager", HeaderController])
@@ -61,7 +63,7 @@ var databusApplication = angular.module("databusApplication", [])
   .controller("GroupPageController", ["$scope", "$http", "$sce", "$interval", "$location", "collectionManager", GroupPageController])
   .controller("ProfileController", ["$scope", "$http", ProfileController])
   .controller("SparqlEditorController", ["$scope", "$http", SparqlEditorController])
-  .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", PublishWizardController])
+  .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", "$location", PublishWizardController])
   .controller("VersionPageController", ["$scope", "$http", "$sce", "$location", "collectionManager", VersionPageController])
   .directive('uploadRanking', function () {
     return {
@@ -123,6 +125,30 @@ databusApplication.component('overrideCheckbox', {
     onChange: '&'
   }
 });
+
+databusApplication.component('entityDropdown', {
+  bindings: {
+    placeholder: '@',
+    items: '<',
+    displayProperty: '@',
+    loading: '<',
+    selected: '<',
+    onSelect: '&'
+  },
+  controller: EntityDropdownController,
+  templateUrl: '/js/components/entity-dropdown/entity-dropdown.html'
+});
+
+databusApplication.component('entityApiView', {
+    bindings: {
+      entity: '<',
+      apiKeys: '<'
+    },
+    controller: EntityApiViewController,
+    templateUrl: '/js/components/entity-api-view/entity-api-view.html'
+  });
+
+
 
 databusApplication.component('accountHistory', {
   templateUrl: '/js/components/account-history/account-history.html',

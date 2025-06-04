@@ -37,12 +37,12 @@ module.exports = function (router, protector) {
 
     try {
       var auth = ServerUtils.getAuthInfoFromRequest(req);
-      var publishers = await sparql.accounts.getPublishersByAccount(auth.info.accountName);
+      // var publishers = await sparql.accounts.getPublishersByAccount(auth.info.accountName);
       var texts = require('../publish-wizard-texts.json');
 
       res.render('publish-wizard', {
         title: 'Publish Data',
-        data: { auth: auth, publisherData: publishers, texts: texts }
+        data: { auth: auth, texts: texts }
       });
     } catch (err) {
       console.log(err);

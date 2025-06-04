@@ -33,8 +33,6 @@ function TableEditorController() {
 
     ctrl.columns = [];
     ctrl.columns.push({ title:'File', width: 400, isReadonly : true });
-    ctrl.columns.push({ title:'Format', width: 75, isReadonly : true });
-    ctrl.columns.push({ title:'Compression', width: 115, isReadonly : true });
 
     for(var c in ctrl.model.contentVariants) {
       var cv = ctrl.model.contentVariants[c];
@@ -65,18 +63,12 @@ function TableEditorController() {
 
   ctrl.selectCell = function($event, x, y) {
 
-    if(ctrl.selection.x == x && ctrl.selection.y == y) {
-      ctrl.edit.x = x;
-      ctrl.edit.y = y; 
-
-      // $event.target.setSelectionRange(0, $event.target.value.length)
-      // $event.target.selectionStart = 0;
-      // $event.target.selectionEnd = $event.target.value.length;
-      return;
-    }
-
+    
     ctrl.edit.x = undefined;
     ctrl.edit.y = undefined;
+
+    ctrl.edit.x = x;
+    ctrl.edit.y = y; 
     ctrl.selection.x = x;
     ctrl.selection.y = y;
     ctrl.selection.width = 1;
@@ -93,10 +85,10 @@ function TableEditorController() {
     var index = ctrl.model.files.findIndex(f => f.uri == file.uri);
     
     for(var i = index + 1; i < index + file.rowspan; i++) {
-      ctrl.model.files[i].contentVariants[cv.label] = file.contentVariants[cv.label];
+      ctrl.model.files[i].contentVariants[cv.id] = file.contentVariants[cv.id];
     }
     
-    ctrl.model.isConfigDirty = true
+    ctrl.model.onChange();
   }
 
   ctrl.updateViewModel = function() {
@@ -120,7 +112,7 @@ function TableEditorController() {
 
           for(var c in ctrl.model.contentVariants) {
             var cv = ctrl.model.contentVariants[c];
-            ctrl.model.files[i + step].contentVariants[cv.label] = ctrl.model.files[i].contentVariants[cv.label];
+            ctrl.model.files[i + step].contentVariants[cv.id] = ctrl.model.files[i].contentVariants[cv.id];
           }
 
           step++;

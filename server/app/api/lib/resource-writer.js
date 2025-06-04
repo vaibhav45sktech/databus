@@ -119,16 +119,10 @@ class ResourceWriter {
    */
   async onValidateUser() {
 
-    if(this.userData.accountName == null) {
-      let message = `The user has not yet claimed an account namespace. Please finish registering your account.`;
-      throw new ApiError(403, this.uri, message, null);
-    }
+    var accountName = this.resource.account;
 
-    
-
-    var namespacePrefix = `${process.env.DATABUS_RESOURCE_BASE_URL}/${this.userData.accountName}/`;
-    if (!`${this.uri}/`.startsWith(namespacePrefix)) {
-      let message = `Identifier <${this.uri}> does not start with the expected namespace prefix <${namespacePrefix}>.`;
+    if(this.userData.accounts == null || !this.userData.accounts.some(acc => acc.accountName == accountName)) {
+      let message = `Authenticated user does not have write access to the account <${accountName}>.`;
       throw new ApiError(403, this.uri, message, null);
     }
   }

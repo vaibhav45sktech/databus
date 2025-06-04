@@ -80,7 +80,7 @@ module.exports = async function (indexer) {
     await waitForService(defaultContextUrl, 10, 1000);
 
     // console.log(`Context available at ${defaultContextUrl}`);
-    await verifyAccountIntegrity(indexer);
+    // await verifyAccountIntegrity(indexer);
 
     // TODO: Check availability of manifest
 

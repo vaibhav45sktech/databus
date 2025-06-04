@@ -1,27 +1,27 @@
+var jsonld = require('jsonld');
+const requestRDF = require('../../common/request-rdf');
+const defaultContext = require('../../common/res/context.jsonld');
+const getLinkedData = require("../../common/get-linked-data");
+var cors = require('cors');
+var signer = require('../lib/databus-tractate-suite.js');
+
 const ServerUtils = require('../../common/utils/server-utils');
 const JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
 const DatabusUtils = require('../../../../public/js/utils/databus-utils');
-
 var GstoreHelper = require('../../common/utils/gstore-helper');
-var jsonld = require('jsonld');
-const requestRDF = require('../../common/request-rdf');
-
-const defaultContext = require('../../common/res/context.jsonld');
-const getLinkedData = require("../../common/get-linked-data");
-
 const DatabusUris = require('../../../../public/js/utils/databus-uris');
 const Constants = require('../../common/constants');
 const UriUtils = require('../../common/utils/uri-utils');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
-var cors = require('cors');
 const GstoreResource = require('../lib/gstore-resource');
+const JsonldLoader = require('../../common/utils/jsonld-loader.js');
 
-var signer = require('../lib/databus-tractate-suite.js');
+
 
 module.exports = function (router, protector) {
 
 
-  function createAccountGraphs (uri, name, label, img, grants) {
+  async function createAccountGraphs (uri, name, label, img, secretaries) {
     var name = UriUtils.uriToName(uri);
   
     var rsaKeyGraph = {};
@@ -58,73 +58,43 @@ module.exports = function (router, protector) {
     accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;
     accountGraph[DatabusUris.DATABUS_NAME] = name;
 
-    if(grants != null) {
-      accountGraph[DatabusUris.DATABUS_GRANTS_WRITE_ACCESS_TO] = [];
+    if(secretaries != null) {
 
-      for(var grant of grants) {
-        accountGraph[DatabusUris.DATABUS_GRANTS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(grant));
+      accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];
+
+      for(var secretary of secretaries) {
+
+        let secretaryAccountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${secretary.accountName}`;
+
+        let secretaryGraph = {};
+        secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
+        secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);
+
+        if(secretary.hasWriteAccessTo != undefined) {
+          secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];
+
+          for(var writeAccess of secretary.hasWriteAccessTo) {
+            secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));
+          }
+        }
+
+        accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY].push(secretaryGraph);
       }
     }
 
-    return [
+    let expandedGraphs = [
       accountGraph,
       personGraph,
       profileDocumentGraph,
       rsaKeyGraph
-    ]
+    ];
+    
+    return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
   }
 
-  router.post('/api/account/save', protector.protect(), async function (req, res, next) {
-
-    let sub = req.oidc.user.sub;
-    let userdb = protector.userdb;
-
-    if(sub == undefined) {
-      res.status(401).send('No Subject!');
-      return;
-    }
-
-    console.log(req.body);
-    
-    const accountName = req.body.accountName;
-    var existingAccount = await userdb.getAccount(accountName);
-    
-    if(existingAccount == null) {
-      res.status(400).send('Account does not exist.');
-      return;
-    }
-
-    if(existingAccount.sub != sub) {
-      res.status(403).send('You do not own this account.');
-      return;
-    }
-
-    let input = req.body;
-
-    try {
-      var accountLabel = req.body.label;
-      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
-      let content = createAccountGraphs(accountUri, accountName, accountLabel, null, null);
-
-      let gstoreResource = new GstoreResource(accountUri, content);
-      let status = await gstoreResource.save();
-
-      console.log(status);
-      res.status(200).send('Account created.');
-      return;
-      
-    } catch(err) {
-      res.status(500).send('Failed to write to gstore.');
-      return;
-    }
-
-    res.status(200).send('OKIDOKI.');
-
   
-  });
 
   router.post('/api/account/create', protector.protect(), async function (req, res, next) {
-
     
     let sub = req.oidc.user.sub;
     let userdb = protector.userdb;
@@ -159,7 +129,7 @@ module.exports = function (router, protector) {
     
     try {
       let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
-      let content = createAccountGraphs(accountUri, accountName, accountLabel, null, null);
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, null, null);
 
       let gstoreResource = new GstoreResource(accountUri, content);
       let status = await gstoreResource.save();
@@ -169,6 +139,88 @@ module.exports = function (router, protector) {
       
     } catch(err) {
       await userdb.deleteAccount(accountName);
+      res.status(500).send('Failed to write to gstore.');
+    }
+  });
+
+  router.post('/api/account/update', protector.protect(), async function (req, res, next) {
+
+    let sub = req.oidc.user.sub;
+    let userdb = protector.userdb;
+
+    if(sub == undefined) {
+      res.status(401).send('No Subject!');
+      return;
+    }
+
+    console.log(req.body);
+    
+    const accountName = req.body.accountName;
+    var existingAccount = await userdb.getAccount(accountName);
+    
+    if(existingAccount == null) {
+      res.status(400).send('Account does not exist.');
+      return;
+    }
+
+    if(existingAccount.sub != sub) {
+      res.status(403).send('You do not own this account.');
+      return;
+    }
+
+    let input = req.body;
+
+    try {
+      var accountLabel = req.body.label;
+      var imageUrl = req.body.imageUrl;
+      var secretaries = req.body.secretaries;
+      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, imageUrl, secretaries);
+
+      let gstoreResource = new GstoreResource(accountUri, content);
+      let status = await gstoreResource.save();
+
+      console.log(status);
+      res.status(200).send('Account saved.');
+      return;
+      
+    } catch(err) {
+      res.status(500).send('Failed to write to gstore.');
+      return;
+    }
+  });
+
+  router.post('/api/account/delete', protector.protect(), async function (req, res, next) {
+
+    let sub = req.oidc.user.sub;
+    let userdb = protector.userdb;
+
+    if(sub == undefined) {
+      return res.status(401).send('No Subject!');
+    }
+
+    let accountName = req.body.accountName;
+    var account = await userdb.getAccount(accountName);
+    
+    if(account == null) {
+      res.status(404).send('Account does not exist.');
+      return;
+    }
+    
+    if(!await userdb.deleteAccount(accountName)) {
+      res.status(500).send('Failed to delete user from database.');
+      return;
+    }
+    
+    try {
+      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+      let gstoreResource = new GstoreResource(accountUri);
+
+      await gstoreResource.delete();
+      res.status(200).send('Account deleted.');
+      
+    } catch(err) {
+    await userdb.addAccount(account.sub, account.label, account.accountName);
       res.status(500).send('Failed to write to gstore.');
     }
   });
@@ -470,12 +522,7 @@ module.exports = function (router, protector) {
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    if (auth.info.accountName == undefined) {
-      res.status(403).send('Account name is missing.');
-      return;
-    }
-
-    var keyName = decodeURIComponent(req.query.name);
+    var keyName = decodeURIComponent(req.body.keyname);
     var found = await protector.removeApiKey(req.databus.sub, keyName);
 
     if (found) {

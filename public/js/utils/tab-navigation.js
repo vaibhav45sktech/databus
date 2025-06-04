@@ -1,10 +1,11 @@
 
 class TabNavigation {
 
-  constructor($scope, $location, tabKeys) {
+  constructor($scope, $location, tabKeys, onNavigateCallback) {
     this.location = $location;
     this.tabKeys = tabKeys;
     this.activeTab = 0;
+    this.onNavigateCallback = onNavigateCallback;
 
     var self = this;
     // Watch the location hash and tell the tabnavigation that it changed
@@ -21,6 +22,10 @@ class TabNavigation {
       var tabKey = this.tabKeys[i];
       if (value == tabKey) {
         this.activeTab = i;
+
+        if(this.onNavigateCallback != null) {
+          this.onNavigateCallback(this.activeTab);
+        }
         return;
       }
     }

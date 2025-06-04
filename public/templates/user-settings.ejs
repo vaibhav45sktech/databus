@@ -37,29 +37,50 @@
           </div>
       
           <div class="field">
-            <label class="label">Write Access Grants</label>
-            <div>
-              <div ng-repeat="(index, url) in account.writeAccess track by $index" style="margin-bottom: 0.2em"
-                   class="is-flex is-align-items-center mb-1">
-                  <input class="input mr-2" type="text" ng-model="account.writeAccess[index]" placeholder="https://...">
-                <button class="button has-text-danger"
-                        ng-click="removeWriteAccessUrl(account, index)">
+            <label class="label">Secretaries</label>
+           
+            <div ng-repeat="(sIndex, sec) in account.secretaries track by $index" class="box mb-2">
+              
+              <div class="field is-flex is-align-items-center">
+                <input class="input mr-2" type="text" ng-model="sec.accountName" placeholder="Secretary Account Name">
+                <button class="button has-text-danger" ng-click="removeSecretary(account, sIndex)">
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
-          
-              <button class="button has-text-success mt-1"
-                      ng-click="addWriteAccessUrl(account)">
-                <i class="fas fa-plus"></i> Add URL
+
+              <label class="label mt-1">Writable Namespaces</label>
+              
+              <div ng-repeat="(nIndex, ns) in sec.hasWriteAccessTo track by $index" class="is-flex is-align-items-center mb-1">
+                <input class="input mr-2" type="text" ng-model="sec.hasWriteAccessTo[nIndex]" placeholder="https://...">
+                <button class="button has-text-danger" ng-click="removeNamespace(account, sIndex, nIndex)">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <div class="help has-text-grey">
+                Specify the namespaces this secretary can modify.  
+                Leave this list empty to allow full write access to the account's resources.
+              </div>
+             
+
+              <button class="button has-text-success mt-1" ng-click="addNamespace(account, sIndex)">
+                <i class="fas fa-plus"></i> Add Namespace
               </button>
+
             </div>
+
+             <div class="help has-text-grey">
+              Specify accounts that can write to the namespace of this account.
+            </div>
+            <button class="button has-text-success mt-2" ng-click="addSecretary(account)">
+              <i class="fas fa-plus"></i> Add Secretary
+            </button>
           </div>
 
           <br/>
       
           <div class="buttons mt-3">
             <button class="button is-primary" ng-click="saveAccount(account)">Save</button>
-            <button class="button is-danger" ng-click="deleteAccount($index)">Delete</button>
+            <button class="button is-danger" ng-click="deleteAccount(account)">Delete</button>
           </div>
         </div>
       
@@ -92,7 +113,7 @@
           </div>
 
           <div class="buttons mt-2">
-            <button class="button is-danger" ng-click="deleteApiKey(index)">
+            <button class="button is-danger" ng-click="deleteApiKey(keyObj)">
               <i class="fas fa-trash"></i> Delete
             </button>
           </div>

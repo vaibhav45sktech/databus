@@ -4,6 +4,10 @@ const DatabusUris = require("../utils/databus-uris");
 const JsonldUtils = require("../utils/jsonld-utils");
 const PublishData = require("./publish-data");
 const DataIdCreator = require("./dataid-creator");
+const DatabusSparqlClient = require("./databus-sparql-client");
+const GroupHandler = require("./group-data");
+const ArtifactHandler = require("./artifact-data");
+const VersionHandler = require("./version-handler");
 
 class PublishSession {
 
@@ -18,60 +22,49 @@ class PublishSession {
         'streamQueue'
     ];
 
-    constructor($http, session, accountData) {
+
+    constructor($http, accounts, apiKeys) {
 
         this.$http = $http;
-        this.accountData = accountData;
+        this.accounts = accounts;
+        this.sparqlClient = new DatabusSparqlClient($http);
+        this.formData = new PublishData();
 
-        for (var group of this.accountData.groups) {
-            group.artifacts = this.accountData.artifacts.filter(function (value) {
-                return value.groupName == group.name;
-            });
-            group.hasArtifacts = group.artifacts.length > 0;
-        }
+        this.group = new GroupHandler($http, accounts, apiKeys);
+        this.artifact = new ArtifactHandler($http, accounts, apiKeys);
+        this.version = new VersionHandler($http, accounts, apiKeys);
 
-        this.formData = new PublishData(session != null ? session.formData : null, accountData);
-        this.formData.validate();
-
-
-        this.initializeField(session, 'showContext', false);
-        this.initializeField(session, 'fetchFilesInput', "");
-        this.initializeField(session, 'addFileInput', "");
-        this.initializeField(session, 'isAccountDataLoading', true);
-        this.initializeField(session, 'addFileInput', "");
-        this.initializeField(session, 'currentArtifact', null);
-        this.initializeField(session, 'currentGroup', null);
-
-
-        this.availableGroups = [];
-        this.availableArtifacts = [];
-        this.availableVersions = [];
-
-
-        this.isGroupLoading = false;
-        this.isArtifactLoading = false;
-        this.isVersionLoading = false;
-
-        if (session != null) {
-
-            if (session.currentGroup != null) {
-                var group = accountData.groups.find(g => g.uri == session.currentGroup.uri);
-                this.selectGroup(group);
-            }
-
-            if (session.currentArtifact != null) {
-                var artifact = accountData.artifacts.find(a => a.uri == session.currentArtifact.uri);
-                this.selectArtifact(artifact);
-            }
-        }
-
-
-        this.dataIdCreator = new DataIdCreator(this.formData, this.accountData.accountName);
-        this.inputs = this.dataIdCreator.createInputs();
-
+        this.reset();
     }
 
-    selectGroup(targetGroup) {
+
+
+    reset() {
+        this.accountData = {};
+        this.groupData = {};
+        this.artifactData = {};
+        this.versionData = {};
+    }
+
+    update() {
+        this.validate();
+        this.save();
+    }
+
+    async selectAccount(account) {
+        this.accountData = {
+            name: account.name,
+            isValid: true
+        };
+
+        // Fetch groups for account here:
+        this.groups = await this.sparqlClient.getGroups(this.accountData.name);
+
+
+        this.save();
+    }
+
+    async selectGroup(targetGroup) {
 
         if (targetGroup == null) {
             return;
@@ -93,6 +86,15 @@ class PublishSession {
                 this.setCreateNewArtifact('create');
             }
         }
+    }
+
+    createNewGroup() {
+        this.formData.group.name = "";
+        this.formData.group.title = "";
+        this.formData.group.abstract = "";
+        this.formData.group.description = "";
+
+        this.save();
     }
 
     selectArtifact(targetArtifact) {
@@ -149,7 +151,7 @@ class PublishSession {
 
                 var contentVariantGraphs = JsonldUtils.getTypedGraphs(versionData, DatabusUris.RDF_PROPERTY);
 
-                for(var contentVariantGraph of contentVariantGraphs) {
+                for (var contentVariantGraph of contentVariantGraphs) {
 
                     var variantName = DatabusUtils.uriToName(contentVariantGraph[DatabusUris.JSONLD_ID]);
                     self.formData.addContentVariant(variantName);
@@ -163,7 +165,7 @@ class PublishSession {
 
                     var fileUri = JsonldUtils.getProperty(fileGraph, DatabusUris.DCAT_DOWNLOAD_URL);
 
-                  
+
 
                     var file = {
                         id: fileUri,
@@ -174,11 +176,11 @@ class PublishSession {
                         contentVariants: {}
                     }
 
-                    for(var contentVariant of version.contentVariants) {
+                    for (var contentVariant of version.contentVariants) {
                         var variantUri = `${DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX}${contentVariant.id}`;
                         var variantValue = JsonldUtils.getProperty(fileGraph, variantUri);
 
-                        if(variantValue != null) {
+                        if (variantValue != null) {
                             file.contentVariants[contentVariant.id] = variantValue;
                         }
                     }
@@ -297,8 +299,18 @@ class PublishSession {
     }
 
     save() {
+
+        let data = {
+            accountData: this.accountData,
+            groupData: this.groupData,
+            artifactData: this.artifactData,
+            versionData: this.versionData,
+            formData: this.formData,
+        }
+
+
         try {
-            var sessionDataString = JSON.stringify(this, function (key, value) {
+            var sessionDataString = JSON.stringify(data, function (key, value) {
                 if (PublishSession.sessionStorageIgnoreKeys.includes(key)) {
                     return undefined;
                 }
@@ -311,15 +323,15 @@ class PublishSession {
         }
     }
 
-    static resume($http, accountData) {
+    static resume($http, sub, accountData) {
 
         var sessionData = JSON.parse(window.sessionStorage.getItem(PublishSession.sessionStorageKey));
 
-        if (sessionData == null || sessionData.accountData == null) {
+        if (sessionData == null || sessionData.sub == null) {
             return null;
         }
 
-        if (sessionData.accountData.accountName != accountData.accountName) {
+        if (sub != sessionData.sub) {
             return null;
         }
 
@@ -329,7 +341,7 @@ class PublishSession {
     }
 
     onChange() {
-        this.formData.validate();
+        this.validate();
         this.inputs = this.dataIdCreator.createInputs();
         this.save();
 
@@ -342,6 +354,86 @@ class PublishSession {
                 !this.formData.version.errors.length > 0 &&
                 !this.formData.files.errors.length > 0;
         }
+    }
+
+    onChangeGroup() {
+
+        let group = this.formData.group;
+
+        group.errors = [];
+        group.warnings = [];
+
+        if (!DatabusUtils.isValidGroupName(group.name)) {
+            group.errors.push('err_invalid_group_name');
+        }
+
+        var existingGroup = this.groups.filter(function (value) {
+            return value.name == self.group.name;
+        });
+
+        if (existingGroup.length > 0 && group.mode == 'create') {
+            group.warnings.push('warning_group_exists');
+        }
+
+        this.save();
+    }
+
+    getValidString(value) {
+        if (value == undefined || value.length == 0) {
+            return undefined;
+        }
+
+        return value;
+    }
+
+    updateGroupBody() {
+        var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountData.name}`;
+
+        this.groupBody = {
+            "@context": this.getContext(),
+            "@graph": [
+                {
+                    "@id": `${accountUri}/${this.formData.group.name}`,
+                    "@type": "Group",
+                    "title": this.getValidString(this.formData.group.title),
+                    "abstract": this.getValidString(this.formData.group.abstract),
+                    "description": this.getValidString(this.formData.group.description)
+                }
+            ]
+        };
+    }
+
+    getContext() {
+        if (DATABUS_CONTEXT_URL != undefined && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {
+            return DATABUS_CONTEXT_URL;
+        }
+
+        return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];
+    }
+
+    onChangeArtifact() {
+
+        let artifact = this.formData.artifact;
+
+        artifact.errors = [];
+        artifact.warnings = [];
+
+        if (!DatabusUtils.isValidArtifactName(artifact.name)) {
+            artifact.errors.push('err_invalid_artifact_name');
+        }
+
+        if (this.artifacts != null) {
+            var existingArtifact = this.artifacts.filter(function (value) {
+                return value.name == self.group.name;
+            });
+
+            if (existingArtifact.length > 0 && artifact.mode == 'create') {
+                artifact.warnings.push('warning_group_exists');
+            }
+        }
+
+        this.save();
+
     }
 }
 

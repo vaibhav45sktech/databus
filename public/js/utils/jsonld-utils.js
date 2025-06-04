@@ -41,6 +41,16 @@ class JsonldUtils {
     graph[property].push(entry);
   }
 
+  static getGraphById = function (graphs, id) {
+    return graphs.find(g => g[DatabusUris.JSONLD_ID] === id);
+  };
+
+  static getRefArrayProperty = function (graph, propertyUri) {
+    const val = graph[propertyUri];
+    if (!val) return [];
+    return val.map(v => v[DatabusUris.JSONLD_ID]);
+  };
+
   static getProperty(graph, property) {
     if (graph[property] == undefined) {
       return null;
@@ -90,8 +100,6 @@ class JsonldUtils {
     }
 
     return null;
-
-
   }
 
   static getTypedGraphs(graphs, graphType) {
