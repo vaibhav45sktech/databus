@@ -1,5 +1,4 @@
 # Starts everything except the databus
-version: "3.0"
 name: databus_devenv
 services:
   gstore:
@@ -11,7 +10,7 @@ services:
       STORAGE_PASS: "everyoneknows"
       STORAGE_SPARQL_ENDPOINT_URI: http://virtuoso:8890/sparql
       DEFAULT_JSONLD_LOCALHOST_CONTEXT: http://localhost:3000/res/context.jsonld
-      DEFAULT_JSONLD_LOCALHOST_CONTEXT_LOCATION: http://host.docker.internal:3000/res/context.jsonld
+      DEFAULT_JSONLD_LOCALHOST_CONTEXT_LOCATION: http://172.17.0.1:3000/res/context.jsonld
     ports:
       - "3002:8080" 
     volumes:
@@ -19,7 +18,7 @@ services:
       - ./data/gstore/logs:/gstore/logs
   lookup:
     restart: unless-stopped
-    image: lookup:dev
+    image: dbpedia/lookup:dev
     container_name: databus_devenv_lookup
     ports:
       - "3004:8082"

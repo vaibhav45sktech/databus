@@ -23,7 +23,7 @@ class PublishSession {
     ];
 
 
-    constructor($http, accounts, apiKeys) {
+    constructor($http, $interval, accounts, apiKeys) {
 
         this.$http = $http;
         this.accounts = accounts;
@@ -32,7 +32,7 @@ class PublishSession {
 
         this.group = new GroupHandler($http, accounts, apiKeys);
         this.artifact = new ArtifactHandler($http, accounts, apiKeys);
-        this.version = new VersionHandler($http, accounts, apiKeys);
+        this.version = new VersionHandler($http, $interval, accounts, apiKeys);
 
         this.reset();
     }

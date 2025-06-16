@@ -5,7 +5,7 @@ const DatabusSparqlClient = require('./databus-sparql-client');
 
 class GroupData extends EntityHandler {
   constructor($http, accounts, apiKeys) {
-    super('databus_registration_group_data', $http, accounts, apiKeys);
+    super('databus_registration_group_data', $http, null, accounts, apiKeys);
    
   }
 
@@ -16,7 +16,10 @@ class GroupData extends EntityHandler {
       Object.assign(this, data);
     } else {
       this.accountName = this.accounts[0]?.name;
-      this.apiKeyName = this.apiKeys?.[0]?.keyname;
+    }
+
+    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
     }
 
     this.sendmode ??= 'register';
@@ -41,6 +44,10 @@ class GroupData extends EntityHandler {
 
     if (!DatabusUtils.isValidGroupName(this.name)) {
       this.errors.push('err_invalid_group_name');
+    }
+
+    if(this.sendmode == 'curl' && !this.apiKeyName) {
+      this.errors.push('err_no_api_key');
     }
 
     const exists = this.groupList?.some(g => g.name === this.name);

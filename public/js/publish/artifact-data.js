@@ -5,7 +5,7 @@ const GroupData = require('./group-data');
 
 class ArtifactData extends EntityHandler {
   constructor($http, accounts, apiKeys) {
-    super('databus_registration_artifact_data', $http, accounts, apiKeys);
+    super('databus_registration_artifact_data', $http, null, accounts, apiKeys);
   }
 
   initialize(data) {
@@ -16,6 +16,11 @@ class ArtifactData extends EntityHandler {
     } else {
       this.accountName = this.accounts[0]?.name;
     }
+
+    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
+    }
+
 
     this.sendmode ??= 'register';
     this.onAccountNameChanged();
@@ -28,6 +33,10 @@ class ArtifactData extends EntityHandler {
 
     if (!DatabusUtils.isValidArtifactName(this.name)) {
       this.errors.push('err_invalid_artifact_name');
+    }
+
+    if (!DatabusUtils.isValidGroupName(this.groupName)) {
+      this.errors.push('err_no_group_selected');
     }
 
     const exists = this.artifactList?.some(a => a.name === this.name);

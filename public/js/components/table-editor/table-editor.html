@@ -120,7 +120,7 @@
 
     .flex-table .cell.main {
       flex: 1.5;
-      min-width: 200px;
+      min-width: 215px;
     }
 
     .flex-table .cell.readonly {
@@ -158,9 +158,15 @@
     .flex-table .cell input {
       min-width: 100%;
       width: 100px;
-      
     }
 
+    .flex-table .cell.cv:nth-child(3) {
+      min-width: 80px;
+    }
+
+    .flex-table .cell.cv:nth-child(4) {
+      min-width: 170px;
+    }
   </style>
 
 
@@ -168,24 +174,31 @@
     <div class="row header">
       <div class="cell tiny"></div>
       <div class="cell main">File</div>
-      <div class="cell" ng-repeat="cv in $ctrl.model.contentVariants track by $index">{{ cv.label }}</div>
+      <div class="cell cv" ng-repeat="cv in $ctrl.model.contentVariants track by $index">
+        <span style="flex: 1; overflow-x: hidden;">{{ cv.label }}</span>
+        <databus-icon shape="'edit'" style="margin-right: 12px; cursor: pointer;" on-click="$ctrl.editContentVariant($index)"
+          size="24"></databus-icon>
+      </div>
     </div>
     <div class="row" ng-repeat="file in $ctrl.model.files" ng-init="outerIndex=$index">
       <div class="cell tiny readonly">{{ $index + 1 }}</div>
-      <div class="cell main readonly"><a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a></div>
-      <input class="cell edit" ng-repeat="cv in $ctrl.model.contentVariants track by $index"
+      <div class="cell main readonly">
+        <span style="flex: 1"><a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a></span> 
+        <databus-icon shape="'delete'" style="margin-right: 12px;" on-click="$ctrl.removeFileFromArtifact(file, $index)"
+          size="24"></databus-icon>
+      </div>
+      <input class="cell edit cv" ng-repeat="cv in $ctrl.model.contentVariants track by $index"
         ng-class="{ 'selected' : $index == $ctrl.selection.x && outerIndex == $ctrl.selection.y }"
         ng-click="$ctrl.selectCell($event, $index, outerIndex)"
-        focus-me="$index == $ctrl.edit.x && outerIndex == $ctrl.edit.y"
-        ng-change="$ctrl.onChangeCv(file, cv)"
+        focus-me="$index == $ctrl.edit.x && outerIndex == $ctrl.edit.y" ng-change="$ctrl.onChangeCv(file, cv)"
         ng-model="file.contentVariants[cv.id]" class='edit'>
-  
+
 
     </div>
 
   </div>
 
-<!--
+  <!--
   <div class="edit-table-wrapper">
     <table class="edit-table" click-outside="$ctrl.deselect()">
 
@@ -223,8 +236,7 @@
                   </ul>
                 </div>
               </div>
-              <databus-icon shape="'delete'" style="margin-left: 12px;" on-click="$ctrl.removeFileFromArtifact(file)"
-                size="24"></databus-icon>
+             
             </div>
           </td>
 

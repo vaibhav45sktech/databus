@@ -1,44 +1,28 @@
-var sanitizeUrl = require('@braintree/sanitize-url').sanitizeUrl;
-var rp = require('request-promise');
+const axios = require('axios');
 const cheerio = require('cheerio');
-var sparql = require("../../common/queries/sparql");
-const got = require('got');
-
 const ServerUtils = require('../../common/utils/server-utils.js');
 
 module.exports = function (router, protector) {
-
   require('../../common/file-analyzer').route(router, protector);
 
-
   router.get('/app/publish-wizard/licenses', protector.protect(), async function(req, res, next) {
-
-    var search = new URL(`${req.protocol}://${req.get('host')}${req.originalUrl}`).search;
-
-    var options = {
-      method : 'GET',
-      headers : {
-        accept: 'application/json'
-      },
-    };
+    const search = new URL(`${req.protocol}://${req.get('host')}${req.originalUrl}`).search;
 
     try {
-      var daliccRes = await got(`https://api.dalicc.net/licenselibrary/list${search}`, options);
-      var dalicc = JSON.parse(daliccRes.body);
-      res.status(200).send(dalicc);
-
-    } catch(err) {
+      const daliccRes = await axios.get(`https://api.dalicc.net/licenselibrary/list${search}`, {
+        headers: { accept: 'application/json' }
+      });
+      res.status(200).send(daliccRes.data);
+    } catch (err) {
       console.log(err);
       res.status(500).send("DALICC SERVICE APPEARS TO BE DOWN!");
     }
   });
 
-  router.get('/app/publish-wizard',  protector.protect(), async function (req, res, next) {
-
+  router.get('/app/publish-wizard', protector.protect(), async function (req, res, next) {
     try {
-      var auth = ServerUtils.getAuthInfoFromRequest(req);
-      // var publishers = await sparql.accounts.getPublishersByAccount(auth.info.accountName);
-      var texts = require('../publish-wizard-texts.json');
+      const auth = ServerUtils.getAuthInfoFromRequest(req);
+      const texts = require('../publish-wizard-texts.json');
 
       res.render('publish-wizard', {
         title: 'Publish Data',
@@ -50,13 +34,10 @@ module.exports = function (router, protector) {
     }
   });
 
-
   router.get('/app/publish-wizard/fetch-resource-page', async function (req, res, next) {
-
     try {
-      var result = await fetchLinksRecursive(req.query.url, '', 0);
+      const result = await fetchLinksRecursive(req.query.url, '', 0);
       res.status(200).send(result);
-
     } catch (err) {
       console.log(err);
       res.status(500).send(err);
@@ -64,31 +45,21 @@ module.exports = function (router, protector) {
   });
 
   router.get('/app/publish-wizard/fetch-file', async function (req, res, next) {
-
     try {
-
-      var url = req.query.url;
-      var result = await fetchFile(url);
+      const url = req.query.url;
+      const result = await fetchFile(url);
       res.status(200).send(result);
-
     } catch (err) {
       console.log(err);
-
       res.status(500).send(err);
     }
   });
 
   async function fetchFile(url) {
-
-    if (url.includes('://localhost')) {
+    if (url.includes('://localhost') || url.startsWith('https://databus.dbpedia.org')) {
       return null;
     }
 
-    if (url.startsWith('https://databus.dbpedia.org')) {
-      return null;
-    }
-
-    // Check if definitely no file
     if (url.startsWith('http')
       && url.lastIndexOf('/') < url.lastIndexOf('.')
       && url.lastIndexOf('/') < url.indexOf('.')) {
@@ -99,78 +70,54 @@ module.exports = function (router, protector) {
       url = transformGithubUrl(url);
     }
 
+    try {
+      const response = await axios.head(url);
+      const headers = response.headers;
 
-    // File should be reachable, do a head request!
-    var options = {};
-    options.uri = url;
-    options.method = 'HEAD';
+      const result = { url: url };
 
-    var header = await rp(options);
+      if (headers['content-disposition']) {
+        const filename = getFileNameFromDisposition(headers['content-disposition']);
+        parseFormatAndCompression(result, filename);
+        return result;
+      }
 
-    var result = {
-      url: url
-    };
+      if (url.lastIndexOf('/') < url.lastIndexOf('.')) {
+        parseFormatAndCompression(result, url);
+        return result;
+      }
 
-    // Prefer content disposition
-    if (header['content-disposition'] != undefined) {
-
-      // console.log(header['content-disposition']);
-
-      var filename = getFileNameFromDisposition(header['content-disposition']);
-
-      // console.log(filename);
-      parseFormatAndCompression(result, filename);
-
-      return result;
+      return null;
+    } catch (err) {
+      console.log(err);
+      return null;
     }
-
-    // Try to parse from url
-    if (url.lastIndexOf('/') < url.lastIndexOf('.')) {
-      parseFormatAndCompression(result, url);
-
-      return result;
-    }
-
-    return null;
   }
 
   function getFileNameFromDisposition(disposition) {
-
-    // console.log(disposition);
-    var entries = disposition.split(' ');
-
-    for(var entry of entries) {
-      if(entry.startsWith('filename=')) {
-        return entry.split('=')[1].replace(/(^")|("$)|(;$)|(";$)/g, "");        
+    const entries = disposition.split(' ');
+    for (let entry of entries) {
+      if (entry.startsWith('filename=')) {
+        return entry.split('=')[1].replace(/(^")|("$)|(;$)|(";$)/g, "");
       }
     }
-
     return undefined;
   }
 
-  
   function transformGithubUrl(url) {
-
     url = url.replace("/blob/", "/");
-    url = url.replace("https://github.com/", "https://raw.githubusercontent.com/")
-
+    url = url.replace("https://github.com/", "https://raw.githubusercontent.com/");
     return url;
   }
 
   function parseFormatAndCompression(result, value) {
+    if (!value) return;
 
-    if(value == undefined) {
-      return;
-    }
-
-    console.log(value);
-
-    var nameComponents = value.split('/');
-
+    let nameComponents = value.split('/');
     nameComponents = nameComponents[nameComponents.length - 1].split('.');
 
     if (nameComponents[nameComponents.length - 1].includes('#')) {
-      nameComponents[nameComponents.length - 1] = nameComponents[nameComponents.length - 1].split('#')[0]
+      nameComponents[nameComponents.length - 1] = nameComponents[nameComponents.length - 1].split('#')[0];
     }
 
     if (nameComponents.length > 2) {
@@ -183,59 +130,33 @@ module.exports = function (router, protector) {
       result.compression = 'none';
       result.formatExtension = 'none';
     }
-
-
-
   }
 
   async function fetchLinksRecursive(baseUrl, path, depth) {
-
-    var result = [];
-
+    const result = [];
     try {
-
-      // Check if the url is a file:
-      var url = baseUrl + path;
-
-      // Get the HTML and pick up HREFs
-      var options = {}
-      options.uri = url;
-      options.method = 'GET';
-      options.headers = {
-        Accept: 'text/html'
-      };
-      options.transform = function (body) { return cheerio.load(body); };
-      var $ = await rp(options);
-
-      var hrefs = getFilteredHrefs(baseUrl + path, $);
-
-      for (var h in hrefs) {
-
-        var href = hrefs[h];
+      const url = baseUrl + path;
+      const response = await axios.get(url, {
+        headers: { Accept: 'text/html' }
+      });
+      const $ = cheerio.load(response.data);
+      const hrefs = getFilteredHrefs(baseUrl + path, $);
+      for (const href of hrefs) {
         result.push(href);
       }
-
     } catch (err) {
       console.log(err);
     }
-
     return result;
   }
 
   function getFilteredHrefs(baseUrl, $) {
-
-    var result = [];
-    links = $('a');
-
-
+    const result = [];
+    const links = $('a');
     $(links).each(function (i, link) {
-
-      var link = $(link).attr('href');
-      var href = new URL(link, baseUrl).href;
-
+      const href = new URL($(link).attr('href'), baseUrl).href;
       result.push(href);
     });
-
     return result;
   }
 }

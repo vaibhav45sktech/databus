@@ -68,7 +68,7 @@ class GstoreResource {
       return response.status;
     } catch (error) {
       var responseData = error.response.data;
-      console.error('Error saving document:', responseData);
+      console.error('Error saving document:', this.content, responseData);
       throw error;
     }
   }

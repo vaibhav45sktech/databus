@@ -3,9 +3,10 @@ const DatabusUtils = require("../utils/databus-utils");
 const DatabusSparqlClient = require("./databus-sparql-client");
 
 class EntityHandler {
-  constructor(storageKey, $http, accounts, apiKeys) {
+  constructor(storageKey, $http, $interval, accounts, apiKeys) {
     this.storageKey = storageKey;
     this.$http = $http;
+    this.$interval = $interval;
     this.accounts = accounts;
     this.apiKeys = apiKeys;
     this.sparqlClient = new DatabusSparqlClient($http);
@@ -65,7 +66,7 @@ class EntityHandler {
 
   setSendMode(sendmode) {
     this.sendmode = sendmode;
-    this.save();
+    this.onChange();
   }
 
   getContext() {

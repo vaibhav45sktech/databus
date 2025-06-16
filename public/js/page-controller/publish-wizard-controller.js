@@ -58,7 +58,7 @@ async function PublishWizardController($scope, $http, $interval, focus, $q, $loc
 
   // $scope.session = await PublishSession.createOrResume($http, data.auth.sub, $scope.accounts);
 
-  $scope.session = new PublishSession($http, $scope.accounts, $scope.apiKeys);
+  $scope.session = new PublishSession($http, $interval, $scope.accounts, $scope.apiKeys);
 
 }
   /**
@@ -97,26 +97,7 @@ async function PublishWizardController($scope, $http, $interval, focus, $q, $loc
    * LICENSES
   
 
-  $scope.licenseQuery = "";
-
-  $interval(function () {
-    if ($scope.hasLicenseQueryChanged) {
-
-      $http.get(`/app/publish-wizard/licenses?limit=30&keyword=${$scope.licenseQuery}`).then(function(response) {
-        $scope.filteredLicenseList = response.data.results.bindings;
-      });
-
-      $scope.hasLicenseQueryChanged = false;
-    }
-
-  }, 300);
-
-  $scope.filterLicenses = function (licenseQuery) {
-    $scope.licenseQuery = licenseQuery;
-    $scope.hasLicenseQueryChanged = true;
-  }
-
-  $scope.filterLicenses("");
+  
 
   $scope.addFile = function (input) {
 

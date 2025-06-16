@@ -29,6 +29,11 @@ function TableEditorController() {
     return width + 22;
   }
 
+  ctrl.editContentVariant = function(index) {
+
+    ctrl.onEditContentVariant({ index: index});
+  }
+
   ctrl.setupColumns = function() {
 
     ctrl.columns = [];
@@ -93,11 +98,11 @@ function TableEditorController() {
 
   ctrl.updateViewModel = function() {
 
-
     for(var f in ctrl.model.files) {
       ctrl.model.files[f].rowspan = 1;
     }
 
+    /*
     if(ctrl.model.groupMode) {
 
       var i = 0;
@@ -107,8 +112,8 @@ function TableEditorController() {
 
         if(ctrl.model.files[i].name == ctrl.model.files[i + step].name) {
           // Swallow the cv setting of the next row
-          ctrl.model.files[i].rowspan++;
-          ctrl.model.files[i + step].rowspan = 0;
+          // ctrl.model.files[i].rowspan++;
+          // ctrl.model.files[i + step].rowspan = 0;
 
           for(var c in ctrl.model.contentVariants) {
             var cv = ctrl.model.contentVariants[c];
@@ -121,7 +126,7 @@ function TableEditorController() {
           step = 1;
         }
       }
-    }
+    }*/
 
 
   }
@@ -130,8 +135,8 @@ function TableEditorController() {
    * @param {*} artifact 
    * @param {*} file 
    */
-  ctrl.removeFileFromArtifact = function(file) {
-    ctrl.onRemoveFile({ file : file });
+  ctrl.removeFileFromArtifact = function(file, index) {
+    ctrl.onRemoveFile({ file : file, index: index});
   }
 
   ctrl.$doCheck = function() { 

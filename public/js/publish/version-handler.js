@@ -4,8 +4,8 @@ const DatabusUris = require('../utils/databus-uris');
 const GroupData = require('./group-data');
 
 class VersionHandler extends EntityHandler {
-  constructor($http, accounts, apiKeys) {
-    super('databus_registration_version_data', $http, accounts, apiKeys);
+  constructor($http, $interval, accounts, apiKeys) {
+    super('databus_registration_version_data', $http, $interval, accounts, apiKeys);
   }
 
   initialize(data) {
@@ -15,6 +15,10 @@ class VersionHandler extends EntityHandler {
       Object.assign(this, data);
     } else {
       this.accountName = this.accounts[0]?.name;
+    }
+
+    if (this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
     }
 
     this.pageIndex ??= 0;
@@ -38,10 +42,35 @@ class VersionHandler extends EntityHandler {
       });
     }
 
+    let self = this;
 
+    this.$interval(function () {
+      if (self.hasLicenseQueryChanged) {
+
+        self.$http.get(`/app/publish-wizard/licenses?limit=30&keyword=${self.licenseQuery}`)
+          .then(function (response) {
+            self.filteredLicenseList = response.data.results.bindings;
+          });
+
+        self.hasLicenseQueryChanged = false;
+      }
+
+    }, 300);
+
+    this.licenseQuery = "";
+    this.filterLicenses();
     this.onAccountNameChanged();
     this.onGroupNameChanged();
     this.onArtifactNameChanged();
+  }
+
+  setLicense(license) {
+    this.license = license;
+    this.onChange();
+  }
+
+  filterLicenses() {
+    this.hasLicenseQueryChanged = true;
   }
 
   validate() {
@@ -50,6 +79,37 @@ class VersionHandler extends EntityHandler {
 
     if (!DatabusUtils.isValidVersionIdentifier(this.name)) {
       this.errors.push('err_invalid_version_name');
+    }
+
+    if (!DatabusUtils.isValidGroupName(this.groupName)) {
+      this.errors.push('err_no_group_selected');
+    }
+
+    if (!DatabusUtils.isValidArtifactName(this.artifactName)) {
+      this.errors.push('err_no_artifact_selected');
+    }
+
+    if (!DatabusUtils.isValidUrl(this.license)) {
+      this.errors.push('err_invalid_version_license');
+    }
+
+    if(this.files.length == 0) {
+      this.errors.push('err_no_files');
+    }
+
+    for (let file of this.files) {
+      file.errors = [];
+    }
+
+    this.fileErrors = [];
+
+    this.cvSplit(this.files, 0);
+
+    for (let file of this.files) {
+      for (let error of file.errors) {
+        this.errors.push(error);
+        this.fileErrors.push(error);
+      }
     }
 
     const exists = this.artifactList?.some(a => a.name === this.name);
@@ -154,7 +214,7 @@ class VersionHandler extends EntityHandler {
 
       let formatExtension = this.getValidString(file.contentVariants['formatExtension']);
 
-      if(formatExtension == undefined) {
+      if (formatExtension == undefined) {
         formatExtension = 'none';
       }
 
@@ -165,7 +225,7 @@ class VersionHandler extends EntityHandler {
 
       let compression = this.getValidString(file.contentVariants['compression']);
 
-      if(compression == undefined) {
+      if (compression == undefined) {
         compression = 'none';
       }
 
@@ -186,7 +246,7 @@ class VersionHandler extends EntityHandler {
       for (var c in this.contentVariants) {
         var cv = this.contentVariants[c];
 
-        if(!cv.custom) {
+        if (!cv.custom) {
           continue;
         }
 
@@ -349,7 +409,112 @@ class VersionHandler extends EntityHandler {
       return 0;
     });
 
+    let k = 1;
+
+    for(let file of this.files) {
+      file.rowIndex = k++;
+    }
+
     this.onChange();
+  }
+
+  removeFile = function (file, index) {
+    this.files.splice(index, 1);
+    this.onChange();
+  }
+
+  getRowIndex(files, name) {
+    var k = 1;
+    for (var f in files) {
+      if (files[f].name == name) {
+        return k;
+      }
+
+      k++;
+    }
+
+    return -1;
+  }
+
+
+  cvSplit(files, cvIndex) {
+
+    if (files.length <= 1) {
+      return;
+    }
+
+    if (this.contentVariants == undefined) {
+      this.contentVariants = [];
+    }
+    // if end of cvs, assign errors to all files if files.length > 1
+    if (cvIndex - 2 >= this.contentVariants.length) {
+
+      if (files.length > 1) {
+
+        var cvHints = [];
+
+        if (this.contentVariants.length == 0) {
+          cvHints.push('No content variants have been added yet. Add content variants in the files panel in order to tag your files.');
+        } else {
+          for (var c in this.contentVariants) {
+            var cv = this.contentVariants[c];
+            var value = files[0].contentVariants[cv.id];
+
+            if (value == undefined || value == '') {
+              value = 'none';
+            }
+
+            cvHints.push(cv.id + ': ' + value);
+          }
+        }
+
+        for (let file of files) {
+
+          var errorMessage = 'Row ' + file.rowIndex + ' (' +
+            cvHints.join(', ') + ').';
+
+          file.errors.push({ key: 'err_duplicate_file', message: errorMessage });
+        }
+      }
+
+      return;
+    }
+
+    // else create buckets and sort files into buckets
+    var buckets = {};
+
+    for (var f in files) {
+      var file = files[f];
+
+      var key = null;
+
+      if (cvIndex == 0) {
+        key = file.formatExtension;
+      } else if (cvIndex == 1) {
+        key = file.compression;
+      } else {
+        key = file.contentVariants[this.contentVariants[cvIndex - 2].id];
+      }
+
+      if (key == undefined || key == '') {
+        key = '$_none$';
+      }
+
+      if (buckets[key] == undefined) {
+        buckets[key] = [];
+      }
+
+      buckets[key].push(file);
+    }
+
+    // iterate buckets and call recursively
+    for (var b in buckets) {
+      this.cvSplit(buckets[b], cvIndex + 1);
+    }
+  }
+
+  onEditContentVariant(index) {
+    this.editContentVariant = this.contentVariants[index];
   }
 
 }

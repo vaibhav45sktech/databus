@@ -39,6 +39,7 @@ const BetterDropdownController = require("./components/better-dropdown/better-dr
 const NavSearchController = require("./components/nav-search/nav-search-controller");
 const EntityDropdownController = require("./components/entity-dropdown/entity-dropdown");
 const EntityApiViewController = require("./components/entity-api-view/entity-api-view");
+const ErrorNotificationController = require("./components/error-notification/error-notifcation");
 
 var databusApplication = angular.module("databusApplication", [])
   .controller("HeaderController", ["$scope", "$http", "collectionManager", HeaderController])
@@ -126,6 +127,16 @@ databusApplication.component('overrideCheckbox', {
   }
 });
 
+databusApplication.component('errorTag', {
+  controller: ErrorNotificationController,
+  templateUrl: '/js/components/error-notification/error-notification.html',
+  bindings: {
+    entity: '<',
+    key: '@',
+    texts: '<'
+  }
+});
+
 databusApplication.component('entityDropdown', {
   bindings: {
     placeholder: '@',
@@ -142,7 +153,8 @@ databusApplication.component('entityDropdown', {
 databusApplication.component('entityApiView', {
     bindings: {
       entity: '<',
-      apiKeys: '<'
+      apiKeys: '<',
+      texts: '<'
     },
     controller: EntityApiViewController,
     templateUrl: '/js/components/entity-api-view/entity-api-view.html'
@@ -426,6 +438,7 @@ databusApplication.component('tableEditor', {
   bindings: {
     model: '=',
     onRemoveFile: '&',
+    onEditContentVariant: '&',
     onAnalyzeFile: '&',
     analysisProcesses: '<'
   }

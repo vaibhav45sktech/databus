@@ -23,7 +23,7 @@ class DatabusMessages {
 
   static ACCOUNT_WEBID_LINKED = 'External WebId has been linked to your profile';
 
- 
+  
 }
 
   module.exports = DatabusMessages;

@@ -38,7 +38,6 @@
 
       .form-column:not(:first-child) {
         border-left: 1px solid rgb(225 228 232);
-        ;
       }
 
       .wiz-container {
@@ -88,6 +87,20 @@
         border: 1px solid #dbdbdb;
         background-color: white;
         min-height: 460px;
+      }
+
+      .form-panel .field .label {
+        text-transform: uppercase;
+        margin-left: 4px;
+        color: #888;
+        font-size: 0.9em;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+
+      .form-panel .field {
+        margin-bottom: 1.5em;
       }
 
       .jsonld-panel pre {
@@ -170,8 +183,8 @@
                 <div class="field">
                   <label class="label">Group Name</label>
                   <input class="input" type="text" ng-model="session.group.name" ng-change="session.group.onChange()">
-                  <span ng-if="session.group.hasError('err_invalid_group_name')" class="help is-danger">{{
-                    texts.errors['err_invalid_group_name'] }}</span>
+                  <error-tag entity="session.group" key="err_invalid_group_name"></error-tag>
+
                 </div>
                 <div class="field">
                   <label class="label">Title</label>
@@ -191,7 +204,7 @@
             </div>
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.group" api-keys="apiKeys"></entity-api-view>
+              <entity-api-view entity="session.group" api-keys="apiKeys" texts="texts"></entity-api-view>
             </div>
           </div>
         </div>
@@ -225,6 +238,8 @@
                     selected="session.artifact.groupName" display-property="name"
                     loading="session.artifact.isLoadingGroups" on-select="session.artifact.setGroupName(item.name)">
                   </entity-dropdown>
+                  <error-tag entity="session.artifact" key="err_no_group_selected"></error-tag>
+
                 </div>
 
 
@@ -232,8 +247,7 @@
                   <label class="label">Name</label>
                   <input class="input" type="text" ng-model="session.artifact.name"
                     ng-change="session.artifact.onChange()">
-                  <span ng-if="session.artifact.hasError('err_invalid_artifact_name')" class="help is-danger">{{
-                    texts.errors['err_invalid_artifact_name'] }}</span>
+                  <error-tag entity="session.artifact" key="err_invalid_artifact_name" texts="texts"></error-tag>
                 </div>
 
                 <div class="field">
@@ -308,6 +322,8 @@
                       selected="session.version.groupName" display-property="name"
                       loading="session.version.isLoadingGroups" on-select="session.version.setGroupName(item.name)">
                     </entity-dropdown>
+                    <error-tag entity="session.version" key="err_no_group_selected"></error-tag>
+
                   </div>
 
                   <div class="field">
@@ -317,6 +333,8 @@
                       loading="session.version.isLoadingArtifacts"
                       on-select="session.version.setArtifactName(item.name)">
                     </entity-dropdown>
+                    <error-tag entity="session.version" key="err_no_artifact_selected"></error-tag>
+
                   </div>
 
                   <div class="field">
@@ -326,7 +344,7 @@
                         <input class="control input" type="text" ng-model="session.version.name"
                           ng-change="session.version.onChange()">
                         <div class="control">
-                          <div class="dropdown is-hoverable">
+                          <div class="dropdown is-hoverable" style="margin-bottom: 0;">
                             <div class="dropdown-trigger">
                               <a class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>Presets</span>
@@ -348,12 +366,11 @@
                           </div>
                         </div>
                       </div>
-                      <span ng-if="hasError(version.warnings, 'warning_version_exists')" style="color: #3d8d83"
-                        class="help">{{
-                        texts.errors['warning_version_exists'] }}</span>
-                      <span ng-if="hasError(version.errors, 'err_invalid_version_name')" class="help is-danger">{{
-                        texts.errors['err_invalid_version_name'] }}</span>
+
                     </div>
+
+                    <error-tag entity="session.version" key="err_invalid_version_name"></error-tag>
+
                   </div>
 
                   <div class="field">
@@ -380,9 +397,10 @@
                   <div class="field">
                     <div class="label">License URI</div>
                     <div class="field has-addons" style="width: 100%; margin-bottom: 0;">
-                      <input class="control input" type="text" ng-model="session.version.license" ng-change="session.version.onChange()">
+                      <input class="control input" type="text" ng-model="session.version.license"
+                        ng-change="session.version.onChange()">
                       <div class="control">
-                        <div class="dropdown is-hoverable" style="position: relative;">
+                        <div class="dropdown is-hoverable" style="position: relative; margin-bottom: 0;">
                           <div class="dropdown-trigger">
                             <a class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                               <span>Select License</span>
@@ -393,15 +411,16 @@
                           </div>
                           <div class="dropdown-menu" id="dropdown-menu" role="menu" style="right: 0; left: initial;">
                             <div class="dropdown-content" style="min-width: 500px; padding: 4px;">
-                              <input placeholder="Search for a license" class="input" ng-model="session.version.licenseQuery"
-                                ng-change="filterLicenses(licenseQuery)" />
-                              <div style="padding: 0.5em; color: #888" ng-if="filteredLicenseList == undefined">The
+                              <input placeholder="Search for a license" class="input"
+                                ng-model="session.version.licenseQuery" ng-change="session.version.filterLicenses()" />
+                              <div style="padding: 0.5em; color: #888"
+                                ng-if="session.version.filteredLicenseList == undefined">The
                                 content of
                                 this dropdown relies on the license service provided by <a href="https://dalicc.net"
                                   target="_blank">https://dalicc.net</a>. If you are unable to find any licenses, this
                                 might be due to the service being temporarily unavailable.</div>
-                              <div ng-repeat="license in filteredLicenseList" style="padding: 0.5em 0.25em;"
-                                ng-click="version.license=license.id.value">
+                              <div ng-repeat="license in session.version.filteredLicenseList"
+                                style="padding: 0.5em 0.25em;" ng-click="session.version.setLicense(license.id.value)">
                                 {{ license.title.value }}
                               </div>
                             </div>
@@ -409,8 +428,7 @@
                         </div>
                       </div>
                     </div>
-                    <span ng-if="hasError(version.errors, 'err_invalid_version_license')" class="help is-danger">{{
-                      texts.errors['err_invalid_version_license'] }}</span>
+                    <error-tag entity="session.version" key="err_invalid_version_license"></error-tag>
                   </div>
 
                   <!-- LICENSE ATTRIBUTION -->
@@ -524,7 +542,7 @@
                   <div ng-if="session.version.showAddVariantForm" class="box">
                     <div class="field">
                       <label class="label">Content Variant Label</label>
-                       <!--<article class="message is-info">
+                      <!--<article class="message is-info">
                           div class="message-body">
                             Enter a URL and click <b>Add URLs</b> to search the specified page for any links to files
                             URLs and add them.
@@ -541,21 +559,83 @@
                           Content Variant</button>
                       </div>
                       <div class="control">
-                        <button class="button is-light" ng-click="session.version.showAddVariantForm = false">Cancel</button>
+                        <button class="button is-light"
+                          ng-click="session.version.showAddVariantForm = false">Cancel</button>
                       </div>
                     </div>
                   </div>
 
                   <!-- Table (Always Visible) -->
-                  <table-editor ng-if="session.version.files.length > 0" model="session.version"
-                    on-remove-file="removeFile(file)">
-                  </table-editor>
 
-                  <div ng-if="session.version.files.length == 0" class="notification is-light">
-                    No files yet. Use the buttons above to add files or content variants.
+                  <div style="margin-bottom: 0.75em;">
+                    <error-tag entity="session.version" key="err_no_files"></error-tag>
                   </div>
+                  <article class="message is-danger" ng-if="session.version.fileErrors.length > 0"
+                    style="margin-bottom: 0.75em;">
+                    <div class="message-body">
+                      <div>Any two files must be distinguishable by either their format, compression or any content
+                        variant. Duplicate entries detected at:</div>
+                      <div ng-repeat="error in session.version.fileErrors">
+                        {{ error.message }}
+                      </div>
+                    </div>
+                  </article>
 
+                  <div ng-if="session.version.editContentVariant != undefined" class="box">
+                    <div class="title is-5">Edit Content Variant</div>
+                    <div class="field">
+                      <label class="label">Label</label>
+                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label" type="text"
+                                ng-disabled="!session.version.editContentVariant.custom">
+                     
+                   
+                      <div style="display: flex; align-items: center; padding: .5em;">
+                        <div style="flex: 1; display: flex; align-items: center;">
+                          <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
+                            <div class="control">
+                              <input class="input" style="min-width: 400px;" ng-model="variant.fillRegex" type="text"
+                                placeholder="Enter a String or Regex (e.g: .* for full file name)">
+                            </div>
+                            <div class="control">
+                              <div class="button" ng-click="session.formData.fill(variant)">
+                                Fill
+                              </div>
+                            </div>
+                            <div class="control">
+                              <div class="button" ng-click="session.formData.fillByRegex(variant)">
+                                Fill by Regex on Filename
+                              </div>
+                            </div>
+
+                          </div>
+                          <input style="margin: .5em;" ng-model="variant.toLower" class="checkbox" type="checkbox"
+                            name="to lowercase">
+                          <label for="scales">To Lowercase</label>
+
+                          <input style="margin: .5em;" ng-model="variant.pruneWhitespaces" class="checkbox"
+                            type="checkbox" name="prune">
+                          <label for="scales">Remove Whitespaces</label>
+
+                          <input style="margin: .5em;" ng-model="variant.overwrite" class="checkbox" type="checkbox"
+                            name="prune">
+                          <label for="scales">Overwrite</label>
+                        </div>
+
+                        <databus-icon shape="'delete'" style="margin-right: .4em;" class='artifact-icon'
+                          on-click="session.formData.removeContentVariant(variant)" size="24"></databus-icon>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <table-editor ng-if="session.version.files.length > 0" model="session.version"
+                  on-remove-file="session.version.removeFile(file, index)" on-edit-content-variant="session.version.onEditContentVariant(index)">
+                </table-editor>
+
+                <div ng-if="session.version.files.length == 0" class="notification is-light">
+                  No files yet. Use the buttons above to add files or content variants.
+                </div>
+
               </div>
             </div>
 
