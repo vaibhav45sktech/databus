@@ -59,7 +59,7 @@ class AccountWriter extends ResourceWriter {
 
     var rsaKeyGraph = {};
     rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;
-    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;
+    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL + "ASDF";
     rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();
     rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;
 

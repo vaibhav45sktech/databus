@@ -156,7 +156,7 @@ module.exports = function (router, protector, webdav) {
         for (var collectionGraph of collectionGraphs) {
           processedResources++;
           var collectionWriter = new CollectionWriter(logger);
-          await collectionWriter.writeResource(userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
+          await collectionWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish groups
@@ -166,7 +166,7 @@ module.exports = function (router, protector, webdav) {
         for (var collectionGraph of groupGraphs) {
           processedResources++;
           var groupWriter = new GroupWriter(logger);
-          await groupWriter.writeResource(userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
+          await groupWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish artifacts
@@ -177,7 +177,7 @@ module.exports = function (router, protector, webdav) {
           processedResources++;
 
           var artifactWriter = new ArtifactWriter(logger);
-          await artifactWriter.writeResource(userData, expandedGraphs, artifactGraph[DatabusUris.JSONLD_ID]);
+          await artifactWriter.writeResource(req, userData, expandedGraphs, artifactGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish version

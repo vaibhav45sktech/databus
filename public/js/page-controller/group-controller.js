@@ -12,9 +12,13 @@ const TabNavigation = require("../utils/tab-navigation");
 function GroupPageController($scope, $http, $sce, $interval, $location, collectionManager) {
 
   $scope.group = data.group;
-  $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));
+  // $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));
+  $scope.auth = data.auth;
 
   $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+
   $scope.tabNavigation = new TabNavigation($scope, $location, [
     'files', 'artifacts', 'edit'
   ]);
@@ -61,7 +65,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
     DatabusUtils.uriToTitle($scope.group.uri));
 
 
-  $scope.canEdit = $scope.accountName == data.auth.info.accountName;
+  $scope.canEdit = $scope.accountName != null;
 
   if (data.auth.authenticated && $scope.canEdit) {
 
@@ -74,7 +78,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
     $scope.formData.group.abstract = $scope.group.abstract;
     $scope.formData.group.description = $scope.group.description;
 
-    $scope.dataidCreator = new DataIdCreator($scope.formData, data.auth.info.accountName);
+    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);
   }
 
   $scope.onDescriptionChanged = function () {

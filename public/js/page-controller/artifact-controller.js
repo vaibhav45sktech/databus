@@ -13,7 +13,10 @@ function ArtifactPageController($scope, $http, $sce, $location, collectionManage
 
   $scope.collectionManager = collectionManager;
   $scope.authenticated = data.auth.authenticated;
+  $scope.auth = data.auth;
   $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
   $scope.tabNavigation = new TabNavigation($scope, $location, [
     'files', 'versions', 'edit'
   ]);
@@ -21,7 +24,7 @@ function ArtifactPageController($scope, $http, $sce, $location, collectionManage
   $scope.versions = data.versions;
   $scope.artifact = data.artifact;
   $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.artifact.uri, 2));
-  $scope.canEdit = $scope.accountName == data.auth.info.accountName;
+  $scope.canEdit = $scope.accountName != null;
   $scope.pageTitle = DatabusUtils.stringOrFallback($scope.artifact.title,
     DatabusUtils.uriToTitle($scope.artifact.uri));
 
@@ -39,7 +42,7 @@ function ArtifactPageController($scope, $http, $sce, $location, collectionManage
     $scope.formData.artifact.abstract = $scope.artifact.abstract;
     $scope.formData.artifact.description = $scope.artifact.description;
 
-    $scope.dataidCreator = new DataIdCreator($scope.formData, data.auth.info.accountName);
+    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);
   }
 
   $scope.fileSelector = {};
@@ -145,8 +148,7 @@ function ArtifactPageController($scope, $http, $sce, $location, collectionManage
 
     var artifactUpdate = $scope.dataidCreator.createArtifactUpdate();
 
-    var relativeUri = new URL($scope.artifact.uri).pathname;
-    var response = await $http.put(relativeUri, artifactUpdate);
+    var response = await $http.post(`/api/register`, artifactUpdate);
 
     if (response.status == 200) {
       $scope.artifact.title = $scope.formData.artifact.title;

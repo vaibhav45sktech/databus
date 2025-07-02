@@ -149,15 +149,15 @@
       <div class="menu-card-parent">
         <div class="menu-card" ng-click="tabNavigation.navigateTo('group')">
           <h2 class="subtitle">Group</h2>
-          <p>Create a new group metadata entity.</p>
+          <p>A grouping entity for Artifacts.</p>
         </div>
         <div class="menu-card" ng-click="tabNavigation.navigateTo('artifact')">
           <h2 class="subtitle">Artifact</h2>
-          <p>Create or select an artifact under a group.</p>
+          <p>A logical dataset that links to its Versions.</p>
         </div>
         <div class="menu-card" ng-click="tabNavigation.navigateTo('version')">
           <h2 class="subtitle">Version</h2>
-          <p>Register a new version under an artifact.</p>
+          <p>A specific release of a Databus Artifact.</p>
         </div>
       </div>
     </div>
@@ -176,8 +176,8 @@
                 <div class="field">
                   <label class="label">Account</label>
                   <entity-dropdown placeholder="Please select an account" items="accounts"
-                    selected="session.group.accountName" display-property="name" loading="loadingAccounts"
-                    on-select="session.group.setAccountName(item.name)">
+                    selected="session.group.accountName" display-property="accountName" loading="loadingAccounts"
+                    on-select="session.group.setAccountName(item.accountName)">
                   </entity-dropdown>
                 </div>
                 <div class="field">
@@ -204,7 +204,7 @@
             </div>
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.group" api-keys="apiKeys" texts="texts"></entity-api-view>
+              <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys" texts="texts"></entity-api-view>
             </div>
           </div>
         </div>
@@ -227,8 +227,8 @@
                 <div class="field">
                   <label class="label">Account</label>
                   <entity-dropdown placeholder="Please select an account" items="accounts"
-                    selected="session.artifact.accountName" display-property="name"
-                    on-select="session.artifact.setAccountName(item.name)">
+                    selected="session.artifact.accountName" display-property="accountName"
+                    on-select="session.artifact.setAccountName(item.accountName)">
                   </entity-dropdown>
                 </div>
 
@@ -274,7 +274,7 @@
 
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.artifact" api-keys="apiKeys"></entity-api-view>
+              <entity-api-view entity="session.artifact" api-keys="session.artifact.activeAccount.apiKeys"></entity-api-view>
             </div>
           </div>
 
@@ -311,8 +311,8 @@
                   <div class="field">
                     <label class="label">Account</label>
                     <entity-dropdown placeholder="Please select an account" items="accounts"
-                      selected="session.version.accountName" display-property="name"
-                      on-select="session.version.setAccountName(item.name)">
+                      selected="session.version.accountName" display-property="accountName"
+                      on-select="session.version.setAccountName(item.accountName);">
                     </entity-dropdown>
                   </div>
 
@@ -585,10 +585,10 @@
                     <div class="title is-5">Edit Content Variant</div>
                     <div class="field">
                       <label class="label">Label</label>
-                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label" type="text"
-                                ng-disabled="!session.version.editContentVariant.custom">
-                     
-                   
+                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label"
+                        type="text" ng-disabled="!session.version.editContentVariant.custom">
+
+
                       <div style="display: flex; align-items: center; padding: .5em;">
                         <div style="flex: 1; display: flex; align-items: center;">
                           <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
@@ -626,22 +626,25 @@
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <table-editor ng-if="session.version.files.length > 0" model="session.version"
-                  on-remove-file="session.version.removeFile(file, index)" on-edit-content-variant="session.version.onEditContentVariant(index)">
+                   <table-editor ng-if="session.version.files.length > 0" model="session.version"
+                  on-remove-file="session.version.removeFile(file, index)"
+                  on-edit-content-variant="session.version.onEditContentVariant(index)">
                 </table-editor>
 
                 <div ng-if="session.version.files.length == 0" class="notification is-light">
                   No files yet. Use the buttons above to add files or content variants.
                 </div>
+                </div>
+
+               
 
               </div>
             </div>
 
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.version" api-keys="apiKeys"></entity-api-view>
+              <entity-api-view entity="session.version" api-keys="session.version.activeAccount.apiKeys"></entity-api-view>
             </div>
           </div>
 

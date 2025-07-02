@@ -5,7 +5,7 @@ PREFIX databus: <https://dataid.dbpedia.org/databus#>
 SELECT * WHERE
 {
    ?uri a databus:Collection .
-   ?uri dct:publisher <%ACCOUNT_URI%> .
+   ?uri databus:account <%ACCOUNT_URI%> .
    ?uri dct:title ?title .
    ?uri dct:abstract ?abstract .
    ?uri dct:description ?description .

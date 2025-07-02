@@ -36,13 +36,23 @@ module.exports = function (router, protector) {
       }
 
       var accountData = AppJsonFormatter.formatAccountData(accountJsonLd);
+      let ownerData = null;
+
+      try {
+        let sub = req.databus.sub;
+        let accounts = await protector.userdb.getAccountsBySub(sub);
+        ownerData = accounts.find(a => a.accountName === req.params.account);
+      } catch(err) {
+        
+      }
 
       res.render('account', {
         title: accountData.label,
         data: {
           auth: auth,
           username: req.params.account,
-          profile: accountData,
+          account: accountData,
+          owner: ownerData
         }
       });
 

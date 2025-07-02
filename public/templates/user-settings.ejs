@@ -1,136 +1,264 @@
 <%- include('header') -%>
 
-<div ng-controller="UserSettingsController">
-  <databus-alert></databus-alert>
+  <div ng-controller="UserSettingsController">
+    <databus-alert></databus-alert>
 
-    <!-- Banner Section-->
+    <style>
+      .databus-banner-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .databus-banner-text {
+        margin-left: 24px;
+      }
+
+      .row {
+        display: flex;
+        margin-bottom: 1em;
+        align-items: center;
+      }
+
+      .row-label {
+        width: 160px;
+        font-weight: bold;
+      }
+
+      .is-form-section {
+        margin-bottom: 3em;
+      }
+
+      .edit-section {
+        border-top: 1px solid #ccc;
+        padding-top: 2em;
+        margin-top: 2em;
+      }
+
+      .account-list {
+        margin-bottom: 1em;
+      }
+
+      .account-list .key {
+        font-weight: 600;
+        margin-right: .5em;
+      }
+
+      .account-list .label {
+        font-weight: 300;
+        margin-right: .5em;
+        color: #aaa;
+      }
+
+      .account-list .row {
+        border-top: 1px solid #dbdbdb;
+        display: flex;
+        align-items: center;
+        height: 64px;
+        margin: 0;
+        padding-left: 1em;
+        cursor: pointer;
+      }
+
+      .account-list .row:hover {
+        background-color: #fcfcfc;
+      }
+    </style>
+
+    <!-- Banner -->
     <section class="hero databus-banner is-consumer">
       <div class="hero-body">
         <div class="container has-text-left">
-          <div style="display: flex; align-items: center;">
-            <h1 class="title is-2 has-text-left is-marginless">User Settings</h1>
+          <div class="databus-banner-content">
+            <div class="databus-banner-text">
+              <h1 class="resource-page-title title is-2 has-text-left">User Settings</h1>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section style="padding-top: 3em; padding-bottom: 3em;">
-      <div class="container mt-5">
-        <h2 class="title is-4">Accounts</h2>
-      
-        <div ng-repeat="account in accounts track by $index" class="box">
-          <div class="field">
-            <label class="label">Account Name</label>
-            <input class="input" type="text" ng-model="account.accountName" disabled>
-          </div>
+    <!-- User List -->
+    <section class="section" ng-if="tabNavigation.activeTab == 0">
+      <div class="container">
 
-          <div>Go to account page: <a ng-href="/{{account.accountName}}" target="_blank">/{{account.accountName}}</a></div>
-          <br/>
-          <div class="field">
-            <label class="label">Label</label>
-            <input class="input" type="text" ng-model="account.label">
-          </div>
-      
-          <div class="field">
-            <label class="label">Image URL</label>
-            <input class="input" type="text" ng-model="account.imageUrl">
-          </div>
-      
-          <div class="field">
-            <label class="label">Secretaries</label>
-           
-            <div ng-repeat="(sIndex, sec) in account.secretaries track by $index" class="box mb-2">
-              
-              <div class="field is-flex is-align-items-center">
-                <input class="input mr-2" type="text" ng-model="sec.accountName" placeholder="Secretary Account Name">
-                <button class="button has-text-danger" ng-click="removeSecretary(account, sIndex)">
-                  <i class="fas fa-minus"></i>
-                </button>
+        <h4 class="title is-4">Accounts</h4>
+
+        <div class="account-list">
+          <div ng-repeat="account in accounts track by $index" style="margin-bottom: 1em; display: flex; align-items: center;">
+
+             <entity-card style="flex: 1;" label="account.label" type="'Account'" uri="account.uri"
+                desc="account.status">
+              </entity-card>
+              <div ng-click="goToUserSettings(account.accountName)">
+                 <databus-icon style="margin:1.5em; cursor: pointer;" shape="'settings'" size="32">
+                </databus-icon>
               </div>
 
-              <label class="label mt-1">Writable Namespaces</label>
-              
-              <div ng-repeat="(nIndex, ns) in sec.hasWriteAccessTo track by $index" class="is-flex is-align-items-center mb-1">
-                <input class="input mr-2" type="text" ng-model="sec.hasWriteAccessTo[nIndex]" placeholder="https://...">
-                <button class="button has-text-danger" ng-click="removeNamespace(account, sIndex, nIndex)">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-              <div class="help has-text-grey">
-                Specify the namespaces this secretary can modify.  
-                Leave this list empty to allow full write access to the account's resources.
-              </div>
-             
+            <!--<div class="row is-align-items-center" ng-click="goToUserSettings(account.accountName)">
 
-              <button class="button has-text-success mt-1" ng-click="addNamespace(account, sIndex)">
-                <i class="fas fa-plus"></i> Add Namespace
-              </button>
-
-            </div>
-
-             <div class="help has-text-grey">
-              Specify accounts that can write to the namespace of this account.
-            </div>
-            <button class="button has-text-success mt-2" ng-click="addSecretary(account)">
-              <i class="fas fa-plus"></i> Add Secretary
-            </button>
-          </div>
-
-          <br/>
-      
-          <div class="buttons mt-3">
-            <button class="button is-primary" ng-click="saveAccount(account)">Save</button>
-            <button class="button is-danger" ng-click="deleteAccount(account)">Delete</button>
+              <div class="key">{{account.accountName}}</div>
+              <div class="label">{{account.label}}</div>
+            </div>-->
           </div>
         </div>
-      
-        <div class="field">
-          <label class="label">Name</label>
-          <input class="input" type="text" ng-model="newAccountName" placeholder="Key name">
+
+        <div class="is-form-section mt-6">
+          <button class="button is-consumer" ng-click="showAddUserForm = !showAddUserForm">
+            <span class="icon"><i class="fas fa-user-plus"></i></span>
+            <span>Add Account</span>
+          </button>
+
+          <div class="box mt-4" ng-show="showAddUserForm">
+            <div class="row">
+              <div class="row-label">Name</div>
+              <div style="flex: 1">
+                <input class="input" type="text" ng-model="inputs.newAccountName" placeholder="User account name">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-label">Label</div>
+              <div style="flex: 1">
+                <input class="input" type="text" ng-model="inputs.newAccountLabel" placeholder="User label">
+              </div>
+            </div>
+
+            <div class="is-flex is-justify-content-flex-end mt-3">
+              <button class="button is-consumer" ng-click="addAccount()">Confirm Add</button>
+            </div>
+          </div>
         </div>
+
+      </div>
+    </section>
+
+    <!-- Edit User -->
+    <section class="section" ng-if="tabNavigation.activeTab != 0">
+      <div class="container">
+
+        <div style="display: flex; justify-content: space-between;">
+          <h2 class="title is-4">Edit Account: {{activeAccount.accountName}}</h2>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary" ng-click="saveAccount(activeAccount)">Save Changes</button>
+            </div>
+            <div class="control">
+              <button class="button" ng-click="tabNavigation.navigateTo('')">Back to Users</button>
+            </div>
+          </div>
+        </div>
+
 
         <div class="field">
           <label class="label">Label</label>
-          <input class="input is-family-monospace" type="text" ng-model="newAccountLabel" placeholder="label">
-        </div>
-
-        
-        <button class="button is-success mt-3" ng-click="addAccount()">Add Account</button>
-
-        <hr class="my-6">
-
-        <h2 class="title is-4">API Keys</h2>
-
-        <div class="box" ng-repeat="(index, keyObj) in apiKeys track by $index">
-          <div class="field">
-            <label class="label">Name</label>
-            <input class="input" type="text" ng-model="keyObj.keyname" disabled>
-          </div>
-
-          <div class="field">
-            <label class="label">Key</label>
-            <input class="input is-family-monospace" type="text" ng-model="keyObj.apikey" disabled>
-          </div>
-
-          <div class="buttons mt-2">
-            <button class="button is-danger" ng-click="deleteApiKey(keyObj)">
-              <i class="fas fa-trash"></i> Delete
-            </button>
+          <div class="control">
+            <input class="input" type="text" ng-model="activeAccount.label">
           </div>
         </div>
 
-        <!-- Add API Key Section -->
-          <div class="field">
-            <label class="label">Name</label>
-            <input class="input" type="text" ng-model="newApiKeyName" placeholder="Key name">
+        <div class="field">
+          <label class="label">Image URL</label>
+          <div class="control">
+            <input class="input" type="text" ng-model="activeAccount.imageUrl">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Secretaries</label>
+
+          <div class="box" ng-repeat="secretary in activeAccount.secretaries track by $index">
+            <div class="field">
+              <label class="label">Account</label>
+              <div class="control">
+                <input class="input" type="text" ng-model="secretary.accountName" placeholder="e.g. dbpedia">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Write Access</label>
+              <div ng-repeat="ns in secretary.hasWriteAccessTo track by $index" class="field has-addons mb-2">
+                <div class="control is-expanded">
+                  <input class="input" type="text" ng-model="secretary.hasWriteAccessTo[$index]"
+                    placeholder="Namespace IRI">
+                </div>
+                <div class="control">
+                  <button class="button is-danger" ng-click="removeNamespace(activeAccount, $index, $index)">
+                    <span class="icon"><i class="fas fa-times"></i></span>
+                  </button>
+                </div>
+              </div>
+              <div class="control">
+                <button class="button is-link" ng-click="addNamespace(activeAccount, $index)">
+                  <span class="icon"><i class="fas fa-plus"></i></span>
+                  <span>Add Namespace</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="field is-grouped is-justify-content-flex-end">
+              <div class="control">
+                <button class="button is-danger" ng-click="removeSecretary(activeAccount, $index)">Remove
+                  Secretary</button>
+              </div>
+            </div>
           </div>
 
-          <button class="button is-success mt-2" ng-click="addApiKey()">
-            <i class="fas fa-plus"></i> Add Key
-          </button>
+          <div class="field is-grouped is-justify-content-flex-end">
+            <div class="control">
+              <button class="button is-success" ng-click="addSecretary(activeAccount)">
+                <span class="icon"><i class="fas fa-user-plus"></i></span>
+                <span>Add Secretary</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <br />
+
+
+
+        <div class="mt-5">
+          <h3 class="title is-5">API Keys</h3>
+
+          <div class="box" ng-repeat="keyObj in activeAccount.apiKeys track by $index">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" ng-model="keyObj.keyname" disabled>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Key</label>
+              <div class="control">
+                <input class="input is-family-monospace" type="text" ng-model="keyObj.apikey" disabled>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-danger" ng-click="deleteApiKey(activeAccount, keyObj)">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">New Key Name</label>
+            <div class="control">
+              <input class="input" type="text" ng-model="inputs.newApiKeyName" placeholder="Key name">
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button class="button is-success" ng-click="addApiKey(activeAccount)">Add Key</button>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
+
+
   </div>
 
   <%- include('footer') -%>

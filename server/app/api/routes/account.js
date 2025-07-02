@@ -64,7 +64,7 @@ module.exports = function (router, protector) {
 
       for(var secretary of secretaries) {
 
-        let secretaryAccountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${secretary.accountName}`;
+        let secretaryAccountUri = `${secretary.accountName}`;
 
         let secretaryGraph = {};
         secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
@@ -85,8 +85,7 @@ module.exports = function (router, protector) {
     let expandedGraphs = [
       accountGraph,
       personGraph,
-      profileDocumentGraph,
-      rsaKeyGraph
+      profileDocumentGraph
     ];
     
     return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
@@ -496,6 +495,7 @@ module.exports = function (router, protector) {
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
     var keyName = decodeURIComponent(req.body.name);
+    var accountName = decodeURIComponent(req.body.accountName);
 
     if (!DatabusUtils.isValidResourceLabel(keyName, 3, 20)) {
       res.status(403).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
@@ -507,7 +507,7 @@ module.exports = function (router, protector) {
       return;
     }
 
-    var apiKey = await protector.addApiKey(req.databus.sub, keyName);
+    var apiKey = await protector.addApiKey(accountName, keyName);
 
     if (apiKey == null) {
       res.status(400).send("Failed to create API key. You might already have an API key with that name.");
@@ -523,7 +523,9 @@ module.exports = function (router, protector) {
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
     var keyName = decodeURIComponent(req.body.keyname);
-    var found = await protector.removeApiKey(req.databus.sub, keyName);
+    var accountName = decodeURIComponent(req.body.accountName);
+
+    var found = await protector.removeApiKey(accountName, keyName);
 
     if (found) {
       res.status(200).send();

@@ -24,7 +24,7 @@ class DatabusUserDatabase {
     this.deleteApiKeyQuery = require('./app/common/queries/userdb/delete-api-key.sql');
     this.getApiKeysQuery = require('./app/common/queries/userdb/get-api-keys.sql');
 
-    this.debug = true;
+    this.debug = false;
   }
 
   onTrace(query) {
@@ -79,6 +79,10 @@ class DatabusUserDatabase {
 
     if(result == undefined) {
       return [];
+    }
+
+    for(let account of result) {
+      account.apiKeys =  await this.getApiKeys(account.accountName);
     }
 
     return result;
@@ -144,17 +148,18 @@ class DatabusUserDatabase {
    * @param {*} debugLog 
    * @returns 
    */
-  async addApiKey(sub, name, apikey) {
+  async addApiKey(accountName, name, apikey) {
 
-    let user = await this.getUser(sub);
-    if(user == undefined) {
-      if(!await this.addUser(sub)) {
-        return false;
-      }
+    let account = await this.getAccount(accountName);
+    if(account == undefined) {
+      return false;
+      //if(!await this.addUser(sub)) {
+      //  return false;
+      //}
     }
 
     var result = await this.run(this.addApiKeyQuery, {
-      SUB: sub,
+      ACCOUNTNAME: accountName,
       KEYNAME: name,
       APIKEY: apikey
     });
@@ -162,9 +167,9 @@ class DatabusUserDatabase {
     return result != null && result.changes != 0;
   }
 
-  async getApiKeys(sub) {
+  async getApiKeys(accountName) {
     return await this.all(this.getApiKeysQuery, {
-      SUB: sub,
+      ACCOUNTNAME: accountName,
     });
   }
 
@@ -173,9 +178,9 @@ class DatabusUserDatabase {
    * @param {*} sub 
    * @returns 
    */
-  async deleteApiKey(sub, name) {
+  async deleteApiKey(accountName, name) {
     var result = await this.run(this.deleteApiKeyQuery, {
-      SUB: sub,
+      ACCOUNTNAME: accountName,
       NAME: name,
     });
 

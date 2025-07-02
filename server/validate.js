@@ -39,7 +39,7 @@ async function verifyAccountIntegrity(indexer) {
 
       
       var accountWriter = new AccountWriter(null, new DatabusLogger(DatabusLogLevel.ERROR));
-      await accountWriter.writeResource(userData, accountJsonLd, accountUri);
+      await accountWriter.writeResource(null, userData, accountJsonLd, accountUri);
       // await publishAccount(user.accountName, accountJsonLd);
 
       indexer.updateResource(accountWriter.uri, accountWriter.resource.getTypeName());

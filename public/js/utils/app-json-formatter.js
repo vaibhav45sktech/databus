@@ -133,6 +133,7 @@ class AppJsonFormatter {
     result.description = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_DESCRIPTION);
     result.issued = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ISSUED);
     result.publisher = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_PUBLISHER);
+    result.account = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY);
 
     var content = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_COLLECTION_CONTENT)
     result.content = DatabusUtils.tryParseJson(unescape(content));

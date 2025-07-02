@@ -89,7 +89,7 @@ instance.hasCollectionContent = function (content) {
 instance.getCollectionsByAccount = async function (accountName, onlyIssued) {
 
   let queryOptions = {
-    ACCOUNT_URI: `${UriUtils.createResourceUri([accountName])}#this`
+    ACCOUNT_URI: `${UriUtils.createResourceUri([accountName])}`
   };
   let query = exec.formatQuery(require('../sparql/get-collections-by-account.sparql'), queryOptions);
 

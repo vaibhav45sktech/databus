@@ -59,7 +59,7 @@ class PublishSession {
 
         // Fetch groups for account here:
         this.groups = await this.sparqlClient.getGroups(this.accountData.name);
-
+        
 
         this.save();
     }

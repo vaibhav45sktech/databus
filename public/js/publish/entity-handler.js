@@ -93,8 +93,15 @@ class EntityHandler {
   async setAccountName(accountName) {
     if (this.accountName !== accountName) {
       this.accountName = accountName;
+      
+      this.activeAccount = this.accounts?.find(a => a.accountName === this.accountName);
       await this.onAccountNameChanged();
     }
+  }
+
+  getAccount() {
+    return this.activeAccount;
+    
   }
 
   onChange() {
@@ -104,7 +111,7 @@ class EntityHandler {
   }
 
   getApiKey() {
-    return this.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;
+    return this.getAccount()?.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;
   }
 
   setApiKeyName(keyname) {

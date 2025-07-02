@@ -63,7 +63,7 @@ var databusApplication = angular.module("databusApplication", [])
   .controller("CollectionsEditorController", ["$scope", "$timeout", "$http", "$location", "collectionManager", CollectionsEditorController])
   .controller("GroupPageController", ["$scope", "$http", "$sce", "$interval", "$location", "collectionManager", GroupPageController])
   .controller("ProfileController", ["$scope", "$http", ProfileController])
-  .controller("SparqlEditorController", ["$scope", "$http", SparqlEditorController])
+  .controller("SparqlEditorController", ["$scope", "$http", "$location", SparqlEditorController])
   .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", "$location", PublishWizardController])
   .controller("VersionPageController", ["$scope", "$http", "$sce", "$location", "collectionManager", VersionPageController])
   .directive('uploadRanking', function () {

@@ -40,7 +40,6 @@ async function PublishWizardController($scope, $http, $interval, focus, $q, $loc
     return;
   }
 
-  $scope.apiKeys = data.auth.info.apiKeys;
   let accounts = data.auth.info.accounts;
   $scope.hasAccount = accounts != undefined && accounts.length > 0;
 
@@ -48,7 +47,8 @@ async function PublishWizardController($scope, $http, $interval, focus, $q, $loc
 
   for(let account of accounts) {
     $scope.accounts.push({
-      name: account.accountName
+      accountName: account.accountName,
+      apiKeys: account.apiKeys
     });
   }
 

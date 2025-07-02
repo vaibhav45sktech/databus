@@ -28,15 +28,32 @@ class CollectionWriter extends ResourceWriter {
       collectionGraph[DatabusUris.DCT_DESCRIPTION] = inputCollectionGraph[DatabusUris.DCT_DESCRIPTION];
     }
 
+    if(inputCollectionGraph[DatabusUris.DCT_ISSUED] != null) {
+      collectionGraph[DatabusUris.DCT_ISSUED] = inputCollectionGraph[DatabusUris.DCT_ISSUED];
+    }
+
+    var timeString = DatabusUtils.timeStringNow();
+
+    // Set times
+    if (collectionGraph[DatabusUris.DCT_CREATED] == undefined) {
+      collectionGraph[DatabusUris.DCT_CREATED] = [{}];
+      collectionGraph[DatabusUris.DCT_CREATED][0][DatabusUris.JSONLD_TYPE] = DatabusUris.XSD_DATE_TIME;
+      collectionGraph[DatabusUris.DCT_CREATED][0][DatabusUris.JSONLD_VALUE] = timeString;
+    }
+
+    if (collectionGraph[DatabusUris.DCT_MODIFIED] == undefined) {
+      collectionGraph[DatabusUris.DCT_MODIFIED] = [{}];
+      collectionGraph[DatabusUris.DCT_MODIFIED][0][DatabusUris.JSONLD_TYPE] = DatabusUris.XSD_DATE_TIME;
+      collectionGraph[DatabusUris.DCT_MODIFIED][0][DatabusUris.JSONLD_VALUE] = timeString;
+    }
+
+    collectionGraph[DatabusUris.DCT_MODIFIED] = inputCollectionGraph[DatabusUris.DCT_ISSUED];
+
     if(inputCollectionGraph[DatabusUris.DCT_ABSTRACT] != null) {
       collectionGraph[DatabusUris.DCT_ABSTRACT] = inputCollectionGraph[DatabusUris.DCT_ABSTRACT];
     } else if (collectionGraph[DatabusUris.DCT_DESCRIPTION] != null) {
       collectionGraph[DatabusUris.DCT_DESCRIPTION] = DatabusUtils.createAbstractFromDescription(collectionGraph[DatabusUris.DCT_DESCRIPTION]);
     }
-
-    var groupGraph = {};
-    groupGraph[DatabusUris.JSONLD_ID] = this.resource.getGroupURI();
-    groupGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_GROUP;
 
     return [
       collectionGraph

@@ -43,11 +43,15 @@
 
       <article style="margin-top: 2em;" class="message is-danger" ng-if="$ctrl.entity.errors.length > 0">
         <div class="message-header">This won't work!</div>
-        <div class="message-body">
+
+         <div class="message-body">
+          Fix all errors displayed in the form to create a valid API input
+        </div>
+        <!--div class="message-body">
           <ul>
             <li ng-repeat="err in $ctrl.entity.errors">{{ $ctrl.texts.errors[err] }}</li>
           </ul>
-        </div>
+        </div--!>
         </article>
 
       <div class="code-block">

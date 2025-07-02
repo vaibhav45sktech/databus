@@ -29,6 +29,11 @@ class TabNavigation {
         return;
       }
     }
+
+    this.activeTab = 0;
+    if(this.onNavigateCallback != null) {
+      this.onNavigateCallback(this.activeTab);
+    }
   }
 
   /**

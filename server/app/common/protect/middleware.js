@@ -117,9 +117,9 @@ class DatabusProtect {
     return await this.userdb.addUser(sub, name, accountName);
   }
 
-  async addApiKey(sub, name) {
+  async addApiKey(accountName, name) {
     var apikey = uuidv4();
-    if (await this.userdb.addApiKey(sub, name, apikey)) {
+    if (await this.userdb.addApiKey(accountName, name, apikey)) {
       return { keyname: name, apikey: apikey };
     }
 
@@ -132,8 +132,8 @@ class DatabusProtect {
    * @param {*} name 
    * @returns 
    */
-  async removeApiKey(sub, name) {
-    return await this.userdb.deleteApiKey(sub, name);
+  async removeApiKey(accountName, name) {
+    return await this.userdb.deleteApiKey(accountName, name);
   }
 
   async getApiKeyUser(req) {
@@ -198,6 +198,7 @@ class DatabusProtect {
     };
 
     oidcConfig.authorizationParams = {
+      prompt: 'login',
       scope: "openid profile email roles"
     };
     
