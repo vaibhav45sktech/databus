@@ -22,6 +22,9 @@ module.exports = async function getJsonLd(resourceUri, template, formatting) {
       RESOURCE_URI: resourceUri
     });
 
+    console.log(query);
+    
+
     const headers = {
       [HttpStrings.HEADER_CONTENT_TYPE]: HttpStrings.CONTENT_TYPE_FORM_URL_ENCODED,
       [HttpStrings.HEADER_ACCEPT]: HttpStrings.CONTENT_TYPE_JSONLD

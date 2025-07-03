@@ -17,7 +17,10 @@ function VersionPageController($scope, $http, $sce, $location, collectionManager
     'files', 'mods', 'edit'
   ]);
 
+  $scope.auth = data.auth;
   $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
   $scope.collectionManager = collectionManager;
   $scope.authenticated = data.auth.authenticated;
   $scope.versionGraph = data.graph;
@@ -28,7 +31,7 @@ function VersionPageController($scope, $http, $sce, $location, collectionManager
   $scope.collectionModalVisible = false;
 
   $scope.publisherName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 3));
-  $scope.canEdit = $scope.publisherName == data.auth.info.accountName;
+  $scope.canEdit = $scope.accountName != null;
 
   if (data.auth.authenticated && $scope.canEdit) {
 
@@ -135,8 +138,7 @@ function VersionPageController($scope, $http, $sce, $location, collectionManager
           $scope.formData.version.wasDerivedFrom);
       }
 
-      var relativeUri = new URL($scope.version.uri).pathname;
-      var response = await $http.put(relativeUri, graphs);
+      var response = await $http.put(`/api/register`, graphs);
 
       if (response.status == 200) {
         $scope.version.title = $scope.formData.version.title;
@@ -247,7 +249,7 @@ function VersionPageController($scope, $http, $sce, $location, collectionManager
     return DatabusUtils.uriToName(uri);
   }
 
-  $scope.downloadMetadataAsFile = async function() {
+  $scope.downloadMetadataAsFile = async function () {
     var response = await $http({
       method: 'GET',
       url: $scope.version.uri,
@@ -259,15 +261,15 @@ function VersionPageController($scope, $http, $sce, $location, collectionManager
     $scope.download(`${$scope.version.name}.jsonld`, JSON.stringify(response.data, null, 3));
   }
 
-  $scope.download = function(filename, text) {
+  $scope.download = function (filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
     element.style.display = 'none';
     document.body.appendChild(element);
-  
+
     element.click();
-  
+
     document.body.removeChild(element);
   }
 

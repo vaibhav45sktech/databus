@@ -1,0 +1,320 @@
+<%- include('header') -%>
+
+<script src="/node_modules/stream-file/dist/stream-file.min.js"></script>
+<script src="/node_modules/js-sha256/build/sha256.min.js"></script>
+
+<div ng-controller="PublishWizardController" ng-cloak>
+
+  <style>
+    /* Wizard Container & Layout */
+    .wizard-container {
+      display: flex;
+      gap: 2rem;
+    }
+
+    /* Sidebar Navigation */
+    .wizard-sidebar {
+      width: 320px;
+    }
+
+    .wizard-step-tab {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .wizard-step-tab.is-valid {
+      background-color: #d3f0c8;
+      border: 1px solid #78c04c;
+      color: 1px solid #78c04c;
+    }
+
+    .wizard-step-tab.is-active.is-valid {
+      background-color: #b3ea9f;
+      border: 1px solid #529f23;
+    }
+
+    .wizard-step-tab.is-active {
+      background-color: #dbdbdb;
+      border-color: #bbb;
+    }
+
+    .wizard-step-tab .label {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 0.25rem;
+    }
+
+    .wizard-step-tab .value {
+      font-size: 1rem;
+      color: #222;
+    }
+
+    /* Wizard Content Box */
+    .wizard-content {
+      flex: 1;
+    }
+
+    .box-content {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .row-label {
+      width: 160px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f5f5f5;
+    }
+
+    /* Nerd Mode Toggle */
+    .nerd-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: fixed;
+      top: 0.5rem;
+      right: 1rem;
+      z-index: 1000;
+    }
+
+    /* Typography & Spacing */
+    .mt-1 { margin-top: 0.75rem; }
+    .mb-1 { margin-bottom: 0.75rem; }
+    .mb-2 { margin-bottom: 1rem; }
+  </style>
+
+  <!-- Nerd Mode Toggle -->
+  <div class="nerd-toggle" ng-if="authenticated">
+    <div class="field override-checkbox" ng-class="{ 'is-override' : nerdMode.enabled }">
+      <input id="check--nerdMode" name="check--nerdMode" class="is-checkradio" type="checkbox"
+        ng-model="nerdMode.enabled">
+      <label for="check--nerdMode">
+        <span>Nerd Mode</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Wizard Layout -->
+  <div class="section">
+    <div class="container">
+      <div class="wizard-info content" style="padding-top: 0;">
+        <h1 class="title">Metadata Wizard</h1>
+        <p>The metadata wizard helps generate and publish Databus metadata step-by-step. Choose options below to create valid JSON-LD metadata.</p>
+        <p ng-if="nerdMode.enabled"><b>NERD MODE ENABLED</b> — Directly send raw JSON-LD to the API. You know what you're doing.</p>
+      </div>
+
+      <div class="wizard-container">
+
+        <!-- Sidebar Step Navigation -->
+        <div class="wizard-sidebar">
+          <div class="wizard-step-tab" ng-class="{ 
+            'is-valid' : session.accountData.isValid,
+            'is-active' : tabNavigation.activeTab == 0 
+          }"
+            ng-click="tabNavigation.navigateTo('account');">
+            <div class="label">1. Account</div>
+            <div class="value">{{ session.accountData.name || 'Select' }}</div>
+          </div>
+          <div class="wizard-step-tab" ng-class="{  
+            'is-valid' : session.formData.group.errors.length == 0,
+            'is-active' : tabNavigation.activeTab == 1 
+          }"
+            ng-click="tabNavigation.navigateTo('group');">
+            <div class="label">2. Group</div>
+            <div class="value">{{ session.formData.group.name || 'Select or create' }}</div>
+          </div>
+          <div class="wizard-step-tab" ng-class="{ 
+            'is-active' : tabNavigation.activeTab == 2,
+            'is-valid' : session.formData.artifact.errors.length == 0 
+          }"
+            ng-click="tabNavigation.navigateTo('artifact');">
+            <div class="label">3. Artifact</div>
+            <div class="value">{{ session.formData.artifact.name || 'Select or create' }}</div>
+          </div>
+          <div class="wizard-step-tab" ng-class="{ 'is-active' : tabNavigation.activeTab == 3 }"
+            ng-click="tabNavigation.navigateTo('version');">
+            <div class="label">4. Version</div>
+            <div class="value">{{ session.formData.version.version || 'Select or create' }}</div>
+          </div>
+        </div>
+
+        <!-- Main Content Panel -->
+        <div class="wizard-content">
+
+          <!-- Step 1: Account -->
+          <div ng-if="tabNavigation.activeTab == 0">
+            <h2 class="subtitle">Step 1: Choose Account</h2>
+            <div class="row">
+              <div class="row-label">Account Name</div>
+              <div style="flex: 1">
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span>{{ session.accountData.name }}</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item" style="cursor: pointer;"
+                        ng-repeat="account in accounts"
+                        ng-click="session.selectAccount(account)">
+                        {{ account.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Group -- "-->
+          <div ng-if="tabNavigation.activeTab == 1">
+            <h2 class="subtitle">Step 2: Choose or Create Group</h2>
+            <div class="row">
+              <div class="row-label">Metadata</div>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" ng-model="session.formData.group.mode" value="create" name="group-metadata"
+                    ng-change="session.createNewGroup()">
+                  Create New
+                </label>
+                <label class="radio">
+                  <input type="radio" ng-model="session.formData.group.mode" value="existing" name="group-metadata"
+                    ng-disabled="session.groups.length == 0">
+                  Use Existing Group 
+                </label>
+              </div>
+            </div>
+
+            <div class="row" ng-if="session.formData.group.mode == 'existing'">
+              <div class="row-label">Name</div>
+              <div style="flex: 1">
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span>{{ session.accountData.name }}</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item" style="cursor: pointer;"
+                        ng-repeat="account in accounts"
+                        ng-click="session.selectAccount(account)">
+                        {{ account.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" ng-if="session.formData.group.mode == 'create'">
+              <div class="row-label">Name</div>
+               <input type="text" class="input" ng-model="session.formData.group.name" ng-change="session.onChangeGroup()" value="existing">
+            </div>
+             <div class="row">
+              <div class="row-label">Title</div>
+               <input type="text" class="input" ng-model="session.formData.group.title" ng-change="session.onChangeGroup()" value="existing">
+            </div>
+
+            <!-- TODO: Add group list & create input -->
+            <button style="width: 100%; height: 3em;" ng-class=" { 'is-loading' : isPublishing }"
+              ng-disabled="isPublishing || !session.isReadyForUpload || !agreeCCZero" class="button is-primary"
+              ng-click="publish()">
+              <span>Publish</span>
+            </button>
+
+          </div>
+
+          <!-- Step 3: Artifact -->
+          <div ng-if="tabNavigation.activeTab == 2">
+            <h2 class="subtitle">Step 3: Choose or Create Artifact</h2>
+             <div class="row">
+              <div class="row-label">Metadata</div>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" ng-model="session.formData.artifact.mode" value="create" name="artifact-metadata"
+                    ng-change="session.createNewGroup()">
+                  Create New
+                </label>
+                <label class="radio">
+                  <input type="radio" ng-model="session.formData.artifact.mode" value="existing" name="artifact-metadata"
+                    ng-disabled="session.groups.length == 0">
+                  Use Existing Artifact 
+                </label>
+              </div>
+            </div>
+
+            <div class="row" ng-if="session.formData.artifact.mode == 'existing'">
+              <div class="row-label">Name</div>
+              <div style="flex: 1">
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span>{{ session.accountData.name }}</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item" style="cursor: pointer;"
+                        ng-repeat="account in accounts"
+                        ng-click="session.selectAccount(account)">
+                        {{ account.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" ng-if="session.formData.artifact.mode == 'create'">
+              <div class="row-label">Name</div>
+               <input type="text" class="input" ng-model="session.formData.artifact.name" ng-change="session.onChangeArtifact()" >
+            </div>
+             <div class="row">
+              <div class="row-label">Title</div>
+               <input type="text" class="input" ng-model="session.formData.artifact.title" ng-change="session.onChangeArtifact()" >
+            </div>
+          </div>
+
+          <!-- Step 4: Version -->
+          <div ng-if="tabNavigation.activeTab == 3">
+            <div class="box-content">
+              <h2 class="subtitle">Step 4: Choose or Create Version</h2>
+              <!-- TODO: Add version input, file uploader, metadata fields -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') -%>

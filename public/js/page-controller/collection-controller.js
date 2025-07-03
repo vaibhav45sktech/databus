@@ -25,8 +25,8 @@ function CollectionController($scope, $sce, $http, collectionManager) {
   }
 
   $scope.editCollection = function () {
-    $scope.collectionManager.setActive($scope.collection.uuid);
-    window.location = `/app/collection-editor`;
+    // $scope.collectionManager.setActive($scope.collection.uuid);
+    window.location = `/app/collection-editor?uuid=${$scope.collection.uuid}`;
   }
 
   $scope.collectionViewModel = {};
@@ -73,8 +73,7 @@ function CollectionController($scope, $sce, $http, collectionManager) {
 
     let localCopy = $scope.collectionManager.createCopy($scope.collection);
 
-    $scope.collectionManager.setActive(localCopy.uuid);
-    window.location.href = '/app/collection-editor'
+    window.location.href = `/app/collection-editor?uuid${localCopy.uuid}`;
   }
 
   $scope.createSnapshot = function () {
@@ -84,9 +83,7 @@ function CollectionController($scope, $sce, $http, collectionManager) {
 
 
     let collectionSnapshot = $scope.collectionManager.createSnapshot($scope.collection);
-
-    $scope.collectionManager.setActive(collectionSnapshot.uuid);
-    window.location.href = '/app/collection-editor'
+    window.location.href = `/app/collection-editor?uuid${collectionSnapshot.uuid}`;
   }
 
   $scope.editCollection = function () {

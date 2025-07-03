@@ -9,9 +9,9 @@ class GstoreResource {
   static REQ_PARAM_REPO = 'repo';
   static REQ_PARAM_PATH = 'path';
   static REQ_PARAM_PREFIX = "prefix";
-  static METADATA_FILENAME = '/metadata.jsonld';
+  static METADATA_FILENAME = 'metadata.jsonld';
   static GSTORE_BASE_URL = process.env.DATABUS_DATABASE_URL || 'http://localhost:8080';
-  static PREFIX = `/${process.env.DATABUS_RESOURCE_BASE_URL}`;
+  static PREFIX = `${process.env.DATABUS_RESOURCE_BASE_URL}/`;
 
   constructor(uriString, content = null) {
     this.initialize(uriString);
@@ -29,7 +29,9 @@ class GstoreResource {
     this.repo = parts.shift();
     if (!this.repo) throw new Error('Repo is null or empty.');
 
-    this.path = parts.join('/') + GstoreResource.METADATA_FILENAME;
+    parts.push(GstoreResource.METADATA_FILENAME);
+
+    this.path = parts.join('/');
   }
 
   getRequestURL(operation) {
@@ -58,16 +60,15 @@ class GstoreResource {
 
     try {
       var url = this.getRequestURL('Write');
+      const formattedContent = JSON.stringify(this.content, null, 2);
 
-      // console.log(JSON.stringify(this.content, null, 3));
-      
-      const response = await axios.post(url, this.content, {
+      const response = await axios.post(url, formattedContent, {
         headers: { 'Content-Type': Constants.HTTP_CONTENT_TYPE_JSONLD }
       });
       return response.status;
     } catch (error) {
       var responseData = error.response.data;
-      console.error('Error saving document:', responseData);
+      console.error('Error saving document:', this.content, responseData);
       throw error;
     }
   }

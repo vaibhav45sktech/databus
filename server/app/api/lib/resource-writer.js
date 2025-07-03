@@ -5,8 +5,10 @@ const ApiError = require('../../common/utils/api-error');
 const GstoreResource = require('./gstore-resource');
 const shaclTester = require('../../common/shacl-tester');
 const jsonld = require('jsonld');
+const axios = require('axios');
 const JsonldLoader = require('../../common/utils/jsonld-loader');
 const DatabusResource = require('../../common/databus-resource');
+const DatabusUris = require('../../../../public/js/utils/databus-uris');
 
 /**
  * Base class for all writers:
@@ -28,12 +30,10 @@ class ResourceWriter {
    * @param {the input JSONLD graphs} inputGraphs 
    * @param {uri of the resource to write} uri 
    */
-  async writeResource(userData, inputGraphs, uri) {
+  async writeResource(req, userData, inputGraphs, uri) {
     this.userData = userData;
     this.inputGraphs = inputGraphs;
     this.uri = uri;
-
-    
 
     // Create Databus resource object for segment parsing
     this.resource = new DatabusResource(uri);
@@ -49,21 +49,21 @@ class ResourceWriter {
     }
 
     // Validate the user - checks URI prefix and account name
-    await this.onValidateUser();
+    await this.onValidateUser(req);
 
     // Create the graphs - abstract method implemented by the different writers
     var graphs = await this.onCreateGraphs();
 
     console.log("INPUT FOR SHACL TEST");
     console.log(JSON.stringify(graphs, null, 3));
-    
-    
+
+
     // Do SHACL validation - calls abstract getSHACLFilePath()
     var shaclResult = await shaclTester.validateJsonld(graphs, this.getSHACLFilePath());
 
     console.log("SHACL RESULT");
     console.log(JSON.stringify(shaclResult, null, 3));
-    
+
     if (!shaclResult.isSuccess) {
       var message = 'SHACL validation error:\n';
       for (var m in shaclResult.messages) {
@@ -82,7 +82,7 @@ class ResourceWriter {
       // Save the compacted graph to the gstore
       this.logger.debug(this.uri, `Saving to gstore.`);
       var gstoreResource = new GstoreResource(this.uri, compactedGraph);
-      
+
 
       await gstoreResource.save();
 
@@ -117,20 +117,55 @@ class ResourceWriter {
    * VIRTUAL - overriden in AccountWriter to allow registering of new users
    * Validates user account name against the resource identifiers
    */
-  async onValidateUser() {
+  async onValidateUser(req) {
+    var accountName = this.resource.account;
+    var accountUri = this.resource.getAccountURI();
 
-    if(this.userData.accountName == null) {
-      let message = `The user has not yet claimed an account namespace. Please finish registering your account.`;
-      throw new ApiError(403, this.uri, message, null);
+
+    if (this.userData.accounts && this.userData.accounts.some(acc => acc.accountName == accountName)) {
+      return;
     }
 
-    
+    const onBehalfOf = req.headers['x-on-behalf-of'];
 
-    var namespacePrefix = `${process.env.DATABUS_RESOURCE_BASE_URL}/${this.userData.accountName}/`;
-    if (!`${this.uri}/`.startsWith(namespacePrefix)) {
-      let message = `Identifier <${this.uri}> does not start with the expected namespace prefix <${namespacePrefix}>.`;
-      throw new ApiError(403, this.uri, message, null);
+
+
+    if (onBehalfOf && onBehalfOf == accountUri) {
+      try {
+        const response = await axios.get(onBehalfOf, {
+          headers: {
+            'Content-Type': 'application/ld+json',
+            'Accept': 'application/ld+json'
+          }
+        });
+
+        const expanded = await jsonld.expand(response.data);
+
+        const secretaries = expanded.flatMap(e =>
+          e[DatabusUris.DATABUS_SECRETARY_PROPERTY] || []
+        ).map(a => a[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0]);
+
+        for(var secretary of secretaries) {
+          var accountResource = new DatabusResource(secretary[DatabusUris.JSONLD_ID]);
+
+          if(!accountResource.isAccount()) {
+            continue;
+          }
+
+          let secretaryName = accountResource.getAccount();
+
+          if (this.userData.accounts && this.userData.accounts.some(acc => acc.accountName == secretaryName)) {
+            return;
+          }
+        }
+
+      } catch (_) {
+        // fall through to error below
+      }
     }
+
+    const message = `Authenticated user does not have write access to the account <${accountName}>.`;
+    throw new ApiError(403, this.uri, message, null);
   }
 
   /**

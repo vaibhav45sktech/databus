@@ -11,6 +11,7 @@ const GroupWriter = require('../lib/group-writer');
 const ArtifactWriter = require('../lib/artifact-writer');
 const CollectionWriter = require('../lib/collection-writer');
 const ApiError = require('../../common/utils/api-error');
+const { log } = require('console');
 var SparqlParser = require('sparqljs').Parser;
 
 const ALLOWED_QUERY_TYPES = [
@@ -86,22 +87,24 @@ module.exports = function (router, protector, webdav) {
    */
   async function createUser(sub, accountName) {
 
-    
     var accountExists = await protector.hasUser(accountName);
+    console.log(`Account does not exist yet!`);
 
     if(accountExists) {
       throw new ApiError(401, accountName, `Account <${accountName}> already exists.`, null);
     }
 
     try {
-      await protector.addUser(sub, accountName, accountName);
       
+      console.log(`Adding to user database...`);
+      await protector.addUser(sub, accountName, accountName);
 
       return {
         sub: sub,
         accountName: accountName
       };
     } catch(err) {
+      console.log(err);
       throw new ApiError(500, accountName, `Failed to write to user database`, null);
     }
   }
@@ -112,12 +115,11 @@ module.exports = function (router, protector, webdav) {
     try {
 
       // Get the account namespace
-      var accountName = req.databus.accountName;
-
+      var accounts = req.databus.accounts;
 
       var userData = {
         sub: req.databus.sub,
-        accountName: req.databus.accountName
+        accounts: req.databus.accounts
       };
 
       var verifyParts = null;
@@ -136,6 +138,8 @@ module.exports = function (router, protector, webdav) {
      
       try {
         // Publish accounts
+
+        /*
         var accountGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_ACCOUNT);
 
         for (var accountGraph of accountGraphs) {
@@ -143,6 +147,7 @@ module.exports = function (router, protector, webdav) {
           var accountWriter = new AccountWriter(createUser, logger);
           await accountWriter.writeResource(userData, expandedGraphs, accountGraph[DatabusUris.JSONLD_ID]);
         }
+        */
 
         // Publish collections
         var collectionGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_COLLECTION);
@@ -151,7 +156,7 @@ module.exports = function (router, protector, webdav) {
         for (var collectionGraph of collectionGraphs) {
           processedResources++;
           var collectionWriter = new CollectionWriter(logger);
-          await collectionWriter.writeResource(userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
+          await collectionWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish groups
@@ -161,7 +166,7 @@ module.exports = function (router, protector, webdav) {
         for (var collectionGraph of groupGraphs) {
           processedResources++;
           var groupWriter = new GroupWriter(logger);
-          await groupWriter.writeResource(userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
+          await groupWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish artifacts
@@ -172,7 +177,7 @@ module.exports = function (router, protector, webdav) {
           processedResources++;
 
           var artifactWriter = new ArtifactWriter(logger);
-          await artifactWriter.writeResource(userData, expandedGraphs, artifactGraph[DatabusUris.JSONLD_ID]);
+          await artifactWriter.writeResource(req, userData, expandedGraphs, artifactGraph[DatabusUris.JSONLD_ID]);
         }
 
         // Publish version
@@ -192,7 +197,7 @@ module.exports = function (router, protector, webdav) {
 
       for (var datasetGraph of datasetGraphs) {
         var datasetGraphUri = datasetGraph[DatabusUris.JSONLD_ID];
-        var resultCode = await publishVersion(accountName, expandedGraphs, datasetGraphUri, verifyParts, logger);
+        var resultCode = await publishVersion(accounts, expandedGraphs, datasetGraphUri, verifyParts, logger);
 
         if (resultCode != 200) {
           res.status(resultCode).json(logger.getReport());

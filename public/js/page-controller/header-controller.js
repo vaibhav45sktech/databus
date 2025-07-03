@@ -6,25 +6,21 @@ function HeaderController($scope, $http, collectionManager, searchManager) {
   $scope.auth = data.auth;
   $scope.authenticated = data.auth.authenticated;
 
-  $scope.accountName = null;
   $scope.utils = new DatabusWebappUtils($scope);
+  $scope.accountName = $scope.utils.getAccountName();
   
-  if($scope.authenticated && $scope.auth.info != null) {
-    $scope.accountName = $scope.auth.info.accountName;
-  }
 
   // Check for cookie settings
   $scope.databusCookieConsentKey = 'databus_cookie_consent';
   let cookieConsent = window.localStorage.getItem($scope.databusCookieConsentKey);
   $scope.showCookieDialogue = cookieConsent === undefined;
+
   $scope.collectionManager = collectionManager;
 
   if ($scope.authenticated) {
+
+    $scope.collectionManager.tryInitialize($scope.accountName);
     // Collection Manager Init
-    var loadCollectionsFromServer = $scope.collectionManager.accountName != $scope.auth.info.accountName;
-
-    $scope.collectionManager.tryInitialize($scope.auth.info.accountName, loadCollectionsFromServer);
-
     // Initialize search manager
     searchManager.initialize();
   } else {

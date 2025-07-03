@@ -199,7 +199,7 @@ instance.getGroupFacets = async function (resourceUri) {
     return null;
   }
 
-  return formatFacets(bindings, require('../../../pages/facet-metadata.json'));
+  return formatFacets(bindings, require('../../../webapp/facet-metadata.json'));
 }
 
 instance.getArtifactFacets = async function (resourceUri) {
@@ -214,7 +214,7 @@ instance.getArtifactFacets = async function (resourceUri) {
     return null;
   }
 
-  return formatFacets(bindings, require('../../../pages/facet-metadata.json'));
+  return formatFacets(bindings, require('../../../webapp/facet-metadata.json'));
 }
 
 instance.getVersionFacets = async function (resourceUri) {
@@ -228,7 +228,7 @@ instance.getVersionFacets = async function (resourceUri) {
     return null;
   }
 
-  return formatFacets(bindings, require('../../../pages/facet-metadata.json'));
+  return formatFacets(bindings, require('../../../webapp/facet-metadata.json'));
 }
 
 function formatFacets(facetData, facetMetadata) {

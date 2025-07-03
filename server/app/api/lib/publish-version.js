@@ -14,6 +14,7 @@ var autocompleter = require('./dataid-autocomplete.js');
 var fileAnalyzer = require('../../common/file-analyzer.js');
 const DatabusUtils = require('../../../../public/js/utils/databus-utils.js');
 const DatabusMessage = require('../../common/databus-message.js');
+const DatabusResource = require('../../common/databus-resource.js');
 
 
 async function verifyDataidParts(dataidGraphs, alwaysFetch, logger) {
@@ -208,6 +209,8 @@ async function createOrValidateSignature(dataidGraphs, accountUri, logger) {
     generatingSignature = true;
     proofGraph = signer.createProof(dataidGraphs);
 
+    logger.debug(versionGraphUri, `Generated proof graph.`, proofGraph);
+
     versionGraph[DatabusUris.SEC_PROOF] = [proofGraph];
 
     dataidGraphs = await jsonld.flatten(dataidGraphs);
@@ -242,9 +245,18 @@ async function createOrValidateSignature(dataidGraphs, accountUri, logger) {
   return 200;
 }
 
-module.exports = async function publishVersion(accountName, expandedGraph, versionGraphUri, fetchFileProperties, logger) {
+module.exports = async function publishVersion(accounts, expandedGraph, versionGraphUri, fetchFileProperties, logger) {
 
   try {
+
+    let versionResource = new DatabusResource(versionGraphUri);
+
+    if(!accounts.some(a => a.accountName == versionResource.account)) {
+      logger.error(versionGraphUri, `No write access to resource URI.`, null);
+      return 401;
+    }
+
+    let accountName = versionResource.account;
 
     var versionGraph = JsonldUtils.getGraphById(expandedGraph, versionGraphUri);
     logger.debug(versionGraphUri, `Processing version <${versionGraphUri}>`, versionGraph);

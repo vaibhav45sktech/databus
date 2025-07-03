@@ -16,7 +16,7 @@ async function verifyAccountIntegrity(indexer) {
   var userDatabase = new DatabusUserDatabase();
   await userDatabase.connect();
 
-  for (var user of await userDatabase.getUsers()) {
+  for (var user of await userDatabase.getAllUsers()) {
     var profileUri = `${UriUtils.createResourceUri([user.accountName])}${DatabusConstants.WEBID_DOCUMENT}`;
     var exists = await executeAsk(`ASK { <${profileUri}> ?p ?o }`);
 
@@ -39,7 +39,7 @@ async function verifyAccountIntegrity(indexer) {
 
       
       var accountWriter = new AccountWriter(null, new DatabusLogger(DatabusLogLevel.ERROR));
-      await accountWriter.writeResource(userData, accountJsonLd, accountUri);
+      await accountWriter.writeResource(null, userData, accountJsonLd, accountUri);
       // await publishAccount(user.accountName, accountJsonLd);
 
       indexer.updateResource(accountWriter.uri, accountWriter.resource.getTypeName());
@@ -80,7 +80,7 @@ module.exports = async function (indexer) {
     await waitForService(defaultContextUrl, 10, 1000);
 
     // console.log(`Context available at ${defaultContextUrl}`);
-    await verifyAccountIntegrity(indexer);
+    // await verifyAccountIntegrity(indexer);
 
     // TODO: Check availability of manifest
 

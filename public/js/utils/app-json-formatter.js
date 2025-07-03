@@ -77,6 +77,7 @@ class AppJsonFormatter {
     result.uri = accountGraph[DatabusUris.JSONLD_ID];
     result.accountName = DatabusUtils.uriToResourceName(result.uri);
     result.label = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_NAME);
+    result.imageUrl = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_IMG);
     result.about = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_STATUS);
     result.webIds = [];
     result.searchExtensions = [];
@@ -133,6 +134,7 @@ class AppJsonFormatter {
     result.description = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_DESCRIPTION);
     result.issued = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ISSUED);
     result.publisher = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_PUBLISHER);
+    result.account = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY);
 
     var content = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_COLLECTION_CONTENT)
     result.content = DatabusUtils.tryParseJson(unescape(content));

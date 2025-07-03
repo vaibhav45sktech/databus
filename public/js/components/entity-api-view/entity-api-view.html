@@ -1,0 +1,70 @@
+<div>
+  <div class="tabs is-toggle is-fullwidth is-light">
+    <ul>
+      <li ng-class="{ 'is-active': $ctrl.entity.sendmode === 'register' }">
+        <a href="" ng-click="$ctrl.entity.setSendMode('register')">Register</a>
+      </li>
+      <li ng-class="{ 'is-active': $ctrl.entity.sendmode === 'curl' }">
+        <a href="" ng-click="$ctrl.entity.setSendMode('curl')">cURL</a>
+      </li>
+    </ul>
+  </div>
+  <div ng-switch="$ctrl.entity.sendmode">
+    <div ng-switch-when="register">
+      <article class="message is-danger" ng-if="$ctrl.entity.errors.length > 0">
+        <div class="message-header">This won't work!</div>
+        <div class="message-body">
+          Fix all errors displayed in the form to create a valid API input
+        </div>
+      </article>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <button class="button is-small" ng-click="$ctrl.copyToClipboard($ctrl.entity.curlCommand)">
+            Copy
+          </button>
+        </div>
+        <pre class="code-block-body">{{ $ctrl.entity.postBody | json }}</pre>
+      </div>
+      <br />
+     
+      <button class="button is-primary" style="width: 100%; height: 48px;" ng-click="$ctrl.register()">Register</button>
+    </div>
+    <div ng-switch-when="curl">
+      
+
+      <div class="field">
+        <label class="label">API Key</label>
+        <entity-dropdown placeholder="Please select an API key" items="$ctrl.apiKeys" selected="$ctrl.entity.apiKeyName"
+          display-property="keyname" on-select="$ctrl.setApiKeyName(item.keyname)">
+        </entity-dropdown>
+        <span ng-if="!$ctrl.entity.apiKeyName" class="help is-danger">Select an API key. No API key yet? Create one <a href="/app/user#api-keys">here</a>.</span>
+      </div>
+
+      <article style="margin-top: 2em;" class="message is-danger" ng-if="$ctrl.entity.errors.length > 0">
+        <div class="message-header">This won't work!</div>
+
+         <div class="message-body">
+          Fix all errors displayed in the form to create a valid API input
+        </div>
+        <!--div class="message-body">
+          <ul>
+            <li ng-repeat="err in $ctrl.entity.errors">{{ $ctrl.texts.errors[err] }}</li>
+          </ul>
+        </div--!>
+        </article>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <button class="button is-small" ng-click="$ctrl.copyToClipboard($ctrl.entity.curlCommand)">
+            Copy
+          </button>
+        </div>
+        <pre class="code-block-body">{{ $ctrl.entity.curlCommand }}</pre>
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

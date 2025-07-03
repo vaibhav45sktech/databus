@@ -110,16 +110,16 @@ class DatabusProtect {
   }
 
   async getUser(sub) {
-    return await this.userdb.getUser(sub);
+    return await this.userdb.getAccountsBySub(sub);
   }
 
   async addUser(sub, name, accountName) {
     return await this.userdb.addUser(sub, name, accountName);
   }
 
-  async addApiKey(sub, name) {
+  async addApiKey(accountName, name) {
     var apikey = uuidv4();
-    if (await this.userdb.addApiKey(sub, name, apikey)) {
+    if (await this.userdb.addApiKey(accountName, name, apikey)) {
       return { keyname: name, apikey: apikey };
     }
 
@@ -132,8 +132,8 @@ class DatabusProtect {
    * @param {*} name 
    * @returns 
    */
-  async removeApiKey(sub, name) {
-    return await this.userdb.deleteApiKey(sub, name);
+  async removeApiKey(accountName, name) {
+    return await this.userdb.deleteApiKey(accountName, name);
   }
 
   async getApiKeyUser(req) {
@@ -143,13 +143,17 @@ class DatabusProtect {
       return null;
     }
 
-    var entry = await this.userdb.getSub(apikey);
+    var sub = await this.userdb.getSub(apikey);
 
-    if (entry == null) {
+    if (sub == null) {
       return null;
     }
 
-    return await this.userdb.getUser(entry.sub);
+    let accounts = await this.userdb.getAccountsBySub(sub.sub);
+    return {
+      sub: sub,
+      accounts: accounts
+    };
   }
 
   sendError(req, res, code, message, description) {
@@ -177,10 +181,7 @@ class DatabusProtect {
     oidcConfig.clientSecret = process.env.DATABUS_OIDC_SECRET;
     oidcConfig.secret = process.env.DATABUS_OIDC_SECRET;
     oidcConfig.baseURL = process.env.DATABUS_RESOURCE_BASE_URL; 
-    oidcConfig.httpAgent = {
-      http: new ProxyAgent(process.env.HTTP_PROXY),
-      https: new ProxyAgent(process.env.HTTPS_PROXY),
-    };
+    oidcConfig.httpAgent = { "http": new ProxyAgent(), "https": new ProxyAgent() };
 
     oidcConfig.routes = {
       "login": false,
@@ -197,11 +198,16 @@ class DatabusProtect {
     };
 
     oidcConfig.authorizationParams = {
+      prompt: 'login',
       scope: "openid profile email roles"
     };
     
     if(process.env.DATABUS_OIDC_RESPONSE_TYPE != undefined) {
        oidcConfig.authorizationParams.response_type = process.env.DATABUS_OIDC_RESPONSE_TYPE;
+    }
+
+    if(oidcConfig.authorizationParams.response_type == 'code') {
+      oidcConfig.authorizationParams.code_challenge_method =  "S256";
     }
 
     return oidc.auth(oidcConfig);
@@ -229,8 +235,17 @@ class DatabusProtect {
 
     return async (req, res, next) => {
 
+      
+      // console.log("==== USER FETCH ====");
+
       // User already fetched and authenticated
       if (req.databus != undefined && req.databus.authenticated) {
+        
+        // console.log("DATABUS OBJECT:");
+        // console.log(JSON.stringify(req.databus, null, 3));
+
+        // console.log("OIDC OBJECT:");
+        // console.log(JSON.stringify(req.oidc, null, 3));
         // console.log(`PROTECT Authenticated request by \x1b[32m${req.databus.accountName}\x1b[0m: \x1b[36m${req.url}\x1b[0m`);
         return next();
       }
@@ -239,12 +254,18 @@ class DatabusProtect {
       req.databus.authenticated = false;
 
       if (req.oidc == undefined) {
+        //console.log("OIDC INFO NOT FOUND");
+        return next();
+      }
+      
+     
+      if (!req.oidc.isAuthenticated()) {
+        // console.log("OIDC INFO SAYS: NOT AUTHENTICATED");
         return next();
       }
 
-      if (!req.oidc.isAuthenticated()) {
-        return next();
-      }
+      //console.log("OIDC INFO:");
+      //console.log(JSON.stringify(req.oidc, null, 3));
 
       req.databus.authenticated = true;
 
@@ -292,12 +313,14 @@ class DatabusProtect {
      
 
       // Looking up the user...
-      var user = await this.userdb.getUser(req.oidc.user.sub);
 
-      if (user != undefined) {
-        req.databus.sub = user.sub;
-        req.databus.accountName = user.accountName;
-        req.databus.apiKeys = await this.userdb.getApiKeys(user.sub);
+      var sub = req.oidc.user.sub;
+      var accounts = await this.userdb.getAccountsBySub(sub);
+
+      if (accounts != undefined) {
+        req.databus.sub = sub;
+        req.databus.accounts = accounts;
+        req.databus.apiKeys = await this.userdb.getApiKeys(sub);
       }
 
       console.log(`PROTECT Authenticated request by \x1b[32m${req.databus.accountName}\x1b[0m: \x1b[36m${req.url}\x1b[0m`);
@@ -311,10 +334,13 @@ class DatabusProtect {
 
     return [async (req, res, next) => {
 
+      // console.log("CHECKING SSO");
+      
       if (req.oidc == undefined || !self.isBrowserRequest(req)) {
 
         var apiTokenUser = await self.getApiKeyUser(req);
 
+        // console.log("TRYING API TOKEN");
         if (apiTokenUser != null) {
           // Api token has been found
           req.databus = {};
@@ -327,6 +353,7 @@ class DatabusProtect {
         }
 
 
+        // console.log("NO SUCCESS...");
         return next();
       }
 
@@ -344,6 +371,8 @@ class DatabusProtect {
         cancelSilentLogin(req, res);
         // console.log('attempting silent login');
         try {
+          
+          // console.log("SILENT LOGIN...");
           return res.oidc.silentLogin();
         } catch (e) {
           return next();
@@ -358,6 +387,11 @@ class DatabusProtect {
   checkRequiredRole() {
     return (req, res, next) => {
       
+      if (process.env.DATABUS_PRIVATE_MODE != "true") {
+        next();
+        return;
+      }
+
       if (req.path == Constants.DATABUS_OIDC_LOGOUT_ROUTE) {
         next();
         return;
@@ -378,6 +412,7 @@ class DatabusProtect {
         return this.sendError(req, res, 403, 'Forbidden', 'You do not have the required roles to access this resource');
       }
   
+      console.log(`Required role ${requiredRole} is present.`);
       next();
     };
   }
@@ -385,6 +420,7 @@ class DatabusProtect {
   
   async authenticate(request, response, next, noRedirect, responseHandler) {
 
+      
     // Consider doing webid tls here 
     var apiTokenUser = await this.getApiKeyUser(request);
 
@@ -396,7 +432,7 @@ class DatabusProtect {
       request.databus = {};
       request.databus.sub = apiTokenUser.sub;
       request.databus.authenticated = true;
-      request.databus.accountName = apiTokenUser.accountName;
+      request.databus.accounts = apiTokenUser.accounts;
       request.databus.roles = [ requiredRole ];
       request.databus.apiKeys = await this.userdb.getApiKeys(apiTokenUser.sub);
       return next();
@@ -420,6 +456,7 @@ class DatabusProtect {
 
     // Html requests need a redirect
     if (!noRedirect && this.isBrowserRequest(request)) {
+      
       forceLogin(request, response);
       return;
     }

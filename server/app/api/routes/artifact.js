@@ -14,7 +14,7 @@ module.exports = function (router, protector) {
 
   /**
   * Publishing of artifacts via PUT request
-  */
+ 
   router.put('/:account/:group/:artifact', protector.protect(true), async function (req, res, next) {
 
     try {
@@ -58,6 +58,7 @@ module.exports = function (router, protector) {
       res.status(500).send(err);
     }
   });
+ */
 
   router.get('/:account/:group/:artifact', ServerUtils.NOT_HTML_ACCEPTED, cors(), async function (req, res, next) {
 

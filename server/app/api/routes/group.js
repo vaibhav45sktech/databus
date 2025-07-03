@@ -17,7 +17,7 @@ module.exports = function (router, protector) {
 
   /**
   * Publishing of groups via PUT request
-  */
+ 
   router.put('/:account/:group', protector.protectAccount(true), async function (req, res, next) {
 
     try {
@@ -43,6 +43,7 @@ module.exports = function (router, protector) {
         var groupWriter = new GroupWriter(logger);
         await groupWriter.writeResource(req.databus, expandedGraph, groupUri);
       }
+        
       catch (apiError) {
         logger.error(apiError.resource, apiError.message, apiError.body);
         res.status(apiError.statusCode).json(logger.getReport());
@@ -55,7 +56,7 @@ module.exports = function (router, protector) {
       console.log(err);
       res.status(500).send(err);
     }
-  });
+  }); */
 
   router.get('/:account/:group', ServerUtils.NOT_HTML_ACCEPTED, cors(), async function (req, res, next) {
 

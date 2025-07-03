@@ -85,52 +85,142 @@
     .edit-table .edit:focus {
       outline: none;
     }
+
+
+    .flex-table {
+      border: 1px solid #dbdbdb;
+      overflow-x: scroll;
+    }
+
+    .flex-table .row {
+      display: flex;
+      min-width: max-content;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    .flex-table .row.header {
+      background-color: #f6f6f6;
+      font-weight: 600;
+    }
+
+    .flex-table .cell {
+      min-width: 140px;
+      flex: 1;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding-left: 1em;
+    }
+
+    .flex-table .cell.tiny {
+      min-width: 48px;
+      width: 48px;
+      flex: 0;
+    }
+
+    .flex-table .cell.main {
+      flex: 1.5;
+      min-width: 215px;
+    }
+
+    .flex-table .cell.readonly {
+      background-color: #f6f6f6;
+    }
+
+    .flex-table .cell.edit {
+      cursor: text;
+      border: none;
+      background-color: inherit;
+      font-family: inherit;
+      outline: none;
+      margin: 0;
+      width: 0;
+    }
+
+    .flex-table .cell.edit {
+      cursor: text;
+      border: none;
+      background-color: inherit;
+      font-family: inherit;
+      outline: none;
+      margin: 0;
+      width: 0;
+    }
+
+    .flex-table .cell:focus {
+      background-color: #e2f5ff;
+    }
+
+    .flex-table .cell:not(:first-child) {
+      border-left: 1px solid #dbdbdb;
+    }
+
+    .flex-table .cell input {
+      min-width: 100%;
+      width: 100px;
+    }
+
+    .flex-table .cell.cv:nth-child(3) {
+      min-width: 80px;
+    }
+
+    .flex-table .cell.cv:nth-child(4) {
+      min-width: 170px;
+    }
   </style>
 
+
+  <div class="flex-table">
+    <div class="row header">
+      <div class="cell tiny"></div>
+      <div class="cell main">File</div>
+      <div class="cell cv" ng-repeat="cv in $ctrl.model.contentVariants track by $index">
+        <span style="flex: 1; overflow-x: hidden;">{{ cv.label }}</span>
+        <databus-icon shape="'edit'" style="margin-right: 12px; cursor: pointer;" on-click="$ctrl.editContentVariant($index)"
+          size="24"></databus-icon>
+      </div>
+    </div>
+    <div class="row" ng-repeat="file in $ctrl.model.files" ng-init="outerIndex=$index">
+      <div class="cell tiny readonly">{{ $index + 1 }}</div>
+      <div class="cell main readonly">
+        <span style="flex: 1"><a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a></span> 
+        <databus-icon shape="'delete'" style="margin-right: 12px;" on-click="$ctrl.removeFileFromArtifact(file, $index)"
+          size="24"></databus-icon>
+      </div>
+      <input class="cell edit cv" ng-repeat="cv in $ctrl.model.contentVariants track by $index"
+        ng-class="{ 'selected' : $index == $ctrl.selection.x && outerIndex == $ctrl.selection.y }"
+        ng-click="$ctrl.selectCell($event, $index, outerIndex)"
+        focus-me="$index == $ctrl.edit.x && outerIndex == $ctrl.edit.y" ng-change="$ctrl.onChangeCv(file, cv)"
+        ng-model="file.contentVariants[cv.id]" class='edit'>
+
+
+    </div>
+
+  </div>
+
+  <!--
   <div class="edit-table-wrapper">
     <table class="edit-table" click-outside="$ctrl.deselect()">
-      <!--colgroup>
-        <col width="45px">
-        <col ng-repeat="column in $ctrl.columns" width="{{column.width}}">
-      </colgroup-->
+
       <thead>
         <tr>
           <td></td>
           <td>
             <div style="display: flex;">
-              <div style="flex: 1">Files</div>
-              <div style="cursor: pointer; color: #aaa;" ng-click=$ctrl.toggleGroupMode()>[GROUP]</div>
+              <div style="flex: 1">File</div>
             </div>
           </td>
-          <td>Format</td>
-          <td>Compression</td>
-          <td class="cv-header" ng-repeat="cv in $ctrl.model.contentVariants">{{ cv.label }}</td>
-          <td>Status/Actions</td>
+          <td class="cv-header" ng-repeat="cv in $ctrl.model.contentVariants track by $index">{{ cv.label }}</td>
           <td></td>
         </tr>
       </thead>
       <tbody class="table-content">
-
         <tr ng-repeat="file in $ctrl.model.files" ng-init="outerIndex=$index">
           <td class="readonly" style="padding: .5em; text-align: center;">{{ $index + 1 }}</td>
           <td style="padding: .5em; cursor: pointer" class="readonly"
             ng-class="{ 'selected' : $index == $ctrl.selection.x && $parent.$index == $ctrl.selection.y }">
             <a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a>
-          </td>
-          <td class="readonly" style="padding: .5em;">{{ file.formatExtension }}</td>
-          <td class="readonly" style="padding: .5em;">{{ file.compression }}</td>
-          <td ng-if="file.rowspan > 0" style="vertical-align:middle;" ng-repeat="cv in $ctrl.model.contentVariants"
-            rowspan="{{ file.rowspan }}"
-            ng-class="{ 'selected' : $index == $ctrl.selection.x && outerIndex == $ctrl.selection.y }"
-            ng-click="$ctrl.selectCell($event, $index, outerIndex)">
-            <input focus-me="$index == $ctrl.edit.x && outerIndex == $ctrl.edit.y"
-              ng-style="{ width: $ctrl.getSpanWidth(outerIndex, cv.label) + 'px' }"
-              ng-change="$ctrl.onChangeCv(file, cv)" ng-model="file.contentVariants[cv.label]" class='edit'
-              ng-readonly="$index != $ctrl.edit.x || outerIndex != $ctrl.edit.y">
-            <span id="{{ outerIndex + '_' + cv.label }}" style="visibility:hidden; position:absolute; left:-1000px; top:-1000px;">{{ file.contentVariants[cv.label]
-              }}</span>
-          </td>
-          <td class="readonly">
+
             <div style="display: flex; padding: .55em; justify-content: flex-end;">
               <div ng-if="file.errors != null && file.errors.length > 0" style="display: flex;" class="hover-note">
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
@@ -146,10 +236,23 @@
                   </ul>
                 </div>
               </div>
-              <databus-icon shape="'delete'" style="margin-left: 12px;" on-click="$ctrl.removeFileFromArtifact(file)"
-                size="24"></databus-icon>
+             
             </div>
           </td>
+
+
+          <td style="vertical-align:middle;" ng-repeat="cv in $ctrl.model.contentVariants track by $index"
+            ng-class="{ 'selected' : $index == $ctrl.selection.x && outerIndex == $ctrl.selection.y }"
+            ng-click="$ctrl.selectCell($event, $index, outerIndex)">
+            <input focus-me="$index == $ctrl.edit.x && outerIndex == $ctrl.edit.y"
+              ng-style="{ width: $ctrl.getSpanWidth(outerIndex, cv.label) + 'px' }"
+              ng-change="$ctrl.onChangeCv(file, cv)" ng-model="file.contentVariants[cv.label]" class='edit'
+              ng-readonly="$index != $ctrl.edit.x || outerIndex != $ctrl.edit.y">
+            <span id="{{ outerIndex + '_' + cv.label }}"
+              style="visibility:hidden; position:absolute; left:-1000px; top:-1000px;">{{ file.contentVariants[cv.label]
+              }}</span>
+          </td>
+
           <td>
 
 
@@ -167,8 +270,8 @@
 
 
 
-
   </div>
+-->
 
 
 </div>

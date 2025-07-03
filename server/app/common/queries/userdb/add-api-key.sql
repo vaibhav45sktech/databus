@@ -1,2 +1,2 @@
-INSERT INTO apikeys(apikey, keyname, sub) 
-VALUES ("%APIKEY%", "%KEYNAME%", "%SUB%")
+INSERT INTO apikeys(apikey, keyname, accountName) 
+VALUES ("%APIKEY%", "%KEYNAME%", "%ACCOUNTNAME%")

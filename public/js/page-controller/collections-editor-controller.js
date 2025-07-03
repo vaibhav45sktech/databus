@@ -17,8 +17,9 @@ const TabNavigation = require("../utils/tab-navigation");
  * @param {*} collectionManager 
  * @returns 
  */
-function CollectionsEditorController($scope, $timeout, $http, $location, collectionManager) {
+async function CollectionsEditorController($scope, $timeout, $http, $location, collectionManager) {
 
+  $scope.auth = data.auth;
   $scope.authenticated = data.auth.authenticated;
   $scope.baseUrl = DATABUS_RESOURCE_BASE_URL;
 
@@ -27,23 +28,41 @@ function CollectionsEditorController($scope, $timeout, $http, $location, collect
     return;
   }
 
-  $scope.accountName = data.auth.info.accountName;
+  const params = new URLSearchParams(window.location.search);
+  $scope.uuid = params.get('uuid');
+
+  // $scope.collectionName = params.get('collectionName');
+
+  // Make some util functions available in the template
+  $scope.utils = new DatabusWebappUtils($scope);
+  
+  $scope.collectionManager = collectionManager;
+
+  try {
+      let collection = $scope.collectionManager.local[$scope.uuid];
+      await $scope.collectionManager.tryInitialize(collection.accountName);
+    } catch(err) {
+
+    }
+
+  $scope.collectionManager.setActive($scope.uuid);
+
+  let activeCollection = $scope.collectionManager.activeCollection;
+  
+  $scope.accountName = $scope.utils.getOwnedAccountName(activeCollection.accountName);
   $scope.hasAccount = $scope.accountName != undefined;
 
-  if (!$scope.hasAccount) {
-    return;
-  }
+  //if (!$scope.hasAccount) {
+  //  return;
+  //}
 
   // Create a tab navigation object for the tab navigation with locato
   $scope.tabNavigation = new TabNavigation($scope, $location, [
     'docu', 'content', 'preview', 'query', 'json', 'import'
   ]);
 
-  // Make some util functions available in the template
-  $scope.utils = new DatabusWebappUtils($scope);
-
   // Make the manager available in the template
-  $scope.collectionManager = collectionManager;
+ //  $scope.collectionManager.setActiveCollection($scope.guid);
 
   // Form data object for input errors and extra fields and toggles
   $scope.form = {};
