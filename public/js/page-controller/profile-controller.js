@@ -11,7 +11,7 @@ function ProfileController($scope, $http) {
   $scope.account = data.account;
   $scope.auth = data.auth;
 
-  if(data.owner != null) {
+  if (data.owner != null) {
     $scope.account.apiKeys = data.owner.apiKeys;
   }
   $scope.auth = data.auth;
@@ -33,8 +33,8 @@ function ProfileController($scope, $http) {
     var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${accountName}`;
     var accountJsonLd = AppJsonFormatter.createAccountData(
       accountUri,
-      accountName, 
-      null, 
+      accountName,
+      null,
       null);
 
     $http.post(`/api/register`, accountJsonLd).then(function (result) {
@@ -50,10 +50,9 @@ function ProfileController($scope, $http) {
 
     $scope.createProfile = function () {
 
-      if ($scope.isSubmitting) 
-      {
+      if ($scope.isSubmitting) {
         return;
-      } 
+      }
 
       $scope.isSubmitting = true;
 
@@ -76,9 +75,9 @@ function ProfileController($scope, $http) {
     return;
   }
 
-   $scope.addApiKey = async function () {
+  $scope.addApiKey = async function () {
     // Validate the name input only
-    
+
     if (!$scope.createApiKeyName) {
       DatabusAlert.alert("API key name must be provided.");
       return;
@@ -94,7 +93,7 @@ function ProfileController($scope, $http) {
     try {
       // Send POST request to create the API key
       let response = await $http.post('/api/account/api-key/create', postData);
-      
+
       if (response.data && response.data.apikey && response.data.keyname) {
         // Append new key to the list
         account.apiKeys.push({
@@ -104,22 +103,22 @@ function ProfileController($scope, $http) {
 
         // Clear the name input field
         $scope.createApiKeyName = '';
-        
+
         DatabusAlert.alert($scope, true, "API key created.");
       } else {
-      DatabusAlert.alert($scope, false, "Failed to create API key.");
+        DatabusAlert.alert($scope, false, "Failed to create API key.");
       }
 
-    } catch(error) {
+    } catch (error) {
       console.error('Error creating API key:', error);
       const message = error.data || error.message || "Unknown error occurred.";
       DatabusAlert.alert($scope, false, message);
     }
   };
-  
-  
+
+
   $scope.deleteApiKey = async function (apiKey) {
-     try {
+    try {
 
       let account = $scope.account;
       // Find index of the account using accountName
@@ -148,7 +147,7 @@ function ProfileController($scope, $http) {
     }
   };
 
-  $scope.addSecretary = function(account) {
+  $scope.addSecretary = function (account) {
     if (!account.secretaries) {
       account.secretaries = [];
     }
@@ -159,70 +158,70 @@ function ProfileController($scope, $http) {
     });
   };
 
-  $scope.removeSecretary = function(account, index) {
+  $scope.removeSecretary = function (account, index) {
     account.secretaries.splice(index, 1);
   };
 
-  $scope.addNamespace = function(account, secIndex) {
+  $scope.addNamespace = function (account, secIndex) {
     account.secretaries[secIndex].hasWriteAccessTo.push('');
   };
 
-  $scope.removeNamespace = function(account, secIndex, nsIndex) {
+  $scope.removeNamespace = function (account, secIndex, nsIndex) {
     account.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);
   };
 
-  
+
   $scope.onCreateApiKeyNameChanged = function () {
     var hasError = !DatabusUtils.isValidResourceLabel($scope.createApiKeyName, 3, 20);
     $scope.createApiKeyError = hasError ? " API key name must have between 3 and 20 characters and match [A-Za-z0-9\\s_()\\.\\,\\-]*" : "";
   }
 
- /*
-  $scope.removeApiKey = function (key) {
+  /*
+   $scope.removeApiKey = function (key) {
+ 
+     $http.post(`/api/account/api-key/delete?name=${key.keyname}`).then(function (result) {
+       $scope.apiKeys = $scope.apiKeys.filter(function (k) {
+         return k.keyname != key.keyname;
+       });
+ 
+     }, function (err) {
+       console.log(err);
+       $scope.createApiKeyError = err.data;
+     });
+   }
+ 
+ 
+   $scope.addApiKey = function () {
+ 
+     $http.post(`/api/account/api-key/create?name=${encodeURIComponent($scope.createApiKeyName)}`).then(function (result) {
+ 
+       if (result.data != null) {
+         $scope.apiKeys.push(result.data);
+       }
+ 
+       DatabusAlert.alert($scope, true, DatabusMessages.ACCOUNT_API_KEY_CREATED);
+ 
+     }, function (err) {
+       console.log(err);
+       $scope.createApiKeyError = err.data;
+     });
+ 
+   }*/
 
-    $http.post(`/api/account/api-key/delete?name=${key.keyname}`).then(function (result) {
-      $scope.apiKeys = $scope.apiKeys.filter(function (k) {
-        return k.keyname != key.keyname;
-      });
-
-    }, function (err) {
-      console.log(err);
-      $scope.createApiKeyError = err.data;
-    });
-  }
-
-
-  $scope.addApiKey = function () {
-
-    $http.post(`/api/account/api-key/create?name=${encodeURIComponent($scope.createApiKeyName)}`).then(function (result) {
-
-      if (result.data != null) {
-        $scope.apiKeys.push(result.data);
-      }
-
-      DatabusAlert.alert($scope, true, DatabusMessages.ACCOUNT_API_KEY_CREATED);
-
-    }, function (err) {
-      console.log(err);
-      $scope.createApiKeyError = err.data;
-    });
-
-  }*/
-
-  $scope.removeSearchExtension = function(uri) {
+  $scope.removeSearchExtension = function (uri) {
     $http.post(`/api/account/mods/search-extensions/remove?uri=${encodeURIComponent(uri)}`)
-    .then(function (result) {
-      console.log(result);
-      DatabusAlert.alert($scope, true, result.data);
+      .then(function (result) {
+        console.log(result);
+        DatabusAlert.alert($scope, true, result.data);
 
-      $scope.account.searchExtensions =  $scope.account.searchExtensions.filter(function (e) {
-        return e.endpointUri != uri;
+        $scope.account.searchExtensions = $scope.account.searchExtensions.filter(function (e) {
+          return e.endpointUri != uri;
+        });
+
+      }, function (err) {
+        console.log(err);
+        DatabusAlert.alert($scope, false, err.data);
       });
-
-    }, function (err) {
-      console.log(err);
-      DatabusAlert.alert($scope, false, err.data);
-    });
   }
 
   $scope.addSearchExtension = function () {
@@ -289,26 +288,32 @@ function ProfileController($scope, $http) {
     });
   }
 
-
   $scope.saveProfile = async function () {
 
     if (!$scope.auth.authenticated) {
       return;
     }
 
-    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${$scope.auth.info.accountName}`;
-    var accountJsonLd = AppJsonFormatter.createAccountData(
-      accountUri,
-      $scope.editData.label, 
-      $scope.editData.about, 
-      $scope.editData.imageUrl);
+    let account = {};
+    account.uri = $scope.editData.uri;
 
-    $http.post(`/api/register`, accountJsonLd).then(function (result) {
-      DatabusAlert.alert($scope, true, DatabusMessages.ACCOUT_PROFILE_SAVED);
-    }, function (err) {
-      console.log(err);
-    });
+    account.accountName =  $scope.editData.accountName;
+    account.label = $scope.editData.label;
+    account.status = $scope.editData.about;
+    account.imageUrl = $scope.editData.imageUrl;
+    account.secretaries = [];
+
+
+    try {
+      await $http.post(`/api/account/update`, account);
+      DatabusAlert.alert($scope, true, "Account saved.");
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
   }
+
 
   // We have profile data in $scope.account!
 

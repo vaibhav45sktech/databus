@@ -21,7 +21,7 @@ const JsonldLoader = require('../../common/utils/jsonld-loader.js');
 module.exports = function (router, protector) {
 
 
-  async function createAccountGraphs (uri, name, label, img, secretaries) {
+  async function createAccountGraphs (uri, name, label, img, secretaries, status) {
     var name = UriUtils.uriToName(uri);
   
     var rsaKeyGraph = {};
@@ -42,6 +42,10 @@ module.exports = function (router, protector) {
 
     if(img != null) {
       personGraph[DatabusUris.FOAF_IMG] = img;
+    }
+
+     if(status != null) {
+      personGraph[DatabusUris.FOAF_STATUS] = status;
     }
 
     var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;
@@ -128,7 +132,7 @@ module.exports = function (router, protector) {
     
     try {
       let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
-      let content = await createAccountGraphs(accountUri, accountName, accountLabel, null, null);
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, null, null, null);
 
       let gstoreResource = new GstoreResource(accountUri, content);
       let status = await gstoreResource.save();
@@ -151,8 +155,6 @@ module.exports = function (router, protector) {
       res.status(401).send('No Subject!');
       return;
     }
-
-    console.log(req.body);
     
     const accountName = req.body.accountName;
     var existingAccount = await userdb.getAccount(accountName);
@@ -171,10 +173,11 @@ module.exports = function (router, protector) {
 
     try {
       var accountLabel = req.body.label;
+      var accountStatus = req.body.status;
       var imageUrl = req.body.imageUrl;
       var secretaries = req.body.secretaries;
       let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
-      let content = await createAccountGraphs(accountUri, accountName, accountLabel, imageUrl, secretaries);
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, imageUrl, secretaries, accountStatus);
 
       let gstoreResource = new GstoreResource(accountUri, content);
       let status = await gstoreResource.save();

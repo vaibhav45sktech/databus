@@ -148,15 +148,18 @@
       <h1 class="title has-text-centered">Choose Entity to Create</h1>
       <div class="menu-card-parent">
         <div class="menu-card" ng-click="tabNavigation.navigateTo('group')">
-          <h2 class="subtitle">Group</h2>
+          <databus-icon class="is-group" shape="'group'" size="32"></databus-icon>
+          <h2 style="margin-top: .1em;" class="subtitle">Group</h2>
           <p>A grouping entity for Artifacts.</p>
         </div>
         <div class="menu-card" ng-click="tabNavigation.navigateTo('artifact')">
-          <h2 class="subtitle">Artifact</h2>
+          <databus-icon class="is-artifact" shape="'artifact'" size="32"></databus-icon>
+          <h2 style="margin-top: .1em;" class="subtitle">Artifact</h2>
           <p>A logical dataset that links to its Versions.</p>
         </div>
         <div class="menu-card" ng-click="tabNavigation.navigateTo('version')">
-          <h2 class="subtitle">Version</h2>
+          <databus-icon class="is-version" shape="'version'" size="32"></databus-icon>
+          <h2 style="margin-top: .1em;" class="subtitle">Version</h2>
           <p>A specific release of a Databus Artifact.</p>
         </div>
       </div>
@@ -377,18 +380,21 @@
                     <label class="label">Title</label>
                     <input class="input" type="text" ng-model="session.version.title"
                       ng-change="session.version.onChange()">
+                    <error-tag entity="session.version" key="err_invalid_version_title" texts="texts"></error-tag>
                   </div>
 
                   <div class="field">
                     <label class="label">Abstract</label>
                     <textarea class="input" style="height: 64px; resize: vertical;" type="text"
                       ng-model="session.version.abstract" ng-change="session.version.onChange()"></textarea>
+                    <error-tag entity="session.version" key="err_invalid_version_abstract" texts="texts"></error-tag>
                   </div>
 
                   <div class="field">
                     <label class="label">Description</label>
                     <textarea class="input" style="height: 100px; resize: vertical;" type="text"
                       ng-model="session.version.description" ng-change="session.version.onChange()"></textarea>
+                    <error-tag entity="session.version" key="err_invalid_version_description" texts="texts"></error-tag>
                   </div>
                 </div>
 

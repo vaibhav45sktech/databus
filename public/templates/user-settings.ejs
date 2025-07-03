@@ -81,18 +81,50 @@
     <section class="section" ng-if="tabNavigation.activeTab == 0">
       <div class="container">
 
-        <h4 class="title is-4">Accounts</h4>
+        <div style="display: flex; align-items: center; margin-bottom: 1.5em; padding-right: 5em;">
+          <h4 class="title is-4" style="flex: 1; margin: 0">Accounts</h4>
+          <button class="button is-consumer" ng-click="showAddUserForm = !showAddUserForm">
+            <span class="icon"><i class="fas fa-user-plus"></i></span>
+            <span>Add Account</span>
+          </button>
+        </div>
+
+        <div class="box mt-4" ng-show="showAddUserForm" style="margin-right: 5em;">
+          <div class="row">
+            <div class="row-label">Name</div>
+            <div style="flex: 1">
+              <input class="input" type="text" ng-model="inputs.newAccountName" placeholder="User account name">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-label">Label</div>
+            <div style="flex: 1">
+              <input class="input" type="text" ng-model="inputs.newAccountLabel" placeholder="User label">
+            </div>
+          </div>
+
+          <div style="display: flex;">
+            <div class="is-flex is-justify-content-flex-end mt-3" style="margin-right: 0.5em;">
+              <button class="button is-consumer" ng-click="addAccount()">Confirm Add</button>
+            </div>
+            <div class="is-flex is-justify-content-flex-end mt-3">
+              <button class="button" ng-click="showAddUserForm = false">Cancel</button>
+            </div>
+          </div>
+        </div>
 
         <div class="account-list">
-          <div ng-repeat="account in accounts track by $index" style="margin-bottom: 1em; display: flex; align-items: center;">
+          <div ng-repeat="account in accounts track by $index"
+            style="margin-bottom: 1em; display: flex; align-items: center;">
 
-             <entity-card style="flex: 1;" label="account.label" type="'Account'" uri="account.uri"
-                desc="account.status">
-              </entity-card>
-              <div ng-click="goToUserSettings(account.accountName)">
-                 <databus-icon style="margin:1.5em; cursor: pointer;" shape="'settings'" size="32">
-                </databus-icon>
-              </div>
+            <entity-card style="flex: 1;" label="account.label" type="'Account'" uri="account.uri"
+              desc="account.status">
+            </entity-card>
+            <div ng-click="goToUserSettings(account.accountName)">
+              <databus-icon style="margin:1.5em; cursor: pointer;" shape="'settings'" size="32">
+              </databus-icon>
+            </div>
 
             <!--<div class="row is-align-items-center" ng-click="goToUserSettings(account.accountName)">
 
@@ -103,30 +135,7 @@
         </div>
 
         <div class="is-form-section mt-6">
-          <button class="button is-consumer" ng-click="showAddUserForm = !showAddUserForm">
-            <span class="icon"><i class="fas fa-user-plus"></i></span>
-            <span>Add Account</span>
-          </button>
 
-          <div class="box mt-4" ng-show="showAddUserForm">
-            <div class="row">
-              <div class="row-label">Name</div>
-              <div style="flex: 1">
-                <input class="input" type="text" ng-model="inputs.newAccountName" placeholder="User account name">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="row-label">Label</div>
-              <div style="flex: 1">
-                <input class="input" type="text" ng-model="inputs.newAccountLabel" placeholder="User label">
-              </div>
-            </div>
-
-            <div class="is-flex is-justify-content-flex-end mt-3">
-              <button class="button is-consumer" ng-click="addAccount()">Confirm Add</button>
-            </div>
-          </div>
         </div>
 
       </div>

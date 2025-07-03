@@ -89,11 +89,23 @@ class VersionHandler extends EntityHandler {
       this.errors.push('err_no_artifact_selected');
     }
 
+    if (!DatabusUtils.isValidVersionIdentifier(this.title)) {
+      this.errors.push('err_invalid_version_title');
+    }
+
+    if (!DatabusUtils.isValidResourceText(this.abstract, 1)) {
+      this.errors.push('err_invalid_version_abstract');
+    }
+
+    if (!DatabusUtils.isValidResourceText(this.description, 1)) {
+      this.errors.push('err_invalid_version_description');
+    }
+
     if (!DatabusUtils.isValidUrl(this.license)) {
       this.errors.push('err_invalid_version_license');
     }
 
-    if(this.files.length == 0) {
+    if (this.files.length == 0) {
       this.errors.push('err_no_files');
     }
 
@@ -411,7 +423,7 @@ class VersionHandler extends EntityHandler {
 
     let k = 1;
 
-    for(let file of this.files) {
+    for (let file of this.files) {
       file.rowIndex = k++;
     }
 

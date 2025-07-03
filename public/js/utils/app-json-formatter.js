@@ -77,6 +77,7 @@ class AppJsonFormatter {
     result.uri = accountGraph[DatabusUris.JSONLD_ID];
     result.accountName = DatabusUtils.uriToResourceName(result.uri);
     result.label = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_NAME);
+    result.imageUrl = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_IMG);
     result.about = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_STATUS);
     result.webIds = [];
     result.searchExtensions = [];

@@ -110,7 +110,6 @@ function UserSettingsController($scope, $http, $sce, $location) {
   // Button click handler to save account
   $scope.saveAccount = async function (account) {
     try {
-      
       await $http.post(`/api/account/update`, account);
       DatabusAlert.alert($scope, true, "Account saved.");
 
