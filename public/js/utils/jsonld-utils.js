@@ -90,6 +90,45 @@ class JsonldUtils {
     return null;
   }
 
+  static getFirstProperty(graph, property) {
+    if (graph[property] == undefined) {
+      return null;
+    }
+
+    const values = graph[property];
+
+    if (values.length === 0) {
+      return null;
+    }
+
+    if (values.length === 1) {
+      const value = values[0];
+
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+
+      return null;
+    }
+
+    for (const value of values) {
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+    }
+
+    return null;
+  }
+
+
   static getGraphById(graphs, id) {
     for (var g in graphs) {
       var graph = graphs[g];
@@ -155,7 +194,7 @@ class JsonldUtils {
     if (!obj) {
       return null;
     }
-    
+
     // If it is an array...
     if (Array.isArray(obj)) {
       for (const item of obj) {

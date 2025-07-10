@@ -78,7 +78,7 @@
     </section>
 
     <!-- User List -->
-    <section class="section" ng-if="tabNavigation.activeTab == 0">
+    <section class="section" ng-if="tabNavigation.activeTab == 0" style="min-height: 500px;">
       <div class="container">
 
         <div style="display: flex; align-items: center; margin-bottom: 1.5em; padding-right: 5em;">
@@ -114,6 +114,9 @@
           </div>
         </div>
 
+        <div ng-if="accounts.length == 0">
+          <p style="color: #aaa; font-style: italic;">You don't have any accounts yet.</p>
+        </div>
         <div class="account-list">
           <div ng-repeat="account in accounts track by $index"
             style="margin-bottom: 1em; display: flex; align-items: center;">

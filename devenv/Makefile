@@ -84,3 +84,6 @@ srv-test:
 	DATABUS_OIDC_CLIENT_ID=e9eOLS9IkGvuyBl7cBorWUQTNgbqejhc \
 	DATABUS_OIDC_SECRET=0RVo9jMnbhPnkR6Ttz0aXQRTcRuSz5DpqyUEjbbcbgRuGA4rbwCjnHM2cOlTrv9q \
 	npm run test --prefix ./../server
+
+dockerize:
+	docker buildx build --push -t dbpedia/databus:dev -f ../Dockerfile ..
