@@ -10,7 +10,7 @@ class GroupData extends EntityHandler {
   }
 
   initialize(data) {
-    const validAccount = data && this.accounts.some(acc => acc.name === data.accountName);
+    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);
     
     if (validAccount) {
       Object.assign(this, data);
@@ -36,6 +36,10 @@ class GroupData extends EntityHandler {
       sendmode: this.sendmode,
       apiKeyName: this.apiKeyName,
     };
+  }
+
+  getURI() {
+    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.name}`;
   }
 
   validate() {

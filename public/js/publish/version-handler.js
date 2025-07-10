@@ -9,7 +9,7 @@ class VersionHandler extends EntityHandler {
   }
 
   initialize(data) {
-    const validAccount = data && this.accounts.some(acc => acc.name === data.accountName);
+    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);
 
     if (validAccount) {
       Object.assign(this, data);
@@ -62,6 +62,10 @@ class VersionHandler extends EntityHandler {
     this.onAccountNameChanged();
     this.onGroupNameChanged();
     this.onArtifactNameChanged();
+  }
+
+  getURI() {
+    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.groupName}/${this.artifactName}/${this.name}`;
   }
 
   setLicense(license) {

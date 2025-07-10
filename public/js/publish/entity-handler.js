@@ -52,6 +52,10 @@ class EntityHandler {
     throw new Error("Method 'updateOutputs()' must be implemented.");
   }
 
+  getURI() {
+    throw new Error("Method 'updateOutputs()' must be implemented.");
+  }
+
   getValidString(value) {
     return value?.length > 0 ? value : undefined;
   }
@@ -123,7 +127,7 @@ class EntityHandler {
     try {
       const response = await this.$http({
         method: 'POST',
-        url: `/api/register`,
+        url: `/api/register?log-level=info`,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

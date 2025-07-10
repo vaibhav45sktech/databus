@@ -154,7 +154,8 @@ databusApplication.component('entityApiView', {
     bindings: {
       entity: '<',
       apiKeys: '<',
-      texts: '<'
+      texts: '<',
+      publishLog: '<'
     },
     controller: EntityApiViewController,
     templateUrl: '/js/components/entity-api-view/entity-api-view.html'
