@@ -319,6 +319,8 @@ class DatabusCollectionManager {
     for (let identifier in collections) {
       if (identifier === undefined || identifier === "undefined") {
         delete (collections[identifier]);
+      } else if(collections[identifier].accountName == null) {
+        delete (collections[identifier]);
       } else {
         //enable Collection Utils for all collections in local storage
         collections[identifier] = new DatabusCollectionWrapper(collections[identifier]);
@@ -478,6 +480,13 @@ class DatabusCollectionManager {
 
     window.localStorage.setItem(`${this.storageKey}_hash`, hash);
 
+    for (let identifier in this.local) {
+     if(this.local[identifier].accountName == null) {
+        delete (this.local[identifier]);
+      } 
+    }
+
+
     try {
       //write local collections to local storage
       window.localStorage.setItem(this.storageKey, DatabusCollectionUtils.serialize(this.local));
@@ -574,7 +583,7 @@ class DatabusCollectionManager {
     this.setActive(collection.uuid);
     this.saveLocally();
 
-    callback(true);
+    callback(collection);
   }
 
   createDraft(callback) {
@@ -731,6 +740,7 @@ class DatabusCollectionManager {
       this.local[pushIdentifier].hasLocalChanges = false;
       this.local[pushIdentifier].modified = remoteGraph.modified;
       this.local[pushIdentifier].issued = remoteGraph.issued;
+      this.local[pushIdentifier].isHidden = remoteGraph.issued == null;
       // this.local[pushIdentifier].created = remoteGraph.created;
 
       //Update remote data

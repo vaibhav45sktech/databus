@@ -143,16 +143,21 @@ class DatabusProtect {
       return null;
     }
 
-    var sub = await this.userdb.getSub(apikey);
+    var apiKey = await this.userdb.getApiKey(apikey);
 
-    if (sub == null) {
+    if (apiKey == null) {
       return null;
     }
 
-    let accounts = await this.userdb.getAccountsBySub(sub.sub);
+    let account = await this.userdb.getAccount(apiKey.accountName);
+
+     if (account == null) {
+      return null;
+    }
+
     return {
-      sub: sub,
-      accounts: accounts
+      sub: account.sub,
+      accounts: [ account ]
     };
   }
 
@@ -434,7 +439,7 @@ class DatabusProtect {
       request.databus.authenticated = true;
       request.databus.accounts = apiTokenUser.accounts;
       request.databus.roles = [ requiredRole ];
-      request.databus.apiKeys = await this.userdb.getApiKeys(apiTokenUser.sub);
+      // request.databus.apiKeys = await this.userdb.getApiKeys(apiTokenUser.sub);
       return next();
     }
 

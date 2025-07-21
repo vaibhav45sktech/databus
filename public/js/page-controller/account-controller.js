@@ -182,8 +182,8 @@ function AccountPageController($scope, $http, $location, collectionManager) {
    */
   $scope.createNewCollection = function () {
     $scope.collectionManager.createNew($scope.accountName, 'New Collection', 'Replace this description with a description of your choice.',
-      function (success) {
-        window.location.href = '/app/collection-editor';
+      function (collection) {
+        window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;
       });
   }
 

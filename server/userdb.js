@@ -18,6 +18,7 @@ class DatabusUserDatabase {
     this.getUserByAccountNameQuery = require('./app/common/queries/userdb/get-user-by-account-name.sql');
     this.getSubQuery = require('./app/common/queries/userdb/get-sub.sql');
     this.getAccountQuery = require('./app/common/queries/userdb/get-account.sql');
+    this.getApiKeyQuery = require('./app/common/queries/userdb/get-account-by-api-key.sql');
     this.deleteAccountQuery = require('./app/common/queries/userdb/delete-account.sql');
     this.getUserQuery = require('./app/common/queries/userdb/get-user.sql');
     this.deleteUserQuery = require('./app/common/queries/userdb/delete-user.sql');
@@ -121,6 +122,12 @@ class DatabusUserDatabase {
   async getAccount(accountName) {
     return await this.get(this.getAccountQuery, {
       ACCOUNT_NAME: accountName
+    });
+  }
+
+  async getApiKey(apikey) {
+    return await this.get(this.getApiKeyQuery, {
+      APIKEY: apikey
     });
   }
 

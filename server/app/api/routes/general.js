@@ -137,18 +137,6 @@ module.exports = function (router, protector, webdav) {
       var expandedGraphs = await jsonld.flatten(req.body);
      
       try {
-        // Publish accounts
-
-        /*
-        var accountGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_ACCOUNT);
-
-        for (var accountGraph of accountGraphs) {
-          processedResources++;
-          var accountWriter = new AccountWriter(createUser, logger);
-          await accountWriter.writeResource(userData, expandedGraphs, accountGraph[DatabusUris.JSONLD_ID]);
-        }
-        */
-
         // Publish collections
         var collectionGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_COLLECTION);
         logger.debug(null, `Found ${collectionGraphs.length} collection graphs.`, null);

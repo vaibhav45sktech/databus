@@ -6,6 +6,7 @@ const DatabusWebappUtils = require("../utils/databus-webapp-utils");
 
 function CollectionController($scope, $sce, $http, collectionManager) {
 
+  $scope.auth = data.auth;
   $scope.collection = new DatabusCollectionWrapper(data.collection);
   $scope.authenticated = data.auth.authenticated;
   $scope.activeTab = 0;
@@ -13,21 +14,15 @@ function CollectionController($scope, $sce, $http, collectionManager) {
 
   // Make some util functions available in the template
   $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
 
   $scope.isOwn = false;
 
   if ($scope.authenticated) {
-
     $scope.collectionAccountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.collection.uri, 2));
-    $scope.accountName = data.auth.info.accountName;
-
     $scope.isOwn = $scope.accountName === $scope.collectionAccountName;
   }
 
-  $scope.editCollection = function () {
-    // $scope.collectionManager.setActive($scope.collection.uuid);
-    window.location = `/app/collection-editor?uuid=${$scope.collection.uuid}`;
-  }
 
   $scope.collectionViewModel = {};
   $scope.collectionViewModel.downloadScript = [];
@@ -86,6 +81,7 @@ function CollectionController($scope, $sce, $http, collectionManager) {
     window.location.href = `/app/collection-editor?uuid${collectionSnapshot.uuid}`;
   }
 
+  
   $scope.editCollection = function () {
 
     if (!$scope.collectionManager.isInitialized) {
@@ -96,14 +92,14 @@ function CollectionController($scope, $sce, $http, collectionManager) {
 
     /// TODO Fabian - das sollte nicht passieren!
     if (localCopy === null) {
-      console.log("editCollection failed due there is no collection with that uri: " + $scope.collection.uri)
+      console.log("editCollection failed. There is no collection with that uri: " + $scope.collection.uri)
       $scope.editCopy();
       return;
     }
 
-    $scope.collectionManager.setActive(localCopy.uuid);
-    window.location.href = '/app/collection-editor'
+    window.location.href = `/app/collection-editor?uuid=${localCopy.uuid}`;
   }
+
 
   $scope.downloadAsJson = function () {
     DatabusCollectionUtils.exportToJsonFile($scope.collection);

@@ -31,12 +31,16 @@ async function CollectionsEditorController($scope, $timeout, $http, $location, c
   const params = new URLSearchParams(window.location.search);
   $scope.uuid = params.get('uuid');
 
-  // $scope.collectionName = params.get('collectionName');
-
   // Make some util functions available in the template
   $scope.utils = new DatabusWebappUtils($scope);
-  
   $scope.collectionManager = collectionManager;
+  
+  let collection = $scope.collectionManager.local[$scope.uuid];
+
+  if(collection == null) {
+    // No working copy found
+    return;
+  }
 
   try {
       let collection = $scope.collectionManager.local[$scope.uuid];
@@ -46,7 +50,6 @@ async function CollectionsEditorController($scope, $timeout, $http, $location, c
     }
 
   $scope.collectionManager.setActive($scope.uuid);
-
   let activeCollection = $scope.collectionManager.activeCollection;
   
   $scope.accountName = $scope.utils.getOwnedAccountName(activeCollection.accountName);

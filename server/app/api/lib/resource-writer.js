@@ -128,8 +128,6 @@ class ResourceWriter {
 
     const onBehalfOf = req.headers['x-on-behalf-of'];
 
-
-
     if (onBehalfOf && onBehalfOf == accountUri) {
       try {
         const response = await axios.get(onBehalfOf, {

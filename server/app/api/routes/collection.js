@@ -156,13 +156,12 @@ module.exports = function (router, protector) {
   router.delete('/:account/collections/:collection', protector.protect(), async function (req, res, next) {
     try {
 
-      if (req.params.account != req.databus.accountName) {
+      if(!ServerUtils.hasWriteAccess(req, req.params.account)) {
         res.status(403).send('You cannot edit collections in a foreign namespace.\n');
         return;
       }
 
-      var targetPath = `collections/${req.params.collection}/collection.jsonld`;
-
+      var targetPath = `collections/${req.params.collection}/metadata.jsonld`;
       var resource = await GstoreHelper.read(req.params.account, targetPath);
 
       if (resource == null) {

@@ -186,6 +186,54 @@ class ServerUtils {
   static WGET(req, res, next) {
 
   }
+
+  static async hasWriteAccess(req, accountName) {
+
+    var accounts = req.databus.accounts;
+
+    let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+
+    if (accounts != null && accounts.some(acc => acc.accountName == accountName)) {
+      return true;
+    }
+
+    const onBehalfOf = req.headers['x-on-behalf-of'];
+
+    if (onBehalfOf && onBehalfOf == accountUri) {
+      try {
+        const response = await axios.get(onBehalfOf, {
+          headers: {
+            'Content-Type': 'application/ld+json',
+            'Accept': 'application/ld+json'
+          }
+        });
+
+        const expanded = await jsonld.expand(response.data);
+        const secretaries = expanded.flatMap(e =>
+          e[DatabusUris.DATABUS_SECRETARY_PROPERTY] || []
+        ).map(a => a[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0]);
+
+        for(var secretary of secretaries) {
+          var accountResource = new DatabusResource(secretary[DatabusUris.JSONLD_ID]);
+
+          if(!accountResource.isAccount()) {
+            continue;
+          }
+
+          let secretaryName = accountResource.getAccount();
+
+          if (this.userData.accounts && this.userData.accounts.some(acc => acc.accountName == secretaryName)) {
+            return true;
+          }
+        }
+
+      } catch (_) {
+        // fall through to error below
+      }
+    }
+
+    return false;
+  }
 }
 
 module.exports = ServerUtils
