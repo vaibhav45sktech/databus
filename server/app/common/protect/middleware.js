@@ -300,7 +300,7 @@ class DatabusProtect {
       // console.log(`user: ${JSON.stringify(req.oidc.user)}`);
       req.databus.oidc_name = req.oidc.user.name;
       req.databus.oidc_email = req.oidc.user.email;
-      req.databus.userId = getUserIdFromOIDCToken(req.oidc.user)
+      req.databus.userId = this.getUserIdFromOIDCToken(req.oidc.user)
 
       if (req.oidc.accessToken) {
 
@@ -333,8 +333,7 @@ class DatabusProtect {
      
 
       // Looking up the user...
-
-      let userId = getUserIdFromOIDCToken(req.oidc.user)
+      let userId = this.getUserIdFromOIDCToken(req.oidc.user)
       var accounts = await this.userdb.getAccountsById(userId);
 
       if (accounts != undefined) {

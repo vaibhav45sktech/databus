@@ -6,19 +6,25 @@ var DatabusCache = require('../../common/cache/databus-cache');
 const { executeAsk } = require('../../common/execute-query');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
 const UriUtils = require('../../common/utils/uri-utils');
+const DatabusProtect = require('../../common/protect/middleware.js');
 
 var cache = new DatabusCache(15);
 
+/**
+ * 
+ * @param {*} router 
+ * @param {DatabusProtect} protector 
+ */
 module.exports = function (router, protector) {
 
   router.get('/app/user', protector.protect(), async function (req, res, next) {
 
     let userdb = protector.userdb;
-    let sub = req.databus.sub;
+    let userId = req.databus.userId;
 
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    let accounts = await userdb.getAccountsBySub(sub);
+    let accounts = await userdb.getAccountsById(userId);
 
     console.log(accounts);
 

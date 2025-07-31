@@ -17,7 +17,6 @@ var initialize = require('./init');
 var validate = require('./validate');
 
 var searchIndexer = null;
-var runTests = require('./app/test/main.js');
 const IndexManager = require('./app/indexing/index-manager.js');
 const IndexGroup = require('./app/indexing/index-group.js');
 const DatabusResource = require('./app/common/databus-resource.js');
@@ -148,11 +147,6 @@ async function masterProcess() {
           console.log(`All workers started.`);
 
           await validate(searchIndexer);
-
-          if ( process.env.DATABUS_TEST ){
-            console.log('Running tests...');
-            runTests();
-          }
           console.log(`================================================`);
         }
       });

@@ -1,1 +1,1 @@
-SELECT * FROM accounts WHERE sub="%SUB%"
+SELECT * FROM accounts WHERE id="%ID%"
