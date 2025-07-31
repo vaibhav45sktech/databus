@@ -99,11 +99,11 @@ module.exports = function (router, protector) {
 
   router.post('/api/account/create', protector.protect(), async function (req, res, next) {
     
-    let sub = req.oidc.user.sub;
+    let userId = req.databus.userId;
     let userdb = protector.userdb;
 
-    if(sub == undefined) {
-      return res.status(401).send('No Subject!');
+    if(userId == undefined) {
+      return res.status(401).send('No User Id!');
     }
 
     let accountName = req.body.name;
@@ -120,11 +120,11 @@ module.exports = function (router, protector) {
     var accountExists = await userdb.hasAccount(accountName);
     
     if(accountExists) {
-      res.status(403).send('Account name taken.');
+      res.status(403).send(`Account name ${accountName} taken.`);
       return;
     }
 
-    if(!await userdb.addAccount(sub, accountLabel, accountName)) {
+    if(!await userdb.addAccount(userId, accountName)) {
       res.status(500).send('Failed to write to user database.');
       return;
     }
@@ -148,11 +148,11 @@ module.exports = function (router, protector) {
 
   router.post('/api/account/update', protector.protect(), async function (req, res, next) {
 
-    let sub = req.oidc.user.sub;
+    let userId = req.databus.userId;
     let userdb = protector.userdb;
 
-    if(sub == undefined) {
-      res.status(401).send('No Subject!');
+    if(userId == undefined) {
+      res.status(401).send('No User Id!');
       return;
     }
     
@@ -164,7 +164,7 @@ module.exports = function (router, protector) {
       return;
     }
 
-    if(existingAccount.sub != sub) {
+    if(existingAccount.id != userId) {
       res.status(403).send('You do not own this account.');
       return;
     }
@@ -194,19 +194,26 @@ module.exports = function (router, protector) {
 
   router.post('/api/account/delete', protector.protect(), async function (req, res, next) {
 
-    let sub = req.oidc.user.sub;
-    let userdb = protector.userdb;
+    // Get id of authenticated user
+    let userId = req.databus.userId;
 
-    if(sub == undefined) {
-      return res.status(401).send('No Subject!');
+    if(userId == undefined) {
+      return res.status(401).send('No User Id!');
     }
 
+    // Get account to delete from database
     let accountName = req.body.accountName;
+    let userdb = protector.userdb;
     var account = await userdb.getAccount(accountName);
     
     if(account == null) {
       res.status(404).send('Account does not exist.');
       return;
+    }
+
+    // Check if account belongs to authenticated
+    if(account.id != userId) {
+      return res.status(401).send('Account not owned.');
     }
     
     if(!await userdb.deleteAccount(accountName)) {
@@ -222,7 +229,7 @@ module.exports = function (router, protector) {
       res.status(200).send('Account deleted.');
       
     } catch(err) {
-    await userdb.addAccount(account.sub, account.label, account.accountName);
+    await userdb.addAccount(account.id, account.accountName);
       res.status(500).send('Failed to write to gstore.');
     }
   });
@@ -497,11 +504,16 @@ module.exports = function (router, protector) {
 
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
-    var keyName = decodeURIComponent(req.body.name);
+    var keyName = decodeURIComponent(req.body.keyName);
     var accountName = decodeURIComponent(req.body.accountName);
 
+    if(!auth.info.accounts.some(a => a.accountName == accountName)) {
+      res.status(403).send(`Not allowed to create API key for account '${accountName}'`);
+      return;
+    }
+
     if (!DatabusUtils.isValidResourceLabel(keyName, 3, 20)) {
-      res.status(403).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
+      res.status(400).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
       return;
     }
 
@@ -525,7 +537,7 @@ module.exports = function (router, protector) {
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    var keyName = decodeURIComponent(req.body.keyname);
+    var keyName = decodeURIComponent(req.body.keyName);
     var accountName = decodeURIComponent(req.body.accountName);
 
     var found = await protector.removeApiKey(accountName, keyName);

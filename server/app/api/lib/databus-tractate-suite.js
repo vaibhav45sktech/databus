@@ -135,12 +135,8 @@ signer.validate = async function (canonicalized, proof) {
     var quads = [];
 
     if (isInternalWebId) {
-      // Parse the WebId URL
-      var webIdURL = new URL(publisherUri);
-      // Extract the pathname of the URL without leading slash
-      var repo = webIdURL.pathname.substring(1);
+      
       // Read the WebId directly from the Gstore to avoid access problems in private mode
-
       var gstoreResource = new GstoreResource(publisherUri);
       await gstoreResource.read();
 

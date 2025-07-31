@@ -1,5 +1,5 @@
 {
-  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+  "@context": "http://localhost:3000/res/context.jsonld",
   "@graph": {
     "@type": "Version",
     "@id": "%DATABUS_RESOURCE_BASE_URL%/%ACCOUNT%/%GROUP%/%ARTIFACT%/%VERSION%",

@@ -96,6 +96,11 @@ class DatabusWebDAV {
     return authTokens[0];
   }
 
+  getAccountNameFromRequest(req) {
+    const match = req.url.match(/^\/([^/]+)\//);
+    return match ? match[1] : null;
+  };
+
   davAuth() {
 
     var self = this;
@@ -129,6 +134,8 @@ class DatabusWebDAV {
       }
 
       */ 
+
+
       var auth = ServerUtils.getAuthInfoFromRequest(req);
 
       if (!auth.authenticated) {
@@ -136,13 +143,21 @@ class DatabusWebDAV {
         return;
       }
 
-      var davUser = await self.getDavUser(auth.info.accountName);
+      let accountName = self.getAccountNameFromRequest(req);
 
-      if (davUser == null) {
-        self.addWebDavUser(auth.info.accountName);
+      if(auth.info.accounts == undefined || !auth.info.accounts.some(a => a.accountName === accountName)) {
+        res.status(401).send();
+        return;
       }
 
-      var token = btoa(`${auth.info.accountName}:${self.sessionPass}`)
+
+      var davUser = await self.getDavUser(accountName);
+
+      if (davUser == null) {
+        self.addWebDavUser(accountName);
+      }
+
+      var token = btoa(`${accountName}:${self.sessionPass}`)
       req.headers['Authorization'] = `Basic ${token}`;
 
       next("route");

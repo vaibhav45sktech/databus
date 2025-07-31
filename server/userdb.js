@@ -12,11 +12,10 @@ class DatabusUserDatabase {
     this.addUserQuery = require('./app/common/queries/userdb/add-user.sql');
     this.addUserQueryPrefix = this.addUserQuery.substring(0, 10);
     this.addApiKeyQuery = require('./app/common/queries/userdb/add-api-key.sql');
-    this.getAccountsBySubQuery = require('./app/common/queries/userdb/get-accounts.sql');
+    this.getAccountsByIdQuery = require('./app/common/queries/userdb/get-accounts-by-id.sql');
     this.addAccountQuery = require('./app/common/queries/userdb/add-account.sql');
     this.getUsersQuery = require('./app/common/queries/userdb/get-users.sql');
     this.getUserByAccountNameQuery = require('./app/common/queries/userdb/get-user-by-account-name.sql');
-    this.getSubQuery = require('./app/common/queries/userdb/get-sub.sql');
     this.getAccountQuery = require('./app/common/queries/userdb/get-account.sql');
     this.getApiKeyQuery = require('./app/common/queries/userdb/get-account-by-api-key.sql');
     this.deleteAccountQuery = require('./app/common/queries/userdb/delete-account.sql');
@@ -50,7 +49,9 @@ class DatabusUserDatabase {
         this.db.on('trace', this.onTrace);
       }
 
-      console.log("Creating tables");
+      if (this.debug) {
+        console.log("Creating tables");
+      }
       
 
       await this.db.get("PRAGMA foreign_keys = ON");
@@ -70,12 +71,12 @@ class DatabusUserDatabase {
 
   /**
    * Retrieve a user
-   * @param {*} sub 
+   * @param {*} id 
    * @returns 
    */
-  async getAccountsBySub(sub) {
-    let result = await this.all(this.getAccountsBySubQuery, {
-      SUB: sub,
+  async getAccountsById(id) {
+    let result = await this.all(this.getAccountsByIdQuery, {
+      ID: id,
     });
 
     if(result == undefined) {
@@ -91,7 +92,7 @@ class DatabusUserDatabase {
 
   /**
   * Retrieve all users
-  * @param {*} sub 
+  * @param {*} id 
   * @returns 
   */
   async getAllUsers() {
@@ -100,7 +101,7 @@ class DatabusUserDatabase {
 
   /**
    * Retrieve a user ny account name
-   * @param {*} sub 
+   * @param {*} id 
    * @returns 
    */
   async getUserByAccountName(accountName) {
@@ -131,26 +132,16 @@ class DatabusUserDatabase {
     });
   }
 
-  /**
-   * Retrieve a sub string by apikey
-   * @param {*} apikey 
-   * @returns 
-   */
-  async getSub(apikey) {
-    return await this.get(this.getSubQuery, {
-      APIKEY: apikey
-    });
-  }
 
-  async getUser(sub) {
+  async getUser(id) {
     return await this.get(this.getUserQuery, {
-      SUB: sub
+      ID: id
     });
   }
 
   /**
    * Adds an API key to a user 
-   * @param {} sub 
+   * @param {} id 
    * @param {*} apikey 
    * @param {*} debugLog 
    * @returns 
@@ -160,7 +151,7 @@ class DatabusUserDatabase {
     let account = await this.getAccount(accountName);
     if(account == undefined) {
       return false;
-      //if(!await this.addUser(sub)) {
+      //if(!await this.addUser(id)) {
       //  return false;
       //}
     }
@@ -182,7 +173,7 @@ class DatabusUserDatabase {
 
   /**
    * Delete api key
-   * @param {*} sub 
+   * @param {*} id 
    * @returns 
    */
   async deleteApiKey(accountName, name) {
@@ -196,13 +187,14 @@ class DatabusUserDatabase {
 
   /**
   * Adds a user 
-  * @param {*} sub 
+  * @param {*} id 
   * @returns 
   */
-  async addUser(sub) {
+  async addUser(id, email) {
 
     var result = await this.run(this.addUserQuery, {
-      SUB: sub
+      ID: id,
+      EMAIL: email
     });
 
     return result != null && result.changes != 0;
@@ -210,27 +202,27 @@ class DatabusUserDatabase {
 
   /**
   * Adds an account 
-  * @param {*} sub 
+  * @param {*} id 
   * @param {*} label 
   * @param {*} accountName 
   * @returns 
   */
-  async addAccount(sub, label, accountName) {
+  async addAccount(id, accountName) {
 
     if(this.debug) {
-      console.log(`ADD USER sub:${sub}, accountName:${accountName}`);
+      console.log(`ADD USER id:${id}, accountName:${accountName}`);
     }
 
-    let user = await this.getUser(sub);
+    let user = await this.getUser(id);
 
     if(user == undefined) {
-      if(!await this.addUser(sub)) {
+      if(!await this.addUser(id)) {
         return false;
       }
     }
 
     var result = await this.run(this.addAccountQuery, {
-      SUB: sub,
+      ID: id,
       ACCOUNT_NAME: accountName
     });
 
@@ -250,13 +242,12 @@ class DatabusUserDatabase {
 
   /**
    * Delete user
-   * @param {*} sub 
+   * @param {*} id 
    * @returns 
    */
-  async deleteUser(sub) {
+  async deleteUser(id) {
     var result = await this.run(this.deleteUserQuery, {
-      SUB: sub,
-      NAME: accountName
+      ID: id
     });
 
     return result != null && result.changes != 0;
@@ -285,7 +276,9 @@ class DatabusUserDatabase {
   async run(query, params) {
     try {
 
-      console.log(JSON.stringify(params, null, 3));
+      if (this.debug) {
+        console.log(JSON.stringify(params, null, 3));
+      }
       
       if(this.isInputDangerous(params)) {
 

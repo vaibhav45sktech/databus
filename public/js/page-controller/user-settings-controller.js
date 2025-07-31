@@ -96,7 +96,8 @@ function UserSettingsController($scope, $http, $sce, $location) {
 
       $scope.accounts.push({
         label: $scope.inputs.newAccountLabel,
-        accountName: $scope.inputs.newAccountName
+        accountName: $scope.inputs.newAccountName,
+        uri: `${DATABUS_RESOURCE_BASE_URL}/${$scope.inputs.newAccountName}`
       });
 
       DatabusAlert.alert($scope, true, "Account created.");

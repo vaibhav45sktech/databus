@@ -1,2 +1,2 @@
-INSERT INTO users(sub) 
-VALUES ("%SUB%")
+INSERT INTO users(id, email) 
+VALUES ("%ID%", "%EMAIL%")

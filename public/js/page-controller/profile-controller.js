@@ -20,6 +20,7 @@ function ProfileController($scope, $http) {
   $scope.createAccountError = "";
   $scope.createApiKeyError = "";
   $scope.addWebIdUri = "";
+  $scope.deleteAccountName = "";
   $scope.grantAccessUri = "";
   $scope.adapters = SearchAdapter.list;
   $scope.utils = new DatabusWebappUtils($scope);
@@ -148,26 +149,26 @@ function ProfileController($scope, $http) {
   };
 
   $scope.addSecretary = function (account) {
-    if (!account.secretaries) {
-      account.secretaries = [];
+    if (!$scope.editData.secretaries) {
+      $scope.editData.secretaries = [];
     }
 
-    account.secretaries.push({
+    $scope.editData.secretaries.push({
       accountName: '',
       hasWriteAccessTo: []
     });
   };
 
   $scope.removeSecretary = function (account, index) {
-    account.secretaries.splice(index, 1);
+    $scope.editData.secretaries.splice(index, 1);
   };
 
   $scope.addNamespace = function (account, secIndex) {
-    account.secretaries[secIndex].hasWriteAccessTo.push('');
+    $scope.editData.secretaries[secIndex].hasWriteAccessTo.push('');
   };
 
   $scope.removeNamespace = function (account, secIndex, nsIndex) {
-    account.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);
+    $scope.editData.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);
   };
 
 
@@ -176,37 +177,6 @@ function ProfileController($scope, $http) {
     $scope.createApiKeyError = hasError ? " API key name must have between 3 and 20 characters and match [A-Za-z0-9\\s_()\\.\\,\\-]*" : "";
   }
 
-  /*
-   $scope.removeApiKey = function (key) {
- 
-     $http.post(`/api/account/api-key/delete?name=${key.keyname}`).then(function (result) {
-       $scope.apiKeys = $scope.apiKeys.filter(function (k) {
-         return k.keyname != key.keyname;
-       });
- 
-     }, function (err) {
-       console.log(err);
-       $scope.createApiKeyError = err.data;
-     });
-   }
- 
- 
-   $scope.addApiKey = function () {
- 
-     $http.post(`/api/account/api-key/create?name=${encodeURIComponent($scope.createApiKeyName)}`).then(function (result) {
- 
-       if (result.data != null) {
-         $scope.apiKeys.push(result.data);
-       }
- 
-       DatabusAlert.alert($scope, true, DatabusMessages.ACCOUNT_API_KEY_CREATED);
- 
-     }, function (err) {
-       console.log(err);
-       $scope.createApiKeyError = err.data;
-     });
- 
-   }*/
 
   $scope.removeSearchExtension = function (uri) {
     $http.post(`/api/account/mods/search-extensions/remove?uri=${encodeURIComponent(uri)}`)
@@ -288,7 +258,24 @@ function ProfileController($scope, $http) {
     });
   }
 
-  $scope.saveProfile = async function () {
+
+  $scope.deleteAccount = async function () {
+    let account = $scope.account;
+    let name = $scope.deleteAccountName;
+
+    try {
+      let response = await $http.post(`/api/account/delete`, { accountName: name });
+
+      window.location = `/app/user`;
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
+
+  }
+
+  $scope.updateAccount = async function () {
 
     if (!$scope.auth.authenticated) {
       return;
@@ -297,11 +284,11 @@ function ProfileController($scope, $http) {
     let account = {};
     account.uri = $scope.editData.uri;
 
-    account.accountName =  $scope.editData.accountName;
+    account.accountName = $scope.editData.accountName;
     account.label = $scope.editData.label;
     account.status = $scope.editData.about;
     account.imageUrl = $scope.editData.imageUrl;
-    account.secretaries = [];
+    account.secretaries = $scope.editData.secretaries;
 
 
     try {

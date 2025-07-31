@@ -67,10 +67,10 @@ $shacl='<#title-artifact>
         sh:qualifiedValueShape [ sh:datatype xsd:string ] ;
 		sh:qualifiedMaxCount 1 ;		
     ] ;
-        sh:property [
+	sh:property [
 		sh:path dct:title ;
 		sh:severity sh:Violation ;
-	    sh:maxLength 100 ;
+	    sh:maxLength 300 ;
 		sh:message "dct:title must have less than 100 characters and each language must occure only once."@en ;
 		sh:uniqueLang true ;
 	] . ';

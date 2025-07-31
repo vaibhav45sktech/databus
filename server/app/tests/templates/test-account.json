@@ -1,7 +1,7 @@
 {
-    "SUB": "testerman_ones_sub_token",
-    "DISPLAYNAME": "Testerman One",
-    "ACCOUNT_NAME": "tester",
+    "ID": "testerman_sub_token",
+    "DISPLAYNAME": "Testerman",
+    "ACCOUNT_NAME": "testerman",
     "APIKEY": "000000000000000",
     "KEYNAME": "testkey",
     "GROUP_NAME": "testgroup",

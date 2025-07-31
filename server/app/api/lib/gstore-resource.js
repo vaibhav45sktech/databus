@@ -97,10 +97,10 @@ class GstoreResource {
   async delete() {
     try {
       const response = await axios.delete(this.getRequestURL('Delete'));
-      return response.status;
+      return response;
     } catch (error) {
       console.error('Error deleting resource:', error);
-      return null;
+      return error.response;
     }
   }
 }

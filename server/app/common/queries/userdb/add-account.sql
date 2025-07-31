@@ -1,2 +1,2 @@
-INSERT INTO accounts(sub, accountName) 
-VALUES ("%SUB%", "%ACCOUNT_NAME%")
+INSERT INTO accounts(id, accountName) 
+VALUES ("%ID%", "%ACCOUNT_NAME%")

@@ -60,7 +60,7 @@
               No secretaries defined.
             </div>
 
-            <div ng-repeat="secretary in account.secretaries track by $index" class="settings-entity">
+            <div ng-repeat="secretary in editData.secretaries track by $index" class="settings-entity">
               <div style="width: 100%;">
                 <div class="field">
                   <div
@@ -115,7 +115,7 @@
         <div class="row">
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-consumer" ng-click="saveProfile()">Save</button>
+              <button class="button is-consumer" ng-click="updateAccount()">Save</button>
             </div>
             <div class="control">
               <button ng-click="resetEdits()" class="button">Reset</button>
@@ -366,13 +366,13 @@
         <div class="field has-addons">
 
           <div class="control has-icons-left">
-            <input class="input  is-danger" type="text" style="min-width: 500px;" placeholder="Type the account name to delete" ng-model="addWebIdUri">
+            <input class="input  is-danger" type="text" style="min-width: 500px;" placeholder="Type the account name to delete" ng-model="deleteAccountName">
             <span class="icon is-small is-left ">
               <i class="fas fa-id-card"></i>
             </span>
           </div>
           <p class="control">
-            <a ng-click="connectWebid()" class="button is-danger">
+            <a ng-click="deleteAccount()" class="button is-danger">
               Delete
             </a>
           </p>

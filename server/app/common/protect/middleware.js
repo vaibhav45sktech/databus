@@ -109,12 +109,12 @@ class DatabusProtect {
     return user != null;
   }
 
-  async getUser(sub) {
-    return await this.userdb.getAccountsBySub(sub);
+  async getUser(id) {
+    return await this.userdb.getAccountsById(id);
   }
 
-  async addUser(sub, name, accountName) {
-    return await this.userdb.addUser(sub, name, accountName);
+  async addUser(id, name, accountName) {
+    return await this.userdb.addUser(id, name, accountName);
   }
 
   async addApiKey(accountName, name) {
@@ -128,7 +128,6 @@ class DatabusProtect {
 
   /**
    * Removes one or more API keys by name
-   * @param {} sub 
    * @param {*} name 
    * @returns 
    */
@@ -156,7 +155,7 @@ class DatabusProtect {
     }
 
     return {
-      sub: account.sub,
+      userId: account.id,
       accounts: [ account ]
     };
   }
@@ -222,18 +221,34 @@ class DatabusProtect {
 
     return async (req, res, next) => {
 
-      if (req.databus.authenticated == false || req.databus.accountName == null) {
-        response.status(401).send('Authentication failed.');
+      if (req.databus.authenticated == false || req.databus.accounts == null) {
+        res.status(401).send('Authentication failed.');
         return;
       }
 
-      if (req.params.account != req.databus.accountName) {
+      if(!req.databus.accounts.some(a => a.accountName == req.params.account)) {
         res.status(403).send(Constants.MESSAGE_WRONG_NAMESPACE);
         return;
       }
 
       return next();
     }
+  }
+
+  getUserIdFromOIDCToken(oidc) {
+     var idProperty = process.env.DATABUS_OIDC_USER_ID_PROPERTY;
+
+      if(idProperty == undefined) {
+        console.log("No id property specified. Falling back to 'sub'");
+        idProperty = 'sub';
+      }
+
+      if(oidc[idProperty] == undefined) {
+        console.log(`OIDC token did not contain a property '${idProperty}'. Falling back to 'sub'`);
+        idProperty = 'sub';
+      }
+
+      return oidc[idProperty];
   }
 
   fetchUser() {
@@ -285,7 +300,7 @@ class DatabusProtect {
       // console.log(`user: ${JSON.stringify(req.oidc.user)}`);
       req.databus.oidc_name = req.oidc.user.name;
       req.databus.oidc_email = req.oidc.user.email;
-      req.databus.sub = req.oidc.user.sub;
+      req.databus.userId = getUserIdFromOIDCToken(req.oidc.user)
 
       if (req.oidc.accessToken) {
 
@@ -319,16 +334,15 @@ class DatabusProtect {
 
       // Looking up the user...
 
-      var sub = req.oidc.user.sub;
-      var accounts = await this.userdb.getAccountsBySub(sub);
+      let userId = getUserIdFromOIDCToken(req.oidc.user)
+      var accounts = await this.userdb.getAccountsById(userId);
 
       if (accounts != undefined) {
-        req.databus.sub = sub;
+        req.databus.userId = userId;
         req.databus.accounts = accounts;
-        req.databus.apiKeys = await this.userdb.getApiKeys(sub);
       }
 
-      console.log(`PROTECT Authenticated request by \x1b[32m${req.databus.accountName}\x1b[0m: \x1b[36m${req.url}\x1b[0m`);
+      console.log(`PROTECT Authenticated request by \x1b[32m${userId}\x1b[0m: \x1b[36m${req.url}\x1b[0m`);
       return next();
     }
   }
@@ -349,10 +363,9 @@ class DatabusProtect {
         if (apiTokenUser != null) {
           // Api token has been found
           req.databus = {};
-          req.databus.sub = apiTokenUser.sub;
+          req.databus.userId = apiTokenUser.userId;
           req.databus.authenticated = true;
-          req.databus.accountName = apiTokenUser.accountName;
-          req.databus.apiKeys = await self.userdb.getApiKeys(apiTokenUser.sub);
+          req.databus.accounts = apiTokenUser.accounts;
 
           return next();
         }
@@ -435,11 +448,10 @@ class DatabusProtect {
 
       // Api token has been found
       request.databus = {};
-      request.databus.sub = apiTokenUser.sub;
+      request.databus.userId = apiTokenUser.userId;
       request.databus.authenticated = true;
       request.databus.accounts = apiTokenUser.accounts;
       request.databus.roles = [ requiredRole ];
-      // request.databus.apiKeys = await this.userdb.getApiKeys(apiTokenUser.sub);
       return next();
     }
 

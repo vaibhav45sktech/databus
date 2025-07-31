@@ -106,6 +106,7 @@ async function masterProcess() {
 
     console.log(`Starting search service...`)
 
+    
     let indexGroups = [];
     indexGroups.push(new IndexGroup("version", ["../search/indexer/version.yml" ]));
     indexGroups.push(new IndexGroup("artifact", ["../search/indexer/artifact.yml" ]));

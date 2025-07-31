@@ -67,9 +67,10 @@ $shacl='<#title-group>
         sh:qualifiedValueShape [ sh:datatype xsd:string ] ;
 		sh:qualifiedMaxCount 1 ;		
     ] ;
-        sh:property [
+	sh:property [
 		sh:path dct:title ;
 		sh:severity sh:Violation ;
+	    sh:maxLength 300 ;
 		sh:message "dct:title can be used with language tag, but each language only once."@en ;
 		sh:uniqueLang true ;
 	] . ';

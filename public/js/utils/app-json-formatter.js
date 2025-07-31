@@ -102,6 +102,30 @@ class AppJsonFormatter {
       }
     }
 
+    result.secretaries = [];
+    var secretaryGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SECRETARY);
+
+    for (var secretaryGraph of secretaryGraphs) {
+      var secretaryData = {
+        accountName: JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY),
+        hasWriteAccessTo: []
+      };
+
+      var writeAccessUris = secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO];
+
+      if (Array.isArray(writeAccessUris)) {
+        for (var item of writeAccessUris) {
+          if (typeof item === 'object' && item['@id']) {
+            secretaryData.hasWriteAccessTo.push(item['@id']);
+          } else if (typeof item === 'string') {
+            secretaryData.hasWriteAccessTo.push(item);
+          }
+        }
+      }
+
+      result.secretaries.push(secretaryData);
+    }
+
     return result;
   }
 

@@ -138,7 +138,7 @@ class EntityHandler {
       return response;
     } catch (err) {
       console.error('Entity registration failed:', err);
-      return null;
+      throw err;
     }
   }
 }

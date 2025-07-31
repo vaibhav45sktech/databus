@@ -15,6 +15,7 @@ const JsonldUtils = require('../../../../public/js/utils/jsonld-utils.js');
 const jsonld = require('jsonld');
 var cors = require('cors');
 const DatabusMessage = require('../../common/databus-message.js');
+const DatabusResource = require('../../common/databus-resource.js');
 
 
 module.exports = function (router, protector) {
@@ -141,12 +142,7 @@ module.exports = function (router, protector) {
 
   router.delete('/:account/:group/:artifact/:version', protector.protectAccount(true), async function (req, res, next) {
 
-    var versionUri = UriUtils.createResourceUri([
-      req.params.account,
-      req.params.group,
-      req.params.artifact,
-      req.params.version
-    ]);
+    var versionUri = UriUtils.fromRequest(req);
 
     // Check if the artifact exists
     var exists = await sparql.dataid.hasVersion(

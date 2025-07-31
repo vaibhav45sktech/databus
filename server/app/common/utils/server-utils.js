@@ -1,8 +1,42 @@
 var ASN1 = require('asn1js');
-
+const fs = require('fs');
+  
 class ServerUtils {
 
 
+  static setupRequireExtensions() {
+    // add a sparql file loading extension (simply read the file as a string)
+    require.extensions['.sparql'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+  
+    require.extensions['.shacl'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+  
+  
+    require.extensions['.jsonld'] = function (module, filename) {
+      module.exports = JSON.parse(fs.readFileSync(filename, 'utf8'));
+    };
+  
+    require.extensions['.ejs'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+  
+    require.extensions['.sql'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+  
+    require.extensions['.md'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+    require.extensions['.ttl'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+    require.extensions['.html'] = function (module, filename) {
+      module.exports = fs.readFileSync(filename, 'utf8');
+    };
+  }
 
   static getRSAModulusAndExponent(pubkey) {
     var unarmor = /-----BEGIN PUBLIC KEY-----([A-Za-z0-9+\/=\s]+)-----END PUBLIC KEY-----/;
