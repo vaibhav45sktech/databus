@@ -10,17 +10,16 @@ RUN apt-get update && apt-get install -y python3 build-essential && \
 WORKDIR /databus/server
 
 RUN --mount=type=bind,source=server/package.json,target=package.json \
-    --mount=type=bind,source=server/package-lock.json,target=package-lock.json \
+    --mount=type=bind,source=server/package-lock.json,target=package-lock.json,required=false \
     --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
-
+    bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
 
 WORKDIR /databus/public
 
 RUN --mount=type=bind,source=public/package.json,target=package.json \
-    --mount=type=bind,source=public/package-lock.json,target=package-lock.json \
+    --mount=type=bind,source=public/package-lock.json,target=package-lock.json,required=false \
     --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+    bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
 
 WORKDIR /
 
