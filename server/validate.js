@@ -3,11 +3,14 @@ const Constants = require('./app/common/constants.js');
 const DatabusUserDatabase = require('./userdb.js');
 const DatabusConstants = require('../public/js/utils/databus-constants.js');
 const UriUtils = require('./app/common/utils/uri-utils.js');
-const { executeAsk } = require('./app/common/execute-query.js');
+const { executeAsk, executeSelect } = require('./app/common/execute-query.js');
 const AppJsonFormatter = require('../public/js/utils/app-json-formatter.js');
 const AccountWriter = require('./app/api/lib/account-writer.js');
 const DatabusLogger = require('./app/common/databus-logger.js');
 const DatabusLogLevel = require('./app/common/databus-log-level.js');
+const DatabusUris = require('../public/js/utils/databus-uris.js');
+const GstoreResource = require('./app/api/lib/gstore-resource.js');
+const ServerUtils = require('./app/common/utils/server-utils.js');
 
 
 async function verifyAccountIntegrity(indexer) {
@@ -16,34 +19,52 @@ async function verifyAccountIntegrity(indexer) {
   var userDatabase = new DatabusUserDatabase();
   await userDatabase.connect();
 
-  for (var user of await userDatabase.getAllUsers()) {
-    var profileUri = `${UriUtils.createResourceUri([user.accountName])}${DatabusConstants.WEBID_DOCUMENT}`;
-    var exists = await executeAsk(`ASK { <${profileUri}> ?p ?o }`);
+  for (var account of await userDatabase.getAllAccounts()) {
 
-    if (!exists) {
-      // Redirect to the specific account page
-      console.log(`No profile found for user ${user.accountName}. Creating profile...`);
-
-      var userData = {
-        accountName: user.accountName,
-        sub: user.sub
-      };
-
-      var accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${user.accountName}`;
-
-      var accountJsonLd = AppJsonFormatter.createAccountData(
-        accountUri,
-        user.accountName,
-        null,
-        null);
-
+    try {
+      var accountUri = `${UriUtils.createResourceUri([account.accountName])}`;
+      var exists = await executeAsk(`ASK { <${accountUri}> ?p ?o }`);
       
-      var accountWriter = new AccountWriter(null, new DatabusLogger(DatabusLogLevel.ERROR));
-      await accountWriter.writeResource(null, userData, accountJsonLd, accountUri);
-      // await publishAccount(user.accountName, accountJsonLd);
+      if (!exists) {
+        // Redirect to the specific account page
+        console.log(`No account found for user ${account.accountName}. Creating account...`);
+        var accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${account.accountName}`;
+        
+        var personUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${account.accountName}${DatabusConstants.WEBID_THIS}`;
+        
+        var hasPerson = await executeAsk(`ASK { <${personUri}> ?p ?o }`);
 
-      indexer.updateResource(accountWriter.uri, accountWriter.resource.getTypeName());
-      console.log(`Created new default profile for user ${user.accountName}`);
+        let accountLabel = account.accountName;
+        let accountImg = null;
+
+        if(hasPerson) {
+          let personInfo = await executeSelect(`SELECT DISTINCT * WHERE { <${personUri}> ?p ?o . }`);
+
+          for(let info of personInfo) {
+
+            if(info.p == DatabusUris.FOAF_NAME) {
+              accountLabel = info.o;
+            }
+
+            if(info.p == DatabusUris.FOAF_IMG) {
+              accountImg = info.o;
+            }
+          }
+        }
+
+        console.log(`Creating account { name: ${account.accountName}, label: ${accountLabel}, img: ${accountImg} }`);
+        var accountJsonLd = await ServerUtils.createAccountGraphs(
+          accountUri, account.accountName, accountLabel, accountImg, null, null);
+
+        
+        let gstoreResource = new GstoreResource(accountUri, accountJsonLd);
+        await gstoreResource.save();
+
+        indexer.updateResource(accountUri, 'Account');
+        console.log(`Created new default account for user ${account.accountName}`);
+      }
+    } catch(err) {
+        console.log(`Failed to create new default account for user ${account.accountName}`);
     }
   }
 }
@@ -80,7 +101,7 @@ module.exports = async function (indexer) {
     await waitForService(defaultContextUrl, 10, 1000);
 
     // console.log(`Context available at ${defaultContextUrl}`);
-    // await verifyAccountIntegrity(indexer);
+    await verifyAccountIntegrity(indexer);
 
     // TODO: Check availability of manifest
 

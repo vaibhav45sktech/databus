@@ -14,6 +14,7 @@ class DatabusUserDatabase {
     this.addApiKeyQuery = require('./app/common/queries/userdb/add-api-key.sql');
     this.getAccountsByIdQuery = require('./app/common/queries/userdb/get-accounts-by-id.sql');
     this.addAccountQuery = require('./app/common/queries/userdb/add-account.sql');
+    this.getAccountsQuery = require('./app/common/queries/userdb/get-accounts.sql');
     this.getUsersQuery = require('./app/common/queries/userdb/get-users.sql');
     this.getUserByAccountNameQuery = require('./app/common/queries/userdb/get-user-by-account-name.sql');
     this.getAccountQuery = require('./app/common/queries/userdb/get-account.sql');
@@ -99,6 +100,9 @@ class DatabusUserDatabase {
     return await this.all(this.getUsersQuery, null);
   }
 
+  async getAllAccounts() {
+    return await this.all(this.getAccountsQuery, null);
+  }
   /**
    * Retrieve a user ny account name
    * @param {*} id 
