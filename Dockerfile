@@ -13,7 +13,7 @@ RUN --mount=type=bind,source=server/package.json,target=package.json \
     bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
 
 WORKDIR /databus/public
-COPY server/package*.json .
+COPY public/package*.json .
 RUN --mount=type=bind,source=public/package.json,target=package.json \
     --mount=type=cache,target=/root/.npm \
     bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
