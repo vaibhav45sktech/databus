@@ -6,21 +6,17 @@ RUN apt-get update && apt-get install -y python3 build-essential && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /databus/server
-
+COPY server/package*.json . 
 RUN --mount=type=bind,source=server/package.json,target=package.json \
-    --mount=type=bind,source=server/package-lock.json,target=package-lock.json \
     --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
-
+    bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
 
 WORKDIR /databus/public
-
+COPY server/package*.json .
 RUN --mount=type=bind,source=public/package.json,target=package.json \
-    --mount=type=bind,source=public/package-lock.json,target=package-lock.json \
     --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+    bash -c "if [ ! -f package-lock.json ]; then npm install --package-lock-only; fi && npm ci --omit=dev"
 
 WORKDIR /
 
