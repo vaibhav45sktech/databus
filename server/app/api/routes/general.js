@@ -6,12 +6,10 @@ const publishVersion = require('../lib/publish-version');
 const JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
 const DatabusUris = require('../../../../public/js/utils/databus-uris');
 const DatabusLogger = require('../../common/databus-logger');
-const AccountWriter = require('../lib/account-writer');
 const GroupWriter = require('../lib/group-writer');
 const ArtifactWriter = require('../lib/artifact-writer');
 const CollectionWriter = require('../lib/collection-writer');
 const ApiError = require('../../common/utils/api-error');
-const { log } = require('console');
 var SparqlParser = require('sparqljs').Parser;
 
 const ALLOWED_QUERY_TYPES = [

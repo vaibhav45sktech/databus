@@ -15,58 +15,59 @@ const UriUtils = require('../../common/utils/uri-utils');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
 const GstoreResource = require('../lib/gstore-resource');
 const JsonldLoader = require('../../common/utils/jsonld-loader.js');
+const DatabusMessage = require('../../common/databus-message.js');
 
 
 
 module.exports = function (router, protector) {
 
 
-  async function createAccountGraphs (uri, name, label, img, secretaries, status) {
+  async function createAccountGraphs(uri, name, label, img, secretaries, status) {
     var name = UriUtils.uriToName(uri);
-  
+
     var rsaKeyGraph = {};
     rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;
     rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;
     rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();
     rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;
-  
+
     var personUri = `${uri}${DatabusConstants.WEBID_THIS}`;
 
     var personGraph = {};
     personGraph[DatabusUris.JSONLD_ID] = personUri;
-    personGraph[DatabusUris.JSONLD_TYPE] = [ DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN ];
+    personGraph[DatabusUris.JSONLD_TYPE] = [DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN];
     personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(uri);
     personGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = uri;
-    personGraph[DatabusUris.CERT_KEY] = [ rsaKeyGraph ];
+    personGraph[DatabusUris.CERT_KEY] = [rsaKeyGraph];
     personGraph[DatabusUris.FOAF_NAME] = label;
 
-    if(img != null) {
+    if (img != null) {
       personGraph[DatabusUris.FOAF_IMG] = img;
     }
 
-     if(status != null) {
+    if (status != null) {
       personGraph[DatabusUris.FOAF_STATUS] = status;
     }
 
     var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;
-  
+
     var profileDocumentGraph = {};
     profileDocumentGraph[DatabusUris.JSONLD_ID] = profileUri;
     profileDocumentGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;
     profileDocumentGraph[DatabusUris.FOAF_MAKER] = JsonldUtils.refTo(personUri);
     profileDocumentGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = JsonldUtils.refTo(personUri);
-  
+
     var accountGraph = {}
     accountGraph[DatabusUris.JSONLD_ID] = uri;
     accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
     accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;
     accountGraph[DatabusUris.DATABUS_NAME] = name;
 
-    if(secretaries != null) {
+    if (secretaries != null) {
 
       accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];
 
-      for(var secretary of secretaries) {
+      for (var secretary of secretaries) {
 
         let secretaryAccountUri = `${secretary.accountName}`;
 
@@ -74,10 +75,10 @@ module.exports = function (router, protector) {
         secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
         secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);
 
-        if(secretary.hasWriteAccessTo != undefined) {
+        if (secretary.hasWriteAccessTo != undefined) {
           secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];
 
-          for(var writeAccess of secretary.hasWriteAccessTo) {
+          for (var writeAccess of secretary.hasWriteAccessTo) {
             secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));
           }
         }
@@ -91,18 +92,18 @@ module.exports = function (router, protector) {
       personGraph,
       profileDocumentGraph
     ];
-    
+
     return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
   }
 
-  
+
 
   router.post('/api/account/create', protector.protect(), async function (req, res, next) {
-    
+
     let userId = req.databus.userId;
     let userdb = protector.userdb;
 
-    if(userId == undefined) {
+    if (userId == undefined) {
       return res.status(401).send('No User Id!');
     }
 
@@ -113,23 +114,23 @@ module.exports = function (router, protector) {
       return res.status(400).send('Missing account name or label.');
     }
 
-    if(!accountLabel) {
+    if (!accountLabel) {
       accountLabel = accountName;
     }
 
     var accountExists = await userdb.hasAccount(accountName);
-    
-    if(accountExists) {
+
+    if (accountExists) {
       res.status(403).send(`Account name ${accountName} taken.`);
       return;
     }
 
-    if(!await userdb.addAccount(userId, accountName)) {
+    if (!await userdb.addAccount(userId, accountName)) {
       res.status(500).send('Failed to write to user database.');
       return;
     }
 
-    
+
     try {
       let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
       let content = await createAccountGraphs(accountUri, accountName, accountLabel, null, null, null);
@@ -139,8 +140,15 @@ module.exports = function (router, protector) {
 
       console.log(status);
       res.status(200).send('Account created.');
-      
-    } catch(err) {
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
       await userdb.deleteAccount(accountName);
       res.status(500).send('Failed to write to gstore.');
     }
@@ -151,20 +159,20 @@ module.exports = function (router, protector) {
     let userId = req.databus.userId;
     let userdb = protector.userdb;
 
-    if(userId == undefined) {
+    if (userId == undefined) {
       res.status(401).send('No User Id!');
       return;
     }
-    
+
     const accountName = req.body.accountName;
     var existingAccount = await userdb.getAccount(accountName);
-    
-    if(existingAccount == null) {
+
+    if (existingAccount == null) {
       res.status(400).send('Account does not exist.');
       return;
     }
 
-    if(existingAccount.id != userId) {
+    if (existingAccount.id != userId) {
       res.status(403).send('You do not own this account.');
       return;
     }
@@ -184,9 +192,15 @@ module.exports = function (router, protector) {
 
       console.log(status);
       res.status(200).send('Account saved.');
-      return;
-      
-    } catch(err) {
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
       res.status(500).send('Failed to write to gstore.');
       return;
     }
@@ -197,7 +211,7 @@ module.exports = function (router, protector) {
     // Get id of authenticated user
     let userId = req.databus.userId;
 
-    if(userId == undefined) {
+    if (userId == undefined) {
       return res.status(401).send('No User Id!');
     }
 
@@ -205,35 +219,42 @@ module.exports = function (router, protector) {
     let accountName = req.body.accountName;
     let userdb = protector.userdb;
     var account = await userdb.getAccount(accountName);
-    
-    if(account == null) {
+
+    if (account == null) {
       res.status(404).send('Account does not exist.');
       return;
     }
 
     // Check if account belongs to authenticated
-    if(account.id != userId) {
+    if (account.id != userId) {
       return res.status(401).send('Account not owned.');
     }
-    
-    if(!await userdb.deleteAccount(accountName)) {
+
+    if (!await userdb.deleteAccount(accountName)) {
       res.status(500).send('Failed to delete user from database.');
       return;
     }
-    
+
     try {
       let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
       let gstoreResource = new GstoreResource(accountUri);
 
       await gstoreResource.delete();
       res.status(200).send('Account deleted.');
-      
-    } catch(err) {
-    await userdb.addAccount(account.id, account.accountName);
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
+      await userdb.addAccount(account.id, account.accountName);
       res.status(500).send('Failed to write to gstore.');
     }
   });
-  
+
   router.post('/api/account/webid/remove', protector.protect(), async function (req, res, next) {
     try {
 
@@ -507,7 +528,7 @@ module.exports = function (router, protector) {
     var keyName = decodeURIComponent(req.body.keyName);
     var accountName = decodeURIComponent(req.body.accountName);
 
-    if(!auth.info.accounts.some(a => a.accountName == accountName)) {
+    if (!auth.info.accounts.some(a => a.accountName == accountName)) {
       res.status(403).send(`Not allowed to create API key for account '${accountName}'`);
       return;
     }

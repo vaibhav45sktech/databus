@@ -33,7 +33,7 @@ test.before(async () => {
 
   try {
     await rp(options);
-  } catch(err) {
+  } catch (err) {
     assert.is(err.response?.statusCode, 404);
   }
 
@@ -41,9 +41,9 @@ test.before(async () => {
 
 test('GET non-existing account returns 404', async () => {
   const options = {
-    headers: { 
-      'x-api-key': master_account.APIKEY, 
-      Accept: 'application/ld+json' 
+    headers: {
+      'x-api-key': master_account.APIKEY,
+      Accept: 'application/ld+json'
     },
     resolveWithFullResponse: true,
     uri: `${process.env.DATABUS_RESOURCE_BASE_URL}/${test_account.ACCOUNT_NAME}`,
@@ -73,6 +73,29 @@ test('CREATE account returns 200', async () => {
 
   const response = await rp(options);
   assert.is(response.statusCode, 200);
+});
+
+test('SEARCH account by label returns 200', async () => {
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
+  const options = {
+    headers: { 'x-api-key': master_account.APIKEY },
+    resolveWithFullResponse: true,
+    uri: `${process.env.DATABUS_RESOURCE_BASE_URL}/api/search?query=Test Label&typeName=Account`,
+    method: 'GET',
+    json: true,
+  };
+
+  const response = await rp(options);
+  assert.is(response.statusCode, 200);
+
+  const responseBody = response.body;
+
+  const accountDoc = responseBody.docs.find(
+    doc => doc.id[0] === `${process.env.DATABUS_RESOURCE_BASE_URL}/${test_account.ACCOUNT_NAME}`
+  );
+
+  assert.ok(accountDoc, 'Account not found in search results');
 });
 
 test('GET created account returns 200', async () => {
@@ -107,7 +130,7 @@ test('UPDATE account returns 200', async () => {
 
 
 test('Cannot create API key for someone else', async () => {
-  
+
   await DatabusUserTestUtils.insertApiKey(db, test_account);
 
   const options = {
@@ -130,7 +153,7 @@ test('Cannot create API key for someone else', async () => {
 });
 
 test('API key create and delete tests', async () => {
-  
+
   await DatabusUserTestUtils.insertApiKey(db, test_account);
 
   const options = {
@@ -199,7 +222,7 @@ test.after(async () => {
 
   try {
     await rp(options);
-  } catch(err) {
+  } catch (err) {
 
   }
 

@@ -1,3 +1,4 @@
+const DatabusCollectionManager = require("../collections/databus-collection-manager");
 const DatabusUtils = require("../utils/databus-utils");
 const DatabusWebappUtils = require("../utils/databus-webapp-utils");
 const TabNavigation = require("../utils/tab-navigation");
@@ -5,6 +6,15 @@ const TabNavigation = require("../utils/tab-navigation");
 var DEFAULT_IMAGE = "https://picsum.photos/id/223/320/320";
 
 // Controller for the header section
+
+/**
+ * 
+ * @param {*} $scope 
+ * @param {*} $http 
+ * @param {*} $location 
+ * @param {DatabusCollectionManager} collectionManager 
+ * @returns 
+ */
 function AccountPageController($scope, $http, $location, collectionManager) {
 
   $scope.collectionManager = collectionManager;
@@ -20,7 +30,7 @@ function AccountPageController($scope, $http, $location, collectionManager) {
     return;
   }
 
- 
+
   // Create a tab navigation object for the tab navigation with locato
   $scope.tabNavigation = new TabNavigation($scope, $location, [
     'data', 'collections', 'settings'
@@ -50,7 +60,7 @@ function AccountPageController($scope, $http, $location, collectionManager) {
     filter: `&publisher=${$scope.account.accountName}&publisherWeight=0&typeNameWeight=0`
   };
 
-  
+
   // Wait for additional artifact data to arrive
   $scope.publishedData = {};
   $scope.publishedData.isLoading = true;
@@ -127,17 +137,23 @@ function AccountPageController($scope, $http, $location, collectionManager) {
         console.log(err);
       });
   } else {
-    $scope.collectionList = [];
 
-    for(let guid in $scope.collectionManager.local) {
-      let collection = $scope.collectionManager.local[guid];
+    function onCollectionManagerInitialized() {
+      for (let guid in $scope.collectionManager.local) {
+        let collection = $scope.collectionManager.local[guid];
 
-      if(collection.accountName == $scope.accountName) {
-        $scope.collectionList.push(collection);
+        if (collection.accountName == $scope.accountName) {
+          $scope.collectionList.push(collection);
+        }
       }
-
     }
+
+    $scope.collectionList = [];
+    collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);
+
   }
+
+
 
   $scope.getImageUrl = function () {
     if ($scope.account.imageUrl == undefined) {
@@ -155,13 +171,13 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   $scope.collectionSearch = {};
   $scope.collectionSearch.sortVisible = false;
   $scope.collectionSearch.sortProperty = 'title';
-  $scope.collectionSearch.sortProperties =  [ 
+  $scope.collectionSearch.sortProperties = [
     { key: 'title', label: 'Title' },
     { key: 'issued', label: 'Issued Date' },
   ];
   $scope.collectionSearch.sortReverse = false;
-  $scope.collectionSearch.toggleSort = function(value) {
-    if($scope.collectionSearch.sortProperty == value) {
+  $scope.collectionSearch.toggleSort = function (value) {
+    if ($scope.collectionSearch.sortProperty == value) {
       $scope.collectionSearch.sortReverse = !$scope.collectionSearch.sortReverse;
     } else {
       $scope.collectionSearch.sortProperty = value;
@@ -190,7 +206,7 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   /**
    * Create a copy of the clicked collection
    */
-  $scope.createCopy = function(collection) {
+  $scope.createCopy = function (collection) {
     let copy = $scope.collectionManager.createCopy(collection);
     window.location.href = `/app/collection-editor?uuid=${copy.uuid}`;
   }
