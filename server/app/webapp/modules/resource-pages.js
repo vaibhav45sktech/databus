@@ -17,7 +17,13 @@ const versionQueryTemplate = require("../../common/queries/constructs/ld/constru
 
 const AppJsonFormatter = require('../../../../public/js/utils/app-json-formatter');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
+const DatabusProtect = require('../../common/protect/middleware.js');
 
+/**
+ * 
+ * @param {*} router 
+ * @param {DatabusProtect} protector 
+ */
 module.exports = function (router, protector) {
 
   var cache = new DatabusCache(10);
@@ -39,10 +45,11 @@ module.exports = function (router, protector) {
       let ownerData = null;
 
       try {
-        let sub = req.databus.sub;
-        let accounts = await protector.userdb.getAccountsBySub(sub);
+        let userId = req.databus.userId;
+        let accounts = await protector.userdb.getAccountsById(userId);
         ownerData = accounts.find(a => a.accountName === req.params.account);
       } catch(err) {
+        console.log(err);
         
       }
 

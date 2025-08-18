@@ -88,7 +88,7 @@ function ProfileController($scope, $http) {
 
     const postData = {
       accountName: account.accountName,
-      name: $scope.createApiKeyName
+      keyname: $scope.createApiKeyName
     };
 
     try {

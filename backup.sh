@@ -14,17 +14,8 @@ filename="${prefix}_${date}.tar.gz"
 # Specify the local folder to compress
 localFolder="/devenv/data"
 
-# Remote server login username
-remoteUser="username"
-
-# Remote server address or hostname
-remoteHost="remote-server"
-
 # Target folder on the remote server to copy the file into
-remoteFolder="/path/to/remote/folder"
-
-
-# BACKUP
+targetFolder="/path/to/remote/folder"
 
 # Shut down the databus, adjust for stack
 docker compose stop
@@ -33,7 +24,7 @@ docker compose stop
 tar -czf "$filename" "$localFolder"
 
 # Securely copy the archive to the remote server's target folder
-scp "$filename" "${remoteUser}@${remoteHost}:${remoteFolder}"
+scp "$filename" "$targetFolder"
 
 # Remove the local tar.gz archive to clean up
 rm "$filename"

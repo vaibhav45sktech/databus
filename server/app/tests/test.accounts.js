@@ -141,7 +141,7 @@ test('Cannot create API key for someone else', async () => {
     json: true,
     body: {
       accountName: 'janfo',
-      keyName: 'testkey'
+      keyname: 'testkey'
     },
   };
 
@@ -164,7 +164,7 @@ test('API key create and delete tests', async () => {
     json: true,
     body: {
       accountName: test_account.ACCOUNT_NAME,
-      keyName: 'testkey2'
+      keyname: 'testkey2'
     },
   };
 

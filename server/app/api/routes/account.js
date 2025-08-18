@@ -525,7 +525,7 @@ module.exports = function (router, protector) {
 
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
-    var keyName = decodeURIComponent(req.body.keyName);
+    var keyname = decodeURIComponent(req.body.keyname);
     var accountName = decodeURIComponent(req.body.accountName);
 
     if (!auth.info.accounts.some(a => a.accountName == accountName)) {
@@ -533,7 +533,7 @@ module.exports = function (router, protector) {
       return;
     }
 
-    if (!DatabusUtils.isValidResourceLabel(keyName, 3, 20)) {
+    if (!DatabusUtils.isValidResourceLabel(keyname, 3, 20)) {
       res.status(400).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
       return;
     }
@@ -543,7 +543,7 @@ module.exports = function (router, protector) {
       return;
     }
 
-    var apiKey = await protector.addApiKey(accountName, keyName);
+    var apiKey = await protector.addApiKey(accountName, keyname);
 
     if (apiKey == null) {
       res.status(400).send("Failed to create API key. You might already have an API key with that name.");
@@ -558,10 +558,10 @@ module.exports = function (router, protector) {
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    var keyName = decodeURIComponent(req.body.keyName);
+    var keyname = decodeURIComponent(req.body.keyname);
     var accountName = decodeURIComponent(req.body.accountName);
 
-    var found = await protector.removeApiKey(accountName, keyName);
+    var found = await protector.removeApiKey(accountName, keyname);
 
     if (found) {
       res.status(200).send();

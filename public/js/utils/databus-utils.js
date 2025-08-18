@@ -18,16 +18,16 @@ class DatabusUtils {
     if (typeof value === 'boolean') {
       return value;
     }
-  
+
     if (typeof value === 'string') {
       const normalized = value.trim().toLowerCase();
       return ['true', '1', 'yes', 'on'].includes(normalized);
     }
-  
+
     if (typeof value === 'number') {
       return value === 1;
     }
-  
+
     return false;
   }
 
@@ -39,16 +39,16 @@ class DatabusUtils {
   static formatQuery(query, placeholderMappings) {
 
     if (placeholderMappings == undefined) {
-       return query;
+      return query;
     }
- 
+
     for (var placeholder in placeholderMappings) {
-       var re = new RegExp('%' + placeholder + '%', "g");
-       query = query.replace(re, placeholderMappings[placeholder]);
+      var re = new RegExp('%' + placeholder + '%', "g");
+      query = query.replace(re, placeholderMappings[placeholder]);
     }
- 
+
     return query;
- }
+  }
 
   static isValidVersionIdentifier(identifier) {
     var labelRegex = /^[A-Za-z0-9_\.\-]*$/;
@@ -181,7 +181,7 @@ class DatabusUtils {
 
     var result = uri.substr(uri.lastIndexOf('/') + 1);
 
-    if(result.includes('#')) {
+    if (result.includes('#')) {
       result = result.substr(0, result.indexOf('#'));
     }
 
@@ -376,9 +376,18 @@ class DatabusUtils {
     return undefined;
   }
 
+  static getFirstSegment(uri) {
+    try {
+      const url = new URL(uri);
+      return url.pathname.split('/').filter(Boolean)[0] || null;
+    } catch {
+      return null;
+    }
+  }
+
   static parseMarkdown(markdown) {
 
-    if(markdown == null) {
+    if (markdown == null) {
       return null;
     }
 
@@ -388,7 +397,7 @@ class DatabusUtils {
 
   static renderMarkdown(markdown) {
 
-    if(markdown == null) {
+    if (markdown == null) {
       return null;
     }
 
@@ -402,19 +411,19 @@ class DatabusUtils {
    */
   static createAbstractFromDescription(description) {
 
-    if(description == null) {
+    if (description == null) {
       return null;
     }
 
     try {
       var tokens = this.parseMarkdown(description);
 
-     
+
       var paragraphFound = false;
       var result = "";
 
-      if(tokens == null) {
-       return result; 
+      if (tokens == null) {
+        return result;
       }
 
       var firstParagraphText = null;

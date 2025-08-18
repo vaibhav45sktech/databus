@@ -142,6 +142,10 @@ function AccountPageController($scope, $http, $location, collectionManager) {
       for (let guid in $scope.collectionManager.local) {
         let collection = $scope.collectionManager.local[guid];
 
+        if(collection.accountName == undefined && collection.uri != undefined) {
+          collection.accountName = DatabusUtils.getFirstSegment(collection.uri);
+        }
+
         if (collection.accountName == $scope.accountName) {
           $scope.collectionList.push(collection);
         }
@@ -149,8 +153,12 @@ function AccountPageController($scope, $http, $location, collectionManager) {
     }
 
     $scope.collectionList = [];
-    collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);
 
+    if(collectionManager.isInitialized) {
+      onCollectionManagerInitialized();
+    } else {
+      collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);
+    }
   }
 
 
