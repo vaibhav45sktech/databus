@@ -6,7 +6,7 @@ SELECT * WHERE
   GRAPH ?g {
     <%COLLECTION_URI%> a databus:Collection .
     <%COLLECTION_URI%> dct:title ?label .
-    <%COLLECTION_URI%> dct:publisher ?publisher . 
+    <%COLLECTION_URI%> databus:account ?account . 
     <%COLLECTION_URI%> dct:abstract ?abstract .
     <%COLLECTION_URI%> dct:description ?description .
     <%COLLECTION_URI%> databus:collectionContent ?content .

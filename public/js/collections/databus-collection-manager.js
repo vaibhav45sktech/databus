@@ -100,6 +100,8 @@ class DatabusCollectionManager {
     let remoteCollections = collectionListResponse.data;
 
 
+    let wasLocalCollectionAdded = false;
+
     for (let collectionUri in remoteCollections) {
       let remoteCollection = remoteCollections[collectionUri];
       let localCollection = this.getLocalCollectionByUri(collectionUri);
@@ -109,6 +111,7 @@ class DatabusCollectionManager {
         localCollection = JSON.parse(JSON.stringify(remoteCollection));
         localCollection.uuid = DatabusCollectionUtils.uuidv4();
         this.local[localCollection.uuid] = localCollection;
+        wasLocalCollectionAdded = true;
       }
 
       this.remote[localCollection.uuid] = remoteCollection;
@@ -116,47 +119,9 @@ class DatabusCollectionManager {
 
     }
 
-    /*
-        try {
-    
-          for (let guid in this.local) {
-            let localCollection = this.local[guid];
-    
-            if (localCollection.accountName == undefined) {
-              // Delete from local
-            }
-    
-            // Ignore local collections not related to this account
-            if (localCollection.accountName != accountName) {
-              continue;
-            }
-    
-            // Unpublished local collections remain unpublished local collections
-            if (localCollection.uri == undefined) {
-              continue;
-            }
-    
-            var res = await this.http.get(localCollection.uri, {
-              headers: {
-                "Accept": "application/ld+json",
-                "X-Jsonld-Formatting": "flatten"
-              }
-            });
-    
-            let collectionData = AppJsonFormatter.formatCollectionData(res.data);
-            this.remote[guid] = collectionData;
-    
-            this.local[guid].issued = this.remote[guid].issued;
-    
-            //this.initialize(res.data);
-    
-          }
-    
-        } catch (e) {
-          console.log(`Failed to initialze collection manager.`);
-          console.log(e);
-        } */
-
+    if(wasLocalCollectionAdded) {
+      this.saveLocally();
+    }
 
     this.findActive();
 
@@ -511,7 +476,6 @@ class DatabusCollectionManager {
         delete (this.local[identifier]);
       }
     }
-
 
     try {
       //write local collections to local storage

@@ -52,7 +52,7 @@ class CollectionWriter extends ResourceWriter {
     if(inputCollectionGraph[DatabusUris.DCT_ABSTRACT] != null) {
       collectionGraph[DatabusUris.DCT_ABSTRACT] = inputCollectionGraph[DatabusUris.DCT_ABSTRACT];
     } else if (collectionGraph[DatabusUris.DCT_DESCRIPTION] != null) {
-      collectionGraph[DatabusUris.DCT_DESCRIPTION] = DatabusUtils.createAbstractFromDescription(collectionGraph[DatabusUris.DCT_DESCRIPTION]);
+      collectionGraph[DatabusUris.DCT_ABSTRACT] = DatabusUtils.createAbstractFromDescription(collectionGraph[DatabusUris.DCT_DESCRIPTION]);
     }
 
     return [
