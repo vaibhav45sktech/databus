@@ -1,6 +1,8 @@
 const { suite } = require('uvu');
 const assert = require('uvu/assert');
 const rp = require('request-promise');
+const N3 = require('n3');
+const { Parser } = N3;
 
 const ServerUtils = require('../common/utils/server-utils');
 const UriUtils = require('../common/utils/uri-utils');
@@ -9,6 +11,7 @@ const DatabusUserTestUtils = require('./utils/userdb-utils');
 
 const test_account = require('./templates/test-account.json');
 const master_account = require('./templates/master-account.json');
+const DatabusUris = require('../../../public/js/utils/databus-uris');
 
 const test = suite('version-crud');
 
@@ -83,6 +86,49 @@ test('CREATE: version can be created', async () => {
 
 test('READ: version exists after creation', async () => {
   await getVersion(200);
+});
+
+
+test('READ ARTIFACT TURTLE: artifact can be read as turtle and turtle contains link to version', async () => {
+  const options = {
+    method: 'GET',
+    uri: UriUtils.createResourceUri([
+      test_account.ACCOUNT_NAME,
+      test_account.GROUP_NAME,
+      test_account.ARTIFACT_NAME
+    ]),
+    headers: { Accept: 'text/turtle' },
+    resolveWithFullResponse: true,
+    simple: false,
+  };
+
+  const expectedCode = 200;
+
+  try {
+    const res = await rp(options);
+    assert.is(res.statusCode, expectedCode);
+
+    const parser = new Parser();
+    let quads;
+    try {
+      quads = parser.parse(res.body);
+    } catch (parseError) {
+      assert.fail(`Turtle parsing failed: ${parseError.message}`);
+    }
+
+    assert.ok(quads.length > 0, 'Turtle should contain at least one triple');
+
+    const hasVersionLink = quads.some(
+      q => q.predicate.value === DatabusUris.DATABUS_HAS_VERSION
+    );
+
+    assert.ok(
+      hasVersionLink,
+      'Turtle should contain at least one databus:hasVersion link'
+    );
+  } catch (err) {
+    assert.is(err.response.statusCode, expectedCode);
+  }
 });
 
 test('DELETE: deleting non-empty group returns conflict', async () => {

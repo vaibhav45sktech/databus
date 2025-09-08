@@ -19,6 +19,8 @@ class DatabusUris {
   static DATABUS_VERSION_PROPERTY = 'https://dataid.dbpedia.org/databus#version';
   static DATABUS_GROUP_PROPERTY = 'https://dataid.dbpedia.org/databus#group';
   static DATABUS_ACCOUNT_PROPERTY = 'https://dataid.dbpedia.org/databus#account';
+  static DATABUS_HAS_ARTIFACT = 'https://dataid.dbpedia.org/databus#hasArtifact';
+  static DATABUS_HAS_VERSION = 'https://dataid.dbpedia.org/databus#hasVersion';
   static DATABUS_NAME = 'https://dataid.dbpedia.org/databus#name';
   
   static DATABUS_SECRETARY_PROPERTY = 'https://dataid.dbpedia.org/databus#secretary';

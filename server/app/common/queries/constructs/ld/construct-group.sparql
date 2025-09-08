@@ -1,12 +1,19 @@
-CONSTRUCT
-{
+PREFIX databus: <https://dataid.dbpedia.org/databus#>
+
+CONSTRUCT {
   ?group ?p ?o .
+  ?group databus:hasArtifact ?artifact .
 }
-WHERE
-{
-  GRAPH ?g 
-  {
-    VALUES ?group { <%RESOURCE_URI%> }
+WHERE {
+  VALUES ?group { <%RESOURCE_URI%> }
+
+  GRAPH ?gGroup {
     ?group ?p ?o .
+  }
+
+  OPTIONAL {
+    GRAPH ?gArtifact {
+      ?artifact databus:group ?group .
+    }
   }
 }
