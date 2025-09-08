@@ -29,7 +29,7 @@ module.exports = async function getLinkedData(req, res, next, resourceUri, templ
 
   let indexOfComma = accept.indexOf(",");
 
-  if(indexOfComma >= 0) {
+  if (indexOfComma >= 0) {
     firstAccept = accept.substring(0, indexOfComma);
   }
 
@@ -53,7 +53,6 @@ module.exports = async function getLinkedData(req, res, next, resourceUri, templ
     RESOURCE_URI: resourceUri
   });
 
-  // Prepare OPTIONS for database request
   var headers = {};
   headers[HttpStrings.HEADER_CONTENT_TYPE] = HttpStrings.CONTENT_TYPE_FORM_URL_ENCODED;
   headers[HttpStrings.HEADER_ACCEPT] = accept;
@@ -65,7 +64,17 @@ module.exports = async function getLinkedData(req, res, next, resourceUri, templ
     headers: headers,
   };
 
-  // Pipe the request
-  request(options).pipe(res);
-  return;
+  request(options, function (error, response, body) {
+    if (error) {
+      res.status(500).send(error.message);
+      return;
+    }
+
+    if (!body.endsWith('\n')) {
+      body += '\n';
+    }
+
+    res.set(response.headers);
+    res.send(body);
+  });
 }

@@ -1,6 +1,8 @@
 const { suite } = require('uvu');
 const assert = require('uvu/assert');
 const rp = require('request-promise');
+const N3 = require('n3');
+const { Parser } = N3;
 
 const ServerUtils = require('../common/utils/server-utils');
 const UriUtils = require('../common/utils/uri-utils');
@@ -85,11 +87,45 @@ test('READ: group exists after creation', async () => {
   await getGroup(200);
 });
 
+test('READ AS TURTLE: group can be read as turtle and turtle ends with a newline character', async () => {
+  const options = {
+    method: 'GET',
+    uri: UriUtils.createResourceUri([
+      test_account.ACCOUNT_NAME,
+      test_account.GROUP_NAME,
+    ]),
+    headers: { Accept: 'text/turtle' },
+    resolveWithFullResponse: true,
+    simple: false,
+  };
+
+  const expectedCode = 200;
+
+  try {
+    const res = await rp(options);
+    assert.is(res.statusCode, expectedCode);
+    assert.ok(res.body.endsWith('\n'), 'Turtle response should end with a newline');
+
+    const parser = new Parser();
+    let quads;
+    try {
+      quads = parser.parse(res.body);
+    } catch (parseError) {
+      assert.fail(`Turtle parsing failed: ${parseError.message}`);
+    }
+
+    assert.ok(quads.length > 0, 'Turtle should contain at least one triple');
+
+  } catch (err) {
+    assert.is(err.response.statusCode, expectedCode);
+  }
+});
+
 test('DELETE: group can be deleted', async () => {
 
   const deleteOptions = {
     method: 'DELETE',
-    uri: UriUtils.createResourceUri([ test_account.ACCOUNT_NAME, test_account.GROUP_NAME ]),
+    uri: UriUtils.createResourceUri([test_account.ACCOUNT_NAME, test_account.GROUP_NAME]),
     headers: { 'x-api-key': test_account.APIKEY },
     resolveWithFullResponse: true,
   };
@@ -107,7 +143,7 @@ test.after(async () => {
   // Try deleting the group in case it still exists
   const cleanupGroup = {
     method: 'DELETE',
-    uri: UriUtils.createResourceUri([ test_account.ACCOUNT_NAME, test_account.GROUP_NAME ]),
+    uri: UriUtils.createResourceUri([test_account.ACCOUNT_NAME, test_account.GROUP_NAME]),
     headers: { 'x-api-key': test_account.APIKEY },
     resolveWithFullResponse: true,
   };
