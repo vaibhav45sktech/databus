@@ -116,7 +116,10 @@ class DatabusCollectionManager {
 
       this.remote[localCollection.uuid] = remoteCollection;
       this.remote[localCollection.uuid].isHidden = this.remote[localCollection.uuid].issued == undefined;
-      this.local[localCollection.uuid].isHidden = this.remote[localCollection.uuid].isHidden;
+
+      if(this.local[localCollection.uuid].isHidden == undefined) {
+        this.local[localCollection.uuid].isHidden = this.remote[localCollection.uuid].isHidden;
+      }
     }
 
     if(wasLocalCollectionAdded) {
