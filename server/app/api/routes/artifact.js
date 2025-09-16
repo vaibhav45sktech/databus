@@ -101,8 +101,15 @@ module.exports = function (router, protector) {
     var result = await GstoreHelper.delete(req.params.account, gstorePath);
 
     if (!result.isSuccess) {
-      res.status(result.error.status).send(`Failed to delete artifact <${artifactUri}>: ${result.error.message}`);
-      return;
+
+      gstorePath = `${req.params.group}/${req.params.artifact}/artifact.jsonld`;
+      result = await GstoreHelper.delete(req.params.account, gstorePath);
+
+      if (!result.isSuccess) {
+        res.status(result.error.status).send(`Failed to delete artifact <${artifactUri}>: ${result.error.message}`);
+        return;
+      }
+
     }
 
     res.status(204).send(`The artifact <${artifactUri}> has been deleted.`);

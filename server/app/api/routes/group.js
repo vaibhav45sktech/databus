@@ -99,8 +99,15 @@ module.exports = function (router, protector) {
     var result = await GstoreHelper.delete(req.params.account, gstorePath);
 
     if (!result.isSuccess) {
-      res.status(500).send(`Internal database error. Failed to delete the group <${groupUri}>.`);
-      return;
+
+      gstorePath = `${req.params.group}/group.jsonld`;
+      result = await GstoreHelper.delete(req.params.account, gstorePath);
+
+      if (!result.isSuccess) {
+        res.status(500).send(`Internal database error. Failed to delete the group <${groupUri}>.`);
+        return;
+      }
+
     }
 
     res.status(204).send(`The group <${groupUri}> has been deleted.`);
