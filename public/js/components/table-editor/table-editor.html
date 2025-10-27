@@ -121,6 +121,7 @@
     .flex-table .cell.main {
       flex: 1.5;
       min-width: 215px;
+      max-width: 215px;
     }
 
     .flex-table .cell.readonly {
@@ -161,7 +162,7 @@
     }
 
     .flex-table .cell.cv:nth-child(3) {
-      min-width: 80px;
+      min-width: 120px;
     }
 
     .flex-table .cell.cv:nth-child(4) {
@@ -183,7 +184,7 @@
     <div class="row" ng-repeat="file in $ctrl.model.files" ng-init="outerIndex=$index">
       <div class="cell tiny readonly">{{ $index + 1 }}</div>
       <div class="cell main readonly">
-        <span style="flex: 1"><a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a></span> 
+        <span style="flex: 1; overflow-x: hidden;"><a target="_blank" ng-href="{{ file.uri }}">{{ file.name }}</a></span> 
         <databus-icon shape="'delete'" style="margin-right: 12px;" on-click="$ctrl.removeFileFromArtifact(file, $index)"
           size="24"></databus-icon>
       </div>

@@ -29,6 +29,7 @@
         padding: 2em;
         flex-basis: 0;
         flex-grow: 1;
+        max-width: 50%;
       }
 
       .form-footer {
@@ -205,7 +206,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-column">
+            <div class="form-column" style="max-width: 100px;">
               <h3 class="title is-5">API Input</h3>
               <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys" texts="texts"></entity-api-view>
             </div>

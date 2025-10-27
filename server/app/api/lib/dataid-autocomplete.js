@@ -26,8 +26,8 @@ function autofillFileIdentifiers(datasetUri, fileGraph) {
   for (var cv of contentVariants) {
     var facet = UriUtils.uriToName(cv.key);
     var value = cv.value;
-    segment += `_${facet}=${value}`;
-  }
+    segment += `_${facet}=${encodeURIComponent(value)}`;
+  } 
 
   var format = undefined;
   var compression = undefined;
