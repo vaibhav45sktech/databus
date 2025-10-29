@@ -135,7 +135,8 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
   artifactGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
   artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY] = [{}];
   artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY][0][DatabusUris.JSONLD_ID] = groupUri;
-
+  artifactGraph[DatabusUris.DATABUS_NAME] = [{}];
+  artifactGraph[DatabusUris.DATABUS_NAME][0][DatabusUris.JSONLD_VALUE] = UriUtils.uriToName(artifactUri);
 
   var groupGraph = JsonldUtils.getTypedGraph(expandedGraph, DatabusUris.DATABUS_GROUP);
  
@@ -148,6 +149,9 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
 
   groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = [{}];
   groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
+  groupGraph[DatabusUris.DATABUS_NAME] = [{}];
+  groupGraph[DatabusUris.DATABUS_NAME][0][DatabusUris.JSONLD_VALUE] = UriUtils.uriToName(groupUri);
+
 
   var fileGraphs = JsonldUtils.getTypedGraphs(expandedGraph, DatabusUris.DATABUS_PART);
 

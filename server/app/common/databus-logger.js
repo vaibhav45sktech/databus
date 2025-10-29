@@ -16,7 +16,6 @@ class DatabusLogger {
 
   getReport() {
     return {
-      logLevel: this.level,
       log: this.entries
     };
   }
