@@ -208,7 +208,8 @@
             </div>
             <div class="form-column" style="max-width: 100px;">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys" texts="texts"></entity-api-view>
+              <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys"
+                texts="texts"></entity-api-view>
             </div>
           </div>
         </div>
@@ -278,7 +279,8 @@
 
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.artifact" api-keys="session.artifact.activeAccount.apiKeys"></entity-api-view>
+              <entity-api-view entity="session.artifact"
+                api-keys="session.artifact.activeAccount.apiKeys"></entity-api-view>
             </div>
           </div>
 
@@ -592,66 +594,75 @@
                     <div class="title is-5">Edit Content Variant</div>
                     <div class="field">
                       <label class="label">Label</label>
-                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label"
+                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label" ng-change="session.version.onChange()"
                         type="text" ng-disabled="!session.version.editContentVariant.custom">
-
-
-                      <div style="display: flex; align-items: center; padding: .5em;">
-                        <div style="flex: 1; display: flex; align-items: center;">
-                          <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
-                            <div class="control">
-                              <input class="input" style="min-width: 400px;" ng-model="variant.fillRegex" type="text"
-                                placeholder="Enter a String or Regex (e.g: .* for full file name)">
-                            </div>
-                            <div class="control">
-                              <div class="button" ng-click="session.formData.fill(variant)">
-                                Fill
-                              </div>
-                            </div>
-                            <div class="control">
-                              <div class="button" ng-click="session.formData.fillByRegex(variant)">
-                                Fill by Regex on Filename
-                              </div>
-                            </div>
-
-                          </div>
-                          <input style="margin: .5em;" ng-model="variant.toLower" class="checkbox" type="checkbox"
-                            name="to lowercase">
-                          <label for="scales">To Lowercase</label>
-
-                          <input style="margin: .5em;" ng-model="variant.pruneWhitespaces" class="checkbox"
-                            type="checkbox" name="prune">
-                          <label for="scales">Remove Whitespaces</label>
-
-                          <input style="margin: .5em;" ng-model="variant.overwrite" class="checkbox" type="checkbox"
-                            name="prune">
-                          <label for="scales">Overwrite</label>
+                    </div>
+                    <div class="field">
+                      <label class="label">Bulk Edit Values</label>
+                      <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
+                        <div class="control">
+                          <input class="input" style="min-width: 400px;" ng-model="variant.fillRegex" type="text"
+                            placeholder="Enter a String or Regex (e.g: .* for full file name)">
                         </div>
+                        <div class="control">
+                          <div class="button" ng-click="session.formData.fill(variant)">
+                            Fill
+                          </div>
+                        </div>
+                        <div class="control">
+                          <div class="button" ng-click="session.formData.fillByRegex(variant)">
+                            Fill by Regex on Filename
+                          </div>
+                        </div>
+                      </div>
+                      <div style="flex: 1; display: flex; align-items: center;">
 
-                        <databus-icon shape="'delete'" style="margin-right: .4em;" class='artifact-icon'
-                          on-click="session.formData.removeContentVariant(variant)" size="24"></databus-icon>
+
+
+                        <input style="margin: .5em;" ng-model="variant.toLower" class="checkbox" type="checkbox"
+                          name="to lowercase">
+                        <label for="scales">To Lowercase</label>
+
+                        <input style="margin: .5em;" ng-model="variant.pruneWhitespaces" class="checkbox"
+                          type="checkbox" name="prune">
+                        <label for="scales">Remove Whitespaces</label>
+
+                        <input style="margin: .5em;" ng-model="variant.overwrite" class="checkbox" type="checkbox"
+                          name="prune">
+                        <label for="scales">Overwrite</label>
                       </div>
                     </div>
+                    <div style="width: 100%; display: flex; justify-content: flex-end;">
+                      <button class="button is-danger" ng-click="session.formData.removeContentVariant(variant)">
+                        <databus-icon shape="'delete'" style="margin-right: .4em;" color="'white'" size="24"></databus-icon>
+                        Delete Content Variant</button>
+
+                    </div>
+
+
+
+
                   </div>
 
-                   <table-editor ng-if="session.version.files.length > 0" model="session.version"
-                  on-remove-file="session.version.removeFile(file, index)"
-                  on-edit-content-variant="session.version.onEditContentVariant(index)">
-                </table-editor>
+                  <table-editor ng-if="session.version.files.length > 0" model="session.version"
+                    on-remove-file="session.version.removeFile(file, index)"
+                    on-edit-content-variant="session.version.onEditContentVariant(index)">
+                  </table-editor>
 
-                <div ng-if="session.version.files.length == 0" class="notification is-light">
-                  No files yet. Use the buttons above to add files or content variants.
-                </div>
+                  <div ng-if="session.version.files.length == 0" class="notification is-light">
+                    No files yet. Use the buttons above to add files or content variants.
+                  </div>
                 </div>
 
-               
+
 
               </div>
             </div>
 
             <div class="form-column">
               <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.version" api-keys="session.version.activeAccount.apiKeys" publish-log="publishLog"></entity-api-view>
+              <entity-api-view entity="session.version" api-keys="session.version.activeAccount.apiKeys"
+                publish-log="publishLog"></entity-api-view>
             </div>
           </div>
 

@@ -272,7 +272,7 @@ class VersionHandler extends EntityHandler {
           continue;
         }
 
-        distribution['dcv:' + cv.id] = value;
+        distribution['dcv:' + cv.label] = value;
 
         if (!customVariants.includes(cv.id)) {
           customVariants.push(cv.id);
@@ -340,7 +340,7 @@ class VersionHandler extends EntityHandler {
 
     this.contentVariants.push({
       label: variant,
-      id: variant,
+      id: DatabusUtils.uuidv4(),
       fillRegex: '',
       toLower: true,
       pruneWhitespaces: true,
