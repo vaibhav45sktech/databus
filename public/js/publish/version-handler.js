@@ -440,6 +440,61 @@ class VersionHandler extends EntityHandler {
     this.onChange();
   }
 
+
+  fill(variant) {
+
+    var val = variant.fillRegex;
+
+    for (var file of this.files) {
+
+      if (variant.toLower) {
+        val = val.toLowerCase();
+      }
+
+      if (variant.pruneWhitespaces) {
+        val = val.replaceAll(' ', '');
+      }
+
+      if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+        && file.contentVariants[variant.id].length > 0) {
+        continue;
+      }
+
+      file.contentVariants[variant.id] = val;
+    }
+
+    this.onChange();
+  }
+
+  fillByRegex(variant) {
+    var regex = new RegExp(variant.fillRegex);
+
+    for (var file of this.files) {
+      var matches = file.name.match(regex);
+
+      if (matches != null) {
+        var val = matches[0];
+
+        if (variant.toLower) {
+          val = val.toLowerCase();
+        }
+
+        if (variant.pruneWhitespaces) {
+          val = val.replaceAll(' ', '');
+        }
+
+        if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+          && file.contentVariants[variant.id].length > 0) {
+          continue;
+        }
+
+        file.contentVariants[variant.id] = val;
+      }
+    }
+
+    this.onChange();
+  }
+
   getRowIndex(files, name) {
     var k = 1;
     for (var f in files) {

@@ -601,16 +601,16 @@
                       <label class="label">Bulk Edit Values</label>
                       <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
                         <div class="control">
-                          <input class="input" style="min-width: 400px;" ng-model="variant.fillRegex" type="text"
+                          <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.fillRegex" type="text"
                             placeholder="Enter a String or Regex (e.g: .* for full file name)">
                         </div>
                         <div class="control">
-                          <div class="button" ng-click="session.formData.fill(variant)">
+                          <div class="button" ng-click="session.version.fill(session.version.editContentVariant)">
                             Fill
                           </div>
                         </div>
                         <div class="control">
-                          <div class="button" ng-click="session.formData.fillByRegex(variant)">
+                          <div class="button" ng-click="session.version.fillByRegex(session.version.editContentVariant)">
                             Fill by Regex on Filename
                           </div>
                         </div>
@@ -619,15 +619,15 @@
 
 
 
-                        <input style="margin: .5em;" ng-model="variant.toLower" class="checkbox" type="checkbox"
+                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.toLower" class="checkbox" type="checkbox"
                           name="to lowercase">
                         <label for="scales">To Lowercase</label>
 
-                        <input style="margin: .5em;" ng-model="variant.pruneWhitespaces" class="checkbox"
+                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.pruneWhitespaces" class="checkbox"
                           type="checkbox" name="prune">
                         <label for="scales">Remove Whitespaces</label>
 
-                        <input style="margin: .5em;" ng-model="variant.overwrite" class="checkbox" type="checkbox"
+                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.overwrite" class="checkbox" type="checkbox"
                           name="prune">
                         <label for="scales">Overwrite</label>
                       </div>
