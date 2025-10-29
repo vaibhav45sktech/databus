@@ -144,528 +144,554 @@
       }
     </style>
 
-    <!-- Top Level Menu -->
-    <div class="section main-menu background" ng-if="tabNavigation.activeTab == 0">
-      <h1 class="title has-text-centered">Choose Entity to Create</h1>
-      <div class="menu-card-parent">
-        <div class="menu-card" ng-click="tabNavigation.navigateTo('group')">
-          <databus-icon class="is-group" shape="'group'" size="32"></databus-icon>
-          <h2 style="margin-top: .1em;" class="subtitle">Group</h2>
-          <p>A grouping entity for Artifacts.</p>
-        </div>
-        <div class="menu-card" ng-click="tabNavigation.navigateTo('artifact')">
-          <databus-icon class="is-artifact" shape="'artifact'" size="32"></databus-icon>
-          <h2 style="margin-top: .1em;" class="subtitle">Artifact</h2>
-          <p>A logical dataset that links to its Versions.</p>
-        </div>
-        <div class="menu-card" ng-click="tabNavigation.navigateTo('version')">
-          <databus-icon class="is-version" shape="'version'" size="32"></databus-icon>
-          <h2 style="margin-top: .1em;" class="subtitle">Version</h2>
-          <p>A specific release of a Databus Artifact.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Group Form View -->
-    <div class="section background" ng-if="tabNavigation.activeTab == 1">
-      <div class="wiz-container">
-        <div class="topbar">
-          <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
-        </div>
-        <div class="form-panel">
-          <div class="form-columns">
-            <div class="form-column">
-              <div class="form">
-                <h3 class="title is-5">Group Info</h3>
-                <div class="field">
-                  <label class="label">Account</label>
-                  <entity-dropdown placeholder="Please select an account" items="accounts"
-                    selected="session.group.accountName" display-property="accountName" loading="loadingAccounts"
-                    on-select="session.group.setAccountName(item.accountName)">
-                  </entity-dropdown>
-                </div>
-                <div class="field">
-                  <label class="label">Group Name</label>
-                  <input class="input" type="text" ng-model="session.group.name" ng-change="session.group.onChange()">
-                  <error-tag entity="session.group" key="err_invalid_group_name"></error-tag>
-
-                </div>
-                <div class="field">
-                  <label class="label">Title</label>
-                  <input class="input" type="text" ng-model="session.group.title" ng-change="session.group.onChange()">
-                </div>
-                <div class="field">
-                  <label class="label">Abstract</label>
-                  <textarea class="input" style="height: 100px;" type="text" ng-model="session.group.abstract"
-                    ng-change="session.group.onChange()"></textarea>
-                </div>
-                <div class="field">
-                  <label class="label">Description</label>
-                  <textarea class="input" style="height: 100px;" type="text" ng-model="session.group.description"
-                    ng-change="session.group.onChange()"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="form-column" style="max-width: 100px;">
-              <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys"
-                texts="texts"></entity-api-view>
-            </div>
+    <div ng-if="!hasAccount">
+      <div class="container">
+        <div style="min-height: 600px; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center;">
+            <div style="margin-bottom: 1em;">You need to create an account in order to register metadata</div>
+            <button class="button is-consumer" ng-click="createAccount()">
+              <span class="icon"><i class="fas fa-user-plus"></i></span>
+              <span class="is-hidden-desktop-only">
+                Create Account
+              </span>
+            </button>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- Artifact Form View -->
-    <div class="section background" ng-if="tabNavigation.activeTab == 2">
-      <div class="wiz-container">
-        <div class="topbar">
-          <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
-        </div>
-        <div class="form-panel">
-          <div class="form-columns">
-            <div class="form-column">
-              <div class="form">
-                <h3 class="title is-5">Artifact Info</h3>
-
-                <div class="field">
-                  <label class="label">Account</label>
-                  <entity-dropdown placeholder="Please select an account" items="accounts"
-                    selected="session.artifact.accountName" display-property="accountName"
-                    on-select="session.artifact.setAccountName(item.accountName)">
-                  </entity-dropdown>
-                </div>
-
-                <div class="field">
-                  <label class="label">Group</label>
-                  <entity-dropdown placeholder="Please select a group" items="session.artifact.groupList"
-                    selected="session.artifact.groupName" display-property="name"
-                    loading="session.artifact.isLoadingGroups" on-select="session.artifact.setGroupName(item.name)">
-                  </entity-dropdown>
-                  <error-tag entity="session.artifact" key="err_no_group_selected"></error-tag>
-
-                </div>
-
-
-                <div class="field">
-                  <label class="label">Name</label>
-                  <input class="input" type="text" ng-model="session.artifact.name"
-                    ng-change="session.artifact.onChange()">
-                  <error-tag entity="session.artifact" key="err_invalid_artifact_name" texts="texts"></error-tag>
-                </div>
-
-                <div class="field">
-                  <label class="label">Title</label>
-                  <input class="input" type="text" ng-model="session.artifact.title"
-                    ng-change="session.artifact.onChange()">
-                </div>
-
-                <div class="field">
-                  <label class="label">Abstract</label>
-                  <textarea class="input" style="height: 100px;" type="text" ng-model="session.artifact.abstract"
-                    ng-change="session.artifact.onChange()"></textarea>
-                </div>
-
-                <div class="field">
-                  <label class="label">Description</label>
-                  <textarea class="input" style="height: 100px;" type="text" ng-model="session.artifact.description"
-                    ng-change="session.artifact.onChange()"></textarea>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="form-column">
-              <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.artifact"
-                api-keys="session.artifact.activeAccount.apiKeys"></entity-api-view>
-            </div>
+    <div ng-if="hasAccount">
+      <!-- Top Level Menu -->
+      <div class="section main-menu background" ng-if="tabNavigation.activeTab == 0">
+        <h1 class="title has-text-centered">Choose Entity to Create</h1>
+        <div class="menu-card-parent">
+          <div class="menu-card" ng-click="tabNavigation.navigateTo('group')">
+            <databus-icon class="is-group" shape="'group'" size="32"></databus-icon>
+            <h2 style="margin-top: .1em;" class="subtitle">Group</h2>
+            <p>A grouping entity for Artifacts.</p>
           </div>
-
+          <div class="menu-card" ng-click="tabNavigation.navigateTo('artifact')">
+            <databus-icon class="is-artifact" shape="'artifact'" size="32"></databus-icon>
+            <h2 style="margin-top: .1em;" class="subtitle">Artifact</h2>
+            <p>A logical dataset that links to its Versions.</p>
+          </div>
+          <div class="menu-card" ng-click="tabNavigation.navigateTo('version')">
+            <databus-icon class="is-version" shape="'version'" size="32"></databus-icon>
+            <h2 style="margin-top: .1em;" class="subtitle">Version</h2>
+            <p>A specific release of a Databus Artifact.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Version Form View -->
-    <div class="section background" ng-if="tabNavigation.activeTab == 3">
-      <div class="wiz-container">
-        <div class="topbar">
-          <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
-        </div>
-        <div class="form-panel">
-          <div class="form-columns">
-            <div class="form-column">
-              <div class="form">
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                  <div class="title is-5">Version Info {{ session.version.pageIndex + 1 }}/3</div>
-                  <div>
-                    <button class="button" ng-click="session.version.changePage(-1)"
-                      ng-disabled="session.version.pageIndex === 0">
-                      Previous
-                    </button>
-                    <button class="button" ng-click="session.version.changePage(1)"
-                      ng-disabled="session.version.pageIndex === 2">
-                      Next
-                    </button>
-                  </div>
-                </div>
-
-                <div ng-if="session.version.pageIndex == 0">
+      <!-- Group Form View -->
+      <div class="section background" ng-if="tabNavigation.activeTab == 1">
+        <div class="wiz-container">
+          <div class="topbar">
+            <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
+          </div>
+          <div class="form-panel">
+            <div class="form-columns">
+              <div class="form-column">
+                <div class="form">
+                  <h3 class="title is-5">Group Info</h3>
                   <div class="field">
                     <label class="label">Account</label>
                     <entity-dropdown placeholder="Please select an account" items="accounts"
-                      selected="session.version.accountName" display-property="accountName"
-                      on-select="session.version.setAccountName(item.accountName);">
+                      selected="session.group.accountName" display-property="accountName" loading="loadingAccounts"
+                      on-select="session.group.setAccountName(item.accountName)">
+                    </entity-dropdown>
+                  </div>
+                  <div class="field">
+                    <label class="label">Group Name</label>
+                    <input class="input" type="text" ng-model="session.group.name" ng-change="session.group.onChange()">
+                    <error-tag entity="session.group" key="err_invalid_group_name"></error-tag>
+
+                  </div>
+                  <div class="field">
+                    <label class="label">Title</label>
+                    <input class="input" type="text" ng-model="session.group.title"
+                      ng-change="session.group.onChange()">
+                  </div>
+                  <div class="field">
+                    <label class="label">Abstract</label>
+                    <textarea class="input" style="height: 100px;" type="text" ng-model="session.group.abstract"
+                      ng-change="session.group.onChange()"></textarea>
+                  </div>
+                  <div class="field">
+                    <label class="label">Description</label>
+                    <textarea class="input" style="height: 100px;" type="text" ng-model="session.group.description"
+                      ng-change="session.group.onChange()"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form-column">
+                <h3 class="title is-5">API Input</h3>
+                <entity-api-view entity="session.group" api-keys="session.group.activeAccount.apiKeys"
+                  texts="texts"></entity-api-view>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Artifact Form View -->
+      <div class="section background" ng-if="tabNavigation.activeTab == 2">
+        <div class="wiz-container">
+          <div class="topbar">
+            <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
+          </div>
+          <div class="form-panel">
+            <div class="form-columns">
+              <div class="form-column">
+                <div class="form">
+                  <h3 class="title is-5">Artifact Info</h3>
+
+                  <div class="field">
+                    <label class="label">Account</label>
+                    <entity-dropdown placeholder="Please select an account" items="accounts"
+                      selected="session.artifact.accountName" display-property="accountName"
+                      on-select="session.artifact.setAccountName(item.accountName)">
                     </entity-dropdown>
                   </div>
 
                   <div class="field">
                     <label class="label">Group</label>
-                    <entity-dropdown placeholder="Please select a group" items="session.version.groupList"
-                      selected="session.version.groupName" display-property="name"
-                      loading="session.version.isLoadingGroups" on-select="session.version.setGroupName(item.name)">
+                    <entity-dropdown placeholder="Please select a group" items="session.artifact.groupList"
+                      selected="session.artifact.groupName" display-property="name"
+                      loading="session.artifact.isLoadingGroups" on-select="session.artifact.setGroupName(item.name)">
                     </entity-dropdown>
-                    <error-tag entity="session.version" key="err_no_group_selected"></error-tag>
+                    <error-tag entity="session.artifact" key="err_no_group_selected"></error-tag>
 
                   </div>
 
-                  <div class="field">
-                    <label class="label">Artifact</label>
-                    <entity-dropdown placeholder="Please select an artifact" items="session.version.artifactList"
-                      selected="session.version.artifactName" display-property="name"
-                      loading="session.version.isLoadingArtifacts"
-                      on-select="session.version.setArtifactName(item.name)">
-                    </entity-dropdown>
-                    <error-tag entity="session.version" key="err_no_artifact_selected"></error-tag>
-
-                  </div>
 
                   <div class="field">
                     <label class="label">Name</label>
-                    <div style="width: 100%;">
+                    <input class="input" type="text" ng-model="session.artifact.name"
+                      ng-change="session.artifact.onChange()">
+                    <error-tag entity="session.artifact" key="err_invalid_artifact_name" texts="texts"></error-tag>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Title</label>
+                    <input class="input" type="text" ng-model="session.artifact.title"
+                      ng-change="session.artifact.onChange()">
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Abstract</label>
+                    <textarea class="input" style="height: 100px;" type="text" ng-model="session.artifact.abstract"
+                      ng-change="session.artifact.onChange()"></textarea>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Description</label>
+                    <textarea class="input" style="height: 100px;" type="text" ng-model="session.artifact.description"
+                      ng-change="session.artifact.onChange()"></textarea>
+                  </div>
+
+
+                </div>
+              </div>
+
+              <div class="form-column">
+                <h3 class="title is-5">API Input</h3>
+                <entity-api-view entity="session.artifact"
+                  api-keys="session.artifact.activeAccount.apiKeys"></entity-api-view>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Version Form View -->
+      <div class="section background" ng-if="tabNavigation.activeTab == 3">
+        <div class="wiz-container">
+          <div class="topbar">
+            <button class="button" ng-click="tabNavigation.navigateTo('')">&larr; Back</button>
+          </div>
+          <div class="form-panel">
+            <div class="form-columns">
+              <div class="form-column">
+                <div class="form">
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div class="title is-5">Version Info {{ session.version.pageIndex + 1 }}/3</div>
+                    <div>
+                      <button class="button" ng-click="session.version.changePage(-1)"
+                        ng-disabled="session.version.pageIndex === 0">
+                        Previous
+                      </button>
+                      <button class="button" ng-click="session.version.changePage(1)"
+                        ng-disabled="session.version.pageIndex === 2">
+                        Next
+                      </button>
+                    </div>
+                  </div>
+
+                  <div ng-if="session.version.pageIndex == 0">
+                    <div class="field">
+                      <label class="label">Account</label>
+                      <entity-dropdown placeholder="Please select an account" items="accounts"
+                        selected="session.version.accountName" display-property="accountName"
+                        on-select="session.version.setAccountName(item.accountName);">
+                      </entity-dropdown>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Group</label>
+                      <entity-dropdown placeholder="Please select a group" items="session.version.groupList"
+                        selected="session.version.groupName" display-property="name"
+                        loading="session.version.isLoadingGroups" on-select="session.version.setGroupName(item.name)">
+                      </entity-dropdown>
+                      <error-tag entity="session.version" key="err_no_group_selected"></error-tag>
+
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Artifact</label>
+                      <entity-dropdown placeholder="Please select an artifact" items="session.version.artifactList"
+                        selected="session.version.artifactName" display-property="name"
+                        loading="session.version.isLoadingArtifacts"
+                        on-select="session.version.setArtifactName(item.name)">
+                      </entity-dropdown>
+                      <error-tag entity="session.version" key="err_no_artifact_selected"></error-tag>
+
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Name</label>
+                      <div style="width: 100%;">
+                        <div class="field has-addons" style="width: 100%; margin-bottom: 0;">
+                          <input class="control input" type="text" ng-model="session.version.name"
+                            ng-change="session.version.onChange()">
+                          <div class="control">
+                            <div class="dropdown is-hoverable" style="margin-bottom: 0;">
+                              <div class="dropdown-trigger">
+                                <a class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                  <span>Presets</span>
+                                  <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                  </span>
+                                </a>
+                              </div>
+                              <div class="dropdown-menu" id="dropdown-menu" role="menu" style="right: 0; left: auto;">
+                                <div class="dropdown-content">
+                                  <a class="dropdown-item" ng-click="session.version.createVersionName(0)">
+                                    Date YYYY-MM-DD
+                                  </a>
+                                  <a class="dropdown-item" ng-click="session.version.createVersionName(1)">
+                                    Date YYYY-MM-DDTHH
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <error-tag entity="session.version" key="err_invalid_version_name"></error-tag>
+
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Title</label>
+                      <input class="input" type="text" ng-model="session.version.title"
+                        ng-change="session.version.onChange()">
+                      <error-tag entity="session.version" key="err_invalid_version_title" texts="texts"></error-tag>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Abstract</label>
+                      <textarea class="input" style="height: 64px; resize: vertical;" type="text"
+                        ng-model="session.version.abstract" ng-change="session.version.onChange()"></textarea>
+                      <error-tag entity="session.version" key="err_invalid_version_abstract" texts="texts"></error-tag>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">Description</label>
+                      <textarea class="input" style="height: 100px; resize: vertical;" type="text"
+                        ng-model="session.version.description" ng-change="session.version.onChange()"></textarea>
+                      <error-tag entity="session.version" key="err_invalid_version_description"
+                        texts="texts"></error-tag>
+                    </div>
+                  </div>
+
+                  <div ng-if="session.version.pageIndex == 1">
+                    <!-- LICENSE URI -->
+                    <div class="field">
+                      <div class="label">License URI</div>
                       <div class="field has-addons" style="width: 100%; margin-bottom: 0;">
-                        <input class="control input" type="text" ng-model="session.version.name"
+                        <input class="control input" type="text" ng-model="session.version.license"
                           ng-change="session.version.onChange()">
                         <div class="control">
-                          <div class="dropdown is-hoverable" style="margin-bottom: 0;">
+                          <div class="dropdown is-hoverable" style="position: relative; margin-bottom: 0;">
                             <div class="dropdown-trigger">
                               <a class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>Presets</span>
+                                <span>Select License</span>
                                 <span class="icon is-small">
                                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                                 </span>
                               </a>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu" style="right: 0; left: auto;">
-                              <div class="dropdown-content">
-                                <a class="dropdown-item" ng-click="session.version.createVersionName(0)">
-                                  Date YYYY-MM-DD
-                                </a>
-                                <a class="dropdown-item" ng-click="session.version.createVersionName(1)">
-                                  Date YYYY-MM-DDTHH
-                                </a>
+                            <div class="dropdown-menu" id="dropdown-menu" role="menu" style="right: 0; left: initial;">
+                              <div class="dropdown-content" style="min-width: 500px; padding: 4px;">
+                                <input placeholder="Search for a license" class="input"
+                                  ng-model="session.version.licenseQuery"
+                                  ng-change="session.version.filterLicenses()" />
+                                <div style="padding: 0.5em; color: #888"
+                                  ng-if="session.version.filteredLicenseList == undefined">The
+                                  content of
+                                  this dropdown relies on the license service provided by <a href="https://dalicc.net"
+                                    target="_blank">https://dalicc.net</a>. If you are unable to find any licenses, this
+                                  might be due to the service being temporarily unavailable.</div>
+                                <div ng-repeat="license in session.version.filteredLicenseList"
+                                  style="padding: 0.5em 0.25em;"
+                                  ng-click="session.version.setLicense(license.id.value)">
+                                  {{ license.title.value }}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-
+                      <error-tag entity="session.version" key="err_invalid_version_license"></error-tag>
                     </div>
 
-                    <error-tag entity="session.version" key="err_invalid_version_name"></error-tag>
+                    <!-- LICENSE ATTRIBUTION -->
+                    <div class="field">
+                      <div class="label">Attribution</div>
+                      <textarea wrap="hard" style="height: 128px; resize: vertical;" class="input" type="text"
+                        ng-model="session.version.attribution" ng-change="session.version.onChange()"></textarea>
+                    </div>
+
+                    <div class="field">
+                      <div class="label">Derived From</div>
+                      <textarea wrap="hard" style="height: 128px; resize: vertical;" class="input" type="text"
+                        ng-model="session.version.wasDerivedFrom" ng-change="session.version.onChange()"></textarea>
+                    </div>
+
 
                   </div>
 
-                  <div class="field">
-                    <label class="label">Title</label>
-                    <input class="input" type="text" ng-model="session.version.title"
-                      ng-change="session.version.onChange()">
-                    <error-tag entity="session.version" key="err_invalid_version_title" texts="texts"></error-tag>
-                  </div>
 
-                  <div class="field">
-                    <label class="label">Abstract</label>
-                    <textarea class="input" style="height: 64px; resize: vertical;" type="text"
-                      ng-model="session.version.abstract" ng-change="session.version.onChange()"></textarea>
-                    <error-tag entity="session.version" key="err_invalid_version_abstract" texts="texts"></error-tag>
-                  </div>
+                  <div ng-if="session.version.pageIndex == 2">
 
-                  <div class="field">
-                    <label class="label">Description</label>
-                    <textarea class="input" style="height: 100px; resize: vertical;" type="text"
-                      ng-model="session.version.description" ng-change="session.version.onChange()"></textarea>
-                    <error-tag entity="session.version" key="err_invalid_version_description" texts="texts"></error-tag>
-                  </div>
-                </div>
-
-                <div ng-if="session.version.pageIndex == 1">
-                  <!-- LICENSE URI -->
-                  <div class="field">
-                    <div class="label">License URI</div>
-                    <div class="field has-addons" style="width: 100%; margin-bottom: 0;">
-                      <input class="control input" type="text" ng-model="session.version.license"
-                        ng-change="session.version.onChange()">
+                    <!-- Add Buttons -->
+                    <div class="field is-grouped" style="margin-bottom: 1rem;">
                       <div class="control">
-                        <div class="dropdown is-hoverable" style="position: relative; margin-bottom: 0;">
-                          <div class="dropdown-trigger">
-                            <a class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                              <span>Select License</span>
-                              <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                              </span>
-                            </a>
+                        <button class="button is-link"
+                          ng-click="session.version.showAddFileForm = true; session.version.showAddVariantForm = false;">
+                          Add File URLs
+                        </button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-link" ng-disabled="session.version.files.length == 0"
+                          ng-click="session.version.showAddFileForm = false; session.version.showAddVariantForm = true;">
+                          Add Content Variant
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Add File Form -->
+                    <div ng-if="session.version.showAddFileForm" class="box">
+                      <div class="field">
+                        <div class="label">Add File URLs</div>
+
+                        <div class="field" ng-init="session.version.addfilesMode = 0">
+                          <label class="radio">
+                            <input type="radio" ng-model="session.version.addfilesMode" ng-value="0">
+                            Enter URL List
+                          </label>
+
+                          <label class="radio" style="margin-left: 1em;">
+                            <input type="radio" ng-model="session.version.addfilesMode" ng-value="1">
+                            Fetch URLs from Resource Page
+                          </label>
+                        </div>
+
+                        <div ng-if="session.version.addfilesMode == 0">
+                          <article class="message is-info">
+                            <div class="message-body">
+                              Enter a list of URLs divided by newlines and click <b>Add URLs</b> to add files. The file
+                              URLs
+                              should be valid download URLs.
+                            </div>
+                          </article>
+                          <div class="control">
+                            <textarea ng-model="session.version.fetchFilesInput"
+                              style="min-height: 160px; resize: vertical; margin-bottom: .5em;" class="input"
+                              type="text-area" placeholder="Enter file URLs (seperated by newline)">
+                          </textarea>
                           </div>
-                          <div class="dropdown-menu" id="dropdown-menu" role="menu" style="right: 0; left: initial;">
-                            <div class="dropdown-content" style="min-width: 500px; padding: 4px;">
-                              <input placeholder="Search for a license" class="input"
-                                ng-model="session.version.licenseQuery" ng-change="session.version.filterLicenses()" />
-                              <div style="padding: 0.5em; color: #888"
-                                ng-if="session.version.filteredLicenseList == undefined">The
-                                content of
-                                this dropdown relies on the license service provided by <a href="https://dalicc.net"
-                                  target="_blank">https://dalicc.net</a>. If you are unable to find any licenses, this
-                                might be due to the service being temporarily unavailable.</div>
-                              <div ng-repeat="license in session.version.filteredLicenseList"
-                                style="padding: 0.5em 0.25em;" ng-click="session.version.setLicense(license.id.value)">
-                                {{ license.title.value }}
-                              </div>
+                          <div class="field is-grouped">
+                            <div class="control">
+                              <button class="button is-link"
+                                ng-click="session.version.addFiles(session.version.fetchFilesInput)">Add
+                                URLs</button>
+                            </div>
+                            <div class="control">
+                              <button class="button is-light"
+                                ng-click="session.version.showAddFileForm = false">Cancel</button>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <error-tag entity="session.version" key="err_invalid_version_license"></error-tag>
-                  </div>
 
-                  <!-- LICENSE ATTRIBUTION -->
-                  <div class="field">
-                    <div class="label">Attribution</div>
-                    <textarea wrap="hard" style="height: 128px; resize: vertical;" class="input" type="text"
-                      ng-model="session.version.attribution" ng-change="session.version.onChange()"></textarea>
-                  </div>
-
-                  <div class="field">
-                    <div class="label">Derived From</div>
-                    <textarea wrap="hard" style="height: 128px; resize: vertical;" class="input" type="text"
-                      ng-model="session.version.wasDerivedFrom" ng-change="session.version.onChange()"></textarea>
-                  </div>
-
-
-                </div>
-
-
-                <div ng-if="session.version.pageIndex == 2">
-
-                  <!-- Add Buttons -->
-                  <div class="field is-grouped" style="margin-bottom: 1rem;">
-                    <div class="control">
-                      <button class="button is-link"
-                        ng-click="session.version.showAddFileForm = true; session.version.showAddVariantForm = false;">
-                        Add File URLs
-                      </button>
-                    </div>
-                    <div class="control">
-                      <button class="button is-link" ng-disabled="session.version.files.length == 0"
-                        ng-click="session.version.showAddFileForm = false; session.version.showAddVariantForm = true;">
-                        Add Content Variant
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Add File Form -->
-                  <div ng-if="session.version.showAddFileForm" class="box">
-                    <div class="field">
-                      <div class="label">Add File URLs</div>
-
-                      <div class="field" ng-init="session.version.addfilesMode = 0">
-                        <label class="radio">
-                          <input type="radio" ng-model="session.version.addfilesMode" ng-value="0">
-                          Enter URL List
-                        </label>
-
-                        <label class="radio" style="margin-left: 1em;">
-                          <input type="radio" ng-model="session.version.addfilesMode" ng-value="1">
-                          Fetch URLs from Resource Page
-                        </label>
-                      </div>
-
-                      <div ng-if="session.version.addfilesMode == 0">
-                        <article class="message is-info">
-                          <div class="message-body">
-                            Enter a list of URLs divided by newlines and click <b>Add URLs</b> to add files. The file
-                            URLs
-                            should be valid download URLs.
+                        <div ng-if="session.version.addfilesMode == 1">
+                          <article class="message is-info">
+                            <div class="message-body">
+                              Enter a URL and click <b>Add URLs</b> to search the specified page for any links to files
+                              URLs and add them.
+                            </div>
+                          </article>
+                          <div class="control" style="width: 100%; margin-bottom: .5em;">
+                            <input ng-model="session.fetchFilesInput" class="input" type="text"
+                              placeholder="Enter a resource page URL">
                           </div>
-                        </article>
-                        <div class="control">
-                          <textarea ng-model="session.version.fetchFilesInput"
-                            style="min-height: 160px; resize: vertical; margin-bottom: .5em;" class="input"
-                            type="text-area" placeholder="Enter file URLs (seperated by newline)">
-                          </textarea>
-                        </div>
-                        <div class="field is-grouped">
-                          <div class="control">
-                            <button class="button is-link"
-                              ng-click="session.version.addFiles(session.version.fetchFilesInput)">Add
-                              URLs</button>
-                          </div>
-                          <div class="control">
-                            <button class="button is-light"
-                              ng-click="session.version.showAddFileForm = false">Cancel</button>
+
+                          <div class="field is-grouped">
+                            <div class="control">
+                              <button class="button is-link" ng-click="fetchFiles(session.fetchFilesInput)">Add
+                                URLs</button>
+                            </div>
+                            <div class="control">
+                              <button class="button is-light"
+                                ng-click="session.version.showAddFileForm = false">Cancel</button>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div ng-if="session.version.addfilesMode == 1">
-                        <article class="message is-info">
-                          <div class="message-body">
-                            Enter a URL and click <b>Add URLs</b> to search the specified page for any links to files
-                            URLs and add them.
-                          </div>
-                        </article>
-                        <div class="control" style="width: 100%; margin-bottom: .5em;">
-                          <input ng-model="session.fetchFilesInput" class="input" type="text"
-                            placeholder="Enter a resource page URL">
-                        </div>
-
-                        <div class="field is-grouped">
-                          <div class="control">
-                            <button class="button is-link" ng-click="fetchFiles(session.fetchFilesInput)">Add
-                              URLs</button>
-                          </div>
-                          <div class="control">
-                            <button class="button is-light"
-                              ng-click="session.version.showAddFileForm = false">Cancel</button>
-                          </div>
-                        </div>
                       </div>
 
                     </div>
 
-                  </div>
-
-                  <!-- Add Content Variant Form -->
-                  <div ng-if="session.version.showAddVariantForm" class="box">
-                    <div class="field">
-                      <label class="label">Content Variant Label</label>
-                      <!--<article class="message is-info">
+                    <!-- Add Content Variant Form -->
+                    <div ng-if="session.version.showAddVariantForm" class="box">
+                      <div class="field">
+                        <label class="label">Content Variant Label</label>
+                        <!--<article class="message is-info">
                           div class="message-body">
                             Enter a URL and click <b>Add URLs</b> to search the specified page for any links to files
                             URLs and add them.
                           </div>
                         </article>-->
 
-                      <input class="input" type="text" ng-model="session.version.contentVariantInput"
-                        placeholder="e.g., en, train, dev">
-                    </div>
-                    <div class="field is-grouped">
-                      <div class="control">
-                        <button class="button is-link"
-                          ng-click="session.version.addContentVariant(session.version.contentVariantInput); showAddVariantForm = false;">Add
-                          Content Variant</button>
+                        <input class="input" type="text" ng-model="session.version.contentVariantInput"
+                          placeholder="e.g., en, train, dev">
                       </div>
-                      <div class="control">
-                        <button class="button is-light"
-                          ng-click="session.version.showAddVariantForm = false">Cancel</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Table (Always Visible) -->
-
-                  <div style="margin-bottom: 0.75em;">
-                    <error-tag entity="session.version" key="err_no_files"></error-tag>
-                  </div>
-                  <article class="message is-danger" ng-if="session.version.fileErrors.length > 0"
-                    style="margin-bottom: 0.75em;">
-                    <div class="message-body">
-                      <div>Any two files must be distinguishable by either their format, compression or any content
-                        variant. Duplicate entries detected at:</div>
-                      <div ng-repeat="error in session.version.fileErrors">
-                        {{ error.message }}
-                      </div>
-                    </div>
-                  </article>
-
-                  <div ng-if="session.version.editContentVariant != undefined" class="box">
-                    <div class="title is-5">Edit Content Variant</div>
-                    <div class="field">
-                      <label class="label">Label</label>
-                      <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.label" ng-change="session.version.onChange()"
-                        type="text" ng-disabled="!session.version.editContentVariant.custom">
-                    </div>
-                    <div class="field">
-                      <label class="label">Bulk Edit Values</label>
-                      <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
+                      <div class="field is-grouped">
                         <div class="control">
-                          <input class="input" style="min-width: 400px;" ng-model="session.version.editContentVariant.fillRegex" type="text"
-                            placeholder="Enter a String or Regex (e.g: .* for full file name)">
+                          <button class="button is-link"
+                            ng-click="session.version.addContentVariant(session.version.contentVariantInput); showAddVariantForm = false;">Add
+                            Content Variant</button>
                         </div>
                         <div class="control">
-                          <div class="button" ng-click="session.version.fill(session.version.editContentVariant)">
-                            Fill
+                          <button class="button is-light"
+                            ng-click="session.version.showAddVariantForm = false">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Table (Always Visible) -->
+
+                    <div style="margin-bottom: 0.75em;">
+                      <error-tag entity="session.version" key="err_no_files"></error-tag>
+                    </div>
+                    <article class="message is-danger" ng-if="session.version.fileErrors.length > 0"
+                      style="margin-bottom: 0.75em;">
+                      <div class="message-body">
+                        <div>Any two files must be distinguishable by either their format, compression or any content
+                          variant. Duplicate entries detected at:</div>
+                        <div ng-repeat="error in session.version.fileErrors">
+                          {{ error.message }}
+                        </div>
+                      </div>
+                    </article>
+
+                    <div ng-if="session.version.editContentVariant != undefined" class="box">
+                      <div class="title is-5">Edit Content Variant</div>
+                      <div class="field">
+                        <label class="label">Label</label>
+                        <input class="input" style="min-width: 400px;"
+                          ng-model="session.version.editContentVariant.label" ng-change="session.version.onChange()"
+                          type="text" ng-disabled="!session.version.editContentVariant.custom">
+                      </div>
+                      <div class="field">
+                        <label class="label">Bulk Edit Values</label>
+                        <div class="field has-addons" style="margin: 0; margin-right: 0.5em;">
+                          <div class="control">
+                            <input class="input" style="min-width: 400px;"
+                              ng-model="session.version.editContentVariant.fillRegex" type="text"
+                              placeholder="Enter a String or Regex (e.g: .* for full file name)">
+                          </div>
+                          <div class="control">
+                            <div class="button" ng-click="session.version.fill(session.version.editContentVariant)">
+                              Fill
+                            </div>
+                          </div>
+                          <div class="control">
+                            <div class="button"
+                              ng-click="session.version.fillByRegex(session.version.editContentVariant)">
+                              Fill by Regex on Filename
+                            </div>
                           </div>
                         </div>
-                        <div class="control">
-                          <div class="button" ng-click="session.version.fillByRegex(session.version.editContentVariant)">
-                            Fill by Regex on Filename
-                          </div>
+                        <div style="flex: 1; display: flex; align-items: center;">
+
+
+
+                          <input style="margin: .5em;" ng-model="session.version.editContentVariant.toLower"
+                            class="checkbox" type="checkbox" name="to lowercase">
+                          <label for="scales">To Lowercase</label>
+
+                          <input style="margin: .5em;" ng-model="session.version.editContentVariant.pruneWhitespaces"
+                            class="checkbox" type="checkbox" name="prune">
+                          <label for="scales">Remove Whitespaces</label>
+
+                          <input style="margin: .5em;" ng-model="session.version.editContentVariant.overwrite"
+                            class="checkbox" type="checkbox" name="prune">
+                          <label for="scales">Overwrite</label>
                         </div>
                       </div>
-                      <div style="flex: 1; display: flex; align-items: center;">
+                      <div style="width: 100%; display: flex; justify-content: flex-end;">
+                        <button class="button is-danger"
+                          ng-click="session.version.removeContentVariant(session.version.editContentVariant)">
+                          <databus-icon shape="'delete'" style="margin-right: .4em;" color="'white'"
+                            size="24"></databus-icon>
+                          Delete Content Variant</button>
 
-
-
-                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.toLower" class="checkbox" type="checkbox"
-                          name="to lowercase">
-                        <label for="scales">To Lowercase</label>
-
-                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.pruneWhitespaces" class="checkbox"
-                          type="checkbox" name="prune">
-                        <label for="scales">Remove Whitespaces</label>
-
-                        <input style="margin: .5em;" ng-model="session.version.editContentVariant.overwrite" class="checkbox" type="checkbox"
-                          name="prune">
-                        <label for="scales">Overwrite</label>
                       </div>
-                    </div>
-                    <div style="width: 100%; display: flex; justify-content: flex-end;">
-                      <button class="button is-danger" ng-click="session.version.removeContentVariant(session.version.editContentVariant)">
-                        <databus-icon shape="'delete'" style="margin-right: .4em;" color="'white'" size="24"></databus-icon>
-                        Delete Content Variant</button>
+
+
+
 
                     </div>
 
+                    <table-editor ng-if="session.version.files.length > 0" model="session.version"
+                      on-remove-file="session.version.removeFile(file, index)"
+                      on-edit-content-variant="session.version.onEditContentVariant(index)">
+                    </table-editor>
 
-
-
+                    <div ng-if="session.version.files.length == 0" class="notification is-light">
+                      No files yet. Use the buttons above to add files or content variants.
+                    </div>
                   </div>
 
-                  <table-editor ng-if="session.version.files.length > 0" model="session.version"
-                    on-remove-file="session.version.removeFile(file, index)"
-                    on-edit-content-variant="session.version.onEditContentVariant(index)">
-                  </table-editor>
 
-                  <div ng-if="session.version.files.length == 0" class="notification is-light">
-                    No files yet. Use the buttons above to add files or content variants.
-                  </div>
+
                 </div>
+              </div>
 
-
-
+              <div class="form-column">
+                <h3 class="title is-5">API Input</h3>
+                <entity-api-view entity="session.version" api-keys="session.version.activeAccount.apiKeys"
+                  publish-log="publishLog"></entity-api-view>
               </div>
             </div>
 
-            <div class="form-column">
-              <h3 class="title is-5">API Input</h3>
-              <entity-api-view entity="session.version" api-keys="session.version.activeAccount.apiKeys"
-                publish-log="publishLog"></entity-api-view>
-            </div>
           </div>
-
         </div>
       </div>
     </div>

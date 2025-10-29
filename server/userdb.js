@@ -29,10 +29,38 @@ class DatabusUserDatabase {
   }
 
   onTrace(query) {
-    if(query.startsWith(this.addUserQueryPrefix)) {
+    if (query.startsWith(this.addUserQueryPrefix)) {
       console.log(query);
     }
   }
+  async migrateSubToId() {
+    try {
+
+      const columns = await this.db.all(`PRAGMA table_info(users)`);
+      const usersHasSub = columns.some(col => col.name === 'sub');
+      const usersHasId = columns.some(col => col.name === 'id');
+
+
+      if (usersHasSub && !usersHasId) {
+        await this.db.run(`ALTER TABLE users RENAME COLUMN sub TO id`);
+        await this.db.run(`ALTER TABLE users ADD COLUMN email VARCHAR(255) NOT NULL DEFAULT ''`);
+        console.log("Migrated 'users.sub' column to 'id' and added 'email' column.");
+      }
+
+      const accountColumns = await this.db.all(`PRAGMA table_info(accounts)`);
+      const accountHasSub = accountColumns.some(col => col.name === 'sub');
+      const accountHasId = accountColumns.some(col => col.name === 'id');
+
+      if (accountHasSub && !accountHasId) {
+        await this.db.run(`ALTER TABLE accounts RENAME COLUMN sub TO id`);
+        console.log("Migrated 'account.sub' to 'id'.");
+      }
+
+    } catch (err) {
+      console.log("Migration error:", err);
+    }
+  }
+
 
   async connect() {
 
@@ -46,14 +74,15 @@ class DatabusUserDatabase {
         driver: sqlite3.Database
       });
 
-      if(this.userAddedCallback != undefined) {
+      if (this.userAddedCallback != undefined) {
         this.db.on('trace', this.onTrace);
       }
 
       if (this.debug) {
         console.log("Creating tables");
       }
-      
+
+      await this.migrateSubToId();
 
       await this.db.get("PRAGMA foreign_keys = ON");
       await this.db.run(require('./app/common/queries/userdb/create-user-table.sql'));
@@ -80,12 +109,12 @@ class DatabusUserDatabase {
       ID: id,
     });
 
-    if(result == undefined) {
+    if (result == undefined) {
       return [];
     }
 
-    for(let account of result) {
-      account.apiKeys =  await this.getApiKeys(account.accountName);
+    for (let account of result) {
+      account.apiKeys = await this.getApiKeys(account.accountName);
     }
 
     return result;
@@ -153,7 +182,7 @@ class DatabusUserDatabase {
   async addApiKey(accountName, name, apikey) {
 
     let account = await this.getAccount(accountName);
-    if(account == undefined) {
+    if (account == undefined) {
       return false;
       //if(!await this.addUser(id)) {
       //  return false;
@@ -213,14 +242,14 @@ class DatabusUserDatabase {
   */
   async addAccount(id, accountName) {
 
-    if(this.debug) {
+    if (this.debug) {
       console.log(`ADD USER id:${id}, accountName:${accountName}`);
     }
 
     let user = await this.getUser(id);
 
-    if(user == undefined) {
-      if(!await this.addUser(id)) {
+    if (user == undefined) {
+      if (!await this.addUser(id)) {
         return false;
       }
     }
@@ -239,9 +268,9 @@ class DatabusUserDatabase {
       ACCOUNT_NAME: accountName
     });
 
-    
+
     return result != null && result.changes != 0;
-    
+
   }
 
   /**
@@ -263,7 +292,7 @@ class DatabusUserDatabase {
 
       var value = params[key];
 
-      if(value != null && (value.includes("\"") || value.includes(";"))) {
+      if (value != null && (value.includes("\"") || value.includes(";"))) {
         return true;
       }
     }
@@ -283,8 +312,8 @@ class DatabusUserDatabase {
       if (this.debug) {
         console.log(JSON.stringify(params, null, 3));
       }
-      
-      if(this.isInputDangerous(params)) {
+
+      if (this.isInputDangerous(params)) {
 
         if (this.debug) {
           console.log(`USERDB: Dangerous database input detected: ${JSON.stringify(params)}`);
@@ -320,7 +349,7 @@ class DatabusUserDatabase {
 
     try {
 
-      if(this.isInputDangerous(params)) {
+      if (this.isInputDangerous(params)) {
 
         if (this.debug) {
           console.log(`USERDB: Dangerous database input detected: ${JSON.stringify(params)}`);
@@ -356,7 +385,7 @@ class DatabusUserDatabase {
   async all(query, params) {
     try {
 
-      if(this.isInputDangerous(params)) {
+      if (this.isInputDangerous(params)) {
 
         if (this.debug) {
           console.log(`USERDB: Dangerous database input detected: ${JSON.stringify(params)}`);

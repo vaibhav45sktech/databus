@@ -17,7 +17,7 @@ async function PublishWizardController($scope, $http, $interval, focus, $q, $loc
 
 
   $scope.createAccount = function () {
-    window.location = '/app/account';
+    window.location = '/app/user';
   }
 
   // Login function
