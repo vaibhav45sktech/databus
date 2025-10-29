@@ -361,6 +361,7 @@ class VersionHandler extends EntityHandler {
       delete file.contentVariants[variant.id];
     }
 
+    this.editContentVariant = null;
     this.onChange();
   }
 
