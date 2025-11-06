@@ -1,0 +1,8 @@
+PREFIX databus: <https://dataid.dbpedia.org/databus#>
+
+SELECT ?content WHERE
+{
+  GRAPH ?g {
+    <%COLLECTION_URI%> databus:collectionContent ?content .
+  }
+}

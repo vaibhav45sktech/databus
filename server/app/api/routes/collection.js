@@ -4,7 +4,7 @@ const Constants = require('../../common/constants.js');
 const DatabusUris = require('../../../../public/js/utils/databus-uris');
 var sparql = require('../../common/queries/sparql');
 var GstoreHelper = require('../../common/utils/gstore-helper');
-var sparql = require('../../common/queries/sparql');
+var exec = require('../../common/execute-query');
 var shaclTester = require('../../common/shacl-tester');
 var jsonld = require('jsonld');
 var constructor = require('../../common/execute-construct.js');
@@ -16,6 +16,9 @@ var defaultContext = require('./../../common/res/context.jsonld');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
 const DatabusUtils = require('../../../../public/js/utils/databus-utils');
 const DatabusMessage = require('../../common/databus-message');
+var cors = require('cors');
+const QueryBuilder = require('../../../../public/js/query-builder/query-builder.js');
+const QueryTemplates = require('../../../../public/js/query-builder/query-templates.js');
 
 module.exports = function (router, protector) {
 
@@ -72,7 +75,7 @@ module.exports = function (router, protector) {
       // Set publisher
       collectionGraph[DatabusUris.DCT_PUBLISHER] = [{}];
       collectionGraph[DatabusUris.DCT_PUBLISHER][0][DatabusUris.JSONLD_ID] = publisherUri;
-     
+
       // Set account
       collectionGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = [{}];
       collectionGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
@@ -121,7 +124,7 @@ module.exports = function (router, protector) {
       console.log(`Saving collection <${collectionUri}> to ${req.params.account}:${targetPath}`);
       var publishResult = await GstoreHelper.save(req.params.account, targetPath, compactedGraph);
 
-      if(process.send != undefined) {
+      if (process.send != undefined) {
         process.send({
           id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
           resource: collectionUri
@@ -155,13 +158,12 @@ module.exports = function (router, protector) {
   router.delete('/:account/collections/:collection', protector.protect(), async function (req, res, next) {
     try {
 
-      if (req.params.account != req.databus.accountName) {
+      if (!ServerUtils.hasWriteAccess(req, req.params.account)) {
         res.status(403).send('You cannot edit collections in a foreign namespace.\n');
         return;
       }
 
-      var targetPath = `collections/${req.params.collection}/collection.jsonld`;
-
+      var targetPath = `collections/${req.params.collection}/metadata.jsonld`;
       var resource = await GstoreHelper.read(req.params.account, targetPath);
 
       if (resource == null) {
@@ -177,7 +179,7 @@ module.exports = function (router, protector) {
       }
 
       // Return success
-      res.status(200).send('Collection deleted successfully.\n');
+      res.status(204).send('Collection deleted successfully.\n');
 
     } catch (err) {
       console.log(err);
@@ -185,21 +187,40 @@ module.exports = function (router, protector) {
     }
   });
 
-  router.get('/:account/collections/:collection', ServerUtils.SPARQL_ACCEPTED, async function (req, res, next) {
+  router.get('/:account/collections/:collection', ServerUtils.SPARQL_ACCEPTED, cors(), async function (req, res, next) {
 
-    sparql.collections.getCollectionQuery(req.params.account, req.params.collection).then(function (result) {
-      if (result != null) {
-        res.status(200).send(result);
-      } else {
-        next('route');
+    try {
+      var collectionUri = UriUtils.createResourceUri([req.params.account, 'collections', req.params.collection]);
+
+      var queryOptions = {};
+      queryOptions.COLLECTION_URI = collectionUri;
+
+      var selectQuery = require('../../common/queries/sparql/get-collection-content.sparql');
+      selectQuery = exec.formatQuery(selectQuery, queryOptions);
+
+      var entry = await exec.executeSelect(selectQuery);
+
+      if (entry.length == 0) {
+        res.status(404).send();
+        return;
       }
-    }, function (err) {
+
+      var root = JSON.parse(unescape(entry[0].content)).root;
+
+      var sparqlQuery = QueryBuilder.build({
+        node: root,
+        template: QueryTemplates.DEFAULT_FILE_TEMPLATE,
+        resourceBaseUrl: process.env.DATABUS_RESOURCE_BASE_URL
+      });
+
+      res.status(200).send(sparqlQuery);
+    } catch (err) {
       console.log(err);
       res.status(500).send();
-    });
+    }
   });
 
-  router.get('/:account/collections/:collection', ServerUtils.NOT_HTML_ACCEPTED, function (req, res, next) {
+  router.get('/:account/collections/:collection', ServerUtils.NOT_HTML_ACCEPTED, cors(), function (req, res, next) {
 
     if (req.params.account.length < 4) {
       next('route');

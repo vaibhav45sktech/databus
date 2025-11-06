@@ -14,10 +14,19 @@ class DatabusUris {
   static DATABUS_PART = 'https://dataid.dbpedia.org/databus#Part';
   static DATABUS_VERSION = 'https://dataid.dbpedia.org/databus#Version';
   static DATABUS_GROUP = 'https://dataid.dbpedia.org/databus#Group';
+  static DATABUS_ACCOUNT = 'https://dataid.dbpedia.org/databus#Account';
   static DATABUS_ARTIFACT = 'https://dataid.dbpedia.org/databus#Artifact';
   static DATABUS_VERSION_PROPERTY = 'https://dataid.dbpedia.org/databus#version';
   static DATABUS_GROUP_PROPERTY = 'https://dataid.dbpedia.org/databus#group';
   static DATABUS_ACCOUNT_PROPERTY = 'https://dataid.dbpedia.org/databus#account';
+  static DATABUS_HAS_ARTIFACT = 'https://dataid.dbpedia.org/databus#hasArtifact';
+  static DATABUS_HAS_VERSION = 'https://dataid.dbpedia.org/databus#hasVersion';
+  static DATABUS_NAME = 'https://dataid.dbpedia.org/databus#name';
+  
+  static DATABUS_SECRETARY_PROPERTY = 'https://dataid.dbpedia.org/databus#secretary';
+  static DATABUS_SECRETARY = 'https://dataid.dbpedia.org/databus#Secretary';
+  static DATABUS_HAS_WRITE_ACCESS_TO = 'https://dataid.dbpedia.org/databus#hasWriteAccessTo';
+
   static DATABUS_ARTIFACT_PROPERTY = 'https://dataid.dbpedia.org/databus#artifact';
   static DATABUS_FORMAT = 'https://dataid.dbpedia.org/databus#format';
   static DATABUS_FORMAT_EXTENSION = 'https://dataid.dbpedia.org/databus#formatExtension';
@@ -87,6 +96,7 @@ class DatabusUris {
   static FOAF_PERSON = 'http://xmlns.com/foaf/0.1/Person';
   static FOAF_PRIMARY_TOPIC = 'http://xmlns.com/foaf/0.1/primaryTopic';
   static FOAF_MAKER = 'http://xmlns.com/foaf/0.1/maker';
+  static FOAF_ACCOUNT_NAME = 'http://xmlns.com/foaf/0.1/accountName';
   static FOAF_IMG = 'http://xmlns.com/foaf/0.1/img';
 
   // S4AC

@@ -89,7 +89,7 @@ instance.hasCollectionContent = function (content) {
 instance.getCollectionsByAccount = async function (accountName, onlyIssued) {
 
   let queryOptions = {
-    ACCOUNT_URI: `${UriUtils.createResourceUri([accountName])}#this`
+    ACCOUNT_URI: `${UriUtils.createResourceUri([accountName])}`
   };
   let query = exec.formatQuery(require('../sparql/get-collections-by-account.sparql'), queryOptions);
 
@@ -111,6 +111,7 @@ instance.getCollectionsByAccount = async function (accountName, onlyIssued) {
     bindings[e].title = unescape(bindings[e].title);
     bindings[e].abstract = unescape(bindings[e].abstract);
     bindings[e].description = unescape(bindings[e].description);
+    bindings[e].accountName = accountName;
     bindings[e].content = DatabusUtils.tryParseJson(unescape(bindings[e].content));
 
     result[bindings[e].uri] = bindings[e];

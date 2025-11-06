@@ -1,8 +1,9 @@
 const DatabusWebappUtils = require("../utils/databus-webapp-utils");
 const PublishSession = require("../publish/publish-session");
+const TabNavigation = require("../utils/tab-navigation");
 
 // Controller for the header section
-function PublishWizardController($scope, $http, $interval, focus, $q) {
+async function PublishWizardController($scope, $http, $interval, focus, $q, $location) {
 
   $scope.login = function () {
     window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
@@ -10,8 +11,18 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
 
   $scope.utils = new DatabusWebappUtils($scope);
 
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    '', 'group', 'artifact', 'version'
+  ]);
+
+
   $scope.createAccount = function () {
-    window.location = '/app/account';
+    window.location = '/app/user';
+  }
+
+  // Login function
+  $scope.login = function () {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
   }
 
   $scope.authenticated = data.auth.authenticated;
@@ -29,15 +40,30 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
     return;
   }
 
-  $scope.hasAccount = data.auth.info.accountName != undefined;;
+  let accounts = data.auth.info.accounts;
+  $scope.hasAccount = accounts != undefined && accounts.length > 0;
+
+  $scope.accounts = [];
+
+  for(let account of accounts) {
+    $scope.accounts.push({
+      accountName: account.accountName,
+      apiKeys: account.apiKeys
+    });
+  }
 
   if (!$scope.hasAccount) {
     return;
   }
 
+  // $scope.session = await PublishSession.createOrResume($http, data.auth.sub, $scope.accounts);
+
+  $scope.session = new PublishSession($http, $interval, $scope.accounts, $scope.apiKeys);
+
+}
   /**
    * Fetches existing groups and artifacts
-   */
+  
   $scope.getContentForAccount = async function (accountName) {
 
     $scope.isAccountDataLoading = true;
@@ -54,48 +80,24 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
       accountData.publisherUris.push(p.publisherUri);
     }
 
-    // Try to resume the session with the account data
-    var session = PublishSession.resume($http, accountData);
+    $scope.session = new PublishSession($http);
 
-    // Resume failed -> start new session
-    if (session == null) {
-      session = new PublishSession($http, null, accountData);
-    }
-
-    $scope.session = session;
+    /*
     $scope.$watch('session', function () {
       $scope.session.onChange();
     }, true);
 
     $scope.$apply();
+   
   }
 
-  $scope.getContentForAccount(data.auth.info.accountName);
+  // $scope.getContentForAccount(data.auth.info.accounts[0]);
 
   /**
    * LICENSES
-   */
+  
 
-  $scope.licenseQuery = "";
-
-  $interval(function () {
-    if ($scope.hasLicenseQueryChanged) {
-
-      $http.get(`/app/publish-wizard/licenses?limit=30&keyword=${$scope.licenseQuery}`).then(function(response) {
-        $scope.filteredLicenseList = response.data.results.bindings;
-      });
-
-      $scope.hasLicenseQueryChanged = false;
-    }
-
-  }, 300);
-
-  $scope.filterLicenses = function (licenseQuery) {
-    $scope.licenseQuery = licenseQuery;
-    $scope.hasLicenseQueryChanged = true;
-  }
-
-  $scope.filterLicenses("");
+  
 
   $scope.addFile = function (input) {
 
@@ -166,10 +168,11 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
     });
   }
 
+
   $scope.customPublish = async function () {
     var options = {}
     options.headers = {
-      'Accept': 'application/json, text/plain, */*',
+      'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json',
     }
 
@@ -190,7 +193,7 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
   $scope.publish = async function () {
     var options = {}
     options.headers = {
-      'Accept': 'application/json, text/plain, */*',
+      'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json',
     }
 
@@ -204,8 +207,9 @@ function PublishWizardController($scope, $http, $interval, focus, $q) {
         $scope.isPublishing = false;
         console.log(err);
       });
-  }
-}
+  } */
+
+
 
 
 module.exports = PublishWizardController;

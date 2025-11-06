@@ -1,0 +1,55 @@
+<div class="dropdown" ng-class="{ 'is-active': $ctrl.showDrop }" style="width: 100%; margin-bottom: 0;">
+  <!-- Background click blocker -->
+  <div style="position: fixed; top: 0; right: 0; left: 0; bottom: 0;"
+       ng-click="$ctrl.showDrop = false"
+       ng-if="$ctrl.showDrop">
+  </div>
+
+  <!-- Dropdown trigger -->
+  <div class="dropdown-trigger" style="width: 100%;">
+    <button class="button" style="width: 100%; display: flex; justify-content: space-between; align-items: center;"
+            ng-click="$ctrl.toggleDropdown()"
+            ng-disabled="$ctrl.loading || !$ctrl.items || !$ctrl.items.length">
+      
+      <!-- Left-aligned text -->
+      <span style="text-align: left; flex-grow: 1;">
+        {{ $ctrl.loading ? 'Loading...' : ($ctrl.selectedLabel || $ctrl.placeholder) }}
+      </span>
+
+      <!-- Right-aligned dropdown arrow -->
+      <span class="icon is-small" style="flex-shrink: 0;">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+
+
+  <!-- Dropdown menu -->
+  <div class="dropdown-menu" role="menu" style="width: 100%;" ng-show="$ctrl.showDrop">
+    <div class="dropdown-content" style="width: 100%;">
+
+      <!-- Search box -->
+      <div class="dropdown-item" style="width: 100%;">
+        <input class="input is-small"
+               type="text"
+               placeholder="Search..."
+               style="width: 100%; font-size: 1rem; padding: 0.5em;"
+               ng-model="$ctrl.searchQuery"
+               ng-change="$ctrl.updateFilteredItems()">
+      </div>
+
+      <!-- List -->
+      <div class="dropdown-item"
+           style="cursor: pointer; text-align: left;"
+           ng-repeat="item in $ctrl.filteredItems"
+           ng-click="$ctrl.selectItem(item)">
+        {{ item[$ctrl.displayProperty] }}
+      </div>
+
+      <div class="dropdown-item has-text-grey" ng-if="!$ctrl.filteredItems.length">
+        No matches found
+      </div>
+
+    </div>
+  </div>
+</div>

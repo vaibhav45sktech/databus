@@ -1,1 +1,1 @@
-SELECT * FROM apikeys WHERE sub="%SUB%"
+SELECT * FROM apikeys WHERE accountName="%ACCOUNTNAME%"

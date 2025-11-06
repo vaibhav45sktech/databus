@@ -1,6 +1,4 @@
-const rdfParser = require("rdf-parse").default;
 const fs = require('fs');
-var rp = require('request-promise');
 const NodeRSA = require('node-rsa');
 var JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
 var jsonld = require('jsonld');
@@ -10,6 +8,8 @@ const Constants = require('../../common/constants');
 var fileAnalyzer = require('../../common/file-analyzer');
 var GstoreHelper = require('../../common/utils/gstore-helper');
 var requestRdf = require('../../common/request-rdf');
+const GstoreResource = require('./gstore-resource');
+const pem2jwk = require('pem-jwk').pem2jwk;
 
 var tractateConfig = {
   header: 'Databus Tractate Version 1.0'
@@ -135,14 +135,12 @@ signer.validate = async function (canonicalized, proof) {
     var quads = [];
 
     if (isInternalWebId) {
-      // Parse the WebId URL
-      var webIdURL = new URL(publisherUri);
-      // Extract the pathname of the URL without leading slash
-      var repo = webIdURL.pathname.substring(1);
+      
       // Read the WebId directly from the Gstore to avoid access problems in private mode
+      var gstoreResource = new GstoreResource(publisherUri);
+      await gstoreResource.read();
 
-      var webIdJsonLd = await GstoreHelper.read(repo, Constants.DATABUS_FILE_WEBID);
-      var flattenedGraphs = await jsonld.flatten(webIdJsonLd);
+      var flattenedGraphs = await jsonld.flatten(gstoreResource.content);
 
       quads = await requestRdf.parseRdf(Constants.HTTP_CONTENT_TYPE_JSONLD, JSON.stringify(flattenedGraphs))
 
@@ -201,6 +199,13 @@ signer.sign = function (canonicalized) {
 
   return signature;
 };
+
+signer.getModulus = function() {
+  var pkeyPEM = fs.readFileSync(__dirname + '/../../../keypair/public-key.pem', 'utf-8');
+  var publicKeyInfo = pem2jwk(pkeyPEM);
+  let buff = Buffer.from(publicKeyInfo.n, 'base64');
+  return buff.toString('hex');
+}
 
 
 

@@ -1,3 +1,4 @@
+const DatabusCollectionManager = require("../collections/databus-collection-manager");
 const DatabusUtils = require("../utils/databus-utils");
 const DatabusWebappUtils = require("../utils/databus-webapp-utils");
 const TabNavigation = require("../utils/tab-navigation");
@@ -5,6 +6,15 @@ const TabNavigation = require("../utils/tab-navigation");
 var DEFAULT_IMAGE = "https://picsum.photos/id/223/320/320";
 
 // Controller for the header section
+
+/**
+ * 
+ * @param {*} $scope 
+ * @param {*} $http 
+ * @param {*} $location 
+ * @param {DatabusCollectionManager} collectionManager 
+ * @returns 
+ */
 function AccountPageController($scope, $http, $location, collectionManager) {
 
   $scope.collectionManager = collectionManager;
@@ -13,15 +23,13 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   // Pick up the profile data
   $scope.auth = data.auth;
   $scope.location = $location;
-
-  $scope.profileData = data.profile;
+  $scope.account = data.account;
 
   // Exit if there is no profile
-  if ($scope.profileData == undefined) {
+  if ($scope.account == undefined) {
     return;
   }
 
-  $scope.profileData.isOwn = $scope.auth.authenticated && $scope.auth.info.accountName == $scope.profileData.accountName;
 
   // Create a tab navigation object for the tab navigation with locato
   $scope.tabNavigation = new TabNavigation($scope, $location, [
@@ -30,32 +38,34 @@ function AccountPageController($scope, $http, $location, collectionManager) {
 
   // Make some util functions available in the template
   $scope.utils = new DatabusWebappUtils($scope);
+  $scope.accountName = $scope.utils.getAccountName();
+  $scope.account.isOwn = $scope.accountName != null; //.auth.authenticated && $scope.auth.info.accountName == $scope.account.accountName;
 
 
   $scope.dataSearchInput = '';
   $scope.dataSearchSettings = {
     minRelevance: 0.01,
     maxResults: 10,
-    placeholder: `Search ${$scope.profileData.accountName}'s data...`,
+    placeholder: `Search ${$scope.account.accountName}'s data...`,
     resourceTypes: ['Group', 'Artifact'],
-    filter: `&publisher=${$scope.profileData.accountName}&typeNameWeight=0`
+    filter: `&publisher=${$scope.account.accountName}&typeNameWeight=0`
   };
 
   $scope.collectionSearchInput = '';
   $scope.collectionSearchSettings = {
     minRelevance: 0.01,
     maxResults: 10,
-    placeholder: `Search ${$scope.profileData.accountName}'s collections...`,
+    placeholder: `Search ${$scope.account.accountName}'s collections...`,
     resourceTypes: ['Collection'],
-    filter: `&publisher=${$scope.profileData.accountName}&publisherWeight=0&typeNameWeight=0`
+    filter: `&publisher=${$scope.account.accountName}&publisherWeight=0&typeNameWeight=0`
   };
 
-  
+
   // Wait for additional artifact data to arrive
   $scope.publishedData = {};
   $scope.publishedData.isLoading = true;
 
-  $http.get(`/app/account/content?account=${encodeURIComponent($scope.profileData.accountName)}`)
+  $http.get(`/app/account/content?account=${encodeURIComponent($scope.account.accountName)}`)
     .then(function (response) {
 
       $scope.publishedData.isLoading = false;
@@ -95,7 +105,7 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   $scope.statsData = {};
   $scope.statsData.isLoading = true;
 
-  $http.get(`/app/account/stats?account=${encodeURIComponent($scope.profileData.accountName)}`).then(function (response) {
+  $http.get(`/app/account/stats?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {
     $scope.statsData.stats = response.data;
     $scope.statsData.isLoading = false;
   }, function (err) {
@@ -106,7 +116,7 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   $scope.activityData = {};
   $scope.activityData.isLoading = true;
 
-  $http.get(`/app/account/activity?account=${encodeURIComponent($scope.profileData.accountName)}`).then(function (response) {
+  $http.get(`/app/account/activity?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {
     $scope.activityData.entries = response.data;
     $scope.activityData.isLoading = false;
   }, function (err) {
@@ -116,8 +126,8 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   $scope.collectionsData = {};
   $scope.collectionsData.isLoading = true;
 
-  if (!$scope.profileData.isOwn) {
-    $http.get(`/app/account/collections?account=${encodeURIComponent($scope.profileData.accountName)}`)
+  if (!$scope.account.isOwn) {
+    $http.get(`/app/account/collections?account=${encodeURIComponent($scope.account.accountName)}`)
       .then(function (response) {
 
         $scope.collectionsData.collections = response.data;
@@ -126,13 +136,38 @@ function AccountPageController($scope, $http, $location, collectionManager) {
       }, function (err) {
         console.log(err);
       });
+  } else {
+
+    function onCollectionManagerInitialized() {
+      for (let guid in $scope.collectionManager.local) {
+        let collection = $scope.collectionManager.local[guid];
+
+        if(collection.accountName == undefined && collection.uri != undefined) {
+          collection.accountName = DatabusUtils.getFirstSegment(collection.uri);
+        }
+
+        if (collection.accountName == $scope.accountName) {
+          $scope.collectionList.push(collection);
+        }
+      }
+    }
+
+    $scope.collectionList = [];
+
+    if(collectionManager.isInitialized) {
+      onCollectionManagerInitialized();
+    } else {
+      collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);
+    }
   }
 
+
+
   $scope.getImageUrl = function () {
-    if ($scope.profileData.imageUrl == undefined) {
+    if ($scope.account.imageUrl == undefined) {
       return DEFAULT_IMAGE;
     } else {
-      return $scope.profileData.imageUrl;
+      return $scope.account.imageUrl;
     }
   }
 
@@ -144,13 +179,13 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   $scope.collectionSearch = {};
   $scope.collectionSearch.sortVisible = false;
   $scope.collectionSearch.sortProperty = 'title';
-  $scope.collectionSearch.sortProperties =  [ 
+  $scope.collectionSearch.sortProperties = [
     { key: 'title', label: 'Title' },
     { key: 'issued', label: 'Issued Date' },
   ];
   $scope.collectionSearch.sortReverse = false;
-  $scope.collectionSearch.toggleSort = function(value) {
-    if($scope.collectionSearch.sortProperty == value) {
+  $scope.collectionSearch.toggleSort = function (value) {
+    if ($scope.collectionSearch.sortProperty == value) {
       $scope.collectionSearch.sortReverse = !$scope.collectionSearch.sortReverse;
     } else {
       $scope.collectionSearch.sortProperty = value;
@@ -163,25 +198,25 @@ function AccountPageController($scope, $http, $location, collectionManager) {
    */
   $scope.onEditCollectionClicked = function (collection) {
     $scope.collectionManager.setActive(collection.uuid);
-    window.location.href = '/app/collection-editor';
+    window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;
   }
 
   /**
    * Create new collection
    */
   $scope.createNewCollection = function () {
-    $scope.collectionManager.createNew('New Collection', 'Replace this description with a description of your choice.',
-      function (success) {
-        window.location.href = '/app/collection-editor';
+    $scope.collectionManager.createNew($scope.accountName, 'New Collection', 'Replace this description with a description of your choice.',
+      function (collection) {
+        window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;
       });
   }
 
   /**
    * Create a copy of the clicked collection
    */
-  $scope.createCopy = function(collection) {
-    $scope.collectionManager.createCopy(collection);
-    window.location.href = '/app/collection-editor';
+  $scope.createCopy = function (collection) {
+    let copy = $scope.collectionManager.createCopy(collection);
+    window.location.href = `/app/collection-editor?uuid=${copy.uuid}`;
   }
 
 
@@ -229,11 +264,11 @@ function AccountPageController($scope, $http, $location, collectionManager) {
   }
 
   $scope.refreshFeaturedContent = function () {
-    if ($scope.profileData.featuredContent == undefined) {
+    if ($scope.account.featuredContent == undefined) {
       return;
     }
 
-    var featuredContentUris = $scope.profileData.featuredContent.split('\n');
+    var featuredContentUris = $scope.account.featuredContent.split('\n');
     $scope.featuredContent = [];
 
     for (var f in featuredContentUris) {
@@ -244,6 +279,8 @@ function AccountPageController($scope, $http, $location, collectionManager) {
       }
     }
   }
+
+  /** ACCOUNT MANAGEMENT FOR OWNER */
 
 }
 

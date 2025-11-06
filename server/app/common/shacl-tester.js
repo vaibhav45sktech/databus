@@ -11,6 +11,7 @@ const path = require("path");
 var jsonld = require('jsonld');
 const JsonldUtils = require('../../../public/js/utils/jsonld-utils');
 const DatabusUris = require('../../../public/js/utils/databus-uris');
+const DatabusUtils = require('../../../public/js/utils/databus-utils');
 
 var databaseUri = process.env.DATABUS_DATABASE_URL || Constants.DEFAULT_DATABASE_URL;
 
@@ -22,6 +23,7 @@ var instance = {}
 instance.validateJsonld = async function(rdf, shaclFile) {
 
   try {
+
 
     var options = {
       formData: {
@@ -44,10 +46,10 @@ instance.validateJsonld = async function(rdf, shaclFile) {
     var conforms = validationReport[DatabusUris.SHACL_CONFORMS][0][DatabusUris.JSONLD_VALUE];
     var messages = [];
 
-    if(!conforms) {
+    var conforms = DatabusUtils.resemblesTrue(conforms);
 
+    if(!conforms) {
       var validationResults = JsonldUtils.getTypedGraphs(expandedRes, DatabusUris.SHACL_VALIDATION_RESULT);
-    
       for(var result of validationResults) {
         var message = result[DatabusUris.SHACL_RESULT_MESSAGE][0][DatabusUris.JSONLD_VALUE];
         messages.push(message);
@@ -58,7 +60,6 @@ instance.validateJsonld = async function(rdf, shaclFile) {
 
   } catch (err) {
 
-    console.log(err);
     if (err.response == undefined) {
       return { isSuccess: false, message: err };
     }
@@ -67,6 +68,9 @@ instance.validateJsonld = async function(rdf, shaclFile) {
   }
 }
 
+instance.validateVersionInputRDF = async function (rdf) {
+  return await instance.validateJsonld(rdf, './shacl/version-input.shacl');
+}
 
 instance.validateGroupRDF = async function (rdf) {
   return await instance.validateJsonld(rdf, './res/shacl/group.shacl');

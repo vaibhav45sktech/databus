@@ -16,7 +16,4 @@ module.exports = function (router, protector, locals, webdav) {
     var manifest = require('../../manifest.ttl');
     res.status(200).send(`${manifest}`);
   });
-  
-
-
 }

@@ -3,6 +3,12 @@ const DatabusUris = require("./databus-uris");
 
 class JsonldUtils {
 
+  static refTo(uri) {
+    var result = {};
+    result[DatabusUris.JSONLD_ID] = uri;
+    return result;
+  }
+
   static getTypedGraph(graphs, graphType) {
 
     for (var g in graphs) {
@@ -34,6 +40,16 @@ class JsonldUtils {
 
     graph[property].push(entry);
   }
+
+  static getGraphById = function (graphs, id) {
+    return graphs.find(g => g[DatabusUris.JSONLD_ID] === id);
+  };
+
+  static getRefArrayProperty = function (graph, propertyUri) {
+    const val = graph[propertyUri];
+    if (!val) return [];
+    return val.map(v => v[DatabusUris.JSONLD_ID]);
+  };
 
   static getProperty(graph, property) {
     if (graph[property] == undefined) {
@@ -74,6 +90,45 @@ class JsonldUtils {
     return null;
   }
 
+  static getFirstProperty(graph, property) {
+    if (graph[property] == undefined) {
+      return null;
+    }
+
+    const values = graph[property];
+
+    if (values.length === 0) {
+      return null;
+    }
+
+    if (values.length === 1) {
+      const value = values[0];
+
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+
+      return null;
+    }
+
+    for (const value of values) {
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+    }
+
+    return null;
+  }
+
+
   static getGraphById(graphs, id) {
     for (var g in graphs) {
       var graph = graphs[g];
@@ -84,8 +139,6 @@ class JsonldUtils {
     }
 
     return null;
-
-
   }
 
   static getTypedGraphs(graphs, graphType) {
@@ -133,14 +186,27 @@ class JsonldUtils {
     return obj[0];
   }
 
-  static getFirstObjectUri(graph, key) {
-    var obj = graph[key];
+  static getFirstObjectUri(graph, property) {
+    // Get the object    
+    const obj = graph[property];
 
-    if (obj == undefined || obj.length < 1) {
+    // Not found -> null
+    if (!obj) {
       return null;
     }
 
-    return obj[0][DatabusUris.JSONLD_ID];
+    // If it is an array...
+    if (Array.isArray(obj)) {
+      for (const item of obj) {
+        if (item && typeof item === 'object' && DatabusUris.JSONLD_ID in item) {
+          return item[DatabusUris.JSONLD_ID];
+        }
+      }
+    } else if (typeof obj === 'object' && DatabusUris.JSONLD_ID in obj) {
+      return obj[DatabusUris.JSONLD_ID];
+    }
+
+    return null;
   }
 }
 

@@ -1,3 +1,4 @@
+const AppJsonFormatter = require("../utils/app-json-formatter");
 const DatabusUris = require("../utils/databus-uris");
 const DatabusUtils = require("../utils/databus-utils");
 const DatabusCollectionUtils = require("./databus-collection-utils");
@@ -25,21 +26,30 @@ class DatabusCollectionManager {
   //          Ja? -> Lade async, uberschreibe remote entry
   //          Nein? -> Lade async, setze remote und local entry
 
+  _isInitialized = false;
+  _initSubscribers = [];
+
   constructor($http, $interval, storageKey) {
 
     try {
-      this.storageKeyPrefix = `${storageKey}_${encodeURI(DATABUS_RESOURCE_BASE_URL)}`;
+      this.storageKeyPrefix = `${encodeURI(DATABUS_RESOURCE_BASE_URL)}`;
       // window.sessionStorage.removeItem(`${this.storageKeyPrefix}_session`);
-  
+
       this.sessionInfo = JSON.parse(window.sessionStorage.getItem(`${this.storageKeyPrefix}_session`));
-  
+
       if (this.sessionInfo == undefined) {
         this.sessionInfo = {};
       }
-    } catch(err) {
+
+      window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));
+      this.storageKey = `${this.storageKeyPrefix}__collections`;
+      this.local = this.loadCollectionsFromStorage(true);
+      this.remote = {};
+
+    } catch (err) {
       this.sessionInfo = {};
     }
-   
+
 
     this.http = $http;
     this.interval = $interval;
@@ -54,20 +64,71 @@ class DatabusCollectionManager {
     return this.sessionInfo != undefined ? this.sessionInfo.accountName : undefined;
   }
 
-  async tryInitialize(accountName, loadFromServer) {
+  getLocalCollectionByUri(uri) {
+    for (let guid in this.local) {
+      let localCollection = this.local[guid];
 
-    if(accountName == undefined) {
+      if (localCollection.uri == uri) {
+        return localCollection;
+      }
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Set up the collection mananger for a specific account.
+   * 1) Load ALL the collections of this account from the remote
+   * 2) Save to remote map
+   * 3) Create local working copies if local has no entry for remote collection
+   * @param {*} accountName 
+   * @returns 
+   */
+  async tryInitialize(accountName) {
+
+    // Needs an account name to set up
+    if (accountName == undefined) {
       return;
     }
 
+    // this.remote = this.loadCollectionsFromStorage(false);
     this.sessionInfo.accountName = accountName;
-    window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));
 
-    this.storageKey = `${this.storageKeyPrefix}__${accountName}`;
-    this.remote = this.loadCollectionsFromStorage(false);
-    this.local = this.loadCollectionsFromStorage(true);
+
+
+    let collectionListResponse = await this.http.get(`/app/account/collections?account=${encodeURIComponent(accountName)}`);
+    let remoteCollections = collectionListResponse.data;
+
+
+    let wasLocalCollectionAdded = false;
+
+    for (let collectionUri in remoteCollections) {
+      let remoteCollection = remoteCollections[collectionUri];
+      let localCollection = this.getLocalCollectionByUri(collectionUri);
+
+      // Create local copy if not exist
+      if (localCollection == undefined) {
+        localCollection = JSON.parse(JSON.stringify(remoteCollection));
+        localCollection.uuid = DatabusCollectionUtils.uuidv4();
+        this.local[localCollection.uuid] = localCollection;
+        wasLocalCollectionAdded = true;
+      }
+
+      this.remote[localCollection.uuid] = remoteCollection;
+      this.remote[localCollection.uuid].isHidden = this.remote[localCollection.uuid].issued == undefined;
+
+      if(this.local[localCollection.uuid].isHidden == undefined) {
+        this.local[localCollection.uuid].isHidden = this.remote[localCollection.uuid].isHidden;
+      }
+    }
+
+    if(wasLocalCollectionAdded) {
+      this.saveLocally();
+    }
+
     this.findActive();
 
+    /*
 
     if (loadFromServer) {
       try {
@@ -79,6 +140,7 @@ class DatabusCollectionManager {
         console.log(e);
       }
     }
+    */
 
     var self = this;
 
@@ -103,6 +165,31 @@ class DatabusCollectionManager {
         }
       }
     }, 300);
+
+
+    this._isInitialized = true;
+    this._notifyInitialized();
+  }
+
+  get isInitialized() {
+    return this._isInitialized;
+  }
+
+  subscribeOnInitialized(callback) {
+    if (this._isInitialized) {
+      callback();
+    } else {
+      this._initSubscribers.push(callback);
+    }
+  }
+
+  _notifyInitialized() {
+    this._initSubscribers.forEach(cb => cb());
+    this._initSubscribers = [];
+  }
+
+  get hasAccountName() {
+    return this.accountName != null;
   }
 
   // Setze das remote array und update local array
@@ -184,36 +271,31 @@ class DatabusCollectionManager {
     }
     */
 
+
+
+    // QueryNode.assignParents(this.activeCollection.content.root);
+
+    // Save locally in case we created any local working copies
+
+    this.saveLocally();
+
     // Call this always in header-controller.js
     if (this.activeCollection == null) {
       // select first or create a new draft if we don't have any local drafts yet
       this.selectFirstOrCreate();
     }
 
-    // QueryNode.assignParents(this.activeCollection.content.root);
-
-    // Save locally in case we created any local working copies
-    this.saveLocally();
-
-    if (this.initialized !== undefined) {
-      this.initialized();
-    }
-
-
   }
 
 
 
   findActive() {
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized1.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized1.";
     if (this.activeCollection == undefined) {
       this.selectFirstOrCreate();
     }
   }
 
-  get isInitialized() {
-    return this.accountName != null;
-  }
 
   loadCollectionsFromStorage(local = true) {
     let collections;
@@ -231,6 +313,8 @@ class DatabusCollectionManager {
     for (let identifier in collections) {
       if (identifier === undefined || identifier === "undefined") {
         delete (collections[identifier]);
+      } else if (collections[identifier].accountName == null) {
+        delete (collections[identifier]);
       } else {
         //enable Collection Utils for all collections in local storage
         collections[identifier] = new DatabusCollectionWrapper(collections[identifier]);
@@ -243,7 +327,7 @@ class DatabusCollectionManager {
   /**
    * Selects the first collection in the local list or creates a new draft
    */
-  selectFirstOrCreate() {
+  selectFirstOrCreate(accountName) {
 
     for (let identifier in this.local) {
       this.setActive(identifier);
@@ -252,12 +336,12 @@ class DatabusCollectionManager {
 
     // Create new collection if current is null
     if (this.activeCollection == null) {
-      this.createNew("Unnamed Collection", "", function (response) { });
+      this.createNew(accountName, "Unnamed Collection", "", function (response) { });
     }
   }
 
   setActive(uuid) {
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized1.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized1.";
 
     this.convertCollectionContentToTree(uuid);
 
@@ -326,9 +410,10 @@ class DatabusCollectionManager {
   }
 
   createSnapshot(source) { // convert each version="latest" to actual latest version
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     let collection = DatabusCollectionWrapper.createNew();
+    collection.accountName = this.accountName;
     collection.content = DatabusCollectionUtils.createCleanCopy(source.content);
 
     let root = collection.content.root;
@@ -378,7 +463,7 @@ class DatabusCollectionManager {
   }
 
   saveLocally() {
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     if (this.activeCollection != null) {
       this.activeCollection.hasLocalChanges = this.hasLocalChanges(this.activeCollection);
@@ -388,6 +473,12 @@ class DatabusCollectionManager {
     this.currentHash = hash;
 
     window.localStorage.setItem(`${this.storageKey}_hash`, hash);
+
+    for (let identifier in this.local) {
+      if (this.local[identifier].accountName == null) {
+        delete (this.local[identifier]);
+      }
+    }
 
     try {
       //write local collections to local storage
@@ -426,7 +517,7 @@ class DatabusCollectionManager {
 
   discardLocalChanges() {
 
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     let uuid = this.activeCollection.uuid;
 
@@ -469,8 +560,8 @@ class DatabusCollectionManager {
 
 
 
-  createNew(title, description, callback) {
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+  createNew(accountName, title, description, callback) {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     let reg = /^\w+[\w\s]*$/;
 
@@ -479,17 +570,17 @@ class DatabusCollectionManager {
       return;
     }
 
-    let collection = DatabusCollectionWrapper.createNew(title, description, DATABUS_RESOURCE_BASE_URL);
+    let collection = DatabusCollectionWrapper.createNew(title, description, DATABUS_RESOURCE_BASE_URL, accountName);
 
     this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
     this.setActive(collection.uuid);
     this.saveLocally();
 
-    callback(true);
+    callback(collection);
   }
 
   createDraft(callback) {
-    if (!this.isInitialized) {
+    if (!this.hasAccountName) {
       return;
     }
 
@@ -502,13 +593,14 @@ class DatabusCollectionManager {
   }
 
   createCopy(source) {
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     let collection = DatabusCollectionWrapper.createNew();
     collection.content = DatabusCollectionUtils.createCleanCopy(source.content);
     collection.title = `Copy of ${source.title}`;
     collection.abstract = source.abstract;
     collection.description = source.description;
+    collection.accountName = this.accountName;
 
     this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
     this.saveLocally();
@@ -555,7 +647,7 @@ class DatabusCollectionManager {
 
   async changeCollection(username, collectionUri) {
     try {
-      if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
       this.saveLocally();
 
@@ -600,8 +692,10 @@ class DatabusCollectionManager {
 
       try {
 
-        var relativeUri = new URL(collectionUri).pathname;
-        response = await this.http.put(relativeUri, collectionJsonLd);
+        // var relativeUri = new URL(collectionUri).pathname;
+        // response = await this.http.put(relativeUri, collectionJsonLd);
+
+        response = await this.http.post('/api/register', collectionJsonLd);
 
       } catch (errResponse) {
         console.log(errResponse);
@@ -639,6 +733,7 @@ class DatabusCollectionManager {
       this.local[pushIdentifier].hasLocalChanges = false;
       this.local[pushIdentifier].modified = remoteGraph.modified;
       this.local[pushIdentifier].issued = remoteGraph.issued;
+      this.local[pushIdentifier].isHidden = remoteGraph.issued == null;
       // this.local[pushIdentifier].created = remoteGraph.created;
 
       //Update remote data
@@ -688,7 +783,7 @@ class DatabusCollectionManager {
    */
   async fetchCollection(uri) {
     try {
-      if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
       var req = {
         method: 'GET',
@@ -713,7 +808,7 @@ class DatabusCollectionManager {
 
   async deleteCollection(username, collectionTag) {
     try {
-      if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
 
 
@@ -745,7 +840,7 @@ class DatabusCollectionManager {
    */
   async unpublishActiveCollection() {
 
-    if (!this.isInitialized) throw "Databus-Collection-Manager is not initialized.";
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
 
     if (this.activeCollection.isDraft) {
       throw "Cannot unpublish an unpublished draft";

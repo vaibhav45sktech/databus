@@ -25,38 +25,56 @@ module.exports = async function getLinkedData(req, res, next, resourceUri, templ
     accept = HttpStrings.CONTENT_TYPE_JSONLD;
   }
 
-  if(accept == HttpStrings.CONTENT_TYPE_JSONLD) {
+  let firstAccept = accept;
+
+  let indexOfComma = accept.indexOf(",");
+
+  if (indexOfComma >= 0) {
+    firstAccept = accept.substring(0, indexOfComma);
+  }
+
+  // console.log(firstAccept);
+  //  console.log(HttpStrings.CONTENT_TYPE_JSONLD);
+
+
+  if (firstAccept == HttpStrings.CONTENT_TYPE_JSONLD) {
     // Handle JSONLD separately
     var jsonld = await getJsonld(resourceUri, template, formatting);
 
-    if(jsonld != null) {
+    if (jsonld != null) {
       res.set(HttpStrings.HEADER_CONTENT_TYPE, HttpStrings.CONTENT_TYPE_JSONLD);
       res.status(200).send(`${JSON.stringify(jsonld, null, 3)}\n`);
       return;
     }
-  } else {
-
-    // Format the query
-    var query = ServerUtils.formatQuery(template, {
-      RESOURCE_URI: resourceUri
-    });
-
-    // Prepare OPTIONS for database request
-    var headers = {};
-    headers[HttpStrings.HEADER_CONTENT_TYPE] = HttpStrings.CONTENT_TYPE_FORM_URL_ENCODED;
-    headers[HttpStrings.HEADER_ACCEPT] = accept;
-
-    var options = {
-      method: HttpStrings.METHOD_POST,
-      uri: `${process.env.DATABUS_DATABASE_URL}/sparql?timeout=10000`,
-      body: `query=${encodeURIComponent(query)}`,
-      headers: headers,
-    };
-
-    // Pipe the request
-    request(options).pipe(res);
-    return;
   }
 
-  res.status(500).send('Encountered a database error when trying to fetch the resource.');
+  // Format the query
+  var query = ServerUtils.formatQuery(template, {
+    RESOURCE_URI: resourceUri
+  });
+
+  var headers = {};
+  headers[HttpStrings.HEADER_CONTENT_TYPE] = HttpStrings.CONTENT_TYPE_FORM_URL_ENCODED;
+  headers[HttpStrings.HEADER_ACCEPT] = accept;
+
+  var options = {
+    method: HttpStrings.METHOD_POST,
+    uri: `${process.env.DATABUS_DATABASE_URL}/sparql?timeout=10000`,
+    body: `query=${encodeURIComponent(query)}`,
+    headers: headers,
+  };
+
+  request(options, function (error, response, body) {
+    if (error) {
+      res.status(500).send(error.message);
+      return;
+    }
+
+    if (!body.endsWith('\n')) {
+      body += '\n';
+    }
+
+    res.set(response.headers);
+    res.send(body);
+  });
 }

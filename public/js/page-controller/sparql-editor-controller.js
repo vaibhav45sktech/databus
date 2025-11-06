@@ -2,7 +2,7 @@ var DatabusWebappUtils = require("../utils/databus-webapp-utils");
 const SparqlExamples = require("../utils/sparql-examples");
 
 // Controller for the header section
-function SparqlEditorController($scope, $http) {
+function SparqlEditorController($scope, $http, $location) {
 
 
   $scope.storageKey = `${DATABUS_RESOURCE_BASE_URL}/sparql`;
@@ -15,21 +15,37 @@ function SparqlEditorController($scope, $http) {
   $scope.editor = {};
 
 
+
+  $scope.$on('$locationChangeSuccess', function () {
+    var hash = $location.hash();
+
+    if (hash && hash.startsWith('query')) {
+      var tabIndex = parseInt(hash.replace('query', '')) - 1;
+
+      // Only change if the tab exists and is different from current
+      if (!isNaN(tabIndex) &&
+        tabIndex >= 0 &&
+        tabIndex < $scope.queryData.pages.length &&
+        $scope.queryData.activeTab !== tabIndex) {
+        $scope.goToTab(tabIndex);
+        $scope.$applyAsync();
+      }
+    }
+  });
+
   $scope.editor.exampleQueries = {};
   $scope.editor.exampleQueries.label = "Databus Example Queries";
   $scope.editor.exampleQueries.children = [];
 
   var simpleQueries = {
     label: "Simple Queries",
-    children : []
+    children: []
   };
-
 
   var intermediateQueries = {
     label: "Intermediate Queries",
-    children : []
+    children: []
   };
-
 
   simpleQueries.children.push({
     label: "Select all Databus Groups",
@@ -113,9 +129,9 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
   $scope.editor.exampleQueries.children.push(simpleQueries);
   $scope.editor.exampleQueries.children.push(intermediateQueries);
 
-  $scope.onExampleQueryClicked = function(node) {
+  $scope.onExampleQueryClicked = function (node) {
 
-    if(node.query == null) {
+    if (node.query == null) {
       return;
     }
 
@@ -130,6 +146,9 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
   $scope.goToTab = function (index) {
     $scope.queryData.activeTab = index;
     $scope.saveToStorage();
+
+    $location.hash(`query${index + 1}`);
+
 
     var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
 
@@ -244,9 +263,21 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
     }
 
   }
+
+
   catch (e) {
     // Could not parse query data, create new!
     $scope.initialize();
+  }
+
+  var initialHash = $location.hash();
+  if (initialHash && initialHash.startsWith('query')) {
+    var initialTab = parseInt(initialHash.replace('query', '')) - 1;
+    if (!isNaN(initialTab) &&
+      initialTab >= 0 &&
+      initialTab < $scope.queryData.pages.length) {
+      $scope.queryData.activeTab = initialTab;
+    }
   }
 
   $scope.editor.query = $scope.editor.exampleQueries[0];
@@ -255,16 +286,24 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
 
     var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
 
-    var res = await $http.post(queryPage.endpoint, { query: queryPage.query });
+    try {
 
-    if ($scope.resultCache == null) {
-      $scope.resultCache = {};
+      var res = await $http.post(queryPage.endpoint, { query: queryPage.query });
+
+      if ($scope.resultCache == null) {
+        $scope.resultCache = {};
+      }
+
+      $scope.resultCache[queryPage.name] = res.data;
+      $scope.saveResultCache();
+
+      delete queryPage.err;
+      $scope.editor.result = res.data;
+    } catch (err) {
+      console.log(err);
+      queryPage.err = err;
     }
 
-    $scope.resultCache[queryPage.name] = res.data;
-    $scope.saveResultCache();
-
-    $scope.editor.result = res.data;
     $scope.$apply();
   }
 

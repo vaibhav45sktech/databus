@@ -31,8 +31,8 @@ databus:Group a owl:Class ;
 	sh:property [
 	  sh:path [ sh:inversePath rdf:type ] ;
 	    sh:nodekind sh:IRI ;
-      sh:pattern "/[a-zA-Z0-9\\-_]{4,}/[a-zA-Z0-9\\-_\\.]{3,}$" ;
-      sh:message "IRI for databus:Group must match /[a-zA-Z0-9\\-_]{4,}/[a-zA-Z0-9\\-_\\.]{3,}$"@en ;
+      sh:pattern "^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}\\/[\\w+.-]{3,}$" ;
+      sh:message "IRI for databus:Group must be a 2-segment URI and match ^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}\\/[\\w+.-]{3,}$"@en ;
 	] .
 ```
 ```javascript
@@ -75,9 +75,10 @@ dct:title
         sh:qualifiedValueShape [ sh:datatype xsd:string ] ;
 		sh:qualifiedMaxCount 1 ;		
     ] ;
-        sh:property [
+	sh:property [
 		sh:path dct:title ;
 		sh:severity sh:Violation ;
+	    sh:maxLength 300 ;
 		sh:message "dct:title can be used with language tag, but each language only once."@en ;
 		sh:uniqueLang true ;
 	] . 

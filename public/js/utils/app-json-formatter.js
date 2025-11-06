@@ -8,48 +8,109 @@ const JsonldUtils = require("./jsonld-utils");
  */
 class AppJsonFormatter {
 
-  static createAccountData(resourceBaseUrl, accountName, accountLabel, accountStatus, accountImage) {
-
-    var accountUri = `${resourceBaseUrl}/${accountName}`;
-    var profileUri = `${resourceBaseUrl}/${accountName}${DatabusConstants.WEBID_DOCUMENT}`;
-    var personUri = `${resourceBaseUrl}/${accountName}${DatabusConstants.WEBID_THIS}`;
-
-    var accountJsonLd = {};
+  static async createAccountGraphs(uri, name, label, img, secretaries, status) {
+    var name = UriUtils.uriToName(uri);
+  
+    var rsaKeyGraph = {};
+    rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;
+    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;
+    rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();
+    rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;
+  
+    var personUri = `${uri}${DatabusConstants.WEBID_THIS}`;
 
     var personGraph = {};
     personGraph[DatabusUris.JSONLD_ID] = personUri;
-    personGraph[DatabusUris.JSONLD_TYPE] = [
-      DatabusUris.FOAF_PERSON,
-      DatabusUris.DBP_DBPEDIAN
+    personGraph[DatabusUris.JSONLD_TYPE] = [ DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN ];
+    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(uri);
+    personGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = uri;
+    personGraph[DatabusUris.CERT_KEY] = [ rsaKeyGraph ];
+    personGraph[DatabusUris.FOAF_NAME] = label;
+
+    if(img != null) {
+      personGraph[DatabusUris.FOAF_IMG] = img;
+    }
+
+     if(status != null) {
+      personGraph[DatabusUris.FOAF_STATUS] = status;
+    }
+
+    var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;
+  
+    var profileDocumentGraph = {};
+    profileDocumentGraph[DatabusUris.JSONLD_ID] = profileUri;
+    profileDocumentGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;
+    profileDocumentGraph[DatabusUris.FOAF_MAKER] = JsonldUtils.refTo(personUri);
+    profileDocumentGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = JsonldUtils.refTo(personUri);
+  
+    var accountGraph = {}
+    accountGraph[DatabusUris.JSONLD_ID] = uri;
+    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
+    accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;
+    accountGraph[DatabusUris.DATABUS_NAME] = name;
+
+    if(secretaries != null) {
+
+      accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];
+
+      for(var secretary of secretaries) {
+
+        let secretaryAccountUri = `${secretary.accountName}`;
+
+        let secretaryGraph = {};
+        secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
+        secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);
+
+        if(secretary.hasWriteAccessTo != undefined) {
+          secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];
+
+          for(var writeAccess of secretary.hasWriteAccessTo) {
+            secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));
+          }
+        }
+
+        accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY].push(secretaryGraph);
+      }
+    }
+
+    let expandedGraphs = [
+      accountGraph,
+      personGraph,
+      profileDocumentGraph
     ];
+    
+    return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
+  }
+  
+  static createAccountData(accountUri, accountLabel, accountStatus, accountImage) {
+
+    var personUri = `${accountUri}${DatabusConstants.WEBID_THIS}`;
+
+    var accountJsonLd = {};
+
+    var accountGraph = {};
+    accountGraph[DatabusUris.JSONLD_ID] = accountUri;
+    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
+
+    var personGraph = {};
+    personGraph[DatabusUris.JSONLD_ID] = personUri;
+    personGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSON;
     personGraph[DatabusUris.FOAF_NAME] = accountLabel;
+    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(accountUri);
 
     if (accountStatus != null) {
       personGraph[DatabusUris.FOAF_STATUS] = accountStatus;
     }
 
-    personGraph[DatabusUris.FOAF_ACCOUNT] = {};
-    personGraph[DatabusUris.FOAF_ACCOUNT][DatabusUris.JSONLD_ID] = accountUri;
-
     if (accountImage != null) {
-      personGraph[DatabusUris.FOAF_IMG] = {};
-      personGraph[DatabusUris.FOAF_IMG][DatabusUris.JSONLD_ID] = accountImage;
+      personGraph[DatabusUris.FOAF_IMG] = JsonldUtils.refTo(accountImage);
     }
 
-    var profileGraph = {};
-    profileGraph[DatabusUris.JSONLD_ID] = profileUri;
-    profileGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;
-    profileGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = {};
-    profileGraph[DatabusUris.FOAF_PRIMARY_TOPIC][DatabusUris.JSONLD_ID] = personUri;
-    profileGraph[DatabusUris.FOAF_MAKER] = {};
-    profileGraph[DatabusUris.FOAF_MAKER][DatabusUris.JSONLD_ID] = personUri;
 
-    accountJsonLd[DatabusUris.JSONLD_GRAPH] = [
-      personGraph,
-      profileGraph
+    return [
+      accountGraph,
+      personGraph
     ];
-
-    return accountJsonLd;
   }
 
   static formatGroupData(graphs) {
@@ -84,12 +145,14 @@ class AppJsonFormatter {
   static formatAccountData(graphs) {
     var result = {};
 
-    var profileGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT);
+    var accountGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ACCOUNT);
     var personGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSON);
 
-    result.uri = profileGraph[DatabusUris.JSONLD_ID];
+    result.uri = accountGraph[DatabusUris.JSONLD_ID];
     result.accountName = DatabusUtils.uriToResourceName(result.uri);
-    result.label = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_NAME);
+    result.label = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_NAME);
+    result.imageUrl = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_IMG);
+    result.about = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_STATUS);
     result.webIds = [];
     result.searchExtensions = [];
 
@@ -111,6 +174,30 @@ class AppJsonFormatter {
       if (graph[DatabusUris.FOAF_ACCOUNT] != undefined) {
         result.webIds.push(graph[DatabusUris.JSONLD_ID]);
       }
+    }
+
+    result.secretaries = [];
+    var secretaryGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SECRETARY);
+
+    for (var secretaryGraph of secretaryGraphs) {
+      var secretaryData = {
+        accountName: JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY),
+        hasWriteAccessTo: []
+      };
+
+      var writeAccessUris = secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO];
+
+      if (Array.isArray(writeAccessUris)) {
+        for (var item of writeAccessUris) {
+          if (typeof item === 'object' && item['@id']) {
+            secretaryData.hasWriteAccessTo.push(item['@id']);
+          } else if (typeof item === 'string') {
+            secretaryData.hasWriteAccessTo.push(item);
+          }
+        }
+      }
+
+      result.secretaries.push(secretaryData);
     }
 
     return result;
@@ -145,6 +232,7 @@ class AppJsonFormatter {
     result.description = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_DESCRIPTION);
     result.issued = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ISSUED);
     result.publisher = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_PUBLISHER);
+    result.account = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY);
 
     var content = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_COLLECTION_CONTENT)
     result.content = DatabusUtils.tryParseJson(unescape(content));

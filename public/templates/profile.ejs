@@ -3,7 +3,7 @@
   <div>
 
     <div class="databus-settings-box-header">
-      <h3>EDIT PROFILE</h3>
+      <h3>EDIT PUBLIC PROFILE</h3>
     </div>
     <div class="databus-settings-box">
       <div class="box-content">
@@ -46,10 +46,76 @@
             separated by newlines.
           </div>
         </div-->
+
+        <div class="row">
+          <div class="row-label">Secretaries</div>
+          <div class="databus-settings-info" style="margin-bottom: 0.5em">
+            Secretaries are accounts that receive write access to some or all resources of the namespace
+            of this account. The secretary account can then specify this account in the <b>x-on-behalf-of</b> header
+            when making requests on behalf of this account.
+          </div>
+          <div>
+            <div ng-if="account.secretaries == null || account.secretaries.length == 0" class="databus-settings-info"
+              style="color: #aaa; padding-bottom: 1em; font-style: italic;">
+              No secretaries defined.
+            </div>
+
+            <div ng-repeat="secretary in editData.secretaries track by $index" class="settings-entity">
+              <div style="width: 100%;">
+                <div class="field">
+                  <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5em;">
+                    <label class="label">Secretary</label>
+                    <a ng-click="removeSecretary(account, $index)" class="button is-error">
+                      Delete
+                    </a>
+                  </div>
+
+                  <div class="control">
+                    <input class="input" type="text" placeholder="e.g. dbpedia" ng-model="secretary.accountName">
+                  </div>
+                </div>
+
+                <div class="field" style="margin-bottom: 0.5em;">
+                  <label class="label">Write Access</label>
+                  <div ng-repeat="ns in secretary.hasWriteAccessTo track by $index" class="field has-addons mb-2">
+                    <div class="control is-expanded">
+                      <input class="input" type="text" placeholder="Namespace IRI"
+                        ng-model="secretary.hasWriteAccessTo[$index]">
+                    </div>
+                    <div class="control">
+                      <button class="button is-danger" ng-click="removeNamespace(account, $index, $index)">
+                        <span class="icon"><i class="fas fa-times"></i></span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <button class="button" ng-click="addNamespace(account, $index)">
+                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <span>Add Namespace</span>
+                  </button>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="field is-grouped is-justify-content-end">
+              <div class="control">
+                <button class="button is-consumer" ng-click="addSecretary(account)">
+                  <span class="icon"><i class="fas fa-user-plus"></i></span>
+                  <span>Add Secretary</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <div class="row">
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-consumer" ng-click="saveProfile()">Save</button>
+              <button class="button is-consumer" ng-click="updateAccount()">Save</button>
             </div>
             <div class="control">
               <button ng-click="resetEdits()" class="button">Reset</button>
@@ -58,6 +124,8 @@
         </div>
       </div>
     </div>
+
+
 
     <div class="databus-settings-box-header">
       <h3>API KEYS</h3>
@@ -94,14 +162,13 @@
           <div class="databus-settings-info">Enter a name for your API key and click <i>Create</i> to create a new API
             key.</div>
 
-
-
         </div>
         <div class="row">
           <div class="row-label">Active API Keys</div>
-          <div ng-if="apiKeys == null || apiKeys.length == 0" class="databus-settings-info">You haven't created any API
+          <div ng-if="account.apiKeys == null || account.apiKeys.length == 0" class="databus-settings-info">You haven't
+            created any API
             keys yet.</div>
-          <div ng-repeat="key in apiKeys">
+          <div ng-repeat="key in account.apiKeys">
             <div class="settings-entity">
               <div><b>{{ key.keyname }}: </b>{{ key.apikey }}</div>
               <svg style="margin-left: 0.5em; cursor: pointer;" ng-click="utils.copyToClipboard(key.apikey)" width="24"
@@ -109,7 +176,7 @@
                 <path fill="#ccc" d="M17 7h6v16h-16v-6h-6v-16h16v6zm5 1h-14v14h14v-14zm-6-1v-5h-14v14h5v-9h9z" />
               </svg>
               <div style="flex: 1;"></div>
-              <a ng-click="removeApiKey(key)" class="button is-error">
+              <a ng-click="deleteApiKey(key)" class="button is-error">
                 Delete
               </a>
             </div>
@@ -287,4 +354,31 @@
       </div>
     </div>
   </div>
+
+
+  <div class="databus-settings-box-header">
+    <h3 style="color: rgb(255, 56, 96)">DANGER ZONE</h3>
+  </div>
+  <div class="databus-settings-box" style="border-color: rgb(255, 56, 96); background-color: rgba(255, 56, 96, 0.05);">
+    <div class="box-content">
+      <div class="row">
+        <div class="row-label" style="color: rgb(255, 56, 96)">Delete Account</div>
+        <div class="field has-addons">
+
+          <div class="control has-icons-left">
+            <input class="input  is-danger" type="text" style="min-width: 500px;" placeholder="Type the account name to delete" ng-model="deleteAccountName">
+            <span class="icon is-small is-left ">
+              <i class="fas fa-id-card"></i>
+            </span>
+          </div>
+          <p class="control">
+            <a ng-click="deleteAccount()" class="button is-danger">
+              Delete
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -2,10 +2,10 @@ const Constants = require('../../common/constants.js');
 const ServerUtils = require('../../common/utils/server-utils.js');
 const DatabusUris = require('../../../../public/js/utils/databus-uris.js');
 
-const publishDataId = require('../lib/publish-version.js');
+const publishVersion = require('../lib/publish-version.js');
 
 var sparql = require('../../common/queries/sparql.js');
-var request = require('request');
+const axios = require('axios');
 var GstoreHelper = require('../../common/utils/gstore-helper.js');
 var defaultContext = require('../../common/res/context.jsonld');
 const UriUtils = require('../../common/utils/uri-utils.js');
@@ -13,6 +13,10 @@ const getLinkedData = require('../../common/get-linked-data.js');
 const DatabusLogger = require('../../common/databus-logger.js');
 const JsonldUtils = require('../../../../public/js/utils/jsonld-utils.js');
 const jsonld = require('jsonld');
+var cors = require('cors');
+const DatabusMessage = require('../../common/databus-message.js');
+const DatabusResource = require('../../common/databus-resource.js');
+
 
 module.exports = function (router, protector) {
 
@@ -49,7 +53,7 @@ module.exports = function (router, protector) {
 
       logger.debug(null, `Found graph ${versionUri} in input`, versionGraph);
       
-      var code = await publishDataId(req.params.account, expandedGraph, versionUri, null, logger);
+      var code = await publishVersion(req.params.account, expandedGraph, versionUri, null, logger);
       res.status(code).json(logger.getReport());
 
     } catch (err) {
@@ -58,7 +62,7 @@ module.exports = function (router, protector) {
     }
   });
 
-  router.get('/:account/:group/:artifact/:version', ServerUtils.NOT_HTML_ACCEPTED, async function (req, res, next) {
+  router.get('/:account/:group/:artifact/:version', ServerUtils.NOT_HTML_ACCEPTED, cors(), async function (req, res, next) {
 
     if (req.params.account.length < 4) {
       next('route');
@@ -77,24 +81,34 @@ module.exports = function (router, protector) {
   });
 
   router.get('/:account/:group/:artifact/:version/:file', async function (req, res, next) {
-
+    
     // Return dataids?
     if (req.params.file == Constants.DATABUS_FILE_DATAID) {
 
-      var repo = req.params.account;
-      var path = `${req.params.group}/${req.params.artifact}/${req.params.version}/${req.params.file}`;
+      const repo = req.params.account;
+      const path = `${req.params.group}/${req.params.artifact}/${req.params.version}/${req.params.file}`;
+      const url = `${process.env.DATABUS_DATABASE_URL}/graph/read?repo=${repo}&path=${path}`;
 
-      let options = {
-        url: `${process.env.DATABUS_DATABASE_URL}/graph/read?repo=${repo}&path=${path}`,
-        headers: {
-          'Accept': 'application/ld+json'
-        },
-        json: true
-      };
+      try {
+        console.log(`Piping to ${url}`);
 
-      console.log(`Piping to ${options.url}`);
-      request(options).pipe(res);
-      return;
+        // Use axios to fetch data
+        const response = await axios.get(url, {
+          headers: {
+            'Accept': 'application/ld+json'
+          }
+        });
+
+        // Pipe the response data to the client
+        res.setHeader('Content-Type', 'application/ld+json');
+        res.send(response.data);
+        return;
+
+      } catch (err) {
+        console.log(err);
+        res.status(500).send('Error fetching data from Databus database.');
+        return;
+      }
     }
 
     try {
@@ -106,6 +120,19 @@ module.exports = function (router, protector) {
         return;
       }
 
+      // Send message to master to register metrics
+      if (process.send != undefined) {
+        const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+        process.send({
+          id: DatabusMessage.FILE_DOWNLOADED,
+          body: {
+            url : fullUrl,
+            target : result.downloadUrl
+          } 
+        });
+      }
+
       res.redirect(307, result.downloadUrl);
     } catch (err) {
       console.log(err);
@@ -115,12 +142,7 @@ module.exports = function (router, protector) {
 
   router.delete('/:account/:group/:artifact/:version', protector.protectAccount(true), async function (req, res, next) {
 
-    var versionUri = UriUtils.createResourceUri([
-      req.params.account,
-      req.params.group,
-      req.params.artifact,
-      req.params.version
-    ]);
+    var versionUri = UriUtils.fromRequest(req);
 
     // Check if the artifact exists
     var exists = await sparql.dataid.hasVersion(
@@ -139,7 +161,7 @@ module.exports = function (router, protector) {
     var result = await GstoreHelper.delete(req.params.account, gstorePath);
 
     if (!result.isSuccess) {
-      res.status(500).send(`Internal database error. Failed to delete version <${versionUri}>.`);
+      res.status(result.error.status).send(`Failed to delete version <${versionUri}>: ${result.error.message}`);
       return;
     }
 

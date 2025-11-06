@@ -5,19 +5,19 @@ const GstoreHelper = require('../../common/utils/gstore-helper');
 const JsonldUtils = require("../../../../public/js/utils/jsonld-utils");
 const DatabusLogger = require("../../common/databus-logger");
 const UriUtils = require("../../common/utils/uri-utils");
-const publishGroup = require('../lib/publish-group');
 const jsonld = require('jsonld');
 const getLinkedData = require("../../common/get-linked-data");
-const defaultContext = require('../../common/res/context.jsonld');
+var cors = require('cors');
 
 const sparql = require("../../common/queries/sparql");
+const GroupWriter = require("../lib/group-writer");
 
 
 module.exports = function (router, protector) {
 
   /**
   * Publishing of groups via PUT request
-  */
+ 
   router.put('/:account/:group', protector.protectAccount(true), async function (req, res, next) {
 
     try {
@@ -30,34 +30,35 @@ module.exports = function (router, protector) {
       var logger = new DatabusLogger(req.query['log-level']);
       var graph = req.body;
 
-      if (graph[DatabusUris.JSONLD_CONTEXT] == process.env.DATABUS_DEFAULT_CONTEXT_URL) {
-        graph[DatabusUris.JSONLD_CONTEXT] = defaultContext;
-        logger.debug(null, `Context "${graph[DatabusUris.JSONLD_CONTEXT]}" replaced with cached resolved context`, defaultContext);
-      }
-
-      var expandedGraph = await jsonld.flatten(graph);
-
-      // Publish groups
+      let expandedGraph = await jsonld.expand(graph);
       var groupGraph = JsonldUtils.getGraphById(expandedGraph, groupUri);
-    
+
       if (groupGraph == null) {
         logger.error(null, `No graph ${groupUri} found in the input.`, null);
         res.status(400).json(logger.getReport());
         return;
       }
 
-      logger.debug(null, `Found graph ${groupUri} in the input.`, groupGraph);
-
-      var code = await publishGroup(req.params.account, groupGraph, logger);
-      res.status(code).json(logger.getReport());
+      try {
+        var groupWriter = new GroupWriter(logger);
+        await groupWriter.writeResource(req.databus, expandedGraph, groupUri);
+      }
+        
+      catch (apiError) {
+        logger.error(apiError.resource, apiError.message, apiError.body);
+        res.status(apiError.statusCode).json(logger.getReport());
+        return;
+      }
+      
+      res.status(200).json(logger.getReport())
 
     } catch (err) {
       console.log(err);
       res.status(500).send(err);
     }
-  });
+  }); */
 
-  router.get('/:account/:group', ServerUtils.NOT_HTML_ACCEPTED, async function (req, res, next) {
+  router.get('/:account/:group', ServerUtils.NOT_HTML_ACCEPTED, cors(), async function (req, res, next) {
 
     if (req.params.account.length < 4) {
       next('route');
@@ -94,12 +95,19 @@ module.exports = function (router, protector) {
     }
 
     // Delete from gstore and return result
-    var gstorePath = `${req.params.group}/${Constants.DATABUS_FILE_GROUP}`;
+    var gstorePath = `${req.params.group}/metadata.jsonld`;
     var result = await GstoreHelper.delete(req.params.account, gstorePath);
 
     if (!result.isSuccess) {
-      res.status(500).send(`Internal database error. Failed to delete the group <${groupUri}>.`);
-      return;
+
+      gstorePath = `${req.params.group}/group.jsonld`;
+      result = await GstoreHelper.delete(req.params.account, gstorePath);
+
+      if (!result.isSuccess) {
+        res.status(500).send(`Internal database error. Failed to delete the group <${groupUri}>.`);
+        return;
+      }
+
     }
 
     res.status(204).send(`The group <${groupUri}> has been deleted.`);

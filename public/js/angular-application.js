@@ -8,6 +8,7 @@ const GroupPageController = require("./page-controller/group-controller");
 const ProfileController = require("./page-controller/profile-controller");
 const PublishWizardController = require("./page-controller/publish-wizard-controller");
 const VersionPageController = require("./page-controller/version-controller");
+const UserSettingsController = require("./page-controller/user-settings-controller");
 const DatabusCollectionManager = require("./collections/databus-collection-manager");
 const SearchManager = require("./search/search-manager");
 const SearchController = require("./components/search/search-controller");
@@ -35,6 +36,10 @@ const CollectionDataTableController = require("./components/collection-data-tabl
 const AccountHistoryController = require("./components/account-history/account-history");
 const SparqlEditorController = require("./page-controller/sparql-editor-controller");
 const BetterDropdownController = require("./components/better-dropdown/better-dropdown");
+const NavSearchController = require("./components/nav-search/nav-search-controller");
+const EntityDropdownController = require("./components/entity-dropdown/entity-dropdown");
+const EntityApiViewController = require("./components/entity-api-view/entity-api-view");
+const ErrorNotificationController = require("./components/error-notification/error-notifcation");
 
 var databusApplication = angular.module("databusApplication", [])
   .controller("HeaderController", ["$scope", "$http", "collectionManager", HeaderController])
@@ -49,6 +54,7 @@ var databusApplication = angular.module("databusApplication", [])
       });
     };
   }])
+  .controller("UserSettingsController", [ "$scope", "$http", "$sce", "$location", UserSettingsController])
   .controller("HeaderController", ["$scope", "$http", "collectionManager", "searchManager", HeaderController])
   .controller("AccountPageController", ["$scope", "$http", "$location", "collectionManager", AccountPageController])
   .controller("FrontPageController", ["$scope", "$sce", "$http", FrontPageController])
@@ -57,8 +63,8 @@ var databusApplication = angular.module("databusApplication", [])
   .controller("CollectionsEditorController", ["$scope", "$timeout", "$http", "$location", "collectionManager", CollectionsEditorController])
   .controller("GroupPageController", ["$scope", "$http", "$sce", "$interval", "$location", "collectionManager", GroupPageController])
   .controller("ProfileController", ["$scope", "$http", ProfileController])
-  .controller("SparqlEditorController", ["$scope", "$http", SparqlEditorController])
-  .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", PublishWizardController])
+  .controller("SparqlEditorController", ["$scope", "$http", "$location", SparqlEditorController])
+  .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", "$location", PublishWizardController])
   .controller("VersionPageController", ["$scope", "$http", "$sce", "$location", "collectionManager", VersionPageController])
   .directive('uploadRanking', function () {
     return {
@@ -121,6 +127,42 @@ databusApplication.component('overrideCheckbox', {
   }
 });
 
+databusApplication.component('errorTag', {
+  controller: ErrorNotificationController,
+  templateUrl: '/js/components/error-notification/error-notification.html',
+  bindings: {
+    entity: '<',
+    key: '@',
+    texts: '<'
+  }
+});
+
+databusApplication.component('entityDropdown', {
+  bindings: {
+    placeholder: '@',
+    items: '<',
+    displayProperty: '@',
+    loading: '<',
+    selected: '<',
+    onSelect: '&'
+  },
+  controller: EntityDropdownController,
+  templateUrl: '/js/components/entity-dropdown/entity-dropdown.html'
+});
+
+databusApplication.component('entityApiView', {
+    bindings: {
+      entity: '<',
+      apiKeys: '<',
+      texts: '<',
+      publishLog: '<'
+    },
+    controller: EntityApiViewController,
+    templateUrl: '/js/components/entity-api-view/entity-api-view.html'
+  });
+
+
+
 databusApplication.component('accountHistory', {
   templateUrl: '/js/components/account-history/account-history.html',
   controller: [ '$http', AccountHistoryController ],
@@ -152,6 +194,16 @@ databusApplication.component('entityCard', {
 databusApplication.component('search', {
   templateUrl: '/js/components/search/search.html',
   controller: ['$http', '$interval', '$sce', 'searchManager', SearchController],
+  bindings: {
+    searchInput: '=',
+    settings: '<',
+  }
+});
+
+
+databusApplication.component('navSearch', {
+  templateUrl: '/js/components/nav-search/nav-search.html',
+  controller: ['$http', '$interval', '$sce', 'searchManager', NavSearchController],
   bindings: {
     searchInput: '=',
     settings: '<',
@@ -387,6 +439,7 @@ databusApplication.component('tableEditor', {
   bindings: {
     model: '=',
     onRemoveFile: '&',
+    onEditContentVariant: '&',
     onAnalyzeFile: '&',
     analysisProcesses: '<'
   }

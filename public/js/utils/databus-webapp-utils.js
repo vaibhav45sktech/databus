@@ -9,8 +9,44 @@ class DatabusWebappUtils {
     this.sce = $sce;
   }
 
+  goTo(page) {
+    window.location = page;
+  }
+  
   createAccount() {
     window.location = '/app/account';
+  }
+
+  
+  getAccountName() {
+
+    let accountName = window.location.pathname.split('/')[1];
+
+    if(accountName.length < 4) {
+      return null;
+    }
+
+    return this.getOwnedAccountName(accountName);
+  }
+
+  getOwnedAccountName(accountName) {
+    if(!this.scope.auth.authenticated || this.scope.auth.info == null) {
+      return null;
+    }
+
+    let userInfo = this.scope.auth.info;
+
+    if(!Array.isArray(userInfo.accounts) || userInfo.accounts.length == 0) {
+      return null;
+    }
+
+    let account = userInfo.accounts.find(a => a.accountName == accountName);
+
+    if(account == null) {
+      return null;
+    }
+
+    return account.accountName;
   }
 
   login() {

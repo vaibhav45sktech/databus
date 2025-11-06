@@ -16,7 +16,6 @@ class DatabusLogger {
 
   getReport() {
     return {
-      logLevel: this.level,
       log: this.entries
     };
   }
@@ -49,7 +48,7 @@ class DatabusLogger {
 
   debug(resource, message, payload) {
 
-    console.log(message);
+    // console.log(message);
     if (this.level != DatabusLogLevel.DEBUG) {
       return;
     }

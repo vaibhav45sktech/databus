@@ -4,6 +4,7 @@ const DataIdCreator = require("../publish/dataid-creator");
 const QueryBuilder = require("../query-builder/query-builder");
 const QueryNode = require("../query-builder/query-node");
 const QueryTemplates = require("../query-builder/query-templates");
+const DatabusConstants = require("../utils/databus-constants");
 const DatabusUtils = require("../utils/databus-utils");
 const DatabusWebappUtils = require("../utils/databus-webapp-utils");
 const TabNavigation = require("../utils/tab-navigation");
@@ -11,9 +12,13 @@ const TabNavigation = require("../utils/tab-navigation");
 function GroupPageController($scope, $http, $sce, $interval, $location, collectionManager) {
 
   $scope.group = data.group;
-  $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));
+  // $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));
+  $scope.auth = data.auth;
 
   $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+
   $scope.tabNavigation = new TabNavigation($scope, $location, [
     'files', 'artifacts', 'edit'
   ]);
@@ -60,7 +65,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
     DatabusUtils.uriToTitle($scope.group.uri));
 
 
-  $scope.canEdit = $scope.accountName == data.auth.info.accountName;
+  $scope.canEdit = $scope.accountName != null;
 
   if (data.auth.authenticated && $scope.canEdit) {
 
@@ -73,7 +78,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
     $scope.formData.group.abstract = $scope.group.abstract;
     $scope.formData.group.description = $scope.group.description;
 
-    $scope.dataidCreator = new DataIdCreator($scope.formData, data.auth.info.accountName);
+    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);
   }
 
   $scope.onDescriptionChanged = function () {
@@ -104,7 +109,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
     var groupUpdate = $scope.dataidCreator.createGroupUpdate();
 
     var relativeUri = new URL($scope.group.uri).pathname;
-    var response = await $http.put(relativeUri, groupUpdate);
+    var response = await $http.post('/api/register', groupUpdate);
 
     if (response.status == 200) {
       $scope.group.title = $scope.formData.group.title;
@@ -135,6 +140,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
 
   $scope.fileSelector = {};
   $scope.fileSelector.config = {};
+  $scope.fileSelector.config.authenticated = $scope.authenticated;
   $scope.fileSelector.config.columns = [];
   $scope.fileSelector.config.columns.push({ field: 'artifact', label: 'Artifact', width: '30%', uriToName: true });
   $scope.fileSelector.config.columns.push({ field: 'version', label: 'Version', width: '21%' });
@@ -143,7 +149,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
   $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '6%' });
 
   $scope.groupNode = new QueryNode($scope.group.uri, 'databus:group');
-  $scope.groupNode.setFacet('http://purl.org/dc/terms/hasVersion', '$latest', true);
+  $scope.groupNode.setFacet('http://purl.org/dc/terms/hasVersion', DatabusConstants.FACET_LATEST_VERSION_VALUE, true);
 
   $scope.onFacetSettingsChanged = function () {
     $scope.fileSelector.query = QueryBuilder.build({
@@ -309,7 +315,7 @@ function GroupPageController($scope, $http, $sce, $interval, $location, collecti
         var result = response.data.docs[r];
 
         for (var artifact of $scope.artifacts) {
-          if (result.resource[0] == artifact.uri) {
+          if (result.id[0] == artifact.uri) {
             $scope.searchResult.push(artifact);
           }
         }

@@ -1,88 +1,259 @@
-const ServerUtils = require('../../common/utils/server-utils');
-const DatabusCache = require('../../common/cache/databus-cache');
-const JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
-const DatabusUtils = require('../../../../public/js/utils/databus-utils');
-
-var GstoreHelper = require('../../common/utils/gstore-helper');
-var shaclTester = require('../../common/shacl-tester');
-var request = require('request');
 var jsonld = require('jsonld');
-var fs = require('fs');
-const pem2jwk = require('pem-jwk').pem2jwk;
 const requestRDF = require('../../common/request-rdf');
-
 const defaultContext = require('../../common/res/context.jsonld');
 const getLinkedData = require("../../common/get-linked-data");
+var cors = require('cors');
+var signer = require('../lib/databus-tractate-suite.js');
 
-var constructor = require('../../common/execute-construct.js');
-var constructAccountQuery = require('../../common/queries/constructs/construct-account.sparql');
+const ServerUtils = require('../../common/utils/server-utils');
+const JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
+const DatabusUtils = require('../../../../public/js/utils/databus-utils');
+var GstoreHelper = require('../../common/utils/gstore-helper');
 const DatabusUris = require('../../../../public/js/utils/databus-uris');
 const Constants = require('../../common/constants');
 const UriUtils = require('../../common/utils/uri-utils');
 const DatabusConstants = require('../../../../public/js/utils/databus-constants');
-const publishAccount = require('../lib/publish-account');
+const GstoreResource = require('../lib/gstore-resource');
+const JsonldLoader = require('../../common/utils/jsonld-loader.js');
+const DatabusMessage = require('../../common/databus-message.js');
+
+
 
 module.exports = function (router, protector) {
 
 
+  async function createAccountGraphs(uri, name, label, img, secretaries, status) {
+    var name = UriUtils.uriToName(uri);
 
-  router.put('/:account', protector.protect(), async function (req, res, next) {
+    var rsaKeyGraph = {};
+    rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;
+    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;
+    rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();
+    rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;
 
-    // requesting user does not have an account yet
-    if (req.databus.accountName == undefined) {
+    var personUri = `${uri}${DatabusConstants.WEBID_THIS}`;
 
-      // oidc not set correctly?
-      if (req.oidc.user == undefined) {
-        res.status(403).send(`Forbidden.\n`);
-        return;
-      }
+    var personGraph = {};
+    personGraph[DatabusUris.JSONLD_ID] = personUri;
+    personGraph[DatabusUris.JSONLD_TYPE] = [DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN];
+    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(uri);
+    personGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = uri;
+    personGraph[DatabusUris.CERT_KEY] = [rsaKeyGraph];
+    personGraph[DatabusUris.FOAF_NAME] = label;
 
-      // trying to be that guy?
-      if (req.params.account == `sparql`) {
-        res.status(403).send(`Forbidden.\n`);
-        return;
-      }
+    if (img != null) {
+      personGraph[DatabusUris.FOAF_IMG] = img;
+    }
 
-      // account taken?
-      var accountExists = await protector.hasUser(req.params.account);
+    if (status != null) {
+      personGraph[DatabusUris.FOAF_STATUS] = status;
+    }
 
-      if (accountExists) {
-        // deny, this account name is taken
-        res.status(401).send(`This account name is taken.\n`);
-        return;
-      } else {
-        // allow write to the account namespace
-        req.databus.accountName = req.params.account;
+    var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;
 
-        try {
-          await protector.addUser(req.oidc.user.sub, req.params.account, req.params.account);
-        } catch(err) {
-          res.status(500).send(`Failed to write to user database`);
-          return;
+    var profileDocumentGraph = {};
+    profileDocumentGraph[DatabusUris.JSONLD_ID] = profileUri;
+    profileDocumentGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;
+    profileDocumentGraph[DatabusUris.FOAF_MAKER] = JsonldUtils.refTo(personUri);
+    profileDocumentGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = JsonldUtils.refTo(personUri);
+
+    var accountGraph = {}
+    accountGraph[DatabusUris.JSONLD_ID] = uri;
+    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
+    accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;
+    accountGraph[DatabusUris.DATABUS_NAME] = name;
+
+    if (secretaries != null) {
+
+      accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];
+
+      for (var secretary of secretaries) {
+
+        let secretaryAccountUri = `${secretary.accountName}`;
+
+        let secretaryGraph = {};
+        secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
+        secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);
+
+        if (secretary.hasWriteAccessTo != undefined) {
+          secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];
+
+          for (var writeAccess of secretary.hasWriteAccessTo) {
+            secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));
+          }
         }
-        /** 
-        var result = await publishAccount(req.databus.accountName, req.body);
 
-        if (result.isSuccess) {
-          await protector.addUser(req.oidc.user.sub, req.params.account, req.params.account);
-          res.status(201).send(result.message);
-          return;
-        }
-
-        res.status(result.statusCode).send(result.message);*/
+        accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY].push(secretaryGraph);
       }
     }
 
-    if(req.databus.accountName != req.params.account) {
-      res.status(403).send(`Trying to write to an unowned account namespace.\n`);
+    let expandedGraphs = [
+      accountGraph,
+      personGraph,
+      profileDocumentGraph
+    ];
+
+    return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
+  }
+
+
+
+  router.post('/api/account/create', protector.protect(), async function (req, res, next) {
+
+    let userId = req.databus.userId;
+    let userdb = protector.userdb;
+
+    if (userId == undefined) {
+      return res.status(401).send('No User Id!');
+    }
+
+    let accountName = req.body.name;
+    let accountLabel = req.body.label;
+
+    if (!accountName) {
+      return res.status(400).send('Missing account name or label.');
+    }
+
+    if (!accountLabel) {
+      accountLabel = accountName;
+    }
+
+    var accountExists = await userdb.hasAccount(accountName);
+
+    if (accountExists) {
+      res.status(403).send(`Account name ${accountName} taken.`);
       return;
     }
 
-    var result = await publishAccount(req.databus.accountName, req.body);
-    res.status(result.statusCode).send(result.message);
+    if (!await userdb.addAccount(userId, accountName)) {
+      res.status(500).send('Failed to write to user database.');
+      return;
+    }
+
+
+    try {
+      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, null, null, null);
+
+      let gstoreResource = new GstoreResource(accountUri, content);
+      let status = await gstoreResource.save();
+
+      console.log(status);
+      res.status(200).send('Account created.');
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
+      await userdb.deleteAccount(accountName);
+      res.status(500).send('Failed to write to gstore.');
+    }
   });
 
-  
+  router.post('/api/account/update', protector.protect(), async function (req, res, next) {
+
+    let userId = req.databus.userId;
+    let userdb = protector.userdb;
+
+    if (userId == undefined) {
+      res.status(401).send('No User Id!');
+      return;
+    }
+
+    const accountName = req.body.accountName;
+    var existingAccount = await userdb.getAccount(accountName);
+
+    if (existingAccount == null) {
+      res.status(400).send('Account does not exist.');
+      return;
+    }
+
+    if (existingAccount.id != userId) {
+      res.status(403).send('You do not own this account.');
+      return;
+    }
+
+    let input = req.body;
+
+    try {
+      var accountLabel = req.body.label;
+      var accountStatus = req.body.status;
+      var imageUrl = req.body.imageUrl;
+      var secretaries = req.body.secretaries;
+      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+      let content = await createAccountGraphs(accountUri, accountName, accountLabel, imageUrl, secretaries, accountStatus);
+
+      let gstoreResource = new GstoreResource(accountUri, content);
+      let status = await gstoreResource.save();
+
+      console.log(status);
+      res.status(200).send('Account saved.');
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
+      res.status(500).send('Failed to write to gstore.');
+      return;
+    }
+  });
+
+  router.post('/api/account/delete', protector.protect(), async function (req, res, next) {
+
+    // Get id of authenticated user
+    let userId = req.databus.userId;
+
+    if (userId == undefined) {
+      return res.status(401).send('No User Id!');
+    }
+
+    // Get account to delete from database
+    let accountName = req.body.accountName;
+    let userdb = protector.userdb;
+    var account = await userdb.getAccount(accountName);
+
+    if (account == null) {
+      res.status(404).send('Account does not exist.');
+      return;
+    }
+
+    // Check if account belongs to authenticated
+    if (account.id != userId) {
+      return res.status(401).send('Account not owned.');
+    }
+
+    if (!await userdb.deleteAccount(accountName)) {
+      res.status(500).send('Failed to delete user from database.');
+      return;
+    }
+
+    try {
+      let accountUri = `${process.env.DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+      let gstoreResource = new GstoreResource(accountUri);
+
+      await gstoreResource.delete();
+      res.status(200).send('Account deleted.');
+
+      if (process.send != undefined) {
+        process.send({
+          id: DatabusMessage.REQUEST_SEARCH_INDEX_REBUILD,
+          resource: accountUri
+        });
+      }
+
+    } catch (err) {
+      await userdb.addAccount(account.id, account.accountName);
+      res.status(500).send('Failed to write to gstore.');
+    }
+  });
 
   router.post('/api/account/webid/remove', protector.protect(), async function (req, res, next) {
     try {
@@ -354,16 +525,16 @@ module.exports = function (router, protector) {
 
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
+    var keyname = decodeURIComponent(req.body.keyname);
+    var accountName = decodeURIComponent(req.body.accountName);
 
-    if (auth.info.accountName == undefined) {
-      res.status(403).send('Account name is missing. Please claim an account name first.');
+    if (!auth.info.accounts.some(a => a.accountName == accountName)) {
+      res.status(403).send(`Not allowed to create API key for account '${accountName}'`);
       return;
     }
 
-    var keyName = decodeURIComponent(req.query.name);
-
-    if (!DatabusUtils.isValidResourceLabel(keyName, 3, 20)) {
-      res.status(403).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
+    if (!DatabusUtils.isValidResourceLabel(keyname, 3, 20)) {
+      res.status(400).send('Invalid API key name. API key name should match [A-Za-z0-9\\s_()\\.\\,\\-]{3,20}');
       return;
     }
 
@@ -372,7 +543,7 @@ module.exports = function (router, protector) {
       return;
     }
 
-    var apiKey = await protector.addApiKey(req.databus.sub, keyName);
+    var apiKey = await protector.addApiKey(accountName, keyname);
 
     if (apiKey == null) {
       res.status(400).send("Failed to create API key. You might already have an API key with that name.");
@@ -387,13 +558,10 @@ module.exports = function (router, protector) {
     // Create api key for user
     var auth = ServerUtils.getAuthInfoFromRequest(req);
 
-    if (auth.info.accountName == undefined) {
-      res.status(403).send('Account name is missing.');
-      return;
-    }
+    var keyname = decodeURIComponent(req.body.keyname);
+    var accountName = decodeURIComponent(req.body.accountName);
 
-    var keyName = decodeURIComponent(req.query.name);
-    var found = await protector.removeApiKey(req.databus.sub, keyName);
+    var found = await protector.removeApiKey(accountName, keyname);
 
     if (found) {
       res.status(200).send();
@@ -403,7 +571,7 @@ module.exports = function (router, protector) {
   });
 
   /* GET an account. */
-  router.get('/:account', ServerUtils.NOT_HTML_ACCEPTED, async function (req, res, next) {
+  router.get('/:account', ServerUtils.NOT_HTML_ACCEPTED, cors(), async function (req, res, next) {
 
     if (req.params.account.length < 4) {
       next('route');

@@ -1,0 +1,9 @@
+{
+  "@context": "http://localhost:3000/res/context.jsonld",
+  "@graph": {
+    "@id": "%DATABUS_RESOURCE_BASE_URL%/%ACCOUNT%/%GROUP%",
+    "@type": "Group",
+    "title": "Test Group",
+    "description": "A test group for API testing."
+  }
+}

@@ -39,46 +39,22 @@ paths:
                   @prefix dct:   <http://purl.org/dc/terms/> .
 
                   <> a databus:Databus . 
-                  <> dct:hasVersion "<2.1.0-rc.1>" .
+                  <> dct:hasVersion "<2.1.1>" .
 
-  /api/publish:
+  /api/register:
     post:
       summary: "Publish Metadata"
-      description: "
-      Publish metadata Json-LD (DataID) on the Databus. 
+      description: |
+        Register metadata on the Databus. The metadata must be sent as the request body
+        in RDF JSON-LD format. The RDF may contain one or more Databus entities:
 
-      
-      A [DataId](http://dataid.dbpedia.org/ns/core.html) is an RDF metadata document with an entity of rdf:type [dataid:Dataset](http://dataid.dbpedia.org/ns/core#Dataset) at its heart. The document contains information about the corresponding dataset:
-      
-        * The containing files and their metadata
-        
-        * A Databus version
-        
-        * A Databus artifact
-        
-        * A Databus group
-        
-      
-      The server will try to auto-complete your input and can optionally calculate the required sha256sum and byteSize properties.
-      
-            
-           The input data must be supplied as Json-LD.
-           
-            
-           The input data will be filtered with the following construct queries:
-            
-                * [Construct group](./server/app/common/queries/constructs/construct-group.sparql) query
-              
-                * [Construct version](./server/app/common/queries/constructs/construct-version.sparql) query
-                
-              
-           Each construct query result will then be validated with their corresponding SHACL shape (e.g. group construct query result validated by group SHACL shapes):
-            
-                * [Group SHACL](./server/app/common/shacl/group-shacl.ttl) shapes
-              
-                * [Version SHACL](./server/app/common/shacl/dataid-shacl.ttl) shapes
-      "
-      operationId: "publish"
+        * **Group** — validated against the SHACL shape: [group.shacl](/res/shacl/group.shacl)
+        * **Artifact** — validated against the SHACL shape: [artifact.shacl](/res/shacl/artifact.shacl)
+        * **Version** — validated against the SHACL shape: [version.shacl](/res/shacl/version.shacl)
+        * **Collection** — validated against the SHACL shape: [collection.shacl](/res/shacl/collection.shacl)
+
+        **Hint:** Replace `[YOUR_ACCOUNT_NAME]` in the example body with your actual Databus account name.
+      operationId: "register"
       tags:
         - Main API
       security:
@@ -97,7 +73,7 @@ paths:
             type: string
           description: "Desired detail of the publish report. Can be set to either 'error', 'info' or 'debug'."
           required: false
-          example: "info"
+          example: "error"
       requestBody:
         description: "Metadata in JSONLD. May contain any number of groups, artifacts and datasets"
         required: true
@@ -107,14 +83,20 @@ paths:
               type: object
               example: |
                 {
-                  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                  "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                   "@graph": [
                     {
                       "@type": "Version",
+<<<<<<< HEAD
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[YOUR_ACCOUNT_NAME]/test_group/test_artifact/0.0.1",
+                      "title": "Test Data",
+                      "description": "Test data from the swagger API. This can probably be deleted.",
+=======
                       "@id": "https://dev.databus.dbpedia.org/<your username>/test_group/test_artifact/2022-02-09",
                       "hasVersion": "2022-02-09",
                       "title": "test_group test_artifact",
                       "description": "version of the test_artifact dataset from DBpedia",
+>>>>>>> master
                       "license": "https://dalicc.net/licenselibrary/Apache-2.0",
                       "distribution": [
                         {
@@ -136,44 +118,7 @@ paths:
                 type: object
                 example: |
                   {
-                    "logLevel": "info",
-                    "log": [
-                      {
-                        "resource": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                        "msg": "Successfully published group <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%>.",
-                        "payload": {
-                          "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                          "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                          "@type": "Group",
-                          "abstract": "%GROUP% datasets from DBpedia",
-                          "description": "%GROUP% datasets from DBpedia",
-                          "title": "%GROUP% Data"
-                        },
-                        "level": "info"
-                      },
-                      {
-                        "resource": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%",
-                        "msg": "Successfully published artifact <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%>.",
-                        "payload": {
-                          "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                          "@graph": [
-                            {
-                              "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%",
-                              "@type": "Artifact",
-                              "group": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                              "abstract": "%ARTIFACT% data from DBpedia",
-                              "description": "%ARTIFACT% data from DBpedia",
-                              "title": "%ARTIFACT%"
-                            },
-                            {
-                              "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                              "@type": "Group"
-                            }
-                          ]
-                        },
-                        "level": "info"
-                      }
-                    ]
+                    "log": []
                   }
         "403":
           description: "Error: Forbidden. The account failed to authenticate."
@@ -186,8 +131,8 @@ paths:
                     "logLevel": "info",
                     "log": [
                       {
-                        "resource": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                        "msg": "Not allowed to access namespace of group identifier <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%>.",
+                        "resource": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%",
+                        "msg": "Not allowed to access namespace of group identifier <%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%>.",
                         "level": "error"
                       }
                     ]
@@ -279,32 +224,19 @@ paths:
           schema:
             type: string
           required: true
-          example: '%ARTIFACT%'
+          example: 'Test Data'
         - name: typeName
           in: query
           description: The type of entities to return. White space separated list of one or multiples of
+            * Account
             * Group
             * Artifact
+            * Version
             * Collection
-            * PersonalProfileDocument
           schema:
             type: string
           required: false
-          example: 'Artifact'
-        - name: part
-          in: query
-          description: A query for one or multiple parta of the entity uri (white space separated list).
-          schema:
-            type: string
-          required: false
-          example: ''
-        - name: partRequired
-          in: query
-          description: If set to true, results without a match on the part field are omitted. 
-          schema:
-            type: boolean
-          required: false
-          example: 'true'
+          example: 'Version'
       responses:
         "200":
           description: "OK"
@@ -312,121 +244,37 @@ paths:
             application/json:
               schema:
                 type: object
-                example: '{
-                  "docs": [
-                    {
-                      "typeName": [
-                        "Artifact"
-                      ],
-                      "score": [
-                        "337.63354"
-                      ],
-                      "label": [
-                        "%GROUP%s %ARTIFACT%"
-                      ],
-                      "resource": [
-                        "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%"
-                      ],
-                      "part": [
-                        "%USERNAME%",
-                        "%GROUP%",
-                        "%ARTIFACT%"
-                      ]
-                    }
-                  ],
-                  "query": "%ARTIFACT%"
-                  
-                }'
-        "404":
-          description: "Error: Not Found."
-  /{account}/{group}:
-    put:
-      summary: "Create / Update Group"
-      description: "
-        Creates or updates a Databus Group.
-        
-          * The input data must be supplied as Json-LD 
-        
-          * The input data will be filtered with this [construct query](./server/app/common/queries/constructs/construct-group.sparql)
-
-          * The **filtered data** must conform to these [SHACL shapes](./server/app/common/shacl/group-shacl.ttl)
-
-          * The uri of the dataid:Group has to match the request uri. 
-          
-          
-          Note that the *@id* of the supplied graph has to be the same as the request uri. Additionally, the uri has to be in user's namespace.
-      "
-      operationId: "create-group"
-      tags:
-        - Group 
-      security:
-        - ApiKeyAuth: []
-      parameters:
-        - name: account
-          in: path
-          schema:
-            type: string
-          description: account namespace
-          required: true
-          example: '%USERNAME%'
-        - name: group
-          in: path
-          description: group identifier
-          schema:
-            type: string
-          required: true
-          example: "%GROUP%"
-      requestBody:
-        description: "Group data as JSONLD."
-        required: true
-        content:
-          application/ld+json:
-            schema:
-              type: object
-              example: '{
-                  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                  "@graph": {
-                    "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                    "@type": "Group",
-                    "title": "%GROUP% Data",
-                    "description": "Various %GROUP% datasets extracted from DBpedia using AI."
-                  }
-                }'
-      responses:
-        "200":
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: '{
-                    "logLevel": "error",
-                    "log": []
-                  }'
-        "400":
-          description: "Error: Bad Request"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: '{
-                    "logLevel": "error",
-                    "log": [
+                example: |
+                  {
+                    "docs": [
                       {
-                        "resource": null,
-                        "msg": "No graph with id <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%>  found in the input.",
-                        "payload": null,
-                        "level": "error"
+                        "score": [
+                          "346.7309"
+                        ],
+                        "part": [
+                          "2022-02-09",
+                          "test_artifact"
+                        ],
+                        "typeName": [
+                          "Version"
+                        ],
+                        "publisher": [
+                          "[YOUR_ACCOUNT_NAME]"
+                        ],
+                        "id": [
+                          "%DATABUS_RESOURCE_BASE_URL%/[YOUR_ACCOUNT_NAME]/test_group/test_artifact/2022-02-09"
+                        ],
+                        "label": [
+                          "<B>Test</B> <B>Data</B>"
+                        ],
+                        "abstract": [
+                          "<B>Test</B> <B>data</B> from the swagger API. This can probably be deleted."
+                        ]
                       }
-                    ]
-                  }'
-        "403":
-          description: "Error: Forbidden"
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "You cannot perform this action in a foreign namespace."
+                    ],
+                    "query": "Test Data"
+                  }
+  /{account}/{group}:
     get:
       summary: "Get Group"
       description: "Retrieve a Databus Group as JSONLD."
@@ -440,7 +288,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: target group identifier
@@ -457,8 +305,8 @@ paths:
                 type: object
                 example: |
                   {
-                    "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                    "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
+                    "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
+                    "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%",
                     "@type": "Group"
                   }
         "404":
@@ -484,7 +332,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: target group identifier
@@ -507,88 +355,6 @@ paths:
         "409":
           description: "Conflict - There are still versions or artifacts associated with this group."
   /{account}/{group}/{artifact}:
-    put:
-      summary: "Create / Update Artifact"
-      description: "Creates or updates a Databus Artifact."
-      operationId: "create-artifact"
-      tags:
-        - Artifact 
-      security:
-        - ApiKeyAuth: []
-      parameters:
-        - name: account
-          in: path
-          description: account name
-          schema:
-            type: string
-          required: true
-          example: '%USERNAME%'
-        - name: group
-          in: path
-          description: target group name
-          schema:
-            type: string
-          required: true
-          example: "%GROUP%"
-        - name: artifact
-          in: path
-          description: target artifact name
-          schema:
-            type: string
-          required: true
-          example: "%ARTIFACT%"
-      requestBody:
-        description: "Artifact data as JSONLD."
-        required: true
-        content:
-          application/ld+json:
-            schema:
-              type: object
-              example: |
-                {
-                  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                  "@graph": {
-                    "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%",
-                    "@type": "Artifact",
-                    "title": "%ARTIFACT% Data",
-                    "description": "%ARTIFACT% description."
-                  }
-                }
-      responses:
-        "200":
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: '{
-                    "logLevel": "error",
-                    "log": []
-                  }'
-        "400":
-          description: "Error: Bad Request"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: '{
-                    "logLevel": "error",
-                    "log": [
-                      {
-                        "resource": null,
-                        "msg": "No graph %DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT% found in the input.",
-                        "payload": null,
-                        "level": "error"
-                      }
-                    ]
-                  }'
-        "403":
-          description: "Error: Forbidden"
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "You cannot perform this action in a foreign namespace."
     get:
       summary: "Get Artifact"
       description: "Retrieve a Databus Artifact as JSONLD."
@@ -602,7 +368,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: group identifier
@@ -626,7 +392,7 @@ paths:
                 type: object
                 example: |
                   {
-                    "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                    "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                     "@graph": [
                       {
                         "@id": "https://dev.databus.dbpedia.org/dnkg/raw-exports/dnb",
@@ -637,7 +403,7 @@ paths:
                         "@type": "Artifact"
                       },
                       {
-                        "@id": "https://dev.databus.dbpedia.org/%USERNAME%/cleaned/geonames",
+                        "@id": "https://dev.databus.dbpedia.org/[MY_ACCOUNT_NAME]/cleaned/geonames",
                         "@type": "Artifact"
                       },
                       {
@@ -705,7 +471,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: target group identifier
@@ -734,111 +500,10 @@ paths:
                 example: "You cannot perform this action in a foreign namespace."
 
   /{account}/{group}/{artifact}/{version}:
-    put:
-      summary: "Create / Update DataId"
-      description: "
-        Create or update a DataId on the Databus
-        
-        * The input data must be supplied as Json-LD 
-        
-        * The input data will be filtered with this [construct query](./server/app/common/queries/constructs/construct-version.sparql)
-        
-        * The **filtered data** must conform to these [SHACL shapes](./server/app/common/shacl/dataid-shacl.ttl)
-        
-      "
-      operationId: "create-dataid"
-      tags:
-        - DataID (version) 
-      security:
-        - ApiKeyAuth: []
-      parameters:
-        - name: account
-          in: path
-          description: account namespace
-          schema:
-            type: string
-          required: true
-          example: '%USERNAME%'
-        - name: group
-          in: path
-          description: group identifier
-          schema:
-            type: string
-          required: true
-          example: "%GROUP%"
-        - name: artifact
-          in: path
-          description: artifact identifier
-          schema:
-            type: string
-          required: true
-          example: "%ARTIFACT%"
-        - name: version
-          in: path
-          description: version identifier
-          schema:
-            type: string
-          required: true
-          example: "%VERSION%"
-      requestBody:
-        description: "Metadata in JSONLD. May contain at most one group and one version metadata graph."
-        required: true
-        content:
-          application/ld+json:
-            schema:
-              type: object
-              example: |
-                {
-                  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                  "@graph": {
-                    "@type": [ "Version", "Dataset" ],
-                    "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%",
-                    "hasVersion": "%VERSION%",
-                    "title": "Test Version",
-                    "description": "Data for testing purposes.",
-                    "license": "http://creativecommons.org/licenses/by/4.0/",
-                    "distribution": [
-                      {
-                        "@type": "Part",
-                        "formatExtension": "ttl",
-                        "compression": "none",
-                        "downloadURL": "https://holycrab13.github.io/webid.ttl",
-                        "byteSize": 2730,
-                        "sha256sum": "d61a05ca4810367f361f17500304a168aab27a3119c93a18c00bce1775dfd6b1"
-                      }
-                    ]
-                  }
-                }
-      responses:
-        "200":
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: |
-                  {
-                    "logLevel": "error",
-                    "log": []
-                  }
-        "400":
-          description: "Error. Bad Request."
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "Graph with id %DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION% not found in input."
-        "403":
-          description: "Error: Forbidden"
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "You cannot perform this action in a foreign namespace."
     get:
-      summary: "Get DataId"
+      summary: "Get Version"
       tags:
-        - DataID (version) 
+        - Version
       description: "Retrieve a DataId as JSONLD"
       operationId: "get-dataid"
       parameters:
@@ -848,7 +513,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: group identifier
@@ -879,7 +544,7 @@ paths:
                 type: object
                 example: |
                   {
-                    "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                    "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                     "@graph": [
                       {
                         "@id": "https://dev.databus.dbpedia.org/denis/lodcloud-crawl/judaicalink/2022-10-28#judaicalink_distinctid=id1_status=500_type=other.file",
@@ -956,7 +621,7 @@ paths:
       description: "Delete a DataId from the Databus."
       operationId: "delete-dataid"
       tags:
-        - DataID (version) 
+        - Version
       security:
         - ApiKeyAuth: []
       parameters:
@@ -966,7 +631,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: group identifier
@@ -1001,7 +666,7 @@ paths:
       description: "Get a file from the Databus. The request URI is the Databus file identifier."
       operationId: "get-file"
       tags:
-        - DataID (version) 
+        - File
       parameters:
         - name: account
           in: path
@@ -1009,7 +674,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: group
           in: path
           description: group identifier
@@ -1049,95 +714,6 @@ paths:
                 type: string
 
   /{account}/collections/{id}:
-    put:
-      summary: "Create / Update Collection"
-      description: "Creates or updates a Databus Collection."
-      operationId: "create-collection"
-      tags:
-        - Collection
-      security:
-        - ApiKeyAuth: []
-      parameters:
-        - name: account
-          in: path
-          description: account namespace
-          schema:
-            type: string
-          required: true
-          example: '%USERNAME%'
-        - name: id
-          in: path
-          description: The collection identifier
-          schema:
-            type: string
-          required: true
-          example: "%GROUP%-%ARTIFACT%"
-      requestBody:
-        description: "Collection data as JSONLD."
-        required: true
-        content:
-          application/ld+json:
-            schema:
-              type: object
-              example: '{
-                "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
-                "@graph": [
-                  {
-                    "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/collections/%GROUP%-%ARTIFACT%",
-                    "@type": "databus:Collection",
-                    "publisher": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
-                    "title": "%GROUP% %ARTIFACT%",
-                    "description": "%GROUP% %ARTIFACT% Data (latest version) from DBpedia.",
-                    "databus:collectionContent": "%7B%22root%22%3A%7B%22uri%22%3Anull%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%22%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%2F%USERNAME%%2F%GROUP%%22%2C%22property%22%3A%22dataid%3Agroup%22%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%2F%USERNAME%%2F%GROUP%%2F%ARTIFACT%%22%2C%22property%22%3A%22dataid%3Aartifact%22%2C%22childNodes%22%3A%5B%5D%2C%22facetSettings%22%3A%7B%22http%3A%2F%2Fpurl.org%2Fdc%2Fterms%2FhasVersion%22%3A%5B%7B%22value%22%3A%22%VERSION%%22%2C%22checked%22%3Atrue%7D%5D%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%2C%22generatedQuery%22%3A%7B%22root%22%3A%7B%22uri%22%3Anull%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%5D%2C%22facetSettings%22%3A%7B%7D%7D%7D%7D"
-                  }
-                ]
-              }'
-      responses:
-        "200":
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: object
-                example: '{
-                  "success": true,
-                  "message": "Collection saved successfully.",
-                  "data": [
-                    {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/collections/%GROUP%-%ARTIFACT%",
-                      "@type": [
-                        "http://dataid.dbpedia.org/ns/core#Collection"
-                      ],
-                      "http://dataid.dbpedia.org/ns/core#content": [
-                        {
-                          "@value": "%7B%22root%22%3A%7B%22uri%22%3Anull%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%22%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%2F%USERNAME%%2F%GROUP%%22%2C%22property%22%3A%22dataid%3Agroup%22%2C%22childNodes%22%3A%5B%7B%22uri%22%3A%22http%3A%2F%2Flocalhost%3A3000%2F%USERNAME%%2F%GROUP%%2F%ARTIFACT%%22%2C%22property%22%3A%22dataid%3Aartifact%22%2C%22childNodes%22%3A%5B%5D%2C%22facetSettings%22%3A%7B%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%5D%2C%22facetSettings%22%3A%7B%7D%7D%2C%22generatedQuery%22%3A%7B%22root%22%3A%7B%22uri%22%3Anull%2C%22property%22%3Anull%2C%22childNodes%22%3A%5B%5D%2C%22facetSettings%22%3A%7B%7D%7D%7D%7D"
-                        }
-                      ],
-                      "http://purl.org/dc/terms/description": [
-                        {
-                          "@value": "%GROUP% %ARTIFACT% (version %VERSION%) from DBpedia."
-                        }
-                      ],
-                      "http://purl.org/dc/terms/publisher": [
-                        {
-                          "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this"
-                        }
-                      ],
-                      "http://purl.org/dc/terms/title": [
-                        {
-                          "@value": "%GROUP% %ARTIFACT%"
-                        }
-                      ]
-                    }
-                  ]
-                }'
-        "403":
-          description: "Forbidden. The account failed to authenticate."
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "Error: Forbidden"
     get:
       summary: "Get Collection"
       description: "Retrieve a Databus Collection."
@@ -1151,7 +727,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: id
           in: path
           description: the collection identifier
@@ -1178,9 +754,9 @@ paths:
                   		GRAPH ?g
                   		{
                   			{
-                  				?dataset databus:group <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/yourCollection> .
+                  				?dataset databus:group <%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/yourCollection> .
                   				{
-                  					?dataset databus:artifact <%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/yourCollection/first> .
+                  					?dataset databus:artifact <%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/yourCollection/first> .
                   				}
                   			}
                   			?dataset dcat:distribution ?distribution .
@@ -1192,7 +768,7 @@ paths:
               schema:
                 type: object
                 example: '{
-                  "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
+                  "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%",
                   "@type": "databus:Group",
                   "description": "%GROUP% datasets from DBpedia",
                   "title": "%GROUP% Data",
@@ -1236,7 +812,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
         - name: id
           in: path
           description: the collection identifier
@@ -1263,7 +839,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/collections/%GROUP%-%ARTIFACT%'
+          example: '%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/collections/%GROUP%-%ARTIFACT%'
       responses:
         "200":
           description: "OK"
@@ -1298,7 +874,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
       requestBody:
         description: "Account data as JSONLD."
         required: true
@@ -1307,23 +883,23 @@ paths:
             schema:
               type: object
               example: '{
-                "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                 "@graph": [
                   {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]",
                       "@type": "foaf:PersonalProfileDocument",
-                      "maker": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
-                      "primaryTopic": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this"
+                      "maker": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this",
+                      "primaryTopic": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this"
                   },
                   {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this",
                       "@type": [
                           "dbo:DBpedian",
                           "foaf:Person"
                       ],
-                      "name": "%USERNAME%",
+                      "name": "[MY_ACCOUNT_NAME]",
                       "rdfs:comment": "Hello Databus!",
-                      "account": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%"
+                      "account": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]"
                   }
                 ]
               }'
@@ -1355,7 +931,7 @@ paths:
           schema:
             type: string
           required: true
-          example: '%USERNAME%'
+          example: '[MY_ACCOUNT_NAME]'
       responses:
         "200":
           description: "OK"
@@ -1419,21 +995,21 @@ paths:
                         "modulus": "a1e12228e4d931cc1cc00f53822f3c759fe3a66b692fab0df625f704ee4a03e25ec6bd6af7408cb070702dd4b5245a438c697c8e0243989459dc4bd90269116355a763d9f48ba23d4cfec5d6189606b160dd42ed5deb5a515306df2684d8070bac3e61d5f91c481b81163630877be42207547523ebe378ce44df836a5db28ca50b3cda007f1a9a8734c73a620e6aabd2abda8c3ba52ecd41fba866a66c17f6d713abf24983ef5074bb9eac8abf9e36979cd8f87441e8d500889c2efba793b7d0009cc6b14b8dc1466c6e244a0d907181f708e69a02e417fce2786ecb11403e455abf458a99131ca62a31981757e3eb7b00ff30942b397b879b9485d4fbdf7c43"
                       },
                       {
-                        "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%",
+                        "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]",
                         "@type": "foaf:PersonalProfileDocument",
-                        "maker": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
-                        "primaryTopic": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this"
+                        "maker": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this",
+                        "primaryTopic": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this"
                       },
                       {
-                        "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
+                        "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this",
                         "@type": [
                           "foaf:Person",
                           "dbo:DBpedian"
                         ],
                         "comment": "Hello Databus!",
                         "key": "_:b0",
-                        "account": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%",
-                        "name": "%USERNAME%"
+                        "account": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]",
+                        "name": "[MY_ACCOUNT_NAME]"
                       }
                     ]
                   }
@@ -1576,7 +1152,7 @@ paths:
               type: object
               example: |
                 {
-                  "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                  "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                   "@graph": {
                     "@type": [ "Version", "Dataset" ],
                     "@id": "%DATABUS_RESOURCE_BASE_URL%/%ACCOUNT%/%GROUP%/%ARTIFACT%/%VERSION%",
@@ -1604,8 +1180,8 @@ paths:
               schema:
                 type: string
                 example: 'Databus Tractate Version 1.0
-                  %DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this
-                  %DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%
+                  %DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this
+                  %DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%
                   http://creativecommons.org/licenses/by/4.0/
                   d61a05ca4810367f361f17500304a168aab27a3119c93a18c00bce1775dfd6b1'
   /api/tractate/v1/verify:
@@ -1623,7 +1199,7 @@ paths:
             schema:
               type: object
               example: '{
-                "@context": "https://downloads.dbpedia.org/databus/context.jsonld",
+                "@context": "%DATABUS_RESOURCE_BASE_URL%/res/context.jsonld",
                 "@graph": [
                     {
                       "@id": "_:b0",
@@ -1634,36 +1210,36 @@ paths:
                       }
                     },
                     {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%",
                       "@type": "dataid:Artifact"
                     },
                     {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%",
                       "@type": "dataid:Version"
                     },
                     {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%#Dataset",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%#Dataset",
                       "@type": "Dataset",
-                      "artifact": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%",
-                      "group": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%",
-                      "version": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%",
+                      "artifact": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%",
+                      "group": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%",
+                      "version": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%",
                       "description": "%GROUP% version of the %ARTIFACT% dataset from DBpedia",
                       "hasVersion": "%VERSION%",
                       "issued": "2022-02-11T13:28:58.132Z",
                       "license": "http://creativecommons.org/licenses/by/4.0/",
                       "modified": "2022-02-11T13:28:58.132Z",
-                      "publisher": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%#this",
+                      "publisher": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]#this",
                       "title": "%GROUP% %ARTIFACT%",
-                      "distribution": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%#%ARTIFACT%.ttl",
+                      "distribution": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%#%ARTIFACT%.ttl",
                       "proof": {
                           "@id": "_:b0"
                       }
                     },
                     {
-                      "@id": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%#%ARTIFACT%.ttl",
+                      "@id": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%#%ARTIFACT%.ttl",
                       "@type": "Part",
                       "compression": "none",
-                      "file": "%DATABUS_RESOURCE_BASE_URL%/%USERNAME%/%GROUP%/%ARTIFACT%/%VERSION%/%ARTIFACT%.ttl",
+                      "file": "%DATABUS_RESOURCE_BASE_URL%/[MY_ACCOUNT_NAME]/%GROUP%/%ARTIFACT%/%VERSION%/%ARTIFACT%.ttl",
                       "formatExtension": "ttl",
                       "formatExtension": "ttl",
                       "sha256sum": "d61a05ca4810367f361f17500304a168aab27a3119c93a18c00bce1775dfd6b1",

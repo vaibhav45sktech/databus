@@ -70,11 +70,12 @@ class DatabusCollectionWrapper {
   }
 
 
-  static createNew(title, description, source) {
+  static createNew(title, description, source, accountName) {
     var data = {};
     data.uuid = DatabusUtils.uuidv4();
     data.title = title;
     data.description = description;
+    data.accountName = accountName;
     data.abstract = description;
     data.content = {};
     data.content.root = new QueryNode(null, null);

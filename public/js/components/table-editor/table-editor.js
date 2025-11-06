@@ -29,12 +29,15 @@ function TableEditorController() {
     return width + 22;
   }
 
+  ctrl.editContentVariant = function(index) {
+
+    ctrl.onEditContentVariant({ index: index});
+  }
+
   ctrl.setupColumns = function() {
 
     ctrl.columns = [];
     ctrl.columns.push({ title:'File', width: 400, isReadonly : true });
-    ctrl.columns.push({ title:'Format', width: 75, isReadonly : true });
-    ctrl.columns.push({ title:'Compression', width: 115, isReadonly : true });
 
     for(var c in ctrl.model.contentVariants) {
       var cv = ctrl.model.contentVariants[c];
@@ -65,18 +68,12 @@ function TableEditorController() {
 
   ctrl.selectCell = function($event, x, y) {
 
-    if(ctrl.selection.x == x && ctrl.selection.y == y) {
-      ctrl.edit.x = x;
-      ctrl.edit.y = y; 
-
-      // $event.target.setSelectionRange(0, $event.target.value.length)
-      // $event.target.selectionStart = 0;
-      // $event.target.selectionEnd = $event.target.value.length;
-      return;
-    }
-
+    
     ctrl.edit.x = undefined;
     ctrl.edit.y = undefined;
+
+    ctrl.edit.x = x;
+    ctrl.edit.y = y; 
     ctrl.selection.x = x;
     ctrl.selection.y = y;
     ctrl.selection.width = 1;
@@ -93,19 +90,19 @@ function TableEditorController() {
     var index = ctrl.model.files.findIndex(f => f.uri == file.uri);
     
     for(var i = index + 1; i < index + file.rowspan; i++) {
-      ctrl.model.files[i].contentVariants[cv.label] = file.contentVariants[cv.label];
+      ctrl.model.files[i].contentVariants[cv.id] = file.contentVariants[cv.id];
     }
     
-    ctrl.model.isConfigDirty = true
+    ctrl.model.onChange();
   }
 
   ctrl.updateViewModel = function() {
-
 
     for(var f in ctrl.model.files) {
       ctrl.model.files[f].rowspan = 1;
     }
 
+    /*
     if(ctrl.model.groupMode) {
 
       var i = 0;
@@ -115,12 +112,12 @@ function TableEditorController() {
 
         if(ctrl.model.files[i].name == ctrl.model.files[i + step].name) {
           // Swallow the cv setting of the next row
-          ctrl.model.files[i].rowspan++;
-          ctrl.model.files[i + step].rowspan = 0;
+          // ctrl.model.files[i].rowspan++;
+          // ctrl.model.files[i + step].rowspan = 0;
 
           for(var c in ctrl.model.contentVariants) {
             var cv = ctrl.model.contentVariants[c];
-            ctrl.model.files[i + step].contentVariants[cv.label] = ctrl.model.files[i].contentVariants[cv.label];
+            ctrl.model.files[i + step].contentVariants[cv.id] = ctrl.model.files[i].contentVariants[cv.id];
           }
 
           step++;
@@ -129,7 +126,7 @@ function TableEditorController() {
           step = 1;
         }
       }
-    }
+    }*/
 
 
   }
@@ -138,8 +135,8 @@ function TableEditorController() {
    * @param {*} artifact 
    * @param {*} file 
    */
-  ctrl.removeFileFromArtifact = function(file) {
-    ctrl.onRemoveFile({ file : file });
+  ctrl.removeFileFromArtifact = function(file, index) {
+    ctrl.onRemoveFile({ file : file, index: index});
   }
 
   ctrl.$doCheck = function() { 

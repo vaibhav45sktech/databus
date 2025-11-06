@@ -15,11 +15,26 @@ class UriUtils {
 
     var result = baseUrl;
 
-    for (var p in path) {
-      result += "/" + encodeURI(path[p]);
+    for (var segment of path) {
+      if(segment == undefined) {
+        continue;
+      }
+
+      result += "/" + encodeURI(segment);
     }
 
     return sanitizeUrl(result);
+  }
+
+  static fromRequest(req) {
+
+     return UriUtils.createResourceUri([
+      req.params.account,
+      req.params.group,
+      req.params.artifact,
+      req.params.version
+    ]);
+
   }
 
   static createPath(path) {

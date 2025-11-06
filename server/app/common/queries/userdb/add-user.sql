@@ -1,2 +1,2 @@
-INSERT INTO users(sub, displayName, accountName) 
-VALUES ("%SUB%", "%DISPLAYNAME%", "%ACCOUNT_NAME%")
+INSERT INTO users(id, email) 
+VALUES ("%ID%", "%EMAIL%")

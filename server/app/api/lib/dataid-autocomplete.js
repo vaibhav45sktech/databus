@@ -6,6 +6,7 @@ const ArrayUtils = require('../../common/utils/array-utils');
 const DatabusUtils = require('../../../../public/js/utils/databus-utils');
 const { JSONLD_VALUE } = require('../../../../public/js/utils/databus-uris');
 const knownCompressionExtensions = require('../../common/config/compression-extensions.json');
+const DatabusConstants = require('../../../../public/js/utils/databus-constants');
 
 var autocompleter = {};
 
@@ -25,8 +26,8 @@ function autofillFileIdentifiers(datasetUri, fileGraph) {
   for (var cv of contentVariants) {
     var facet = UriUtils.uriToName(cv.key);
     var value = cv.value;
-    segment += `_${facet}=${value}`;
-  }
+    segment += `_${facet}=${encodeURIComponent(value)}`;
+  } 
 
   var format = undefined;
   var compression = undefined;
@@ -52,8 +53,8 @@ function autofillFileIdentifiers(datasetUri, fileGraph) {
     segment += `.${compression}`;
   }
 
-  fileGraph[DatabusUris.DATABUS_FILE] = [];
-  fileGraph[DatabusUris.DATABUS_FILE].push({ '@id': `${baseUri}/${segment}` });
+  fileGraph[DatabusUris.DATABUS_FILE] = [{}];
+  fileGraph[DatabusUris.DATABUS_FILE][0][DatabusUris.JSONLD_ID] = `${baseUri}/${segment}`;
   fileGraph[DatabusUris.JSONLD_ID] = `${baseUri}#${segment}`;
 }
 
@@ -86,9 +87,8 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
 
   if (publisherUri == null) {
     versionGraph[DatabusUris.DCT_PUBLISHER] = [{}];
-    versionGraph[DatabusUris.DCT_PUBLISHER][0][DatabusUris.JSONLD_ID] = `${accountUri}#this`;
+    versionGraph[DatabusUris.DCT_PUBLISHER][0][DatabusUris.JSONLD_ID] = `${accountUri}${DatabusConstants.WEBID_THIS}`;
   }
-
 
   var timeString = DatabusUtils.timeStringNow();
 
@@ -106,11 +106,14 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
     versionGraph[DatabusUris.DCT_ABSTRACT][0][JSONLD_VALUE] =
       DatabusUtils.createAbstractFromDescription(description);
   }
+  
+  var versionName = UriUtils.uriToName(datasetUri);
+  versionGraph[DatabusUris.DATABUS_NAME] = [{}];
+  versionGraph[DatabusUris.DATABUS_NAME][0][DatabusUris.JSONLD_VALUE] =versionName;
 
   if (versionGraph[DatabusUris.DCT_HAS_VERSION] == undefined) {
     versionGraph[DatabusUris.DCT_HAS_VERSION] = [{}];
-    versionGraph[DatabusUris.DCT_HAS_VERSION][0][DatabusUris.JSONLD_VALUE] =
-      UriUtils.uriToName(datasetUri);
+    versionGraph[DatabusUris.DCT_HAS_VERSION][0][DatabusUris.JSONLD_VALUE] = versionName;
   }
 
   versionGraph[DatabusUris.DCT_MODIFIED] = [{}];
@@ -132,7 +135,8 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
   artifactGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
   artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY] = [{}];
   artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY][0][DatabusUris.JSONLD_ID] = groupUri;
-
+  artifactGraph[DatabusUris.DATABUS_NAME] = [{}];
+  artifactGraph[DatabusUris.DATABUS_NAME][0][DatabusUris.JSONLD_VALUE] = UriUtils.uriToName(artifactUri);
 
   var groupGraph = JsonldUtils.getTypedGraph(expandedGraph, DatabusUris.DATABUS_GROUP);
  
@@ -145,6 +149,9 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
 
   groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = [{}];
   groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
+  groupGraph[DatabusUris.DATABUS_NAME] = [{}];
+  groupGraph[DatabusUris.DATABUS_NAME][0][DatabusUris.JSONLD_VALUE] = UriUtils.uriToName(groupUri);
+
 
   var fileGraphs = JsonldUtils.getTypedGraphs(expandedGraph, DatabusUris.DATABUS_PART);
 
@@ -199,9 +206,10 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
 
   for (var fileGraph of fileGraphs) {
 
-    versionGraph[DatabusUris.DCAT_DISTRIBUTION].push({
-      '@id': fileGraph[DatabusUris.JSONLD_ID]
-    });
+    var distributionReference = {};
+    distributionReference[DatabusUris.JSONLD_ID] = fileGraph[DatabusUris.JSONLD_ID];
+
+    versionGraph[DatabusUris.DCAT_DISTRIBUTION].push(distributionReference);
 
     for (var contentVariantProperty of contentVariantProperties) {
 
@@ -216,48 +224,5 @@ autocompleter.autocomplete = function (expandedGraph, logger) {
 }
 
 
-autocompleter.autocompleteArtifact = function (expandedGraphs) {
-
-  var artifactGraph = JsonldUtils.getTypedGraph(expandedGraphs, DatabusUris.DATABUS_ARTIFACT);
-  var artifactUri = artifactGraph[DatabusUris.JSONLD_ID];
-  var groupUri = UriUtils.navigateUp(artifactUri, 1);
-  var accountUri = UriUtils.navigateUp(artifactUri, 2);
-
-
-  expandedGraphs.push({ '@id': groupUri, '@type': DatabusUris.DATABUS_GROUP });
-
-  artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY] = [{}];
-  artifactGraph[DatabusUris.DATABUS_GROUP_PROPERTY][0][DatabusUris.JSONLD_ID] = groupUri;
-
-  artifactGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = [{}];
-  artifactGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
-
-  if (artifactGraph[DatabusUris.DCT_ABSTRACT] == undefined
-    && artifactGraph[DatabusUris.DCT_DESCRIPTION] != undefined) {
-    var description = artifactGraph[DatabusUris.DCT_DESCRIPTION][0][DatabusUris.JSONLD_VALUE];
-    artifactGraph[DatabusUris.DCT_ABSTRACT] = [{}];
-    artifactGraph[DatabusUris.DCT_ABSTRACT][0][JSONLD_VALUE] =
-      DatabusUtils.createAbstractFromDescription(description);
-  }
-}
-
-autocompleter.autocompleteGroup = function (expandedGraphs) {
-
-  var groupGraph = JsonldUtils.getTypedGraph(expandedGraphs, DatabusUris.DATABUS_GROUP);
-  var groupUri = groupGraph[DatabusUris.JSONLD_ID];
-  var accountUri = UriUtils.navigateUp(groupUri, 1);
-
-  groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = [{}];
-  groupGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY][0][DatabusUris.JSONLD_ID] = accountUri;
-
-  if (groupGraph[DatabusUris.DCT_ABSTRACT] == undefined
-    && groupGraph[DatabusUris.DCT_DESCRIPTION] != undefined) {
-
-    var description = groupGraph[DatabusUris.DCT_DESCRIPTION][0][DatabusUris.JSONLD_VALUE];
-    groupGraph[DatabusUris.DCT_ABSTRACT] = [{}];
-    groupGraph[DatabusUris.DCT_ABSTRACT][0][JSONLD_VALUE] =
-      DatabusUtils.createAbstractFromDescription(description);
-  }
-}
 
 module.exports = autocompleter;

@@ -25,12 +25,16 @@
       "description": {
          "@id": "dct:description"
       },
+      "name": {
+         "@id": "databus:name"
+      },
       "Artifact": "databus:Artifact",
       "artifact": {
          "@id": "databus:artifact",
          "@type": "@id"
       },
       "Version": "databus:Version",
+      "Dataset": "dcat:Dataset",
       "publisher": {
          "@id": "dct:publisher",
          "@type": "@id"
@@ -123,7 +127,7 @@
          "@id": "foaf:primaryTopic",
          "@type": "@id"
       },
-      "name": {
+      "displayName": {
          "@id": "foaf:name"
       },
       "account": {

@@ -1,5 +1,27 @@
 // Hoverable Icon
 
+.fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.databus-ribbon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $banner-background;
+}
+
 .hover-icon::before {
   content: '';
   position: absolute;
@@ -122,6 +144,10 @@
 
 .entity-card {
 
+  padding: 1.1em;
+  border: 1px solid #dbdbdb; 
+  border-radius: 8px;
+
   .entity-card-icon {
     width: auto;
     height: 52px;
@@ -133,11 +159,22 @@
     align-items: center;
   }
 
+  .entity-card-header .title {
+    font-size: 1.2em;
+    margin-bottom: 4px;
+  }
+
+  .entity-card-header uri-breadcrumbs {
+    font-size: 0.9em;
+  }
+
   .entity-card-content {
     margin-top: 0.5em;
   }
 
   .entity-card-footer {
+    font-size: .8em;
+    color: #626568;
     margin-top: 0.5em;
   }
 }
@@ -148,7 +185,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center;
-  min-height: 200px;
+  height: 160px;
 
   .title {
     color: white;
@@ -207,9 +244,6 @@
 
 // NAVBAR
 
-.navbar-db {
-  background-color: $navbar-background;
-}
 
 // Settings and boxes
 

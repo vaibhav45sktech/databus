@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS apikeys (
     apikey VARCHAR(255) PRIMARY KEY,
     keyname VARCHAR(255) NOT NULL,
-    sub VARCHAR(255) NOT NULL,
-    UNIQUE(keyname, sub),
-    FOREIGN KEY(sub) REFERENCES users(sub) ON DELETE CASCADE
+    accountName VARCHAR(255) NOT NULL,
+    UNIQUE(keyname, accountName),
+    FOREIGN KEY(accountName) REFERENCES accounts(accountName) ON DELETE CASCADE
 );

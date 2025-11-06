@@ -37,15 +37,15 @@
                 d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
             </svg>
             <div style="margin-left: 24px;">
-              <h1 class="title is-2 has-text-left is-marginless">{{ profileData.label }}</h1>
-              <uri-breadcrumbs class="header-breadcrumbs" uri="profileData.uri"></uri-breadcrumbs>
+              <h1 class="title is-2 has-text-left is-marginless">{{ account.label }}</h1>
+              <uri-breadcrumbs class="header-breadcrumbs" uri="account.uri"></uri-breadcrumbs>
             </div>
           </div>
         </div>
       </div>
     </section>
     <!--Navbar -->
-    <div class="collection-editor-header" ng-if="profileData != undefined">
+    <div class="collection-editor-header" >
       <div class="container">
         <!--Tabs-->
         <div class="collection-editor-tabs">
@@ -57,8 +57,7 @@
             ng-click="tabNavigation.navigateTo('collections');">
             <div class="section-label">Collections</div>
           </div>
-          <div style="flex: 1"></div>
-          <div ng-if="profileData.isOwn" class="collection-editor-tab"
+          <div ng-if="account.isOwn" class="collection-editor-tab"
             ng-class="{ 'is-active' : tabNavigation.activeTab == 2 }" ng-click="tabNavigation.navigateTo('settings')">
             <div class="section-label">
               <databus-icon style="margin-right:12px;" shape="'settings'" size="24">
@@ -66,37 +65,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="section" ng-if="profileData == undefined" ng-controller="ProfileController"
-      style="min-height: 600px; display: flex;">
-      <div class="container">
-        <p class="collection-editor-info-text">Unlock your account by entering a username (your publishing namespace)
-          and clicking the
-          button below.<br /> Choose your username carefully as you will not be able to change it later.</p>
-        <br /> <br />
-        <div class="collection-editor-info-text" style="justify-content: center; display: flex;">
-          <div class="field has-addons">
-            <div class="control">
-              <input class="input" style="width: 400px;" ng-model="preferredDatabusUsername" type="text"
-                placeholder="Enter a username...">
-            </div>
-            <div class="control">
-              <a class="button is-info" ng-click="createProfile()">
-                Unlock Account
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="collection-editor-info-text" style="color: red;" ng-if="createAccountError">
-          {{ createAccountError }}
-          <ul ng-if="showAccountNameHints">
-            <li>Between 4 and 15 characters</li>
-            <li>Starts and ends with a lowercase letter</li>
-            <li>Only lowercase letters, numbers, underscores and dashes allowed</li>
-          </ul>
-        </div>
-
       </div>
     </div>
 
@@ -152,7 +120,7 @@
         align-items: center;
         padding: 1em;
         margin-bottom: 1em;
-        border-radius: 0;
+        border-radius: 8px;
         border: 1px solid #dbdbdb;
       }
 
@@ -215,7 +183,7 @@
       }
     </style>
 
-    <div class="section" style="min-height: 500px;" ng-if="profileData != undefined">
+    <div class="section" style="min-height: 500px;" >
       <!-- DATA -->
       <div ng-if="tabNavigation.activeTab == 0" class="container account-page-tab">
         <div class="columns" style="margin: 0">
@@ -223,16 +191,16 @@
             <div class="profile-picture" style="margin-bottom: 2em;">
               <img ng-src="{{ getImageUrl() }}"></img>
             </div>
-            <div ng-if="profileData.about" class="dashboard-card">
+            <div ng-if="account.about" class="dashboard-card">
               <div class="dashboard-card-title">About</div>
-              <p>{{ profileData.about }}</p>
+              <p>{{ account.about }}</p>
             </div>
-            <account-history account-name="profileData.accountName"></account-history>
+            <account-history account-name="account.accountName"></account-history>
           </div>
           <div class="column" style="padding: 0">
             <div class="field is-grouped" style="margin-bottom: 1em;">
-                <search style="flex: 1" search-input="dataSearchInput" settings="dataSearchSettings">
-                </search>
+              <search style="flex: 1" search-input="dataSearchInput" settings="dataSearchSettings">
+              </search>
             </div>
             <div ng-if="publishedData.isLoading">
               <div class="databus-no-content placeholder-medium">
@@ -244,8 +212,7 @@
                 </div>
               </div>
             </div>
-            <div ng-if="!publishedData.isLoading && dataSearchInput == ''" 
-              ng-repeat="group in publishedData.groups">
+            <div ng-if="!publishedData.isLoading && dataSearchInput == ''" ng-repeat="group in publishedData.groups">
               <div style="display: flex; align-items: center; margin-bottom: 1em;">
                 <expandable-arrow ng-if="group.artifacts.length > 0" expanded="group.isExpanded"></expandable-arrow>
                 <entity-card label="group.title" uri="group.uri" type="'Group'" style="width: 100%">
@@ -307,14 +274,14 @@
             </div>
           </div>
           <div class="ce-flex-filler"></div>
-          <div ng-if="profileData.isOwn" class="button is-collection" ng-click="createNewCollection()">Create New
+          <div ng-if="account.isOwn" class="button is-collection" ng-click="createNewCollection()">Create New
           </div>
         </div>
 
-        <div ng-if="profileData.isOwn">
+        <div ng-if="account.isOwn">
           <div class="ce-collection-list">
             <div class="ce-collection-list-item"
-              ng-repeat="collection in collectionManager.local | collectionfilter:collectionSearch.input | orderBy:collectionSearch.sortProperty:collectionSearch.sortReverse">
+              ng-repeat="collection in collectionList | collectionfilter:collectionSearch.input | orderBy:collectionSearch.sortProperty:collectionSearch.sortReverse">
               <div>
                 <div class="ce-collection-list-item-header">
                   <type-tag width="48" height="48" style="margin-right:12px" type="'Collection'"
@@ -353,9 +320,10 @@
             </div>
           </div>
         </div>
-        <div ng-if="!profileData.isOwn">
+        <div ng-if="!account.isOwn">
 
-          <div ng-repeat="collection in collectionsData.collections  | collectionfilter:collectionSearch.input | orderBy:collectionSearch.sortProperty:collectionSearch.sortReverse">
+          <div
+            ng-repeat="collection in collectionsData.collections  | collectionfilter:collectionSearch.input | orderBy:collectionSearch.sortProperty:collectionSearch.sortReverse">
             <div style="margin-bottom: 1em;">
               <entity-card label="collection.title" uri="collection.uri" type="'Collection'" desc="collection.abstract"
                 date="formatCollectionDateFromNow(collection.issued)">

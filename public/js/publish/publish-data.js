@@ -5,16 +5,26 @@ const DatabusUtils = require("../utils/databus-utils");
  */
 class PublishData {
 
-  constructor(data, accountData) {
+  constructor(data) {
 
-    this.accountData = accountData;
-    this.group = data != undefined ? data.group : {};
-    this.artifact = data != undefined ? data.artifact : {};
-    this.version = data != undefined ? data.version : {};
-    this.files = data != undefined ? data.files : {};
-    this.signature = data != undefined ? data.signature : undefined;
+    if (data != null) {
+      this.account = data.account ?? {};
+      this.group = data.group ?? {};
+      this.artifact = data.artifact ?? {};
+      this.version = data.version ?? {};
+      this.files = data.files ?? {};
+      this.signature = data.signature;
+    }
 
     if (data == null) {
+
+      this.account = {};
+      this.group = {};
+      this.artifact = {};
+      this.version = {};
+      this.files = {};
+      this.signature = undefined;
+
       this.group.generateMetadata = 'create';
       this.group.generateAbstract = true;
       this.artifact.generateMetadata = 'create';
@@ -30,8 +40,8 @@ class PublishData {
     var signature = {};
     signature.publisherUris = [];
 
-    signature.publisherUris = this.accountData.publisherUris;
-    signature.defaultPublisherUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountData.accountName}#this`
+    signature.publisherUris = this.account.publisherUris;
+    signature.defaultPublisherUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}#this`
     signature.selectedPublisherUri = signature.defaultPublisherUri;
     signature.autoGenerateSignature = true;
     signature.autoGenerateSignatureLocked = false;
@@ -42,6 +52,16 @@ class PublishData {
 
   hasError(error) {
 
+  }
+
+  clearErrors() {
+    this.group.errors = [];
+    this.artifact.errors = [];
+    this.version.errors = [];
+    this.files.errors = [];
+    this.group.warnings = [];
+    this.artifact.warnings = [];
+    this.version.warnings = [];
   }
   /**
    * Validates the tree
@@ -65,7 +85,7 @@ class PublishData {
 
     var self = this;
 
-    var existingGroup = this.accountData.groups.filter(function (value) {
+    var existingGroup = this.account.groups.filter(function (value) {
       return value.name == self.group.name;
     });
 
@@ -73,7 +93,7 @@ class PublishData {
       this.group.warnings.push('warning_group_exists');
     }
 
-    var existingArtifact = this.accountData.artifacts.filter(function (value) {
+    var existingArtifact = this.account.artifacts.filter(function (value) {
       return value.groupName == self.group.name && value.name == self.artifact.name;
     });
 
@@ -109,9 +129,9 @@ class PublishData {
       }
     }
 
-    var versionUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountData.accountName}/${this.group.name}/${this.artifact.name}/${this.version.name}`;
+    var versionUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}/${this.group.name}/${this.artifact.name}/${this.version.name}`;
 
-    var existingVersion = this.accountData.versions.filter(function (value) {
+    var existingVersion = this.account.versions.filter(function (value) {
       return value == versionUri;
     });
 

@@ -30,8 +30,8 @@ $shacl='<#artifact-exists>
 	sh:property [
 	  sh:path [ sh:inversePath rdf:type ] ;
 	    sh:nodekind sh:IRI ;
-      sh:pattern "/[a-zA-Z0-9\\\\-_]{4,}/[a-zA-Z0-9\\\\-_\\\\.]{3,}/[a-zA-Z0-9\\\\-_\\\\.]{3,}$" ;
-      sh:message "IRI for databus:Artifact must match /[a-zA-Z0-9\\\\-_]{4,}/[a-zA-Z0-9\\\\-_\\\\.]{3,}/[a-zA-Z0-9\\\\-_\\\\.]{3,}$"@en ;
+      sh:pattern "^[\\\\w+.-]+:\\\\/\\\\/[\\\\w+.:-]+\\\\/[\\\\w+.-]{4,}(?:\\\\/[\\\\w+.-]{3,}){2,2}$" ;
+      sh:message "IRI for databus:Artifact must be a 3-segment URI and match ^[\\\\w+.-]+:\\\\/\\\\/[\\\\w+.:-]+\\\\/[\\\\w+.-]{4,}(?:\\\\/[\\\\w+.-]{3,}){3,3}$"@en ;
 	] .';
 
 $example='"@type": "Artifact",';
@@ -67,10 +67,10 @@ $shacl='<#title-artifact>
         sh:qualifiedValueShape [ sh:datatype xsd:string ] ;
 		sh:qualifiedMaxCount 1 ;		
     ] ;
-        sh:property [
+	sh:property [
 		sh:path dct:title ;
 		sh:severity sh:Violation ;
-	    sh:maxLength 100 ;
+	    sh:maxLength 300 ;
 		sh:message "dct:title must have less than 100 characters and each language must occure only once."@en ;
 		sh:uniqueLang true ;
 	] . ';

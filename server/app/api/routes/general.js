@@ -1,14 +1,22 @@
 var http = require('http');
 var request = require('request');
+const jsonld = require('jsonld');
 var cors = require('cors');
-var defaultContext = require('../../common/res/context.jsonld');
-const publishGroup = require('../lib/publish-group');
 const publishVersion = require('../lib/publish-version');
-const DatabusUris = require('../../../../public/js/utils/databus-uris');
-const publishArtifact = require('../lib/publish-artifact');
 const JsonldUtils = require('../../../../public/js/utils/jsonld-utils');
-var jsonld = require('jsonld');
+const DatabusUris = require('../../../../public/js/utils/databus-uris');
 const DatabusLogger = require('../../common/databus-logger');
+const GroupWriter = require('../lib/group-writer');
+const ArtifactWriter = require('../lib/artifact-writer');
+const CollectionWriter = require('../lib/collection-writer');
+const ApiError = require('../../common/utils/api-error');
+var SparqlParser = require('sparqljs').Parser;
+
+const ALLOWED_QUERY_TYPES = [
+  "SELECT", "ASK", "DESCRIBE", "CONSTRUCT"
+]
+
+const MSG_NO_GRAPH_FOUND = `No processable graphs found in the input. Your input has to contain at least one graph of either type databus:Group, databus:Artifact or databus:Version.`
 
 module.exports = function (router, protector, webdav) {
 
@@ -31,11 +39,22 @@ module.exports = function (router, protector, webdav) {
 
     var query = req.body.query;
 
-
-   
-
     var sparqlEndpoint = `${process.env.DATABUS_DATABASE_URL}/sparql`;
     var accept = req.headers['accept']
+
+    try {
+      var parser = new SparqlParser({ skipValidation: true });
+      var parsedQuery = parser.parse(query);
+
+      if(!ALLOWED_QUERY_TYPES.includes(parsedQuery.queryType)) {
+        res.status(403).send("FORBIDDEN: SPARQL updates are disabled. Please use the API for write operations.");
+        return;
+      }
+
+    }
+    catch(err) {
+      // Do nothing and let the virtuoso endpoint handle error reporting
+    }
     
 
     if (accept == undefined) {
@@ -55,12 +74,52 @@ module.exports = function (router, protector, webdav) {
     request.post(options).pipe(res);
   });
 
-  router.post('/api/publish', protector.protect(true), async function (req, res, next) {
+  router.post('/api/register', protector.protect(true), registerData);
+  router.post('/api/publish', protector.protect(true), registerData);
+
+  /**
+   * Tries to create a new user in the user database
+   * @param {subect of the logged in user} sub 
+   * @param {account name of the logged in user} accountName 
+   * @returns 
+   */
+  async function createUser(sub, accountName) {
+
+    var accountExists = await protector.hasUser(accountName);
+    console.log(`Account does not exist yet!`);
+
+    if(accountExists) {
+      throw new ApiError(401, accountName, `Account <${accountName}> already exists.`, null);
+    }
+
+    try {
+      
+      console.log(`Adding to user database...`);
+      await protector.addUser(sub, accountName, accountName);
+
+      return {
+        sub: sub,
+        accountName: accountName
+      };
+    } catch(err) {
+      console.log(err);
+      throw new ApiError(500, accountName, `Failed to write to user database`, null);
+    }
+  }
+
+
+  async function registerData(req, res, next) {
 
     try {
 
       // Get the account namespace
-      var account = req.databus.accountName;
+      var accounts = req.databus.accounts;
+
+      var userData = {
+        sub: req.databus.sub,
+        accounts: req.databus.accounts
+      };
+
       var verifyParts = null;
       
       if(req.query['fetch-file-properties'] == "false") {
@@ -72,55 +131,59 @@ module.exports = function (router, protector, webdav) {
       }
 
       var logger = new DatabusLogger(req.query['log-level']);
-      var graph = req.body;
-
       var processedResources = 0;
+      var expandedGraphs = await jsonld.flatten(req.body);
+     
+      try {
+        // Publish collections
+        var collectionGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_COLLECTION);
+        logger.debug(null, `Found ${collectionGraphs.length} collection graphs.`, null);
 
-      if (graph[DatabusUris.JSONLD_CONTEXT] == process.env.DATABUS_DEFAULT_CONTEXT_URL) {
-        graph[DatabusUris.JSONLD_CONTEXT] = defaultContext;
-        logger.debug(null, `Context "${graph[DatabusUris.JSONLD_CONTEXT]}" replaced with cached resolved context`, defaultContext);
-      }
-
-      // Expand JSONLD!
-      var expandedGraph = await jsonld.flatten(graph);
-
-      // Publish groups
-      var groupGraphs = JsonldUtils.getTypedGraphs(expandedGraph, DatabusUris.DATABUS_GROUP);
-      logger.debug(null, `Found ${groupGraphs.length} group graphs.`, null);
-      processedResources += groupGraphs.length;
-      // console.log(groupGraphs);
-
-      for (var groupGraph of groupGraphs) {
-        var resultCode = await publishGroup(account, groupGraph, logger);
-
-        if (resultCode != 200) {
-          res.status(resultCode).json(logger.getReport());
-          return;
+        for (var collectionGraph of collectionGraphs) {
+          processedResources++;
+          var collectionWriter = new CollectionWriter(logger);
+          await collectionWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
-      }
 
-      // Publish artifacts
-      var artifactGraphs = JsonldUtils.getTypedGraphs(expandedGraph, DatabusUris.DATABUS_ARTIFACT);
-      logger.debug(null, `Found ${artifactGraphs.length} artifact graphs.`, null);
-      processedResources += artifactGraphs.length;
+        // Publish groups
+        var groupGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_GROUP);
+        logger.debug(null, `Found ${groupGraphs.length} group graphs.`, null);
 
-      for (var artifactGraph of artifactGraphs) {
-        var resultCode = await publishArtifact(account, artifactGraph, logger);
-
-        if (resultCode != 200) {
-          res.status(resultCode).json(logger.getReport());
-          return;
+        for (var collectionGraph of groupGraphs) {
+          processedResources++;
+          var groupWriter = new GroupWriter(logger);
+          await groupWriter.writeResource(req, userData, expandedGraphs, collectionGraph[DatabusUris.JSONLD_ID]);
         }
+
+        // Publish artifacts
+        var artifactGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_ARTIFACT);
+        logger.debug(null, `Found ${artifactGraphs.length} artifact graphs.`, null);
+
+        for (var artifactGraph of artifactGraphs) {
+          processedResources++;
+
+          var artifactWriter = new ArtifactWriter(logger);
+          await artifactWriter.writeResource(req, userData, expandedGraphs, artifactGraph[DatabusUris.JSONLD_ID]);
+        }
+
+        // Publish version
+
+        
+      }
+      catch(apiError) {
+        logger.error(apiError.resource, apiError.message, apiError.body);
+        res.status(apiError.statusCode).json(logger.getReport());
+        return;
       }
 
       // Publish versions
-      var datasetGraphs = JsonldUtils.getTypedGraphs(expandedGraph, DatabusUris.DATABUS_VERSION);
+      var datasetGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_VERSION);
       logger.debug(null, `Found ${datasetGraphs.length} version graphs.`, null);
       processedResources += datasetGraphs.length;
 
       for (var datasetGraph of datasetGraphs) {
         var datasetGraphUri = datasetGraph[DatabusUris.JSONLD_ID];
-        var resultCode = await publishVersion(account, expandedGraph, datasetGraphUri, verifyParts, logger);
+        var resultCode = await publishVersion(accounts, expandedGraphs, datasetGraphUri, verifyParts, logger);
 
         if (resultCode != 200) {
           res.status(resultCode).json(logger.getReport());
@@ -129,7 +192,7 @@ module.exports = function (router, protector, webdav) {
       }
 
       if(processedResources == 0) {
-        logger.error(null, `No processable graphs found in the input.`, req.body);
+        logger.error(null, MSG_NO_GRAPH_FOUND, req.body);
         res.status(400).json(logger.getReport());
         return;
       }
@@ -139,9 +202,8 @@ module.exports = function (router, protector, webdav) {
     } catch (err) {
       console.log(err);
       res.status(500).send(err);
-    }
-  });
-
+    } 
+  }
 
   router.get('/api/search', cors(), function (req, res, next) {
 
@@ -153,7 +215,7 @@ module.exports = function (router, protector, webdav) {
       first = false;
     }
 
-    var search = `http://localhost:8082/api/search${queryString}`;
+    var search = `${process.env.LOOKUP_BASE_URL}/api/search${queryString}`;
 
     http.get(search, function (response) {
       response.setEncoding('utf8');

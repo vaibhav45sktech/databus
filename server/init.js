@@ -1,16 +1,11 @@
 // External includes
 var fs = require('fs');
-var rp = require('request-promise');
 const crypto = require("crypto");
 const Constants = require('./app/common/constants.js');
 var config = require('./config.json');
 const DatabusUserDatabase = require('./userdb.js');
-const DatabusConstants = require('../public/js/utils/databus-constants.js');
-const UriUtils = require('./app/common/utils/uri-utils.js');
-const { executeAsk } = require('./app/common/execute-query.js');
-const publishAccount = require('./app/api/lib/publish-account.js');
-const AppJsonFormatter = require('../public/js/utils/app-json-formatter.js');
-
+const MetricsManager = require('./app/api/statistics/metrics-manager.js');
+const JsonldLoader = require('./app/common/utils/jsonld-loader.js');
 
 function writeManifest() {
 
@@ -84,17 +79,24 @@ async function initializeShacl() {
     'account', 'artifact', 'collection', 'version', 'group'
   ];
 
-  for(var file of shaclFiles) {
+  for (var file of shaclFiles) {
     var shacl = require(`../model/generated/shacl/${file}.shacl`);
     var shaclFile = `${__dirname}/app/common/res/shacl/${file}.shacl`;
 
-    console.log(`Creating SHACL resource }/app/common/res/shacl/${file}.shacl`);
+    console.log(`Creating SHACL resource /app/common/res/shacl/${file}.shacl`);
     fs.writeFileSync(shaclFile, shacl, "utf8");
   }
 }
 
 async function initializeContext() {
 
+  var defaultContextUrl = `${process.env.DATABUS_RESOURCE_BASE_URL}${Constants.DATABUS_DEFAULT_CONTEXT_PATH}`
+
+  console.log(`Using self-hosted jsonld context at ${defaultContextUrl}...`);
+  process.env.DATABUS_CONTEXT_URL = defaultContextUrl;
+
+
+  /*
   // Load the internal default context
   var context = require('../model/generated/context.json');
   var hasContext = false;
@@ -147,48 +149,67 @@ async function initializeContext() {
   console.log(``);
   fs.writeFileSync(contextFile, contextString, "utf8");
   console.log(`Successfully saved context to ${contextFile}:`);
+  */
 }
 
-async function initializeUserDatabase() {
-  console.log(`Connecting to User Databse...`);
-  var userDatabase = new DatabusUserDatabase();
-  await userDatabase.connect();
+async function waitForService(url, maxAttempts = 10, delayMs = 1000) {
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  console.log(`Verifying user account integrity`);
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      if (response.ok) {
+        console.log(`Service is online at ${url} (attempt ${attempt})`);
+        return true;
+      }
+    } catch (err) {
+      // Could log or ignore depending on use case
+    }
 
-  for(var user of await userDatabase.getUsers()) {
-    var profileUri = `${UriUtils.createResourceUri([user.accountName])}${DatabusConstants.WEBID_DOCUMENT}`;
-    var exists = await executeAsk(`ASK { <${profileUri}> ?p ?o }`);
-
-    if (!exists) {
-      // Redirect to the specific account page
-      console.log(`No profile found for user ${user.accountName}. Creating profile...`);
-     
-      var accountJsonLd = AppJsonFormatter.createAccountData(
-        process.env.DATABUS_RESOURCE_BASE_URL, 
-        user.accountName,
-        user.accountName, 
-        null, 
-        null);
-
-      await publishAccount(user.accountName, accountJsonLd);
-
-      console.log(`Created new default profile for user ${user.accountName}`);
-    } 
+    console.log(`Attempt ${attempt} failed. Retrying in ${delayMs}ms...`);
+    await delay(delayMs);
   }
 
+  console.error(`Service at ${url} did not come online after ${maxAttempts} attempts.`);
+  return false;
 }
 
 
-module.exports = async function () {
+async function initializeUserDatabase(indexer) {
+  console.log(`Connecting to User Database...`);
+  var userDatabase = new DatabusUserDatabase();
+  await userDatabase.connect();
+}
+
+
+module.exports = async function (indexer) {
 
   console.log(`Initializing...`);
   console.log(config);
 
-  await initializeUserDatabase();
 
-  await initializeShacl();
+  console.log(`Waiting for gstore service...`);
+
+
   await initializeContext();
+
+
+  // Ping process.env.DATABUS_DATABASE_URL
+  // await waitForService(process.env.DATABUS_DATABASE_URL, 50, 1000);
+
+  if (process.env.METRICS_PORT != undefined) {
+    console.log(`Settings up Prometheus metrics...`);
+    MetricsManager.initialize();
+  }
+
+  
+  JsonldLoader.initialize();
+
+  await initializeUserDatabase(indexer);
+
+  // await initializeShacl();
+
+  // initializeJsonLd();
 
   writeManifest();
 

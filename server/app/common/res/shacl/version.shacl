@@ -11,6 +11,8 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix db: <https://databus.dbpedia.org/sys/ont/> .
+@prefix prov: <http://www.w3.org/ns/prov-o#> .
+
 
 <#version-exists>
 	a sh:NodeShape ;
@@ -24,8 +26,8 @@
 	sh:property [
 		sh:path [ sh:inversePath rdf:type ] ;
 		  sh:nodekind sh:IRI ;
-		sh:pattern "/[a-zA-Z0-9\\-_]{4,}/[a-zA-Z0-9\\-_\\.]{1,}/[a-zA-Z0-9\\-_\\.]{1,}/[a-zA-Z0-9\\-_\\.]{1,}$" ;
-		sh:message "IRI for databus:Version must match /USER/GROUP/ARTIFACT/VERSION , |USER|>3"@en ;
+		sh:pattern "^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}(?:\\/[\\w+.-]{3,}){3,3}$" ;
+		sh:message "IRI for databus:Artifact must be a 4-segment URI and match ^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}(?:\\/[\\w+.-]{3,}){3,3}$)"@en ;
   ] . 
 
 <#title-version>
@@ -103,7 +105,13 @@
 	sh:maxCount 1 ;
 	sh:nodeKind sh:IRI .
 
-
+<#was-derived-from>
+	a sh:PropertyShape ;
+	sh:targetClass databus:Version ;
+	sh:severity sh:Violation ;
+	sh:message "Value of prov:wasDerivedFrom from must be a valid IRI."@en ;
+	sh:path prov:wasDerivedFrom ;
+	sh:nodeKind sh:IRI .
 
 
 
