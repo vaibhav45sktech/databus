@@ -42,12 +42,13 @@ databus:Version  a owl:Class ;
 	sh:property [
 		sh:path [ sh:inversePath rdf:type ] ;
 		  sh:nodekind sh:IRI ;
-		sh:pattern "/[a-zA-Z0-9\\-_]{4,}/[a-zA-Z0-9\\-_\\.]{1,}/[a-zA-Z0-9\\-_\\.]{1,}/[a-zA-Z0-9\\-_\\.]{1,}$" ;
-		sh:message "IRI for databus:Version must match /USER/GROUP/ARTIFACT/VERSION , |USER|>3"@en ;
+		sh:pattern "^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}(?:\\/[\\w+.-]{3,}){3,3}$" ;
+		sh:message "IRI for databus:Version must be a 4-segment URI and match ^[\\w+.-]+:\\/\\/[\\w+.:-]+\\/[\\w+.-]{4,}(?:\\/[\\w+.-]{3,}){3,3}$"@en ;
   ] . 
 ```
 ```javascript
-"Version": 	"databus:Version" 
+"Version": 	"databus:Version",
+"Dataset": "dcat:Dataset" 
 ```
 
 ## 1. General Metadata
@@ -296,7 +297,13 @@ prov:wasDerivedFrom a owl:ObjectProperty ;
 
 ```
 ```turtle
-
+<#was-derived-from>
+	a sh:PropertyShape ;
+	sh:targetClass databus:Version ;
+	sh:severity sh:Violation ;
+	sh:message "Value of prov:wasDerivedFrom from must be a valid IRI."@en ;
+	sh:path prov:wasDerivedFrom ;
+	sh:nodeKind sh:IRI .
 ```
 ```javascript
 "wasDerivedFrom":	{
@@ -398,7 +405,7 @@ databus:group rdf:type owl:ObjectProperty ;
 	a sh:NodeShape;
 	sh:targetClass databus:Version ;
 	sh:sparql [
-		sh:message "Dataset URI must contain the group URI of the associated group." ;
+		sh:message "Version URI must contain the group URI of the associated group." ;
 		sh:prefixes databus: ;
     sh:select """
 			SELECT $this ?group
