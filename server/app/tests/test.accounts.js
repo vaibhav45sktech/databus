@@ -71,8 +71,17 @@ test('CREATE account returns 200', async () => {
     },
   };
 
-  const response = await rp(options);
-  assert.is(response.statusCode, 200);
+  try {
+    const response = await rp(options);
+    assert.is(response.statusCode, 200);
+  } catch (err) {
+    console.error('Request failed:', {
+      statusCode: err.statusCode,
+      message: err.message,
+      body: err.error
+    });
+    throw err;
+  }
 });
 
 test('SEARCH account by label returns 200', async () => {
