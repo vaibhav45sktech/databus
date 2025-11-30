@@ -180,3 +180,7 @@ LOD-GEOSS (03EI1005E) and  PLASS (01MD19003D)
 > ```bash
 > npm install --legacy-peer-deps
 > ```
+> **Check MongoDB version (for troubleshooting)**
+> ```bash
+> mongod --version
+> ```
