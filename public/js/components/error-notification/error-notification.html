@@ -1,2 +1,11 @@
-<div ng-if="$ctrl.entity.hasError($ctrl.key)" class="error-tag">{{
-  $ctrl.get($ctrl.key) }}</div>
+<!-- custom 401 message -->
+<div ng-if="$ctrl.key == 401">
+  <h1>Welcome to private Databus</h1>
+  <p>You must log in to continue.</p>
+  <a href="/login">Click here to login</a>
+</div>
+
+<!-- fallback message -->
+<div ng-if="$ctrl.key != 401">
+  {{$ctrl.get($ctrl.key)}}
+</div>
