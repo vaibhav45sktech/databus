@@ -288,7 +288,15 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
 
     try {
 
-      var res = await $http.post(queryPage.endpoint, { query: queryPage.query });
+      var res = await $http({
+        method: 'POST',
+        url: queryPage.endpoint,
+        data: queryPage.query,
+        headers: {
+          'Content-Type': 'application/sparql-query',
+          'Accept': 'application/sparql-results+json'
+        }
+      });
 
       if ($scope.resultCache == null) {
         $scope.resultCache = {};

@@ -24,7 +24,7 @@ module.exports = function (router, protector, webdav) {
 
     var query = req.query.query;
 
-    if(query == undefined || query == "") {
+    if (query == undefined || query == "") {
       next('route');
       return;
     }
@@ -37,7 +37,13 @@ module.exports = function (router, protector, webdav) {
   router.post('/sparql', cors(), async function (req, res) {
 
 
+
     var query = req.body.query;
+
+    // Handle raw body (application/sparql-query)
+    if (typeof req.body === 'string') {
+      query = req.body;
+    }
 
     var sparqlEndpoint = `${process.env.DATABUS_DATABASE_URL}/sparql`;
     var accept = req.headers['accept']
@@ -46,16 +52,16 @@ module.exports = function (router, protector, webdav) {
       var parser = new SparqlParser({ skipValidation: true });
       var parsedQuery = parser.parse(query);
 
-      if(!ALLOWED_QUERY_TYPES.includes(parsedQuery.queryType)) {
+      if (!ALLOWED_QUERY_TYPES.includes(parsedQuery.queryType)) {
         res.status(403).send("FORBIDDEN: SPARQL updates are disabled. Please use the API for write operations.");
         return;
       }
 
     }
-    catch(err) {
+    catch (err) {
       // Do nothing and let the virtuoso endpoint handle error reporting
     }
-    
+
 
     if (accept == undefined) {
       accept = 'application/json';
@@ -88,12 +94,12 @@ module.exports = function (router, protector, webdav) {
     var accountExists = await protector.hasUser(accountName);
     console.log(`Account does not exist yet!`);
 
-    if(accountExists) {
+    if (accountExists) {
       throw new ApiError(401, accountName, `Account <${accountName}> already exists.`, null);
     }
 
     try {
-      
+
       console.log(`Adding to user database...`);
       await protector.addUser(sub, accountName, accountName);
 
@@ -101,7 +107,7 @@ module.exports = function (router, protector, webdav) {
         sub: sub,
         accountName: accountName
       };
-    } catch(err) {
+    } catch (err) {
       console.log(err);
       throw new ApiError(500, accountName, `Failed to write to user database`, null);
     }
@@ -121,19 +127,19 @@ module.exports = function (router, protector, webdav) {
       };
 
       var verifyParts = null;
-      
-      if(req.query['fetch-file-properties'] == "false") {
+
+      if (req.query['fetch-file-properties'] == "false") {
         verifyParts = false;
       }
 
-      if(req.query['fetch-file-properties'] == "true") {
+      if (req.query['fetch-file-properties'] == "true") {
         verifyParts = true;
       }
 
       var logger = new DatabusLogger(req.query['log-level']);
       var processedResources = 0;
       var expandedGraphs = await jsonld.flatten(req.body);
-     
+
       try {
         // Publish collections
         var collectionGraphs = JsonldUtils.getTypedGraphs(expandedGraphs, DatabusUris.DATABUS_COLLECTION);
@@ -168,9 +174,9 @@ module.exports = function (router, protector, webdav) {
 
         // Publish version
 
-        
+
       }
-      catch(apiError) {
+      catch (apiError) {
         logger.error(apiError.resource, apiError.message, apiError.body);
         res.status(apiError.statusCode).json(logger.getReport());
         return;
@@ -191,7 +197,7 @@ module.exports = function (router, protector, webdav) {
         }
       }
 
-      if(processedResources == 0) {
+      if (processedResources == 0) {
         logger.error(null, MSG_NO_GRAPH_FOUND, req.body);
         res.status(400).json(logger.getReport());
         return;
@@ -202,7 +208,7 @@ module.exports = function (router, protector, webdav) {
     } catch (err) {
       console.log(err);
       res.status(500).send(err);
-    } 
+    }
   }
 
   router.get('/api/search', cors(), function (req, res, next) {

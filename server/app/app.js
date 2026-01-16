@@ -87,7 +87,7 @@ initialize(app, memoryStore).then(function () {
 
     // Load API route module and attach routes to the router
     // Code for the API server is located in the ./api folder
-    require('./api/module')(router, protector, app.locals); 
+    require('./api/module')(router, protector, app.locals);
 
     // Load page-rendering route module and attach to the same router
     // Code for the HTML webapp is located in the ./webapp folder
@@ -114,7 +114,7 @@ async function initialize(app, memoryStore) {
 
   // Initialize JSON-LD context loader used for linked data parsing
   JsonldLoader.initialize();
-  
+
   try {
     // Enable trust proxy so Express knows it's behind a reverse proxy (e.g. nginx)
     app.set('trust proxy', true);
@@ -122,6 +122,7 @@ async function initialize(app, memoryStore) {
     // Configure body parsing for form data and JSON, with large request limits
     app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
     app.use(bodyParser.json({ limit: '50mb', type: ['application/json', 'application/ld+json'] }));
+    app.use(bodyParser.text({ limit: '50mb', type: 'application/sparql-query' }));
 
     // Set view engine and templates directory for rendering dynamic HTML
     app.set('views', path.join(__dirname, '../../public/templates'));
@@ -154,19 +155,19 @@ async function initialize(app, memoryStore) {
 
     // Serve files in the /res route with CORS enabled and proper content-type headers
     app.use('/res', cors(), express.static(resourceDirectory, {
-      setHeaders : function(res, path, stat) {
-        if(path.endsWith('.shacl')) {
+      setHeaders: function (res, path, stat) {
+        if (path.endsWith('.shacl')) {
           res.setHeader('Content-Type', 'text/turtle');
         }
-        if(path.endsWith('.jsonld')) {
+        if (path.endsWith('.jsonld')) {
           res.setHeader('Content-Type', 'application/ld+json');
         }
       }
     }),
-    // Enable directory listing for /res with a custom stylesheet
-    serveIndex(resourceDirectory, {
-      stylesheet: `${__dirname}/../../public/css/serve-index.css`
-    }));
+      // Enable directory listing for /res with a custom stylesheet
+      serveIndex(resourceDirectory, {
+        stylesheet: `${__dirname}/../../public/css/serve-index.css`
+      }));
 
   } catch (err) {
     // Log initialization errors
