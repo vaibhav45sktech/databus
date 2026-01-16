@@ -1,736 +1,13317 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/angular-application.js":
-/*!***********************************!*\
-  !*** ./js/angular-application.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const AccountPageController = __webpack_require__(/*! ./page-controller/account-controller */ \"./js/page-controller/account-controller.js\");\r\nconst ArtifactPageController = __webpack_require__(/*! ./page-controller/artifact-controller */ \"./js/page-controller/artifact-controller.js\");\r\nconst FrontPageController = __webpack_require__(/*! ./page-controller/frontpage-controller */ \"./js/page-controller/frontpage-controller.js\");\r\nconst HeaderController = __webpack_require__(/*! ./page-controller/header-controller */ \"./js/page-controller/header-controller.js\");\r\nconst CollectionController = __webpack_require__(/*! ./page-controller/collection-controller */ \"./js/page-controller/collection-controller.js\");\r\nconst CollectionsEditorController = __webpack_require__(/*! ./page-controller/collections-editor-controller */ \"./js/page-controller/collections-editor-controller.js\");\r\nconst GroupPageController = __webpack_require__(/*! ./page-controller/group-controller */ \"./js/page-controller/group-controller.js\");\r\nconst ProfileController = __webpack_require__(/*! ./page-controller/profile-controller */ \"./js/page-controller/profile-controller.js\");\r\nconst PublishWizardController = __webpack_require__(/*! ./page-controller/publish-wizard-controller */ \"./js/page-controller/publish-wizard-controller.js\");\r\nconst VersionPageController = __webpack_require__(/*! ./page-controller/version-controller */ \"./js/page-controller/version-controller.js\");\r\nconst UserSettingsController = __webpack_require__(/*! ./page-controller/user-settings-controller */ \"./js/page-controller/user-settings-controller.js\");\r\nconst DatabusCollectionManager = __webpack_require__(/*! ./collections/databus-collection-manager */ \"./js/collections/databus-collection-manager.js\");\r\nconst SearchManager = __webpack_require__(/*! ./search/search-manager */ \"./js/search/search-manager.js\");\r\nconst SearchController = __webpack_require__(/*! ./components/search/search-controller */ \"./js/components/search/search-controller.js\");\r\nconst DatabusAlertController = __webpack_require__(/*! ./components/databus-alert/databus-alert-controller */ \"./js/components/databus-alert/databus-alert-controller.js\");\r\nconst EntityCardController = __webpack_require__(/*! ./components/entity-card/entity-card */ \"./js/components/entity-card/entity-card.js\");\r\nconst OverrideCheckboxController = __webpack_require__(/*! ./components/override-checkbox/override-checkbox */ \"./js/components/override-checkbox/override-checkbox.js\");\r\nconst AutofillDropdownController = __webpack_require__(/*! ./components/autofill-dropdown/autofill-dropdown */ \"./js/components/autofill-dropdown/autofill-dropdown.js\");\r\nconst DatabusIconController = __webpack_require__(/*! ./components/databus-icon/databus-icon */ \"./js/components/databus-icon/databus-icon.js\");\r\nconst TypeTagController = __webpack_require__(/*! ./components/type-tag/type-tag */ \"./js/components/type-tag/type-tag.js\");\r\nconst CollectionEditorWidgetController = __webpack_require__(/*! ./components/collection-editor-widget/collection-editor-widget */ \"./js/components/collection-editor-widget/collection-editor-widget.js\");\r\nconst CollectionHierarchyControllerTwo = __webpack_require__(/*! ./components/collection-hierarchy-two/collection-hierarchy */ \"./js/components/collection-hierarchy-two/collection-hierarchy.js\");\r\nconst UriBreadcrumbsController = __webpack_require__(/*! ./components/uri-breadcrumbs/uri-breadcrumbs */ \"./js/components/uri-breadcrumbs/uri-breadcrumbs.js\");\r\nconst TableEditorController = __webpack_require__(/*! ./components/table-editor/table-editor */ \"./js/components/table-editor/table-editor.js\");\r\nconst MultiselectDropdownController = __webpack_require__(/*! ./components/multiselect-dropdown/multiselect-dropdown */ \"./js/components/multiselect-dropdown/multiselect-dropdown.js\");\r\nconst FileBrowserController = __webpack_require__(/*! ./components/file-browser/file-browser */ \"./js/components/file-browser/file-browser.js\");\r\nconst FacetsViewController = __webpack_require__(/*! ./components/facets-view/facets-view */ \"./js/components/facets-view/facets-view.js\");\r\nconst ExpandableArrowController = __webpack_require__(/*! ./components/expandable-arrow/expandable-arrow */ \"./js/components/expandable-arrow/expandable-arrow.js\");\r\nconst YasqeTextController = __webpack_require__(/*! ./components/yasqe-text/yasqe-text */ \"./js/components/yasqe-text/yasqe-text.js\");\r\nconst YasrViewController = __webpack_require__(/*! ./components/yasr-view/yasr-view */ \"./js/components/yasr-view/yasr-view.js\");\r\nconst CollectionStatisticsController = __webpack_require__(/*! ./components/collection-statistics/collection-statistics */ \"./js/components/collection-statistics/collection-statistics.js\");\r\nconst CollectionNodeController = __webpack_require__(/*! ./components/collection-node/collection-node */ \"./js/components/collection-node/collection-node.js\");\r\nconst CollectionSearchController = __webpack_require__(/*! ./components/collection-search/collection-search */ \"./js/components/collection-search/collection-search.js\");\r\nconst CollectionStatusController = __webpack_require__(/*! ./components/collection-status/collection-status */ \"./js/components/collection-status/collection-status.js\");\r\nconst CollectionDataTableController = __webpack_require__(/*! ./components/collection-data-table/collection-data-table */ \"./js/components/collection-data-table/collection-data-table.js\");\r\nconst AccountHistoryController = __webpack_require__(/*! ./components/account-history/account-history */ \"./js/components/account-history/account-history.js\");\r\nconst SparqlEditorController = __webpack_require__(/*! ./page-controller/sparql-editor-controller */ \"./js/page-controller/sparql-editor-controller.js\");\r\nconst BetterDropdownController = __webpack_require__(/*! ./components/better-dropdown/better-dropdown */ \"./js/components/better-dropdown/better-dropdown.js\");\r\nconst NavSearchController = __webpack_require__(/*! ./components/nav-search/nav-search-controller */ \"./js/components/nav-search/nav-search-controller.js\");\r\nconst EntityDropdownController = __webpack_require__(/*! ./components/entity-dropdown/entity-dropdown */ \"./js/components/entity-dropdown/entity-dropdown.js\");\r\nconst EntityApiViewController = __webpack_require__(/*! ./components/entity-api-view/entity-api-view */ \"./js/components/entity-api-view/entity-api-view.js\");\r\nconst ErrorNotificationController = __webpack_require__(/*! ./components/error-notification/error-notifcation */ \"./js/components/error-notification/error-notifcation.js\");\r\n\r\nvar databusApplication = angular.module(\"databusApplication\", [])\r\n  .controller(\"HeaderController\", [\"$scope\", \"$http\", \"collectionManager\", HeaderController])\r\n  .factory('collectionManager', [ \"$interval\", \"$http\", function ($interval, $http) { return new DatabusCollectionManager($http, $interval, 'databus_collections'); }])\r\n  .factory('searchManager', [ \"$interval\", \"$http\", function ($interval, $http) { return new SearchManager($http, $interval); }])\r\n  .factory('focus', [\"$timeout\", \"$window\", function ($timeout, $window) {\r\n    return function (id) {\r\n      $timeout(function () {\r\n        var element = $window.document.getElementById(id);\r\n        if (element)\r\n          element.focus();\r\n      });\r\n    };\r\n  }])\r\n  .controller(\"UserSettingsController\", [ \"$scope\", \"$http\", \"$sce\", \"$location\", UserSettingsController])\r\n  .controller(\"HeaderController\", [\"$scope\", \"$http\", \"collectionManager\", \"searchManager\", HeaderController])\r\n  .controller(\"AccountPageController\", [\"$scope\", \"$http\", \"$location\", \"collectionManager\", AccountPageController])\r\n  .controller(\"FrontPageController\", [\"$scope\", \"$sce\", \"$http\", FrontPageController])\r\n  .controller(\"ArtifactPageController\", [\"$scope\", \"$http\", \"$sce\", \"$location\", \"collectionManager\", ArtifactPageController])\r\n  .controller(\"CollectionController\", [\"$scope\", \"$sce\", \"$http\", \"collectionManager\", CollectionController])\r\n  .controller(\"CollectionsEditorController\", [\"$scope\", \"$timeout\", \"$http\", \"$location\", \"collectionManager\", CollectionsEditorController])\r\n  .controller(\"GroupPageController\", [\"$scope\", \"$http\", \"$sce\", \"$interval\", \"$location\", \"collectionManager\", GroupPageController])\r\n  .controller(\"ProfileController\", [\"$scope\", \"$http\", ProfileController])\r\n  .controller(\"SparqlEditorController\", [\"$scope\", \"$http\", \"$location\", SparqlEditorController])\r\n  .controller(\"PublishWizardController\", [\"$scope\", \"$http\", \"$interval\", \"focus\", \"$q\", \"$location\", PublishWizardController])\r\n  .controller(\"VersionPageController\", [\"$scope\", \"$http\", \"$sce\", \"$location\", \"collectionManager\", VersionPageController])\r\n  .directive('uploadRanking', function () {\r\n    return {\r\n      restrict: 'E',\r\n      replace: true,\r\n      templateUrl: '/website/templates/upload-ranking.html',\r\n      scope: {\r\n        data: '=data'\r\n      }\r\n    }\r\n  });\r\n \r\nfunction config($locationProvider) {\r\n  $locationProvider.html5Mode({\r\n    enabled: true,\r\n    requireBase: false,\r\n    rewriteLinks: false\r\n  });\r\n};\r\n\r\ndatabusApplication.filter('collectionfilter', function() {\r\n  return function(input, search) {\r\n    if (!input) return input;\r\n    \r\n    var expected = '';\r\n\r\n    if (search != null) {\r\n      expected = ('' + search).toLowerCase();\r\n    }\r\n\r\n    var result = [];\r\n\r\n    angular.forEach(input, function(value, key) {\r\n      if(value.title == undefined) {\r\n        return;\r\n      }\r\n      \r\n      if(value.title.toLowerCase().includes(expected)) {\r\n        result.push(value); \r\n      }\r\n    });\r\n\r\n    return result;\r\n  }\r\n});\r\n\r\ndatabusApplication.config(['$locationProvider', config]);\r\n\r\n// Components\r\ndatabusApplication.component('overrideCheckbox', {\r\n  templateUrl: '/js/components/override-checkbox/override-checkbox.html',\r\n  controller: OverrideCheckboxController,\r\n  bindings: {\r\n    checkValue: '<',\r\n    label: '<',\r\n    id: '<',\r\n    readonly: '<',\r\n    isOverride: '<',\r\n    onChange: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('errorTag', {\r\n  controller: ErrorNotificationController,\r\n  templateUrl: '/js/components/error-notification/error-notification.html',\r\n  bindings: {\r\n    entity: '<',\r\n    key: '@',\r\n    texts: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('entityDropdown', {\r\n  bindings: {\r\n    placeholder: '@',\r\n    items: '<',\r\n    displayProperty: '@',\r\n    loading: '<',\r\n    selected: '<',\r\n    onSelect: '&'\r\n  },\r\n  controller: EntityDropdownController,\r\n  templateUrl: '/js/components/entity-dropdown/entity-dropdown.html'\r\n});\r\n\r\ndatabusApplication.component('entityApiView', {\r\n    bindings: {\r\n      entity: '<',\r\n      apiKeys: '<',\r\n      texts: '<',\r\n      publishLog: '<'\r\n    },\r\n    controller: EntityApiViewController,\r\n    templateUrl: '/js/components/entity-api-view/entity-api-view.html'\r\n  });\r\n\r\n\r\n\r\ndatabusApplication.component('accountHistory', {\r\n  templateUrl: '/js/components/account-history/account-history.html',\r\n  controller: [ '$http', AccountHistoryController ],\r\n  bindings: {\r\n    accountName: '<'\r\n  }\r\n});\r\n\r\n// Components\r\ndatabusApplication.component('databusAlert', {\r\n  templateUrl: '/js/components/databus-alert/databus-alert.html',\r\n  controller: [ '$scope', '$timeout', DatabusAlertController ],\r\n});\r\n\r\ndatabusApplication.component('entityCard', {\r\n  templateUrl: '/js/components/entity-card/entity-card.html',\r\n  controller: ['$sce', EntityCardController ],\r\n  bindings: {\r\n    label: '<',\r\n    uri: '<',\r\n    desc: '<',\r\n    date: '<',\r\n    type: '<',\r\n    imageUrl: '<',\r\n    absolute: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('search', {\r\n  templateUrl: '/js/components/search/search.html',\r\n  controller: ['$http', '$interval', '$sce', 'searchManager', SearchController],\r\n  bindings: {\r\n    searchInput: '=',\r\n    settings: '<',\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.component('navSearch', {\r\n  templateUrl: '/js/components/nav-search/nav-search.html',\r\n  controller: ['$http', '$interval', '$sce', 'searchManager', NavSearchController],\r\n  bindings: {\r\n    searchInput: '=',\r\n    settings: '<',\r\n  }\r\n});\r\n\r\n/*\r\ndatabusApplication.component('databusSearch', {\r\n  templateUrl: '/js/components/databus-search/databus-search.html',\r\n  controller: ['$http', '$interval', '$sce', DatabusSearchController],\r\n  bindings: {\r\n    filters: '=',\r\n    input: '='\r\n  }\r\n});*/\r\n\r\ndatabusApplication.component('autofillDropdown', {\r\n  templateUrl: '/js/components/autofill-dropdown/autofill-dropdown.html',\r\n  controller: ['$timeout', AutofillDropdownController ],\r\n  bindings: {\r\n    input: '=',\r\n    values: '<',\r\n    isDisabled: '<',\r\n    placeholder: '@',\r\n    onChange: '&'\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.component('databusIcon', {\r\n  templateUrl: '/js/components/databus-icon/databus-icon.html',\r\n  controller: DatabusIconController,\r\n  bindings: {\r\n    size: '<',\r\n    shape: '<',\r\n    onClick: '&',\r\n    isClickable: '<',\r\n    color: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('typeTag', {\r\n  templateUrl: '/js/components/type-tag/type-tag.html',\r\n  controller: TypeTagController,\r\n  bindings: {\r\n    type: '<',\r\n    height: '<',\r\n    width: '<',\r\n  }\r\n});\r\n\r\n/*\r\n\r\ndatabusApplication.component('collectionEditor', {\r\n  templateUrl: '/js/components/collection-editor/collection-editor.html',\r\n  controller: ['$http', '$location', '$sce', CollectionEditorController],\r\n  bindings: {\r\n    collection: '=',\r\n    readonly: '<',\r\n    onPublish: '&',\r\n    onDelete: '&',\r\n    loggedIn: '<'\r\n  }\r\n});*/\r\n\r\ndatabusApplication.component('collectionEditorWidget', {\r\n  templateUrl: '/js/components/collection-editor-widget/collection-editor-widget.html',\r\n  controller: ['collectionManager', '$scope', CollectionEditorWidgetController ],\r\n  bindings: {\r\n    selection: '<',\r\n    collection: '=',\r\n  }\r\n});\r\n\r\n/*\r\ndatabusApplication.component('collectionHierarchy', {\r\n  templateUrl: '/js/components/collection-hierarchy/collection-hierarchy.html',\r\n  controller: ['$http', '$location', '$sce', CollectionHierarchyController],\r\n  bindings: {\r\n    collection: '=',\r\n    readonly: '<',\r\n    onPublish: '&',\r\n    onDelete: '&',\r\n    loggedIn: '<',\r\n    onChange: '&'\r\n  }\r\n});*/\r\n\r\ndatabusApplication.component('collectionHierarchyTwo', {\r\n  templateUrl: '/js/components/collection-hierarchy-two/collection-hierarchy.html',\r\n  controller: ['$http', '$location', '$sce', '$scope', 'collectionManager', CollectionHierarchyControllerTwo ],\r\n  bindings: {\r\n    collection: '=',\r\n    onChange: '&',\r\n    onAddContent: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('collectionNode', {\r\n  templateUrl: '/js/components/collection-node/collection-node.html',\r\n  controller: CollectionNodeController,\r\n  bindings: {\r\n    node: '<',\r\n    readonly: '<',\r\n    onRemoveNode: '&',\r\n    onClick: '&',\r\n    count: '<',\r\n    isExpandable: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('collectionSearch', {\r\n  templateUrl: '/js/components/collection-search/collection-search.html',\r\n  controller: ['collectionManager', '$http', '$interval', '$sce', CollectionSearchController ],\r\n  bindings: {\r\n    collection: '=',\r\n    targetDatabusUrl: '<',\r\n    onComponentAdded: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('collectionStatistics', {\r\n  templateUrl: '/js/components/collection-statistics/collection-statistics.html',\r\n  controller: ['$http', '$scope', '$location', '$sce', CollectionStatisticsController ],\r\n  bindings: {\r\n    collection: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('collectionStatus', {\r\n  templateUrl: '/js/components/collection-status/collection-status.html',\r\n  controller: ['$http', '$location', '$sce', CollectionStatusController ],\r\n  bindings: {\r\n    hasLocalChanges: '<',\r\n    isPublished: '<',\r\n    isDraft: '<',\r\n  }\r\n});\r\n\r\n/*\r\n\r\ndatabusApplication.component('editLabel', {\r\n  templateUrl: '/js/components/edit-label/edit-label.html',\r\n  controller: ['$element', EditLabelController],\r\n  bindings: {\r\n    text: '=',\r\n    singleLine: '<',\r\n    onBlur: '&',\r\n    onChange: '&'\r\n  }\r\n});*/\r\n\r\ndatabusApplication.component('expandableArrow', {\r\n  templateUrl: '/js/components/expandable-arrow/expandable-arrow.html',\r\n  controller: ExpandableArrowController,\r\n  bindings: {\r\n    expanded: '=',\r\n    onChange: '&',\r\n    isReadonly: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('facetsView', {\r\n  templateUrl: '/js/components/facets-view/facets-view.html',\r\n  controller: ['$http', '$scope', FacetsViewController ],\r\n  bindings: {\r\n    node: '=',\r\n    readonly: '<',\r\n    resourceType: '@',\r\n    onChange: '&',\r\n    onLoaded: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('facetsViewHorizontal', {\r\n  templateUrl: '/js/components/facets-view/facets-view-horizontal.html',\r\n  controller: ['$http', '$scope', FacetsViewController ],\r\n  bindings: {\r\n    node: '=',\r\n    readonly: '<',\r\n    resourceType: '@',\r\n    onChange: '&',\r\n    onLoaded: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('fileBrowser', {\r\n  templateUrl: '/js/components/file-browser/file-browser.html',\r\n  controller: ['$http', '$scope', FileBrowserController ],\r\n  bindings: {\r\n    resourceUri: '<',\r\n    resourceType: '@',\r\n    node: '<',\r\n    facetSettings: '<',\r\n    parentFacetSettings: '<',\r\n    query: '<',\r\n    fullQuery: '<',\r\n    config: '<'\r\n  }\r\n});\r\n\r\n/*\r\n\r\ndatabusApplication.component('multiselectArtifactDropdown', {\r\n  templateUrl: '/js/components/multiselect-artifact-dropdown/multiselect-artifact-dropdown.html',\r\n  controller: ['$timeout', '$sce', MultiselectArtifactDropdownController],\r\n  bindings: {\r\n    data: '<',\r\n    node: '<',\r\n    values: '<',\r\n    isDisabled: '<',\r\n    icon: '<',\r\n    onChange: '&'\r\n  }\r\n});*/\r\n\r\ndatabusApplication.component('multiselectDropdown', {\r\n  templateUrl: '/js/components/multiselect-dropdown/multiselect-dropdown.html',\r\n  controller: ['$timeout', '$sce', MultiselectDropdownController],\r\n  bindings: {\r\n    parentInput: '<',\r\n    input: '=',\r\n    values: '<',\r\n    isDisabled: '<',\r\n    placeholder: '@',\r\n    onChange: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('tableEditor', {\r\n  templateUrl: '/js/components/table-editor/table-editor.html',\r\n  controller: TableEditorController,\r\n  bindings: {\r\n    model: '=',\r\n    onRemoveFile: '&',\r\n    onEditContentVariant: '&',\r\n    onAnalyzeFile: '&',\r\n    analysisProcesses: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('uriBreadcrumbs', {\r\n  templateUrl: '/js/components/uri-breadcrumbs/uri-breadcrumbs.html',\r\n  controller: UriBreadcrumbsController,\r\n  bindings: {\r\n    uri: '<',\r\n    absolute: '<'\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.component('yasqeText', {\r\n  templateUrl: '/js/components/yasqe-text/yasqe-text.html',\r\n  controller: ['$scope', '$element', YasqeTextController ],\r\n  bindings: {\r\n    query: '=',\r\n    autoSize: '<',\r\n    readOnly: '<',\r\n    onChange: '&',\r\n    onSend: '&',\r\n    hasSend: '<'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('betterDropdown', {\r\n  templateUrl: '/js/components/better-dropdown/better-dropdown.html',\r\n  controller: ['$scope', '$interval', '$element', BetterDropdownController ],\r\n  bindings: {\r\n    rootNode: '=',\r\n    onNodeClicked: '&',\r\n    icon: '<',\r\n    label: '<'\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.component('yasrView', {\r\n  templateUrl: '/js/components/yasr-view/yasr-view.html',\r\n  controller: ['$scope', '$element', YasrViewController ],\r\n  bindings: {\r\n    data: '=',\r\n    autoSize: '<',\r\n    readOnly: '<',\r\n    onChange: '&'\r\n  }\r\n});\r\n\r\ndatabusApplication.component('collectionDataTable', {\r\n  templateUrl: '/js/components/collection-data-table/collection-data-table.html',\r\n  controller: ['$http', '$scope', '$location', '$sce', CollectionDataTableController],\r\n  bindings: {\r\n    collection: '<'\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.directive('selectOnClick', ['$window', function ($window) {\r\n  return {\r\n    restrict: 'A',\r\n    link: function (scope, element, attrs) {\r\n      element.on('click', function () {\r\n        if (!$window.getSelection().toString() && this.readonly == false) {\r\n          // Required for mobile Safari\r\n          this.setSelectionRange(0, this.value.length)\r\n        }\r\n      });\r\n    }\r\n  };\r\n}]);\r\n\r\ndatabusApplication.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {\r\n  return {\r\n    //scope: true,   // optionally create a child scope\r\n    link: function (scope, element, attrs) {\r\n      var model = $parse(attrs.focusMe);\r\n      scope.$watch(model, function (value) {\r\n        if (value === true) {\r\n          $timeout(function () {\r\n            element[0].focus();\r\n          });\r\n        }\r\n      });\r\n    }\r\n  };\r\n}]);\r\n\r\ndatabusApplication.directive('eventFocus', function (focus) {\r\n  return function (scope, elem, attr) {\r\n    elem.on(attr.eventFocus, function () {\r\n      focus(attr.eventFocusId);\r\n    });\r\n\r\n    // Removes bound events in the element itself\r\n    // when the scope is destroyed\r\n    scope.$on('$destroy', function () {\r\n      elem.off(attr.eventFocus);\r\n    });\r\n  };\r\n});\r\n\r\n\r\n\r\ndatabusApplication.directive('uploaderRanking', function () {\r\n  return {\r\n    restrict: 'E',\r\n    replace: true,\r\n    template: '<div><table class=\"table is-size-6 is-fullwidth\"><thead><tr><th>User</th><th>Uploads</th><th>Derived Data</th></tr></thead><tbody><tr ng-repeat=\"row in data\"><td><a href=\"{{ row.accountUri }}\">{{ row.account }}</a></td><td>{{ row.numUploads }}</td><td>{{ row.uploadSize }}</td></tr></tbody></table></div>',\r\n    scope: {\r\n      data: '=data',\r\n    }\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.directive('groupsTable', function () {\r\n  return {\r\n    restrict: 'E',\r\n    replace: true,\r\n    template: '<div><table class=\"table is-size-6 is-fullwidth\"><thead><tr><th>Group Id</th><th># Artifacts</th></tr></thead><tbody><tr ng-repeat=\"row in data\"><td><a href=\"{{ row.uri }}\">{{ row.label }}</a></td><td>{{ row.artifactCount }}</td></tr></tbody></table></div>',\r\n    scope: {\r\n      data: '=data',\r\n    }\r\n  }\r\n});\r\n\r\n\r\ndatabusApplication.directive('activityChart', function () {\r\n  return {\r\n    restrict: 'E',\r\n    replace: true,\r\n    template: '<svg class=\"chart\"></svg>',\r\n    scope: {\r\n      data: '=data',\r\n      height: '=height'\r\n    },\r\n    link: function (scope, element, attrs) {\r\n\r\n      var svgHeight = scope.height;\r\n\r\n      for (d in scope.data) {\r\n        scope.data[d].date = new Date(scope.data[d].date);\r\n      }\r\n\r\n      var svg = d3.select(element[0])\r\n        .attr(\"id\", \"graph\")\r\n        .attr(\"width\", \"107%\")\r\n        .attr(\"height\", svgHeight);\r\n\r\n      var bounds = svg.node().getBoundingClientRect();\r\n      var svgWidth = bounds.width;\r\n\r\n      var margin = { top: 20, right: 50, bottom: 60, left: 50 };\r\n      var width = svgWidth - margin.left - margin.right;\r\n      var height = svgHeight - margin.top - margin.bottom;\r\n\r\n      var g = svg.append(\"g\")\r\n        .attr(\"transform\",\r\n          \"translate(\" + margin.left + \",\" + margin.top + \")\"\r\n        );\r\n\r\n      var x = d3.scaleTime().rangeRound([0, width]);\r\n      var y = d3.scaleLinear().rangeRound([height, 0]);\r\n\r\n      var line = d3.line()\r\n        .x(function (d) { return x(d.date) })\r\n        .y(function (d) { return y(d.value) })\r\n\r\n      x.domain(d3.extent(scope.data, function (d) { return d.date }));\r\n      y.domain(d3.extent(scope.data, function (d) { return d.value }));\r\n\r\n      g.append(\"g\")\r\n        .attr(\"transform\", \"translate(0,\" + height + \")\")\r\n        .call(d3.axisBottom(x))\r\n        .selectAll(\"text\")\r\n        .attr(\"y\", 0)\r\n        .attr(\"x\", 9)\r\n        .attr(\"dy\", \".35em\")\r\n        .attr(\"transform\", \"rotate(90)\")\r\n        .style(\"text-anchor\", \"start\");\r\n\r\n      g.append(\"g\")\r\n        .call(d3.axisLeft(y))\r\n        .append(\"text\")\r\n        .attr(\"fill\", \"#000\")\r\n        .attr(\"transform\", \"rotate(-90)\")\r\n        .attr(\"y\", 6)\r\n        .attr(\"dy\", \"1em\")\r\n        .attr(\"font-size\", \"1.1em\")\r\n        .attr(\"text-anchor\", \"end\")\r\n        .text(\"Uploaded Data (GByte)\");\r\n\r\n      var path = g.append(\"path\")\r\n        .datum(scope.data)\r\n        .attr(\"fill\", \"none\")\r\n        .attr(\"stroke\", \"steelblue\")\r\n        .attr(\"stroke-linejoin\", \"round\")\r\n        .attr(\"stroke-linecap\", \"round\")\r\n        .attr(\"stroke-width\", 2)\r\n        .attr(\"d\", line);\r\n    }\r\n  }\r\n});\r\n\r\ndatabusApplication.directive('onFinishRender', ['$timeout', '$parse', function ($timeout, $parse) {\r\n  return {\r\n    restrict: 'A',\r\n    link: function (scope, element, attr) {\r\n      if (scope.$last === true) {\r\n        $timeout(function () {\r\n          scope.$emit('ngRepeatFinished');\r\n          if (!!attr.onFinishRender) {\r\n            $parse(attr.onFinishRender)(scope);\r\n          }\r\n        });\r\n      }\r\n    }\r\n  }\r\n}]);\r\n\r\ndatabusApplication.directive('clickOutside', [\r\n  '$document', '$parse', '$timeout',\r\n  clickOutside\r\n]);\r\n\r\n/**\r\n     * @ngdoc directive\r\n     * @name angular-click-outside.directive:clickOutside\r\n     * @description Directive to add click outside capabilities to DOM elements\r\n     * @requires $document\r\n     * @requires $parse\r\n     * @requires $timeout\r\n     **/\r\n function clickOutside($document, $parse, $timeout) {\r\n  return {\r\n      restrict: 'A',\r\n      link: function($scope, elem, attr) {\r\n\r\n          // postpone linking to next digest to allow for unique id generation\r\n          $timeout(function() {\r\n              var classList = (attr.outsideIfNot !== undefined) ? attr.outsideIfNot.split(/[ ,]+/) : [],\r\n                  fn;\r\n\r\n              function eventHandler(e) {\r\n                  var i,\r\n                      element,\r\n                      r,\r\n                      id,\r\n                      classNames,\r\n                      l;\r\n\r\n                  // check if our element already hidden and abort if so\r\n                  if (angular.element(elem).hasClass(\"ng-hide\")) {\r\n                      return;\r\n                  }\r\n\r\n                  // if there is no click target, no point going on\r\n                  if (!e || !e.target) {\r\n                      return;\r\n                  }\r\n\r\n                  // loop through the available elements, looking for classes in the class list that might match and so will eat\r\n                  for (element = e.target; element; element = element.parentNode) {\r\n                      // check if the element is the same element the directive is attached to and exit if so (props @CosticaPuntaru)\r\n                      if (element === elem[0]) {\r\n                          return;\r\n                      }\r\n                      \r\n                      // now we have done the initial checks, start gathering id's and classes\r\n                      id = element.id,\r\n                      classNames = element.className,\r\n                      l = classList.length;\r\n\r\n                      // Unwrap SVGAnimatedString classes\r\n                      if (classNames && classNames.baseVal !== undefined) {\r\n                          classNames = classNames.baseVal;\r\n                      }\r\n\r\n                      // if there are no class names on the element clicked, skip the check\r\n                      if (classNames || id) {\r\n\r\n                          // loop through the elements id's and classnames looking for exceptions\r\n                          for (i = 0; i < l; i++) {\r\n                              //prepare regex for class word matching\r\n                              r = new RegExp('\\\\b' + classList[i] + '\\\\b');\r\n\r\n                              // check for exact matches on id's or classes, but only if they exist in the first place\r\n                              if ((id !== undefined && id === classList[i]) || (classNames && r.test(classNames))) {\r\n                                  // now let's exit out as it is an element that has been defined as being ignored for clicking outside\r\n                                  return;\r\n                              }\r\n                          }\r\n                      }\r\n                  }\r\n\r\n                  // if we have got this far, then we are good to go with processing the command passed in via the click-outside attribute\r\n                  $timeout(function() {\r\n                      fn = $parse(attr['clickOutside']);\r\n                      fn($scope, { event: e });\r\n                  });\r\n              }\r\n\r\n              // if the devices has a touchscreen, listen for this event\r\n              if (_hasTouch()) {\r\n                  $document.on('touchstart', eventHandler);\r\n              }\r\n\r\n              // still listen for the click event even if there is touch to cater for touchscreen laptops\r\n              $document.on('click', eventHandler);\r\n\r\n              // when the scope is destroyed, clean up the documents event handlers as we don't want it hanging around\r\n              $scope.$on('$destroy', function() {\r\n                  if (_hasTouch()) {\r\n                      $document.off('touchstart', eventHandler);\r\n                  }\r\n\r\n                  $document.off('click', eventHandler);\r\n              });\r\n\r\n              /**\r\n               * @description Private function to attempt to figure out if we are on a touch device\r\n               * @private\r\n               **/\r\n              function _hasTouch() {\r\n                  // works on most browsers, IE10/11 and Surface\r\n                  return 'ontouchstart' in window || navigator.maxTouchPoints;\r\n              };\r\n          });\r\n      }\r\n  };\r\n}\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/angular-application.js?");
-
-/***/ }),
-
-/***/ "./js/collections/databus-collection-manager.js":
-/*!******************************************************!*\
-  !*** ./js/collections/databus-collection-manager.js ***!
-  \******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ \"./js/utils/app-json-formatter.js\");\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\nconst DatabusCollectionUtils = __webpack_require__(/*! ./databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\nconst DatabusCollectionWrapper = __webpack_require__(/*! ./databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\n\nclass DatabusCollectionManager {\n\n  // Daten die wir haben:\n\n  // Liste von Remote Collections (ungeladen) { uri: databus.org/asdf, label: asdffasd }\n  // Liste von Working Copies in der Local Storage\n  // Beispiel:\n  // [0] : { uri: databus.org/asdf, label: asdffasd, content: { ... }, ... }\n  // [1] : { uri: databus.org/asdsdff, label: asdasdfffasd }\n\n\n\n  // On Initizialze:\n  // Fuer alle remove collections -> finde lokale Kopie / erzeuge lokale Kopie\n\n  // On Select / On Set Active\n  // 1: Ist es ein Draft -> uri ist undefined\n  // Ja? -> Collection direkt als Draft Anzeigen\n  // Nein? -> Ist Collection schon geladen? content ist nicht undefined\n  //          Ja? -> Lade async, uberschreibe remote entry\n  //          Nein? -> Lade async, setze remote und local entry\n\n  _isInitialized = false;\n  _initSubscribers = [];\n\n  constructor($http, $interval, storageKey) {\n\n    try {\n      this.storageKeyPrefix = `${encodeURI(DATABUS_RESOURCE_BASE_URL)}`;\n      // window.sessionStorage.removeItem(`${this.storageKeyPrefix}_session`);\n\n      this.sessionInfo = JSON.parse(window.sessionStorage.getItem(`${this.storageKeyPrefix}_session`));\n\n      if (this.sessionInfo == undefined) {\n        this.sessionInfo = {};\n      }\n\n      window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));\n      this.storageKey = `${this.storageKeyPrefix}__collections`;\n      this.local = this.loadCollectionsFromStorage(true);\n      this.remote = {};\n\n    } catch (err) {\n      this.sessionInfo = {};\n    }\n\n\n    this.http = $http;\n    this.interval = $interval;\n  }\n\n  clearSession() {\n    this.sessionInfo = {};\n    window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));\n  }\n\n  get accountName() {\n    return this.sessionInfo != undefined ? this.sessionInfo.accountName : undefined;\n  }\n\n  getLocalCollectionByUri(uri) {\n    for (let guid in this.local) {\n      let localCollection = this.local[guid];\n\n      if (localCollection.uri == uri) {\n        return localCollection;\n      }\n    }\n\n    return undefined;\n  }\n\n  /**\n   * Set up the collection mananger for a specific account.\n   * 1) Load ALL the collections of this account from the remote\n   * 2) Save to remote map\n   * 3) Create local working copies if local has no entry for remote collection\n   * @param {*} accountName \n   * @returns \n   */\n  async tryInitialize(accountName) {\n\n    // Needs an account name to set up\n    if (accountName == undefined) {\n      return;\n    }\n\n    // this.remote = this.loadCollectionsFromStorage(false);\n    this.sessionInfo.accountName = accountName;\n\n\n\n    let collectionListResponse = await this.http.get(`/app/account/collections?account=${encodeURIComponent(accountName)}`);\n    let remoteCollections = collectionListResponse.data;\n\n\n    let wasLocalCollectionAdded = false;\n\n    for (let collectionUri in remoteCollections) {\n      let remoteCollection = remoteCollections[collectionUri];\n      let localCollection = this.getLocalCollectionByUri(collectionUri);\n\n      // Create local copy if not exist\n      if (localCollection == undefined) {\n        localCollection = JSON.parse(JSON.stringify(remoteCollection));\n        localCollection.uuid = DatabusCollectionUtils.uuidv4();\n        this.local[localCollection.uuid] = localCollection;\n        wasLocalCollectionAdded = true;\n      }\n\n      this.remote[localCollection.uuid] = remoteCollection;\n      this.remote[localCollection.uuid].isHidden = this.remote[localCollection.uuid].issued == undefined;\n\n      if(this.local[localCollection.uuid].isHidden == undefined) {\n        this.local[localCollection.uuid].isHidden = this.remote[localCollection.uuid].isHidden;\n      }\n    }\n\n    if(wasLocalCollectionAdded) {\n      this.saveLocally();\n    }\n\n    this.findActive();\n\n    /*\n\n    if (loadFromServer) {\n      try {\n        var res = await this.http.get(`/app/account/collections?account=${accountName}`);\n        this.initialize(res.data);\n\n      } catch (e) {\n        console.log(`Failed to initialze collection manager.`);\n        console.log(e);\n      }\n    }\n    */\n\n    var self = this;\n\n    this.interval(function () {\n      var storageHash = window.localStorage.getItem(`${self.storageKey}_hash`);\n\n      if (storageHash != self.currentHash) {\n        self.local = JSON.parse(window.localStorage.getItem(self.storageKey));\n        self.currentHash = storageHash;\n\n        for (let identifier in self.local) {\n          if (identifier === undefined || identifier === \"undefined\") {\n            delete (self.local[identifier]);\n          } else {\n            //enable Collection Utils for all collections in local storage\n            self.local[identifier] = new DatabusCollectionWrapper(self.local[identifier]);\n          }\n        }\n\n        if (self.onCollectionChangedInDifferentTab != null) {\n          self.onCollectionChangedInDifferentTab();\n        }\n      }\n    }, 300);\n\n\n    this._isInitialized = true;\n    this._notifyInitialized();\n  }\n\n  get isInitialized() {\n    return this._isInitialized;\n  }\n\n  subscribeOnInitialized(callback) {\n    if (this._isInitialized) {\n      callback();\n    } else {\n      this._initSubscribers.push(callback);\n    }\n  }\n\n  _notifyInitialized() {\n    this._initSubscribers.forEach(cb => cb());\n    this._initSubscribers = [];\n  }\n\n  get hasAccountName() {\n    return this.accountName != null;\n  }\n\n  // Setze das remote array und update local array\n  initialize(remoteCollections) {\n    // We keep remote entries and local entries separately to detect diffs\n    this.remote = {};\n\n    // Load everyting from the local browser storage. All entries in the local browser\n    // storage are indexed with a UUID identifier.\n    // Remote collections that are pulled to the local browser storage will\n    // also be given such an identifier\n    // this.local = this.loadCollectionsFromLocalStorage();\n\n    // This map will keep track of all local entries that already claim to have a remote counterpart\n    let localPublished = {};\n\n    for (let identifier in this.local) {\n      if (!identifier.startsWith('___')) {\n        delete this.local[identifier];\n        continue;\n      }\n\n      if (identifier !== this.local[identifier].uuid) {\n        delete this.local[identifier];\n        continue;\n      }\n\n      let localCollection = this.local[identifier];\n\n      if (localCollection.uri !== undefined && remoteCollections !== undefined) {\n        let uri = localCollection.uri;\n        // The local collection already has a URI\n        if (remoteCollections[uri] === undefined) {\n          // There is no remote collection with that URI - delete it! Keep the collection as a draft\n          delete (this.local[identifier].uri);\n          delete (this.local[identifier].issued);\n          delete (this.local[identifier].created);\n        } else {\n          // Remember that the collection with uri already has a working copy\n          localPublished[uri] = true;\n          // Also remember the remote entry as an entry with a local working copy\n          this.remote[identifier] = remoteCollections[uri];\n          // Make sure the unchangeable values are set to the remote entry\n          this.local[identifier].publisher = remoteCollections[uri].publisher;\n          this.local[identifier].issued = remoteCollections[uri].issued;\n          this.local[identifier].created = remoteCollections[uri].created;\n          this.local[identifier].files = remoteCollections[uri].files;\n        }\n      }\n    }\n\n    for (let uri in remoteCollections) {\n      if (localPublished[uri] === undefined) {\n        // We don't have a working copy in our local storage yet, time to create an identifier!\n        let identifier = DatabusCollectionUtils.uuidv4();\n        remoteCollections[uri].uuid = identifier;\n        remoteCollections[uri].isHidden = remoteCollections[uri].issued == undefined;\n        // Create two entries, one in the local map, one in the remote map\n        this.local[identifier] = DatabusCollectionUtils.createCleanCopy(remoteCollections[uri]);\n        this.remote[identifier] = DatabusCollectionUtils.createCleanCopy(remoteCollections[uri]);\n      }\n    }\n\n    for (let identifier in this.local) {\n      // The local collection is now either a draft or a working copy of the remote - wrap it.\n      this.local[identifier] = new DatabusCollectionWrapper(this.local[identifier]);\n      // Sanitize content\n      if (!(this.local[identifier].content instanceof Object)) {\n        this.local[identifier].content = { groups: [], customQueries: [] };\n      }\n    }\n\n    /*\n    let activeIdentifier = this.activeCollectionIdentifier;\n    // Set first collection as active\n\n    if (this.local[activeIdentifier] !== undefined) {\n      this.activeCollectionIdentifier = activeIdentifier;\n    }\n    */\n\n\n\n    // QueryNode.assignParents(this.activeCollection.content.root);\n\n    // Save locally in case we created any local working copies\n\n    this.saveLocally();\n\n    // Call this always in header-controller.js\n    if (this.activeCollection == null) {\n      // select first or create a new draft if we don't have any local drafts yet\n      this.selectFirstOrCreate();\n    }\n\n  }\n\n\n\n  findActive() {\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized1.\";\n    if (this.activeCollection == undefined) {\n      this.selectFirstOrCreate();\n    }\n  }\n\n\n  loadCollectionsFromStorage(local = true) {\n    let collections;\n\n    if (local) {\n      collections = JSON.parse(window.localStorage.getItem(this.storageKey));\n    } else {\n      collections = JSON.parse(window.sessionStorage.getItem(this.storageKey));\n    }\n\n    if (collections == null) {\n      collections = {};\n    }\n\n    for (let identifier in collections) {\n      if (identifier === undefined || identifier === \"undefined\") {\n        delete (collections[identifier]);\n      } else if (collections[identifier].accountName == null) {\n        delete (collections[identifier]);\n      } else {\n        //enable Collection Utils for all collections in local storage\n        collections[identifier] = new DatabusCollectionWrapper(collections[identifier]);\n      }\n    }\n\n    return collections;\n  }\n\n  /**\n   * Selects the first collection in the local list or creates a new draft\n   */\n  selectFirstOrCreate(accountName) {\n\n    for (let identifier in this.local) {\n      this.setActive(identifier);\n      break;\n    }\n\n    // Create new collection if current is null\n    if (this.activeCollection == null) {\n      this.createNew(accountName, \"Unnamed Collection\", \"\", function (response) { });\n    }\n  }\n\n  setActive(uuid) {\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized1.\";\n\n    this.convertCollectionContentToTree(uuid);\n\n    let collection = this.local[uuid];\n    // QueryNode.assignParents(collection.content.root);\n\n    this.sessionInfo.activeCollectionIdentifier = uuid;\n    window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));\n\n  }\n\n  get activeCollectionIdentifier() {\n    return this.sessionInfo != null ? this.sessionInfo.activeCollectionIdentifier : null;\n  }\n\n  get activeCollection() {\n    if (this.activeCollectionIdentifier == null) {\n      return null;\n    }\n\n    if (this.local == null) {\n      return null;\n    }\n\n    return this.local[this.activeCollectionIdentifier];\n  }\n\n  convertCollectionContentToTree(uuid) {\n    let collection = this.local[uuid];\n\n    if (collection.content.root !== undefined) {\n      return;\n    }\n\n    collection.content.root = new QueryNode(null, null);\n\n    for (var g in collection.content.groups) {\n      var group = collection.content.groups[g];\n      var groupNode = new QueryNode(group.uri, 'databus:group');\n\n      // add group facets\n      for (var s in group.settings) {\n        var setting = group.settings[s];\n\n        if (setting.value === 'SYSTEM_LATEST_ARTIFACT_VERSION' || setting.value === 'SYSTEM_LATEST_GROUP_VERSION') {\n          setting.value = '$latest';\n        }\n\n        groupNode.setFacet(setting.facet, setting.value, setting.checked);\n      }\n\n      collection.content.root.addChild(groupNode);\n\n\n      for (var a in group.artifacts) {\n        var artifact = group.artifacts[a];\n\n        var artifactNode = new QueryNode(artifact.uri, 'databus:artifact');\n\n        // add artifact facets\n\n        groupNode.addChild(artifactNode);\n      }\n    }\n\n  }\n\n  createSnapshot(source) { // convert each version=\"latest\" to actual latest version\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    let collection = DatabusCollectionWrapper.createNew();\n    collection.accountName = this.accountName;\n    collection.content = DatabusCollectionUtils.createCleanCopy(source.content);\n\n    let root = collection.content.root;\n    for (var g in root.childNodes) {\n      var graph = root.childNodes[g];\n\n      for (var s in graph.facetSettings) {\n        if (graph.facetSettings[s][0].value === '$latest') {\n          this.http.get('/app/utils/facets', {\n            params: { uri: artifact.uri, type: 'group' }\n          }).then(function (result) {\n            let versions = result.data[\"http://purl.org/dc/terms/hasVersion\"].values;\n            let latestVersion = versions.reduce(function (a, b) { return a > b ? a : b; });\n            artifact.facetSettings[s][0].value = latestVersion;\n          });\n        }\n      }\n\n      for (var a in graph.childNodes) {\n        var artifact = graph.childNodes[a];\n\n        for (var s in artifact.facetSettings) {\n          if (artifact.facetSettings[s][0].value === '$latest') {\n            this.http.get('/app/utils/facets', {\n              params: { uri: artifact.uri, type: 'artifact' }\n            }).then(function (result) {\n              let versions = result.data[\"http://purl.org/dc/terms/hasVersion\"].values;\n              let latestVersion = versions.reduce(function (a, b) { return a > b ? a : b; });\n              artifact.facetSettings[s][0].value = latestVersion;\n            });\n          }\n        }\n\n      }\n\n    }\n\n\n    collection.title = `Snapshot of ${source.title}`;\n    collection.description = source.description;\n\n    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);\n    this.saveLocally();\n    this.setActive(collection.uuid);\n\n    return collection;\n  }\n\n  saveLocally() {\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    if (this.activeCollection != null) {\n      this.activeCollection.hasLocalChanges = this.hasLocalChanges(this.activeCollection);\n    }\n\n    var hash = DatabusCollectionUtils.cyrb53Hash(DatabusCollectionUtils.serialize(this.local));\n    this.currentHash = hash;\n\n    window.localStorage.setItem(`${this.storageKey}_hash`, hash);\n\n    for (let identifier in this.local) {\n      if (this.local[identifier].accountName == null) {\n        delete (this.local[identifier]);\n      }\n    }\n\n    try {\n      //write local collections to local storage\n      window.localStorage.setItem(this.storageKey, DatabusCollectionUtils.serialize(this.local));\n      //write remote collections to session storage\n      window.sessionStorage.setItem(this.storageKey, DatabusCollectionUtils.serialize(this.remote));\n    } catch (e) {\n      console.log(e);\n    }\n  }\n\n  hasLocalChanges(localCollection) {\n    if (this.remote[localCollection.uuid] === undefined) {\n      return true;\n    }\n\n    let remoteCollection = this.remote[localCollection.uuid];\n\n    if (remoteCollection.isHidden != localCollection.isHidden) {\n      return true;\n    }\n\n    if (localCollection.title !== remoteCollection.title) {\n      return true;\n    }\n\n    if (localCollection.description !== remoteCollection.description) {\n      return true;\n    }\n\n    let serializedRemoteContent = DatabusCollectionUtils.serialize(remoteCollection.content);\n    let serializedLocalContent = DatabusCollectionUtils.serialize(localCollection.content);\n\n    return serializedLocalContent !== serializedRemoteContent;\n  }\n\n  discardLocalChanges() {\n\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    let uuid = this.activeCollection.uuid;\n\n    if (this.remote[uuid] === undefined) {\n      return;\n    }\n\n    let uri = this.activeCollection.uri;\n\n    if (uri == undefined) {\n      return;\n    }\n\n    this.local[uuid].title = this.remote[uuid].title;\n    this.local[uuid].abstract = this.remote[uuid].abstract;\n    this.local[uuid].description = this.remote[uuid].description;\n    this.local[uuid].content = DatabusCollectionUtils.createCleanCopy(this.remote[uuid].content);\n    this.local[uuid].hasLocalChanges = this.hasLocalChanges(this.local[uuid]);\n\n    this.saveLocally();\n  }\n\n  addElement(elementQuery) {\n    this.current.addElement(elementQuery);\n    this.saveLocally();\n\n    if (this.onActiveCollectionChanged != null) {\n      this.onActiveCollectionChanged(this.current);\n    }\n  }\n\n  removeElement(elementGuid) {\n    this.current.removeElement(elementGuid);\n    this.saveLocally();\n\n    if (this.onActiveCollectionChanged != null) {\n      this.onActiveCollectionChanged(this.current);\n    }\n  }\n\n\n\n  createNew(accountName, title, description, callback) {\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    let reg = /^\\w+[\\w\\s]*$/;\n\n    if (title === undefined || !reg.test(title)) {\n      callback(false);\n      return;\n    }\n\n    let collection = DatabusCollectionWrapper.createNew(title, description, DATABUS_RESOURCE_BASE_URL, accountName);\n\n    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);\n    this.setActive(collection.uuid);\n    this.saveLocally();\n\n    callback(collection);\n  }\n\n  createDraft(callback) {\n    if (!this.hasAccountName) {\n      return;\n    }\n\n    let collection = DatabusCollectionWrapper.createNew('', '');\n    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);\n    this.setActive(collection.uuid);\n    this.saveLocally()\n\n    callback(DatabusResponse.COLLECTION_DRAFT_CREATED);\n  }\n\n  createCopy(source) {\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    let collection = DatabusCollectionWrapper.createNew();\n    collection.content = DatabusCollectionUtils.createCleanCopy(source.content);\n    collection.title = `Copy of ${source.title}`;\n    collection.abstract = source.abstract;\n    collection.description = source.description;\n    collection.accountName = this.accountName;\n\n    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);\n    this.saveLocally();\n    this.setActive(collection.uuid);\n\n    return collection;\n  }\n\n\n\n  deleteLocally() {\n    delete this.local[this.activeCollection.uuid];\n    this.saveLocally();\n  }\n\n  /**\n   * Returns the collection or null\n   * @param  {[type]} uri [description]\n   * @return {[type]}      [description]\n   */\n  getCollectionByUri(uri) {\n    if (uri == null)\n      return null;\n\n    for (let identifier in this.local) {\n      if (uri === this.local[identifier].uri) {\n        return this.local[identifier];\n      }\n    }\n    return null;\n  }\n\n  /**\n   * Returns the first collection or null\n   * @return {[type]} [description]\n   */\n  getFirstCollection() {\n    if (this.local.length === 0) {\n      return null;\n    }\n    return this.local[0];\n  }\n\n\n  async changeCollection(username, collectionUri) {\n    try {\n      if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n      this.saveLocally();\n\n      // Keep the identifier of the collection we want to push\n      var pushIdentifier = this.activeCollection.uuid;\n      var publisherUri = `${DATABUS_RESOURCE_BASE_URL}/${username}#this`;\n\n      var ignoreKeys = [\n        'parent',\n        '$$hashKey',\n        'expanded',\n        'files',\n        'eventListeners',\n        'hasLocalChanges',\n        'published',\n        'uuid',\n      ];\n\n      var contentString = encodeURIComponent(DatabusCollectionUtils.serialize(this.activeCollection.content, ignoreKeys));\n\n      // Format collection as json-ld\n      let collectionJsonLd = {\n        \"@context\": DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT],\n        \"@graph\": [\n          {\n            \"@id\": collectionUri,\n            \"@type\": \"Collection\",\n            \"publisher\": publisherUri,\n            \"title\": this.activeCollection.title,\n            \"abstract\": this.activeCollection.abstract,\n            \"description\": this.activeCollection.description,\n            \"databus:collectionContent\": contentString,\n          }\n        ]\n      };\n\n      if (!this.activeCollection.isHidden) {\n        collectionJsonLd[\"@graph\"][0].issued = DatabusUtils.timeStringNow();\n      }\n\n      var response = null;\n\n      try {\n\n        // var relativeUri = new URL(collectionUri).pathname;\n        // response = await this.http.put(relativeUri, collectionJsonLd);\n\n        response = await this.http.post('/api/register', collectionJsonLd);\n\n      } catch (errResponse) {\n        console.log(errResponse);\n        throw { code: errResponse.data.code };\n      }\n\n      try {\n        var relativeUri = new URL(collectionUri).pathname;\n\n        var response = await this.http({\n          method: 'GET',\n          url: relativeUri,\n          headers: {\n            'Accept': 'application/ld+json',\n            'X-Jsonld-Formatting': 'compact'\n          }\n        });\n\n\n      } catch (errResponse) {\n        console.log(errResponse);\n        throw { code: errResponse.data.code };\n      }\n\n      // Get the remotely saved collection from the payload\n      var remoteGraph = response.data;\n\n      // If the user changed the active collection in the meantime throw an error. This\n      // should be prevented by a loading dialog\n      if (this.activeCollection.uuid != pushIdentifier) {\n        throw { code: DatabusResponse.COLLECTION_INVALID_ARGUMENT };\n      }\n\n      this.local[pushIdentifier].uri = remoteGraph['@id'];\n      this.local[pushIdentifier].hasLocalChanges = false;\n      this.local[pushIdentifier].modified = remoteGraph.modified;\n      this.local[pushIdentifier].issued = remoteGraph.issued;\n      this.local[pushIdentifier].isHidden = remoteGraph.issued == null;\n      // this.local[pushIdentifier].created = remoteGraph.created;\n\n      //Update remote data\n      this.remote[pushIdentifier] = JSON.parse(DatabusCollectionUtils.serialize(this.activeCollection));\n\n      // Update the local data\n      // this.local[pushIdentifier].uri = remoteGraph['@id'];\n      //this.local[pushIdentifier].hasLocalChanges = this.hasLocalChanges(this.local[pushIdentifier]);\n      //this.local[pushIdentifier].modified = this.activeCollection.modified;\n      //this.local[pushIdentifier].issued = this.activeCollection.issued;\n      //this.local[pushIdentifier].created = this.activeCollection.created;\n\n      this.saveLocally();\n\n      return response.data;\n\n    } catch (err) {\n\n      console.log(err);\n      throw {\n        code: err.data !== undefined && err.data.code !== undefined ? err.data.code :\n          DatabusResponse.COLLECTION_UPDATE_ERROR\n      };\n    }\n  }\n\n  async updateCollection(username, collectionTag) {\n\n    if (this.activeCollection.uri != null) {\n      return await this.changeCollection(username, this.activeCollection.uri);\n    } else {\n      var collectionUri = `${DATABUS_RESOURCE_BASE_URL}/${username}/collections/${collectionTag}`;\n\n      for (var uuid in this.local) {\n        if (this.local[uuid].uri == collectionUri) {\n          throw \"A collection with the specifed URI already exists.\";\n        }\n      }\n\n      return await this.changeCollection(username, collectionUri);\n    }\n  }\n\n\n  /**\n   * Fetches the remote data of the current collection and assigns the field values to the local copy\n   */\n  async fetchCollection(uri) {\n    try {\n      if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n      var req = {\n        method: 'GET',\n        url: uri,\n        headers: { 'Accept': 'application/json' }\n      };\n\n      var getResponse = await this.http(req);\n      var collection = getCollectionByUri(uri);\n\n      this.local[collection.uuid].content = getResponse.data.content;\n      this.local[collection.uuid].created = getResponse.data.created;\n      this.local[collection.uuid].issued = getResponse.data.issued;\n      this.local[collection.uuid].title = getResponse.data.title;\n      this.local[collection.uuid].description = getResponse.data.description;\n      this.local[collection.uuid].files = getResponse.data.files;\n    } catch (errResponse) {\n      console.log(errResponse);\n      return errResponse.data;\n    }\n  }\n\n  async deleteCollection(username, collectionTag) {\n    try {\n      if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n\n\n      // Keep the identifier of the collection we want to push\n      let deleteIdentifier = this.activeCollection.uuid;\n\n      if (this.activeCollection.isDraft) {\n        delete this.local[deleteIdentifier];\n        this.saveLocally();\n        return { code: DatabusResponse.COLLECTION_DELETED };\n      }\n\n      var targetUri = `/${username}/collections/${collectionTag}`;\n\n      let deleteResponse = await this.http.delete(targetUri);\n\n      delete this.remote[deleteIdentifier];\n      delete this.local[deleteIdentifier];\n\n      return deleteResponse.data;\n    } catch (errResponse) {\n      console.log(errResponse);\n      return errResponse.data;\n    }\n  }\n\n  /**\n   * Deletes the active collection from the server but keeps the local storage entry\n   */\n  async unpublishActiveCollection() {\n\n    if (!this.hasAccountName) throw \"Databus-Collection-Manager is not initialized.\";\n\n    if (this.activeCollection.isDraft) {\n      throw \"Cannot unpublish an unpublished draft\";\n    }\n\n    // Keep the identifier of the collection we want to push\n    let uuid = this.activeCollection.uuid;\n    let identifier = DatabusUtils.uriToName(this.activeCollection.uri);\n\n    var targetUri = `/${this.accountName}/collections/${identifier}`;\n    await this.http.delete(targetUri);\n\n    delete this.remote[uuid];\n    delete this.local[uuid].uri;\n    delete this.local[uuid].issued;\n    this.saveLocally();\n  }\n}\n\n\nmodule.exports = DatabusCollectionManager;\n\n//# sourceURL=webpack://databus-webapp/./js/collections/databus-collection-manager.js?");
-
-/***/ }),
-
-/***/ "./js/collections/databus-collection-utils.js":
-/*!****************************************************!*\
-  !*** ./js/collections/databus-collection-utils.js ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\nconst QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\nconst DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ \"./js/utils/databus-constants.js\");\nconst DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ \"./js/utils/databus-messages.js\");\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\nclass DatabusCollectionUtils {\n\n  static CEDIT_IDENTIFIER_REGEX = /^[a-z0-9_-]{3,50}$/;\n  static CEDIT_TITLE_REGEX = /^[A-Za-z0-9\\s_()\\.\\,\\-]{3,200}$/;\n  static CEDIT_ABSTRACT_REGEX = /^[\\x00-\\xFF\\n]{10,}$/;\n  static CEDIT_DESCRIPTION_REGEX = /^[\\x00-\\xFF\\n]{10,}$/;\n\n  static formatMessageWithRegex(message, regex) {\n    var regexString = regex.source;\n    return message.replace(\"#REGEX#\", regexString);\n  }\n\n  static checkCollectionForm(form, collection) {\n\n    var hasError = false;\n\n    form.identifier.error = null;\n    form.title.error = null;\n    form.abstract.error = null;\n    form.description.error = null;\n\n    if (collection.isDraft) {\n\n      // Check the identifier\n      if (!this.CEDIT_IDENTIFIER_REGEX.test(form.identifier.value)) {\n        hasError = true;\n        form.identifier.error = this.formatMessageWithRegex(\n          DatabusMessages.CEDIT_INVALID_IDENTIFIER,\n          this.CEDIT_IDENTIFIER_REGEX\n        );\n      }\n    }\n\n    // Check the title\n    if (!this.CEDIT_TITLE_REGEX.test(collection.title)) {\n      hasError = true;\n      form.title.error = this.formatMessageWithRegex(\n        DatabusMessages.CEDIT_INVALID_TITLE,\n        this.CEDIT_TITLE_REGEX\n      );\n    }\n\n    // Check the abstract\n    if (!this.CEDIT_ABSTRACT_REGEX.test(collection.abstract)) {\n      hasError = true;\n      form.abstract.error = this.formatMessageWithRegex(\n        DatabusMessages.CEDIT_INVALID_ABSTRACT,\n        this.CEDIT_ABSTRACT_REGEX\n      );\n    }\n\n    // Check the description\n    if (!this.CEDIT_DESCRIPTION_REGEX.test(collection.description)) {\n      hasError = true;\n      form.description.error = this.formatMessageWithRegex(\n        DatabusMessages.CEDIT_INVALID_DESCRIPTION,\n        this.CEDIT_DESCRIPTION_REGEX\n      );\n    }\n\n    return !hasError;\n  }\n\n\n\n\n  static checkIdentifier(identifier) {\n    var identifierRegex = /^[a-z0-9_-]{3, 50}$/;\n    return this.checkField(identifier, identifierRegex, 3, 50);\n  }\n\n  static checkText(value, min, max) {\n    var textRegex = /^[\\x00-\\xFF\\n]*$/;\n    return this.checkField(value, textRegex, min, max);\n  }\n\n  static checkLabel(value, min, max) {\n    var labelRegex = /^[A-Za-z0-9\\s_()\\.\\,\\-]*$/;\n    return this.checkField(value, labelRegex, min, max);\n  }\n\n  static checkField(value, regex, min, max) {\n    if (value == undefined) {\n      return false;\n    }\n\n    if (max > 0 && value.length > max) {\n      return false;\n    }\n\n    if (value.length < min) {\n      return false;\n    }\n\n    return regex.test(value);\n  }\n\n\n  // Checks whether a collection can be saved\n  static checkCollectionTexts(collection) {\n    var labelReg = /^[\\x00-\\x7F]*$/;\n    var textReg = /^[\\x00-\\x7F\\n]*$/;\n\n    if (collection.label == undefined || collection.label == \"\") {\n      return DatabusResponse.COLLECTION_MISSING_LABEL;\n    }\n\n    if (!labelReg.test(collection.label) || collection.label.length > 200) {\n      return DatabusResponse.COLLECTION_INVALID_LABEL;\n    }\n\n    if (collection.description == undefined || collection.description == \"\") {\n      return DatabusResponse.COLLECTION_MISSING_DESCRIPTION;\n    }\n\n    if (!textReg.test(collection.description) || description.description.length < 50) {\n      return DatabusResponse.COLLECTION_INVALID_DESCRIPTION;\n    }\n\n    return 0;\n  }\n\n\n  // Creates a v4 uuid\n  static uuidv4() {\n    return '___xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n      return v.toString(16);\n    });\n  }\n\n  static createQueryString(collection) {\n    var wrapper = new DatabusCollectionWrapper(collection);\n    return wrapper.createQuery();\n  }\n\n  static reduceBinding(binding) {\n    for (var key in binding) {\n      binding[key] = binding[key].value;\n    }\n\n    return binding;\n  }\n\n\n  static formatQuery(query, placeholderMappings) {\n\n    if (placeholderMappings == undefined) {\n      return query;\n    }\n\n    for (var placeholder in placeholderMappings) {\n      var re = new RegExp('%' + placeholder + '%', \"g\");\n      query = query.replace(re, placeholderMappings[placeholder]);\n    }\n\n    return query;\n  }\n\n  static async getCollectionStatistics($http, collection) {\n\n    var query = QueryBuilder.build({\n      node: collection.content.root,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,\n      template: QueryTemplates.COLLECTION_STATISTICS_TEMPLATE\n    });\n\n    if (query == null) return null;\n\n    var req = {\n      method: 'POST',\n      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n      data: \"format=json&timeout=1000000&query=\" + encodeURIComponent(query),\n      headers: {\n        \"Content-type\": \"application/x-www-form-urlencoded\"\n      },\n    }\n\n    var response = await $http(req);\n    var entries = response.data.results.bindings;\n\n    entries = entries.filter(function (e) {\n      return e.file != undefined;\n    });\n\n    if (entries.length === 0) {\n      return null;\n    }\n\n\n    let result = {\n      fileCount: entries.length,\n      licenses: [],\n      files: [],\n      size: 0\n    };\n\n    for (let i in entries) {\n      let element = DatabusCollectionUtils.reduceBinding(entries[i]);\n\n      result.size += parseInt(element.size);\n      result.licenses.push(element.license);\n      result.files.push(element);\n    }\n\n    result.licenses = result.licenses.filter(function (item, pos, self) {\n      return self.indexOf(item) === pos;\n    });\n\n    return result;\n  }\n\n  static async getCollectionFiles($http, collection) {\n\n    if (!collection.hasContent) {\n      return [];\n    }\n\n    let query = QueryBuilder.build({\n      node: collection.content.root,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,\n      template: QueryTemplates.DISTRIBUTIONS_TEMPLATE\n    });\n\n    var req = {\n      method: 'POST',\n      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n      data: \"format=json&query=\" + encodeURIComponent(query),\n      headers: {\n        \"Content-type\": \"application/x-www-form-urlencoded\"\n      },\n    }\n\n    var response = await $http(req);\n    var entries = response.data.results.bindings;\n\n    if (entries.length === 0) {\n      return null;\n    }\n\n    var distributions = {};\n    var bindings = [];\n\n    for (var entry of entries) {\n      var uri = entry.distribution.value;\n      var databusUri = DatabusCollectionUtils.navigateUp(uri, 4);\n\n      if (distributions[databusUri] == null) {\n        distributions[databusUri] = [];\n      }\n\n      distributions[databusUri].push(`<${uri}>`);\n    }\n\n    for (var databusUri in distributions) {\n\n      var distributionsString = distributions[databusUri].join('\\n');\n\n      var params = {};\n      params.DISTRIBUTIONS = distributionsString;\n\n      let fileQuery = DatabusCollectionUtils.formatQuery(QueryTemplates.COLLECTION_TABLE_QUERY, params);\n\n      var req = {\n        method: 'POST',\n        url: `${databusUri}${DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL}`,\n        data: \"format=json&query=\" + encodeURIComponent(fileQuery),\n        headers: {\n          \"Content-type\": \"application/x-www-form-urlencoded\"\n        },\n      }\n\n      response = await $http(req);\n\n      for (var binding of response.data.results.bindings) {\n        binding.databus = databusUri;\n        bindings.push(binding);\n      }\n    }\n\n    // Postproccess\n    let result = [];\n\n    for (var binding of bindings) {\n      binding = DatabusCollectionUtils.reduceBinding(binding);\n\n      var variant = binding.variant;\n\n      if(variant != undefined) {\n        var variants = variant.split(',');\n\n        var cleanedVariants = [];\n\n        for (var v of variants) {\n          if (v != \"\" && v != \" \") {\n            cleanedVariants.push(v);\n          }\n        }\n\n        binding.variant = cleanedVariants.join(\",\");\n      }\n\n      result.push(binding);\n    }\n\n\n    /*\n    for (var entry of entries) {\n\n      try {\n        console.log(entry.distribution.value);\n\n        var params = {};\n        params.DISTRIBUTION = entry.distribution.value;\n\n        let fileQuery = DatabusUtils.formatQuery(QueryTemplates.COLLECTION_TABLE_ROW_QUERY, params);\n\n        var req = {\n          method: 'POST',\n          url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n          data: \"format=json&query=\" + encodeURIComponent(fileQuery),\n          headers: {\n            \"Content-type\": \"application/x-www-form-urlencoded\"\n          },\n        }\n\n        response = await $http(req);\n\n        if (response.data.results.bindings.length === 0) {\n          continue;\n        }\n\n        result.push(DatabusCollectionUtils.reduceBinding(response.data.results.bindings[0]));\n\n      } catch(err) {\n        console.log(err);\n      }\n    }\n\n    // Postprocess:\n\n\n\n    for (let i in entries) {\n      let element = DatabusCollectionUtils.reduceBinding(entries[i]);\n      result.push(element);\n    }\n    */\n\n    return result;\n  }\n\n\n\n  static navigateUp(uri, steps) {\n\n    if (steps == undefined) {\n      steps = 1;\n    }\n\n    for (var i = 0; i < steps; i++) {\n      uri = uri.substr(0, uri.lastIndexOf('/'));\n    }\n\n    if (uri.includes('#')) {\n      uri = uri.substr(0, uri.lastIndexOf('#'));\n    }\n\n    return uri;\n  }\n\n  static async getCollectionFileURLs($http, collection) {\n\n    let query = QueryBuilder.build({\n      node: collection.content.root,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,\n      template: QueryTemplates.DEFAULT_FILE_TEMPLATE\n    });\n\n    var req = {\n      method: 'POST',\n      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n      data: \"format=json&query=\" + encodeURIComponent(query),\n      headers: {\n        \"Content-type\": \"application/x-www-form-urlencoded\"\n      },\n    }\n\n    var response = await $http(req);\n    var entries = response.data.results.bindings;\n\n    if (entries.length === 0) {\n      return null;\n    }\n\n    let result = \"\";\n\n    for (let i in entries) {\n      let element = DatabusCollectionUtils.reduceBinding(entries[i]);\n      result += element.file + '\\n';\n    }\n\n    return result;\n  }\n\n  /*\n  static copyData(data) {\n    return JSON.parse(JSON.stringify(data));\n  }*/\n\n  static serialize(collectionObject, ignoreKeys) {\n\n    if (ignoreKeys == undefined) {\n      ignoreKeys = [\n        'parent',\n        '$$hashKey',\n        'expanded',\n        'files',\n        'eventListeners',\n        'hasLocalChanges',\n        'published'\n      ];\n    }\n\n    return JSON.stringify(collectionObject, function (key, value) {\n      if (ignoreKeys.includes(key)) {\n        return undefined;\n      }\n\n      return value;\n    });\n  }\n\n  static cyrb53Hash(str, seed = 0) {\n    let h1 = 0xdeadbeef ^ seed,\n      h2 = 0x41c6ce57 ^ seed;\n    for (let i = 0, ch; i < str.length; i++) {\n      ch = str.charCodeAt(i);\n      h1 = Math.imul(h1 ^ ch, 2654435761);\n      h2 = Math.imul(h2 ^ ch, 1597334677);\n    }\n\n    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);\n    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);\n\n    return 4294967296 * (2097151 & h2) + (h1 >>> 0);\n  };\n\n  static createCleanCopy(jsonData) {\n\n    var data = JSON.parse(DatabusCollectionUtils.serialize(jsonData));\n    return data;\n  }\n\n  static exportToJsonFile(jsonData) {\n\n    var ignoreKeys = [\n      'parent',\n      '$$hashKey',\n      'expanded',\n      'files',\n      'eventListeners',\n      'hasLocalChanges',\n      'published',\n      'uuid'\n    ];\n\n    let dataStr = DatabusCollectionUtils.serialize(jsonData, ignoreKeys);\n    let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);\n\n    let exportFileDefaultName = 'data.json';\n\n    let linkElement = document.createElement('a');\n    linkElement.setAttribute('href', dataUri);\n    linkElement.setAttribute('download', exportFileDefaultName);\n    linkElement.click();\n  }\n\n}\n\nmodule.exports = DatabusCollectionUtils;\n\n\n//# sourceURL=webpack://databus-webapp/./js/collections/databus-collection-utils.js?");
-
-/***/ }),
-
-/***/ "./js/collections/databus-collection-wrapper.js":
-/*!******************************************************!*\
-  !*** ./js/collections/databus-collection-wrapper.js ***!
-  \******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\r\nconst QueryNode = __webpack_require__(/*! ../query-builder/query-node */ \"./js/query-builder/query-node.js\");\r\nconst QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\n\r\nclass DatabusCollectionWrapper {\r\n\r\n  /**\r\n   * Creates a new DatabusCollection from an already existing\r\n   * @param {[type]} data [description]\r\n   */\r\n  constructor(data) {\r\n    Object.assign(this, data);\r\n    this.eventListeners = {};\r\n  }\r\n\r\n  addEventListener(name, callback) {\r\n    if(this.eventListeners[name] == undefined) {\r\n      this.eventListeners[name] = [];\r\n    }\r\n\r\n    this.eventListeners[name].push(callback);\r\n  }\r\n\r\n  isPublisher(username) {\r\n    return this.uri != undefined && this.uri.startsWith('https://databus.dbpedia.org/' + username);\r\n  }\r\n\r\n  get isPublished() {\r\n    return this.issued != undefined;\r\n  }\r\n\r\n  get displayLabelHtml() {\r\n    var l = '';\r\n    if(this.isDraft) {\r\n      l += '<span style=\"color: #8a8cb3; margin-right:4px\">DRAFT:</span>';\r\n    }\r\n    l += (this.label != undefined && this.label.length > 0) ? this.label : 'Untitled Collection';\r\n    return l;\r\n  }\r\n\r\n  get isDraft() {\r\n    return this.uri === undefined;\r\n  }\r\n\r\n  get hasContent() {\r\n\r\n    if(this.content.root.childNodes.length == 0) {\r\n      return false;\r\n    }\r\n\r\n    for(var childNode of this.content.root.childNodes) {\r\n      if(childNode.childNodes.length > 0) {\r\n        return true;\r\n      }\r\n    }\r\n\r\n    return false;\r\n  }\r\n\r\n  fireEvent(name) {\r\n    if(this.eventListeners[name] == undefined) {\r\n      return;\r\n    }\r\n\r\n    for(var c in this.eventListeners[name]) {\r\n      var callback = this.eventListeners[name][c];\r\n      callback();\r\n    }\r\n  }\r\n\r\n\r\n  static createNew(title, description, source, accountName) {\r\n    var data = {};\r\n    data.uuid = DatabusUtils.uuidv4();\r\n    data.title = title;\r\n    data.description = description;\r\n    data.accountName = accountName;\r\n    data.abstract = description;\r\n    data.content = {};\r\n    data.content.root = new QueryNode(null, null);\r\n    data.content.root.addChild(new QueryNode(source, null));\r\n\r\n    return data;\r\n  }\r\n\r\n  /**\r\n   * Builds a composed query from all elements\r\n   * @return {[type]} [description]\r\n   */\r\n  createQuery() {\r\n\r\n    if(this.content.root == undefined) {\r\n      return null;\r\n    }\r\n\r\n    return QueryBuilder.build({\r\n      template : QueryTemplates.DEFAULT_FILE_TEMPLATE,\r\n      resourceBaseUrl : DATABUS_RESOURCE_BASE_URL,\r\n      node: this.content.root\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Downloads the entire collection object as json\r\n   * @return {[type]} [description]\r\n   */\r\n  downloadAsJson(){\r\n    var dataStr = \"data:text/json;charset=utf-8,\" + encodeURIComponent(angular.toJson(this));\r\n    var downloadAnchorNode = document.createElement('a');\r\n    downloadAnchorNode.setAttribute(\"href\",     dataStr);\r\n    downloadAnchorNode.setAttribute(\"download\", this.title + \".json\");\r\n    document.body.appendChild(downloadAnchorNode); // required for firefox\r\n    downloadAnchorNode.click();\r\n    downloadAnchorNode.remove();\r\n  }\r\n\r\n  removeCustomQueryNode(node) {\r\n    this.content.customQueries = this.content.customQueries.filter(function(n){\r\n      return node.guid != n.guid;\r\n    });\r\n  }\r\n\r\n  removeNodeByUri(uri) {\r\n    QueryNode.removeChildByUri(this.content.root, uri);\r\n  }\r\n\r\n  getParentNode(node) {\r\n    return QueryNode.findParentNodeRecursive(this.content.root, node);\r\n  }\r\n\r\n  removeGroupNode(groupNode) {\r\n    this.content.groups = this.content.groups.filter(function(a){\r\n      return groupNode.uri != a.uri;\r\n    });\r\n  }\r\n\r\n  addCustomQueryNode(label, query) {\r\n    this.content.customQueries.push({\r\n      guid : DatabusUtils.uuidv4(),\r\n      label : label,\r\n      query : query,\r\n    });\r\n  }\r\n\r\n  hasGroup(groupUri) {\r\n    var group = this.findGroup(groupUri);\r\n    return group != undefined;\r\n  }\r\n\r\n  hasArtifact(artifactUri) {\r\n    var groupUri = DatabusUtils.navigateUp(artifactUri);\r\n\r\n    var group = this.findGroup(groupUri);\r\n\r\n    if(group == undefined) {\r\n      return false;\r\n    }\r\n\r\n    var artifact = this.findArtifact(group, artifactUri);\r\n    return artifact != undefined;\r\n  }\r\n\r\n  /**\r\n   * Adds a new group node with label, uri and settings\r\n   * @param {[type]} groupUri   [description]\r\n   * @param {[type]} groupLabel [description]\r\n   * @param {[type]} settings   [description]\r\n   */\r\n  addGroupNode(groupUri, settings) {\r\n\r\n    var group = this.findGroup(groupUri);\r\n\r\n    if(group == undefined) {\r\n\r\n      var publisherUri = DatabusUtils.navigateUp(groupUri);\r\n\r\n      var groupLabel = DatabusUtils.uriToName(groupUri);\r\n      var publisherLabel = DatabusUtils.uriToName(publisherUri);\r\n\r\n      group = {};\r\n      group.uri = groupUri;\r\n      group.artifacts = [];\r\n      group.label = publisherLabel + \" » \" + groupLabel;\r\n      group.settings = settings;\r\n      group.expanded = true;\r\n\r\n      this.content.groups.push(group);\r\n\r\n      this.fireEvent(\"onGroupAdded\");\r\n    }\r\n\r\n    return group;\r\n  }\r\n\r\n  /**\r\n   * Adds a new artifact node with label uri and settings\r\n   * This will fail if the appropriate group node has not been\r\n   * added previously\r\n   * @param {[type]} artifactUri   [description]\r\n   * @param {[type]} artifactLabel [description]\r\n   * @param {[type]} settings      [description]\r\n   */\r\n  addArtifactNode(artifactUri, artifactLabel, settings) {\r\n\r\n    var groupUri = DatabusUtils.navigateUp(artifactUri);\r\n    var group = this.addGroupNode(groupUri, [ \r\n      {\r\n        facet: \"http://purl.org/dc/terms/hasVersion\",\r\n        value: \"SYSTEM_LATEST_ARTIFACT_VERSION\",\r\n        checked: true\r\n      }]);\r\n\r\n    var artifact = this.findArtifact(group, artifactUri);\r\n\r\n    if(artifact == undefined) {\r\n      artifact = {};\r\n      artifact.uri = artifactUri;\r\n      artifact.label = artifactLabel;\r\n      artifact.settings = settings;\r\n\r\n      group.artifacts.push(artifact);\r\n      \r\n      // TODO: merge facets\r\n    \r\n\r\n      this.fireEvent(\"onArtifactAdded\");\r\n    }\r\n  }\r\n\r\n  findGroup(groupUri) {\r\n    for(var g in this.content.groups) {\r\n      var group = this.content.groups[g];\r\n\r\n      if(group.uri == groupUri) {\r\n        return group;\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n  findArtifact(group, artifactUri) {\r\n    for(var a in group.artifacts) {\r\n      var artifact = group.artifacts[a];\r\n\r\n      if(artifact.uri == artifactUri) {\r\n        return artifact;\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n}\r\n\r\nmodule.exports = DatabusCollectionWrapper;\n\n//# sourceURL=webpack://databus-webapp/./js/collections/databus-collection-wrapper.js?");
-
-/***/ }),
-
-/***/ "./js/components/account-history/account-history.js":
-/*!**********************************************************!*\
-  !*** ./js/components/account-history/account-history.js ***!
-  \**********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\n\n// hinzufügen eines Controllers zum Modul\nfunction AccountHistoryController($http) {\n\n  var ctrl = this;\n  ctrl.utils = new DatabusWebappUtils(null, null);\n\n  \n  ctrl.$onInit = async function() {\n\n    var result = await $http.get(`/app/account/history?accountName=${ctrl.accountName}`);\n\n    ctrl.results = result.data;\n  }\n}\n\n\nmodule.exports = AccountHistoryController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/account-history/account-history.js?");
-
-/***/ }),
-
-/***/ "./js/components/autofill-dropdown/autofill-dropdown.js":
-/*!**************************************************************!*\
-  !*** ./js/components/autofill-dropdown/autofill-dropdown.js ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\nfunction AutofillDropdownController($timeout) {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function () {\n    ctrl.displayValues = [];\n  }\n\n  ctrl.showAll = function() {\n    ctrl.showDrop = true;\n    ctrl.displayValues = ctrl.values;\n  }\n\n  ctrl.handleKey = function (e) {\n\n    if (e.which === 9 || e.which === 13) {\n\n      ctrl.showDrop = false;\n\n      if(ctrl.displayValues.length > 0 && ctrl.input != ctrl.displayValues[0]) {\n        e.preventDefault();\n        ctrl.input = ctrl.displayValues[0];\n        ctrl.change();\n      }\n    }\n  }\n\n  ctrl.hideDropDelayed = function () {\n    $timeout(function () {\n      ctrl.showDrop = false;\n    }, 120);\n  }\n\n  ctrl.autoComplete = function () {\n\n    ctrl.showDrop = true;\n    if (ctrl.input == \"\" || ctrl.input == undefined) {\n      ctrl.displayValues = ctrl.values;\n      return;\n    }\n\n    ctrl.displayValues = [];\n\n    for (var value of ctrl.values) {\n      if (value.includes(ctrl.input) && value != ctrl.input) {\n        ctrl.displayValues.push(value);\n      }\n    }\n\n    if(ctrl.displayValues.length == 0) {\n      ctrl.showDrop = false;\n    }\n  }\n\n  ctrl.change = function () {\n\n    ctrl.autoComplete();\n\n    $timeout(function () {\n      ctrl.onChange();\n    }, 50);;\n  }\n}\n\nmodule.exports = AutofillDropdownController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/autofill-dropdown/autofill-dropdown.js?");
-
-/***/ }),
-
-/***/ "./js/components/better-dropdown/better-dropdown.js":
-/*!**********************************************************!*\
-  !*** ./js/components/better-dropdown/better-dropdown.js ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-eval("\n// hinzufügen eines Controllers zum Modul\nfunction BetterDropdownController($scope, $timeout, $element) {\n\n\n  const ctrl = this;\n  ctrl.isActive = false;\n\n  ctrl.closeAll = function() {\n    ctrl.rootNode.isActive = false;\n    ctrl.setChildrenActiveState(ctrl.rootNode, false);\n  }\n\n  ctrl.activateNode = function(parent, node) {\n    for(var sibling of parent.children) {\n      sibling.isActive = false;\n      ctrl.setChildrenActiveState(sibling, false);\n    }\n\n    node.isActive = true;\n  }\n\n  ctrl.setChildrenActiveState = function(node, value) {\n    if(node.children == null) {\n      return;\n    }\n\n    for(var child of node.children) {\n      child.isActive = value;\n      ctrl.setChildrenActiveState(child, value);\n    }\n  }\n\n  ctrl.toggleNode = function(node) {\n    node.isActive = !node.isActive;\n\n    if(!node.isActive) {\n      ctrl.setChildrenActiveState(node, false);\n    }\n  }\n\n  ctrl.toggleDropdown = function () {\n    ctrl.isActive = !ctrl.isActive;\n  };\n  ctrl.showDropdown = function () {\n    ctrl.isActive = true;\n  };\n  ctrl.hideDropdown = function () {\n    ctrl.isActive = false;\n  };\n\n  ctrl.showNested = function (parent, node) {\n    if (node.children) {\n      ctrl.cancelShowNested();\n      ctrl.currentTimeout = $timeout(function () {\n        ctrl.activateNode(parent, node);\n      }, 200);\n    }\n  };\n\n  ctrl.cancelShowNested = function() {\n    if(ctrl.currentTimeout != null) {\n      $timeout.cancel(ctrl.currentTimeout);\n      ctrl.currentTimeout = null;\n    }\n  }\n\n  ctrl.toggleNestedDropdown = function (node) {\n    node.showChildren = !node.showChildren;\n  };\n  ctrl.selectNode = function (node) {\n    // Handle the selected node here\n    ctrl.onNodeClicked({ node : node });\n  };\n\n\n\n}\n\n\nmodule.exports = BetterDropdownController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/better-dropdown/better-dropdown.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-data-table/collection-data-table.js":
-/*!**********************************************************************!*\
-  !*** ./js/components/collection-data-table/collection-data-table.js ***!
-  \**********************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionUtils = __webpack_require__(/*! ../../collections/databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\nconst DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\n\n// hinzufügen eines Controllers zum Modul\nfunction CollectionDataTableController($http, $scope, $location, $sce) {\n\n  var ctrl = this;\n  ctrl.$http = $http;\n\n\n  ctrl.$onInit = function() {\n\n\n    ctrl.isLoading = true;\n    DatabusCollectionUtils.getCollectionFiles(ctrl.$http, ctrl.collection).then(function(result) {\n      ctrl.files = result;\n      ctrl.isLoading = false;\n      $scope.$apply();\n    }, function(err) {\n      ctrl.statistics = null;\n      ctrl.isLoading = false;\n    });\n\n\n    if(ctrl.files == null) {\n      return;\n    }\n\n    ctrl.groupedFiles = ctrl.groupBy(ctrl.files, 'version');\n  }\n\n  ctrl.getRowspan = function(file) {\n\n    return file.distributions.length * 2; \n    /*\n    var span = file.distributions.length * 2;\n    if(!file.distributions[file.distributions.length - 1].expanded) {\n      span--;\n    }\n\n    return span;*/\n  }\n\n  ctrl.groupBy = function(list, key) {\n\n    var result = {};\n\n    for(var i in list) {\n      var element = list[i];\n      var keyVal = element[key];\n\n      if(result[keyVal] == undefined) {\n        result[keyVal] = {}\n        result[keyVal].value = keyVal;\n        result[keyVal].title = element.title;\n        result[keyVal].uri = keyVal;\n        result[keyVal].distributions = [];\n        result[keyVal].license = element.license;\n      }\n\n      result[keyVal].distributions.push(element);\n    }\n    \n    return result;\n  }\n\n  ctrl.calculateRowSpan = function(file) {\n    var rowspan = 0;\n\n    for(var d in file.distributions) {\n      rowspan += 1; //(file.distributions[d].expanded ? 2 : 1);\n    }\n\n    return rowspan;\n  }\n\n  ctrl.createRelativeUri = function(url) {\n    var u = new URL(url);\n    return u.pathname;\n  }\n\n  ctrl.$doCheck = function() {\n\n    if(ctrl.files == null) {\n      return;\n    }\n\n    if(ctrl.previousFileCount != ctrl.files.length) {\n      ctrl.previousFileCount = ctrl.files.length;\n      ctrl.groupedFiles = ctrl.groupBy(ctrl.files, 'version');\n    }  \n  }\n\n  ctrl.uriToName = function(uri) {\n    return DatabusUtils.uriToName(uri);\n  }\n\n  ctrl.formatUploadSize = function(size) {\n    if(size < 1024) return size + \" B\";\n    else if (size < 1048576) return Math.round(size / 1024) + \" KB\";\n    else if (size < 1073741824) return (Math.round(10 * size / 1048576) / 10) + \" MB\";\n    else return (Math.round(100 * size / 1073741824) / 100) + \" GB\";\n  }\n}\n\n\nmodule.exports = CollectionDataTableController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-data-table/collection-data-table.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-editor-widget/collection-editor-widget.js":
-/*!****************************************************************************!*\
-  !*** ./js/components/collection-editor-widget/collection-editor-widget.js ***!
-  \****************************************************************************/
-/***/ ((module) => {
-
-eval("\n// hinzufügen eines Controllers zum Modul\nfunction CollectionEditorWidgetController(collectionManager, $scope) {\n\n  var ctrl = this;\n  ctrl.$scope = $scope;\n  ctrl.collectionManager = collectionManager;\n\n  ctrl.$onInit = function () {\n\n    // TODO: Change this hacky BS!\n    setTimeout(function () {\n      $(\".dropdown-item\").click(function (e) {\n        var dropdown = $(this).closest(\".dropdown\");\n        $(dropdown).removeClass(\"is-active\");\n        e.stopPropagation();\n      });\n\n\n      $(\"body\").click(function () {\n        $(\".dropdown\").removeClass(\"is-active\");\n      });\n\n      $(\".dropdown\").click(function (e) {\n        $(\".dropdown\").removeClass(\"is-active\");\n        $(this).addClass(\"is-active\");\n        e.stopPropagation();\n      });\n    }, 500);\n\n  }\n\n  ctrl.goToEditor = function () {\n    window.location.href = '/app/collection-editor';\n  }\n\n  ctrl.addSelectionToCollection = function (uuid) {\n    var selection = ctrl.selection;\n\n    ctrl.collectionManager.setActive(uuid);\n    var collection = ctrl.collectionManager.activeCollection;\n\n    // Get local bus node\n    var databusNode = QueryNode.findChildByUri(collection.content.root, DATABUS_RESOURCE_BASE_URL);\n\n    if (databusNode == undefined) {\n      databusNode = new QueryNode(DATABUS_RESOURCE_BASE_URL, null);\n      collection.content.root.childNodes.push(databusNode);\n    }\n\n    QueryNode.mergeAddChild(databusNode, selection);\n\n    ctrl.collectionManager.activeCollection.hasLocalChanges\n      = ctrl.collectionManager.hasLocalChanges(ctrl.collectionManager.activeCollection);\n    ctrl.collectionManager.saveLocally();\n  }\n\n}\n\n\nmodule.exports = CollectionEditorWidgetController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-editor-widget/collection-editor-widget.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-hierarchy-two/collection-hierarchy.js":
-/*!************************************************************************!*\
-  !*** ./js/components/collection-hierarchy-two/collection-hierarchy.js ***!
-  \************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionWrapper = __webpack_require__(/*! ../../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\nconst QueryBuilder = __webpack_require__(/*! ../../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\nconst QueryNode = __webpack_require__(/*! ../../query-builder/query-node */ \"./js/query-builder/query-node.js\");\nconst QueryTemplates = __webpack_require__(/*! ../../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\nconst DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ \"./js/utils/databus-constants.js\");\nconst DatabusFacetsCache = __webpack_require__(/*! ../../utils/databus-facets-cache */ \"./js/utils/databus-facets-cache.js\");\nconst DatabusUris = __webpack_require__(/*! ../../utils/databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\nconst DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\n\n// hinzufügen eines Controllers zum Modul\nfunction CollectionHierarchyControllerTwo($http, $location, $sce, $scope, collectionManager) {\n\n  var ctrl = this;\n\n  ctrl.viewMode = -1;\n  ctrl.$http = $http;\n  ctrl.$scope = $scope;\n  ctrl.facets = new DatabusFacetsCache($http);\n  ctrl.utils = new DatabusWebappUtils($scope, $sce);\n  ctrl.$sce = $sce;\n\n  collectionManager.onCollectionChangedInDifferentTab = function () {\n    ctrl.previousCollectionId = null;\n  }\n\n  ctrl.defaultQuery = `PREFIX databus: <https://dataid.dbpedia.org/databus#>\nPREFIX dcv:    <https://dataid.dbpedia.org/databus-cv#>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX dcat:   <http://www.w3.org/ns/dcat#>\nPREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nSELECT ?file WHERE {\n  # Replace this with your custom query:\n  ?file <matches> <condition> .\n} LIMIT 0`;\n  const DATAID_ARTIFACT_PROPERTY = 'databus:artifact';\n  const DATAID_GROUP_PROPERTY = 'databus:group';\n  const KEY_LATEST_VERSION = \"$latest\";\n\n\n  ctrl.$onInit = function () {\n\n    ctrl.viewMode = -1;\n\n    if (ctrl.collection == null) {\n      return;\n    }\n  }\n\n  ctrl.onAddContentClicked = function (sourceNode) {\n    ctrl.onAddContent({ source: sourceNode.uri });\n\n    ctrl.onChange();\n    ctrl.updateViewModel();\n  }\n\n\n  ctrl.onAddCustomQueryClicked = function (sourceNode) {\n    var node = QueryNode.createFrom(sourceNode);\n    node.addChild(new QueryNode(DatabusUtils.uuidv4(), null));\n    ctrl.onChange();\n  }\n\n  ctrl.toggleCollapsed = function (node, view) {\n    view.collapsed = !view.collapsed;\n\n    if (!view.collapsed) {\n      ctrl.query(node);\n    }\n  }\n\n  ctrl.isDatabus = async function (uri) {\n    var req = {\n      method: 'GET',\n      url: uri,\n      headers: {\n        'Accept': 'application/rdf+turtle'\n      }\n    }\n\n    var res = await ctrl.$http(req);\n    var manifest = await DatabusUtils.parseDatabusManifest(res.data);\n    var expectedUri = new URL(uri);\n\n    if (manifest == undefined || manifest.uri != expectedUri.origin) {\n      return false;\n    }\n\n    return true;\n  }\n\n  ctrl.getDatabusUri = async function (uri) {\n\n    var url = new URL(uri);\n    var segments = url.pathname.split('/');\n    var base = url.origin;\n    var currentUrl = base;\n\n    var isDatabus = await ctrl.isDatabus(currentUrl);\n\n    if (isDatabus) {\n      return currentUrl;\n    }\n\n    for (var i = 0; segments.length; i++) {\n\n      currentUrl += `/${segments[i]}`;\n      var isDatabus = await ctrl.isDatabus(currentUrl);\n\n      if (isDatabus) {\n        return currentUrl;\n      }\n    }\n\n  }\n\n  ctrl.onAddResource = async function (uri) {\n\n    if (uri.endsWith('/')) {\n      uri = uri.substr(0, uri.length - 1);\n    }\n\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n\n    // Resource already in collection\n    if (node != undefined) {\n      return;\n    }\n\n    var databusUri = await ctrl.getDatabusUri(uri);\n\n\n    var databusUriLength = DatabusUtils.getResourcePathLength(databusUri);\n    var resourceUriLength = DatabusUtils.getResourcePathLength(uri);\n    var diff = resourceUriLength - databusUriLength;\n\n    if (diff < 0 && diff > 3 || diff == 1) {\n      return;\n    }\n\n    if (diff == 0) {\n      ctrl.addDatabus(uri);\n    }\n\n    if (diff == 2) {\n      ctrl.addDatabus(databusUri);\n      let databusNode = QueryNode.findChildByUri(ctrl.root, databusUri);\n      ctrl.addGroup(databusNode, uri);\n    }\n\n    if (diff == 3) {\n      ctrl.addDatabus(databusUri);\n      let databusNode = QueryNode.findChildByUri(ctrl.root, databusUri);\n      let groupUri = DatabusUtils.navigateUp(uri);\n      ctrl.addGroup(databusNode, groupUri);\n      let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);\n      ctrl.addArtifact(groupNode, uri);\n    }\n\n    ctrl.onChange();\n    ctrl.updateViewModel();\n    ctrl.$scope.$apply();\n  }\n\n  ctrl.addDatabus = function (uri) {\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n\n    if (node == null) {\n      ctrl.root.childNodes.push(new QueryNode(uri, null));\n    }\n  }\n\n  ctrl.addGroup = function (databusNode, uri) {\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n\n    if (node == null) {\n      databusNode.childNodes.push(new QueryNode(uri, DATAID_GROUP_PROPERTY));\n    }\n  }\n\n  ctrl.addArtifact = function (groupNode, uri) {\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n\n    if (node == null) {\n      groupNode.childNodes.push(new QueryNode(uri, DATAID_ARTIFACT_PROPERTY));\n    }\n  }\n\n  ctrl.addToCollection = function (source, view, result) {\n\n    if (ctrl.isInCollection(result)) {\n      QueryNode.removeChildByUri(ctrl.root, result.id[0].value);\n    }\n    else {\n      if (result.typeName[0].value == 'Group') {\n        let node = new QueryNode(result.id[0].value, DATAID_GROUP_PROPERTY);\n\n        source.childNodes.push(node);\n      }\n\n      if (result.typeName[0].value == 'Artifact') {\n\n        var artifactUri = result.id[0].value;\n        let groupUri = DatabusUtils.navigateUp(artifactUri);\n        let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);\n\n        if (groupNode == null) {\n          groupNode = new QueryNode(groupUri, DATAID_GROUP_PROPERTY);\n          source.childNodes.push(groupNode);\n        }\n\n        let node = new QueryNode(artifactUri, DATAID_ARTIFACT_PROPERTY);\n        groupNode.addChild(node);\n      }\n    }\n\n    for (var res of view.searchResults) {\n      res.inCollection = ctrl.isInCollection(res);\n    }\n\n    ctrl.onChange();\n    ctrl.updateViewModel();\n  }\n\n  ctrl.isLastChild = function (group, artifact) {\n\n    if (group.childNodes == undefined || group.childNodes.length == 0) {\n      return false;\n    }\n\n    return group.childNodes[group.childNodes.length - 1].uri == artifact.uri;\n  }\n\n  ctrl.toggleExpand = function (node) {\n    node.expanded = !node.expanded;\n    ctrl.onChange();\n  }\n\n  ctrl.mergeFacets = function (node, facets) {\n\n    if (node.facets == undefined) {\n      node.facets = JSON.parse(JSON.stringify(facets));\n      return;\n    }\n\n    for (var f in facets) {\n\n      if (node.facets[f] == undefined) {\n        node.facets[f] = JSON.parse(JSON.stringify(facets[f]));\n        continue;\n      }\n\n      for (var value of facets[f].values) {\n        if (!node.facets[f].values.includes(value)) {\n          node.facets[f].values.push(value);\n        }\n      }\n    }\n\n    node.facetLabels = null;\n  }\n\n  ctrl.getAllFilters = function (groupNode, artifactNode) {\n\n    if (artifactNode == null) {\n      var result = Object.keys(groupNode.facetSettings)\n      return DatabusUtils.uniqueList(result);\n    }\n\n    var result = Object.keys(groupNode.facetSettings).concat(Object.keys(artifactNode.facetSettings));\n    return DatabusUtils.uniqueList(result);\n  }\n\n  ctrl.$doCheck = function () {\n\n    if (ctrl.collection == null) {\n      ctrl.previousCollectionId = null;\n      return;\n    }\n\n    if (ctrl.previousCollectionId != ctrl.collection.uuid) {\n      ctrl.previousCollectionId = ctrl.collection.uuid;\n\n      ctrl.activeNode = null;\n      ctrl.viewMode = -1;\n      ctrl.updateViewModel();\n    }\n  }\n\n  ctrl.handleKey = function (e, nodeView) {\n    if (e.which === 9) {\n      nodeView.showSearchResults = false;\n    }\n  }\n\n  ctrl.isInCollection = function (result) {\n    let uri = result.id[0].value;\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n    return node != null;\n  }\n\n  ctrl.updateSearchResults = function (view) {\n\n    if (view == null || view.searchResults == null) {\n      return;\n    }\n\n    for (var res of view.searchResults) {\n      res.inCollection = ctrl.isInCollection(res);\n    }\n  }\n\n  ctrl.searchNode = function (node, nodeView) {\n\n    var baseUrl = new URL(node.uri).origin;\n    var typeFilters = `typeName=Artifact Group`;\n\n    if (node.property == DATAID_GROUP_PROPERTY) {\n      var groupName = DatabusUtils.uriToResourceName(node.uri);\n      var accountName = DatabusUtils.uriToResourceName(DatabusUtils.navigateUp(node.uri));\n      typeFilters = `typeName=Artifact&publisher=${accountName}&group=${groupName}`;\n    }\n\n    var url = `${baseUrl}/api/search?${typeFilters}&typeNameWeight=0&format=JSON_FULL&minRelevance=15&maxResults=10&query=${nodeView.search}`;\n\n    try {\n      $http({ method: 'GET', url: url }).then(function successCallback(response) {\n\n        nodeView.searchResults = [];\n\n        for (var doc of response.data.docs) {\n          doc.inCollection = ctrl.isInCollection(doc);\n          nodeView.searchResults.push(doc);\n        }\n\n      }, function errorCallback(response) {\n        console.log(response);\n      });\n    } catch (err) {\n\n    }\n\n  };\n\n  ctrl.toggleExpand = function (view) {\n    view.expanded = !view.expanded;\n  }\n\n\n  ctrl.isValidHttpUrl = function (url) {\n    return DatabusUtils.isValidHttpUrl(url);\n  }\n\n\n  ctrl.updateViewModel = function () {\n    ctrl.collectionWrapper = new DatabusCollectionWrapper(ctrl.collection);\n    ctrl.root = ctrl.collection.content.root;\n\n    ctrl.view = {};\n    ctrl.view.groups = {};\n    ctrl.view.artifacts = {};\n    ctrl.view.sources = {};\n\n    for (var s in ctrl.root.childNodes) {\n\n      var sourceNode = ctrl.root.childNodes[s];\n\n      if (ctrl.view.sources[sourceNode.uri] == undefined) {\n        ctrl.view.sources[sourceNode.uri] = {};\n        ctrl.view.sources[sourceNode.uri].uri = sourceNode.uri;\n        ctrl.view.sources[sourceNode.uri].expanded = true;\n        ctrl.view.sources[sourceNode.uri].addMode = 'artifact';\n        ctrl.view.sources[sourceNode.uri].customQueryLabel = `New Custom Query`;\n        ctrl.view.sources[sourceNode.uri].customQueryInput = ctrl.defaultQuery;\n      }\n\n      for (var g in sourceNode.childNodes) {\n\n        var groupNode = sourceNode.childNodes[g];\n        groupNode.expanded = true;\n\n\n        ctrl.view.groups[groupNode.uri] = {};\n\n        if (DatabusUtils.isValidHttpUrl(groupNode.uri)) {\n\n          ctrl.facets.get(groupNode.uri).then(function (res) {\n            delete res.facets[DatabusUris.DATABUS_ARTIFACT_PROPERTY];\n            ctrl.view.groups[res.uri].facets = res.facets;\n\n            var hasVersionFacets = ctrl.view.groups[res.uri].facets[DatabusUris.DCT_HAS_VERSION];\n\n            if (hasVersionFacets != null && !hasVersionFacets.values.includes(KEY_LATEST_VERSION)) {\n              hasVersionFacets.values.unshift(KEY_LATEST_VERSION);\n            }\n\n            $scope.$apply();\n          });\n\n          ctrl.query(groupNode);\n\n          for (var a in groupNode.childNodes) {\n\n            var artifactNode = groupNode.childNodes[a];\n\n            ctrl.view.artifacts[artifactNode.uri] = {};\n            ctrl.view.artifacts[artifactNode.uri].expanded = false;\n            ctrl.view.artifacts[artifactNode.uri].collapsed = true;\n\n            ctrl.facets.get(artifactNode.uri).then(function (res) {\n              ctrl.view.artifacts[res.uri].facets = res.facets;\n\n              var hasVersionFacets = ctrl.view.artifacts[res.uri].facets[DatabusUris.DCT_HAS_VERSION];\n\n              if (hasVersionFacets != null && !hasVersionFacets.values.includes(KEY_LATEST_VERSION)) {\n                hasVersionFacets.values.unshift(KEY_LATEST_VERSION);\n              }\n\n              $scope.$apply();\n              //var groupUri = DatabusUtils.navigateUp(artifactNode.uri);\n              //ctrl.view.artifacts[artifactNode.uri].facets = result.data;\n              //ctrl.mergeFacets(ctrl.view.groups[groupUri], result.data);\n            });\n\n\n\n            /*en(function(result) {\n\n               = result['http://purl.org/dc/terms/hasVersion'].values.unshift(\"$latest\");\n\n\n              var groupUri = DatabusUtils.navigateUp(artifactNode.uri);\n              ctrl.view.artifacts[artifactNode.uri].facets = result.data;\n              ctrl.mergeFacets(ctrl.view.groups[groupUri], result.data);\n\n            });\n\n\n          \n            */\n          }\n        }\n      }\n    }\n  }\n\n\n\n  ctrl.onArtifactDropdownChanged = function (groupNode) {\n    ctrl.onChange();\n    ctrl.query(groupNode);\n  }\n\n  ctrl.selectAddFilterValue = function (viewNode, value) {\n    viewNode.addFilterValueInput = value;\n    viewNode.showValueDrop = false;\n\n    ctrl.onAddFilterValueInputChanged(viewNode);\n  }\n\n  ctrl.selectAddFilterFacet = function (viewNode, value) {\n    viewNode.addFilterFacetInput = value;\n    viewNode.showFacetDrop = false;\n\n    ctrl.onAddFilterFacetInputChanged(viewNode);\n  }\n\n  ctrl.onAddFilterValueInputChanged = function (viewNode) {\n\n    for (var value of viewNode.facets[viewNode.addFilterFacet].values) {\n\n      if (viewNode.addFilterValueInput == value) {\n        viewNode.addFilterValue = value;\n        return;\n      }\n    }\n\n    viewNode.addFilterValue = null;\n  }\n\n  ctrl.onAddFilterFacetInputChanged = function (viewNode) {\n\n    for (var facet in viewNode.facets) {\n\n      if (viewNode.addFilterFacetInput == viewNode.facets[facet].label) {\n\n        if (viewNode.addFilterFacet != facet) {\n          viewNode.addFilterFacet = facet;\n          viewNode.addFilterValue = [];\n        }\n\n        return;\n      }\n    }\n\n    viewNode.addFilterFacet = null;\n    viewNode.addFilterValue = [];\n  }\n\n  ctrl.includesValue = function (objs, value) {\n    if (objs == undefined) {\n      return false;\n    }\n\n    for (var obj of objs) {\n      if (obj.value == value) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.isLocalDatabusNode = function (node) {\n    return node.uri == DATABUS_RESOURCE_BASE_URL;\n  }\n  ctrl.addFilter = function (node, facet, values, checked) {\n\n    if (values == null) {\n      return;\n    }\n\n    if (node.facetSettings[facet] == undefined) {\n      node.facetSettings[facet] = [];\n    }\n\n    for (var value of values) {\n\n      if (!ctrl.includesValue(node.facetSettings[facet], value.value)) {\n        node.facetSettings[facet].push(value);\n      }\n    }\n\n    ctrl.onChange();\n    ctrl.query(node);\n  }\n\n  ctrl.query = function (node) {\n\n    if (node.childNodes != undefined && node.childNodes.length > 0) {\n\n      node.files = null;\n      for (var child of node.childNodes) {\n        ctrl.query(child);\n      }\n\n      return;\n    }\n\n    var queryNode = QueryNode.createSubTree(node);\n\n    var fullQuery = QueryBuilder.build({\n      node: queryNode,\n      template: QueryTemplates.NODE_FILE_TEMPLATE,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,\n      root: ctrl.root\n    });\n\n    this.querySparql(fullQuery).then(function (result) {\n      node.files = result;\n      ctrl.$scope.$apply();\n\n    });\n  }\n\n  ctrl.removeFilter = function (node, facet) {\n\n    if (node.facetSettings[facet] == undefined) {\n      return;\n    }\n\n    delete node.facetSettings[facet];\n\n    ctrl.onChange();\n\n    ctrl.query(node);\n  }\n\n  ctrl.onActiveFilterChanged = function (node) {\n    ctrl.onChange();\n    ctrl.query(node);\n  }\n\n  ctrl.getFacetLabels = function (viewNode) {\n\n    if (viewNode.facetLabels != undefined) {\n      return viewNode.facetLabels;\n    }\n    var result = [];\n\n    for (var f in viewNode.facets) {\n      result.push(viewNode.facets[f].label);\n    }\n\n    viewNode.facetLabels = result;\n    return result;\n  }\n\n\n  ctrl.sortBy = function (property) {\n\n    if (ctrl.sortProperty == property) {\n      ctrl.sortReverse = !ctrl.sortReverse;\n    }\n    ctrl.sortProperty = property;\n  }\n\n  ctrl.formatFileSize = function (size) {\n    return DatabusUtils.formatFileSize(size);\n  };\n\n  ctrl.toHTML = function (html) {\n    return $sce.trustAsHtml(html);\n  };\n\n  ctrl.onComponentAdded = function () {\n\n  }\n\n  ctrl.customExpanded = function () {\n    return ctrl.customNode.expanded && ctrl.collection.content.customQueries.length > 0;\n  }\n\n  ctrl.generatedExpanded = function () {\n    return ctrl.generatedNode.expanded && ctrl.collection.content.groups.length > 0;\n  }\n\n  ctrl.publishCollection = function () {\n    ctrl.onPublish();\n  }\n\n  ctrl.delete = function () {\n    ctrl.onDelete();\n  }\n\n  ctrl.goToResource = function (node) {\n    window.location = node.uri;\n  }\n\n  ctrl.formatGroupPrefix = function (uri) {\n    return DatabusUtils.uriToName(DatabusUtils.navigateUp(uri));\n  }\n\n  ctrl.formatArtifactPrefix = function (uri) {\n    var nav = DatabusUtils.navigateUp(uri);\n    var groupName = DatabusUtils.uriToName(nav);\n    var userName = DatabusUtils.uriToName(DatabusUtils.navigateUp(nav));\n\n    return userName + '/' + groupName;\n  }\n\n  ctrl.uriToName = function (uri) {\n    return DatabusUtils.uriToName(uri);\n  }\n\n  ctrl.objSize = function (obj) {\n    return DatabusUtils.objSize(obj);\n  }\n\n  ctrl.showCollectionSearch = function () {\n    ctrl.open = false;\n    ctrl.viewMode = 0;\n    ctrl.activeNode = ctrl.rootNode;\n\n    $location.hash('search');\n  }\n\n  // ctrl.printJSON = function() {\n  //   console.log(JSON.stringify(ctrl.collection));\n  // }\n\n  // SHOW NODES\n  ctrl.showGroupNode = function (groupNode) {\n    ctrl.open = true;\n    ctrl.viewMode = 3;\n    ctrl.activeNode = QueryNode.createFrom(groupNode);\n\n    this.updateQuery();\n  }\n\n  ctrl.showArtifactNode = function (artifactNode, groupNode) {\n\n    ctrl.open = true;\n    ctrl.viewMode = 1;\n    ctrl.activeNode = QueryNode.createFrom(artifactNode);\n\n    this.updateQuery();\n  }\n\n  ctrl.querySparql = async function (query) {\n\n\n    try {\n\n      var req = {\n        method: 'POST',\n        url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n        data: \"format=json&query=\" + encodeURIComponent(query),\n        headers: {\n          \"Content-type\": \"application/x-www-form-urlencoded\"\n        },\n      }\n\n      var updateResponse = await ctrl.$http(req);\n\n      var data = updateResponse.data;\n      var bindings = data.results.bindings;\n\n      for (var b in bindings) {\n        ctrl.reduceBinding(bindings[b]);\n      }\n\n      return bindings;\n\n\n    } catch (e) {\n      console.log(e);\n    }\n  }\n\n  ctrl.reduceBinding = function (binding) {\n    for (var key in binding) {\n      binding[key] = binding[key].value;\n    }\n\n    return binding;\n  }\n\n\n\n  ctrl.updateQuery = function () {\n    var queryNode = QueryNode.createSubTree(ctrl.activeNode);\n\n    ctrl.activeFileQuery = QueryBuilder.build({\n      node: queryNode,\n      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\n    });\n\n    ctrl.activeFullQuery = QueryBuilder.build({\n      node: queryNode,\n      template: QueryTemplates.NODE_FILE_TEMPLATE,\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\n    });\n  }\n\n  ctrl.onActiveNodeChanged = function () {\n    this.updateQuery();\n\n    ctrl.onChange();\n  }\n\n  ctrl.addCustomNode = function (sourceNode, label, desc, query) {\n\n    var node = new QueryNode(label, query);\n    sourceNode.childNodes.push(node);\n\n\n    ctrl.updateViewModel();\n    ctrl.onChange();\n  }\n\n  ctrl.removeNode = function (node) {\n\n    var parent = ctrl.collectionWrapper.getParentNode(node);\n    ctrl.collectionWrapper.removeNodeByUri(node.uri);\n\n    if (parent != null) {\n      ctrl.query(parent);\n    }\n\n    ctrl.onChange();\n  }\n\n  ctrl.showCustomQueryNode = function (customQueryNode) {\n    ctrl.open = true;\n    ctrl.viewMode = 2;\n    ctrl.activeNode = customQueryNode;\n  }\n\n  ctrl.list = function (setting) {\n\n    var allEntries = Object.keys(setting).map(function (key, index) {\n\n      var label = undefined;\n      var entry = setting[key];\n\n      if (entry.value == '') {\n        label = '<i style=\"color: #a3a3a3;\">None</i>';\n      } else if (entry.value == '$latest') {\n        label = 'Latest Version';\n      } else {\n        label = entry.value;\n      }\n\n      if (entry.checked) {\n        return label;\n      } else {\n        return `<s>${label}</s>`;\n      }\n    });\n\n\n    var list = [];\n    var maxLength = 50;\n    var length = 0;\n    var hasOverflow = false;\n\n    for (var entry of allEntries) {\n      if (entry.length + length > maxLength) {\n        hasOverflow = true;\n        break;\n      }\n\n      length += entry.length;\n      list.push(entry);\n    }\n\n    if (hasOverflow) {\n      list.push('...');\n    }\n\n    return ctrl.$sce.trustAsHtml(list.join(', '));\n    // return setting.map(function (v) { return v.value }).join(', ');\n  }\n}\n\n\nmodule.exports = CollectionHierarchyControllerTwo;\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-hierarchy-two/collection-hierarchy.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-node/collection-node.js":
-/*!**********************************************************!*\
-  !*** ./js/components/collection-node/collection-node.js ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-eval("// TODO Fabian evtl bug\n\n// hinzufügen eines Controllers zum Modul\nfunction CollectionNodeController() {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n\n  }\n\n  ctrl.removeNode = function() {\n    ctrl.onRemoveNode();\n  }\n\n  ctrl.click = function() {\n    ctrl.onClick();\n  }\n}\n\nmodule.exports = CollectionNodeController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-node/collection-node.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-search/collection-search.js":
-/*!**************************************************************!*\
-  !*** ./js/components/collection-search/collection-search.js ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\nfunction CollectionSearchController(collectionManager, $http, $interval, $sce) {\n\n  var ctrl = this;\n\n  ctrl.results = [];\n  ctrl.collectionManager = collectionManager;\n\n\n\n  \n\n\n\n  ctrl.formatResult = function (result) {\n    return $sce.trustAsHtml(result);\n  }\n\n  ctrl.getDatabusUrls = function () {\n\n    if (ctrl.databusUrls != undefined) {\n      return ctrl.databusUrls;\n    }\n\n    ctrl.databusUrls = [];\n    var root = ctrl.collection.content.root;\n\n    for (var sourceNode of root.childNodes) {\n      ctrl.databusUrls.push(sourceNode.uri);\n    }\n\n    return ctrl.databusUrls;\n  }\n\n  ctrl.$onInit = function () {\n\n    ctrl.searchInput = '';\n    ctrl.filters = {};\n    ctrl.filters.filterArtifact = false;\n    ctrl.filters.filterGroup = false;\n    ctrl.searchCooldown = 1000;\n\n    ctrl.root = QueryNode.createFrom(ctrl.collection.content.root);\n\n    ctrl.collectionWrapper = new DatabusCollectionWrapper(ctrl.collection);\n    ctrl.autoFocus = true;\n  }\n\n  // TODO Fabian\n  ctrl.isInCollection = function (result) {\n    let uri = result.id[0].value;\n    let node = QueryNode.findChildByUri(ctrl.root, uri);\n\n    return node != null;\n  }\n\n\n  ctrl.addToCollection = function (result) {\n\n    var currentSource = ctrl.targetDatabusUrl;\n    var sourceNode = QueryNode.findChildByUri(ctrl.root, currentSource);\n\n    if (result.inCollection) {\n      QueryNode.removeChildByUri(ctrl.root, result.id[0].value);\n    }\n    else {\n      if (result.typeName[0].value == 'Group') {\n        let node = new QueryNode(result.id[0].value, 'databus:group');\n\n        sourceNode.addChild(node);\n        ctrl.onComponentAdded();\n      }\n\n      if (result.typeName[0].value == 'Artifact') {\n\n        var artifactUri = result.id[0].value;\n        let groupUri = DatabusUtils.navigateUp(artifactUri);\n        let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);\n\n        if (groupNode == null) {\n          groupNode = new QueryNode(groupUri, 'databus:group');\n          sourceNode.addChild(groupNode);\n        }\n\n        let node = new QueryNode(artifactUri, 'databus:artifact');\n        groupNode.addChild(node);\n\n        ctrl.onComponentAdded();\n      }\n    }\n\n    for (let r in ctrl.results) {\n      ctrl.results[r].inCollection = ctrl.isInCollection(ctrl.results[r]);\n    }\n\n    ctrl.collectionManager.saveLocally();\n\n    console.log(ctrl.root);\n  }\n\n  $interval(function () {\n\n    if (ctrl.searchChanged) {\n\n      if (!DatabusUtils.isValidHttpUrl(ctrl.targetDatabusUrl)) {\n        return;\n      }\n\n      var typeFilters = '?typeName=Artifact Group';\n\n      if (ctrl.filters.filterArtifact || ctrl.filters.filterGroup) {\n\n        typeFilters = '?typeName='\n        if (ctrl.filters.filterArtifact) {\n          typeFilters += 'Artifact ';\n        }\n        if (ctrl.filters.filterGroup) {\n          typeFilters += 'Group ';\n        }\n      }\n\n      ctrl.lastQuery = ctrl.searchInput;\n\n      try {\n\n        $http({\n          method: 'GET',\n          url: ctrl.targetDatabusUrl + '/api/search' + typeFilters + '&format=JSON_FULL&minRelevance=10&maxResults=10&query='\n            + ctrl.searchInput,\n        }).then(function successCallback(response) {\n\n          if (ctrl.lastQuery != response.data.query) {\n            return;\n          }\n\n          ctrl.results = response.data.docs;\n\n          for (var r in ctrl.results) {\n            ctrl.results[r].inCollection = ctrl.isInCollection(ctrl.results[r]);\n          }\n\n        }, function errorCallback(response) {\n        });\n      } catch (err) {\n\n      }\n\n      ctrl.searchChanged = false;\n    };\n  }, ctrl.searchCooldown);\n\n  ctrl.search = function () {\n    ctrl.searchChanged = true;\n  };\n}\n\n\nmodule.exports = CollectionSearchController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-search/collection-search.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-statistics/collection-statistics.js":
-/*!**********************************************************************!*\
-  !*** ./js/components/collection-statistics/collection-statistics.js ***!
-  \**********************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionUtils = __webpack_require__(/*! ../../collections/databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\nconst DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\nconst DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\n\n// hinzufügen eines Controllers zum Modul\nfunction CollectionStatisticsController($http, $scope, $location, $sce) {\n\n  var ctrl = this;\n  ctrl.$http = $http;\n  ctrl.utils = new DatabusWebappUtils($scope, $sce);\n\n\n  ctrl.$onInit = function() {\n    ctrl.isLoading = true;\n    DatabusCollectionUtils.getCollectionStatistics(ctrl.$http, ctrl.collection).then(function(result) {\n      ctrl.statistics = result;\n      ctrl.isLoading = false;\n      $scope.$apply();\n    }, function(err) {\n      ctrl.statistics = null;\n      ctrl.isLoading = false;\n    });\n  }\n\n  ctrl.markdownToHtml = function(markdown) {\n    return ctrl.utils.markdownToHtml(markdown);\n  };\n\n  ctrl.formatUploadSize = function(size) {\n    return DatabusUtils.formatFileSize(size);\n  };\n}\n\nmodule.exports = CollectionStatisticsController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-statistics/collection-statistics.js?");
-
-/***/ }),
-
-/***/ "./js/components/collection-status/collection-status.js":
-/*!**************************************************************!*\
-  !*** ./js/components/collection-status/collection-status.js ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-eval("\n\n// hinzufügen eines Controllers zum Modul\nfunction CollectionStatusController($http, $location, $sce) {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n\n    ctrl.colors = [];\n    ctrl.colors.push('#b54c4c');\n    ctrl.colors.push('#aaa');\n    ctrl.colors.push('#aaa');\n    ctrl.colors.push('#e8ca5f');\n    ctrl.colors.push('#3a3');\n\n    ctrl.labels = [];\n    ctrl.labels.push('Draft');\n    ctrl.labels.push('Hidden, Uncommitted Changes');\n    ctrl.labels.push('Hidden');\n    ctrl.labels.push('Visible, Uncommitted Changes');\n    ctrl.labels.push('Visible');\n  }\n\n  ctrl.$doCheck = function() {\n    if(ctrl.isDraft) {\n      ctrl.status = 0;\n      return;\n    }\n\n    if(ctrl.isPublished) {\n      ctrl.status = ctrl.hasLocalChanges ? 3 : 4;\n    } else {\n      ctrl.status = ctrl.hasLocalChanges ? 1 : 2;\n    }\n  }\n}\n\nmodule.exports = CollectionStatusController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/collection-status/collection-status.js?");
-
-/***/ }),
-
-/***/ "./js/components/databus-alert/databus-alert-controller.js":
-/*!*****************************************************************!*\
-  !*** ./js/components/databus-alert/databus-alert-controller.js ***!
-  \*****************************************************************/
-/***/ ((module) => {
-
-eval("\n// hinzufügen eines Controllers zum Modul\nfunction DatabusAlertController($scope, $timeout) {\n\n  var ctrl = this;\n\n  $scope.$on('onDatabusAlert', function(e, data) {\n    ctrl.isSuccess = data.isSuccess;\n    ctrl.message = data.message;\n    ctrl.isVisible = false;\n\n    if(ctrl.hidePromise != null) {\n      $timeout.cancel(ctrl.hidePromise);\n    }\n\n    $timeout(function() {\n      ctrl.isVisible = true;\n    }, 0);\n\n    ctrl.hidePromise = $timeout(function() {\n      ctrl.isVisible = false;\n    }, data.ms);\n  });\n\n  ctrl.$onInit = function() {\n\n  }\n\n  ctrl.isSuccess = function() {\n    return ctrl.isSuccess;\n  }\n\n  ctrl.$doCheck = function() {\n    \n  }\n}\n\nmodule.exports = DatabusAlertController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/databus-alert/databus-alert-controller.js?");
-
-/***/ }),
-
-/***/ "./js/components/databus-alert/databus-alert.js":
-/*!******************************************************!*\
-  !*** ./js/components/databus-alert/databus-alert.js ***!
-  \******************************************************/
-/***/ ((module) => {
-
-eval("\nclass DatabusAlert {\n  static alert($scope, isSuccess, message, ms) {\n    if(ms == undefined) {\n      ms = 3000; \n    }\n    $scope.$broadcast('onDatabusAlert', { isSuccess: isSuccess, message: message, ms: ms});\n  }\n\n  static alertCode($scope, code, ms) {\n    if(ms == undefined) {\n      ms = 3000; \n    }\n\n    var isSuccess = code >= 200 && code < 400;\n    $scope.$broadcast('onDatabusAlert', { isSuccess: isSuccess, message: message, ms: ms});\n  }\n}\n\n\nmodule.exports = DatabusAlert;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/databus-alert/databus-alert.js?");
-
-/***/ }),
-
-/***/ "./js/components/databus-icon/databus-icon.js":
-/*!****************************************************!*\
-  !*** ./js/components/databus-icon/databus-icon.js ***!
-  \****************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\r\nfunction DatabusIconController() {\r\n\r\n  var ctrl = this;\r\n\r\n  ctrl.iconMap = {};\r\n  ctrl.iconMap['databus'] = \"m 1.8847 0.3851 v 2.6248 l 14.6656 -0.0005 l 3.1363 4.4338 l -0.001 16.0412 l 2.3606 -0.001 V 0.3851 Z m 9.2176 4.1976 l -2.8418 0.003 l 3.5989 5.2742 l -0.002 13.6233 l 2.352 -0.001 l 0.0083 -14.3005 z m -4.7365 0.001 l -4.4826 0.001 l 0.002 18.898 l 8.3978 -0.002 l 0.0005 -13.1455 z m 6.6256 0 l 2.7991 4.1094 l -0.0198 14.7881 l 2.3515 -0.001 l 0.003 -15.5479 l -2.2793 -3.347 z\";\r\n  ctrl.iconMap['add'] = \"M 11 11 M 2 12 L 11 12 L 11 21 L 12 21 L 12 12 L 21 12 L 21 11 L 12 11 L 12 2 L 11 2 L 11 11 L 2 11 L 2 12\";\r\n  ctrl.iconMap['remove'] = \"M 11 11 M 2 12 L 21 12 L 21 11 L 2 11 L 2 12\";\r\n  ctrl.iconMap['add-thick'] = \"m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z\";\r\n  ctrl.iconMap['close'] = \"m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z\";\r\n  ctrl.iconMap['delete'] = \"M9 3h6v-1.75c0-.066-.026-.13-.073-.177-.047-.047-.111-.073-.177-.073h-5.5c-.066 0-.13.026-.177.073-.047.047-.073.111-.073.177v1.75zm11 1h-16v18c0 .552.448 1 1 1h14c.552 0 1-.448 1-1v-18zm-10 3.5c0-.276-.224-.5-.5-.5s-.5.224-.5.5v12c0 .276.224.5.5.5s.5-.224.5-.5v-12zm5 0c0-.276-.224-.5-.5-.5s-.5.224-.5.5v12c0 .276.224.5.5.5s.5-.224.5-.5v-12zm8-4.5v1h-2v18c0 1.105-.895 2-2 2h-14c-1.105 0-2-.895-2-2v-18h-2v-1h7v-2c0-.552.448-1 1-1h6c.552 0 1 .448 1 1v2h7z\";\r\n  ctrl.iconMap['goto'] = \"M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z\";\r\n  ctrl.iconMap['edit'] = \"M8.071 21.586l-7.071 1.414 1.414-7.071 14.929-14.929 5.657 5.657-14.929 14.929zm-.493-.921l-4.243-4.243-1.06 5.303 5.303-1.06zm9.765-18.251l-13.3 13.301 4.242 4.242 13.301-13.3-4.243-4.243z\";\r\n  ctrl.iconMap['edit-thick'] = \"M7.127 22.564l-7.126 1.436 1.438-7.125 5.688 5.689zm-4.274-7.104l5.688 5.689 15.46-15.46-5.689-5.689-15.459 15.46z\";\r\n  ctrl.iconMap['goback'] = \"M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z\";\r\n  ctrl.iconMap['right'] = \"M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z\";\r\n  ctrl.iconMap['left'] = \"M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z\";\r\n  ctrl.iconMap['down'] = \"M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z\";\r\n  ctrl.iconMap['left-thick'] = \"M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z\";\r\n  ctrl.iconMap['help'] = \"M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm.053 17c.466 0 .844-.378.844-.845 0-.466-.378-.844-.844-.844-.466 0-.845.378-.845.844 0 .467.379.845.845.845zm.468-2.822h-.998c-.035-1.162.182-2.054.939-2.943.491-.57 1.607-1.479 1.945-2.058.722-1.229.077-3.177-2.271-3.177-1.439 0-2.615.877-2.928 2.507l-1.018-.102c.28-2.236 1.958-3.405 3.922-3.405 1.964 0 3.615 1.25 3.615 3.22 0 1.806-1.826 2.782-2.638 3.868-.422.563-.555 1.377-.568 2.09z\";\r\n  ctrl.iconMap['max'] = \"M24 22h-24v-20h24v20zm-7-1v-15h-16v15h16zm1 0h5v-18h-22v2h17v16zm-6-6h-1v-3.241l-7.241 7.241-.759-.759 7.241-7.241h-3.241v-1h5v5z\";\r\n  ctrl.iconMap['min'] = \"M24 22h-24v-20h24v20zm-23-9v8h10v-8h-10zm22 8v-18h-22v9h11v9h11zm-4-9h-5v-5h1v3.241l5.241-5.241.759.759-5.241 5.241h3.241v1z\";\r\n  ctrl.iconMap['error'] = \"M24 23h-24l12-22 12 22zm-22.315-1h20.63l-10.315-18.912-10.315 18.912zm10.315-2c.466 0 .845-.378.845-.845 0-.466-.379-.844-.845-.844-.466 0-.845.378-.845.844 0 .467.379.845.845.845zm.5-11v8h-1v-8h1z\";\r\n  ctrl.iconMap['info'] = \"M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm.5 17h-1v-9h1v9zm-.5-12c.466 0 .845.378.845.845 0 .466-.379.844-.845.844-.466 0-.845-.378-.845-.844 0-.467.379-.845.845-.845z\";\r\n  ctrl.iconMap['eye'] = \"M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z\";\r\n  ctrl.iconMap['add-artifact'] = \"M 12 0 M 12.016 1.424 L 21.756 12.053 L 12.016 22.563 L 2.204 12.005 L 3.396 10.721 L 2.774 10.058 L 1 12 L 12 24 L 23 12 L 12 0 L 10.153 2.078 L 10.837 2.741 Z M 6 6 L 6 2 L 7 2 L 7 6 L 11 6 L 11 7 L 7 7 L 7 11 L 6 11 L 6 7 L 2 7 L 2 6 L 6 6\";\r\n  ctrl.iconMap['add-button'] = \"M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z\";\r\n  ctrl.iconMap['collections'] = \"M11.499 12.03v11.971l-10.5-5.603v-11.835l10.5 5.467zm11.501 6.368l-10.501 5.602v-11.968l10.501-5.404v11.77zm-16.889-15.186l10.609 5.524-4.719 2.428-10.473-5.453 4.583-2.499zm16.362 2.563l-4.664 2.4-10.641-5.54 4.831-2.635 10.474 5.775z\";\r\n  ctrl.iconMap['collections-thin'] = \"M23 6.066v12.065l-11.001 5.869-11-5.869v-12.131l11-6 11.001 6.066zm-21.001 11.465l9.5 5.069v-10.57l-9.5-4.946v10.447zm20.001-10.388l-9.501 4.889v10.568l9.501-5.069v-10.388zm-5.52 1.716l-9.534-4.964-4.349 2.373 9.404 4.896 4.479-2.305zm-8.476-5.541l9.565 4.98 3.832-1.972-9.405-5.185-3.992 2.177z\";\r\n  ctrl.iconMap['content'] = \"M9.484 15.696l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm0-5l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm0-5l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm10.516 11.304h-8v1h8v-1zm0-5h-8v1h8v-1zm0-5h-8v1h8v-1zm4-5h-24v20h24v-20zm-1 19h-22v-18h22v18z\"\r\n  ctrl.iconMap['menu'] = \"M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z\";\r\n  ctrl.iconMap['copy'] = \"M17 7h6v16h-16v-6h-6v-16h16v6zm5 1h-14v14h14v-14zm-6-1v-5h-14v14h5v-9h9z\";\r\n  ctrl.iconMap['upload'] = \"M9 16h-8v6h22v-6h-8v-1h9v8h-24v-8h9v1zm11 2c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm-7.5 0h-1v-14.883l-4.735 5.732-.765-.644 6.021-7.205 5.979 7.195-.764.645-4.736-5.724v14.884z\";\r\n  ctrl.iconMap['hide'] = \"M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z\";\r\n  ctrl.iconMap['download'] = \"M6 16h-5v6h22v-6h-5v-1h6v8h-24v-8h6v1zm14 2c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm-7.5-17v14.884l4.736-5.724.764.645-5.979 7.195-6.021-7.205.765-.644 4.735 5.732v-14.883h1z\";\r\n  ctrl.iconMap['import'] = \"M16.965 2.381c3.593 1.946 6.035 5.749 6.035 10.119 0 6.347-5.153 11.5-11.5 11.5s-11.5-5.153-11.5-11.5c0-4.37 2.442-8.173 6.035-10.119l.608.809c-3.353 1.755-5.643 5.267-5.643 9.31 0 5.795 4.705 10.5 10.5 10.5s10.5-4.705 10.5-10.5c0-4.043-2.29-7.555-5.643-9.31l.608-.809zm-4.965-2.381v14.826l3.747-4.604.753.666-5 6.112-5-6.101.737-.679 3.763 4.608v-14.828h1z\";\r\n  ctrl.iconMap['filter'] = \"M23 0l-9 14.146v7.73l-3.996 2.124v-9.853l-9.004-14.147h22zm-20.249 1l8.253 12.853v8.491l1.996-1.071v-7.419l8.229-12.854h-18.478z\";\r\n  ctrl.iconMap['check'] = \"M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z\";\r\n  ctrl.iconMap['settings'] = \"M12 8.666c-1.838 0-3.333 1.496-3.333 3.334s1.495 3.333 3.333 3.333 3.333-1.495 3.333-3.333-1.495-3.334-3.333-3.334m0 7.667c-2.39 0-4.333-1.943-4.333-4.333s1.943-4.334 4.333-4.334 4.333 1.944 4.333 4.334c0 2.39-1.943 4.333-4.333 4.333m-1.193 6.667h2.386c.379-1.104.668-2.451 2.107-3.05 1.496-.617 2.666.196 3.635.672l1.686-1.688c-.508-1.047-1.266-2.199-.669-3.641.567-1.369 1.739-1.663 3.048-2.099v-2.388c-1.235-.421-2.471-.708-3.047-2.098-.572-1.38.057-2.395.669-3.643l-1.687-1.686c-1.117.547-2.221 1.257-3.642.668-1.374-.571-1.656-1.734-2.1-3.047h-2.386c-.424 1.231-.704 2.468-2.099 3.046-.365.153-.718.226-1.077.226-.843 0-1.539-.392-2.566-.893l-1.687 1.686c.574 1.175 1.251 2.237.669 3.643-.571 1.375-1.734 1.654-3.047 2.098v2.388c1.226.418 2.468.705 3.047 2.098.581 1.403-.075 2.432-.669 3.643l1.687 1.687c1.45-.725 2.355-1.204 3.642-.669 1.378.572 1.655 1.738 2.1 3.047m3.094 1h-3.803c-.681-1.918-.785-2.713-1.773-3.123-1.005-.419-1.731.132-3.466.952l-2.689-2.689c.873-1.837 1.367-2.465.953-3.465-.412-.991-1.192-1.087-3.123-1.773v-3.804c1.906-.678 2.712-.782 3.123-1.773.411-.991-.071-1.613-.953-3.466l2.689-2.688c1.741.828 2.466 1.365 3.465.953.992-.412 1.082-1.185 1.775-3.124h3.802c.682 1.918.788 2.714 1.774 3.123 1.001.416 1.709-.119 3.467-.952l2.687 2.688c-.878 1.847-1.361 2.477-.952 3.465.411.992 1.192 1.087 3.123 1.774v3.805c-1.906.677-2.713.782-3.124 1.773-.403.975.044 1.561.954 3.464l-2.688 2.689c-1.728-.82-2.467-1.37-3.456-.955-.988.41-1.08 1.146-1.785 3.126\";\r\n  ctrl.iconMap['clipboard'] = \"M 17 17 L 7 17 L 7 16 L 17 16 L 17 17 Z M 17 14 L 7 14 L 7 13 L 17 13 L 17 14 Z M 17 11 L 7 11 L 7 10 L 17 10 L 17 11 Z M 16 6 L 8 6 L 7 1 L 17 1 L 16 6 Z M 15.7 2 L 8.25 2 L 8.9 5 L 15.1 5 L 15.7 2 Z M 22 23 L 2 23 L 2 3 L 5.5 3 L 5.7 4 L 3 4 L 3 22 L 21 22 L 21 4 L 18.3 4 L 18.5 3 L 22 3 L 22 23 Z\";\r\n  ctrl.iconMap['sort-desc'] = \"M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z\";\r\n  ctrl.iconMap['sort-asc'] = \"M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z\";\r\n  ctrl.iconMap['key'] = \"M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-5l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z\";\r\n  ctrl.iconMap['gears'] = \"M17 10.645v-2.29c-1.17-.417-1.907-.533-2.28-1.431-.373-.9.07-1.512.6-2.625l-1.618-1.619c-1.105.525-1.723.974-2.626.6-.9-.373-1.017-1.116-1.431-2.28h-2.29c-.412 1.158-.53 1.907-1.431 2.28h-.001c-.9.374-1.51-.07-2.625-.6l-1.617 1.619c.527 1.11.973 1.724.6 2.625-.375.901-1.123 1.019-2.281 1.431v2.289c1.155.412 1.907.531 2.28 1.431.376.908-.081 1.534-.6 2.625l1.618 1.619c1.107-.525 1.724-.974 2.625-.6h.001c.9.373 1.018 1.118 1.431 2.28h2.289c.412-1.158.53-1.905 1.437-2.282h.001c.894-.372 1.501.071 2.619.602l1.618-1.619c-.525-1.107-.974-1.723-.601-2.625.374-.899 1.126-1.019 2.282-1.43zm-8.5 1.689c-1.564 0-2.833-1.269-2.833-2.834s1.269-2.834 2.833-2.834 2.833 1.269 2.833 2.834-1.269 2.834-2.833 2.834zm15.5 4.205v-1.077c-.55-.196-.897-.251-1.073-.673-.176-.424.033-.711.282-1.236l-.762-.762c-.52.248-.811.458-1.235.283-.424-.175-.479-.525-.674-1.073h-1.076c-.194.545-.25.897-.674 1.073-.424.176-.711-.033-1.235-.283l-.762.762c.248.523.458.812.282 1.236-.176.424-.528.479-1.073.673v1.077c.544.193.897.25 1.073.673.177.427-.038.722-.282 1.236l.762.762c.521-.248.812-.458 1.235-.283.424.175.479.526.674 1.073h1.076c.194-.545.25-.897.676-1.074h.001c.421-.175.706.034 1.232.284l.762-.762c-.247-.521-.458-.812-.282-1.235s.529-.481 1.073-.674zm-4 .794c-.736 0-1.333-.597-1.333-1.333s.597-1.333 1.333-1.333 1.333.597 1.333 1.333-.597 1.333-1.333 1.333zm-4 3.071v-.808c-.412-.147-.673-.188-.805-.505s.024-.533.212-.927l-.572-.571c-.389.186-.607.344-.926.212s-.359-.394-.506-.805h-.807c-.146.409-.188.673-.506.805-.317.132-.533-.024-.926-.212l-.572.571c.187.393.344.609.212.927-.132.318-.396.359-.805.505v.808c.408.145.673.188.805.505.133.32-.028.542-.212.927l.572.571c.39-.186.608-.344.926-.212.318.132.359.395.506.805h.807c.146-.409.188-.673.507-.805h.001c.315-.131.529.025.924.213l.572-.571c-.186-.391-.344-.609-.212-.927s.397-.361.805-.506zm-3 .596c-.552 0-1-.447-1-1s.448-1 1-1 1 .447 1 1-.448 1-1 1z\";\r\n  ctrl.iconMap['wand'] = \"M4.908 2.081l-2.828 2.828 19.092 19.091 2.828-2.828-19.092-19.091zm2.121 6.363l-3.535-3.535 1.414-1.414 3.535 3.535-1.414 1.414zm1.731-5.845c1.232.376 2.197 1.341 2.572 2.573.377-1.232 1.342-2.197 2.573-2.573-1.231-.376-2.196-1.34-2.573-2.573-.375 1.232-1.34 2.197-2.572 2.573zm-5.348 6.954c-.498 1.635-1.777 2.914-3.412 3.413 1.635.499 2.914 1.777 3.412 3.411.499-1.634 1.778-2.913 3.412-3.411-1.634-.5-2.913-1.778-3.412-3.413zm9.553-3.165c.872.266 1.553.948 1.819 1.82.266-.872.948-1.554 1.819-1.82-.871-.266-1.553-.948-1.819-1.82-.266.871-.948 1.554-1.819 1.82zm4.426-6.388c-.303.994-1.082 1.772-2.075 2.076.995.304 1.772 1.082 2.077 2.077.303-.994 1.082-1.772 2.074-2.077-.992-.303-1.772-1.082-2.076-2.076z\";\r\n  ctrl.iconMap['user'] = \"M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z\";  \r\n  ctrl.iconMap['version'] = \"M 14.9 1 L 12.293 1.005 L 16.507 7.18 L 16.5 23.1 L 18.5 23.1 L 18.5 6.4 L 14.9 1 Z M 10.4 1 L 1.581 1.004 L 1.584 23.13 L 15 23.1 L 15 7.7 L 10.4 1 Z M 16.8 1 L 20 5.8 L 20 23.1 L 22 23.1 L 22 4.9 L 19.3 1 L 16.8 1 Z\";\r\n  ctrl.iconMap['group'] = \"M21.698 10.658l2.302 1.342-12.002 7-11.998-7 2.301-1.342 9.697 5.658 9.7-5.658zm-9.7 10.657l-9.697-5.658-2.301 1.343 11.998 7 12.002-7-2.302-1.342-9.7 5.657zm12.002-14.315l-12.002-7-11.998 7 11.998 7 12.002-7z\";\r\n  ctrl.iconMap['artifact'] = \"M12,0 L2,12 L12,24 L22,12 L12,0z\";\r\n  \r\n  ctrl.$onInit = function() {\r\n    ctrl.path = ctrl.iconMap[ctrl.shape];\r\n  }\r\n}\r\n\r\n\r\nmodule.exports = DatabusIconController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/databus-icon/databus-icon.js?");
-
-/***/ }),
-
-/***/ "./js/components/entity-api-view/entity-api-view.js":
-/*!**********************************************************!*\
-  !*** ./js/components/entity-api-view/entity-api-view.js ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-eval("function EntityApiViewController() {\r\n  const ctrl = this;\r\n\r\n  ctrl.copyToClipboard = function (text) {\r\n    navigator.clipboard.writeText(text).then(() => {\r\n      console.log(\"Copied to clipboard\");\r\n    });\r\n  };\r\n\r\n  ctrl.register = async function () {\r\n    ctrl.isRegistering = true;\r\n    ctrl.isSuccess = false;\r\n    ctrl.isError = false;\r\n    \r\n    if (ctrl.entity && ctrl.entity.register) {\r\n      try {\r\n        let response = await ctrl.entity.register();\r\n        ctrl.log = response.data.log;\r\n        ctrl.isSuccess = true;\r\n      } catch(err) {\r\n        ctrl.log = err.data.log;\r\n        ctrl.isError = true;\r\n      }\r\n    }\r\n\r\n    ctrl.isRegistering = false;\r\n  };\r\n\r\n  ctrl.setApiKeyName = function (name) {\r\n    if (ctrl.entity && ctrl.entity.setApiKeyName) {\r\n      ctrl.entity.setApiKeyName(name);\r\n    }\r\n  };\r\n}\r\n\r\nmodule.exports = EntityApiViewController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/entity-api-view/entity-api-view.js?");
-
-/***/ }),
-
-/***/ "./js/components/entity-card/entity-card.js":
-/*!**************************************************!*\
-  !*** ./js/components/entity-card/entity-card.js ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\n// hinzufügen eines Controllers zum Modul\nfunction EntityCardController($sce) {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n\n    if(ctrl.label == null || ctrl.label == \"\") {\n      ctrl.label = DatabusUtils.uriToTitle(ctrl.uri);\n    }\n  }\n\n  ctrl.formatResult = function(result) {\n    return $sce.trustAsHtml(result);\n  }\n}\n\n\nmodule.exports = EntityCardController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/entity-card/entity-card.js?");
-
-/***/ }),
-
-/***/ "./js/components/entity-dropdown/entity-dropdown.js":
-/*!**********************************************************!*\
-  !*** ./js/components/entity-dropdown/entity-dropdown.js ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-eval("function EntityDropdownController() {\r\n  var ctrl = this;\r\n\r\n  ctrl.showDrop = false;\r\n  ctrl.selectedLabel = '';\r\n  ctrl.searchQuery = '';\r\n  ctrl.filteredItems = [];\r\n\r\n  ctrl.$onInit = function () {\r\n    ctrl.updateFilteredItems();\r\n    ctrl.setSelectedLabel();\r\n  };\r\n\r\n  ctrl.$onChanges = function (changes) {\r\n    if (changes.items || changes.selected) {\r\n      ctrl.updateFilteredItems();\r\n\r\n      if (ctrl.selected &&  Array.isArray(ctrl.items) && !ctrl.items?.some(i => i[ctrl.displayProperty] === ctrl.selected)) {\r\n        ctrl.selected = null;\r\n        ctrl.onSelect({ item: null }); \r\n      }\r\n\r\n      ctrl.setSelectedLabel();\r\n    }\r\n  };\r\n\r\n  ctrl.toggleDropdown = function () {\r\n    if (!ctrl.loading && ctrl.items && ctrl.items.length > 0) {\r\n      ctrl.showDrop = !ctrl.showDrop;\r\n      ctrl.searchQuery = '';\r\n      ctrl.updateFilteredItems();\r\n    }\r\n  };\r\n\r\n  ctrl.selectItem = function (item) {\r\n    ctrl.selectedLabel = item[ctrl.displayProperty];\r\n    ctrl.showDrop = false;\r\n    ctrl.onSelect({ item: item });\r\n  };\r\n\r\n  ctrl.updateFilteredItems = function () {\r\n    if (!ctrl.items || !ctrl.displayProperty) {\r\n      ctrl.filteredItems = [];\r\n      return;\r\n    }\r\n\r\n    ctrl.filteredItems = ctrl.items.filter(function (item) {\r\n      var val = item[ctrl.displayProperty] || '';\r\n      return val.toLowerCase().indexOf(ctrl.searchQuery.toLowerCase()) !== -1;\r\n    });\r\n  };\r\n\r\n  ctrl.setSelectedLabel = function () {\r\n    if (!ctrl.selected || !ctrl.displayProperty) {\r\n      ctrl.selectedLabel = ctrl.placeholder || 'Please select...';\r\n      return;\r\n    }\r\n\r\n    // Attempt to match selected value in the list\r\n    var match = (ctrl.items || []).find(function (item) {\r\n      return item[ctrl.displayProperty] === ctrl.selected;\r\n    });\r\n\r\n    if (match) {\r\n      ctrl.selectedLabel = match[ctrl.displayProperty];\r\n    } else {\r\n      // fallback in case selected value is not in the list\r\n      ctrl.selectedLabel = ctrl.placeholder || 'Please select...';\r\n      // ctrl.onSelect(null);\r\n    }\r\n  };\r\n}\r\n\r\nmodule.exports = EntityDropdownController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/entity-dropdown/entity-dropdown.js?");
-
-/***/ }),
-
-/***/ "./js/components/error-notification/error-notifcation.js":
-/*!***************************************************************!*\
-  !*** ./js/components/error-notification/error-notifcation.js ***!
-  \***************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const { DatabusMsg } = __webpack_require__(/*! ../../utils/messages */ \"./js/utils/messages.js\");\r\n\r\nfunction ErrorNotificationController() {\r\n  var ctrl = this;\r\n  ctrl.expanded = false;\r\n\r\n  ctrl.toggleExpand = function () {\r\n    ctrl.expanded = !ctrl.expanded;\r\n  };\r\n\r\n  ctrl.get = function(key) {\r\n    return DatabusMsg.get(key);\r\n  }\r\n}\r\n\r\nmodule.exports = ErrorNotificationController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/error-notification/error-notifcation.js?");
-
-/***/ }),
-
-/***/ "./js/components/expandable-arrow/expandable-arrow.js":
-/*!************************************************************!*\
-  !*** ./js/components/expandable-arrow/expandable-arrow.js ***!
-  \************************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\nfunction ExpandableArrowController() {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n    if(ctrl.isReadonly == undefined) {\n      ctrl.isReadonly = false;\n    }\n\n    \n  }\n\n  ctrl.change = function() {\n\n    if(!ctrl.isReadonly) {\n      ctrl.expanded = !ctrl.expanded;\n      ctrl.onChange();\n    }\n  }\n}\n\nmodule.exports = ExpandableArrowController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/expandable-arrow/expandable-arrow.js?");
-
-/***/ }),
-
-/***/ "./js/components/facets-view/facets-view.js":
-/*!**************************************************!*\
-  !*** ./js/components/facets-view/facets-view.js ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const QueryNode = __webpack_require__(/*! ../../query-builder/query-node */ \"./js/query-builder/query-node.js\");\nconst DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ \"./js/utils/databus-constants.js\");\nconst DatabusUris = __webpack_require__(/*! ../../utils/databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\n/**\n * Manages an array of facets with respect to a parent facets array.\n * Provides some convenient\\ce methods to write to the facets array and\n * read from the parents facets.\n * DO NOT change the parent facets array in here.\n */\nclass FacetSettings {\n\n  /**\n   * Locally manages a facets array with respect to a parent\n   * facets array\n   * @param {[type]} facets       [description]\n   * @param {[type]} parentFacets [description]\n   */\n  constructor(facets, parentFacets) {\n    this.facets = facets;\n    this.parentFacets = parentFacets;\n  }\n\n  /**\n   * Change a setting (key, value) to a state (bool)\n   * @param  {[type]} key    [description]\n   * @param  {[type]} value    [description]\n   * @param  {[type]} setState [description]\n   * @return {[type]}          [description]\n   */\n  changeSetting(key, value, targetState) {\n    var parentState = this.findParentSettingState(key, value);\n\n    if (parentState != targetState) {\n      this.createOrAddSetting(key, value, targetState);\n    } else {\n      this.removeSetting(key, value);\n    }\n\n    return targetState;\n  }\n\n  /**\n   * Find the checked state specified in the parent setting array (if set)\n   * based on a key and value\n   * @param  {[type]} key [description]\n   * @param  {[type]} value [description]\n   * @return {[type]}       [description]\n   */\n  findParentSettingState(key, value) {\n    if (this.parentFacets == undefined) {\n      return false;\n    }\n\n    for (var p in this.parentFacets) {\n      var setting = this.parentFacets[p];\n      if (setting.key == key && setting.value == value) {\n        return setting.checked;\n      }\n    }\n\n    return false;\n  }\n\n  findOwnSettingState(key, value) {\n    for (var p in this.facets) {\n      var setting = this.facets[p];\n      if (setting.key == key && setting.value == value) {\n        return setting.checked;\n      }\n    }\n\n    return false;\n  }\n\n  isOverride(key, value, state) {\n    var parentState = this.findParentSettingState(key, value);\n    return parentState != state;\n  }\n\n  createOrAddSetting(key, value, state) {\n    for (var p in this.facets) {\n      var setting = this.facets[p];\n      if (p == key && setting.value == value) {\n        setting.checked = state;\n        return;\n      }\n    }\n\n    this.facets[key] = { value: value, checked: state };\n  }\n\n  removeSetting(key, value) {\n    for (var p in this.facets) {\n      var setting = this.facets[p];\n      if (setting.key == key && setting.value == value) {\n        this.facets.splice(p, 1);\n        return;\n      }\n    }\n  }\n\n}\n\nfunction FacetsViewController($http, $scope) {\n\n  var ctrl = this;\n  ctrl.$http = $http;\n  ctrl.maxEntries = 6;\n\n  ctrl.$onInit = function () {\n\n  }\n\n  ctrl.$onChanges = function () {\n    // create the queries...\n    ctrl.isLoading = true;\n\n    // wrap the node in the query node class\n    ctrl.node = QueryNode.createFrom(ctrl.node);\n\n    // Holds the view state as json\n    ctrl.viewModel = {};\n\n    if (ctrl.facets == undefined) {\n      ctrl.facets = [];\n    }\n\n    var queryUri = ctrl.resourceType == 'version' ?\n      ctrl.node.uri + '/' + ctrl.node.facetSettings[DatabusUris.DCT_HAS_VERSION][0].value\n      : ctrl.node.uri;\n\n    // Load the available resource facets\n    // TODO: Remove resource type, can be derived from uri\n    ctrl.$http.get('/app/utils/facets', {\n      params: { uri: queryUri, type: ctrl.resourceType }\n    }).then(function (result) {\n\n      // Facets data has been loaded\n      ctrl.facetsData = result.data;\n\n      // Fix artifact facet values for groups, change URIs into artifact names\n      var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];\n\n      if (artifactFacetData != null) {\n        for (var i in artifactFacetData.values) {\n          artifactFacetData.values[i] = DatabusUtils.uriToName(artifactFacetData.values[i]);\n        }\n      }\n\n      // Facet setting in this view is\n\n      // - SETTING\n      // ---- VALUE\n      // ---- IS_CHECKED\n\n      // Prepare visible facet settings and autofill data based on the facet data returned by the API\n      // Create key base entries (unset, not overriden)\n      for (var key in ctrl.facetsData) {\n\n        var facetData = ctrl.facetsData[key];\n\n        // Create a view data object for each facet\n        ctrl.viewModel[key] = {};\n        ctrl.viewModel[key].key = key;\n        ctrl.viewModel[key].label = facetData.label;\n        ctrl.viewModel[key].visibleFacetSettings = [];\n        ctrl.viewModel[key].autofill = {};\n        ctrl.viewModel[key].autofill.values = facetData.values;\n        ctrl.viewModel[key].autofill.selectedValues = [];\n        ctrl.viewModel[key].autofill.input = '';\n\n\n        for (var v in facetData.values) {\n          var value = facetData.values[v];\n          ctrl.viewModel[key].visibleFacetSettings.push({\n            value: value,\n            checked: false,\n            isOverride: false\n          });\n        }\n\n        ctrl.viewModel[key].visibleFacetSettings.sort(function (a, b) {\n          const valueA = a.value.toUpperCase();\n          const valueB = b.value.toUpperCase();\n          if (valueA > valueB) {\n            return 1;\n          }\n          if (valueA < valueB) {\n            return -1;\n          }\n\n          return 0;\n        });\n\n        // Show latest versions first\n        if (key == DatabusUris.DCT_HAS_VERSION) {\n          ctrl.viewModel[key].visibleFacetSettings.reverse();\n        }\n\n        // Only show the top few\n        var length = ctrl.viewModel[key].visibleFacetSettings.length;\n        ctrl.viewModel[key].visibleFacetSettings.length = Math.min(ctrl.maxEntries, length);\n      }\n\n      // If we show the browser for a version, remove the version facet\n      if (ctrl.resourceType == 'version') {\n        delete ctrl.viewModel[DatabusUris.DCT_HAS_VERSION];\n      }\n\n      // Add the \"Latest Version\" facet to the visible settings of the version facet\n      if (ctrl.resourceType != 'version' && ctrl.viewModel[DatabusUris.DCT_HAS_VERSION] != undefined) {\n        ctrl.viewModel[DatabusUris.DCT_HAS_VERSION].visibleFacetSettings.unshift({\n          value: DatabusConstants.FACET_LATEST_VERSION_VALUE,\n          checked: false,\n          isOverride: false\n        });\n\n        // Apply the existing settings to the view model\n        var fullFacets = ctrl.node.createFullFacetSettings();\n\n        for (var key in fullFacets) {\n          var facetSettingList = fullFacets[key];\n\n          for (var i in facetSettingList) {\n            var facetSetting = facetSettingList[i];\n\n            var visibleFacetSetting = ctrl.getOrCreateVisibleFacetSetting(key, facetSetting.value);\n\n            if (visibleFacetSetting != null) {\n              visibleFacetSetting.checked = facetSetting.checked;\n              visibleFacetSetting.isOverride = ctrl.node.isOverride(key, facetSetting.value, facetSetting.checked);\n            }\n          }\n        }\n\n        // If we're a group node, check for artifact nodes and add them as facets\n        if (ctrl.resourceType == 'group') {\n\n          for (var i in ctrl.node.childNodes) {\n            var artifactNode = ctrl.node.childNodes[i];\n            var facetValue = DatabusUtils.uriToName(artifactNode.uri)\n            var visibleFacetSetting =\n              ctrl.getOrCreateVisibleFacetSetting(DatabusUris.DATABUS_ARTIFACT_PROPERTY, facetValue);\n            visibleFacetSetting.checked = true;\n            visibleFacetSetting.isOverride = true;\n          }\n\n          if (ctrl.node.childNodes.length == 0) {\n\n\n            ctrl.updateArtifactFilters(ctrl.node);\n\n            var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];\n\n            if (artifactFacetData != null) {\n\n              // Add artifact nodes \n              for (var i in artifactFacetData.values) {\n                artifactFacetData.values[i] = DatabusUtils.uriToName(artifactFacetData.values[i]);\n              }\n            }\n\n            /*\n            // Add artifact nodes per default\n            for (var v of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {\n              var childUri = ctrl.node.uri + '/' + v.value;\n              var artifactNode = new QueryNode(childUri, 'databus:artifact');\n              QueryNode.addChild(ctrl.node, artifactNode);\n            }*/\n\n\n          }\n        }\n\n        ctrl.onChange();\n        ctrl.onLoaded();\n      }\n\n      ctrl.isLoading = false;\n    });\n  }\n\n  ctrl.updateArtifactFilters = function (groupNode) {\n\n      // Clear all child nodes\n    groupNode.childNodes.length = 0;\n\n    var hasCheckedArtifactFacets = false;\n\n    for (var setting of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {\n      hasCheckedArtifactFacets = hasCheckedArtifactFacets || setting.checked;\n    }\n\n    if (hasCheckedArtifactFacets) {\n\n      for (var setting of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {\n        if (setting.checked) {\n          var artifactUri = `${groupNode.uri}/${setting.value}`;\n          if (QueryNode.findChildByUri(groupNode, artifactUri) == null) {\n            var artifactNode = new QueryNode(artifactUri, 'databus:artifact');\n            QueryNode.addChild(groupNode, artifactNode);\n          }\n        }\n      }\n\n    } else {\n\n      var latestVersionSetting = QueryNode.findFacetSetting(groupNode,\n        DatabusUris.DCT_HAS_VERSION,\n        DatabusConstants.FACET_LATEST_VERSION_VALUE);\n\n      if (latestVersionSetting != undefined && latestVersionSetting.checked) {\n\n        var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];\n\n        if (artifactFacetData != null) {\n\n          // Add artifact nodes \n          for (var value of artifactFacetData.values) {\n            var artifactUri = `${groupNode.uri}/${value}`;\n            if (QueryNode.findChildByUri(groupNode, artifactUri) == null) {\n              var artifactNode = new QueryNode(artifactUri, 'databus:artifact');\n              QueryNode.addChild(groupNode, artifactNode);\n            }\n          }\n\n        }\n      }\n    }\n\n  }\n\n\n  ctrl.getFacetLabel = function (value) {\n    if (value == DatabusConstants.FACET_LATEST_VERSION_VALUE) {\n      return DatabusConstants.FACET_LATEST_VERSION_LABEL;\n    }\n\n    return value;\n  }\n  /**\n   * Changes the value of a key value (also applies to facets)\n   * @param  {[type]} key [description]\n   * @param  {[type]} value [description]\n   * @param  {[type]} state [description]\n   * @return {[type]}       [description]\n   */\n  ctrl.changeFacetValueState = function (key, value, targetState) {\n\n    if (ctrl.resourceType == 'group' && key == DatabusUris.DATABUS_ARTIFACT_PROPERTY) {\n\n      var visibleSetting = ctrl.getOrCreateVisibleFacetSetting(key, value);\n\n      if (visibleSetting != null) {\n        visibleSetting.checked = targetState;\n        visibleSetting.isOverride = targetState;\n      }\n\n      ctrl.updateArtifactFilters(ctrl.node);\n\n    }\n    else {\n      // apply change to view model\n      ctrl.node.setFacet(key, value, targetState);\n\n      var visibleSetting = ctrl.getOrCreateVisibleFacetSetting(key, value);\n\n      if (visibleSetting != null) {\n        visibleSetting.checked = targetState;\n        visibleSetting.isOverride = ctrl.node.isOverride(key, value, targetState);\n      }\n    }\n\n    if (ctrl.viewModel[key].autofill.selectedValues.length > 0) {\n      ctrl.complete(ctrl.viewModel[key]);\n    }\n\n    ctrl.onChange();\n  }\n\n  /**\n   * Gets or creates a new entry for a key value\n   * for a given key and value\n   * @param  {[type]} key [description]\n   * @param  {[type]} value [description]\n   * @return {[type]}       [description]\n   */\n  ctrl.getOrCreateVisibleFacetSetting = function (key, value) {\n\n    if (ctrl.viewModel[key] == undefined) {\n      // This is a facet that the node does not have, but a parent has\n\n      var label = DatabusUtils.uriToName(key);\n      label = label[0].toUpperCase() + label.slice(1);\n\n      ctrl.viewModel[key] = {};\n      ctrl.viewModel[key].key = key;\n      ctrl.viewModel[key].label = label;\n      ctrl.viewModel[key].visibleFacetSettings = [];\n      ctrl.viewModel[key].autofill = {};\n      ctrl.viewModel[key].autofill.values = [];\n      ctrl.viewModel[key].autofill.selectedValues = [];\n      ctrl.viewModel[key].autofill.input = '';\n    }\n\n    for (var i in ctrl.viewModel[key].visibleFacetSettings) {\n      var facetSetting = ctrl.viewModel[key].visibleFacetSettings[i];\n      if (facetSetting.value == value) {\n        return facetSetting; // ctrl.facetSettings[key];\n      }\n    }\n\n    var visibleSetting = {\n      value: value,\n    };\n\n    ctrl.viewModel[key].visibleFacetSettings.push(visibleSetting);\n    return visibleSetting;\n  }\n\n  // Get all active facets of a certain key\n  ctrl.getActiveFilters = function (key) {\n    var activeFilters = [];\n\n    for (var f in ctrl.facets[key].items) {\n      var filter = ctrl.facets[key].items[f];\n      if (filter.checked) {\n        activeFilters.push(filter);\n      }\n    }\n\n    return activeFilters;\n  }\n\n  // Checks whether any filter for a key is set\n  ctrl.hasActiveFilters = function (key) {\n    for (var f in ctrl.facets[key].items) {\n      var filter = ctrl.facets[key].items[f];\n      if (filter.checked) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.complete = function (facetData) {\n    facetData.autofill.selectedValues.length = 0;\n    for (var a in facetData.autofill.values) {\n      var e = facetData.autofill.values[a];\n      if (e.toLowerCase().indexOf(facetData.autofill.input.toLowerCase()) >= 0) {\n\n        var include = true;\n\n        for (var v in facetData.visibleFacetSettings) {\n          var visibleSettings = facetData.visibleFacetSettings[v];\n          if (visibleSettings.value == e.toLowerCase()) {\n            include = false;\n          }\n        }\n\n        if (include) {\n          facetData.autofill.selectedValues.push(e);\n        }\n      }\n    }\n  }\n\n  // Clears the autofill lists\n  ctrl.clearAutofill = function () {\n    var self = ctrl;\n    for (var f in self.viewModel) {\n      var data = self.viewModel[f];\n      data.autofill.selectedValues.length = 0;\n    }\n  }\n}\n\nmodule.exports = FacetsViewController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/facets-view/facets-view.js?");
-
-/***/ }),
-
-/***/ "./js/components/file-browser/file-browser.js":
-/*!****************************************************!*\
-  !*** ./js/components/file-browser/file-browser.js ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ \"./js/utils/databus-constants.js\");\nconst DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\n// hinzufügen eines Controllers zum Modul\nfunction FileBrowserController($http, $scope) {\n\n  var ctrl = this;\n\n  ctrl.$http = $http;\n  ctrl.activeTab = 0;\n  ctrl.$scope = $scope;\n\n  ctrl.$onInit = function() {\n\n    ctrl.lastRequestRevision = 0;\n    ctrl.tableLimit = 20;\n    ctrl.sortProperty = 'version.value';\n    ctrl.sortReverse = false;\n    ctrl.isLoading = true;\n    ctrl.queryResult = {};\n  }\n\n  ctrl.sortBy = function(property) {\n\n\n    if(ctrl.sortProperty == property) {\n      ctrl.sortReverse = !ctrl.sortReverse;\n    }\n    ctrl.sortProperty = property;\n  }\n\n  ctrl.getCellValues = function(binding, column) {\n\n    if(binding[column.field] == undefined) {\n      return \"\";\n    }\n    \n    var value = binding[column.field].value;\n\n    if(column.uriToName) {\n      value = DatabusUtils.uriToName(value);\n    }\n\n\n    return value;\n\n  }\n\n  ctrl.formatUploadSize = function(size) {\n    return DatabusUtils.formatFileSize(size);\n  };\n\n  ctrl.createRelativeUri = function(url) {\n    var u = new URL(url);\n    return u.pathname;\n  }\n\n  ctrl.formatVariant = function(value) {\n    var variants = value.split(', ');\n    value = \"\";\n    for(variant of variants) {\n      if(variant != undefined && variant != \"\") {\n        value += variant + \", \";\n      }\n    }\n\n    if(value == \"\") {\n      return \"none\";\n    }\n\n    return value.substr(0, value.length - 2);\n  }\n\n  ctrl.querySparql = async function(query) {\n\n    ctrl.isLoading = true;\n    ctrl.totalSize = 0;\n    ctrl.numFiles = 0;\n\n    try {\n\n      var req = {\n        method: 'POST',\n        url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,\n        data: \"format=json&query=\" + encodeURIComponent(query),\n        headers: {\n          \"Content-type\" : \"application/x-www-form-urlencoded\"\n        },\n      }\n\n      var updateResponse = await ctrl.$http(req); \n\n      var data = updateResponse.data;\n\n      ctrl.isLoading = false;\n\n\n      ctrl.queryResult.bindings = data.results.bindings;\n\n      ctrl.queryResult.uriList = \"\";\n\n      for(var b in ctrl.queryResult.bindings) {\n        var binding = ctrl.queryResult.bindings[b];\n        binding.size.numericalValue = parseInt(binding.size.value);\n        ctrl.queryResult.uriList += binding.file.value + \"\\n\";\n\n        if(binding.variant != undefined) {\n          binding.variant.value = ctrl.formatVariant(binding.variant.value);          \n        }\n        \n     \n\n\n        ctrl.totalSize += binding.size.numericalValue;\n        ctrl.numFiles++;\n      }\n\n      ctrl.totalSize = ctrl.formatUploadSize(ctrl.totalSize);\n      \n      if(!$scope.$root.$$phase) {\n        ctrl.$scope.$apply();\n      }\n\n    } catch(e) {\n      console.log(e);\n    }\n  }\n\n  /**\n   * On each digest, check whether the settings array has changed, if so create new QUERIES\n   * using the query builders\n   * @return {[type]} [description]\n   */\n  ctrl.$doCheck = function() {\n\n    if(ctrl.query != ctrl.fileQuery) {\n      ctrl.fileQuery = ctrl.query;\n      ctrl.querySparql(ctrl.fullQuery);\n    }\n  }\n}\n\n\n\nmodule.exports = FileBrowserController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/file-browser/file-browser.js?");
-
-/***/ }),
-
-/***/ "./js/components/multiselect-dropdown/multiselect-dropdown.js":
-/*!********************************************************************!*\
-  !*** ./js/components/multiselect-dropdown/multiselect-dropdown.js ***!
-  \********************************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\nfunction MultiselectDropdownController($timeout, $sce) {\n\n  var ctrl = this;\n  ctrl.$sce = $sce;\n  ctrl.searchInput = \"\";\n\n\n  ctrl.$onInit = function () {\n\n  }\n\n  ctrl.handleKey = function (e) {\n    if (e.which === 9 || e.which === 13) {\n      ctrl.showDrop = false;\n    }\n  }\n\n  ctrl.getLabel = function (value) {\n\n    if (value == '$latest') {\n      return 'Latest Version';\n    }\n\n    if (value == '') {\n      return 'None';\n    }\n\n    return value;\n  }\n\n  ctrl.hasContent = function () {\n    return !((ctrl.input == undefined || ctrl.input.length == 0) && (ctrl.parentInput == undefined ||\n      ctrl.parentInput.length == 0));\n  }\n\n  ctrl.valueComparator = function(v1, v2) {\n    var isV1Included = ctrl.includesValue(ctrl.input, v1.value) \n      || ctrl.includesValue(ctrl.parentInput, v1.value);\n    var isV2Included = ctrl.includesValue(ctrl.input, v2.value) \n    || ctrl.includesValue(ctrl.parentInput, v2.value);\n\n    if(isV1Included != isV2Included) {\n      return isV1Included ? -1 : 1;\n    }\n\n    if(v1.value == \"None\") {\n      return -1;\n    }\n\n\n    if(v2.value == \"None\") {\n      return 1;\n    }\n\n    return v1.value.localeCompare(v2.value);\n  }\n  \n  \n  ctrl.mergeSettings = function (parentSettings, childSettings) {\n    var mergedSettings = {};\n\n    // Set parent settings state\n    if (parentSettings != undefined) {\n      for (var setting of parentSettings) {\n        mergedSettings[setting.value] = setting.checked;\n      }\n    }\n\n    // Override with child settings\n    for (var s in childSettings) {\n      var setting = childSettings[s];\n      mergedSettings[setting.value] = setting.checked;\n    }\n\n    return mergedSettings;\n  }\n\n  ctrl.list = function () {\n\n    var mergedSettings = ctrl.mergeSettings(ctrl.parentInput, ctrl.input);\n\n    var allEntries = Object.keys(mergedSettings).map(function (key, index) {\n\n      var label = undefined;\n\n      if (key == '') {\n        label = '<i style=\"color: #a3a3a3;\">None</i>';\n      } else {\n        label = ctrl.getLabel(key);\n      }\n\n      if (mergedSettings[key]) {\n        return label;\n      } else {\n        return `<s>${label}</s>`;\n      }\n    });\n\n\n    var list = [];\n    var maxLength = 50;\n    var length = 0;\n    var hasOverflow = false;\n\n    for(var entry of allEntries) {\n      if(entry.length + length > maxLength) {\n        hasOverflow = true;\n        break;\n      }\n\n      length += entry.length;\n      list.push(entry);\n    }\n\n    if(hasOverflow) {\n      list.push('...');\n    }\n    \n    return ctrl.$sce.trustAsHtml(list.join(', '));\n  }\n\n\n  ctrl.hideDropDelayed = function () {\n    $timeout(function () {\n      ctrl.showDrop = false;\n    }, 120);\n  }\n\n  ctrl.includesValue = function (objs, value) {\n    if (objs == undefined) {\n      return false;\n    }\n\n    for (var obj of objs) {\n      if (obj.value == value) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.matchesSearch = function(value) {\n    return value.includes(ctrl.searchInput);\n  }\n\n  ctrl.isChecked = function (objs, value) {\n    if (objs == undefined) {\n      return false;\n    }\n\n    for (var obj of objs) {\n      if (obj.value == value) {\n        return obj.checked;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.veryStupidDelete = function (objs, value) {\n\n    let index = -1;\n    let k = 0;\n\n    if (objs == undefined) {\n      return false;\n    }\n\n    for (var obj of objs) {\n      if (obj.value == value) {\n        index = k;\n        break;\n      }\n\n      k++;\n    }\n\n    objs.splice(k, 1);\n  }\n\n  ctrl.toggle = function (value) {\n\n    if (ctrl.input == undefined) {\n      ctrl.input = [];\n    }\n\n    var isSetByParent = ctrl.parentInput != undefined && ctrl.includesValue(ctrl.parentInput, value);\n\n    if (!ctrl.includesValue(ctrl.input, value)) {\n      ctrl.input.push({ value: value, checked: !isSetByParent });\n\n    } else {\n\n      ctrl.veryStupidDelete(ctrl.input, value);\n    }\n\n    ctrl.change();\n  }\n\n\n  ctrl.change = function () {\n    $timeout(function () {\n      ctrl.onChange();\n    }, 50);;\n  }\n}\n\n\nmodule.exports = MultiselectDropdownController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/multiselect-dropdown/multiselect-dropdown.js?");
-
-/***/ }),
-
-/***/ "./js/components/nav-search/nav-search-controller.js":
-/*!***********************************************************!*\
-  !*** ./js/components/nav-search/nav-search-controller.js ***!
-  \***********************************************************/
-/***/ ((module) => {
-
-eval("\n\n// hinzufügen eines Controllers zum Modul\nfunction NavSearchController($http, $interval, $sce, searchManager) {\n\n  var ctrl = this;\n\n  // TODO: get search extensions from the logged in user\n\n  ctrl.searchManager = searchManager;\n  ctrl.results = [];\n\n  ctrl.formatResult = function (result) {\n    return $sce.trustAsHtml(result);\n  }\n\n  ctrl.toggleFilter = function (key) {\n    ctrl.filterActive[key] = !ctrl.filterActive[key];\n    ctrl.search();\n  }\n\n  ctrl.navigateTo = function(uri) {\n    window.location = uri;\n  }\n\n  ctrl.hideDropdown = function() {\n\n  }\n\n  ctrl.availableResourceTypes = ['Collection', 'Artifact', 'Group', 'Account', 'Version' ];\n\n  ctrl.$onInit = function () {\n\n    ctrl.searchInput = '';\n    ctrl.isSearching = false;\n    ctrl.searchCooldown = 1000;\n\n\n    ctrl.filterActive = {};\n    ctrl.filterVisible = {};\n\n\n    if (ctrl.settings == undefined) {\n      ctrl.minRelevance = 0.01;\n      ctrl.maxResults = 50;\n      ctrl.searchFilter = \"\";\n      ctrl.resourceTypes = null;\n      ctrl.placeholder = \"Search the Databus...\"\n    } else {\n      ctrl.minRelevance = ctrl.settings.minRelevance;\n      ctrl.maxResults = ctrl.settings.maxResults;\n      ctrl.searchFilter = ctrl.settings.filter;\n      ctrl.resourceTypes = ctrl.settings.resourceTypes;\n      ctrl.placeholder = ctrl.settings.placeholder;\n    }\n\n    for (var resourceType of ctrl.availableResourceTypes) {\n      ctrl.filterActive[resourceType] = false;\n      ctrl.filterVisible[resourceType] = ctrl.resourceTypes == null;\n    }\n\n    ctrl.numFilters = 0;\n\n    if (ctrl.resourceTypes != null) {\n      for (var resourceType of ctrl.resourceTypes) {\n        ctrl.filterVisible[resourceType] = true;\n        ctrl.numFilters++;\n      }\n    }\n  }\n\n  ctrl.isAnyFilterActive = function () {\n\n    for (var resourceType of ctrl.availableResourceTypes) {\n\n      if (!ctrl.filterVisible[resourceType]) {\n        continue;\n      }\n\n      if (ctrl.filterActive[resourceType]) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.baseQueryFormatter = function(query) {\n    return `?query=${query}${ctrl.searchFilter}${ctrl.baseFilters}${ctrl.typeFilters}`\n  }\n\n  $interval(function () {\n\n    if (ctrl.searchChanged) {\n\n      var baseFilters = `&minRelevance=${ctrl.minRelevance}&maxResults=${ctrl.maxResults}`;\n      var typeFilters = ``;\n      var isAnyFilterActive = ctrl.isAnyFilterActive();\n\n\n      for (var resourceType of ctrl.availableResourceTypes) {\n\n        if (!ctrl.filterVisible[resourceType]) {\n          continue;\n        }\n\n        if (ctrl.filterActive[resourceType] || !isAnyFilterActive) {\n\n          if (typeFilters == ``) {\n            typeFilters = `&typeName=`;\n          }\n\n          typeFilters += ` ${resourceType}`;\n        }\n      }\n\n      ctrl.baseFilters = baseFilters;\n      ctrl.typeFilters = typeFilters;\n      ctrl.searchManager.baseAdapter.queryFormatter = ctrl.baseQueryFormatter;\n\n      ctrl.searchManager.search(ctrl.searchInput).then(function success(results) {\n        \n        for(var result of results) {\n\n          if(result.abstract != null) {\n            result.abstract = result.abstract[result.abstract.length - 1];\n          }\n        }\n        \n        ctrl.results = results;\n\n        \n        ctrl.isSearching = false;\n      }, function error(response) {\n        ctrl.isSearching = false;\n      });\n\n      ctrl.searchChanged = false;\n    };\n  }, ctrl.searchCooldown);\n\n  ctrl.search = function () {\n    ctrl.isSearching = true;\n    ctrl.searchChanged = true;\n  };\n\n};\n\nmodule.exports = NavSearchController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/nav-search/nav-search-controller.js?");
-
-/***/ }),
-
-/***/ "./js/components/override-checkbox/override-checkbox.js":
-/*!**************************************************************!*\
-  !*** ./js/components/override-checkbox/override-checkbox.js ***!
-  \**************************************************************/
-/***/ ((module) => {
-
-eval("\n\n// hinzufügen eines Controllers zum Modul\nfunction OverrideCheckboxController() {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n\n    if(ctrl.id == undefined) {\n      ctrl.id = ctrl.label;\n    }\n  }\n\n  ctrl.change = function() {\n\n    if(!ctrl.readonly) {\n      ctrl.onChange();\n    }\n  }\n}\n\nmodule.exports = OverrideCheckboxController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/override-checkbox/override-checkbox.js?");
-
-/***/ }),
-
-/***/ "./js/components/search/search-controller.js":
-/*!***************************************************!*\
-  !*** ./js/components/search/search-controller.js ***!
-  \***************************************************/
-/***/ ((module) => {
-
-eval("\n\n// hinzufügen eines Controllers zum Modul\nfunction SearchController($http, $interval, $sce, searchManager) {\n\n  var ctrl = this;\n\n  // TODO: get search extensions from the logged in user\n\n  ctrl.searchManager = searchManager;\n  ctrl.results = [];\n\n  ctrl.formatResult = function (result) {\n    return $sce.trustAsHtml(result);\n  }\n\n  ctrl.toggleFilter = function (key) {\n    ctrl.filterActive[key] = !ctrl.filterActive[key];\n    ctrl.search();\n  }\n\n  ctrl.availableResourceTypes = ['Collection', 'Artifact', 'Group', 'Account', 'Version' ];\n\n  ctrl.$onInit = function () {\n\n    ctrl.searchInput = '';\n    ctrl.isSearching = false;\n    ctrl.searchCooldown = 300;\n\n    if (ctrl.settings == undefined) {\n      ctrl.minRelevance = 0.01;\n      ctrl.maxResults = 50;\n      ctrl.searchFilter = \"\";\n      ctrl.resourceTypes = null;\n      ctrl.placeholder = \"Search the Databus...\"\n    } else {\n      ctrl.minRelevance = ctrl.settings.minRelevance;\n      ctrl.maxResults = ctrl.settings.maxResults;\n      ctrl.searchFilter = ctrl.settings.filter;\n      ctrl.resourceTypes = ctrl.settings.resourceTypes;\n      ctrl.placeholder = ctrl.settings.placeholder;\n    }\n\n    ctrl.filterActive = {};\n    ctrl.filterVisible = {};\n\n    for (var resourceType of ctrl.availableResourceTypes) {\n      ctrl.filterActive[resourceType] = false;\n      ctrl.filterVisible[resourceType] = ctrl.resourceTypes == null;\n    }\n\n    ctrl.numFilters = 0;\n\n    if (ctrl.resourceTypes != null) {\n      for (var resourceType of ctrl.resourceTypes) {\n        ctrl.filterVisible[resourceType] = true;\n        ctrl.numFilters++;\n      }\n    }\n  }\n\n  ctrl.isAnyFilterActive = function () {\n\n    for (var resourceType of ctrl.availableResourceTypes) {\n\n      if (!ctrl.filterVisible[resourceType]) {\n        continue;\n      }\n\n      if (ctrl.filterActive[resourceType]) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  ctrl.baseQueryFormatter = function(query) {\n    return `?query=${query}${ctrl.searchFilter}${ctrl.baseFilters}${ctrl.typeFilters}`\n  }\n\n  $interval(function () {\n\n    if (ctrl.searchChanged) {\n\n      var baseFilters = `&minRelevance=${ctrl.minRelevance}&maxResults=${ctrl.maxResults}`;\n      var typeFilters = ``;\n      var isAnyFilterActive = ctrl.isAnyFilterActive();\n\n\n      for (var resourceType of ctrl.availableResourceTypes) {\n\n        if (!ctrl.filterVisible[resourceType]) {\n          continue;\n        }\n\n        if (ctrl.filterActive[resourceType] || !isAnyFilterActive) {\n\n          if (typeFilters == ``) {\n            typeFilters = `&typeName=`;\n          }\n\n          typeFilters += ` ${resourceType}`;\n        }\n      }\n\n      ctrl.baseFilters = baseFilters;\n      ctrl.typeFilters = typeFilters;\n      ctrl.searchManager.baseAdapter.queryFormatter = ctrl.baseQueryFormatter;\n\n      ctrl.searchManager.search(ctrl.searchInput).then(function success(results) {\n        ctrl.results = results;\n        ctrl.isSearching = false;\n      }, function error(response) {\n        ctrl.isSearching = false;\n      });\n\n      ctrl.searchChanged = false;\n    };\n  }, ctrl.searchCooldown);\n\n  ctrl.search = function () {\n    ctrl.isSearching = true;\n    ctrl.searchChanged = true;\n  };\n\n};\n\nmodule.exports = SearchController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/search/search-controller.js?");
-
-/***/ }),
-
-/***/ "./js/components/table-editor/table-editor.js":
-/*!****************************************************!*\
-  !*** ./js/components/table-editor/table-editor.js ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\n\r\n// hinzufügen eines Controllers zum Modul\r\nfunction TableEditorController() {\r\n\r\n  var ctrl = this;\r\n\r\n  ctrl.$onInit = function() {\r\n\r\n    ctrl.selection = {};\r\n    ctrl.edit = {};\r\n\r\n    if(ctrl.model.groupMode == undefined) {\r\n      ctrl.model.groupMode = true;\r\n    }\r\n\r\n    ctrl.setupColumns();\r\n    ctrl.updateViewModel();\r\n  }\r\n\r\n  ctrl.getSpanWidth = function(row, cv) {\r\n    var span = $(`#${row}_${cv}`);\r\n    var width = span.width();\r\n\r\n    if(width == undefined) {\r\n      return 0;\r\n    }\r\n\r\n    return width + 22;\r\n  }\r\n\r\n  ctrl.editContentVariant = function(index) {\r\n\r\n    ctrl.onEditContentVariant({ index: index});\r\n  }\r\n\r\n  ctrl.setupColumns = function() {\r\n\r\n    ctrl.columns = [];\r\n    ctrl.columns.push({ title:'File', width: 400, isReadonly : true });\r\n\r\n    for(var c in ctrl.model.contentVariants) {\r\n      var cv = ctrl.model.contentVariants[c];\r\n      ctrl.columns.push({ title: cv.label, width: 120, isReadonly : false });\r\n    }\r\n\r\n    ctrl.columns.push({ title:'Actions', width: 120, isReadonly : true });\r\n    ctrl.progressWidth = (115 + 200) + 'px';\r\n  }\r\n\r\n  ctrl.toggleGroupMode = function() {\r\n    ctrl.model.groupMode = ! ctrl.model.groupMode;\r\n    ctrl.updateViewModel();\r\n  }\r\n\r\n  ctrl.onShowInput = function($event) {\r\n   \r\n  }\r\n\r\n  ctrl.deselect = function() {\r\n    ctrl.edit.x = undefined;\r\n    ctrl.edit.y = undefined;\r\n    ctrl.selection.x = undefined;\r\n    ctrl.selection.y = undefined;\r\n    ctrl.selection.width = 0;\r\n    ctrl.selection.height = 0;\r\n  }\r\n\r\n  ctrl.selectCell = function($event, x, y) {\r\n\r\n    \r\n    ctrl.edit.x = undefined;\r\n    ctrl.edit.y = undefined;\r\n\r\n    ctrl.edit.x = x;\r\n    ctrl.edit.y = y; \r\n    ctrl.selection.x = x;\r\n    ctrl.selection.y = y;\r\n    ctrl.selection.width = 1;\r\n    ctrl.selection.height = 1;\r\n   \r\n  }\r\n\r\n  ctrl.analyzeFile = function(file) {\r\n    ctrl.onAnalyzeFile({ file : file });\r\n  }\r\n\r\n  ctrl.onChangeCv = function(file, cv) {\r\n\r\n    var index = ctrl.model.files.findIndex(f => f.uri == file.uri);\r\n    \r\n    for(var i = index + 1; i < index + file.rowspan; i++) {\r\n      ctrl.model.files[i].contentVariants[cv.id] = file.contentVariants[cv.id];\r\n    }\r\n    \r\n    ctrl.model.onChange();\r\n  }\r\n\r\n  ctrl.updateViewModel = function() {\r\n\r\n    for(var f in ctrl.model.files) {\r\n      ctrl.model.files[f].rowspan = 1;\r\n    }\r\n\r\n    /*\r\n    if(ctrl.model.groupMode) {\r\n\r\n      var i = 0;\r\n      var step = 1;\r\n\r\n      while(i + step < ctrl.model.files.length) {\r\n\r\n        if(ctrl.model.files[i].name == ctrl.model.files[i + step].name) {\r\n          // Swallow the cv setting of the next row\r\n          // ctrl.model.files[i].rowspan++;\r\n          // ctrl.model.files[i + step].rowspan = 0;\r\n\r\n          for(var c in ctrl.model.contentVariants) {\r\n            var cv = ctrl.model.contentVariants[c];\r\n            ctrl.model.files[i + step].contentVariants[cv.id] = ctrl.model.files[i].contentVariants[cv.id];\r\n          }\r\n\r\n          step++;\r\n        } else {\r\n          i += step;\r\n          step = 1;\r\n        }\r\n      }\r\n    }*/\r\n\r\n\r\n  }\r\n  /**\r\n   * Removes a specific distribution from an artifact\r\n   * @param {*} artifact \r\n   * @param {*} file \r\n   */\r\n  ctrl.removeFileFromArtifact = function(file, index) {\r\n    ctrl.onRemoveFile({ file : file, index: index});\r\n  }\r\n\r\n  ctrl.$doCheck = function() { \r\n\r\n    var numFiles = DatabusUtils.objSize(ctrl.model.files);\r\n    if(ctrl.numFiles != numFiles) {\r\n      ctrl.updateViewModel();\r\n      ctrl.numFiles = numFiles;\r\n    }\r\n\r\n\r\n    if(ctrl.columns == undefined) {\r\n      return;\r\n    }\r\n\r\n    var columnCount = 4;\r\n\r\n    for(var c in ctrl.model.contentVariants) {\r\n      columnCount++;\r\n    }\r\n\r\n    ctrl.progressPosition = 45;\r\n    for(var i = 0; i < columnCount - 3; i++) {\r\n      ctrl.progressPosition += ctrl.columns[i].width;\r\n    }\r\n    ctrl.progressPosition = ctrl.progressPosition + 'px'\r\n\r\n    if(ctrl.columns.length == columnCount) {\r\n      return;\r\n    }\r\n\r\n    ctrl.setupColumns();\r\n  }\r\n\r\n  ctrl.change = function() {\r\n\r\n  }\r\n};\r\n\r\nmodule.exports = TableEditorController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/table-editor/table-editor.js?");
-
-/***/ }),
-
-/***/ "./js/components/type-tag/type-tag.js":
-/*!********************************************!*\
-  !*** ./js/components/type-tag/type-tag.js ***!
-  \********************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\nfunction TypeTagController() {\n\n  var ctrl = this;\n\n  ctrl.typeMap = {};\n  ctrl.typeMap[\"Artifact\"] = \"is-artifact\";\n  ctrl.typeMap[\"Version\"] = \"is-version\";\n  ctrl.typeMap[\"Group\"] = \"is-group\";\n  ctrl.typeMap[\"Service\"] = \"is-service\";\n  ctrl.typeMap[\"Account\"] = \"is-consumer\";\n  ctrl.typeMap[\"Collection\"] = \"is-collection\";\n  ctrl.typeMap[\"BlogEntry\"] = \"is-blog\";\n  ctrl.typeMap[\"Databus\"] = \"is-version\";\n  ctrl.typeMap[\"Sparql\"] = \"is-grey\";\n\n  ctrl.iconMap = {};\n  ctrl.iconMap[\"Artifact\"] = \"M12,0 L1,12 l11,12 l11,-12 L12,0z\"; \n  ctrl.iconMap[\"Version\"] = \"M 14.9 1 L 12.293 1.005 L 16.507 7.18 L 16.5 23.1 L 18.5 23.1 L 18.5 6.4 L 14.9 1 Z M 10.4 1 L 1.581 1.004 L 1.584 23.13 L 15 23.1 L 15 7.7 L 10.4 1 Z M 16.8 1 L 20 5.8 L 20 23.1 L 22 23.1 L 22 4.9 L 19.3 1 L 16.8 1 Z\";\n  ctrl.iconMap[\"Group\"] = \"M21.698 10.658l2.302 1.342-12.002 7-11.998-7 2.301-1.342 9.697 5.658 9.7-5.658zm-9.7 10.657l-9.697-5.658-2.301 1.343 11.998 7 12.002-7-2.302-1.342-9.7 5.657zm12.002-14.315l-12.002-7-11.998 7 11.998 7 12.002-7z\";\n  ctrl.iconMap[\"Service\"] = \"M24 13.616v-3.232l-2.869-1.02c-.198-.687-.472-1.342-.811-1.955l1.308-2.751-2.285-2.285-2.751 1.307c-.613-.339-1.269-.613-1.955-.811l-1.021-2.869h-3.232l-1.021 2.869c-.686.198-1.342.471-1.955.811l-2.751-1.308-2.285 2.285 1.308 2.752c-.339.613-.614 1.268-.811 1.955l-2.869 1.02v3.232l2.869 1.02c.197.687.472 1.342.811 1.955l-1.308 2.751 2.285 2.286 2.751-1.308c.613.339 1.269.613 1.955.811l1.021 2.869h3.232l1.021-2.869c.687-.198 1.342-.472 1.955-.811l2.751 1.308 2.285-2.286-1.308-2.751c.339-.613.613-1.268.811-1.955l2.869-1.02zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z\";\n  ctrl.iconMap[\"Account\"] = \"M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z\";\n  ctrl.iconMap[\"Collection\"] = \"M11.499 12.03v11.971l-10.5-5.603v-11.835l10.5 5.467zm11.501 6.368l-10.501 5.602v-11.968l10.501-5.404v11.77zm-16.889-15.186l10.609 5.524-4.719 2.428-10.473-5.453 4.583-2.499zm16.362 2.563l-4.664 2.4-10.641-5.54 4.831-2.635 10.474 5.775z\";\n  ctrl.iconMap[\"BlogEntry\"] = \"M21 9.662c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0-9.951c-2.402.204-5.068 1.024-7 1.745v1.933c1.804-.756 4.713-1.6 7-1.794v-1.884zm-18 2.843c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.031c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.031c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.032c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0-7.054c2.287.194 5.196 1.038 7 1.794v-1.933c-1.932-.72-4.598-1.54-7-1.744v1.883zm9-2.724c-3.063-1.671-7.776-2.755-12-2.963v17c4.289.206 8.195 1.249 12 3 3.805-1.751 7.711-2.794 12-3v-17c-4.224.208-8.937 1.292-12 2.963zm-10-.791c4.264.496 6.86 1.467 9 2.545v12.702c-2.968-1.184-5.939-1.95-9-2.271v-12.976zm20 12.975c-3.061.321-6.032 1.088-9 2.271v-12.701c2.187-1.103 4.757-2.051 9-2.544v12.974z\";\n  ctrl.iconMap[\"Databus\"] = \"m 0.76949155,0.7702454 v 5.24959 l 29.33129045,-10e-4 6.27262,8.8675006 -0.002,32.0824 4.7212,-0.002 V 0.7702354 Z m 18.43511045,8.3952603 -5.68354,0.006 7.1979,10.5484003 -0.004,27.24663 4.70393,-0.002 0.0167,-28.60108 z m -9.4730904,0.002 -8.96510005,0.002 0.004,37.7960503 16.79563045,-0.004 0.001,-26.29103 z m 13.2512904,0 5.59825,8.2188903 -0.0396,29.57614 4.70307,-0.002 0.006,-31.09587 -4.55858,-6.6940403 z\";\n  ctrl.iconMap[\"Sparql\"] = \"M383.476,267.343c-2.544-1.346-5.14-2.493-7.743-3.516l1.863-0.15c0,0-16.608-7.354-18.057-60.722  c-1.438-53.372,15.828-62.478,15.828-62.478l-2.48,0.109c13.045-6.69,24.265-17.267,31.669-31.216  c19.295-36.291,5.488-81.362-30.81-100.657C337.436-10.563,292.374,3.207,273.09,39.53c-7.927,14.899-10.178,31.273-7.677,46.733  l-0.851-1.306c0,0,4.373,19.365-41.032,47.55c-45.397,28.2-65.877,14.159-65.877,14.159l1.302,1.925  c-1.298-0.803-2.544-1.624-3.901-2.333c-36.306-19.294-81.38-5.509-100.667,30.804c-19.281,36.309-5.489,81.365,30.813,100.668  c27.064,14.364,58.974,10.36,81.461-7.655l-0.487,0.946c0,0,16.531-13.599,64.16,11.973c37.601,20.178,43.184,39.956,43.899,47.383  c-0.983,27.57,13.388,54.618,39.389,68.433c36.301,19.299,81.374,5.498,100.657-30.804  C433.571,331.704,419.786,286.624,383.476,267.343z M299.542,277.128c-6.018,2.129-23.203,4.487-59.389-14.921  c-39.187-21.04-45.005-38.615-45.855-43.891c0.557-6.401,0.202-12.791-0.891-19.02l0.239,0.359c0,0-3.189-17.096,41.65-44.943  c40.133-24.908,58.376-19.955,61.771-18.653c2.185,1.485,4.45,2.867,6.825,4.131c4.518,2.398,9.174,4.283,13.888,5.672  c5.52,5.257,15.678,20.178,16.733,59.413c1.078,39.535-10.533,54.779-16.865,60.168C311.122,268.399,305.022,272.34,299.542,277.128  z\";\n\n  ctrl.$onInit = function() {\n    ctrl.class = ctrl.typeMap[ctrl.type];\n    ctrl.icon = ctrl.iconMap[ctrl.type];\n    ctrl.style = {};\n    ctrl.style.width = ctrl.width + \"px\";\n    ctrl.style.height = ctrl.height + \"px\";\n    ctrl.viewBox = \"0 0 24 24\";\n\n    if(ctrl.type == 'Databus') {\n      ctrl.viewBox = \"2 0 42 40\";\n    }\n\n    if(ctrl.type == 'Sparql') {\n      ctrl.viewBox = \"40 0 430 420\";\n    }\n  }\n}\n\nmodule.exports = TypeTagController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/type-tag/type-tag.js?");
-
-/***/ }),
-
-/***/ "./js/components/uri-breadcrumbs/uri-breadcrumbs.js":
-/*!**********************************************************!*\
-  !*** ./js/components/uri-breadcrumbs/uri-breadcrumbs.js ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-eval("// hinzufügen eines Controllers zum Modul\n// TODO update base\nfunction UriBreadcrumbsController() {\n\n  var ctrl = this;\n\n  ctrl.$onInit = function() {\n\n    ctrl.entries = [];\n\n    var uri = ctrl.uri;\n\n    if(uri == undefined || uri == null) {\n      return;\n    }\n\n    var url = new URL(uri);\n\n    var extensions = url.pathname.split('/');\n    var pathSoFar = '';\n\n    if(ctrl.absolute == true) {\n      pathSoFar = url.origin;\n    }\n\n    for(var e in extensions) {\n      var extension = extensions[e];\n\n      if(extension == '') {\n        continue;\n      }\n\n      pathSoFar += \"/\" + extension;\n\n      ctrl.entries.push({\n        label: extension,\n        uri: pathSoFar\n      });\n    }\n  }\n}\n\nmodule.exports = UriBreadcrumbsController;\n\n\n\n//# sourceURL=webpack://databus-webapp/./js/components/uri-breadcrumbs/uri-breadcrumbs.js?");
-
-/***/ }),
-
-/***/ "./js/components/yasqe-text/yasqe-text.js":
-/*!************************************************!*\
-  !*** ./js/components/yasqe-text/yasqe-text.js ***!
-  \************************************************/
-/***/ ((module) => {
-
-eval("function YasqeTextController($scope, $element) {\n\n  var ctrl = this;\n\n  ctrl.textField = $element.find('#custom-query');\n  ctrl.$scope = $scope;\n\n  ctrl.$onInit = function () {\n\n    ctrl.yasqe = new Yasqe(ctrl.textField[0], {\n      lineNumbers: true,\n      viewportMargin: Infinity,\n      readOnly: ctrl.readOnly,\n      autorefresh: true\n    });\n\n    if (ctrl.autoSize || !ctrl.hasSend) {\n      var styleSheet = document.createElement(\"style\")\n      styleSheet.innerText = \"\";\n\n      if (ctrl.autoSize) {\n        styleSheet.innerText += \".CodeMirror { height: auto !important; } .CodeMirror-vscrollbar { display: none !important; } .resizeWrapper { display: none !important; }\";\n      }\n\n      if (!ctrl.hasSend) {\n        styleSheet.innerText += \".yasqe_buttons { display: none !important; }\";\n      }\n\n      ctrl.textField[0].appendChild(styleSheet)\n    }\n\n    ctrl.yasqe.on('query', function() {\n      ctrl.onSend();\n    });\n\n    ctrl.yasqe.on('change', function () {\n      ctrl.query = ctrl.yasqe.getValue();\n      ctrl.valid = !ctrl.yasqe.queryValid;\n\n      if (!$scope.$root.$$phase) {\n        ctrl.$scope.$apply();\n      }\n\n      ctrl.onChange();\n    });\n\n    if (ctrl.query != undefined) {\n      ctrl.yasqe.setValue(ctrl.query);\n    }\n  }\n\n  ctrl.$doCheck = function () {\n    if (ctrl.yasqe != undefined && ctrl.yasqe.getValue() != ctrl.query) {\n      if (ctrl.query != undefined) {\n        ctrl.yasqe.setValue(ctrl.query);\n      }\n    }\n\n    setTimeout(function () {\n      ctrl.yasqe.refresh();\n    }, 10);\n\n  }\n}\n\nmodule.exports = YasqeTextController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/yasqe-text/yasqe-text.js?");
-
-/***/ }),
-
-/***/ "./js/components/yasr-view/yasr-view.js":
-/*!**********************************************!*\
-  !*** ./js/components/yasr-view/yasr-view.js ***!
-  \**********************************************/
-/***/ ((module) => {
-
-eval("function YasrViewController($scope, $element) {\n\n  var ctrl = this;\n\n  ctrl.textField = $element.find('#custom-query');\n  ctrl.$scope = $scope;\n\n  ctrl.$onInit = function () {\n\n\n    ctrl.yasr = new Yasr(ctrl.textField[0], {\n      //lineNumbers: true,\n      //viewportMargin: Infinity,\n      //readOnly: ctrl.readOnly,\n      //autorefresh: true\n      prefixes : {\n        rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',\n        rdfs: 'http://www.w3.org/2000/01/rdf-schema#',\n        dct: 'http://purl.org/dc/terms/',\n        dcat: 'http://www.w3.org/ns/dcat#',\n        databus: 'https://dataid.dbpedia.org/databus#',\n        sec: 'https://w3id.org/security#',\n        cert: 'http://www.w3.org/ns/auth/cert#',\n        foaf: 'http://xmlns.com/foaf/0.1/',\n        dbo: 'http://dbpedia.org/ontology/',\n        \"databus-cv\": 'https://dataid.dbpedia.org/databus-cv#'\n      }\n\n    });\n\n   \n\n\n    /*\n    if(ctrl.autoSize) {\n\n     var styleSheet = document.createElement(\"style\")\n     styleSheet.innerText = \".CodeMirror { height: auto !important; } .CodeMirror-vscrollbar { display: none !important; } .resizeWrapper { display: none !important; }\";\n     ctrl.textField[0].appendChild(styleSheet)\n    }\n\n    ctrl.yasr.on('change', function() {\n      ctrl.query = ctrl.yasqe.getValue();\n      ctrl.valid = !ctrl.yasqe.queryValid;\n\n      if(!$scope.$root.$$phase) {\n        ctrl.$scope.$apply();\n      }\n\n      ctrl.onChange();\n    });\n\n   ctrl.yasqe.setValue(ctrl.query);*/\n  }\n\n\n  ctrl.$doCheck = function () {\n    var dataString = JSON.stringify(ctrl.data);\n    if (ctrl.yasr != undefined && dataString != ctrl.currentDataString) {\n      ctrl.yasr.setResponse(ctrl.data)\n      ctrl.currentDataString = dataString;\n    }\n\n\n    /*\n    setTimeout(function() {\n      ctrl.yasqe.refresh();\n    }, 10);*/\n  }\n}\n\nmodule.exports = YasrViewController;\n\n//# sourceURL=webpack://databus-webapp/./js/components/yasr-view/yasr-view.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/account-controller.js":
-/*!**************************************************!*\
-  !*** ./js/page-controller/account-controller.js ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionManager = __webpack_require__(/*! ../collections/databus-collection-manager */ \"./js/collections/databus-collection-manager.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\nvar DEFAULT_IMAGE = \"https://picsum.photos/id/223/320/320\";\r\n\r\n// Controller for the header section\r\n\r\n/**\r\n * \r\n * @param {*} $scope \r\n * @param {*} $http \r\n * @param {*} $location \r\n * @param {DatabusCollectionManager} collectionManager \r\n * @returns \r\n */\r\nfunction AccountPageController($scope, $http, $location, collectionManager) {\r\n\r\n  $scope.collectionManager = collectionManager;\r\n\r\n\r\n  // Pick up the profile data\r\n  $scope.auth = data.auth;\r\n  $scope.location = $location;\r\n  $scope.account = data.account;\r\n\r\n  // Exit if there is no profile\r\n  if ($scope.account == undefined) {\r\n    return;\r\n  }\r\n\r\n\r\n  // Create a tab navigation object for the tab navigation with locato\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    'data', 'collections', 'settings'\r\n  ]);\r\n\r\n  // Make some util functions available in the template\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n  $scope.account.isOwn = $scope.accountName != null; //.auth.authenticated && $scope.auth.info.accountName == $scope.account.accountName;\r\n\r\n\r\n  $scope.dataSearchInput = '';\r\n  $scope.dataSearchSettings = {\r\n    minRelevance: 0.01,\r\n    maxResults: 10,\r\n    placeholder: `Search ${$scope.account.accountName}'s data...`,\r\n    resourceTypes: ['Group', 'Artifact'],\r\n    filter: `&publisher=${$scope.account.accountName}&typeNameWeight=0`\r\n  };\r\n\r\n  $scope.collectionSearchInput = '';\r\n  $scope.collectionSearchSettings = {\r\n    minRelevance: 0.01,\r\n    maxResults: 10,\r\n    placeholder: `Search ${$scope.account.accountName}'s collections...`,\r\n    resourceTypes: ['Collection'],\r\n    filter: `&publisher=${$scope.account.accountName}&publisherWeight=0&typeNameWeight=0`\r\n  };\r\n\r\n\r\n  // Wait for additional artifact data to arrive\r\n  $scope.publishedData = {};\r\n  $scope.publishedData.isLoading = true;\r\n\r\n  $http.get(`/app/account/content?account=${encodeURIComponent($scope.account.accountName)}`)\r\n    .then(function (response) {\r\n\r\n      $scope.publishedData.isLoading = false;\r\n      $scope.publishedData.groups = response.data.groups;\r\n      $scope.publishedData.artifacts = response.data.artifacts;\r\n\r\n      for (var artifact of $scope.publishedData.artifacts) {\r\n        artifact.group = DatabusUtils.navigateUp(artifact.uri, 1);\r\n        artifact.title = DatabusUtils.stringOrFallback(artifact.title, artifact.latestVersionTitle);\r\n        artifact.abstract = DatabusUtils.stringOrFallback(artifact.abstract, artifact.latestVersionAbstract);\r\n        artifact.description = DatabusUtils.stringOrFallback(artifact.description, artifact.latestVersionDescription);\r\n      }\r\n\r\n      for (var group of $scope.publishedData.groups) {\r\n        group.artifacts = $scope.publishedData.artifacts.filter(function (a) {\r\n          return a.group == group.uri;\r\n        });\r\n      }\r\n\r\n      // Order by latest version date\r\n      $scope.recentUploads = $scope.publishedData.artifacts.filter(function (v) {\r\n        return v.latestVersionDate != null;\r\n      });\r\n      $scope.recentUploads.sort(function (a, b) {\r\n        return new Date(b.latestVersionDate) - new Date(a.latestVersionDate);\r\n      });\r\n\r\n      $scope.recentUploads = $scope.recentUploads.slice(0, 3);\r\n\r\n      $scope.refreshFeaturedContent();\r\n    }, function (err) {\r\n      console.log(err);\r\n    });\r\n\r\n\r\n  // Wait for stats data to arrive\r\n  $scope.statsData = {};\r\n  $scope.statsData.isLoading = true;\r\n\r\n  $http.get(`/app/account/stats?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {\r\n    $scope.statsData.stats = response.data;\r\n    $scope.statsData.isLoading = false;\r\n  }, function (err) {\r\n    console.log(err);\r\n  });\r\n\r\n  // Wait for activity chart data to arrive\r\n  $scope.activityData = {};\r\n  $scope.activityData.isLoading = true;\r\n\r\n  $http.get(`/app/account/activity?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {\r\n    $scope.activityData.entries = response.data;\r\n    $scope.activityData.isLoading = false;\r\n  }, function (err) {\r\n    console.log(err);\r\n  });\r\n\r\n  $scope.collectionsData = {};\r\n  $scope.collectionsData.isLoading = true;\r\n\r\n  if (!$scope.account.isOwn) {\r\n    $http.get(`/app/account/collections?account=${encodeURIComponent($scope.account.accountName)}`)\r\n      .then(function (response) {\r\n\r\n        $scope.collectionsData.collections = response.data;\r\n        $scope.collectionsData.isLoading = false;\r\n        $scope.refreshFeaturedContent();\r\n      }, function (err) {\r\n        console.log(err);\r\n      });\r\n  } else {\r\n\r\n    function onCollectionManagerInitialized() {\r\n      for (let guid in $scope.collectionManager.local) {\r\n        let collection = $scope.collectionManager.local[guid];\r\n\r\n        if(collection.accountName == undefined && collection.uri != undefined) {\r\n          collection.accountName = DatabusUtils.getFirstSegment(collection.uri);\r\n        }\r\n\r\n        if (collection.accountName == $scope.accountName) {\r\n          $scope.collectionList.push(collection);\r\n        }\r\n      }\r\n    }\r\n\r\n    $scope.collectionList = [];\r\n\r\n    if(collectionManager.isInitialized) {\r\n      onCollectionManagerInitialized();\r\n    } else {\r\n      collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);\r\n    }\r\n  }\r\n\r\n\r\n\r\n  $scope.getImageUrl = function () {\r\n    if ($scope.account.imageUrl == undefined) {\r\n      return DEFAULT_IMAGE;\r\n    } else {\r\n      return $scope.account.imageUrl;\r\n    }\r\n  }\r\n\r\n  /**\r\n   * COLLECTION FUNCTIONS \r\n   */\r\n\r\n  // Collection List Search\r\n  $scope.collectionSearch = {};\r\n  $scope.collectionSearch.sortVisible = false;\r\n  $scope.collectionSearch.sortProperty = 'title';\r\n  $scope.collectionSearch.sortProperties = [\r\n    { key: 'title', label: 'Title' },\r\n    { key: 'issued', label: 'Issued Date' },\r\n  ];\r\n  $scope.collectionSearch.sortReverse = false;\r\n  $scope.collectionSearch.toggleSort = function (value) {\r\n    if ($scope.collectionSearch.sortProperty == value) {\r\n      $scope.collectionSearch.sortReverse = !$scope.collectionSearch.sortReverse;\r\n    } else {\r\n      $scope.collectionSearch.sortProperty = value;\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Pencil icon for edit pressed\r\n   * @param {*} collection \r\n   */\r\n  $scope.onEditCollectionClicked = function (collection) {\r\n    $scope.collectionManager.setActive(collection.uuid);\r\n    window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;\r\n  }\r\n\r\n  /**\r\n   * Create new collection\r\n   */\r\n  $scope.createNewCollection = function () {\r\n    $scope.collectionManager.createNew($scope.accountName, 'New Collection', 'Replace this description with a description of your choice.',\r\n      function (collection) {\r\n        window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;\r\n      });\r\n  }\r\n\r\n  /**\r\n   * Create a copy of the clicked collection\r\n   */\r\n  $scope.createCopy = function (collection) {\r\n    let copy = $scope.collectionManager.createCopy(collection);\r\n    window.location.href = `/app/collection-editor?uuid=${copy.uuid}`;\r\n  }\r\n\r\n\r\n  $scope.findFeaturedContent = function (uri) {\r\n\r\n    for (var g in $scope.publishedData.groups) {\r\n      var group = $scope.publishedData.groups[g];\r\n\r\n      if (uri == group.uri) {\r\n        return {\r\n          type: 'Group',\r\n          title: group.title,\r\n          uri: uri,\r\n          description: group.description\r\n        }\r\n      }\r\n\r\n      for (var a in group.artifacts) {\r\n        var artifact = group.artifacts[a];\r\n\r\n        if (uri == artifact.artifactUri) {\r\n          return {\r\n            type: 'Artifact',\r\n            title: artifact.title,\r\n            uri: uri,\r\n            description: artifact.description\r\n          }\r\n        }\r\n      }\r\n    }\r\n\r\n    for (var c in $scope.collectionsData.collections) {\r\n      var collection = $scope.collectionsData.collections[c];\r\n\r\n      if (uri == collection.uri) {\r\n        return {\r\n          type: 'Collection',\r\n          title: collection.title,\r\n          uri: uri,\r\n          description: collection.description\r\n        }\r\n      }\r\n    }\r\n\r\n  }\r\n\r\n  $scope.refreshFeaturedContent = function () {\r\n    if ($scope.account.featuredContent == undefined) {\r\n      return;\r\n    }\r\n\r\n    var featuredContentUris = $scope.account.featuredContent.split('\\n');\r\n    $scope.featuredContent = [];\r\n\r\n    for (var f in featuredContentUris) {\r\n      var content = $scope.findFeaturedContent(featuredContentUris[f]);\r\n\r\n      if (content != undefined) {\r\n        $scope.featuredContent.push(content);\r\n      }\r\n    }\r\n  }\r\n\r\n  /** ACCOUNT MANAGEMENT FOR OWNER */\r\n\r\n}\r\n\r\nmodule.exports = AccountPageController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/account-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/artifact-controller.js":
-/*!***************************************************!*\
-  !*** ./js/page-controller/artifact-controller.js ***!
-  \***************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ \"./js/publish/dataid-creator.js\");\r\nconst QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\r\nconst QueryNode = __webpack_require__(/*! ../query-builder/query-node */ \"./js/query-builder/query-node.js\");\r\nconst QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\n// hinzufügen eines Controllers zum Modul\r\nfunction ArtifactPageController($scope, $http, $sce, $location, collectionManager) {\r\n\r\n  $scope.collectionManager = collectionManager;\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.auth = data.auth;\r\n  $scope.utils = new DatabusWebappUtils($scope, $sce);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    'files', 'versions', 'edit'\r\n  ]);\r\n\r\n  $scope.versions = data.versions;\r\n  $scope.artifact = data.artifact;\r\n  $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.artifact.uri, 2));\r\n  $scope.canEdit = $scope.accountName != null;\r\n  $scope.pageTitle = DatabusUtils.stringOrFallback($scope.artifact.title,\r\n    DatabusUtils.uriToTitle($scope.artifact.uri));\r\n\r\n  if (data.auth.authenticated && $scope.canEdit) {\r\n\r\n    $scope.formData = {};\r\n    $scope.formData.group = {};\r\n    $scope.formData.group.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.artifact.uri));\r\n    $scope.formData.artifact = {};\r\n\r\n    var abstract = DatabusUtils.createAbstractFromDescription($scope.artifact.description);\r\n    $scope.formData.artifact.generateAbstract = abstract == $scope.artifact.abstract;\r\n    $scope.formData.artifact.name = $scope.artifact.name;\r\n    $scope.formData.artifact.title = $scope.artifact.title;\r\n    $scope.formData.artifact.abstract = $scope.artifact.abstract;\r\n    $scope.formData.artifact.description = $scope.artifact.description;\r\n\r\n    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);\r\n  }\r\n\r\n  $scope.fileSelector = {};\r\n  $scope.fileSelector.config = {};\r\n  $scope.fileSelector.config.authenticated = $scope.authenticated;\r\n  $scope.fileSelector.config.columns = [];\r\n  $scope.fileSelector.config.columns.push({ field: 'version', label: 'Version', width: '30%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '30%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '12%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '12%' });\r\n\r\n  $scope.artifactNode = new QueryNode($scope.artifact.uri, 'databus:artifact');\r\n  $scope.artifactNode.setFacet('http://purl.org/dc/terms/hasVersion', '$latest', true);\r\n\r\n  $scope.groupNode = new QueryNode(DatabusUtils.navigateUp($scope.artifact.uri), 'databus:group');\r\n  $scope.groupNode.addChild($scope.artifactNode);\r\n\r\n  $scope.collectionWidgetSelectionData = {};\r\n  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;\r\n\r\n  $scope.onFacetSettingsChanged = function () {\r\n    $scope.fileSelector.query = QueryBuilder.build({\r\n      node: $scope.artifactNode,\r\n      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n\r\n    $scope.fileSelector.fullQuery = QueryBuilder.build({\r\n      node: $scope.artifactNode,\r\n      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n  }\r\n\r\n  $scope.onFacetSettingsChanged();\r\n\r\n\r\n  $scope.onFileSelectionChanged = function (numFiles, totalSize) {\r\n    $scope.fileSelector.numFiles = numFiles;\r\n    $scope.fileSelector.totalSize = totalSize;\r\n  };\r\n\r\n  $scope.formatId = function (id) {\r\n    return DatabusCollectionUtils.formatId(id);\r\n  };\r\n\r\n  $scope.addArtifactNodeToCollection = function () {\r\n\r\n    if ($scope.collectionManager.activeCollection == null) {\r\n      return;\r\n    }\r\n\r\n    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);\r\n    wrapper.addArtifactNode(\r\n      $scope.artifact.uri,\r\n      $scope.artifact.title,\r\n      $scope.fileSelector.settings);\r\n\r\n    $scope.collectionManager.saveLocally();\r\n    $scope.statusCode = 1;\r\n  };\r\n\r\n  $scope.changeCollection = function (collection) {\r\n    if (!$scope.authenticated) {\r\n      return;\r\n    }\r\n\r\n    $scope.collectionManager.setActive(collection.uuid);\r\n  }\r\n\r\n\r\n  $scope.hideAutofill = function () {\r\n    $scope.fileSelector.clearAutofill(function () {\r\n      $scope.$apply();\r\n    });\r\n  }\r\n\r\n\r\n  $scope.onDescriptionChanged = function () {\r\n    if ($scope.formData == null) {\r\n      return;\r\n    }\r\n\r\n    if (!$scope.formData.artifact.generateAbstract) {\r\n      return;\r\n    }\r\n\r\n    $scope.formData.artifact.abstract =\r\n      DatabusUtils.createAbstractFromDescription($scope.formData.artifact.description);\r\n  }\r\n\r\n  $scope.resetEdits = function () {\r\n    $scope.formData.artifact.title = $scope.artifact.title;\r\n    $scope.formData.artifact.abstract = $scope.artifact.abstract;\r\n    $scope.formData.artifact.description = $scope.artifact.description;\r\n  }\r\n\r\n  $scope.saveArtifact = async function () {\r\n\r\n    if ($scope.dataidCreator == null) {\r\n      return;\r\n    }\r\n\r\n    var artifactUpdate = $scope.dataidCreator.createArtifactUpdate();\r\n\r\n    var response = await $http.post(`/api/register`, artifactUpdate);\r\n\r\n    if (response.status == 200) {\r\n      $scope.artifact.title = $scope.formData.artifact.title;\r\n      $scope.artifact.abstract = $scope.formData.artifact.abstract;\r\n      $scope.artifact.description = $scope.formData.artifact.description;\r\n\r\n      $scope.pageTitle = DatabusUtils.stringOrFallback($scope.artifact.title,\r\n        DatabusUtils.uriToTitle($scope.artifact.uri));\r\n\r\n      DatabusAlert.alert($scope, true, \"Artifact Saved!\");\r\n      $scope.$apply();\r\n    }\r\n  }\r\n\r\n\r\n}\r\n\r\n\r\nmodule.exports = ArtifactPageController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/artifact-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/collection-controller.js":
-/*!*****************************************************!*\
-  !*** ./js/page-controller/collection-controller.js ***!
-  \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\r\nconst DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\n\r\nfunction CollectionController($scope, $sce, $http, collectionManager) {\r\n\r\n  $scope.auth = data.auth;\r\n  $scope.collection = new DatabusCollectionWrapper(data.collection);\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.activeTab = 0;\r\n  $scope.collectionManager = collectionManager;\r\n\r\n  // Make some util functions available in the template\r\n  $scope.utils = new DatabusWebappUtils($scope, $sce);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n\r\n  $scope.isOwn = false;\r\n\r\n  if ($scope.authenticated) {\r\n    $scope.collectionAccountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.collection.uri, 2));\r\n    $scope.isOwn = $scope.accountName === $scope.collectionAccountName;\r\n  }\r\n\r\n\r\n  $scope.collectionViewModel = {};\r\n  $scope.collectionViewModel.downloadScript = [];\r\n  $scope.collectionViewModel.downloadScript.length = 3;\r\n  $scope.collectionViewModel.downloadScript[0] = `query=$(curl -H \"Accept:text/sparql\" ${$scope.collection.uri})`;\r\n  $scope.collectionViewModel.downloadScript[1] = `files=$(curl -X POST -H \"Accept: text/csv\" --data-urlencode \"query=\\${query}\" ${DATABUS_RESOURCE_BASE_URL}/sparql | tail -n +2 | sed 's/\\\\r$//' | sed 's/\"//g')`;\r\n  $scope.collectionViewModel.downloadScript[2] = `while IFS= read -r file ; do wget $file; done <<< \"$files\"`;\r\n\r\n  $scope.collectionViewModel.downloadManual = 'To fetch the query via *curl* run \\n``` shell\\n'\r\n    + $scope.collectionViewModel.downloadScript[0] + '\\n```'\r\n    + '\\n\\n\\nTo download the files additionally run\\n``` shell\\n'\r\n    + $scope.collectionViewModel.downloadScript[1] + '\\n'\r\n    + $scope.collectionViewModel.downloadScript[2]\r\n    + '\\n```';\r\n\r\n  $scope.collectionQuery = $scope.collection.createQuery();\r\n  $scope.collectionManager = collectionManager;\r\n  $scope.collectionFiles = \"\";\r\n\r\n\r\n  DatabusCollectionUtils.getCollectionFileURLs($http, $scope.collection).then(function (result) {\r\n    $scope.collectionFiles = result;\r\n    $scope.$apply();\r\n  }, function (err) {\r\n    console.log(err);\r\n  });\r\n\r\n\r\n  if ($scope.authenticated) {\r\n    $scope.username = data.auth.info.username;\r\n  }\r\n\r\n  $scope.formatUploadSize = function (size) {\r\n    return DatabusUtils.formatFileSize(size);\r\n  };\r\n\r\n\r\n\r\n  $scope.editCopy = function () {\r\n    if (!$scope.collectionManager.isInitialized) {\r\n      return;\r\n    }\r\n\r\n    let localCopy = $scope.collectionManager.createCopy($scope.collection);\r\n\r\n    window.location.href = `/app/collection-editor?uuid${localCopy.uuid}`;\r\n  }\r\n\r\n  $scope.createSnapshot = function () {\r\n    if (!$scope.collectionManager.isInitialized) {\r\n      return;\r\n    }\r\n\r\n\r\n    let collectionSnapshot = $scope.collectionManager.createSnapshot($scope.collection);\r\n    window.location.href = `/app/collection-editor?uuid${collectionSnapshot.uuid}`;\r\n  }\r\n\r\n  \r\n  $scope.editCollection = function () {\r\n\r\n    if (!$scope.collectionManager.isInitialized) {\r\n      return;\r\n    }\r\n\r\n    let localCopy = $scope.collectionManager.getCollectionByUri($scope.collection.uri);\r\n\r\n    /// TODO Fabian - das sollte nicht passieren!\r\n    if (localCopy === null) {\r\n      console.log(\"editCollection failed. There is no collection with that uri: \" + $scope.collection.uri)\r\n      $scope.editCopy();\r\n      return;\r\n    }\r\n\r\n    window.location.href = `/app/collection-editor?uuid=${localCopy.uuid}`;\r\n  }\r\n\r\n\r\n  $scope.downloadAsJson = function () {\r\n    DatabusCollectionUtils.exportToJsonFile($scope.collection);\r\n  }\r\n\r\n  $scope.queryToClipboard = function () {\r\n\r\n    $scope.utils.copyToClipboard($scope.collectionQuery);\r\n    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);\r\n\r\n  }\r\n\r\n  $scope.openInYasgui = function () {\r\n    window.location.href = 'https://databus.dbpedia.org/yasgui?query=' + encodeURIComponent($scope.collectionQuery);\r\n  }\r\n\r\n  $scope.bashScriptToClipboard = function () {\r\n\r\n    var bashscript = `${$scope.collectionViewModel.downloadScript[0]}\r\n${$scope.collectionViewModel.downloadScript[1]}\r\n${$scope.collectionViewModel.downloadScript[2]}`\r\n\r\n    $scope.utils.copyToClipboard(bashscript);\r\n    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);\r\n  }\r\n\r\n\r\n  $scope.filesToClipboard = function () {\r\n    $scope.utils.copyToClipboard($scope.collectionFiles);\r\n    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = CollectionController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/collection-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/collections-editor-controller.js":
-/*!*************************************************************!*\
-  !*** ./js/page-controller/collections-editor-controller.js ***!
-  \*************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\r\nconst DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst QueryNode = __webpack_require__(/*! ../query-builder/query-node */ \"./js/query-builder/query-node.js\");\r\nconst DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ \"./js/utils/databus-messages.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\n/**\r\n * Controls the collection editor page\r\n * @param {*} $scope \r\n * @param {*} $timeout \r\n * @param {*} $http \r\n * @param {*} $location \r\n * @param {*} collectionManager \r\n * @returns \r\n */\r\nasync function CollectionsEditorController($scope, $timeout, $http, $location, collectionManager) {\r\n\r\n  $scope.auth = data.auth;\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.baseUrl = DATABUS_RESOURCE_BASE_URL;\r\n\r\n  // Check for proper authentication\r\n  if (!$scope.authenticated) {\r\n    return;\r\n  }\r\n\r\n  const params = new URLSearchParams(window.location.search);\r\n  $scope.uuid = params.get('uuid');\r\n\r\n  // Make some util functions available in the template\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n  $scope.collectionManager = collectionManager;\r\n  \r\n  let collection = $scope.collectionManager.local[$scope.uuid];\r\n\r\n  if(collection == null) {\r\n    // No working copy found\r\n    return;\r\n  }\r\n\r\n  try {\r\n      let collection = $scope.collectionManager.local[$scope.uuid];\r\n      await $scope.collectionManager.tryInitialize(collection.accountName);\r\n    } catch(err) {\r\n\r\n    }\r\n\r\n  $scope.collectionManager.setActive($scope.uuid);\r\n  let activeCollection = $scope.collectionManager.activeCollection;\r\n  \r\n  $scope.accountName = $scope.utils.getOwnedAccountName(activeCollection.accountName);\r\n  $scope.hasAccount = $scope.accountName != undefined;\r\n\r\n  //if (!$scope.hasAccount) {\r\n  //  return;\r\n  //}\r\n\r\n  // Create a tab navigation object for the tab navigation with locato\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    'docu', 'content', 'preview', 'query', 'json', 'import'\r\n  ]);\r\n\r\n  // Make the manager available in the template\r\n //  $scope.collectionManager.setActiveCollection($scope.guid);\r\n\r\n  // Form data object for input errors and extra fields and toggles\r\n  $scope.form = {};\r\n  $scope.form.title = {};\r\n  $scope.form.identifier = {};\r\n  $scope.form.identifier.value = \"\";\r\n  $scope.form.abstract = {};\r\n  $scope.form.description = {};\r\n  $scope.form.isHidden = $scope.collectionManager.activeCollection.issued == undefined;\r\n  $scope.form.collectionPublishTag = '';\r\n  var description = $scope.collectionManager.activeCollection.description;\r\n  var generatedAbstract = DatabusUtils.createAbstractFromDescription(description);\r\n  $scope.form.generateAbstract = $scope.collectionManager.activeCollection.abstract == generatedAbstract;\r\n\r\n  /**\r\n   * Triggered when the description field gets changed.\r\n   * Generates an abstract from the description. \r\n   * @returns \r\n   */\r\n  $scope.onDescriptionChanged = function () {\r\n    if ($scope.form == null) {\r\n      return;\r\n    }\r\n\r\n    if ($scope.form.generateAbstract) {\r\n      var description = $scope.collectionManager.activeCollection.description;\r\n      var generatedAbstract = DatabusUtils.createAbstractFromDescription(description);\r\n      $scope.collectionManager.activeCollection.abstract = generatedAbstract;\r\n    }\r\n\r\n    // Triggers saving to the local storage\r\n    $scope.onActiveCollectionChanged();\r\n  }\r\n\r\n\r\n  /**\r\n   * Called whenever an input field or similar gets changed. Persists the local changes in the local storage\r\n   */\r\n  $scope.onActiveCollectionChanged = function () {\r\n\r\n    let collection = $scope.collectionManager.activeCollection;\r\n\r\n    // Save to storage\r\n    if ($scope.collectionManager.isInitialized) {\r\n      $scope.collectionManager.saveLocally();\r\n    }\r\n\r\n    // Refresh query and json representation\r\n    $scope.collectionQuery = new DatabusCollectionWrapper(collection).createQuery();\r\n    $scope.collectionJson = $scope.getCollectionJson();\r\n\r\n    if (collection != null) {\r\n      collection.hasLocalChanges = $scope.collectionManager.hasLocalChanges(collection);\r\n    }\r\n\r\n    DatabusCollectionUtils.checkCollectionForm($scope.form, collection)\r\n  }\r\n\r\n  $scope.getStatusMessage = function (code) {\r\n    return DatabusResponse.Message[code];\r\n  }\r\n\r\n  $scope.getStatusSuccess = function () {\r\n    return $scope.statusCode >= 2000 && $scope.statusCode < 3000;\r\n  }\r\n\r\n  $scope.resetStatus = function () {\r\n    $scope.statusCode = 0;\r\n  }\r\n\r\n  $scope.preview = function () {\r\n    if ($scope.collectionManager.activeCollection.isDraft) {\r\n      return;\r\n    }\r\n\r\n    var identifier = DatabusUtils.uriToName($scope.collectionManager.activeCollection.uri);\r\n    window.location.href = `/${$scope.accountName}/collections/${identifier}`;\r\n  }\r\n\r\n  /**\r\n   * Saves the collection to the remote server\r\n   * @returns \r\n   */\r\n  $scope.saveCollection = async function () {\r\n\r\n    try {\r\n      // Needs initialized CM\r\n      if (!$scope.collectionManager.isInitialized) {\r\n        return;\r\n      }\r\n\r\n      let collection = $scope.collectionManager.activeCollection;\r\n\r\n      // Check whether the form values are correct\r\n      if (!DatabusCollectionUtils.checkCollectionForm($scope.form, collection)) {\r\n        return;\r\n      }\r\n\r\n      // Look for an existing identifier\r\n      var identifier = undefined;\r\n\r\n      // Either take the identifier from the form (draft) or the collection uri (published)\r\n      if (collection.isDraft) {\r\n        identifier = $scope.form.identifier.value;\r\n      } else {\r\n        identifier = DatabusUtils.uriToName($scope.collectionManager.activeCollection.uri);\r\n      }\r\n\r\n      $scope.isSaving = true;\r\n      $scope.collectionManager.updateCollection($scope.accountName, identifier).then(function (response) {\r\n        DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_SAVED);\r\n        $scope.isSaving = false;\r\n        $scope.$apply();\r\n      }).catch(function (err) {\r\n        console.log(err);\r\n        DatabusAlert.alert($scope, false, DatabusMessages.CEDIT_COLLECTION_SAVE_FAILED);\r\n        $scope.isSaving = false;\r\n        $scope.$apply();\r\n      });\r\n\r\n    } catch (err) {\r\n      console.log(err);\r\n      DatabusAlert.alert($scope, false, err);\r\n    }\r\n  }\r\n\r\n  $scope.unpublishCollection = async function () {\r\n\r\n    if ($scope.collectionManager.activeCollection.isDraft) {\r\n      return;\r\n    }\r\n\r\n    try {\r\n      await $scope.collectionManager.unpublishActiveCollection();\r\n      DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_UNPUBLISHED);\r\n    } catch (err) {\r\n      DatabusAlert.alert($scope, false, err);\r\n      console.log(err);\r\n    }\r\n  }\r\n\r\n  $scope.showDeleteModal = function () {\r\n    $scope.deleteModalVisible = true;\r\n  }\r\n\r\n  $scope.hideDeleteModal = function () {\r\n    $scope.deleteModalVisible = false;\r\n  }\r\n\r\n  $scope.deleteCollection = function () {\r\n    if (!$scope.collectionManager.isInitialized) {\r\n      return;\r\n    }\r\n\r\n    $scope.deleteModalVisible = false;\r\n\r\n    $scope.collectionManager.deleteCollection($scope.username, $scope.form.identifier.value).then(function (response) {\r\n      $scope.statusCode = response.code;\r\n      $scope.collectionManager.selectFirstOrCreate();\r\n      $scope.setActiveCollection($scope.collectionManager.activeCollection);\r\n      $scope.$apply();\r\n      $timeout($scope.resetStatus, $scope.modalTime);\r\n    }).catch(function (err) {\r\n      $scope.statusCode = err.code;\r\n      $scope.$apply();\r\n      $timeout($scope.resetStatus, $scope.modalTime);\r\n    });\r\n  }\r\n\r\n\r\n  $scope.deleteLocally = function () {\r\n    if (!$scope.collectionManager.isInitialized) {\r\n      return;\r\n    }\r\n\r\n    if (!$scope.collectionManager.activeCollection.isDraft) {\r\n      return;\r\n    }\r\n\r\n    $scope.collectionManager.deleteLocally();\r\n    window.location.href = `/${$scope.accountName}/collections`;\r\n  }\r\n\r\n  $scope.downloadAsJson = function () {\r\n    DatabusCollectionUtils.exportToJsonFile($scope.collectionManager.activeCollection);\r\n  }\r\n\r\n  /**\r\n   * Discard local changes of the active collection and revert to the remote collection state\r\n   * @returns \r\n   */\r\n  $scope.discardChanges = function () {\r\n\r\n    if (!$scope.collectionManager.activeCollection.hasLocalChanges) {\r\n      return;\r\n    }\r\n\r\n    if ($scope.collectionManager.activeCollection.isDraft) {\r\n      return;\r\n    }\r\n\r\n    $scope.collectionManager.discardLocalChanges();\r\n    DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_LOCAL_CHANGES_DISCARDED);\r\n  }\r\n\r\n\r\n  $scope.showLoadFromJson = function () {\r\n    $scope.isLoadFromJsonVisible = true;\r\n  }\r\n\r\n  $scope.hideLoadFromJson = function () {\r\n    $scope.isLoadFromJsonVisible = false;\r\n  }\r\n\r\n  $scope.loadFromJsonString = '';\r\n\r\n  $scope.loadFromJson = function (loadFromJsonString) {\r\n    try {\r\n\r\n      \r\n      var toLoad = JSON.parse(loadFromJsonString);\r\n\r\n      var target = $scope.collectionManager.activeCollection;\r\n\r\n      if (toLoad.label != undefined) {\r\n        target.title = toLoad.label;\r\n      }\r\n\r\n      if (toLoad.title != undefined) {\r\n        target.title = toLoad.title;\r\n      }\r\n\r\n      target.description = toLoad.description;\r\n      target.abstract = toLoad.abstract;\r\n\r\n      if (toLoad.content.generatedQuery != undefined || toLoad.content.customQueries) {\r\n        // Datbaus 1.0 Syntax detected\r\n        var replacedJson = loadFromJsonString\r\n          .replace(\"dataid:\", \"databus:\")\r\n          .replace(\"http://dataid.dbpedia.org/ns/cv#\",\r\n          DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX);\r\n\r\n        var toLoad = JSON.parse(replacedJson);\r\n        var databusNode = new QueryNode(DATABUS_RESOURCE_BASE_URL, null);\r\n\r\n        target.content.root = new QueryNode(null, null);\r\n        target.content.root.addChild(databusNode);\r\n\r\n        for(var groupNode of toLoad.content.generatedQuery.root.childNodes) {\r\n          databusNode.addChild(groupNode);\r\n        }\r\n\r\n        for(var customNode of toLoad.content.customQueries) {\r\n\r\n          var label = customNode.label;\r\n          var query = customNode.query;\r\n\r\n          databusNode.addChild(new QueryNode(label, query));\r\n        }\r\n\r\n      } else {\r\n        target.content = toLoad.content;\r\n      }\r\n\r\n      DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_IMPORTED);\r\n      $scope.isLoadFromJsonVisible = false;\r\n    } catch (e) {\r\n      $scope.statusCode = DatabusMessages.CEDIT_COLLECTION_IMPORT_FAILED;\r\n      console.log(e);\r\n    }\r\n  }\r\n\r\n  $scope.getCollectionJson = function () {\r\n    var copy = DatabusCollectionUtils.createCleanCopy($scope.collectionManager.activeCollection);\r\n    delete copy.uuid;\r\n    return copy;\r\n  }\r\n\r\n  $scope.onActiveCollectionChanged();\r\n}\r\n\r\nmodule.exports = CollectionsEditorController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/collections-editor-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/frontpage-controller.js":
-/*!****************************************************!*\
-  !*** ./js/page-controller/frontpage-controller.js ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\n\n/**\n * Controller of the front page\n * @param  {scope} $scope      [description]\n * @param  {http} $http       [description]\n * @param  {sce} $sce        [description]\n */\nfunction FrontPageController($scope, $sce, $http) {\n\n  $scope.databusName = DATABUS_NAME;\n\n  $scope.auth = data.auth;\n\n  $scope.activityChartData = {};\n  $scope.activityChartData.isLoading = true;\n  $scope.utils = new DatabusWebappUtils();\n\n  $scope.searchQuery = \"\";\n  $scope.searchSettings = {\n    minRelevance: 20,\n    maxResults: 25,\n    placeholder: `Search the Databus...`,\n    resourceTypes: undefined,\n    filter: `&typeNameWeight=0`\n  };\n\n  $http.get(`/app/index/activity`).then(function (response) {\n    $scope.activityChartData.entries = response.data;\n    $scope.activityChartData.isLoading = false;\n  }, function (err) {\n    console.log(err);\n  });\n\n  $scope.uploadRankingData = {};\n  $scope.uploadRankingData.isLoading = true;\n\n  $http.get(`/app/index/ranking`).then(function (response) {\n    $scope.uploadRankingData.data = response.data;\n    $scope.uploadRankingData.isLoading = false;\n  }, function (err) {\n    console.log(err);\n  });\n\n  $scope.recentUploadsData = {};\n  $scope.recentUploadsData.isLoading = true;\n\n  $http.get(`/app/index/recent`).then(function (response) {\n    $scope.recentUploadsData.data = response.data;\n    $scope.recentUploadsData.isLoading = false;\n  }, function (err) {\n    console.log(err);\n  });\n\n   // Login function\n   $scope.login = function () {\n    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);\n  }\n\n  $scope.goToPage = function(path) {\n    window.location = path;\n  }\n\n  $scope.account = function() {\n    window.location = '/app/account';\n  }\n\n  for(var d in $scope.uploadRankingData) {\n    $scope.uploadRankingData[d].uploadSize = DatabusUtils.formatFileSize($scope.uploadRankingData[d].uploadSize);\n  }\n\n  for(var d in $scope.recentUploadsData) {\n    $scope.recentUploadsData[d].date = DatabusUtils.formatDate($scope.recentUploadsData[d].date);\n  }\n}\n\n\nmodule.exports = FrontPageController;\n\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/frontpage-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/group-controller.js":
-/*!************************************************!*\
-  !*** ./js/page-controller/group-controller.js ***!
-  \************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ \"./js/publish/dataid-creator.js\");\r\nconst QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\r\nconst QueryNode = __webpack_require__(/*! ../query-builder/query-node */ \"./js/query-builder/query-node.js\");\r\nconst QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\r\nconst DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ \"./js/utils/databus-constants.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\nfunction GroupPageController($scope, $http, $sce, $interval, $location, collectionManager) {\r\n\r\n  $scope.group = data.group;\r\n  // $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));\r\n  $scope.auth = data.auth;\r\n\r\n  $scope.utils = new DatabusWebappUtils($scope, $sce);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n\r\n\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    'files', 'artifacts', 'edit'\r\n  ]);\r\n\r\n  $scope.dataSearchInput = \"\";\r\n  $scope.dataSearchSettings = {\r\n    minRelevance: 0.01,\r\n    maxResults: 10,\r\n    placeholder: `Search ${$scope.accountName}'s data...`,\r\n    resourceTypes: ['Artifact'],\r\n    filter: `&publisher=${$scope.accountName}&typeNameWeight=0&group=${$scope.group.name}`\r\n  };\r\n\r\n\r\n  $scope.group.hasData = false;\r\n  $scope.group.hasArtifacts = false;\r\n  $scope.isLoading = true;\r\n\r\n  $http({\r\n    method: 'GET',\r\n    url: `/app/group/get-artifacts?uri=${encodeURIComponent($scope.group.uri)}`\r\n  }).then(function successCallback(response) {\r\n\r\n    $scope.artifacts = response.data;\r\n\r\n    for (var artifact of $scope.artifacts) {\r\n      if (artifact.latestVersionDate != undefined) {\r\n        $scope.group.hasData = true;\r\n      }\r\n\r\n      artifact.title = DatabusUtils.stringOrFallback(artifact.title, artifact.latestVersionTitle);\r\n      artifact.abstract = DatabusUtils.stringOrFallback(artifact.abstract, artifact.latestVersionAbstract);\r\n      artifact.description = DatabusUtils.stringOrFallback(artifact.description, artifact.latestVersionDescription);\r\n    }\r\n\r\n    $scope.group.hasArtifacts = $scope.artifacts.length > 0;\r\n    $scope.isLoading = false;\r\n  }, function errorCallback(response) {\r\n    $scope.isLoading = false;\r\n  });\r\n\r\n\r\n  $scope.pageTitle = DatabusUtils.stringOrFallback($scope.group.title,\r\n    DatabusUtils.uriToTitle($scope.group.uri));\r\n\r\n\r\n  $scope.canEdit = $scope.accountName != null;\r\n\r\n  if (data.auth.authenticated && $scope.canEdit) {\r\n\r\n    var abstract = DatabusUtils.createAbstractFromDescription($scope.group.description);\r\n    $scope.formData = {};\r\n    $scope.formData.group = {};\r\n    $scope.formData.group.generateAbstract = abstract == $scope.group.abstract;\r\n    $scope.formData.group.name = $scope.group.name;\r\n    $scope.formData.group.title = $scope.group.title;\r\n    $scope.formData.group.abstract = $scope.group.abstract;\r\n    $scope.formData.group.description = $scope.group.description;\r\n\r\n    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);\r\n  }\r\n\r\n  $scope.onDescriptionChanged = function () {\r\n    if ($scope.formData == null) {\r\n      return;\r\n    }\r\n\r\n    if (!$scope.formData.group.generateAbstract) {\r\n      return;\r\n    }\r\n\r\n    $scope.formData.group.abstract =\r\n      DatabusUtils.createAbstractFromDescription($scope.formData.group.description);\r\n  }\r\n\r\n  $scope.resetEdits = function () {\r\n    $scope.formData.group.title = $scope.group.title;\r\n    $scope.formData.group.abstract = $scope.group.abstract;\r\n    $scope.formData.group.description = $scope.group.description;\r\n  }\r\n\r\n  $scope.saveGroup = async function () {\r\n\r\n    if ($scope.dataidCreator == null) {\r\n      return;\r\n    }\r\n\r\n    var groupUpdate = $scope.dataidCreator.createGroupUpdate();\r\n\r\n    var relativeUri = new URL($scope.group.uri).pathname;\r\n    var response = await $http.post('/api/register', groupUpdate);\r\n\r\n    if (response.status == 200) {\r\n      $scope.group.title = $scope.formData.group.title;\r\n      $scope.group.abstract = $scope.formData.group.abstract;\r\n      $scope.group.description = $scope.formData.group.description;\r\n\r\n\r\n      $scope.pageTitle = DatabusUtils.stringOrFallback($scope.group.title,\r\n        DatabusUtils.uriToTitle($scope.group.uri));\r\n\r\n      DatabusAlert.alert($scope, true, \"Group Saved!\");\r\n      $scope.$apply();\r\n    }\r\n  }\r\n\r\n  $scope.facetsView = {};\r\n  $scope.facetsView.resourceUri = $scope.group.uri;\r\n  $scope.facetsView.settings = [];\r\n  $scope.facetsView.parentSettings = null;\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.selection = [];\r\n\r\n  $scope.input = {};\r\n  $scope.input.search = '';\r\n  $scope.searchCooldown = 500;\r\n  $scope.searchChanged = true;\r\n  $scope.searchReady = true;\r\n\r\n  $scope.fileSelector = {};\r\n  $scope.fileSelector.config = {};\r\n  $scope.fileSelector.config.authenticated = $scope.authenticated;\r\n  $scope.fileSelector.config.columns = [];\r\n  $scope.fileSelector.config.columns.push({ field: 'artifact', label: 'Artifact', width: '30%', uriToName: true });\r\n  $scope.fileSelector.config.columns.push({ field: 'version', label: 'Version', width: '21%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '16%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '9%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '6%' });\r\n\r\n  $scope.groupNode = new QueryNode($scope.group.uri, 'databus:group');\r\n  $scope.groupNode.setFacet('http://purl.org/dc/terms/hasVersion', DatabusConstants.FACET_LATEST_VERSION_VALUE, true);\r\n\r\n  $scope.onFacetSettingsChanged = function () {\r\n    $scope.fileSelector.query = QueryBuilder.build({\r\n      node: $scope.groupNode,\r\n      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n\r\n    $scope.fileSelector.fullQuery = QueryBuilder.build({\r\n      node: $scope.groupNode,\r\n      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n  }\r\n\r\n  // $scope.onFacetSettingsChanged();\r\n\r\n  $scope.collectionWidgetSelectionData = {};\r\n  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;\r\n\r\n  $scope.onFileQueryResult = function (args) {\r\n    if (args == null) return;\r\n    $scope.collectionWidgetSelectionData.query = args.query;\r\n  }\r\n\r\n  $scope.collectionManager = collectionManager;\r\n\r\n  $scope.findArtifact = function (uri) {\r\n    return $scope.artifacts.find(function (a) { a.uri === uri; });\r\n  }\r\n\r\n  $scope.formatResult = function (result) {\r\n    return $sce.trustAsHtml(result);\r\n  }\r\n\r\n\r\n  $scope.formatLicense = function (licenseUri) {\r\n    var licenseName = DatabusUtils.uriToName(licenseUri);\r\n\r\n    var html = '<div class=\"license-icon\">' + licenseName + '</div>'\r\n    return $sce.trustAsHtml(html);\r\n  }\r\n\r\n  for (var a in $scope.artifacts) {\r\n    $scope.artifacts[a].date = $scope.formatDate($scope.artifacts[a].date);\r\n    $scope.artifacts[a].licenseTag = $scope.formatLicense($scope.artifacts[a].license);\r\n  }\r\n\r\n  $scope.setSelectionStateAll = function (val) {\r\n    if (val) {\r\n      for (var a in $scope.artifacts) {\r\n        $scope.select($scope.artifacts[a]);\r\n      }\r\n    } else {\r\n      for (var a in $scope.artifacts) {\r\n        $scope.deselect($scope.artifacts[a]);\r\n      }\r\n    }\r\n  }\r\n\r\n  $scope.toggleSelect = function (artifact) {\r\n    if ($scope.isSelected(artifact)) {\r\n      $scope.deselect(artifact);\r\n    } else {\r\n      $scope.select(artifact);\r\n    }\r\n  }\r\n\r\n  $scope.select = function (artifact) {\r\n    artifact.isSelected = true;\r\n    $scope.selection.push(artifact.uri);\r\n  }\r\n\r\n  $scope.deselect = function (artifact) {\r\n    artifact.isSelected = false;\r\n    $scope.selection = $scope.selection.filter(function (value, index, arr) {\r\n      return value !== artifact.uri;\r\n    });\r\n  }\r\n\r\n  $scope.isSelected = function (artifact) {\r\n    for (var s in $scope.selection) {\r\n      if ($scope.selection[s] === artifact.uri) {\r\n        return true;\r\n      }\r\n    }\r\n    return false;\r\n  }\r\n\r\n  $scope.changeCollection = function (collection) {\r\n    $scope.collectionManager.setActive(collection.uuid);\r\n    $scope.search();\r\n  }\r\n\r\n  $scope.showCollectionModal = function () {\r\n    $('#add-to-collection-modal').addClass('is-active');\r\n  }\r\n\r\n  $scope.hideCollectionModal = function () {\r\n    $('#add-to-collection-modal').removeClass('is-active');\r\n  }\r\n\r\n  $scope.markdownToHtml = function (markdown) {\r\n\r\n    var converter = window.markdownit();\r\n    return $sce.trustAsHtml(converter.render(markdown));\r\n  };\r\n\r\n\r\n  $scope.invokeSearch = function () {\r\n    if ($scope.searchReady) {\r\n      $scope.search();\r\n      $scope.searchReady = false;\r\n    } else {\r\n      $scope.searchChanged = true;\r\n    }\r\n  }\r\n\r\n  $interval(function () {\r\n    if ($scope.searchChanged) {\r\n      $scope.search();\r\n      $scope.searchChanged = false;\r\n    }\r\n    $scope.searchReady = true;\r\n  }, $scope.searchCooldown);\r\n\r\n\r\n  $scope.addSelectionToCollection = function () {\r\n\r\n    if ($scope.collectionManager.activeCollection == null) {\r\n      return;\r\n    }\r\n\r\n    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);\r\n\r\n    for (var s in $scope.selection) {\r\n      var artifact = $scope.artifacts.find(function (a) { return a.uri === $scope.selection[s]; });\r\n      wrapper.addArtifactNode(artifact.uri, artifact.label);\r\n    }\r\n    $scope.collectionManager.saveLocally();\r\n    $scope.search();\r\n  }\r\n\r\n  $scope.updateArtifactState = function (wrapper, artifact) {\r\n    artifact.alreadyAdded = wrapper.hasArtifact(artifact.uri);\r\n    artifact.isSelected = artifact.alreadyAdded || $scope.selection.includes(artifact.uri);\r\n  }\r\n\r\n\r\n\r\n  $scope.search = function () {\r\n\r\n    $scope.searchResult = [];\r\n\r\n    var typeFilters = `&publisher=${$scope.accountName}&publisherWeight=0&typeName=Artifact&typeNameWeight=0&group=${$scope.group.name}&minRelevance=0.1`;\r\n\r\n    $http({\r\n      method: 'GET',\r\n      url: '/api/search?query=' + $scope.input.search + typeFilters\r\n    }).then(function successCallback(response) {\r\n\r\n      for (var r in response.data.docs) {\r\n        var result = response.data.docs[r];\r\n\r\n        for (var artifact of $scope.artifacts) {\r\n          if (result.id[0] == artifact.uri) {\r\n            $scope.searchResult.push(artifact);\r\n          }\r\n        }\r\n      }\r\n    }, function errorCallback(response) {\r\n    });\r\n  }\r\n}\r\n\r\nmodule.exports = GroupPageController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/group-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/header-controller.js":
-/*!*************************************************!*\
-  !*** ./js/page-controller/header-controller.js ***!
-  \*************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("var DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\n\r\n// Controller for the header section\r\nfunction HeaderController($scope, $http, collectionManager, searchManager) {\r\n\r\n  $scope.auth = data.auth;\r\n  $scope.authenticated = data.auth.authenticated;\r\n\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n  \r\n\r\n  // Check for cookie settings\r\n  $scope.databusCookieConsentKey = 'databus_cookie_consent';\r\n  let cookieConsent = window.localStorage.getItem($scope.databusCookieConsentKey);\r\n  $scope.showCookieDialogue = cookieConsent === undefined;\r\n\r\n  $scope.collectionManager = collectionManager;\r\n\r\n  if ($scope.authenticated) {\r\n\r\n    $scope.collectionManager.tryInitialize($scope.accountName);\r\n    // Collection Manager Init\r\n    // Initialize search manager\r\n    searchManager.initialize();\r\n  } else {\r\n    $scope.collectionManager.clearSession();\r\n  }\r\n\r\n  $scope.hideAccountMenu = function() {\r\n    $scope.isAccountMenuActive = false;\r\n  }\r\n\r\n  $scope.showAccountMenu = function() {\r\n    $scope.isAccountMenuActive = true;\r\n  }\r\n\r\n  // Finds a display name for the account\r\n  $scope.getAccountName = function () {\r\n    if ($scope.auth.info.accountName) {\r\n      return $scope.auth.info.accountName;\r\n    }\r\n\r\n    if ($scope.auth.info.oidc_email) {\r\n      return $scope.auth.info.oidc_email;\r\n    }\r\n\r\n    if ($scope.auth.info.oidc_name) {\r\n      return $scope.auth.info.oidc_name;\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n  $scope.isMenuActive = false;\r\n  $scope.isAccountMenuActive = false;\r\n\r\n  // Coookieees\r\n  $scope.giveCookieConsent = function () {\r\n    window.localStorage.setItem($scope.databusCookieConsentKey, true);\r\n    $scope.showCookieDialogue = false;\r\n  }\r\n\r\n  // Login function\r\n  $scope.login = function () {\r\n    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  // Logout function\r\n  $scope.logout = function () {\r\n    $scope.hideAccountMenu();\r\n    window.location = '/app/logout?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  // ???\r\n  $scope.size = function () {\r\n    if ($scope.collectionManager == null) {\r\n      return \"\";\r\n    }\r\n\r\n    var first = $scope.collectionManager.current;\r\n    return first != null ? first.elements.length : \"\";\r\n  }\r\n}\r\n\r\nmodule.exports = HeaderController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/header-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/profile-controller.js":
-/*!**************************************************!*\
-  !*** ./js/page-controller/profile-controller.js ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst SearchAdapter = __webpack_require__(/*! ../search/search-adapter */ \"./js/search/search-adapter.js\");\r\nconst DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ \"./js/utils/databus-messages.js\");\r\nconst DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ \"./js/utils/databus-constants.js\");\r\nconst AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ \"./js/utils/app-json-formatter.js\");\r\n\r\nfunction ProfileController($scope, $http) {\r\n\r\n  $scope.account = data.account;\r\n  $scope.auth = data.auth;\r\n\r\n  if (data.owner != null) {\r\n    $scope.account.apiKeys = data.owner.apiKeys;\r\n  }\r\n  $scope.auth = data.auth;\r\n  $scope.preferredDatabusUsername = \"\";\r\n  $scope.createApiKeyName = \"\"\r\n  $scope.createAccountError = \"\";\r\n  $scope.createApiKeyError = \"\";\r\n  $scope.addWebIdUri = \"\";\r\n  $scope.deleteAccountName = \"\";\r\n  $scope.grantAccessUri = \"\";\r\n  $scope.adapters = SearchAdapter.list;\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n\r\n  $scope.personUri = `${DATABUS_RESOURCE_BASE_URL}/${$scope.accountName}${DatabusConstants.WEBID_THIS}`;\r\n\r\n  $scope.putProfile = function (accountName) {\r\n\r\n    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${accountName}`;\r\n    var accountJsonLd = AppJsonFormatter.createAccountData(\r\n      accountUri,\r\n      accountName,\r\n      null,\r\n      null);\r\n\r\n    $http.post(`/api/register`, accountJsonLd).then(function (result) {\r\n      window.location.reload(true);\r\n    }, function (err) {\r\n      console.log(err);\r\n      $scope.createAccountError = err.data;\r\n    });\r\n  }\r\n\r\n\r\n  if ($scope.account == undefined) {\r\n\r\n    $scope.createProfile = function () {\r\n\r\n      if ($scope.isSubmitting) {\r\n        return;\r\n      }\r\n\r\n      $scope.isSubmitting = true;\r\n\r\n      if (!$scope.auth.authenticated) {\r\n        return;\r\n      }\r\n\r\n      var accountName = $scope.preferredDatabusUsername;\r\n\r\n      if (accountName == undefined || !DatabusUtils.isValidAccountName(accountName)) {\r\n        $scope.createAccountError = \"Enter a valid account name.\"\r\n        $scope.showAccountNameHints = true;\r\n        return;\r\n      }\r\n\r\n      $scope.showAccountNameHints = false;\r\n      $scope.putProfile(accountName);\r\n    }\r\n\r\n    return;\r\n  }\r\n\r\n  $scope.addApiKey = async function () {\r\n    // Validate the name input only\r\n\r\n    if (!$scope.createApiKeyName) {\r\n      DatabusAlert.alert(\"API key name must be provided.\");\r\n      return;\r\n    }\r\n\r\n    let account = $scope.account;\r\n\r\n    const postData = {\r\n      accountName: account.accountName,\r\n      keyname: $scope.createApiKeyName\r\n    };\r\n\r\n    try {\r\n      // Send POST request to create the API key\r\n      let response = await $http.post('/api/account/api-key/create', postData);\r\n\r\n      if (response.data && response.data.apikey && response.data.keyname) {\r\n        // Append new key to the list\r\n        account.apiKeys.push({\r\n          keyname: response.data.keyname,\r\n          apikey: response.data.apikey\r\n        });\r\n\r\n        // Clear the name input field\r\n        $scope.createApiKeyName = '';\r\n\r\n        DatabusAlert.alert($scope, true, \"API key created.\");\r\n      } else {\r\n        DatabusAlert.alert($scope, false, \"Failed to create API key.\");\r\n      }\r\n\r\n    } catch (error) {\r\n      console.error('Error creating API key:', error);\r\n      const message = error.data || error.message || \"Unknown error occurred.\";\r\n      DatabusAlert.alert($scope, false, message);\r\n    }\r\n  };\r\n\r\n\r\n  $scope.deleteApiKey = async function (apiKey) {\r\n    try {\r\n\r\n      let account = $scope.account;\r\n      // Find index of the account using accountName\r\n      const index = account.apiKeys.findIndex(key => key.keyname === apiKey.keyname);\r\n\r\n      if (index === -1) {\r\n        throw new Error(`API key with name \"${apiKey.keyname}\" not found.`);\r\n      }\r\n\r\n      console.log(\"Deleting API key with keyname:\", apiKey.keyname);\r\n\r\n      // Send delete request to server\r\n      await $http.post(`/api/account/api-key/delete`, { accountName: account.accountName, keyname: apiKey.keyname });\r\n      account.apiKeys.splice(index, 1);\r\n\r\n      // Show success alert\r\n      DatabusAlert.alert($scope, true, \"API key deleted.\");\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n\r\n\r\n\r\n      const message = err.data || err.message || \"Unknown error occurred.\";\r\n      DatabusAlert.alert($scope, false, message);\r\n    }\r\n  };\r\n\r\n  $scope.addSecretary = function (account) {\r\n    if (!$scope.editData.secretaries) {\r\n      $scope.editData.secretaries = [];\r\n    }\r\n\r\n    $scope.editData.secretaries.push({\r\n      accountName: '',\r\n      hasWriteAccessTo: []\r\n    });\r\n  };\r\n\r\n  $scope.removeSecretary = function (account, index) {\r\n    $scope.editData.secretaries.splice(index, 1);\r\n  };\r\n\r\n  $scope.addNamespace = function (account, secIndex) {\r\n    $scope.editData.secretaries[secIndex].hasWriteAccessTo.push('');\r\n  };\r\n\r\n  $scope.removeNamespace = function (account, secIndex, nsIndex) {\r\n    $scope.editData.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);\r\n  };\r\n\r\n\r\n  $scope.onCreateApiKeyNameChanged = function () {\r\n    var hasError = !DatabusUtils.isValidResourceLabel($scope.createApiKeyName, 3, 20);\r\n    $scope.createApiKeyError = hasError ? \" API key name must have between 3 and 20 characters and match [A-Za-z0-9\\\\s_()\\\\.\\\\,\\\\-]*\" : \"\";\r\n  }\r\n\r\n\r\n  $scope.removeSearchExtension = function (uri) {\r\n    $http.post(`/api/account/mods/search-extensions/remove?uri=${encodeURIComponent(uri)}`)\r\n      .then(function (result) {\r\n        console.log(result);\r\n        DatabusAlert.alert($scope, true, result.data);\r\n\r\n        $scope.account.searchExtensions = $scope.account.searchExtensions.filter(function (e) {\r\n          return e.endpointUri != uri;\r\n        });\r\n\r\n      }, function (err) {\r\n        console.log(err);\r\n        DatabusAlert.alert($scope, false, err.data);\r\n      });\r\n  }\r\n\r\n  $scope.addSearchExtension = function () {\r\n    var uri = $scope.modsSettings.searchExtensionURI;\r\n    var adapter = $scope.modsSettings.searchExtensionAdapter.name;\r\n\r\n    $http.post(`/api/account/mods/search-extensions/add?uri=${encodeURIComponent(uri)}&adapter=${adapter}`)\r\n      .then(function (result) {\r\n        console.log(result);\r\n        DatabusAlert.alert($scope, true, result.data);\r\n        $scope.account.searchExtensions.push({\r\n          endpointUri: uri,\r\n          adapter: adapter\r\n        });\r\n      }, function (err) {\r\n        console.log(err);\r\n        DatabusAlert.alert($scope, false, err.data);\r\n      });\r\n  }\r\n\r\n  $scope.grantAccess = function () {\r\n    $http.post(`/api/account/access/grant?uri=${encodeURIComponent($scope.grantAccessUri)}`).then(function (result) {\r\n      $scope.account.authorizedAccounts.push($scope.grantAccessUri);\r\n    }, function (err) {\r\n      console.log(err);\r\n      $scope.grantAccessError = err.data;\r\n    });\r\n  }\r\n\r\n  $scope.revokeAccess = function (uri) {\r\n    $http.post(`/api/account/access/revoke?uri=${encodeURIComponent(uri)}`).then(function (result) {\r\n      $scope.account.authorizedAccounts = $scope.account.webIds.filter(function (value, index, arr) {\r\n        return value != uri;\r\n      });\r\n    }, function (err) {\r\n      console.log(err);\r\n      $scope.grantAccessError = err.data;\r\n    });\r\n  }\r\n\r\n  $scope.connectWebid = function () {\r\n\r\n    $http.post(`/api/account/webid/add?uri=${encodeURIComponent($scope.addWebIdUri)}`).then(function (result) {\r\n      $scope.account.webIds.push($scope.addWebIdUri);\r\n      DatabusAlert.alert($scope, true, DatabusMessages.ACCOUNT_WEBID_LINKED);\r\n\r\n    }, function (err) {\r\n      console.log(err);\r\n      $scope.addWebIdError = err.data;\r\n    });\r\n  }\r\n\r\n  $scope.removeWebId = function (webIdToRemove) {\r\n\r\n    $http.post(`/api/account/webid/remove?uri=${encodeURIComponent(webIdToRemove)}`).then(function (result) {\r\n\r\n      $scope.account.webIds = $scope.account.webIds.filter(function (value, index, arr) {\r\n        return value != webIdToRemove;\r\n      });\r\n\r\n    }, function (err) {\r\n      console.log(err);\r\n      $scope.addWebIdError = err.data;\r\n    });\r\n  }\r\n\r\n\r\n  $scope.deleteAccount = async function () {\r\n    let account = $scope.account;\r\n    let name = $scope.deleteAccountName;\r\n\r\n    try {\r\n      let response = await $http.post(`/api/account/delete`, { accountName: name });\r\n\r\n      window.location = `/app/user`;\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n      DatabusAlert.alert($scope, false, err.data);\r\n    }\r\n\r\n  }\r\n\r\n  $scope.updateAccount = async function () {\r\n\r\n    if (!$scope.auth.authenticated) {\r\n      return;\r\n    }\r\n\r\n    let account = {};\r\n    account.uri = $scope.editData.uri;\r\n\r\n    account.accountName = $scope.editData.accountName;\r\n    account.label = $scope.editData.label;\r\n    account.status = $scope.editData.about;\r\n    account.imageUrl = $scope.editData.imageUrl;\r\n    account.secretaries = $scope.editData.secretaries;\r\n\r\n\r\n    try {\r\n      await $http.post(`/api/account/update`, account);\r\n      DatabusAlert.alert($scope, true, \"Account saved.\");\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n      DatabusAlert.alert($scope, false, err.data);\r\n    }\r\n  }\r\n\r\n\r\n  // We have profile data in $scope.account!\r\n\r\n  if (!$scope.account.isOwn) {\r\n    return;\r\n  }\r\n\r\n  $scope.modsSettings = {}\r\n  $scope.modsSettings.searchExtensionURI = \"\";\r\n  $scope.modsSettings.searchExtensionAdapter = $scope.adapters[0];\r\n\r\n\r\n  $scope.editData = DatabusUtils.createCleanCopy($scope.account);\r\n\r\n  $scope.resetEdits = function () {\r\n    $scope.editData = DatabusUtils.createCleanCopy($scope.account);\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = ProfileController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/profile-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/publish-wizard-controller.js":
-/*!*********************************************************!*\
-  !*** ./js/page-controller/publish-wizard-controller.js ***!
-  \*********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst PublishSession = __webpack_require__(/*! ../publish/publish-session */ \"./js/publish/publish-session.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\n// Controller for the header section\r\nasync function PublishWizardController($scope, $http, $interval, focus, $q, $location) {\r\n\r\n  $scope.login = function () {\r\n    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    '', 'group', 'artifact', 'version'\r\n  ]);\r\n\r\n\r\n  $scope.createAccount = function () {\r\n    window.location = '/app/user';\r\n  }\r\n\r\n  // Login function\r\n  $scope.login = function () {\r\n    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.loadRequestCount = 0;\r\n  $scope.texts = data.texts;\r\n\r\n  $scope.nerdMode = {};\r\n  $scope.nerdMode.enabled = false;\r\n  $scope.nerdMode.customJson = \"\";\r\n  $scope.nerdMode.logLevelOptions = ['error', 'info', 'debug'];\r\n  $scope.nerdMode.logLevel = 'error';\r\n\r\n  // controller does not work without authentication\r\n  if (!$scope.authenticated) {\r\n    return;\r\n  }\r\n\r\n  let accounts = data.auth.info.accounts;\r\n  $scope.hasAccount = accounts != undefined && accounts.length > 0;\r\n\r\n  $scope.accounts = [];\r\n\r\n  for(let account of accounts) {\r\n    $scope.accounts.push({\r\n      accountName: account.accountName,\r\n      apiKeys: account.apiKeys\r\n    });\r\n  }\r\n\r\n  if (!$scope.hasAccount) {\r\n    return;\r\n  }\r\n\r\n  // $scope.session = await PublishSession.createOrResume($http, data.auth.sub, $scope.accounts);\r\n\r\n  $scope.session = new PublishSession($http, $interval, $scope.accounts, $scope.apiKeys);\r\n\r\n}\r\n  /**\r\n   * Fetches existing groups and artifacts\r\n  \r\n  $scope.getContentForAccount = async function (accountName) {\r\n\r\n    $scope.isAccountDataLoading = true;\r\n    var uri = `/app/account/content?account=${encodeURIComponent(accountName)}`;\r\n    var response = await $http.get(uri);\r\n    $scope.isAccountDataLoading = false;\r\n\r\n    // Put account artifacts, groups and name in one object\r\n    var accountData = response.data;\r\n    accountData.accountName = accountName;\r\n\r\n    accountData.publisherUris = [];\r\n    for (var p of data.publisherData) {\r\n      accountData.publisherUris.push(p.publisherUri);\r\n    }\r\n\r\n    $scope.session = new PublishSession($http);\r\n\r\n    /*\r\n    $scope.$watch('session', function () {\r\n      $scope.session.onChange();\r\n    }, true);\r\n\r\n    $scope.$apply();\r\n   \r\n  }\r\n\r\n  // $scope.getContentForAccount(data.auth.info.accounts[0]);\r\n\r\n  /**\r\n   * LICENSES\r\n  \r\n\r\n  \r\n\r\n  $scope.addFile = function (input) {\r\n\r\n    var session = $scope.session;\r\n\r\n    if (input == undefined || input.length == 0) {\r\n      return;\r\n    }\r\n\r\n    $scope.loadRequestCount++;\r\n\r\n    $http.get('/app/publish-wizard/fetch-file?url=' + encodeURIComponent(input)).then(function (response) {\r\n\r\n      $scope.loadRequestCount--;\r\n      if (response.data == null || response.data == \"\" || response.status != 200) {\r\n        return;\r\n      }\r\n\r\n      session.addFile(response.data);\r\n\r\n    }, function (err) { });\r\n  }\r\n\r\n  $scope.objSize = function (obj) {\r\n    return DatabusUtils.objSize(obj);\r\n  }\r\n\r\n  $scope.removeFile = function (fileGroup) {\r\n    var files = $scope.session.formData.version.files;\r\n    files.splice(files.findIndex(f => f.uri == fileGroup.uri), 1);\r\n    $scope.session.formData.version.isConfigDirty = true;\r\n  }\r\n\r\n  $scope.hasError = function (errorList, error) {\r\n    return errorList.includes(error);\r\n  }\r\n\r\n  // Fetch links using the fetch-links API of the Databus\r\n  $scope.fetchFiles = function (parentUri) {\r\n\r\n    $http.get('/app/publish-wizard/fetch-resource-page?url=' + encodeURIComponent(parentUri)).then(function (response) {\r\n      for (var i in response.data) {\r\n        var uri = response.data[i];\r\n        $scope.addFile(uri);\r\n      }\r\n    }, function (err) {\r\n    });\r\n  }\r\n\r\n  $scope.addFiles = function (input) {\r\n    var lines = input.split('\\n');\r\n\r\n    for (var line of lines) {\r\n      if (line != undefined && line.length > 0) {\r\n        $scope.addFile(line);\r\n      }\r\n    }\r\n  }\r\n\r\n  $scope.createTractate = function () {\r\n    $scope.creatingTractate = true;\r\n    $http.post('/api/tractate/v1/canonicalize', $scope.session.inputs.dataid).then(function (response) {\r\n      $scope.session.formData.signature.tractate = response.data;\r\n      $scope.creatingTractate = false;\r\n    }, function (err) {\r\n      $scope.creatingTractate = false;\r\n      console.log(err);\r\n    });\r\n  }\r\n\r\n\r\n  $scope.customPublish = async function () {\r\n    var options = {}\r\n    options.headers = {\r\n      'Accept': 'application/json, text/plain',\r\n      'Content-Type': 'application/json',\r\n    }\r\n\r\n\r\n    $scope.isPublishing = true;\r\n    $http.post(`/api/publish?fetch-file-properties=true&log-level=${$scope.nerdMode.logLevel}`, $scope.nerdMode.customJson, options)\r\n      .then(function (response) {\r\n        $scope.publishLog = response.data.log;\r\n        $scope.isPublishing = false;\r\n      }, function (err) {\r\n        $scope.publishLog = err.data.log;\r\n        $scope.isPublishing = false;\r\n        console.log(err);\r\n      });\r\n  }\r\n\r\n\r\n  $scope.publish = async function () {\r\n    var options = {}\r\n    options.headers = {\r\n      'Accept': 'application/json, text/plain',\r\n      'Content-Type': 'application/json',\r\n    }\r\n\r\n    $scope.isPublishing = true;\r\n    $http.post('/api/publish?fetch-file-properties=true&log-level=info', $scope.session.inputs.all, options)\r\n      .then(function (response) {\r\n        $scope.publishLog = response.data.log;\r\n        $scope.isPublishing = false;\r\n      }, function (err) {\r\n        $scope.publishLog = err.data.log;\r\n        $scope.isPublishing = false;\r\n        console.log(err);\r\n      });\r\n  } */\r\n\r\n\r\n\r\n\r\nmodule.exports = PublishWizardController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/publish-wizard-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/sparql-editor-controller.js":
-/*!********************************************************!*\
-  !*** ./js/page-controller/sparql-editor-controller.js ***!
-  \********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("var DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst SparqlExamples = __webpack_require__(/*! ../utils/sparql-examples */ \"./js/utils/sparql-examples.js\");\r\n\r\n// Controller for the header section\r\nfunction SparqlEditorController($scope, $http, $location) {\r\n\r\n\r\n  $scope.storageKey = `${DATABUS_RESOURCE_BASE_URL}/sparql`;\r\n\r\n  $scope.auth = data.auth;\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.utils = new DatabusWebappUtils($scope);\r\n\r\n\r\n  $scope.editor = {};\r\n\r\n\r\n\r\n  $scope.$on('$locationChangeSuccess', function () {\r\n    var hash = $location.hash();\r\n\r\n    if (hash && hash.startsWith('query')) {\r\n      var tabIndex = parseInt(hash.replace('query', '')) - 1;\r\n\r\n      // Only change if the tab exists and is different from current\r\n      if (!isNaN(tabIndex) &&\r\n        tabIndex >= 0 &&\r\n        tabIndex < $scope.queryData.pages.length &&\r\n        $scope.queryData.activeTab !== tabIndex) {\r\n        $scope.goToTab(tabIndex);\r\n        $scope.$applyAsync();\r\n      }\r\n    }\r\n  });\r\n\r\n  $scope.editor.exampleQueries = {};\r\n  $scope.editor.exampleQueries.label = \"Databus Example Queries\";\r\n  $scope.editor.exampleQueries.children = [];\r\n\r\n  var simpleQueries = {\r\n    label: \"Simple Queries\",\r\n    children: []\r\n  };\r\n\r\n  var intermediateQueries = {\r\n    label: \"Intermediate Queries\",\r\n    children: []\r\n  };\r\n\r\n  simpleQueries.children.push({\r\n    label: \"Select all Databus Groups\",\r\n    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\nPREFIX dct: <http://purl.org/dc/terms/>\r\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\r\nPREFIX sec: <https://w3id.org/security#>\r\nPREFIX cert: <http://www.w3.org/ns/auth/cert#>\r\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\r\nPREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>\r\nPREFIX dbo: <http://dbpedia.org/ontology/>\r\n\r\nSELECT DISTINCT * WHERE {\r\n  ?s a databus:Group .\r\n}`\r\n  });\r\n\r\n  simpleQueries.children.push({\r\n    label: \"Select all Databus Artifacts\",\r\n    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\nPREFIX dct: <http://purl.org/dc/terms/>\r\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\r\nPREFIX sec: <https://w3id.org/security#>\r\nPREFIX cert: <http://www.w3.org/ns/auth/cert#>\r\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\r\nPREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>\r\nPREFIX dbo: <http://dbpedia.org/ontology/>\r\n\r\nSELECT DISTINCT * WHERE {\r\n  ?s a databus:Artifact .\r\n}`\r\n  });\r\n\r\n  simpleQueries.children.push({\r\n    label: \"Select all Databus Versions\",\r\n    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\nPREFIX dct: <http://purl.org/dc/terms/>\r\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\r\nPREFIX sec: <https://w3id.org/security#>\r\nPREFIX cert: <http://www.w3.org/ns/auth/cert#>\r\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\r\nPREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>\r\nPREFIX dbo: <http://dbpedia.org/ontology/>\r\n\r\nSELECT DISTINCT * WHERE {\r\n  ?s a databus:Version .\r\n}`\r\n  });\r\n\r\n  intermediateQueries.children.push({\r\n    label: \"Latest Version of Artifact\",\r\n    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\nPREFIX dct: <http://purl.org/dc/terms/>\r\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\r\nPREFIX sec: <https://w3id.org/security#>\r\nPREFIX cert: <http://www.w3.org/ns/auth/cert#>\r\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\r\nPREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>\r\nPREFIX dbo: <http://dbpedia.org/ontology/>\r\n\r\nSELECT ?version WHERE\r\n{\r\n  GRAPH ?g\r\n  {\r\n    ?version databus:artifact <INSERT_ARTIFACT_URI_HERE> .\r\n    ?version dct:hasVersion ?v . \r\n  }\r\n} \r\nORDER BY DESC (STR(?v)) LIMIT 1`\r\n  });\r\n\r\n\r\n  $scope.editor.exampleQueries.children.push(simpleQueries);\r\n  $scope.editor.exampleQueries.children.push(intermediateQueries);\r\n\r\n  $scope.onExampleQueryClicked = function (node) {\r\n\r\n    if (node.query == null) {\r\n      return;\r\n    }\r\n\r\n    $scope.createQueryPage();\r\n\r\n    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];\r\n\r\n    queryPage.query = node.query;\r\n    $scope.saveToStorage();\r\n  }\r\n\r\n  $scope.goToTab = function (index) {\r\n    $scope.queryData.activeTab = index;\r\n    $scope.saveToStorage();\r\n\r\n    $location.hash(`query${index + 1}`);\r\n\r\n\r\n    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];\r\n\r\n    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {\r\n      $scope.editor.result = $scope.resultCache[queryPage.name];\r\n    } else {\r\n      $scope.editor.result = null;\r\n    }\r\n  }\r\n\r\n  $scope.saveToStorage = function () {\r\n    localStorage.setItem($scope.storageKey, JSON.stringify($scope.queryData));\r\n  }\r\n\r\n  $scope.deleteQueryPage = function ($index) {\r\n\r\n    // Delete result cache entry\r\n    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];\r\n    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {\r\n      delete $scope.resultCache[queryPage.name];\r\n      $scope.saveResultCache();\r\n    }\r\n\r\n    $scope.queryData.pages.splice($index, 1);\r\n\r\n    if ($scope.queryData.pages.length == 0) {\r\n      $scope.initialize();\r\n    }\r\n    else {\r\n      var validTab = Math.min($scope.queryData.activeTab, $scope.queryData.pages.length - 1);\r\n\r\n      if (validTab != $scope.queryData.activeTab) {\r\n        $scope.goToTab(validTab);\r\n      }\r\n    }\r\n  }\r\n\r\n  $scope.createQueryPage = function () {\r\n\r\n    var queryName = null;\r\n    var queryNameIndex = 1;\r\n\r\n    // find unoccupied name\r\n    while (queryNameIndex < 100000) {\r\n\r\n      // Create a candidate\r\n      var hasName = true;\r\n      queryName = `Query ${queryNameIndex}`;\r\n\r\n      // Check if already in use\r\n      for (var queryPage of $scope.queryData.pages) {\r\n        if (queryPage.name == queryName) {\r\n          hasName = false;\r\n        }\r\n      }\r\n\r\n      // Found name, stop searching.\r\n      if (hasName) {\r\n        break;\r\n      }\r\n\r\n      queryNameIndex++;\r\n    }\r\n\r\n    $scope.queryData.pages.push({\r\n      name: queryName,\r\n      query: simpleQueries.children[0].query,\r\n      endpoint: defaultEndpoint\r\n    });\r\n\r\n    $scope.goToTab($scope.queryData.pages.length - 1);\r\n\r\n    $scope.saveToStorage();\r\n  }\r\n\r\n  $scope.saveResultCache = function () {\r\n    sessionStorage.setItem($scope.storageKey, JSON.stringify($scope.resultCache));\r\n  }\r\n\r\n  $scope.initialize = function () {\r\n    $scope.queryData = {};\r\n    $scope.queryData.activeTab = 0;\r\n    $scope.queryData.pages = [];\r\n    $scope.createQueryPage();\r\n\r\n    $scope.resultCache = {};\r\n    $scope.saveResultCache();\r\n  }\r\n\r\n  var defaultEndpoint = `${DATABUS_RESOURCE_BASE_URL}/sparql`;\r\n\r\n  var queryDataString = localStorage.getItem($scope.storageKey);\r\n  var resultCacheString = sessionStorage.getItem($scope.storageKey);\r\n\r\n\r\n  $scope.queryData = null;\r\n  $scope.resultCache = JSON.parse(resultCacheString);\r\n\r\n  try {\r\n    $scope.queryData = JSON.parse(queryDataString);\r\n\r\n    if ($scope.queryData == null || $scope.queryData.pages.length == 0) {\r\n      $scope.initialize();\r\n    }\r\n\r\n    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];\r\n\r\n    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {\r\n      $scope.editor.result = $scope.resultCache[queryPage.name];\r\n    } else {\r\n      $scope.editor.result = null;\r\n    }\r\n\r\n  }\r\n\r\n\r\n  catch (e) {\r\n    // Could not parse query data, create new!\r\n    $scope.initialize();\r\n  }\r\n\r\n  var initialHash = $location.hash();\r\n  if (initialHash && initialHash.startsWith('query')) {\r\n    var initialTab = parseInt(initialHash.replace('query', '')) - 1;\r\n    if (!isNaN(initialTab) &&\r\n      initialTab >= 0 &&\r\n      initialTab < $scope.queryData.pages.length) {\r\n      $scope.queryData.activeTab = initialTab;\r\n    }\r\n  }\r\n\r\n  $scope.editor.query = $scope.editor.exampleQueries[0];\r\n\r\n  $scope.send = async function () {\r\n\r\n    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];\r\n\r\n    try {\r\n\r\n      var res = await $http.post(queryPage.endpoint, { query: queryPage.query });\r\n\r\n      if ($scope.resultCache == null) {\r\n        $scope.resultCache = {};\r\n      }\r\n\r\n      $scope.resultCache[queryPage.name] = res.data;\r\n      $scope.saveResultCache();\r\n\r\n      delete queryPage.err;\r\n      $scope.editor.result = res.data;\r\n    } catch (err) {\r\n      console.log(err);\r\n      queryPage.err = err;\r\n    }\r\n\r\n    $scope.$apply();\r\n  }\r\n\r\n  $scope.insertExampleQuery = function (query) {\r\n    $scope.editor.query = query;\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = SparqlEditorController;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/sparql-editor-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/user-settings-controller.js":
-/*!********************************************************!*\
-  !*** ./js/page-controller/user-settings-controller.js ***!
-  \********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ \"./js/utils/jsonld-utils.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\n\r\nfunction UserSettingsController($scope, $http, $sce, $location) {\r\n  $scope.auth = data.auth;\r\n  $scope.accounts = data.accounts;\r\n\r\n  $scope.inputs = {};\r\n\r\n  $scope.inputs.newAccountLabel = \"\";\r\n  $scope.inputs.newAccountName = \"\";\r\n  $scope.inputs.newApiKeyName = \"\";\r\n\r\n  $scope.tabNavigation = new TabNavigation($scope, $location, [\r\n    ''\r\n  ], function (index) {\r\n    $scope.activeAccount = $scope.accounts[index - 1];\r\n  });\r\n\r\n  $scope.$watchCollection('accounts', function (newAccounts) {\r\n    const accountNames = newAccounts.map(a => a.accountName);\r\n    $scope.tabNavigation.tabKeys = [''].concat(accountNames);\r\n\r\n    const currentHash = $location.hash();\r\n\r\n    $scope.tabNavigation.onLocationHashChanged(currentHash, currentHash)\r\n\r\n    if (currentHash && !$scope.tabNavigation.tabKeys.includes(currentHash)) {\r\n      $location.hash('');\r\n    }\r\n  });\r\n\r\n  // Iterate over each account and load its data\r\n  $scope.accounts.forEach(function (account) {\r\n    // Set loading state\r\n    account.loading = true;\r\n\r\n    var requestParams = {\r\n      method: 'GET',\r\n      url: '/' + encodeURIComponent(account.accountName),\r\n      headers: {\r\n        'Accept': 'application/ld+json',\r\n        'X-Jsonld-Formatting': 'flatten'\r\n      }\r\n    }\r\n\r\n    // Perform HTTP GET request to fetch additional data\r\n    $http(requestParams)\r\n      .then(function (response) {\r\n        // Set loading to false when data is received\r\n        account.loading = false;\r\n\r\n        // Store additional info (stub)\r\n        var graphs = response.data;\r\n        var personGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSON);\r\n\r\n        account.uri = `${DATABUS_RESOURCE_BASE_URL}/${account.accountName}`;\r\n        account.label =  JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_NAME);\r\n        account.status = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_STATUS);\r\n        account.imageUrl = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_IMG);\r\n        account.secretaries = [];\r\n\r\n        let accountGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ACCOUNT);\r\n        let secretaryIds = JsonldUtils.getRefArrayProperty(accountGraph, DatabusUris.DATABUS_SECRETARY_PROPERTY);\r\n\r\n        for (let secretaryId of secretaryIds) {\r\n          let secretaryGraph = JsonldUtils.getGraphById(graphs, secretaryId);\r\n\r\n          let secretary = {};\r\n          secretary.accountName = DatabusUtils.uriToName(JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY));\r\n          secretary.hasWriteAccessTo = JsonldUtils.getRefArrayProperty(secretaryGraph, DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO);\r\n\r\n          account.secretaries.push(secretary);\r\n        }\r\n\r\n      })\r\n      .catch(function (error) {\r\n        // Handle error and set loading to false\r\n        account.loading = false;\r\n        console.error('Failed to load account data for', account.name, error);\r\n      });\r\n  });\r\n\r\n  // Button click handler to add account\r\n  $scope.addAccount = async function () {\r\n\r\n    try {\r\n\r\n      await $http.post(`/api/account/create`, {\r\n        name: $scope.inputs.newAccountName,\r\n        label: $scope.inputs.newAccountLabel\r\n      });\r\n\r\n      $scope.accounts.push({\r\n        label: $scope.inputs.newAccountLabel,\r\n        accountName: $scope.inputs.newAccountName,\r\n        uri: `${DATABUS_RESOURCE_BASE_URL}/${$scope.inputs.newAccountName}`\r\n      });\r\n\r\n      DatabusAlert.alert($scope, true, \"Account created.\");\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n      DatabusAlert.alert($scope, false, err.data);\r\n    }\r\n  };\r\n\r\n  // Button click handler to save account\r\n  $scope.saveAccount = async function (account) {\r\n    try {\r\n      await $http.post(`/api/account/update`, account);\r\n      DatabusAlert.alert($scope, true, \"Account saved.\");\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n      DatabusAlert.alert($scope, false, err.data);\r\n    }\r\n\r\n  };\r\n\r\n  // Button click handler to delete account\r\n  $scope.deleteAccount = async function (account) {\r\n    try {\r\n      // Find index of the account using accountName\r\n      const index = $scope.accounts.findIndex(acc => acc.accountName === account.accountName);\r\n\r\n      if (index === -1) {\r\n        throw new Error(`Account with name \"${account.accountName}\" not found.`);\r\n      }\r\n\r\n      console.log(\"Deleting account with accountName:\", account.accountName);\r\n\r\n      // Send delete request to server\r\n      await $http.post(`/api/account/delete`, account);\r\n\r\n      // Show success alert\r\n      DatabusAlert.alert($scope, true, \"Account deleted.\");\r\n\r\n      // Remove account from local array\r\n      $scope.accounts.splice(index, 1);\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n      const message = err.data || err.message || \"Unknown error occurred.\";\r\n      DatabusAlert.alert($scope, false, message);\r\n    }\r\n  };\r\n\r\n\r\n\r\n\r\n  $scope.goToUserSettings = function (accountName) {\r\n    window.location.href = '/' + encodeURIComponent(accountName) + '#settings';\r\n  }\r\n\r\n  $scope.addWriteAccessUrl = function (account) {\r\n    account.writeAccess.push('');\r\n  };\r\n\r\n  $scope.removeWriteAccessUrl = function (account, index) {\r\n    account.writeAccess.splice(index, 1);\r\n  };\r\n\r\n  $scope.addApiKey = async function (account) {\r\n    // Validate the name input only\r\n\r\n    if (!$scope.inputs.newApiKeyName) {\r\n      DatabusAlert.alert(\"API key name must be provided.\");\r\n      return;\r\n    }\r\n\r\n    const postData = {\r\n      accountName: account.accountName,\r\n      name: $scope.inputs.newApiKeyName\r\n    };\r\n\r\n    try {\r\n      // Send POST request to create the API key\r\n      let response = await $http.post('/api/account/api-key/create', postData);\r\n\r\n      if (response.data && response.data.apikey && response.data.keyname) {\r\n        // Append new key to the list\r\n        account.apiKeys.push({\r\n          keyname: response.data.keyname,\r\n          apikey: response.data.apikey\r\n        });\r\n\r\n        // Clear the name input field\r\n        $scope.inputs.newApiKeyName = '';\r\n\r\n        DatabusAlert.alert($scope, true, \"API key created.\");\r\n      } else {\r\n        DatabusAlert.alert($scope, false, \"Failed to create API key.\");\r\n      }\r\n\r\n    } catch (error) {\r\n      console.error('Error creating API key:', error);\r\n      const message = err.data || err.message || \"Unknown error occurred.\";\r\n      DatabusAlert.alert($scope, false, message);\r\n    }\r\n  };\r\n\r\n\r\n  $scope.deleteApiKey = async function (account, apiKey) {\r\n    try {\r\n      // Find index of the account using accountName\r\n      const index = account.apiKeys.findIndex(key => key.keyname === apiKey.keyname);\r\n\r\n      if (index === -1) {\r\n        throw new Error(`API key with name \"${apiKey.keyname}\" not found.`);\r\n      }\r\n\r\n      console.log(\"Deleting API key with keyname:\", apiKey.keyname);\r\n\r\n      // Send delete request to server\r\n      await $http.post(`/api/account/api-key/delete`, { accountName: account.accountName, keyname: apiKey.keyname });\r\n      account.apiKeys.splice(index, 1);\r\n\r\n      // Show success alert\r\n      DatabusAlert.alert($scope, true, \"API key deleted.\");\r\n\r\n    } catch (err) {\r\n      console.error(err);\r\n\r\n\r\n\r\n      const message = err.data || err.message || \"Unknown error occurred.\";\r\n      DatabusAlert.alert($scope, false, message);\r\n    }\r\n  };\r\n\r\n  $scope.addSecretary = function (account) {\r\n    if (!account.secretaries) {\r\n      account.secretaries = [];\r\n    }\r\n\r\n    account.secretaries.push({\r\n      accountName: '',\r\n      hasWriteAccessTo: []\r\n    });\r\n  };\r\n\r\n  $scope.removeSecretary = function (account, index) {\r\n    account.secretaries.splice(index, 1);\r\n  };\r\n\r\n  $scope.addNamespace = function (account, secIndex) {\r\n    account.secretaries[secIndex].hasWriteAccessTo.push('');\r\n  };\r\n\r\n  $scope.removeNamespace = function (account, secIndex, nsIndex) {\r\n    account.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);\r\n  };\r\n}\r\n\r\nmodule.exports = UserSettingsController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/user-settings-controller.js?");
-
-/***/ }),
-
-/***/ "./js/page-controller/version-controller.js":
-/*!**************************************************!*\
-  !*** ./js/page-controller/version-controller.js ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ \"./js/utils/databus-webapp-utils.js\");\r\nconst JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ \"./js/utils/jsonld-utils.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst QueryNode = __webpack_require__(/*! ../query-builder/query-node */ \"./js/query-builder/query-node.js\");\r\nconst TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ \"./js/utils/tab-navigation.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ \"./js/publish/dataid-creator.js\");\r\nconst QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ \"./js/query-builder/query-templates.js\");\r\nconst DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ \"./js/collections/databus-collection-wrapper.js\");\r\nconst QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ \"./js/query-builder/query-builder.js\");\r\nconst AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ \"./js/utils/app-json-formatter.js\");\r\n\r\nfunction VersionPageController($scope, $http, $sce, $location, collectionManager) {\r\n\r\n  $scope.navigation = new TabNavigation($scope, $location, [\r\n    'files', 'mods', 'edit'\r\n  ]);\r\n\r\n  $scope.auth = data.auth;\r\n  $scope.utils = new DatabusWebappUtils($scope, $sce);\r\n  $scope.accountName = $scope.utils.getAccountName();\r\n\r\n  $scope.collectionManager = collectionManager;\r\n  $scope.authenticated = data.auth.authenticated;\r\n  $scope.versionGraph = data.graph;\r\n  $scope.version = AppJsonFormatter.formatVersionData(data.graph);\r\n\r\n  $scope.queryResult = {};\r\n  $scope.addToCollectionQuery = \"\";\r\n  $scope.collectionModalVisible = false;\r\n\r\n  $scope.publisherName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 3));\r\n  $scope.canEdit = $scope.accountName != null;\r\n\r\n  if (data.auth.authenticated && $scope.canEdit) {\r\n\r\n    $scope.licenseQuery = \"\";\r\n    $scope.filterLicenses = function (licenseQuery) {\r\n\r\n      if (data.licenseData == null) {\r\n        return;\r\n      }\r\n\r\n      // billo-suche mit lowercase und tokenization \r\n      var tokens = licenseQuery.toLowerCase().split(' ');\r\n      $scope.filteredLicenseList = data.licenseData.results.bindings.filter(function (l) {\r\n        for (var token of tokens) {\r\n          if (!l.title.value.toLowerCase().includes(token)) {\r\n            return false;\r\n          }\r\n        }\r\n\r\n        return true;\r\n      });\r\n    }\r\n\r\n    $scope.filterLicenses(\"\");\r\n\r\n    $scope.formData = {};\r\n\r\n    $scope.formData.group = {};\r\n    $scope.formData.group.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 2));\r\n\r\n    $scope.formData.artifact = {};\r\n    $scope.formData.artifact.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 1));\r\n\r\n    var abstract = DatabusUtils.createAbstractFromDescription($scope.version.description);\r\n\r\n    $scope.formData.version = {};\r\n    $scope.formData.version.generateAbstract = abstract == $scope.version.abstract;\r\n    $scope.formData.version.name = $scope.version.name;\r\n    $scope.formData.version.title = $scope.version.title;\r\n    $scope.formData.version.abstract = $scope.version.abstract;\r\n    $scope.formData.version.description = $scope.version.description;\r\n    $scope.formData.version.license = $scope.version.license;\r\n    $scope.formData.version.attribution = $scope.version.attribution;\r\n    $scope.formData.version.wasDerivedFrom = $scope.version.wasDerivedFrom;\r\n\r\n    $scope.formData.signature = {};\r\n    $scope.formData.signature.autoGenerateSignature = true;\r\n    $scope.formData.signature.selectedPublisherUri = $scope.version.publisher;\r\n\r\n    $scope.dataidCreator = new DataIdCreator($scope.formData, data.auth.info.accountName);\r\n  }\r\n\r\n  $scope.onDescriptionChanged = function () {\r\n    if ($scope.formData == null) {\r\n      return;\r\n    }\r\n\r\n    if (!$scope.formData.version.generateAbstract) {\r\n      return;\r\n    }\r\n\r\n    $scope.formData.version.abstract =\r\n      DatabusUtils.createAbstractFromDescription($scope.formData.version.description);\r\n  }\r\n\r\n  $scope.resetEdits = function () {\r\n    $scope.formData.version.title = $scope.version.title;\r\n    $scope.formData.version.abstract = $scope.version.abstract;\r\n    $scope.formData.version.description = $scope.version.description;\r\n  }\r\n\r\n  $scope.saveVersion = async function () {\r\n\r\n    try {\r\n      if ($scope.dataidCreator == null) {\r\n        return;\r\n      }\r\n      var relativeUri = new URL($scope.version.uri).pathname;\r\n\r\n      var response = await $http({\r\n        method: 'GET',\r\n        url: relativeUri,\r\n        headers: {\r\n          'Accept': 'application/ld+json',\r\n          'X-Jsonld-Formatting': 'flatten'\r\n        }\r\n      });\r\n\r\n      var graphs = response.data;\r\n      var versionGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_VERSION);\r\n\r\n      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_TITLE, DatabusUris.XSD_STRING,\r\n        $scope.formData.version.title);\r\n      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_ABSTRACT, DatabusUris.XSD_STRING,\r\n        $scope.formData.version.abstract);\r\n      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_DESCRIPTION, DatabusUris.XSD_STRING,\r\n        $scope.formData.version.description);\r\n      JsonldUtils.setLink(versionGraph, DatabusUris.DCT_LICENSE, $scope.formData.version.license);\r\n      JsonldUtils.setLiteral(versionGraph, DatabusUris.DATABUS_ATTRIBUTION, DatabusUris.XSD_STRING,\r\n        $scope.formData.version.attribution);\r\n\r\n      if ($scope.formData.version.wasDerivedFrom) {\r\n        JsonldUtils.setLink(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM,\r\n          $scope.formData.version.wasDerivedFrom);\r\n      }\r\n\r\n      var response = await $http.put(`/api/register`, graphs);\r\n\r\n      if (response.status == 200) {\r\n        $scope.version.title = $scope.formData.version.title;\r\n        $scope.version.abstract = $scope.formData.version.abstract;\r\n        $scope.version.description = $scope.formData.version.description;\r\n        $scope.version.license = $scope.formData.version.license;\r\n        $scope.version.attribution = $scope.formData.version.attribution;\r\n        $scope.version.wasDerivedFrom = $scope.formData.version.wasDerivedFrom;\r\n\r\n        DatabusAlert.alert($scope, true, \"Version Saved!\");\r\n        $scope.$apply();\r\n      }\r\n    } catch (err) {\r\n      DatabusAlert.alert($scope, false, \"Failed to save version!\");\r\n    }\r\n  }\r\n\r\n  $scope.modsAmountMinimized = 5;\r\n  $scope.modsMaxAmount = $scope.modsAmountMinimized;\r\n\r\n  $scope.showAllMods = function () {\r\n    $scope.modsMaxAmount = 10000000;\r\n  }\r\n\r\n  $scope.hideAllMods = function () {\r\n    $scope.modsMaxAmount = $scope.modsAmountMinimized;\r\n  }\r\n\r\n  $scope.fileSelector = {};\r\n  $scope.fileSelector.config = {};\r\n  $scope.fileSelector.config.authenticated = $scope.authenticated;\r\n  $scope.fileSelector.config.columns = [];\r\n  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '45%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '15%' });\r\n  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '15%' });\r\n\r\n  $scope.artifactNode = new QueryNode($scope.version.artifact, 'databus:artifact');\r\n  $scope.artifactNode.setFacet('http://purl.org/dc/terms/hasVersion', $scope.version.name, true);\r\n\r\n  $scope.groupNode = new QueryNode(DatabusUtils.navigateUp($scope.version.artifact), 'databus:group');\r\n  $scope.groupNode.addChild($scope.artifactNode);\r\n\r\n  $scope.collectionWidgetSelectionData = {};\r\n  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;\r\n\r\n  $scope.onFacetSettingsChanged = function () {\r\n    $scope.fileSelector.query = QueryBuilder.build({\r\n      node: $scope.artifactNode,\r\n      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n\r\n    $scope.fileSelector.fullQuery = QueryBuilder.build({\r\n      node: $scope.artifactNode,\r\n      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,\r\n      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL\r\n    });\r\n  }\r\n\r\n  $scope.onFacetSettingsChanged();\r\n\r\n  $scope.hideAutofill = function () {\r\n    $scope.fileSelector.clearAutofill(function () {\r\n      $scope.$apply();\r\n    });\r\n  }\r\n\r\n  $scope.onFileSelectionChanged = function (numFiles, totalSize, query) {\r\n    $scope.addToCollectionQuery = query;\r\n  }\r\n\r\n  $scope.showCollectionModal = function () {\r\n    $scope.collectionModalVisible = true;\r\n  }\r\n\r\n  $scope.hideCollectionModal = function () {\r\n    $scope.collectionModalVisible = false;\r\n  }\r\n\r\n  $scope.addFilter = function (selected, key) {\r\n    $scope.fileSelector.addFilter(selected, key);\r\n    $scope.updateQueryBuilder();\r\n  }\r\n\r\n  $scope.addQueryToCollection = function () {\r\n    $scope.collectionManager.addElement($scope.queryBuilder.query);\r\n    $scope.hideCollectionModal();\r\n  };\r\n\r\n  $scope.addQueryToCollection = function () {\r\n\r\n    if ($scope.collectionManager.activeCollection == null) {\r\n      return;\r\n    }\r\n\r\n    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);\r\n    wrapper.addCustomQueryNode('Select ' + $scope.versionData.label + ' files', $scope.addToCollectionQuery);\r\n    $scope.collectionManager.saveLocally();\r\n    $scope.collectionModalVisible = false;\r\n  }\r\n\r\n  $scope.formatMods = function (results) {\r\n    var mods = results.replace(\",\", \"&nbsp;\");\r\n    return $sce.trustAsHtml(mods);\r\n  }\r\n\r\n  $scope.formatModFile = function (uri) {\r\n    return DatabusUtils.uriToName(uri);\r\n  }\r\n\r\n  $scope.downloadMetadataAsFile = async function () {\r\n    var response = await $http({\r\n      method: 'GET',\r\n      url: $scope.version.uri,\r\n      headers: {\r\n        'Accept': 'application/ld+json',\r\n      }\r\n    });\r\n\r\n    $scope.download(`${$scope.version.name}.jsonld`, JSON.stringify(response.data, null, 3));\r\n  }\r\n\r\n  $scope.download = function (filename, text) {\r\n    var element = document.createElement('a');\r\n    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));\r\n    element.setAttribute('download', filename);\r\n    element.style.display = 'none';\r\n    document.body.appendChild(element);\r\n\r\n    element.click();\r\n\r\n    document.body.removeChild(element);\r\n  }\r\n\r\n\r\n}\r\n\r\nmodule.exports = VersionPageController;\n\n//# sourceURL=webpack://databus-webapp/./js/page-controller/version-controller.js?");
-
-/***/ }),
-
-/***/ "./js/publish/artifact-data.js":
-/*!*************************************!*\
-  !*** ./js/publish/artifact-data.js ***!
-  \*************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const EntityHandler = __webpack_require__(/*! ./entity-handler */ \"./js/publish/entity-handler.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst GroupData = __webpack_require__(/*! ./group-data */ \"./js/publish/group-data.js\");\r\n\r\nclass ArtifactData extends EntityHandler {\r\n  constructor($http, accounts, apiKeys) {\r\n    super('databus_registration_artifact_data', $http, null, accounts, apiKeys);\r\n  }\r\n\r\n  initialize(data) {\r\n    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);\r\n\r\n    if (validAccount) {\r\n      Object.assign(this, data);\r\n    } else {\r\n      this.accountName = this.accounts[0]?.name;\r\n    }\r\n\r\n    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {\r\n      this.apiKeyName = this.apiKeys[0].keyname;\r\n    }\r\n\r\n\r\n    this.sendmode ??= 'register';\r\n    this.onAccountNameChanged();\r\n    this.onGroupNameChanged();\r\n  }\r\n\r\n   validate() {\r\n    this.errors = [];\r\n    this.warnings = [];\r\n\r\n    if (!DatabusUtils.isValidArtifactName(this.name)) {\r\n      this.errors.push('err_invalid_artifact_name');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidGroupName(this.groupName)) {\r\n      this.errors.push('err_no_group_selected');\r\n    }\r\n\r\n    const exists = this.artifactList?.some(a => a.name === this.name);\r\n    if (exists) {\r\n      this.warnings.push('warning_artifact_exists');\r\n    }\r\n  }\r\n  \r\n  getURI() {\r\n    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.groupName}/${this.name}`;\r\n  }\r\n\r\n  getSaveData() {\r\n    return {\r\n      accountName: this.accountName,\r\n      groupName: this.groupName,\r\n      name: this.name,\r\n      title: this.title,\r\n      abstract: this.abstract,\r\n      description: this.description,\r\n      sendmode: this.sendmode,\r\n      apiKeyName: this.apiKeyName,\r\n    };\r\n  }\r\n\r\n\r\n  async setGroupName(groupName) {\r\n    if (this.groupName !== groupName) {\r\n      this.groupName = groupName;\r\n      await this.onGroupNameChanged();\r\n    }\r\n  }\r\n\r\n  async onGroupNameChanged() {\r\n    this.isLoadingArtifacts = true;\r\n    this.artifactList = await this.sparqlClient.getArtifacts(this.accountName, this.groupName);\r\n    this.isLoadingArtifacts = false;\r\n    this.onChange();\r\n  }\r\n\r\n \r\n\r\n  updateOutputs() {\r\n    const groupUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}/${GroupData.getStringOrMissing(this.groupName)}`;\r\n\r\n    this.postBody = {\r\n      \"@context\": this.getContext(),\r\n      \"@graph\": [\r\n        {\r\n          \"@id\": `${groupUri}/${GroupData.getStringOrMissing(this.name)}`,\r\n          \"@type\": \"Artifact\",\r\n          \"title\": this.getValidString(this.title),\r\n          \"abstract\": this.getValidString(this.abstract),\r\n          \"description\": this.getValidString(this.description),\r\n        }\r\n      ]\r\n    };\r\n\r\n    const payload = JSON.stringify(this.postBody, null, 2);\r\n    const apiKey = this.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;\r\n\r\n    this.curlCommand = [\r\n      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\\\`,\r\n      `  -H \"X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}\" \\\\`,\r\n      `  -H \"Content-Type: application/json\" \\\\`,\r\n      `  -d '${payload}'`\r\n    ].join('\\n');\r\n  }\r\n}\r\n\r\nmodule.exports = ArtifactData;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/artifact-data.js?");
-
-/***/ }),
-
-/***/ "./js/publish/databus-sparql-client.js":
-/*!*********************************************!*\
-  !*** ./js/publish/databus-sparql-client.js ***!
-  \*********************************************/
-/***/ ((module) => {
-
-eval("class DatabusSparqlClient {\r\n\r\n    constructor($http) {\r\n        this.$http = $http;\r\n    }\r\n\r\n    /**\r\n     * Generic SPARQL query runner.\r\n     * @param {string} query - SPARQL query string.\r\n     * @returns {Promise<Array>} - Query result bindings.\r\n     */\r\n    async runQuery(query) {\r\n        const config = {\r\n            method: 'POST',\r\n            url: `/sparql`,\r\n            headers: {\r\n                'Accept': 'application/sparql-results+json',\r\n                'Content-Type': 'application/x-www-form-urlencoded'\r\n            },\r\n            data: `query=${encodeURIComponent(query)}`\r\n        };\r\n\r\n        try {\r\n            const response = await this.$http(config);\r\n            return response.data.results.bindings || [];\r\n        } catch (err) {\r\n            console.error('SPARQL query failed:', err);\r\n            return [];\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Fetches groups for a given Databus account.\r\n     * @param {string} accountName - The account name (e.g., 'myaccount').\r\n     * @returns {Promise<Array>} - List of groups with basic metadata.\r\n     */\r\n    async getGroups(accountName) {\r\n        const query = `\r\n            PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\n\r\n            SELECT DISTINCT ?group WHERE {\r\n                ?group a databus:Group .\r\n                ?group databus:account <${DATABUS_RESOURCE_BASE_URL}/${accountName}> .\r\n            }\r\n        `;\r\n\r\n        const bindings = await this.runQuery(query);\r\n\r\n        return bindings.map(binding => ({\r\n            uri: binding.group.value,\r\n            name: binding.group.value.split('/').pop(),\r\n        }));\r\n    }\r\n\r\n    async getArtifacts(accountName, groupName) {\r\n        const query = `\r\n            PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\n\r\n            SELECT DISTINCT ?group WHERE {\r\n                ?group a databus:Artifact .\r\n                ?group databus:group <${DATABUS_RESOURCE_BASE_URL}/${accountName}/${groupName}> .\r\n            }\r\n        `;\r\n\r\n        const bindings = await this.runQuery(query);\r\n\r\n        return bindings.map(binding => ({\r\n            uri: binding.group.value,\r\n            name: binding.group.value.split('/').pop(),\r\n        }));\r\n    }\r\n\r\n    async getVersions(accountName, groupName, artifactName) {\r\n        const query = `\r\n            PREFIX databus: <https://dataid.dbpedia.org/databus#>\r\n\r\n            SELECT DISTINCT ?group WHERE {\r\n                ?group a databus:Version .\r\n                ?group databus:artifact <${DATABUS_RESOURCE_BASE_URL}/${accountName}/${groupName}/${artifactName}> .\r\n            }\r\n        `;\r\n\r\n        const bindings = await this.runQuery(query);\r\n\r\n        return bindings.map(binding => ({\r\n            uri: binding.group.value,\r\n            name: binding.group.value.split('/').pop(),\r\n        }));\r\n    }\r\n}\r\n\r\nmodule.exports = DatabusSparqlClient;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/databus-sparql-client.js?");
-
-/***/ }),
-
-/***/ "./js/publish/dataid-creator.js":
-/*!**************************************!*\
-  !*** ./js/publish/dataid-creator.js ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\n\nclass DataIdCreator {\n\n  constructor(formData, accountName) {\n    this.accountName = accountName;\n    this.formData = formData;\n  }\n\n  createInputs() {\n    var group = this.createGroupUpdate();\n    var artifact = this.createArtifactUpdate();\n    var dataid = this.createVersionUpdate();\n\n    var result = {\n      \"@context\": this.getContext(),\n      \"@graph\": []\n    };\n\n    if (group != undefined) {\n      for (var graph of group[\"@graph\"]) {\n        result[\"@graph\"].push(graph);\n      }\n    }\n\n    if (artifact != undefined) {\n      for (var graph of artifact[\"@graph\"]) {\n        result[\"@graph\"].push(graph);\n      }\n    }\n\n    if (dataid != undefined) {\n      for (var graph of dataid[\"@graph\"]) {\n        result[\"@graph\"].push(graph);\n      }\n    }\n\n    return {\n      context: this.getContext(),\n      group: group,\n      artifact: artifact,\n      dataid: dataid,\n      all: result\n    };\n  }\n\n  getValidString(value) {\n    if(value == undefined || value.length == 0) {\n      return undefined;\n    }\n\n    return value;\n  }\n\n  getContext() {\n    if(DATABUS_CONTEXT_URL != undefined && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {\n      return DATABUS_CONTEXT_URL;\n    }\n\n    return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];\n  }\n\n  createGroupUpdate() {\n\n    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;\n\n    return {\n      \"@context\": this.getContext(),\n      \"@graph\": [\n        {\n          \"@id\": `${accountUri}/${this.formData.group.name}`,\n          \"@type\": \"Group\",\n          \"title\": this.getValidString(this.formData.group.title),\n          \"abstract\": this.getValidString(this.formData.group.abstract),\n          \"description\": this.getValidString(this.formData.group.description)\n        }\n      ]\n    };\n  }\n\n  createArtifactUpdate() {\n    \n    if (this.formData.artifact.generateMetadata == 'none') {\n      return undefined;\n    }\n\n    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;\n\n    return {\n      \"@context\": this.getContext(),\n      \"@graph\": [\n        {\n          \"@id\": `${accountUri}/${this.formData.group.name}/${this.formData.artifact.name}`,\n          \"@type\": \"Artifact\",\n          \"title\": this.getValidString(this.formData.artifact.title),\n          \"abstract\": this.getValidString(this.formData.artifact.abstract),\n          \"description\": this.getValidString(this.formData.artifact.description)\n        }\n      ]\n    };\n  }\n\n  createVersionUpdate() {\n\n    if (this.formData.version.generateMetadata == 'none') {\n      return undefined;\n    }\n\n    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;\n    var versionUri = `${accountUri}/${this.formData.group.name}/${this.formData.artifact.name}/${this.formData.version.name}`\n\n    var artifact = this.formData.artifact;\n    var version = this.formData.version;\n\n    var graph = {\n      \"@type\": [ \"Version\", \"Dataset\" ],\n      \"@id\": versionUri,\n      \"publisher\": this.formData.signature.selectedPublisherUri,\n      \"hasVersion\": version.name,\n      \"title\": version.title,\n      \"abstract\": version.abstract,\n      \"description\": version.description,\n      \"license\": version.license,\n      \"attribution\": version.attribution,\n      \"wasDerivedFrom\": version.wasDerivedFrom,\n      \"distribution\": []\n    }\n\n    if (this.formData.signature.selectedPublisherUri == this.formData.signature.defaultPublisherUri) {\n      delete graph.publisher;\n    }\n\n    if (!this.formData.signature.autoGenerateSignature) {\n      graph[\"proof\"] = {\n        '@type': \"DatabusTractateV1\",\n        'signature': this.formData.signature.userSignature\n      };\n    }\n\n    var customVariants = [];\n\n    for (var fg in version.files) {\n\n      var file = version.files[fg];\n\n      var variantSuffix = '';\n      for (var c in version.contentVariants) {\n        var cv = version.contentVariants[c];\n        var value = file.contentVariants[cv.id];\n\n        if (value == undefined || value == \"\") {\n          continue;\n        }\n\n        variantSuffix += '_' + cv.id + '=' + value;\n      }\n\n      var fileName = artifact.name; \n\n      var distributionUri = `${versionUri}#${fileName}`;\n      var fileUri = `${versionUri}/${fileName}${variantSuffix}`;\n\n      distributionUri += variantSuffix;\n\n      if (file.formatExtension != 'none') {\n        distributionUri += '.' + file.formatExtension;\n        fileUri += '.' + file.formatExtension;\n      }\n\n      if (file.compression != 'none') {\n        distributionUri += '.' + file.compression;\n        fileUri += '.' + file.compression;\n      }\n\n      var distribution = {\n        \"@type\": \"Part\",\n        \"formatExtension\": file.formatExtension,\n        \"compression\": file.compression,\n        \"downloadURL\": file.uri,\n        \"byteSize\": file.byteSize,\n        \"sha256sum\": file.sha256sum,\n      };\n\n      for (var c in version.contentVariants) {\n        var cv = version.contentVariants[c];\n        var value = file.contentVariants[cv.id];\n\n        if (value == undefined || value == \"\") {\n          continue;\n          // value = \"\";\n        }\n\n        distribution['dcv:' + cv.id] = value;\n\n        if (!customVariants.includes(cv.id)) {\n          customVariants.push(cv.id);\n        }\n      }\n\n      graph.distribution.push(distribution);\n    }\n\n    var result = {\n      \"@context\": this.getContext(),\n      \"@graph\": [graph]\n    }\n\n    return result;\n  }\n}\n\nmodule.exports = DataIdCreator;\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/dataid-creator.js?");
-
-/***/ }),
-
-/***/ "./js/publish/entity-handler.js":
-/*!**************************************!*\
-  !*** ./js/publish/entity-handler.js ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ \"./js/publish/databus-sparql-client.js\");\r\n\r\nclass EntityHandler {\r\n  constructor(storageKey, $http, $interval, accounts, apiKeys) {\r\n    this.storageKey = storageKey;\r\n    this.$http = $http;\r\n    this.$interval = $interval;\r\n    this.accounts = accounts;\r\n    this.apiKeys = apiKeys;\r\n    this.sparqlClient = new DatabusSparqlClient($http);\r\n\r\n    const data = this._loadFromSession();\r\n    this.initialize(data);\r\n  }\r\n\r\n  _loadFromSession() {\r\n    try {\r\n      const raw = window.sessionStorage.getItem(this.storageKey);\r\n      return raw ? JSON.parse(raw) : null;\r\n    } catch (e) {\r\n      console.error(\"Failed to load session data:\", e);\r\n      return null;\r\n    }\r\n  }\r\n\r\n  save() {\r\n    try {\r\n      const data = this.getSaveData();\r\n      const json = JSON.stringify(data);\r\n      window.sessionStorage.setItem(this.storageKey, json);\r\n    } catch (e) {\r\n      console.error(\"Failed to save session data:\", e);\r\n    }\r\n  }\r\n\r\n  // Abstract methods\r\n  initialize(data) {\r\n    throw new Error(\"Method 'initialize(data)' must be implemented.\");\r\n  }\r\n\r\n  getSaveData() {\r\n    throw new Error(\"Method 'getSaveData()' must be implemented.\");\r\n  }\r\n\r\n  validate() {\r\n    throw new Error(\"Method 'validate()' must be implemented.\");\r\n  }\r\n\r\n  updateOutputs() {\r\n    throw new Error(\"Method 'updateOutputs()' must be implemented.\");\r\n  }\r\n\r\n  getURI() {\r\n    throw new Error(\"Method 'updateOutputs()' must be implemented.\");\r\n  }\r\n\r\n  getValidString(value) {\r\n    return value?.length > 0 ? value : undefined;\r\n  }\r\n\r\n  static getStringOrMissing(value) {\r\n    return value?.length > 0 ? value : '!!!missing!!!';\r\n  }\r\n\r\n  hasError(errorKey) {\r\n    return this.errors?.includes(errorKey) ?? false;\r\n  }\r\n\r\n  setSendMode(sendmode) {\r\n    this.sendmode = sendmode;\r\n    this.onChange();\r\n  }\r\n\r\n  getContext() {\r\n    if (DATABUS_CONTEXT_URL && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {\r\n      return DATABUS_CONTEXT_URL;\r\n    }\r\n    return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];\r\n  }\r\n\r\n  async setAccountName(accountName) {\r\n    if (this.accountName !== accountName) {\r\n      this.accountName = accountName;\r\n      await this.onAccountNameChanged();\r\n    }\r\n  }\r\n\r\n  async onAccountNameChanged() {\r\n    this.isLoadingGroups = true;\r\n    this.groupList = await this.sparqlClient.getGroups(this.accountName);\r\n    this.isLoadingGroups = false;\r\n    this.onChange();\r\n  }\r\n\r\n  async setAccountName(accountName) {\r\n    if (this.accountName !== accountName) {\r\n      this.accountName = accountName;\r\n      \r\n      this.activeAccount = this.accounts?.find(a => a.accountName === this.accountName);\r\n      await this.onAccountNameChanged();\r\n    }\r\n  }\r\n\r\n  getAccount() {\r\n    return this.activeAccount;\r\n    \r\n  }\r\n\r\n  onChange() {\r\n    this.updateOutputs();\r\n    this.validate();\r\n    this.save();\r\n  }\r\n\r\n  getApiKey() {\r\n    return this.getAccount()?.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;\r\n  }\r\n\r\n  setApiKeyName(keyname) {\r\n    this.apiKeyName = keyname;\r\n    this.onChange();\r\n  }\r\n\r\n  async register() {\r\n    try {\r\n      const response = await this.$http({\r\n        method: 'POST',\r\n        url: `/api/register?log-level=info`,\r\n        headers: {\r\n          'Accept': 'application/json',\r\n          'Content-Type': 'application/json'\r\n        },\r\n        data: this.postBody\r\n      });\r\n\r\n      return response;\r\n    } catch (err) {\r\n      console.error('Entity registration failed:', err);\r\n      throw err;\r\n    }\r\n  }\r\n}\r\n\r\nmodule.exports = EntityHandler;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/entity-handler.js?");
-
-/***/ }),
-
-/***/ "./js/publish/group-data.js":
-/*!**********************************!*\
-  !*** ./js/publish/group-data.js ***!
-  \**********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const EntityHandler = __webpack_require__(/*! ./entity-handler */ \"./js/publish/entity-handler.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ \"./js/publish/databus-sparql-client.js\");\r\n\r\nclass GroupData extends EntityHandler {\r\n  constructor($http, accounts, apiKeys) {\r\n    super('databus_registration_group_data', $http, null, accounts, apiKeys);\r\n   \r\n  }\r\n\r\n  initialize(data) {\r\n    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);\r\n    \r\n    if (validAccount) {\r\n      Object.assign(this, data);\r\n    } else {\r\n      this.accountName = this.accounts[0]?.name;\r\n    }\r\n\r\n    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {\r\n      this.apiKeyName = this.apiKeys[0].keyname;\r\n    }\r\n\r\n    this.sendmode ??= 'register';\r\n    this.onAccountNameChanged();\r\n  }\r\n\r\n  getSaveData() {\r\n    return {\r\n      accountName: this.accountName,\r\n      name: this.name,\r\n      title: this.title,\r\n      abstract: this.abstract,\r\n      description: this.description,\r\n      sendmode: this.sendmode,\r\n      apiKeyName: this.apiKeyName,\r\n    };\r\n  }\r\n\r\n  getURI() {\r\n    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.name}`;\r\n  }\r\n\r\n  validate() {\r\n    this.errors = [];\r\n    this.warnings = [];\r\n\r\n    if (!DatabusUtils.isValidGroupName(this.name)) {\r\n      this.errors.push('err_invalid_group_name');\r\n    }\r\n\r\n    if(this.sendmode == 'curl' && !this.apiKeyName) {\r\n      this.errors.push('err_no_api_key');\r\n    }\r\n\r\n    const exists = this.groupList?.some(g => g.name === this.name);\r\n    if (exists) {\r\n      this.warnings.push('warning_group_exists');\r\n    }\r\n  }\r\n\r\n  updateOutputs() {\r\n    const accountUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}`;\r\n\r\n    this.postBody = {\r\n      \"@context\": this.getContext(),\r\n      \"@graph\": [\r\n        {\r\n          \"@id\": `${accountUri}/${GroupData.getStringOrMissing(this.name)}`,\r\n          \"@type\": \"Group\",\r\n          \"title\": this.getValidString(this.title),\r\n          \"abstract\": this.getValidString(this.abstract),\r\n          \"description\": this.getValidString(this.description),\r\n        }\r\n      ]\r\n    };\r\n\r\n    const payload = JSON.stringify(this.postBody, null, 2);\r\n    const apiKey = this.getApiKey();\r\n\r\n    this.curlCommand = [\r\n      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\\\`,\r\n      `  -H \"X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}\" \\\\`,\r\n      `  -H \"Content-Type: application/json\" \\\\`,\r\n      `  -d '${payload}'`\r\n    ].join('\\n');\r\n  }\r\n}\r\n\r\nmodule.exports = GroupData;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/group-data.js?");
-
-/***/ }),
-
-/***/ "./js/publish/publish-data.js":
-/*!************************************!*\
-  !*** ./js/publish/publish-data.js ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\n\r\n/**\r\n * Handles shasum creation (and possibly other file stats)\r\n */\r\nclass PublishData {\r\n\r\n  constructor(data) {\r\n\r\n    if (data != null) {\r\n      this.account = data.account ?? {};\r\n      this.group = data.group ?? {};\r\n      this.artifact = data.artifact ?? {};\r\n      this.version = data.version ?? {};\r\n      this.files = data.files ?? {};\r\n      this.signature = data.signature;\r\n    }\r\n\r\n    if (data == null) {\r\n\r\n      this.account = {};\r\n      this.group = {};\r\n      this.artifact = {};\r\n      this.version = {};\r\n      this.files = {};\r\n      this.signature = undefined;\r\n\r\n      this.group.generateMetadata = 'create';\r\n      this.group.generateAbstract = true;\r\n      this.artifact.generateMetadata = 'create';\r\n      this.artifact.generateAbstract = true;\r\n      this.version.generateMetadata = 'create';\r\n      this.version.generateAbstract = true;\r\n      this.version.useArtifactTitle = true;\r\n      this.signature = this.createSignatureData();\r\n    }\r\n  }\r\n\r\n  createSignatureData() {\r\n    var signature = {};\r\n    signature.publisherUris = [];\r\n\r\n    signature.publisherUris = this.account.publisherUris;\r\n    signature.defaultPublisherUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}#this`\r\n    signature.selectedPublisherUri = signature.defaultPublisherUri;\r\n    signature.autoGenerateSignature = true;\r\n    signature.autoGenerateSignatureLocked = false;\r\n    signature.userSignature = '';\r\n\r\n    return signature;\r\n  }\r\n\r\n  hasError(error) {\r\n\r\n  }\r\n\r\n  clearErrors() {\r\n    this.group.errors = [];\r\n    this.artifact.errors = [];\r\n    this.version.errors = [];\r\n    this.files.errors = [];\r\n    this.group.warnings = [];\r\n    this.artifact.warnings = [];\r\n    this.version.warnings = [];\r\n  }\r\n  /**\r\n   * Validates the tree\r\n   */\r\n  validate() {\r\n\r\n    var hasErrors = false;\r\n    this.group.errors = [];\r\n    this.artifact.errors = [];\r\n    this.version.errors = [];\r\n    this.files.errors = [];\r\n    this.group.warnings = [];\r\n    this.artifact.warnings = [];\r\n    this.version.warnings = [];\r\n\r\n\r\n    if (!DatabusUtils.isValidGroupName(this.group.name)) {\r\n      this.group.errors.push('err_invalid_group_title');\r\n      hasErrors = true;\r\n    }\r\n\r\n    var self = this;\r\n\r\n    var existingGroup = this.account.groups.filter(function (value) {\r\n      return value.name == self.group.name;\r\n    });\r\n\r\n    if (existingGroup.length > 0 && this.group.generateMetadata == 'create') {\r\n      this.group.warnings.push('warning_group_exists');\r\n    }\r\n\r\n    var existingArtifact = this.account.artifacts.filter(function (value) {\r\n      return value.groupName == self.group.name && value.name == self.artifact.name;\r\n    });\r\n\r\n    if (existingArtifact.length > 0 && this.artifact.generateMetadata == 'create') {\r\n      this.artifact.warnings.push('warning_artifact_exists');\r\n    }\r\n\r\n    if (this.group.generateAbstract) {\r\n      this.group.abstract = DatabusUtils.createAbstractFromDescription(this.group.description);\r\n    }\r\n\r\n    if (this.version.generateAbstract) {\r\n      this.version.abstract = DatabusUtils.createAbstractFromDescription(this.version.description);\r\n    }\r\n\r\n    if (this.version.useArtifactTitle) {\r\n      this.version.title = this.artifact.title;\r\n    }\r\n\r\n    if (this.artifact.generateAbstract) {\r\n      this.artifact.abstract = DatabusUtils.createAbstractFromDescription(this.artifact.description);\r\n    }\r\n\r\n    if (this.group.publishGroupOnly) {\r\n      this.hasConfigurationError = hasErrors;\r\n      return;\r\n    }\r\n\r\n    if (this.artifact.generateMetadata != 'none') {\r\n      if (!DatabusUtils.isValidArtifactName(this.artifact.name)) {\r\n        this.artifact.errors.push('err_invalid_artifact_title');\r\n        hasErrors = true;\r\n      }\r\n    }\r\n\r\n    var versionUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}/${this.group.name}/${this.artifact.name}/${this.version.name}`;\r\n\r\n    var existingVersion = this.account.versions.filter(function (value) {\r\n      return value == versionUri;\r\n    });\r\n\r\n    if (existingVersion.length > 0) {\r\n      this.version.warnings.push('warning_version_exists');\r\n    }\r\n\r\n    if (this.version.generateMetadata != 'none') {\r\n\r\n      if (!DatabusUtils.isValidVersionIdentifier(this.version.name)) {\r\n        this.version.errors.push('err_invalid_version_title');\r\n        hasErrors = true;\r\n      }\r\n\r\n      if (!DatabusUtils.isValidUrl(this.version.license)) {\r\n        this.version.errors.push('err_invalid_version_license');\r\n        hasErrors = true;\r\n      }\r\n\r\n      if (!DatabusUtils.isValidResourceText(this.version.abstract, 1)) {\r\n        this.version.errors.push('err_invalid_version_abstract');\r\n        hasErrors = true;\r\n      }\r\n\r\n      if (!DatabusUtils.isValidResourceText(this.version.description, 1)) {\r\n        this.version.errors.push('err_invalid_version_description');\r\n        hasErrors = true;\r\n      }\r\n\r\n\r\n      if (DatabusUtils.objSize(this.version.files) == 0) {\r\n        this.files.errors.push('err_no_files');\r\n        hasErrors = true;\r\n      }\r\n\r\n      if (this.version.isConfigDirty) {\r\n\r\n\r\n        var files = [];\r\n        for (var f in this.version.files) {\r\n          this.version.files[f].errors = [];\r\n          files.push(this.version.files[f]);\r\n        }\r\n\r\n        this.cvSplit(this.version, files, 0);\r\n        this.version.isConfigDirty = false;\r\n      }\r\n    }\r\n\r\n    this.hasConfigurationError = hasErrors;\r\n  }\r\n\r\n  addFile(file) {\r\n\r\n\r\n    if (this.version.files == undefined) {\r\n      this.version.files = [];\r\n    }\r\n\r\n\r\n    for (var f in this.version.files) {\r\n      if (file.url == this.version.files[f].url) {\r\n        return;\r\n      }\r\n    }\r\n\r\n    var uri = file.url;\r\n    var uriParts = uri.split('/');\r\n    var name = uriParts.pop();\r\n    var nameComponents = name.split('.');\r\n    name = nameComponents[0];\r\n\r\n    if (name.length > 50) {\r\n      name = name.substr(0, 50) + '...';\r\n    }\r\n\r\n    name = decodeURIComponent(name);\r\n    // Files with uri as key!!\r\n\r\n    this.version.files.push({\r\n      id: uri,\r\n      uri: file.url,\r\n      name: name,\r\n      contentVariants: file.contentVariants != null ? file.contentVariants : {},\r\n      compression: file.compression,\r\n      formatExtension: file.formatExtension,\r\n      rowspan: 1,\r\n    });\r\n\r\n    this.version.files.sort(function (a, b) {\r\n      var nameA = a.name;\r\n      var nameB = b.name;\r\n\r\n      if (nameA < nameB) {\r\n        return -1;\r\n      }\r\n      if (nameA > nameB) {\r\n        return 1;\r\n      }\r\n\r\n      return 0;\r\n    });\r\n\r\n    this.version.isConfigDirty = true;\r\n  }\r\n\r\n  addContentVariant(variant) {\r\n\r\n    if (variant == undefined || variant == '') {\r\n      return;\r\n    }\r\n\r\n    if (this.version.contentVariants == undefined) {\r\n      this.version.contentVariants = [];\r\n    }\r\n\r\n    for (var c in this.version.contentVariants) {\r\n      if (this.version.contentVariants[c].id == variant) {\r\n        return;\r\n      }\r\n    }\r\n\r\n    this.version.contentVariants.push({\r\n      label: variant,\r\n      id: variant,\r\n      fillRegex: '',\r\n      toLower: true,\r\n      pruneWhitespaces: true\r\n    });\r\n\r\n    this.version.isConfigDirty = true;\r\n  }\r\n\r\n\r\n  removeContentVariant(variant) {\r\n\r\n    this.version.contentVariants = this.version.contentVariants.filter(function (d) {\r\n      return d.id != variant.id;\r\n    });\r\n\r\n    for (var f in this.version.files) {\r\n      var file = this.version.files[f];\r\n      delete file.contentVariants[variant.id];\r\n    }\r\n\r\n    this.version.isConfigDirty = true;\r\n  }\r\n\r\n  fill(variant) {\r\n\r\n    var val = variant.fillRegex;\r\n\r\n    for (var file of this.version.files) {\r\n\r\n      if (variant.toLower) {\r\n        val = val.toLowerCase();\r\n      }\r\n\r\n      if (variant.pruneWhitespaces) {\r\n        val = val.replaceAll(' ', '');\r\n      }\r\n\r\n      if (!variant.overwrite && file.contentVariants[variant.id] != undefined\r\n        && file.contentVariants[variant.id].length > 0) {\r\n        continue;\r\n      }\r\n\r\n      file.contentVariants[variant.id] = val;\r\n    }\r\n\r\n    this.version.isConfigDirty = true;\r\n  }\r\n\r\n  fillByRegex(variant) {\r\n    var regex = new RegExp(variant.fillRegex);\r\n\r\n    for (var f in this.version.files) {\r\n      var file = this.version.files[f];\r\n      var matches = file.name.match(regex);\r\n\r\n      if (matches != null) {\r\n        var val = matches[0];\r\n\r\n        if (variant.toLower) {\r\n          val = val.toLowerCase();\r\n        }\r\n\r\n        if (variant.pruneWhitespaces) {\r\n          val = val.replaceAll(' ', '');\r\n        }\r\n\r\n        if (!variant.overwrite && file.contentVariants[variant.id] != undefined\r\n          && file.contentVariants[variant.id].length > 0) {\r\n          continue;\r\n        }\r\n\r\n        file.contentVariants[variant.id] = val;\r\n      }\r\n    }\r\n\r\n    this.version.isConfigDirty = true;\r\n  }\r\n\r\n  createVersionName(v) {\r\n    if (v == 0) {\r\n      this.version.name = new Date().toISOString().slice(0, 10);\r\n    }\r\n\r\n    if (v == 1) {\r\n      this.version.name = new Date().toISOString().slice(0, 13);\r\n    }\r\n  }\r\n\r\n  getRowIndex(files, name) {\r\n    var k = 1;\r\n    for (var f in files) {\r\n      if (files[f].name == name) {\r\n        return k;\r\n      }\r\n\r\n      k++;\r\n    }\r\n\r\n    return -1;\r\n  }\r\n\r\n\r\n  cvSplit(artifact, files, cvIndex) {\r\n\r\n    if (files.length <= 1) {\r\n      return;\r\n    }\r\n\r\n    if (artifact.contentVariants == undefined) {\r\n      artifact.contentVariants = [];\r\n    }\r\n    // if end of cvs, assign errors to all files if files.length > 1\r\n    if (cvIndex - 2 >= artifact.contentVariants.length) {\r\n\r\n      if (files.length > 1) {\r\n\r\n        var cvHints = [];\r\n\r\n        if (artifact.contentVariants.length == 0) {\r\n          cvHints.push('No content variants have been added yet. Add content variants in the files panel in order to tag your files.');\r\n        } else {\r\n          for (var c in artifact.contentVariants) {\r\n            var cv = artifact.contentVariants[c];\r\n            var value = files[0].contentVariants[cv.id];\r\n\r\n            if (value == undefined || value == '') {\r\n              value = 'none';\r\n            }\r\n\r\n            cvHints.push(cv.id + ': ' + value);\r\n          }\r\n        }\r\n\r\n        for (var f in files) {\r\n\r\n          var index = 0;\r\n\r\n          if (f == 0) {\r\n            var index = this.getRowIndex(artifact.files, files[1].name);\r\n          } else {\r\n            var index = this.getRowIndex(artifact.files, files[0].name);\r\n          }\r\n\r\n          var errorMessage = 'The Databus requires any two files to be distinguishable by either their format, compression or any content variant. You have added a file with the exact same format, compression and content variants at row '\r\n            + index + ' (' +\r\n            cvHints.join(', ') + ').';\r\n\r\n          files[f].errors.push({ key: 'err_duplicate_file', message: errorMessage });\r\n        }\r\n      }\r\n\r\n      return;\r\n    }\r\n\r\n    // else create buckets and sort files into buckets\r\n    var buckets = {};\r\n\r\n    for (var f in files) {\r\n      var file = files[f];\r\n\r\n      var key = null;\r\n\r\n      if (cvIndex == 0) {\r\n        key = file.formatExtension;\r\n      } else if (cvIndex == 1) {\r\n        key = file.compression;\r\n      } else {\r\n        key = file.contentVariants[artifact.contentVariants[cvIndex - 2].id];\r\n      }\r\n\r\n      if (key == undefined || key == '') {\r\n        key = '$_none$';\r\n      }\r\n\r\n      if (buckets[key] == undefined) {\r\n        buckets[key] = [];\r\n      }\r\n\r\n      buckets[key].push(file);\r\n    }\r\n\r\n    // iterate buckets and call recursively\r\n    for (var b in buckets) {\r\n      this.cvSplit(artifact, buckets[b], cvIndex + 1);\r\n    }\r\n  }\r\n\r\n\r\n  getOrCreateFileGroup(fileGroupId, name) {\r\n\r\n    if (this.version.files == null) {\r\n      this.version.files = {};\r\n    }\r\n\r\n    if (this.version.files[fileGroupId] == undefined) {\r\n\r\n      this.version.files[fileGroupId] = {\r\n        id: fileGroupId,\r\n        name: name,\r\n        contentVariants: {},\r\n        distributions: [],\r\n        artifactId: undefined,\r\n        groupId: undefined,\r\n      };\r\n    }\r\n\r\n    return this.version.files[fileGroupId];\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = PublishData;\n\n//# sourceURL=webpack://databus-webapp/./js/publish/publish-data.js?");
-
-/***/ }),
-
-/***/ "./js/publish/publish-session.js":
-/*!***************************************!*\
-  !*** ./js/publish/publish-session.js ***!
-  \***************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ \"./js/utils/jsonld-utils.js\");\r\nconst PublishData = __webpack_require__(/*! ./publish-data */ \"./js/publish/publish-data.js\");\r\nconst DataIdCreator = __webpack_require__(/*! ./dataid-creator */ \"./js/publish/dataid-creator.js\");\r\nconst DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ \"./js/publish/databus-sparql-client.js\");\r\nconst GroupHandler = __webpack_require__(/*! ./group-data */ \"./js/publish/group-data.js\");\r\nconst ArtifactHandler = __webpack_require__(/*! ./artifact-data */ \"./js/publish/artifact-data.js\");\r\nconst VersionHandler = __webpack_require__(/*! ./version-handler */ \"./js/publish/version-handler.js\");\r\n\r\nclass PublishSession {\r\n\r\n    static sessionStorageKey = 'databus_upload';\r\n    static sessionStorageIgnoreKeys = [\r\n        '$$hashKey',\r\n        'eventListeners',\r\n        'hasLocalChanges',\r\n        'fileFilterInput',\r\n        'fileSuggestions',\r\n        'progress',\r\n        'streamQueue'\r\n    ];\r\n\r\n\r\n    constructor($http, $interval, accounts, apiKeys) {\r\n\r\n        this.$http = $http;\r\n        this.accounts = accounts;\r\n        this.sparqlClient = new DatabusSparqlClient($http);\r\n        this.formData = new PublishData();\r\n\r\n        this.group = new GroupHandler($http, accounts, apiKeys);\r\n        this.artifact = new ArtifactHandler($http, accounts, apiKeys);\r\n        this.version = new VersionHandler($http, $interval, accounts, apiKeys);\r\n\r\n        this.reset();\r\n    }\r\n\r\n\r\n\r\n    reset() {\r\n        this.accountData = {};\r\n        this.groupData = {};\r\n        this.artifactData = {};\r\n        this.versionData = {};\r\n    }\r\n\r\n    update() {\r\n        this.validate();\r\n        this.save();\r\n    }\r\n\r\n    async selectAccount(account) {\r\n        this.accountData = {\r\n            name: account.name,\r\n            isValid: true\r\n        };\r\n\r\n        // Fetch groups for account here:\r\n        this.groups = await this.sparqlClient.getGroups(this.accountData.name);\r\n        \r\n\r\n        this.save();\r\n    }\r\n\r\n    async selectGroup(targetGroup) {\r\n\r\n        if (targetGroup == null) {\r\n            return;\r\n        }\r\n\r\n        var group = this.formData.group;\r\n        var artifact = this.formData.artifact;\r\n\r\n        group.name = targetGroup.name;\r\n        group.title = targetGroup.title;\r\n        group.abstract = targetGroup.abstract;\r\n        group.description = targetGroup.description;\r\n\r\n        if (this.currentGroup == null || this.currentGroup.name != targetGroup.name) {\r\n            this.currentGroup = targetGroup;\r\n\r\n            if (this.formData.artifact.generateMetadata == 'existing') {\r\n                this.currentArtifact = null;\r\n                this.setCreateNewArtifact('create');\r\n            }\r\n        }\r\n    }\r\n\r\n    createNewGroup() {\r\n        this.formData.group.name = \"\";\r\n        this.formData.group.title = \"\";\r\n        this.formData.group.abstract = \"\";\r\n        this.formData.group.description = \"\";\r\n\r\n        this.save();\r\n    }\r\n\r\n    selectArtifact(targetArtifact) {\r\n        if (targetArtifact == null) {\r\n            return;\r\n        }\r\n\r\n        var artifact = this.formData.artifact;\r\n        artifact.name = targetArtifact.name;\r\n        artifact.title = targetArtifact.title;\r\n        artifact.abstract = targetArtifact.abstract;\r\n        artifact.description = targetArtifact.description;\r\n        this.currentArtifact = targetArtifact;\r\n\r\n        this.availableVersions = this.accountData.versions.filter(function (v) {\r\n            return v.startsWith(targetArtifact.uri);\r\n        });\r\n    }\r\n\r\n    selectVersion = function (versionUri) {\r\n\r\n        try {\r\n            var relativeUri = new URL(versionUri).pathname;\r\n            var options = {\r\n                method: 'GET',\r\n                url: relativeUri,\r\n                headers: {\r\n                    'Accept': 'application/ld+json',\r\n                    'X-Jsonld-Formatting': 'flatten'\r\n                }\r\n            };\r\n\r\n            var version = this.formData.version;\r\n            version.isLoading = true;\r\n\r\n            var self = this;\r\n\r\n            this.$http(options).then(function (response) {\r\n\r\n                var version = self.formData.version;\r\n                version.isLoading = false;\r\n\r\n                var versionData = response.data;\r\n                var versionGraph = JsonldUtils.getTypedGraph(versionData, DatabusUris.DATABUS_VERSION);\r\n\r\n                version.name = DatabusUtils.uriToName(versionGraph[DatabusUris.JSONLD_ID]);\r\n                version.title = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_TITLE);\r\n                version.abstract = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ABSTRACT);\r\n                version.description = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_DESCRIPTION);\r\n                version.attribution = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ATTRIBUTION);\r\n                version.license = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_LICENSE);\r\n                version.derivedFrom = JsonldUtils.getProperty(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM);\r\n                version.contentVariants = [];\r\n\r\n                var contentVariantGraphs = JsonldUtils.getTypedGraphs(versionData, DatabusUris.RDF_PROPERTY);\r\n\r\n                for (var contentVariantGraph of contentVariantGraphs) {\r\n\r\n                    var variantName = DatabusUtils.uriToName(contentVariantGraph[DatabusUris.JSONLD_ID]);\r\n                    self.formData.addContentVariant(variantName);\r\n                }\r\n\r\n                // Add Files!\r\n                var fileGraphs = JsonldUtils.getTypedGraphs(versionData, DatabusUris.DATABUS_PART);\r\n                version.files = [];\r\n\r\n                for (var fileGraph of fileGraphs) {\r\n\r\n                    var fileUri = JsonldUtils.getProperty(fileGraph, DatabusUris.DCAT_DOWNLOAD_URL);\r\n\r\n\r\n\r\n                    var file = {\r\n                        id: fileUri,\r\n                        url: fileUri,\r\n                        name: DatabusUtils.uriToName(fileUri),\r\n                        compression: JsonldUtils.getProperty(fileGraph, DatabusUris.DATABUS_COMPRESSION),\r\n                        formatExtension: JsonldUtils.getProperty(fileGraph, DatabusUris.DATABUS_FORMAT_EXTENSION),\r\n                        contentVariants: {}\r\n                    }\r\n\r\n                    for (var contentVariant of version.contentVariants) {\r\n                        var variantUri = `${DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX}${contentVariant.id}`;\r\n                        var variantValue = JsonldUtils.getProperty(fileGraph, variantUri);\r\n\r\n                        if (variantValue != null) {\r\n                            file.contentVariants[contentVariant.id] = variantValue;\r\n                        }\r\n                    }\r\n\r\n                    self.formData.addFile(file);\r\n                }\r\n\r\n\r\n                // Save the preset values\r\n                delete version.preset;\r\n                version.preset = JSON.parse(JSON.stringify(version));\r\n            });\r\n\r\n\r\n        } catch (err) {\r\n            console.log(err);\r\n        }\r\n    }\r\n\r\n    addFile(file) {\r\n        this.formData.addFile(file);\r\n    }\r\n\r\n\r\n    setCreateNewGroup(value) {\r\n        this.formData.group.generateMetadata = value;\r\n        if (value == 'create') {\r\n            this.formData.group.name = \"\";\r\n            this.formData.group.title = \"\";\r\n            this.formData.group.abstract = \"\";\r\n            this.formData.group.description = \"\";\r\n            this.formData.group.generateAbstract = true;\r\n            this.currentGroup = null;\r\n\r\n            if (this.formData.artifact.generateMetadata == 'existing') {\r\n                this.setCreateNewArtifact('create');\r\n            }\r\n        } else if (value == 'existing') {\r\n            var hasGroups = DatabusUtils.objSize(this.accountData.groups) > 0;\r\n\r\n            if (!hasGroups) {\r\n                this.setCreateNewGroup('create');\r\n                return;\r\n            }\r\n\r\n            if (this.currentGroup == null) {\r\n                for (var group of this.accountData.groups) {\r\n                    this.selectGroup(group);\r\n                    break;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    setCreateNewArtifact(value) {\r\n        this.formData.artifact.generateMetadata = value;\r\n\r\n        if (value == 'create') {\r\n\r\n            this.availableVersions = [];\r\n            this.formData.artifact.name = \"\";\r\n            this.formData.artifact.title = \"\";\r\n            this.formData.artifact.description = \"\";\r\n            this.currentArtifact = null;\r\n\r\n            if (this.formData.version.generateMetadata == 'existing') {\r\n                this.setCreateNewVersion('create');\r\n            }\r\n\r\n        } else if (value == 'existing') {\r\n\r\n            if (!this.currentGroup.hasArtifacts) {\r\n                this.setCreateNewArtifact('create');\r\n                return;\r\n            }\r\n\r\n            if (this.currentArtifact == null) {\r\n                this.selectArtifact(this.currentGroup.artifacts[0]);\r\n            }\r\n        } else {\r\n\r\n            this.availableVersions = [];\r\n            if (this.formData.version.generateMetadata != 'none') {\r\n                this.setCreateNewVersion('none');\r\n            }\r\n        }\r\n    }\r\n\r\n    setCreateNewVersion(value) {\r\n        this.formData.version.generateMetadata = value;\r\n\r\n        if (value == 'create') {\r\n\r\n\r\n        } else if (value == 'existing') {\r\n\r\n            if (this.availableVersions.length == 0) {\r\n                this.setCreateNewVersion('create');\r\n                return;\r\n            }\r\n\r\n            this.selectVersion(this.availableVersions[0]);\r\n        }\r\n\r\n    }\r\n    currentGroupHasArtifacts() {\r\n        if (this.formData.group.generateMetadata == 'create') {\r\n            return false;\r\n        }\r\n\r\n        return this.currentGroup.artifacts != null && this.currentGroup.artifacts.length > 0;\r\n    }\r\n\r\n    initializeField(source, name, defaultValue) {\r\n        this[name] = source != null ? source[name] : defaultValue;\r\n    }\r\n\r\n    save() {\r\n\r\n        let data = {\r\n            accountData: this.accountData,\r\n            groupData: this.groupData,\r\n            artifactData: this.artifactData,\r\n            versionData: this.versionData,\r\n            formData: this.formData,\r\n        }\r\n\r\n\r\n        try {\r\n            var sessionDataString = JSON.stringify(data, function (key, value) {\r\n                if (PublishSession.sessionStorageIgnoreKeys.includes(key)) {\r\n                    return undefined;\r\n                }\r\n                return value;\r\n            });\r\n\r\n            window.sessionStorage.setItem(PublishSession.sessionStorageKey, sessionDataString);\r\n        } catch (e) {\r\n            console.log(e);\r\n        }\r\n    }\r\n\r\n    static resume($http, sub, accountData) {\r\n\r\n        var sessionData = JSON.parse(window.sessionStorage.getItem(PublishSession.sessionStorageKey));\r\n\r\n        if (sessionData == null || sessionData.sub == null) {\r\n            return null;\r\n        }\r\n\r\n        if (sub != sessionData.sub) {\r\n            return null;\r\n        }\r\n\r\n        var publishSession = new PublishSession($http, sessionData, accountData);\r\n\r\n        return publishSession;\r\n    }\r\n\r\n    onChange() {\r\n        this.validate();\r\n        this.inputs = this.dataIdCreator.createInputs();\r\n        this.save();\r\n\r\n        if (this.dataIdCreator != undefined) {\r\n            this.inputs = this.dataIdCreator.createInputs();\r\n\r\n            this.isReadyForUpload =\r\n                !this.formData.artifact.errors.length > 0 &&\r\n                !this.formData.group.errors.length > 0 &&\r\n                !this.formData.version.errors.length > 0 &&\r\n                !this.formData.files.errors.length > 0;\r\n        }\r\n    }\r\n\r\n    onChangeGroup() {\r\n\r\n        let group = this.formData.group;\r\n\r\n        group.errors = [];\r\n        group.warnings = [];\r\n\r\n        if (!DatabusUtils.isValidGroupName(group.name)) {\r\n            group.errors.push('err_invalid_group_name');\r\n        }\r\n\r\n        var existingGroup = this.groups.filter(function (value) {\r\n            return value.name == self.group.name;\r\n        });\r\n\r\n        if (existingGroup.length > 0 && group.mode == 'create') {\r\n            group.warnings.push('warning_group_exists');\r\n        }\r\n\r\n        this.save();\r\n    }\r\n\r\n    getValidString(value) {\r\n        if (value == undefined || value.length == 0) {\r\n            return undefined;\r\n        }\r\n\r\n        return value;\r\n    }\r\n\r\n    updateGroupBody() {\r\n        var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountData.name}`;\r\n\r\n        this.groupBody = {\r\n            \"@context\": this.getContext(),\r\n            \"@graph\": [\r\n                {\r\n                    \"@id\": `${accountUri}/${this.formData.group.name}`,\r\n                    \"@type\": \"Group\",\r\n                    \"title\": this.getValidString(this.formData.group.title),\r\n                    \"abstract\": this.getValidString(this.formData.group.abstract),\r\n                    \"description\": this.getValidString(this.formData.group.description)\r\n                }\r\n            ]\r\n        };\r\n    }\r\n\r\n    getContext() {\r\n        if (DATABUS_CONTEXT_URL != undefined && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {\r\n            return DATABUS_CONTEXT_URL;\r\n        }\r\n\r\n        return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];\r\n    }\r\n\r\n    onChangeArtifact() {\r\n\r\n        let artifact = this.formData.artifact;\r\n\r\n        artifact.errors = [];\r\n        artifact.warnings = [];\r\n\r\n        if (!DatabusUtils.isValidArtifactName(artifact.name)) {\r\n            artifact.errors.push('err_invalid_artifact_name');\r\n        }\r\n\r\n        if (this.artifacts != null) {\r\n            var existingArtifact = this.artifacts.filter(function (value) {\r\n                return value.name == self.group.name;\r\n            });\r\n\r\n            if (existingArtifact.length > 0 && artifact.mode == 'create') {\r\n                artifact.warnings.push('warning_group_exists');\r\n            }\r\n        }\r\n\r\n        this.save();\r\n\r\n    }\r\n}\r\n\r\nmodule.exports = PublishSession;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/publish-session.js?");
-
-/***/ }),
-
-/***/ "./js/publish/version-handler.js":
-/*!***************************************!*\
-  !*** ./js/publish/version-handler.js ***!
-  \***************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const EntityHandler = __webpack_require__(/*! ./entity-handler */ \"./js/publish/entity-handler.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst GroupData = __webpack_require__(/*! ./group-data */ \"./js/publish/group-data.js\");\r\n\r\nclass VersionHandler extends EntityHandler {\r\n  constructor($http, $interval, accounts, apiKeys) {\r\n    super('databus_registration_version_data', $http, $interval, accounts, apiKeys);\r\n  }\r\n\r\n  initialize(data) {\r\n    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);\r\n\r\n    if (validAccount) {\r\n      Object.assign(this, data);\r\n    } else {\r\n      this.accountName = this.accounts[0]?.name;\r\n    }\r\n\r\n    if (this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {\r\n      this.apiKeyName = this.apiKeys[0].keyname;\r\n    }\r\n\r\n    this.pageIndex ??= 0;\r\n    this.sendmode ??= 'register';\r\n    this.files ??= [];\r\n    this.contentVariants ??= [];\r\n\r\n    if (!this.contentVariants.some(v => v.id == 'formatExtension')) {\r\n      this.contentVariants.push({\r\n        label: 'Format',\r\n        id: 'formatExtension',\r\n        custom: false\r\n      });\r\n    }\r\n\r\n    if (!this.contentVariants.some(v => v.id == 'compression')) {\r\n      this.contentVariants.push({\r\n        label: 'Compression',\r\n        id: 'compression',\r\n        custom: false\r\n      });\r\n    }\r\n\r\n    let self = this;\r\n\r\n    this.$interval(function () {\r\n      if (self.hasLicenseQueryChanged) {\r\n\r\n        self.$http.get(`/app/publish-wizard/licenses?limit=30&keyword=${self.licenseQuery}`)\r\n          .then(function (response) {\r\n            self.filteredLicenseList = response.data.results.bindings;\r\n          });\r\n\r\n        self.hasLicenseQueryChanged = false;\r\n      }\r\n\r\n    }, 300);\r\n\r\n    this.licenseQuery = \"\";\r\n    this.filterLicenses();\r\n    this.onAccountNameChanged();\r\n    this.onGroupNameChanged();\r\n    this.onArtifactNameChanged();\r\n  }\r\n\r\n  getURI() {\r\n    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.groupName}/${this.artifactName}/${this.name}`;\r\n  }\r\n\r\n  setLicense(license) {\r\n    this.license = license;\r\n    this.onChange();\r\n  }\r\n\r\n  filterLicenses() {\r\n    this.hasLicenseQueryChanged = true;\r\n  }\r\n\r\n  validate() {\r\n    this.errors = [];\r\n    this.warnings = [];\r\n\r\n    if (!DatabusUtils.isValidVersionIdentifier(this.name)) {\r\n      this.errors.push('err_invalid_version_name');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidGroupName(this.groupName)) {\r\n      this.errors.push('err_no_group_selected');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidArtifactName(this.artifactName)) {\r\n      this.errors.push('err_no_artifact_selected');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidResourceLabel(this.title)) {\r\n      this.errors.push('err_invalid_version_title');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidResourceText(this.abstract, 1)) {\r\n      this.errors.push('err_invalid_version_abstract');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidResourceText(this.description, 1)) {\r\n      this.errors.push('err_invalid_version_description');\r\n    }\r\n\r\n    if (!DatabusUtils.isValidUrl(this.license)) {\r\n      this.errors.push('err_invalid_version_license');\r\n    }\r\n\r\n    if (this.files.length == 0) {\r\n      this.errors.push('err_no_files');\r\n    }\r\n\r\n    for (let file of this.files) {\r\n      file.errors = [];\r\n    }\r\n\r\n    this.fileErrors = [];\r\n\r\n    this.cvSplit(this.files, 0);\r\n\r\n    for (let file of this.files) {\r\n      for (let error of file.errors) {\r\n        this.errors.push(error);\r\n        this.fileErrors.push(error);\r\n      }\r\n    }\r\n\r\n    const exists = this.artifactList?.some(a => a.name === this.name);\r\n    if (exists) {\r\n      this.warnings.push('warning_artifact_exists');\r\n    }\r\n  }\r\n\r\n  getSaveData() {\r\n    return {\r\n      accountName: this.accountName,\r\n      groupName: this.groupName,\r\n      artifactName: this.artifactName,\r\n      name: this.name,\r\n      title: this.title,\r\n      abstract: this.abstract,\r\n      description: this.description,\r\n      sendmode: this.sendmode,\r\n      apiKeyName: this.apiKeyName,\r\n      wasDerivedFrom: this.wasDerivedFrom,\r\n      attribution: this.attribution,\r\n      license: this.license,\r\n      pageIndex: this.pageIndex,\r\n      contentVariants: this.contentVariants,\r\n      files: this.files\r\n    };\r\n  }\r\n\r\n\r\n  async setGroupName(groupName) {\r\n    if (this.groupName !== groupName) {\r\n      this.groupName = groupName;\r\n      await this.onGroupNameChanged();\r\n    }\r\n  }\r\n\r\n  async onGroupNameChanged() {\r\n    this.isLoadingArtifacts = true;\r\n    this.artifactList = await this.sparqlClient.getArtifacts(this.accountName, this.groupName);\r\n    this.isLoadingArtifacts = false;\r\n    this.onChange();\r\n  }\r\n\r\n  async setArtifactName(artifactName) {\r\n    if (this.artifactName !== artifactName) {\r\n      this.artifactName = artifactName;\r\n      await this.onArtifactNameChanged();\r\n    }\r\n  }\r\n\r\n  async onArtifactNameChanged() {\r\n    this.isLoadingVersions = true;\r\n    this.versionList = await this.sparqlClient.getVersions(this.accountName, this.groupName, this.artifactName);\r\n    this.isLoadingVersions = false;\r\n    this.onChange();\r\n  }\r\n\r\n\r\n  updateOutputs() {\r\n\r\n    const artifactUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}/${GroupData.getStringOrMissing(this.groupName)}/${GroupData.getStringOrMissing(this.artifactName)}`;\r\n    let versionUri = `${artifactUri}/${GroupData.getStringOrMissing(this.name)}`;\r\n\r\n    let graph = {\r\n      \"@id\": versionUri,\r\n      \"@type\": \"Version\",\r\n      \"title\": this.getValidString(this.title),\r\n      \"abstract\": this.getValidString(this.abstract),\r\n      \"description\": this.getValidString(this.description),\r\n      \"license\": this.getValidString(this.license),\r\n      \"attribution\": this.getValidString(this.attribution),\r\n      \"wasDerivedFrom\": this.getValidString(this.wasDerivedFrom),\r\n    }\r\n\r\n    graph.distribution = [];\r\n\r\n\r\n    let customVariants = [];\r\n\r\n    for (var fg in this.files) {\r\n\r\n      var file = this.files[fg];\r\n\r\n      var variantSuffix = '';\r\n      for (var c in this.contentVariants) {\r\n        var cv = this.contentVariants[c];\r\n        var value = file.contentVariants[cv.id];\r\n\r\n        if (value == undefined || value == \"\") {\r\n          continue;\r\n        }\r\n\r\n        variantSuffix += '_' + cv.id + '=' + value;\r\n      }\r\n\r\n      let fileName = this.artifactName;\r\n\r\n      var distributionUri = `${versionUri}#${fileName}`;\r\n      var fileUri = `${versionUri}/${fileName}${variantSuffix}`;\r\n\r\n      distributionUri += variantSuffix;\r\n\r\n      let formatExtension = this.getValidString(file.contentVariants['formatExtension']);\r\n\r\n      if (formatExtension == undefined) {\r\n        formatExtension = 'none';\r\n      }\r\n\r\n      if (formatExtension != 'none') {\r\n        distributionUri += '.' + formatExtension;\r\n        fileUri += '.' + formatExtension;\r\n      }\r\n\r\n      let compression = this.getValidString(file.contentVariants['compression']);\r\n\r\n      if (compression == undefined) {\r\n        compression = 'none';\r\n      }\r\n\r\n      if (compression != 'none') {\r\n        distributionUri += '.' + compression;\r\n        fileUri += '.' + compression;\r\n      }\r\n\r\n      var distribution = {\r\n        \"@type\": \"Part\",\r\n        \"formatExtension\": formatExtension,\r\n        \"compression\": compression,\r\n        \"downloadURL\": file.uri,\r\n        \"byteSize\": file.byteSize,\r\n        \"sha256sum\": file.sha256sum,\r\n      };\r\n\r\n      for (var c in this.contentVariants) {\r\n        var cv = this.contentVariants[c];\r\n\r\n        if (!cv.custom) {\r\n          continue;\r\n        }\r\n\r\n        var value = file.contentVariants[cv.id];\r\n\r\n        if (value == undefined || value == \"\") {\r\n          continue;\r\n        }\r\n\r\n        distribution['dcv:' + cv.label] = value;\r\n\r\n        if (!customVariants.includes(cv.id)) {\r\n          customVariants.push(cv.id);\r\n        }\r\n      }\r\n\r\n      graph.distribution.push(distribution);\r\n    }\r\n\r\n\r\n\r\n\r\n    this.postBody = {\r\n      \"@context\": this.getContext(),\r\n      \"@graph\": [\r\n        graph\r\n      ]\r\n    };\r\n\r\n\r\n\r\n    const payload = JSON.stringify(this.postBody, null, 2);\r\n    const apiKey = this.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;\r\n\r\n    this.curlCommand = [\r\n      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\\\`,\r\n      `  -H \"X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}\" \\\\`,\r\n      `  -H \"Content-Type: application/json\" \\\\`,\r\n      `  -d '${payload}'`\r\n    ].join('\\n');\r\n  }\r\n\r\n  createVersionName(v) {\r\n    if (v == 0) {\r\n      this.name = new Date().toISOString().slice(0, 10);\r\n    }\r\n\r\n    if (v == 1) {\r\n      this.name = new Date().toISOString().slice(0, 13);\r\n    }\r\n\r\n    this.onChange();\r\n  }\r\n\r\n  changePage(diff) {\r\n    this.pageIndex = Math.max(0, this.pageIndex + diff);\r\n    this.onChange();\r\n  };\r\n\r\n  addContentVariant(variant) {\r\n\r\n    if (variant == undefined || variant == '') {\r\n      return;\r\n    }\r\n\r\n    if (this.contentVariants == undefined) {\r\n      this.contentVariants = [];\r\n    }\r\n\r\n    for (var c in this.contentVariants) {\r\n      if (this.contentVariants[c].id == variant) {\r\n        return;\r\n      }\r\n    }\r\n\r\n    this.contentVariants.push({\r\n      label: variant,\r\n      id: DatabusUtils.uuidv4(),\r\n      fillRegex: '',\r\n      toLower: true,\r\n      pruneWhitespaces: true,\r\n      custom: true,\r\n    });\r\n\r\n    this.onChange();\r\n  }\r\n\r\n\r\n  removeContentVariant(variant) {\r\n    this.contentVariants = this.contentVariants.filter(function (d) {\r\n      return d.id != variant.id;\r\n    });\r\n\r\n    for (var f in this.files) {\r\n      var file = this.files[f];\r\n      delete file.contentVariants[variant.id];\r\n    }\r\n\r\n    this.editContentVariant = null;\r\n    this.onChange();\r\n  }\r\n\r\n  addFiles(input) {\r\n    var lines = input.split('\\n');\r\n    for (var line of lines) {\r\n      if (line != undefined && line.length > 0) {\r\n        this.addFile(line);\r\n      }\r\n    }\r\n  }\r\n\r\n  addFile(file) {\r\n\r\n    if (typeof file === 'string') {\r\n      file = { url: file };\r\n    }\r\n\r\n    if (this.files == undefined) {\r\n      this.files = [];\r\n    }\r\n\r\n    // Check if already added\r\n    for (var f in this.files) {\r\n      if (file.url == this.files[f].url) {\r\n        return;\r\n      }\r\n    }\r\n\r\n    var uri = file.url;\r\n    var uriParts = uri.split('/');\r\n    var name = uriParts.pop();\r\n    var nameComponents = name.split('.');\r\n    name = nameComponents[0];\r\n\r\n    if (name.length > 50) {\r\n      name = name.substr(0, 50) + '...';\r\n    }\r\n\r\n    name = decodeURIComponent(name);\r\n    // Files with uri as key!!\r\n\r\n    this.files.push({\r\n      id: uri,\r\n      uri: file.url,\r\n      name: name,\r\n      contentVariants: file.contentVariants != null ? file.contentVariants : {},\r\n      rowspan: 1,\r\n    });\r\n\r\n    this.files.sort(function (a, b) {\r\n      var nameA = a.name;\r\n      var nameB = b.name;\r\n\r\n      if (nameA < nameB) {\r\n        return -1;\r\n      }\r\n      if (nameA > nameB) {\r\n        return 1;\r\n      }\r\n\r\n      return 0;\r\n    });\r\n\r\n    let k = 1;\r\n\r\n    for (let file of this.files) {\r\n      file.rowIndex = k++;\r\n    }\r\n\r\n    this.onChange();\r\n  }\r\n\r\n  removeFile = function (file, index) {\r\n    this.files.splice(index, 1);\r\n    this.onChange();\r\n  }\r\n\r\n\r\n  fill(variant) {\r\n\r\n    var val = variant.fillRegex;\r\n\r\n    for (var file of this.files) {\r\n\r\n      if (variant.toLower) {\r\n        val = val.toLowerCase();\r\n      }\r\n\r\n      if (variant.pruneWhitespaces) {\r\n        val = val.replaceAll(' ', '');\r\n      }\r\n\r\n      if (!variant.overwrite && file.contentVariants[variant.id] != undefined\r\n        && file.contentVariants[variant.id].length > 0) {\r\n        continue;\r\n      }\r\n\r\n      file.contentVariants[variant.id] = val;\r\n    }\r\n\r\n    this.onChange();\r\n  }\r\n\r\n  fillByRegex(variant) {\r\n    var regex = new RegExp(variant.fillRegex);\r\n\r\n    for (var file of this.files) {\r\n      var matches = file.name.match(regex);\r\n\r\n      if (matches != null) {\r\n        var val = matches[0];\r\n\r\n        if (variant.toLower) {\r\n          val = val.toLowerCase();\r\n        }\r\n\r\n        if (variant.pruneWhitespaces) {\r\n          val = val.replaceAll(' ', '');\r\n        }\r\n\r\n        if (!variant.overwrite && file.contentVariants[variant.id] != undefined\r\n          && file.contentVariants[variant.id].length > 0) {\r\n          continue;\r\n        }\r\n\r\n        file.contentVariants[variant.id] = val;\r\n      }\r\n    }\r\n\r\n    this.onChange();\r\n  }\r\n\r\n  getRowIndex(files, name) {\r\n    var k = 1;\r\n    for (var f in files) {\r\n      if (files[f].name == name) {\r\n        return k;\r\n      }\r\n\r\n      k++;\r\n    }\r\n\r\n    return -1;\r\n  }\r\n\r\n\r\n  cvSplit(files, cvIndex) {\r\n\r\n    if (files.length <= 1) {\r\n      return;\r\n    }\r\n\r\n    if (this.contentVariants == undefined) {\r\n      this.contentVariants = [];\r\n    }\r\n    // if end of cvs, assign errors to all files if files.length > 1\r\n    if (cvIndex - 2 >= this.contentVariants.length) {\r\n\r\n      if (files.length > 1) {\r\n\r\n        var cvHints = [];\r\n\r\n        if (this.contentVariants.length == 0) {\r\n          cvHints.push('No content variants have been added yet. Add content variants in the files panel in order to tag your files.');\r\n        } else {\r\n          for (var c in this.contentVariants) {\r\n            var cv = this.contentVariants[c];\r\n            var value = files[0].contentVariants[cv.id];\r\n\r\n            if (value == undefined || value == '') {\r\n              value = 'none';\r\n            }\r\n\r\n            cvHints.push(cv.id + ': ' + value);\r\n          }\r\n        }\r\n\r\n        for (let file of files) {\r\n\r\n          var errorMessage = 'Row ' + file.rowIndex + ' (' +\r\n            cvHints.join(', ') + ').';\r\n\r\n          file.errors.push({ key: 'err_duplicate_file', message: errorMessage });\r\n        }\r\n      }\r\n\r\n      return;\r\n    }\r\n\r\n    // else create buckets and sort files into buckets\r\n    var buckets = {};\r\n\r\n    for (var f in files) {\r\n      var file = files[f];\r\n\r\n      var key = null;\r\n\r\n      if (cvIndex == 0) {\r\n        key = file.formatExtension;\r\n      } else if (cvIndex == 1) {\r\n        key = file.compression;\r\n      } else {\r\n        key = file.contentVariants[this.contentVariants[cvIndex - 2].id];\r\n      }\r\n\r\n      if (key == undefined || key == '') {\r\n        key = '$_none$';\r\n      }\r\n\r\n      if (buckets[key] == undefined) {\r\n        buckets[key] = [];\r\n      }\r\n\r\n      buckets[key].push(file);\r\n    }\r\n\r\n    // iterate buckets and call recursively\r\n    for (var b in buckets) {\r\n      this.cvSplit(buckets[b], cvIndex + 1);\r\n    }\r\n  }\r\n\r\n  onEditContentVariant(index) {\r\n    this.editContentVariant = this.contentVariants[index];\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = VersionHandler;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/publish/version-handler.js?");
-
-/***/ }),
-
-/***/ "./js/query-builder/query-builder.js":
-/*!*******************************************!*\
-  !*** ./js/query-builder/query-builder.js ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const QueryNode = __webpack_require__(/*! ./query-node */ \"./js/query-builder/query-node.js\");\n\nclass QueryBuilder {\n\n  static build(config) {\n    var builder = new QueryBuilder();\n    return builder.createQuery(config.node, config.template, config.resourceBaseUrl, config.root);\n  }\n\n\n  isValidHttpUrl(string) {\n    let url;\n\n    try {\n      url = new URL(string);\n    } catch (_) {\n      return false;\n    }\n\n    return url.protocol === \"http:\" || url.protocol === \"https:\";\n  }\n\n  uniqueList(arr) {\n    var u = {}, a = [];\n    for (var i = 0, l = arr.length; i < l; ++i) {\n      if (!u.hasOwnProperty(arr[i])) {\n        a.push(arr[i]);\n        u[arr[i]] = 1;\n      }\n    }\n    return a;\n  }\n\n  createQuery(node, template, resourceBaseUrl, root) {\n\n    this.result = '';\n    this.baseNode = node;\n    this.root = root != undefined ? root : node;\n    this.cvCounter = 0;\n    this.resourceBaseUrl = resourceBaseUrl;\n    this.select = template.select;\n    this.template = template.body;\n    this.templateInsertionKey = template.placeholder != undefined ? template.placeholder : `%QUERY%`;\n    this.prefixes = template.prefixes;\n    this.aggregate = template.aggregate;\n    this.stringSuffix = '';\n\n    this.appendLine(this.select, 0);\n    this.appendLine(`{`, 0);\n    this.createNodeSubquery(node, template.indent, false);\n    this.appendLine(`}`, 0);\n\n    if (this.aggregate != undefined) {\n      this.appendLine(this.aggregate, 0);\n    }\n\n    this.prependPrefixes();\n    return this.result;\n  }\n\n  removeAndCollectPrefixes(query) {\n    var lines = query.split('\\n');\n    var result = \"\";\n\n    for (var line of lines) {\n      if (line.toLowerCase().startsWith('prefix')) {\n        this.prefixes.push(line);\n      } else {\n        result += line + '\\n';\n      }\n    }\n\n    return result.substring(0, result.length - 1);\n  }\n\n  prependPrefixes() {\n\n    this.prefixes = this.uniqueList(this.prefixes);\n\n    for (var line of this.prefixes) {\n      this.prependLine(line, 0);\n    }\n  }\n\n  appendTemplateHeader(indent) {\n    for (var line of this.template) {\n\n      if (line == this.templateInsertionKey) {\n        break;\n      }\n\n      this.appendLine(line, indent);\n    }\n  }\n\n  appendTemplateFooter(indent) {\n    var write = false;\n\n    for (var line of this.template) {\n\n      if (write) {\n        this.appendLine(line, indent);\n      }\n\n      if (line == this.templateInsertionKey) {\n        write = true;\n      }\n    }\n  }\n\n  appendTemplate(node, indent) {\n\n    this.appendTemplateHeader(indent);\n    this.createNodeSubquery(node, indent + 1, true);\n\n    if (node.property == null && node.childNodes.length == 0) {\n      this.appendLine(`?distribution a dataid:Nonsense .`, indent + 1)\n    }\n\n    this.appendTemplateFooter(indent);\n  }\n\n  /**\n   * Create a subquery for any query node. The subquery consist of the node facets and\n   * a UNION of child node queries (this function is called revursively on the child nodes)\n   * @param {*} node \n   */\n  createNodeSubquery(node, indent, hasService) {\n    // Initialize empty result\n\n    if (hasService == undefined) {\n      hasService = false;\n    }\n\n    // Get source...\n    var sourceUri = this.findSourceUri(node);\n\n    if (!hasService && sourceUri != null) {\n\n      if (sourceUri != this.resourceBaseUrl) {\n        this.appendLine(`SERVICE <${sourceUri}/sparql>`, indent);\n        this.appendLine(`{`, indent);\n\n        this.appendTemplate(node, indent + 1);\n        this.appendLine(`}`, indent);\n\n      } else {\n        this.appendTemplate(node, indent);\n      }\n\n      return;\n    }\n\n    if (node.uri != null) {\n\n      if (!this.isValidHttpUrl(node.uri)) {\n\n        // Custom query node\n        var query = this.removeAndCollectPrefixes(node.property);\n        var lines = query.split('\\n');\n        for (var line of lines) {\n          this.appendLine(line, indent);\n        }\n\n        return;\n      }\n    }\n\n    // If a node property was set, add it as a restriction\n    if (node.property != undefined) {\n      this.appendLine(`?dataset ${node.property} <${node.uri}> .`, indent);\n      // If no property was set, we are dealing with a source node\n    } else {\n\n    }\n\n    // Create the node facets sub query \n    this.createNodeFacetsSubquery(node, indent);\n\n    // Call recursively on the children and UNION the results\n\n    var k = 0;\n\n    for (var i in node.childNodes) {\n      if (k > 0) this.appendLine('UNION', indent);\n\n      if (node.childNodes[i].childNodes == null) {\n        return;\n      }\n\n      if (node.childNodes[i].property == undefined && node.childNodes[i].childNodes.length == 0) {\n        continue;\n      }\n\n      this.appendLine('{', indent);\n      this.createNodeSubquery(node.childNodes[i], indent + 1, hasService);\n      this.appendLine('}', indent);\n      k++\n    }\n\n    return this.result;\n  }\n\n  findSourceUri(node) {\n    if (node.uri == null) {\n      return null;\n    }\n\n    if (!this.isValidHttpUrl(node.uri)) {\n      return null;\n    }\n\n    var url = new URL(node.uri);\n    return url.origin;\n  }\n\n  /**\n   * Create restrictions that only occur on this node and none of its children\n   * Added restriction have to be enriched with their parent node settings\n   * @param {*} groupNode \n   */\n  createNodeFacetsSubquery(node, indent) {\n\n    var facetUris = this.findAllNodeFacets(node);\n\n    // Iterate over all the facet settings of the node\n    for (var i in facetUris) {\n\n      var facetUri = facetUris[i];\n\n      // We only add facets to the node if the facet is not overriden by any child nodes\n      if (!this.hasFacetOverride(node, facetUri)) {\n\n        // We create the subquery while merging the facet settings from this node to the root of the query tree\n        this.createFacetSubquery(node, facetUri, indent);\n      }\n    }\n  }\n\n  // Check whether any child node of the passed node overrides a specific facet\n  hasFacetOverride(node, facetUri) {\n\n    // If we don't have any children, there are no overrides\n    if (node.childNodes.length == 0) {\n      return false;\n    }\n\n    // ======= SPECIAL TREATMENT OF VERSION/LATEST =======\n    // Treat as if overriden (leaf nodes already excluded)\n    // ===================================================\n    if (facetUri == 'http://purl.org/dc/terms/hasVersion') {\n      for (var i in node.facetSettings[facetUri]) {\n        if (node.facetSettings[facetUri][i].value == '$latest') {\n          return true;\n        }\n      }\n    }\n\n    // Iterate through the child nodes\n    for (var i in node.childNodes) {\n      var childNode = node.childNodes[i];\n\n      // If the child node overrides the facet then yes, we have an override\n      if (childNode.facetSettings[facetUri] != undefined) {\n        return true;\n      }\n\n      // If any of the child node's children has an override, we have an override\n      if (this.hasFacetOverride(childNode, facetUri)) {\n        return true;\n      }\n    }\n\n    // Nothing found in the children? No override!\n    return false;\n  }\n\n  /**\n   * Generates the sub query for a specific node and facet\n   * @param {*} node \n   * @param {*} facetUri \n   */\n  createFacetSubquery(node, facetUri, indent) {\n    var first = true;\n\n\n    // If we add a facet setting, we have to include the facets of all the ancestor nodes\n    var settings = this.createEnrichedSettings(node, facetUri);\n    settings = settings.filter(function (s) {\n      return s.checked;\n    });\n\n    if (settings.length == 1) {\n      var facetSettingEntry = settings[0];\n      if (!facetSettingEntry.checked) return;\n\n      if (facetSettingEntry.value == '$latest' && facetUri == 'http://purl.org/dc/terms/hasVersion') {\n        // Add the special latest version facet value restriction.\n        this.appendLine('{', indent);\n        this.appendLine('?distribution dct:hasVersion ?version {', indent + 1);\n        this.appendLine('SELECT (?v as ?version) { ', indent + 2);\n        this.appendLine('GRAPH ?g2 { ', indent + 3);\n        this.appendLine(`?dataset ${node.property} <${node.uri}> . `, indent + 4);\n        this.appendLine('?dataset dct:hasVersion ?v . ', indent + 4);\n        this.appendLine('}', indent + 3);\n        this.appendLine('} ORDER BY DESC (STR(?version)) LIMIT 1 ', indent + 2);\n        this.appendLine('}', indent + 1);\n        this.appendLine('}', indent);\n      }\n      else {\n        // Add the facet value restriction\n        this.appendLine(`{ ?distribution <${facetUri}> '${facetSettingEntry.value}'${this.stringSuffix} . }`, indent);\n      }\n    }\n    else if (settings.length > 1) {\n\n      // More than one value for this facet\n\n      if (facetUri == 'http://purl.org/dc/terms/hasVersion') {\n\n        // Iterate..\n        for (var i in settings) {\n\n          var facetSettingEntry = settings[i];\n          if (!facetSettingEntry.checked) continue;\n\n          if (!first) this.appendLine(\"UNION\", indent);\n\n          if (facetSettingEntry.value == '$latest' && facetUri == 'http://purl.org/dc/terms/hasVersion') {\n            // Add the special latest version facet value restriction.\n            this.appendLine('{', indent);\n            this.appendLine('?distribution dct:hasVersion ?version {', indent + 1);\n            this.appendLine('SELECT (?v as ?version) { ', indent + 2);\n            this.appendLine('GRAPH ?g2 { ', indent + 3);\n            this.appendLine(`?dataset ${node.property} <${node.uri}> . `, indent + 4);\n            this.appendLine('?dataset dct:hasVersion ?v . ', indent + 4);\n            this.appendLine('}', indent + 3);\n            this.appendLine('} ORDER BY DESC (STR(?version)) LIMIT 1 ', indent + 2);\n            this.appendLine('}', indent + 1);\n            this.appendLine('}', indent);\n          }\n          else {\n            // Add the facet value restriction\n            this.appendLine(`{ ?distribution <${facetUri}> '${facetSettingEntry.value}'${this.stringSuffix} . }`, indent);\n          }\n\n          // If we have more than one value for this facet we need a UNION\n          first = false;\n        }\n\n      } else {\n        this.appendLine('{', indent);\n        this.appendLine(`?distribution <${facetUri}> ?c${this.cvCounter} .`, indent + 1);\n        this.appendLine(`VALUES ?c${this.cvCounter} {`, indent + 1);\n\n        for (var i in settings) {\n          var facetSettingEntry = settings[i];\n          if (!facetSettingEntry.checked) continue;\n          this.appendLine(`'${facetSettingEntry.value}'${this.stringSuffix}`, indent + 2);\n        }\n        this.appendLine(`}`, indent + 1);\n        this.appendLine(`}`, indent);\n        this.cvCounter++;\n      }\n    }\n  }\n\n  /**\n   * Create a list of all the node facets and all overriden ancestor facets that might not be explicitly\n   * included in the node facet list\n   * @param {*} node \n   */\n  findAllNodeFacets(node) {\n    var facetUris = [];\n\n    for (var facetUri in node.facetSettings) {\n      facetUris.push(facetUri);\n    }\n\n    var parentNode = QueryNode.findParentNodeRecursive(this.root, node); // node.parent;\n\n    while (parentNode != undefined) {\n\n      for (var facetUri in parentNode.facetSettings) {\n\n        // check the base node -> if current node is the base, include all parent facets\n        // on the way too the root\n        if (node != this.baseNode && !this.hasFacetOverride(parentNode, facetUri)) {\n          continue;\n        }\n\n\n        if (facetUris.includes(facetUri)) {\n          continue;\n        }\n\n        facetUris.push(facetUri);\n      }\n\n      parentNode = QueryNode.findParentNodeRecursive(this.root, parentNode); // parentNode.parent;\n    }\n\n    return facetUris;\n  }\n\n  /**\n   * For a given facet, add up all the active settings up to the root node of the\n   * query tree. Node settings override ancestor node settings.\n   * @param {*} node \n   * @param {*} facetUri \n   */\n  createEnrichedSettings(node, facetUri) {\n    var result = [];\n    for (var i in node.facetSettings[facetUri]) {\n      result.push(node.facetSettings[facetUri][i]);\n    }\n\n    var parentNode = QueryNode.findParentNodeRecursive(this.root, node); // node.parent;\n\n    while (parentNode != undefined) {\n\n      for (var i in parentNode.facetSettings[facetUri]) {\n        var parentSetting = parentNode.facetSettings[facetUri][i];\n        var hasSetting = false;\n        for (var j in result) {\n          if (result[j].value == parentSetting.value) {\n            hasSetting = true;\n            break;\n          }\n        }\n\n        if (!hasSetting) {\n          result.push(parentSetting);\n        }\n      }\n\n      parentNode = QueryNode.findParentNodeRecursive(this.root, parentNode); //parentNode.parent;\n    }\n\n\n    return result;\n  }\n\n  /**\n   * Appens a line to the global result prepending a specified number of tab characters\n   * @param {*} line \n   * @param {*} indent \n   */\n  appendLine(line, indent) {\n    for (var i = 0; i < indent; i++) this.result += '\\t';\n    this.result += line;\n    this.result += '\\n';\n  }\n\n  /**\n   * Appens a line to the global result prepending a specified number of tab characters\n   * @param {*} line \n   * @param {*} indent \n   */\n  prependLine(line, indent) {\n    var text = '';\n    for (var i = 0; i < indent; i++) text += '\\t';\n    text += line;\n    this.result = text + '\\n' + this.result;\n  }\n}\n\nmodule.exports = QueryBuilder;\n\n\n//# sourceURL=webpack://databus-webapp/./js/query-builder/query-builder.js?");
-
-/***/ }),
-
-/***/ "./js/query-builder/query-node.js":
-/*!****************************************!*\
-  !*** ./js/query-builder/query-node.js ***!
-  \****************************************/
-/***/ ((module) => {
-
-eval("/**\n * A query node is a node in a query tree. A query tree can be built for any hierarchical selection\n * on the databus, such as publishers, groups, artifacts and collections.\n * Each node may declare a range of restrictions. Restrictions can then be overriden again by\n * any child node in the hierarchy.\n * \n * EXAMPLE: Group node says: Select everything in English. One specific artifact child node of the\n * group node then states: I don't want to select English, I will select German. \n * \n * A query tree can then be translated into a SPARQL query that tries to use as few statements as possible\n * to fetch the desired data\n */\nclass QueryNode {\n\n  /**\n   * Creates a new QueryNode with a resource URI and a property. The property will be added to the\n   * query as a forced and non-overrideable restriction\n   * @param {*} uri \n   * @param {*} property \n   */\n  constructor(uri, property) {\n    this.uri = uri;\n    this.property = property;\n    this.childNodes = [];\n    this.facetSettings = {};\n  }\n\n  // Set or unset a facet of the query node\n  setFacet(key, value, checked) {\n\n    var list = this.facetSettings[key];\n\n    if(list == undefined) {\n      this.facetSettings[key] = [];\n      list = this.facetSettings[key];\n    }\n\n    if(!this.isOverride(key, value, checked)) {\n      \n      for(var i = 0; i < list.length; i++) {\n        if(list[i].value == value) {\n          list.splice(i, 1);\n        }\n      }\n\n      if(list.length == 0) {\n        delete this.facetSettings[key];\n      }\n      \n      return;\n    }\n\n    for(var i in list) {\n      if(list[i].value == value) {\n        list[i].checked = checked;\n        return;\n      }\n    }\n   \n    list.push({ value : value, checked : checked });\n  }\n\n  \n\n  /**\n   * Check whether a certain facet setting is an override in the hierarchy\n   * @param {*} key \n   * @param {*} value \n   * @param {*} checked \n   */\n  isOverride(key, value, checked) {\n\n    if(checked == undefined) {\n      var setting = QueryNode.findFacetSetting(this, key, value);\n      checked = setting != null ? setting.checked : false;\n    }\n\n    var parentSetting = QueryNode.findInheritedSetting(this.parent, key, value);\n\n    if(parentSetting == undefined) {\n      return checked;\n    }\n\n    return parentSetting.checked != checked;\n  }\n\n  /**\n   * Add a child node to this node\n   * @param {*} node \n   */\n  addChild(node) {\n    this.childNodes.push(node);\n    // node.parent = this;\n  }\n\n  static removeChildByUri(node, uri) {\n    for(var i = 0; i < node.childNodes.length; i++) {\n      if(node.childNodes[i].uri == uri) {\n        node.childNodes.splice(i, 1);\n        return;\n      }\n\n      QueryNode.removeChildByUri(node.childNodes[i], uri);\n    }\n  }\n\n  static findChildByUri(node, uri) {\n    for(let i = 0; i < node.childNodes.length; i++) {\n      if(node.childNodes[i].uri === uri) {\n        node.childNodes[i] = QueryNode.createFrom(node.childNodes[i]);\n        return node.childNodes[i];\n      }\n\n      let result = QueryNode.findChildByUri(node.childNodes[i], uri);\n\n      if(result != null) {\n        return result;\n      }\n    }\n\n    return null;  \n  }\n\n  hasFacetSetting(key, value) {\n    for(var i in this.facetSettings[key]) {\n\n      var setting = this.facetSettings[key][i];\n\n      if(setting.value == value) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n   /**\n   * Create a settings object with all the facet settings active for this node (inluding inherited settings)\n   * @param {*} node \n   */\n  createFullFacetSettings() {\n    \n    var fullSettings = {};\n\n    for(var facetUri in this.facetSettings) {\n      fullSettings[facetUri] = JSON.parse(JSON.stringify(this.facetSettings[facetUri]));\n    }\n\n    var parentNode = this.parent;\n\n    while(parentNode != undefined) {\n\n      for(var facetUri in parentNode.facetSettings) {\n\n        if(fullSettings[facetUri] == undefined) {\n          fullSettings[facetUri] = [];\n        }\n        \n        for(var i in parentNode.facetSettings[facetUri]) {\n\n          var parentSetting = parentNode.facetSettings[facetUri][i];\n\n          if(!this.hasFacetSetting(facetUri, parentSetting.value)) {\n            fullSettings[facetUri].push(JSON.parse(JSON.stringify(parentSetting)));\n          }\n        }\n      }\n\n      parentNode = parentNode.parent;\n    }\n\n    return fullSettings;\n  }\n\n  static serialize(queryNode) {\n    // QueryNode.clearParents(queryNode);\n    var result = JSON.stringify(queryNode);\n    // QueryNode.assignParents(queryNode);\n    return result;\n  }\n\n\n  static addChild(node, child) {\n    node.childNodes.push(child);\n    // child.parent = node;\n  }\n\n  static mergeAddChild(root, child) {\n    var existingNode = QueryNode.findChildByUri(root, child.uri);\n\n    if(existingNode == null) {\n      QueryNode.addChild(root, child); \n      return true;\n    }\n\n    if(child.childNodes.length == 0) {\n      return false;\n    }\n\n    for(var i in child.childNodes) {\n      QueryNode.mergeAddChild(existingNode, child.childNodes[i]);\n    }\n  }\n\n  /*\n  static clearParents(queryNode) {\n    queryNode.parent = null;\n    for(var i = 0; i < queryNode.childNodes.length; i++) {\n      QueryNode.clearParents(queryNode.childNodes[i]);\n    }\n  }\n\n  static assignParents(queryNode) {\n    for(var i = 0; i < queryNode.childNodes.length; i++) {\n      queryNode.childNodes[i].parent = queryNode;\n      QueryNode.assignParents(queryNode.childNodes[i]);\n    }\n  }\n*/\n\n  static expandAll(queryNode) {\n    queryNode.expanded = true;\n    for(var i = 0; i < queryNode.childNodes.length; i++) {\n      QueryNode.expandAll(queryNode.childNodes[i]);\n    }\n  }\n\n  static findParentNodeRecursive(parent, node) {\n\n    if(node.uri == null) {\n      return null;\n    }\n    \n    if(parent.childNodes == null || parent.childNodes.length == 0) {\n      return null;\n    }\n\n    for(var child of parent.childNodes) {\n      if(child.uri == node.uri) {\n        return parent;\n      }\n    }     \n    \n    for(var child of parent.childNodes) {\n      var recParent = QueryNode.findParentNodeRecursive(child, node);\n\n      if(recParent != null) {\n        return recParent;\n      }\n    }\n\n    return null;\n  }\n\n  /**\n   * Copy constructor to use the QueryNode class inside of angular components\n   * @param {*} obj \n   */\n  static createFrom(obj) {\n    var tmpNode = new QueryNode(obj.uri, obj.property);\n    tmpNode.childNodes = obj.childNodes;\n    tmpNode.facetSettings = obj.facetSettings;\n    // tmpNode.parent = obj.parent;\n    tmpNode.files = obj.files;\n    return tmpNode;\n  }\n\n  static createSubTree(obj) {\n    var node = QueryNode.createFrom(obj);\n    node.facetSettings = node.createFullFacetSettings();\n    // node.parent = null;\n    return node;\n  }\n\n  /**\n   * Search a specific node for a certain facet setting\n   * @param {*} node \n   * @param {*} key \n   * @param {*} value \n   */\n  static findFacetSetting(node, key, value) {\n    if(node == undefined || node.facetSettings == undefined) {\n      return undefined;\n    }\n\n    var settingsList = node.facetSettings[key];\n\n    if(settingsList == undefined) {\n      return undefined;\n    }\n\n    for(var i in settingsList) {\n      var setting = settingsList[i];\n\n      if(setting.value == value) {\n        return setting;\n      }\n    }\n\n    return undefined;\n  }\n\n  static findInheritedSetting(node, key, value) {\n    \n    if(node == null) {\n      return undefined;\n    }\n\n    var setting = QueryNode.findFacetSetting(node, key, value);\n\n    if(setting == undefined) {\n      return QueryNode.findInheritedSetting(node.parent, key, value);\n    }\n\n    return setting;\n  }\n}\n\nmodule.exports = QueryNode;\n\n\n//# sourceURL=webpack://databus-webapp/./js/query-builder/query-node.js?");
-
-/***/ }),
-
-/***/ "./js/query-builder/query-templates.js":
-/*!*********************************************!*\
-  !*** ./js/query-builder/query-templates.js ***!
-  \*********************************************/
-/***/ ((module) => {
-
-eval("/**\n * Query Templates can be defined as object with the fields:\n * > select\n * > body\n * > aggregate\n * \n * The select is a SPARQL select statement. The body is an array of strings with each string being a line of a \n * SPARQL query. The string %QUERY% can be used to insert the query generated by the QueryBuilder. The aggregate\n * is a SPARQL aggregate statement.\n */\n class QueryTemplates {\n\n  static DEFAULT_PREFIXES = [\n    `PREFIX databus: <https://dataid.dbpedia.org/databus#>`,\n    `PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>`,\n    `PREFIX dct:    <http://purl.org/dc/terms/>`,\n    `PREFIX dcat:   <http://www.w3.org/ns/dcat#>`,\n    `PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>`,\n    `PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>`\n  ];\n\n  static COLLECTION_TABLE_ROW_QUERY = `\nPREFIX databus: <https://dataid.dbpedia.org/databus#>\nPREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX dcat:   <http://www.w3.org/ns/dcat#>\nPREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?file SAMPLE(?version) SAMPLE(?title) SAMPLE(?abstract) SAMPLE(?license) SAMPLE(?size) SAMPLE(?format) SAMPLE(?compression) (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE {\n  <%DISTRIBUTION%> databus:file ?file .\n  <%DISTRIBUTION%> databus:formatExtension ?format .\n  <%DISTRIBUTION%> databus:compression ?compression .\n  <%DISTRIBUTION%> dcat:byteSize ?size .\n  ?version dcat:distribution <%DISTRIBUTION%> .\n  ?version dct:title ?title .\n  ?version dct:abstract ?abstract.\n  ?version dct:license ?license .\n\n  OPTIONAL { <%DISTRIBUTION%> ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }\n} GROUP BY ?file\n`;\n\nstatic COLLECTION_TABLE_QUERY = `\nPREFIX databus: <https://dataid.dbpedia.org/databus#>\nPREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX dcat:   <http://www.w3.org/ns/dcat#>\nPREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?distribution SAMPLE(?file) AS ?file SAMPLE(?version) AS ?version SAMPLE(?title) AS ?title SAMPLE(?abstract) AS ?abstract SAMPLE(?license) AS ?license SAMPLE(?size) AS ?size SAMPLE(?format) AS ?format SAMPLE(?compression) AS ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE {\n  VALUES ?distribution {\n    %DISTRIBUTIONS%\n  }\n  ?distribution databus:file ?file .\n  ?distribution databus:formatExtension ?format .\n  ?distribution databus:compression ?compression .\n  ?distribution dcat:byteSize ?size .\n  ?version dcat:distribution ?distribution .\n  ?version dct:title ?title .\n  ?version dct:abstract ?abstract.\n  ?version dct:license ?license .\n  OPTIONAL { ?distribution ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }\n} GROUP BY ?distribution\n`;\n\n  static COLLECTION_STATISTICS_TEMPLATE = {\n    indent: 1,\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    select: `SELECT DISTINCT ?dataset ?file ?license ?size WHERE`,\n    body: [\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `\\t?distribution databus:file ?file .`,\n      `\\tOPTIONAL { ?dataset dct:license ?license . }`,\n      `\\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,\n      `}`\n    ]\n  };\n\n  static COLLECTION_FILES_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT DISTINCT ?version ?dataset ?distribution ?title ?description (GROUP_CONCAT(DISTINCT ?file; SEPARATOR=\", \") AS ?files) ?license ?size ?format (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,\n    body: [\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?distribution databus:file ?file .`,\n      `\\t?distribution databus:formatExtension ?format .`,\n      `\\tOPTIONAL { ?distribution ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,\n      `\\tOPTIONAL { ?dataset dct:license ?license . }`,\n      `\\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `\\t?dataset dct:hasVersion ?version .`,\n      `\\t?dataset dct:title ?title .`,\n      `\\t?dataset dct:description ?description.`,\n      `}`\n    ],\n    aggregate: `GROUP BY ?version ?dataset ?distribution ?title ?description ?license ?size ?format`\n  };\n\n  /**\n   * Selects files with additional information for group pages\n   */\n   static GROUP_PAGE_FILE_BROWSER_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT DISTINCT ?file ?version ?artifact ?license ?size ?format ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,\n    body: [\n\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `\\t?distribution databus:file ?file .`,\n      `\\t?distribution databus:formatExtension ?format .`,\n      `\\t?distribution databus:compression ?compression .`,\n      `\\t?dataset dct:license ?license .`,\n      `\\t?dataset dct:hasVersion ?version .`,\n      `\\t?dataset databus:artifact ?artifact .`,\n      `\\tOPTIONAL { ?distribution ?p ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,\n      `\\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,\n      `}`\n    ],\n    aggregate: `GROUP BY ?file ?version ?artifact ?license ?size ?format ?compression`\n  };\n\n  /**\n   * Selects files with additional information\n   */\n  static NODE_FILE_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT DISTINCT ?file ?license ?size ?format ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,\n    body: [\n\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `\\t?distribution databus:file ?file .`,\n      `\\t?distribution databus:formatExtension ?format .`,\n      `\\t?distribution databus:compression ?compression .`,\n      `\\t?dataset dct:license ?license .`,\n      `\\tOPTIONAL { ?distribution ?p ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,\n      `\\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,\n      `}`\n    ],\n    aggregate: `GROUP BY ?file ?license ?size ?format ?compression`\n  };\n\n  /**\n   * The default selection (only file)\n   */\n  static DEFAULT_FILE_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT ?file WHERE`,\n    body: [\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `\\t?distribution databus:file ?file .`,\n      `}`,\n    ]\n  };\n\n  static DISTRIBUTIONS_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT ?distribution WHERE`,\n    body: [\n      `GRAPH ?g`,\n      `{`,\n      `%QUERY%`,\n      `\\t?dataset dcat:distribution ?distribution .`,\n      `}`,\n    ]\n  };\n\n  /**\n   * The default selection (only file)\n   */\n   static CUSTOM_QUERY_FILE_TEMPLATE = {\n    prefixes: QueryTemplates.DEFAULT_PREFIXES,\n    indent: 1,\n    select: `SELECT ?file WHERE`,\n    body: [\n      `{`,\n      `%QUERY%`,\n      `}`,\n    ]\n  };\n}\n\nmodule.exports = QueryTemplates;\n\n//# sourceURL=webpack://databus-webapp/./js/query-builder/query-templates.js?");
-
-/***/ }),
-
-/***/ "./js/search/search-adapter.js":
-/*!*************************************!*\
-  !*** ./js/search/search-adapter.js ***!
-  \*************************************/
-/***/ ((module) => {
-
-eval("\n\n\n\nclass SearchAdapter {\n\n    static list = [\n        { \n            name: 'lookup',\n            label: 'Lookup',\n            factory: this.lookup\n        }\n        /*\n        {\n            name: 'virtuoso',\n            label: 'Virtuoso SPARQL',\n            factory: this.virtuoso\n        }\n        */\n    ];\n\n    constructor($http, endpoint, queryFormatter, resultFormatter) {\n        this.http = $http;\n        this.endpoint = endpoint;\n        this.queryFormatter = queryFormatter;\n        this.resultFormatter = resultFormatter;\n    }\n\n    static inferResourceTypes(docs) {\n        // TODO:\n    }\n    \n\n    static lookup($http, endpoint) {\n        return new SearchAdapter($http, endpoint, function(query) {\n            return `?query=${query}&format=json`;\n        }, function(response) {\n            var docs = response.data.docs;\n            SearchAdapter.inferResourceTypes(docs);\n            return docs;\n        });\n    }\n\n    static virtuoso($http, endpoint) {\n        var virtuosoAdapter = new SearchAdapter($http, endpoint, function (query) {\n            var querySelector = /(?<=\\?|&)query=[^(&#)]*/;\n\n            // TODO: get the query input from the query\n        }, function (results) {\n            // TODO: format virtuoso search results\n        });\n\n        return virtuosoAdapter;\n    }\n\n   \n\n    async search(query) {\n        try {\n            if (this.queryFormatter != null) {\n                query = this.queryFormatter(query);\n            }\n\n            var results = await this.http.get(`${this.endpoint}${query}`);\n\n            if (this.resultFormatter != null) {\n                return this.resultFormatter(results);\n            }\n\n            return results;\n        } catch (err) {\n            console.log(err);\n            return null;\n        }\n    }\n}\n\nmodule.exports = SearchAdapter;\n\n//# sourceURL=webpack://databus-webapp/./js/search/search-adapter.js?");
-
-/***/ }),
-
-/***/ "./js/search/search-manager.js":
-/*!*************************************!*\
-  !*** ./js/search/search-manager.js ***!
-  \*************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ \"./js/utils/app-json-formatter.js\");\nconst SearchAdapter = __webpack_require__(/*! ./search-adapter */ \"./js/search/search-adapter.js\");\n\nclass SearchManager {\n\n    constructor($http, $interval) {\n        this.http = $http;\n        this.searchExtensions = [];\n\n        this.baseAdapter = SearchAdapter.lookup(this.http, `/api/search`);\n        this.searchExtensions.push({\n            endpointUri: `/api/search`,\n            adapterName: `lookup`,\n            adapter: this.baseAdapter\n        });\n    }\n\n    mergeResults(results, documents) {\n        for(var document of documents) {\n            results.push(document);\n        }\n\n        return results;\n    }\n\n    async search(queryUrl, documentFilter) {\n\n        var results = [];\n\n        for (var searchExtension of this.searchExtensions) {\n\n            try {\n\n                var documents = await searchExtension.adapter.search(queryUrl);\n\n                if(documentFilter != undefined) {\n                    documents = documents.filter(documentFilter);\n                }\n                \n                results = this.mergeResults(results, documents);\n\n            } catch(err) {\n\n            }\n        }\n\n        return results;\n    }\n\n    async initialize() {\n\n        var auth = data.auth;\n\n        if (!auth.authenticated) {\n            return;\n        }\n\n        if(auth.info.accountName == undefined) {\n            return;\n        }\n\n        /*\n\n        var options = {\n            method: 'GET',\n            url: `/${ auth.info.accountName }`,\n            headers: {\n                'Accept': 'application/ld+json',\n                'X-Jsonld-Formatting': 'flatten',\n                'Cache-Control': 'no-cache',\n                'Pragma': 'no-cache'\n            }\n        }\n\n        var response = await this.http(options);\n        var accountData = AppJsonFormatter.formatAccountData(response.data);\n        var extensions = JSON.parse(JSON.stringify(accountData.searchExtensions));\n\n        for (var searchExtension of extensions) {\n\n            switch (searchExtension.adapterName) {\n                case 'lookup':\n                    searchExtension.adapter = SearchAdapter.lookup(this.http, searchExtension.endpointUri);\n                    break;\n            }\n\n            this.searchExtensions.push(searchExtension);\n\n        })*/\n    }\n}\n\nmodule.exports = SearchManager;\n\n\n//# sourceURL=webpack://databus-webapp/./js/search/search-manager.js?");
-
-/***/ }),
-
-/***/ "./js/utils/app-json-formatter.js":
-/*!****************************************!*\
-  !*** ./js/utils/app-json-formatter.js ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusConstants = __webpack_require__(/*! ./databus-constants */ \"./js/utils/databus-constants.js\");\r\nconst DatabusUris = __webpack_require__(/*! ./databus-uris */ \"./js/utils/databus-uris.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ./databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst JsonldUtils = __webpack_require__(/*! ./jsonld-utils */ \"./js/utils/jsonld-utils.js\");\r\n\r\n/**\r\n * Translates expanded jsonld into web-app compatible json\r\n */\r\nclass AppJsonFormatter {\r\n\r\n  static async createAccountGraphs(uri, name, label, img, secretaries, status) {\r\n    var name = UriUtils.uriToName(uri);\r\n  \r\n    var rsaKeyGraph = {};\r\n    rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;\r\n    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;\r\n    rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();\r\n    rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;\r\n  \r\n    var personUri = `${uri}${DatabusConstants.WEBID_THIS}`;\r\n\r\n    var personGraph = {};\r\n    personGraph[DatabusUris.JSONLD_ID] = personUri;\r\n    personGraph[DatabusUris.JSONLD_TYPE] = [ DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN ];\r\n    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(uri);\r\n    personGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = uri;\r\n    personGraph[DatabusUris.CERT_KEY] = [ rsaKeyGraph ];\r\n    personGraph[DatabusUris.FOAF_NAME] = label;\r\n\r\n    if(img != null) {\r\n      personGraph[DatabusUris.FOAF_IMG] = img;\r\n    }\r\n\r\n     if(status != null) {\r\n      personGraph[DatabusUris.FOAF_STATUS] = status;\r\n    }\r\n\r\n    var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;\r\n  \r\n    var profileDocumentGraph = {};\r\n    profileDocumentGraph[DatabusUris.JSONLD_ID] = profileUri;\r\n    profileDocumentGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;\r\n    profileDocumentGraph[DatabusUris.FOAF_MAKER] = JsonldUtils.refTo(personUri);\r\n    profileDocumentGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = JsonldUtils.refTo(personUri);\r\n  \r\n    var accountGraph = {}\r\n    accountGraph[DatabusUris.JSONLD_ID] = uri;\r\n    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;\r\n    accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;\r\n    accountGraph[DatabusUris.DATABUS_NAME] = name;\r\n\r\n    if(secretaries != null) {\r\n\r\n      accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];\r\n\r\n      for(var secretary of secretaries) {\r\n\r\n        let secretaryAccountUri = `${secretary.accountName}`;\r\n\r\n        let secretaryGraph = {};\r\n        secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;\r\n        secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);\r\n\r\n        if(secretary.hasWriteAccessTo != undefined) {\r\n          secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];\r\n\r\n          for(var writeAccess of secretary.hasWriteAccessTo) {\r\n            secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));\r\n          }\r\n        }\r\n\r\n        accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY].push(secretaryGraph);\r\n      }\r\n    }\r\n\r\n    let expandedGraphs = [\r\n      accountGraph,\r\n      personGraph,\r\n      profileDocumentGraph\r\n    ];\r\n    \r\n    return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);\r\n  }\r\n  \r\n  static createAccountData(accountUri, accountLabel, accountStatus, accountImage) {\r\n\r\n    var personUri = `${accountUri}${DatabusConstants.WEBID_THIS}`;\r\n\r\n    var accountJsonLd = {};\r\n\r\n    var accountGraph = {};\r\n    accountGraph[DatabusUris.JSONLD_ID] = accountUri;\r\n    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;\r\n\r\n    var personGraph = {};\r\n    personGraph[DatabusUris.JSONLD_ID] = personUri;\r\n    personGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSON;\r\n    personGraph[DatabusUris.FOAF_NAME] = accountLabel;\r\n    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(accountUri);\r\n\r\n    if (accountStatus != null) {\r\n      personGraph[DatabusUris.FOAF_STATUS] = accountStatus;\r\n    }\r\n\r\n    if (accountImage != null) {\r\n      personGraph[DatabusUris.FOAF_IMG] = JsonldUtils.refTo(accountImage);\r\n    }\r\n\r\n\r\n    return [\r\n      accountGraph,\r\n      personGraph\r\n    ];\r\n  }\r\n\r\n  static formatGroupData(graphs) {\r\n    var result = {};\r\n\r\n    // ?uri ?title ?abstract ?description\r\n    var groupGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_GROUP);\r\n\r\n    result.uri = groupGraph[DatabusUris.JSONLD_ID];\r\n    result.title = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_TITLE);\r\n    result.abstract = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_ABSTRACT);\r\n    result.description = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_DESCRIPTION);\r\n    result.name = DatabusUtils.uriToResourceName(result.uri);\r\n    return result;\r\n  }\r\n\r\n  static formatArtifactData(graphs) {\r\n    var result = {};\r\n    // ?uri ?title ?abstract ?description\r\n    var artifactGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ARTIFACT);\r\n\r\n    result.uri = artifactGraph[DatabusUris.JSONLD_ID];\r\n    result.title = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_TITLE);\r\n    result.abstract = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_ABSTRACT);\r\n    result.description = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_DESCRIPTION);\r\n    result.name = DatabusUtils.uriToResourceName(result.uri);\r\n    return result;\r\n\r\n\r\n  }\r\n\r\n  static formatAccountData(graphs) {\r\n    var result = {};\r\n\r\n    var accountGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ACCOUNT);\r\n    var personGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSON);\r\n\r\n    result.uri = accountGraph[DatabusUris.JSONLD_ID];\r\n    result.accountName = DatabusUtils.uriToResourceName(result.uri);\r\n    result.label = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_NAME);\r\n    result.imageUrl = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_IMG);\r\n    result.about = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_STATUS);\r\n    result.webIds = [];\r\n    result.searchExtensions = [];\r\n\r\n    var extensionGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SEARCH_EXTENSION);\r\n\r\n    for (var extensionGraph of extensionGraphs) {\r\n      result.searchExtensions.push({\r\n        endpointUri: JsonldUtils.getProperty(extensionGraph, DatabusUris.DATABUS_SEARCH_EXTENSION_ENDPOINT),\r\n        adapterName: JsonldUtils.getProperty(extensionGraph, DatabusUris.DATABUS_SEARCH_EXTENSION_ADAPTER),\r\n      });\r\n    }\r\n\r\n    for (var graph of graphs) {\r\n\r\n      if (graph[DatabusUris.JSONLD_ID] == personGraph[DatabusUris.JSONLD_ID]) {\r\n        continue;\r\n      }\r\n\r\n      if (graph[DatabusUris.FOAF_ACCOUNT] != undefined) {\r\n        result.webIds.push(graph[DatabusUris.JSONLD_ID]);\r\n      }\r\n    }\r\n\r\n    result.secretaries = [];\r\n    var secretaryGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SECRETARY);\r\n\r\n    for (var secretaryGraph of secretaryGraphs) {\r\n      var secretaryData = {\r\n        accountName: JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY),\r\n        hasWriteAccessTo: []\r\n      };\r\n\r\n      var writeAccessUris = secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO];\r\n\r\n      if (Array.isArray(writeAccessUris)) {\r\n        for (var item of writeAccessUris) {\r\n          if (typeof item === 'object' && item['@id']) {\r\n            secretaryData.hasWriteAccessTo.push(item['@id']);\r\n          } else if (typeof item === 'string') {\r\n            secretaryData.hasWriteAccessTo.push(item);\r\n          }\r\n        }\r\n      }\r\n\r\n      result.secretaries.push(secretaryData);\r\n    }\r\n\r\n    return result;\r\n  }\r\n\r\n  static formatVersionData(versionGraph) {\r\n\r\n\r\n    var version = {};\r\n    version.uri = versionGraph[DatabusUris.JSONLD_ID];\r\n    version.title = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_TITLE);\r\n    version.abstract = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ABSTRACT);\r\n    version.description = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_DESCRIPTION);\r\n    version.artifact = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ARTIFACT_PROPERTY);\r\n    version.license = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_LICENSE);\r\n    version.attribution = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ATTRIBUTION);\r\n    version.wasDerivedFrom = JsonldUtils.getProperty(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM);\r\n    version.issued = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ISSUED);\r\n    version.name = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_HAS_VERSION);\r\n\r\n    return version;\r\n  }\r\n\r\n  static formatCollectionData(graphs) {\r\n    var collectionGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_COLLECTION);\r\n\r\n    var result = {};\r\n\r\n    result.uri = collectionGraph[DatabusUris.JSONLD_ID];\r\n    result.title = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_TITLE);\r\n    result.abstract = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ABSTRACT);\r\n    result.description = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_DESCRIPTION);\r\n    result.issued = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ISSUED);\r\n    result.publisher = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_PUBLISHER);\r\n    result.account = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY);\r\n\r\n    var content = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_COLLECTION_CONTENT)\r\n    result.content = DatabusUtils.tryParseJson(unescape(content));\r\n\r\n    return result;\r\n  }\r\n}\r\n\r\nmodule.exports = AppJsonFormatter;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/app-json-formatter.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-constants.js":
-/*!***************************************!*\
-  !*** ./js/utils/databus-constants.js ***!
-  \***************************************/
-/***/ ((module) => {
-
-eval("\n\nclass DatabusConstants {\n    static FACET_DEFAULT_SUBQUERY =\n        \"\\n\\t{ \" +\n        \"\\n\\t\\t?distribution <%FACET%> '%VALUE%'^^<http://www.w3.org/2001/XMLSchema#string> . \" +\n        \"\\n\\t} \";\n\n    static FACET_DEFAULT_SUBQUERY_PLACEHOLDER_FACET = \"%FACET%\";\n    static FACET_DEFAULT_SUBQUERY_PLACEHOLDER_VALUE = \"%VALUE%\";\n    static FACET_LATEST_VERSION_VALUE = \"$latest\";\n    static FACET_LATEST_VERSION_LABEL = \"Latest Version\";\n\n    static WEBID_THIS = \"#this\";\n    static WEBID_DOCUMENT = \"#doc\";\n    static WEBID_SHARED_PUBLIC_KEY_LABEL = \"Shared Databus Public Key\";\n\n    static FACET_LASTEST_ARTIFACT_VERSION_SUBQUERY =\n        \"\\n\\t{\" +\n        \"\\n\\t\\t?distribution dct:hasVersion ?latestVersion \" +\n        \"\\n\\t\\t{\" +\n        \"\\n\\t\\t\\tSELECT (?version as ?latestVersion) WHERE { \" +\n        \"\\n\\t\\t\\t\\t?dataset databus:artifact <%ARTIFACT_URI%> . \" +\n        \"\\n\\t\\t\\t\\t?dataset dct:hasVersion ?version . \" +\n        \"\\n\\t\\t\\t} ORDER BY DESC (?version) LIMIT 1 \" +\n        \"\\n\\t\\t} \" +\n        \"\\n\\t}\";\n\n    static FACET_LASTEST_GROUP_VERSION_SUBQUERY =\n        \"\\n\\t{\" +\n        \"\\n\\t\\t?distribution dct:hasVersion ?latestVersion \" +\n        \"\\n\\t\\t{\" +\n        \"\\n\\t\\t\\tSELECT (?version as ?latestVersion) WHERE { \" +\n        \"\\n\\t\\t\\t\\t?dataset databus:group <%ARTIFACT_URI%> . \" +\n        \"\\n\\t\\t\\t\\t?dataset dct:hasVersion ?version . \" +\n        \"\\n\\t\\t\\t} ORDER BY DESC (?version) LIMIT 1 \" +\n        \"\\n\\t\\t} \" +\n        \"\\n\\t}\";\n\n    static FACET_SUBQUERY_UNION = \"\\n\\tUNION\";\n    static DATABUS_SPARQL_ENDPOINT_URL = \"/sparql\";\n}\n\nmodule.exports = DatabusConstants;\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-constants.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-facets-cache.js":
-/*!******************************************!*\
-  !*** ./js/utils/databus-facets-cache.js ***!
-  \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const { DATABUS_CONTENT_VARIANT_PREFIX } = __webpack_require__(/*! ./databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUris = __webpack_require__(/*! ./databus-uris */ \"./js/utils/databus-uris.js\");\nconst DatabusUtils = __webpack_require__(/*! ./databus-utils */ \"./js/utils/databus-utils.js\");\n\nclass DatabusFacetsCache {\n\n  constructor($http) {\n    this._facets = {};\n    this._http = $http;\n    this._regex = new RegExp('%RESOURCE_URI%', \"g\");\n\n    this.pathLengthToQueryMap = {\n      2: DatabusFacetsCache.GET_GROUP_FACETS,\n      3: DatabusFacetsCache.GET_ARTIFACT_FACETS\n    }\n\n    this._facetMetadata = {};\n    \n    this._facetMetadata[DatabusUris.DCT_HAS_VERSION] = \"Version\";\n    this._facetMetadata[DatabusUris.DATABUS_FORMAT_EXTENSION] = \"Format\";\n    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + \"lang\"] = \"Language\";\n    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + \"domain\"] = \"Domain\";\n    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + \"tag\"] = \"Tag\";\n    this._facetMetadata[DatabusUris.DATABUS_COMPRESSION] = \"Compression\";\n    \n  }\n\n  async get(resource) {\n\n    if (this._facets[resource] != undefined) {\n      return {\n        uri : resource,\n        facets: this._facets[resource]\n      };\n    }\n\n    var url = new URL(resource);\n    var origin = url.origin;\n    var pathLength = DatabusUtils.getResourcePathLength(resource);\n\n    var query = this.pathLengthToQueryMap[pathLength];\n\n\n    if (query == undefined) {\n      return null;\n    }\n\n    query = query.replace(this._regex, resource);\n\n    var req = {\n      method: 'POST',\n      url: `${origin}/sparql?query=`,\n      data: `format=json&query=${encodeURIComponent(query)}`,\n      headers: {\n        \"Content-type\": \"application/x-www-form-urlencoded\"\n      },\n    }\n\n    var response = await this._http(req);\n\n    var result = {};\n\n    for (var binding of response.data.results.bindings) {\n\n      var property = binding.property.value;\n\n      if (result[property] == undefined) {\n        result[property] = {};\n\n        var label = this._facetMetadata[property] != undefined ? this._facetMetadata[property] : \n          DatabusUtils.uriToName(property);\n\n        result[binding.property.value].label = label;\n        result[binding.property.value].values = []\n      }\n\n      result[binding.property.value].values.push(binding.value.value);\n    }\n\n    this._facets[resource] = result;\n    \n    return {\n      uri : resource,\n      facets: this._facets[resource]\n    };\n  }\n\n\n  static GET_GROUP_FACETS = `\n  PREFIX databus: <https://dataid.dbpedia.org/databus#>\n  PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>\n  PREFIX dct: <http://purl.org/dc/terms/>\n  PREFIX dcat:  <http://www.w3.org/ns/dcat#>\n  PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>\n  \n  SELECT DISTINCT ?property ?value WHERE {\n    {\n      GRAPH ?g {\n        ?dataset databus:group <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution dct:hasVersion ?value .\n        BIND(dct:hasVersion AS ?property)\n      }\n    }\n    UNION\n    {\n      GRAPH ?g {\n        ?dataset databus:group <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution databus:formatExtension ?value .\n        BIND(databus:formatExtension AS ?property)\n      }\n    }\n    UNION\n    {\n      GRAPH ?g {\n        ?dataset databus:group <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution databus:compression ?value .\n        BIND(databus:compression AS ?property)\n      }\n    }\n    UNION\n    {\n      GRAPH ?g {\n        ?dataset databus:group <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution ?property ?value .\n        ?property rdfs:subPropertyOf databus:contentVariant .\n      }\n    }\n  }\n  `;\n\n  static GET_ARTIFACT_FACETS = `\n  PREFIX databus: <https://dataid.dbpedia.org/databus#>\n  PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>\n  PREFIX dct: <http://purl.org/dc/terms/>\n  PREFIX dcat:  <http://www.w3.org/ns/dcat#>\n  PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>\n  \n  SELECT DISTINCT ?property ?value WHERE {\n    GRAPH ?g {\n    {\n        BIND(dct:hasVersion AS ?property)\n        ?dataset databus:artifact <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution dct:hasVersion ?value .\n    }\n    UNION\n    {\n        BIND(databus:formatExtension AS ?property)\n        ?dataset databus:artifact <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution databus:formatExtension ?value .\n    }\n    UNION\n    {\n        BIND(databus:compression AS ?property)\n        ?dataset databus:artifact <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution databus:compression ?value .\n    }\n    UNION\n    {\n        ?dataset databus:artifact <%RESOURCE_URI%> .\n        ?dataset dcat:distribution ?distribution . \n        ?distribution ?property ?value .\n        ?property rdfs:subPropertyOf databus:contentVariant .\n      }\n    }\n  }`;\n\n\n\n}\n\nmodule.exports = DatabusFacetsCache;\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-facets-cache.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-messages.js":
-/*!**************************************!*\
-  !*** ./js/utils/databus-messages.js ***!
-  \**************************************/
-/***/ ((module) => {
-
-eval("\r\nclass DatabusMessages {\r\n\r\n  // Collection Editor\r\n  static CEDIT_INVALID_IDENTIFIER = 'The identifier must match the following regular expression: #REGEX#';\r\n  static CEDIT_INVALID_TITLE = 'The title must match the following regular expression: #REGEX#';\r\n  static CEDIT_INVALID_ABSTRACT = 'The abstract must match the following regular expression: #REGEX#';\r\n  static CEDIT_INVALID_DESCRIPTION = 'The description must match the following regular expression: #REGEX#';\r\n  static CEDIT_COLLECTION_IMPORT_FAILED = 'Failed to import the collection';\r\n  static CEDIT_COLLECTION_IMPORTED = 'Collection imported successfully';\r\n  static CEDIT_COLLECTION_SAVED = 'Collection saved successfully';\r\n  static CEDIT_COLLECTION_SAVE_FAILED = 'Failed to save the collection';\r\n  static CEDIT_COLLECTION_UNPUBLISHED = 'Collection unpublished successfully';\r\n  static CEDIT_LOCAL_CHANGES_DISCARDED = 'Local changes discarded';\r\n\r\n  // Generic\r\n  static GENERIC_COPIED_TO_CLIPBOARD = 'Copied to clipboard!';\r\n\r\n  // Account \r\n  static ACCOUT_PROFILE_SAVED = 'Profile changes have been saved';\r\n\r\n  static ACCOUNT_API_KEY_CREATED = 'API key created';\r\n\r\n  static ACCOUNT_WEBID_LINKED = 'External WebId has been linked to your profile';\r\n\r\n  \r\n}\r\n\r\n  module.exports = DatabusMessages;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-messages.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-uris.js":
-/*!**********************************!*\
-  !*** ./js/utils/databus-uris.js ***!
-  \**********************************/
-/***/ ((module) => {
-
-eval("\r\nclass DatabusUris {\r\n\r\n  // JSONLD\r\n  static JSONLD_TYPE = '@type';\r\n  static JSONLD_ID = '@id';\r\n  static JSONLD_VALUE = '@value';\r\n  static JSONLD_LANGUAGE = '@language';\r\n  static JSONLD_CONTEXT = '@context';\r\n  static JSONLD_GRAPH = '@graph';\r\n\r\n  // Databus\r\n  static DATABUS_DATABUS = 'https://dataid.dbpedia.org/databus#Databus';\r\n  static DATABUS_PART = 'https://dataid.dbpedia.org/databus#Part';\r\n  static DATABUS_VERSION = 'https://dataid.dbpedia.org/databus#Version';\r\n  static DATABUS_GROUP = 'https://dataid.dbpedia.org/databus#Group';\r\n  static DATABUS_ACCOUNT = 'https://dataid.dbpedia.org/databus#Account';\r\n  static DATABUS_ARTIFACT = 'https://dataid.dbpedia.org/databus#Artifact';\r\n  static DATABUS_VERSION_PROPERTY = 'https://dataid.dbpedia.org/databus#version';\r\n  static DATABUS_GROUP_PROPERTY = 'https://dataid.dbpedia.org/databus#group';\r\n  static DATABUS_ACCOUNT_PROPERTY = 'https://dataid.dbpedia.org/databus#account';\r\n  static DATABUS_HAS_ARTIFACT = 'https://dataid.dbpedia.org/databus#hasArtifact';\r\n  static DATABUS_HAS_VERSION = 'https://dataid.dbpedia.org/databus#hasVersion';\r\n  static DATABUS_NAME = 'https://dataid.dbpedia.org/databus#name';\r\n  \r\n  static DATABUS_SECRETARY_PROPERTY = 'https://dataid.dbpedia.org/databus#secretary';\r\n  static DATABUS_SECRETARY = 'https://dataid.dbpedia.org/databus#Secretary';\r\n  static DATABUS_HAS_WRITE_ACCESS_TO = 'https://dataid.dbpedia.org/databus#hasWriteAccessTo';\r\n\r\n  static DATABUS_ARTIFACT_PROPERTY = 'https://dataid.dbpedia.org/databus#artifact';\r\n  static DATABUS_FORMAT = 'https://dataid.dbpedia.org/databus#format';\r\n  static DATABUS_FORMAT_EXTENSION = 'https://dataid.dbpedia.org/databus#formatExtension';\r\n  static DATABUS_CONTENT_VARIANT = 'https://dataid.dbpedia.org/databus#contentVariant';\r\n  static DATABUS_CONTENT_VARIANT_PREFIX = 'https://dataid.dbpedia.org/databus-cv#';\r\n  static DATABUS_SHASUM = 'https://dataid.dbpedia.org/databus#sha256sum';\r\n  static DATABUS_COLLECTION = 'https://dataid.dbpedia.org/databus#Collection';\r\n  static DATABUS_FILE = 'https://dataid.dbpedia.org/databus#file';\r\n  static DATABUS_COMPRESSION = 'https://dataid.dbpedia.org/databus#compression';\r\n  static DATABUS_ATTRIBUTION = 'https://dataid.dbpedia.org/databus#attribution';\r\n  static DATABUS_PREVIEW = 'https://dataid.dbpedia.org/databus#preview';\r\n  static DATABUS_COLLECTION_CONTENT = 'https://dataid.dbpedia.org/databus#collectionContent';\r\n  static DATABUS_TRACTATE_V1 = 'https://dataid.dbpedia.org/databus#DatabusTractateV1';\r\n  static DATABUS_PLUGIN = 'https://dataid.dbpedia.org/databus#Plugin';\r\n  static DATABUS_SEARCH_EXTENSION = 'https://dataid.dbpedia.org/databus#SearchExtension';\r\n  static DATABUS_SEARCH_EXTENSION_ADAPTER = 'https://dataid.dbpedia.org/databus#searchExtensionAdapter';\r\n  static DATABUS_SEARCH_EXTENSION_ENDPOINT = 'https://dataid.dbpedia.org/databus#searchExtensionEndpoint';\r\n  static DATABUS_EXTENDS = 'https://dataid.dbpedia.org/databus#extends';\r\n  \r\n  // DCT\r\n  static DCT_PUBLISHER = 'http://purl.org/dc/terms/publisher';\r\n  static DCT_HAS_VERSION = 'http://purl.org/dc/terms/hasVersion';\r\n  static DCT_ISSUED = 'http://purl.org/dc/terms/issued';\r\n  static DCT_CREATED = 'http://purl.org/dc/terms/created';\r\n  static DCT_MODIFIED = 'http://purl.org/dc/terms/modified';\r\n  static DCT_DISTRIBUTION = 'http://purl.org/dc/terms/distribution';\r\n  static DCT_SUBJECT = 'http://purl.org/dc/terms/subject';\r\n  static DCT_CREATOR = 'http://purl.org/dc/terms/creator'\r\n  static DCT_TITLE = 'http://purl.org/dc/terms/title'\r\n  static DCT_ABSTRACT = 'http://purl.org/dc/terms/abstract'\r\n  static DCT_DESCRIPTION = 'http://purl.org/dc/terms/description'\r\n  static DCT_LICENSE = 'http://purl.org/dc/terms/license';\r\n\r\n  // DCAT\r\n  static DCAT_DOWNLOAD_URL = 'http://www.w3.org/ns/dcat#downloadURL';\r\n  static DCAT_BYTESIZE = 'http://www.w3.org/ns/dcat#byteSize';\r\n  static DCAT_DISTRIBUTION = 'http://www.w3.org/ns/dcat#distribution';\r\n\r\n\r\n  // SEC\r\n  static SEC_PROOF = 'https://w3id.org/security#proof';\r\n  static SEC_SIGNATURE = 'https://w3id.org/security#signature';\r\n\r\n  // RDF\r\n  static RDF_PROPERTY = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#Property';\r\n\r\n  // RDFS\r\n  static RDFS_SUB_PROPERTY_OF = 'http://www.w3.org/2000/01/rdf-schema#subPropertyOf';\r\n  static RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';\r\n\r\n  // XSD\r\n  static XSD_DATE_TIME = 'http://www.w3.org/2001/XMLSchema#dateTime';\r\n  static XSD_DECIMAL = 'http://www.w3.org/2001/XMLSchema#decimal';\r\n  static XSD_STRING = 'http://www.w3.org/2001/XMLSchema#string';\r\n\r\n  // SHACL\r\n  static SHACL_VALIDATION_REPORT = 'http://www.w3.org/ns/shacl#ValidationReport';\r\n  static SHACL_VALIDATION_RESULT = 'http://www.w3.org/ns/shacl#ValidationResult';\r\n  static SHACL_CONFORMS = 'http://www.w3.org/ns/shacl#conforms';\r\n  static SHACL_RESULT_MESSAGE = 'http://www.w3.org/ns/shacl#resultMessage';\r\n\r\n  // FOAF\r\n  static FOAF_PERSONAL_PROFILE_DOCUMENT = 'http://xmlns.com/foaf/0.1/PersonalProfileDocument';\r\n  static FOAF_ACCOUNT = 'http://xmlns.com/foaf/0.1/account';\r\n  static FOAF_NAME = 'http://xmlns.com/foaf/0.1/name';\r\n  static FOAF_STATUS = 'http://xmlns.com/foaf/0.1/status';\r\n  static FOAF_PERSON = 'http://xmlns.com/foaf/0.1/Person';\r\n  static FOAF_PRIMARY_TOPIC = 'http://xmlns.com/foaf/0.1/primaryTopic';\r\n  static FOAF_MAKER = 'http://xmlns.com/foaf/0.1/maker';\r\n  static FOAF_ACCOUNT_NAME = 'http://xmlns.com/foaf/0.1/accountName';\r\n  static FOAF_IMG = 'http://xmlns.com/foaf/0.1/img';\r\n\r\n  // S4AC\r\n  static S4AC_ACCESS_POLICY = 'http://ns.inria.fr/s4ac/v2#AccessPolicy';\r\n  static S4AC_ACCESS_CREATE = 'http://ns.inria.fr/s4ac/v2#Create';\r\n  static S4AC_HAS_ACCESS_PRIVILEGE = 'http://ns.inria.fr/s4ac/v2#hasAccessPrivilege';\r\n\r\n  // CERT\r\n  static CERT_KEY = 'http://www.w3.org/ns/auth/cert#key';\r\n  static CERT_MODULUS = 'http://www.w3.org/ns/auth/cert#modulus';\r\n  static CERT_EXPONENT = 'http://www.w3.org/ns/auth/cert#exponent';\r\n  static CERT_RSA_PUBLIC_KEY = 'http://www.w3.org/ns/auth/cert#RSAPublicKey';\r\n\r\n  // PROV\r\n  static PROV_WAS_DERIVED_FROM = 'http://www.w3.org/ns/prov-o#wasDerivedFrom';\r\n\r\n  // DBP\r\n  static DBP_DBPEDIAN = 'http://dbpedia.org/ontology/DBpedian';\r\n}\r\n\r\nmodule.exports = DatabusUris;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-uris.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-utils.js":
-/*!***********************************!*\
-  !*** ./js/utils/databus-utils.js ***!
-  \***********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ \"./js/collections/databus-collection-utils.js\");\nvar markdownit = __webpack_require__(/*! markdown-it */ \"markdown-it\");\nconst moment = __webpack_require__(/*! moment/moment */ \"moment/moment\");\nconst DatabusUris = __webpack_require__(/*! ./databus-uris */ \"./js/utils/databus-uris.js\");\nconst ApiError = __webpack_require__(/*! ../../../server/app/common/utils/api-error */ \"../server/app/common/utils/api-error.js\");\n\nclass DatabusUtils {\n\n  static stringOrFallback(value, fallback) {\n    if (value != null && value.length > 0) {\n      return value;\n    }\n\n    return fallback;\n  }\n\n  static resemblesTrue(value) {\n    if (typeof value === 'boolean') {\n      return value;\n    }\n\n    if (typeof value === 'string') {\n      const normalized = value.trim().toLowerCase();\n      return ['true', '1', 'yes', 'on'].includes(normalized);\n    }\n\n    if (typeof value === 'number') {\n      return value === 1;\n    }\n\n    return false;\n  }\n\n  static isValidResourceIdentifier(identifier, min) {\n    var identifierRegex = /^[a-z-]+$/;\n    return this.checkField(identifier, identifierRegex, min, 50);\n  }\n\n  static formatQuery(query, placeholderMappings) {\n\n    if (placeholderMappings == undefined) {\n      return query;\n    }\n\n    for (var placeholder in placeholderMappings) {\n      var re = new RegExp('%' + placeholder + '%', \"g\");\n      query = query.replace(re, placeholderMappings[placeholder]);\n    }\n\n    return query;\n  }\n\n  static isValidVersionIdentifier(identifier) {\n    var labelRegex = /^[A-Za-z0-9_\\.\\-]*$/;\n    return this.checkField(identifier, labelRegex, 3, 50);\n  }\n\n  static isValidResourceText(value, min, max) {\n    var textRegex = /^[\\x00-\\x7F\\n]*$/;\n    return this.checkField(value, textRegex, min, max);\n  }\n\n  static isValidAccountName(identifier) {\n    var labelRegex = /^[a-z][0-9a-z_\\-]+[0-9a-z]$/;\n    return this.checkField(identifier, labelRegex, 3, 15);\n  }\n\n  static timeStringNow() {\n    return new Date(Date.now()).toISOString();\n  }\n\n  static isValidGroupName(name) {\n    var labelRegex = /[a-zA-Z0-9_\\-\\.]{3,50}$/;\n    return this.checkField(name, labelRegex, 3, 50);\n  }\n\n  static isValidArtifactName(name) {\n    var labelRegex = /[a-zA-Z0-9_\\-\\.]{3,50}$/;\n    return this.checkField(name, labelRegex, 3, 50);\n  }\n\n  static isValidUrl(value) {\n    var textRegex = /https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)/g;\n    return textRegex.test(value);\n  }\n\n  static isValidResourceLabel(value, min, max) {\n    var labelRegex = /^[A-Za-z0-9\\s_()\\.\\,\\-]*$/;\n    return this.checkField(value, labelRegex, min, max);\n  }\n\n  static objSize(obj) {\n    var size = 0, key;\n    for (key in obj) {\n      if (obj.hasOwnProperty(key)) size++;\n    }\n    return size;\n  }\n\n  static uniqueList(arr) {\n    var u = {}, a = [];\n    for (var i = 0, l = arr.length; i < l; ++i) {\n      if (!u.hasOwnProperty(arr[i])) {\n        a.push(arr[i]);\n        u[arr[i]] = 1;\n      }\n    }\n    return a;\n  }\n\n\n  static formatFileSize(size) {\n    if (size == undefined) {\n      return '0 KB'\n    }\n\n    if (size < 1024) return size + \" B\";\n    else if (size < 1048576) return Math.round(size / 1024) + \" KB\";\n    else if (size < 1073741824) return (Math.round(10 * size / 1048576) / 10) + \" MB\";\n    else return (Math.round(100 * size / 1073741824) / 100) + \" GB\";\n  };\n\n  static checkField(value, regex, min, max) {\n    if (value == undefined) {\n      return false;\n    }\n\n    if (max > 0 && value.length > max) {\n      return false;\n    }\n\n    if (value.length < min) {\n      return false;\n    }\n\n    return regex.test(value);\n  }\n\n  // Creates a v4 uuid\n  static uuidv4() {\n    return '___xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n      return v.toString(16);\n    });\n  }\n\n  static tryParseJson(str) {\n    return JSON.parse(str);\n  }\n\n  static uriToTitle(uri) {\n    if (uri == null) {\n      return null;\n    }\n\n    var result = uri.substr(uri.lastIndexOf('/') + 1);\n    result = result.substr(result.lastIndexOf('#') + 1);\n\n    return result.charAt(0).toUpperCase() + result.slice(1);\n  }\n\n  static uriToName(uri) {\n    if (uri == null) {\n      return null;\n    }\n\n    var result = uri.substr(uri.lastIndexOf('/') + 1);\n    result = result.substr(result.lastIndexOf('#') + 1);\n\n    if (result.includes('.')) {\n      result = result.substr(0, result.lastIndexOf('.'));\n    }\n\n    return result;\n  }\n\n  static uriToResourceName(uri) {\n    if (uri == null) {\n      return null;\n    }\n\n    var result = uri.substr(uri.lastIndexOf('/') + 1);\n\n    if (result.includes('#')) {\n      result = result.substr(0, result.indexOf('#'));\n    }\n\n    return result;\n  }\n\n  static isValidHttpUrl(string) {\n    let url;\n\n    try {\n      url = new URL(string);\n    } catch (_) {\n      return false;\n    }\n\n    return url.protocol === \"http:\" || url.protocol === \"https:\";\n  }\n\n  static isValidHttpsUrl(string) {\n    let url;\n\n    try {\n      url = new URL(string);\n    } catch (_) {\n      return false;\n    }\n\n    return url.protocol === \"https:\";\n  }\n\n\n  static navigateUp(uri, steps) {\n\n    if (steps == undefined) {\n      steps = 1;\n    }\n\n    for (var i = 0; i < steps; i++) {\n      uri = uri.substr(0, uri.lastIndexOf('/'));\n    }\n\n    if (uri.includes('#')) {\n      uri = uri.substr(0, uri.lastIndexOf('#'));\n    }\n\n    return uri;\n  }\n\n  static copyStringToClipboard(str) {\n    // Create new element\n    var el = document.createElement('textarea');\n    // Set value (string to be copied)\n    el.value = str;\n    // Set non-editable to avoid focus and move outside of view\n    el.setAttribute('readonly', '');\n    el.style = { position: 'absolute', left: '-9999px' };\n    document.body.appendChild(el);\n    // Select text inside element\n    el.select();\n    // Copy text to clipboard\n    document.execCommand('copy');\n    // Remove temporary element\n    document.body.removeChild(el);\n  }\n\n  static serialize(collectionObject, ignoreKeys) {\n\n    if (ignoreKeys == undefined) {\n      ignoreKeys = [\n        'parent',\n        '$$hashKey',\n        'expanded',\n        'files',\n        'eventListeners',\n        'hasLocalChanges',\n        'published'\n      ];\n    }\n\n    return JSON.stringify(collectionObject, function (key, value) {\n      if (ignoreKeys.includes(key)) {\n        return undefined;\n      }\n\n      return value;\n    });\n  }\n\n  static createCleanCopy(jsonData) {\n    var data = JSON.parse(DatabusCollectionUtils.serialize(jsonData));\n    return data;\n  }\n\n  static lineCount(text) {\n    return (text.match(/^\\s*\\S/gm) || \"\").length\n  }\n\n\n  static getResourcePathLength(uri) {\n    var parts = DatabusUtils.splitResourceUri(uri);\n\n    if (parts.length == 1 && parts[0] == \"\") {\n      return 0;\n    }\n\n    return parts.length;\n  }\n\n  static splitResourceUri(uri) {\n\n    var url = new URL(uri);\n    uri = url.pathname;\n\n    if (uri.startsWith('/')) {\n      uri = uri.substr(1);\n    }\n    if (uri.endsWith('/')) {\n      uri = uri.substr(0, uri.length - 1);\n    }\n\n    return uri.split('/');\n  }\n\n  static formatDate(date) {\n    return moment(date).format('MMM Do YYYY') + \" (\" + moment(date).fromNow() + \")\";\n  }\n\n  static exportToJsonFile(jsonData) {\n\n    var ignoreKeys = [\n      'parent',\n      '$$hashKey',\n      'expanded',\n      'files',\n      'eventListeners',\n      'hasLocalChanges',\n      'published',\n      'uuid'\n    ];\n\n    let dataStr = DatabusCollectionUtils.serialize(jsonData, ignoreKeys);\n    let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);\n\n    let exportFileDefaultName = 'data.json';\n\n    let linkElement = document.createElement('a');\n    linkElement.setAttribute('href', dataUri);\n    linkElement.setAttribute('download', exportFileDefaultName);\n    linkElement.click();\n  }\n\n  static async parseN3(data, maxQuads) {\n    return new Promise((resolve, reject) => {\n\n      const quads = [];\n      const prefixes = [];\n\n      const parser = new N3.Parser();\n\n      parser.parse(data, (e, q, p) => {\n        if (e) {\n          reject(e);\n          return;\n        }\n\n        if (quads.length > maxQuads || q == null) {\n          resolve({ quads: quads, prefixes: prefixes });\n        }\n\n        if (q) {\n          quads.push(q);\n        }\n      });\n    });\n  }\n\n  static async parseDatabusManifest(data) {\n\n    var parsedData = await DatabusUtils.parseN3(data, 100);\n\n    for (var quad of parsedData.quads) {\n\n      if (quad.predicate.id == `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`\n        && quad.object.id == DatabusUris.DATABUS_DATABUS) {\n\n        return {\n          uri: quad.subject.id\n        }\n      }\n    }\n\n    return undefined;\n  }\n\n  static getFirstSegment(uri) {\n    try {\n      const url = new URL(uri);\n      return url.pathname.split('/').filter(Boolean)[0] || null;\n    } catch {\n      return null;\n    }\n  }\n\n  static parseMarkdown(markdown) {\n\n    if (markdown == null) {\n      return null;\n    }\n\n    var markdownParser = markdownit();\n    return markdownParser.parse(markdown);\n  }\n\n  static renderMarkdown(markdown) {\n\n    if (markdown == null) {\n      return null;\n    }\n\n    var markdownParser = markdownit();\n    return markdownParser.render(markdown);\n  }\n\n  /**\n   * Create a dct:abstract from the content of a dct:description\n   * @param {*} description \n   */\n  static createAbstractFromDescription(description) {\n\n    if (description == null) {\n      return null;\n    }\n\n    try {\n      var tokens = this.parseMarkdown(description);\n\n\n      var paragraphFound = false;\n      var result = \"\";\n\n      if (tokens == null) {\n        return result;\n      }\n\n      var firstParagraphText = null;\n\n      for (var i = 0; i < tokens.length; i++) {\n\n        var token = tokens[i];\n        var appendText = null;\n\n        if (token.type == 'inline' && tokens[i - 1].type == 'paragraph_open' && token.level == 1) {\n          result = token.content;\n          break;\n        }\n\n      }\n\n      return result;\n\n    } catch (err) {\n      console.log(err);\n      return undefined;\n    }\n  }\n\n  /**\n   * Find groups files that are not distinguishable\n   * @param {Array of file URIs} files \n   * @param {Array of content variant names} contentVariants \n   * @param {Index in the array of content variants} index \n   * @returns \n   */\n  static cvSplit(distributionGraphs, contentVariantUris, contentVariantIndex) {\n\n    var errorList = [];\n\n    if (distributionGraphs.length <= 1) {\n      return errorList;\n    }\n\n    if (contentVariantIndex >= contentVariantUris.length) {\n\n      // Check buckets for double entries if (files.length > 1) {\n      if (distributionGraphs.length > 1) {\n\n        var error = {};\n        error.downloadURLs = [];\n\n        for (var distribution of distributionGraphs) {\n\n          error.downloadURLs.push(distribution[DatabusUris.DCAT_DOWNLOAD_URL][0][DatabusUris.JSONLD_ID]);\n        }\n\n        error[DatabusUris.DATABUS_FORMAT_EXTENSION] =\n          distributionGraphs[0][DatabusUris.DATABUS_FORMAT_EXTENSION][0][DatabusUris.JSONLD_VALUE];\n\n        error[DatabusUris.DATABUS_COMPRESSION] =\n          distributionGraphs[0][DatabusUris.DATABUS_COMPRESSION][0][DatabusUris.JSONLD_VALUE];\n\n        for (var contentVariantUri of contentVariantUris) {\n          error[contentVariantUri] = distributionGraphs[0][contentVariantUri] != null ?\n            distributionGraphs[0][contentVariantUri][0][DatabusUris.JSONLD_VALUE] : 'none'\n        }\n\n        errorList.push(error);\n      }\n    } else {\n\n      var contentVariantUri = contentVariantUris[contentVariantIndex];\n\n      // else create buckets and sort files into buckets\n      var buckets = {};\n\n      for (var distribution of distributionGraphs) {\n\n        var variantValue = distribution[contentVariantUri];\n\n        if (variantValue != undefined) {\n          variantValue = variantValue[0]['@value'];\n        }\n\n        if (variantValue == undefined || variantValue == '') {\n          variantValue = '$_none$';\n        }\n\n        if (buckets[variantValue] == undefined) {\n          buckets[variantValue] = [];\n        }\n\n        buckets[variantValue].push(distribution);\n      }\n\n\n      // iterate buckets and call recursively\n      for (var b in buckets) {\n\n        for (var error of DatabusUtils.cvSplit(buckets[b],\n          contentVariantUris, contentVariantIndex + 1, errorList)) {\n          errorList.push(error);\n        }\n      }\n    }\n\n    return errorList;\n  }\n\n}\n\nmodule.exports = DatabusUtils;\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-utils.js?");
-
-/***/ }),
-
-/***/ "./js/utils/databus-webapp-utils.js":
-/*!******************************************!*\
-  !*** ./js/utils/databus-webapp-utils.js ***!
-  \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ \"./js/components/databus-alert/databus-alert.js\");\r\nconst DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ \"./js/utils/databus-utils.js\");\r\nconst DatabusMessages = __webpack_require__(/*! ./databus-messages */ \"./js/utils/databus-messages.js\");\r\n\r\nclass DatabusWebappUtils {\r\n\r\n  constructor($scope, $sce) {\r\n    this.scope = $scope;\r\n    this.sce = $sce;\r\n  }\r\n\r\n  goTo(page) {\r\n    window.location = page;\r\n  }\r\n  \r\n  createAccount() {\r\n    window.location = '/app/account';\r\n  }\r\n\r\n  \r\n  getAccountName() {\r\n\r\n    let accountName = window.location.pathname.split('/')[1];\r\n\r\n    if(accountName.length < 4) {\r\n      return null;\r\n    }\r\n\r\n    return this.getOwnedAccountName(accountName);\r\n  }\r\n\r\n  getOwnedAccountName(accountName) {\r\n    if(!this.scope.auth.authenticated || this.scope.auth.info == null) {\r\n      return null;\r\n    }\r\n\r\n    let userInfo = this.scope.auth.info;\r\n\r\n    if(!Array.isArray(userInfo.accounts) || userInfo.accounts.length == 0) {\r\n      return null;\r\n    }\r\n\r\n    let account = userInfo.accounts.find(a => a.accountName == accountName);\r\n\r\n    if(account == null) {\r\n      return null;\r\n    }\r\n\r\n    return account.accountName;\r\n  }\r\n\r\n  login() {\r\n    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  logout() {\r\n    window.location = '/app/logout?redirectUrl=' + encodeURIComponent(window.location);\r\n  }\r\n\r\n  formatDateFromNow(date) {\r\n    return moment(date).fromNow();\r\n  }\r\n\r\n  markdownToHtml(markdown) {\r\n\r\n    if(this.sce == null) {\r\n      return markdown;\r\n    }\r\n\r\n    var markdown = DatabusUtils.renderMarkdown(markdown);\r\n\r\n    return this.sce.trustAsHtml(markdown);\r\n  };\r\n\r\n  formatDate(date) {\r\n    return DatabusUtils.formatDate(date); // moment(date).format('MMM Do YYYY') + \" (\" + moment(date).fromNow() + \")\";\r\n  }\r\n\r\n  formatLongDate(longString) {\r\n    var number = new Number(longString);\r\n    var dateTime = new Date(number);\r\n    return this.formatDate(dateTime);\r\n  }\r\n\r\n  formatFileSize (size) {\r\n    return DatabusUtils.formatFileSize(size);\r\n  }\r\n\r\n  getPathname(uri) {\r\n    var url = new URL(uri);\r\n    return url.pathname;\r\n  }\r\n\r\n  objSize(obj) {\r\n    return DatabusUtils.objSize(obj);\r\n  }\r\n\r\n  navigateUp(uri) {\r\n    return DatabusUtils.navigateUp(uri);\r\n  }\r\n\r\n  uriToName(uri) {\r\n    return DatabusUtils.uriToName(uri); \r\n  }\r\n\r\n  uriToResourceName(uri) {\r\n    return DatabusUtils.uriToResourceName(uri);\r\n  }\r\n\r\n  isValidHttpsUrl(url) {\r\n    return DatabusUtils.isValidHttpsUrl(url);\r\n  }\r\n\r\n  copyToClipboard(str) {\r\n\r\n    if(typeof str === 'object') {\r\n      str = JSON.stringify(str, null, 3);\r\n    }\r\n\r\n    // Create new element\r\n    var el = document.createElement('textarea');\r\n    // Set value (string to be copied)\r\n    el.value = str;\r\n    // Set non-editable to avoid focus and move outside of view\r\n    el.setAttribute('readonly', '');\r\n    el.style = { position: 'absolute', left: '-9999px' };\r\n    document.body.appendChild(el);\r\n    // Select text inside element\r\n    el.select();\r\n    // Copy text to clipboard\r\n    document.execCommand('copy');\r\n    // Remove temporary element\r\n    document.body.removeChild(el);\r\n\r\n    DatabusAlert.alert(this.scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);\r\n  }\r\n}\r\n\r\nmodule.exports = DatabusWebappUtils;\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/databus-webapp-utils.js?");
-
-/***/ }),
-
-/***/ "./js/utils/jsonld-utils.js":
-/*!**********************************!*\
-  !*** ./js/utils/jsonld-utils.js ***!
-  \**********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("/* module decorator */ module = __webpack_require__.nmd(module);\nconst DatabusUris = __webpack_require__(/*! ./databus-uris */ \"./js/utils/databus-uris.js\");\r\n\r\n\r\nclass JsonldUtils {\r\n\r\n  static refTo(uri) {\r\n    var result = {};\r\n    result[DatabusUris.JSONLD_ID] = uri;\r\n    return result;\r\n  }\r\n\r\n  static getTypedGraph(graphs, graphType) {\r\n\r\n    for (var g in graphs) {\r\n      var graph = graphs[g];\r\n\r\n      if (graph[DatabusUris.JSONLD_TYPE] != undefined && graph[DatabusUris.JSONLD_TYPE].includes(graphType)) {\r\n        return graph;\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n  static setLiteral(graph, property, type, value) {\r\n    graph[property] = [];\r\n\r\n    var entry = {};\r\n    entry[DatabusUris.JSONLD_TYPE] = type;\r\n    entry[DatabusUris.JSONLD_VALUE] = value;\r\n\r\n    graph[property].push(entry);\r\n  }\r\n\r\n  static setLink(graph, property, uri) {\r\n    graph[property] = [];\r\n\r\n    var entry = {};\r\n    entry[DatabusUris.JSONLD_ID] = uri;\r\n\r\n    graph[property].push(entry);\r\n  }\r\n\r\n  static getGraphById = function (graphs, id) {\r\n    return graphs.find(g => g[DatabusUris.JSONLD_ID] === id);\r\n  };\r\n\r\n  static getRefArrayProperty = function (graph, propertyUri) {\r\n    const val = graph[propertyUri];\r\n    if (!val) return [];\r\n    return val.map(v => v[DatabusUris.JSONLD_ID]);\r\n  };\r\n\r\n  static getProperty(graph, property) {\r\n    if (graph[property] == undefined) {\r\n      return null;\r\n    }\r\n\r\n    if (graph[property].length == 1) {\r\n      var value = graph[property][0];\r\n\r\n      if (value[DatabusUris.JSONLD_VALUE] != null) {\r\n        return value[DatabusUris.JSONLD_VALUE];\r\n      }\r\n\r\n      if (value[DatabusUris.JSONLD_ID] != null) {\r\n        return value[DatabusUris.JSONLD_ID];\r\n      }\r\n\r\n      return null;\r\n    } else {\r\n      var result = [];\r\n\r\n      for (var value of graph[property]) {\r\n\r\n        if (value[DatabusUris.JSONLD_VALUE] != null) {\r\n          result.push(value[DatabusUris.JSONLD_VALUE]);\r\n        }\r\n\r\n        if (value[DatabusUris.JSONLD_ID] != null) {\r\n          result.push(value[DatabusUris.JSONLD_ID]);\r\n        }\r\n      }\r\n\r\n      if (result.length > 0) {\r\n        return result;\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n  static getFirstProperty(graph, property) {\r\n    if (graph[property] == undefined) {\r\n      return null;\r\n    }\r\n\r\n    const values = graph[property];\r\n\r\n    if (values.length === 0) {\r\n      return null;\r\n    }\r\n\r\n    if (values.length === 1) {\r\n      const value = values[0];\r\n\r\n      if (value[DatabusUris.JSONLD_VALUE] != null) {\r\n        return value[DatabusUris.JSONLD_VALUE];\r\n      }\r\n\r\n      if (value[DatabusUris.JSONLD_ID] != null) {\r\n        return value[DatabusUris.JSONLD_ID];\r\n      }\r\n\r\n      return null;\r\n    }\r\n\r\n    for (const value of values) {\r\n      if (value[DatabusUris.JSONLD_VALUE] != null) {\r\n        return value[DatabusUris.JSONLD_VALUE];\r\n      }\r\n\r\n      if (value[DatabusUris.JSONLD_ID] != null) {\r\n        return value[DatabusUris.JSONLD_ID];\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n\r\n  static getGraphById(graphs, id) {\r\n    for (var g in graphs) {\r\n      var graph = graphs[g];\r\n\r\n      if (graph[DatabusUris.JSONLD_ID] != undefined && graph[DatabusUris.JSONLD_ID] == id) {\r\n        return graph;\r\n      }\r\n    }\r\n\r\n    return null;\r\n  }\r\n\r\n  static getTypedGraphs(graphs, graphType) {\r\n    var result = [];\r\n\r\n    for (var g in graphs) {\r\n      var graph = graphs[g];\r\n\r\n      if (graph[DatabusUris.JSONLD_TYPE] != undefined &&\r\n        graph[DatabusUris.JSONLD_TYPE].includes(graphType)) {\r\n        result.push(graph);\r\n      }\r\n    }\r\n\r\n    return result;\r\n  }\r\n\r\n  static getSubPropertyGraphs(graphs, propertyUri) {\r\n\r\n    var result = [];\r\n\r\n    for (var graph of graphs) {\r\n      if (graph[DatabusUris.RDFS_SUB_PROPERTY_OF] == undefined) {\r\n        continue;\r\n      }\r\n\r\n      for (var property of graph[DatabusUris.RDFS_SUB_PROPERTY_OF]) {\r\n        if (property[DatabusUris.JSONLD_ID] == propertyUri) {\r\n          result.push(graph);\r\n        }\r\n      }\r\n    }\r\n\r\n    return result;\r\n  }\r\n\r\n\r\n  static getFirstObject(graph, key) {\r\n    var obj = graph[key];\r\n\r\n    if (obj == undefined || obj.length < 1) {\r\n      return null;\r\n    }\r\n\r\n    return obj[0];\r\n  }\r\n\r\n  static getFirstObjectUri(graph, property) {\r\n    // Get the object    \r\n    const obj = graph[property];\r\n\r\n    // Not found -> null\r\n    if (!obj) {\r\n      return null;\r\n    }\r\n\r\n    // If it is an array...\r\n    if (Array.isArray(obj)) {\r\n      for (const item of obj) {\r\n        if (item && typeof item === 'object' && DatabusUris.JSONLD_ID in item) {\r\n          return item[DatabusUris.JSONLD_ID];\r\n        }\r\n      }\r\n    } else if (typeof obj === 'object' && DatabusUris.JSONLD_ID in obj) {\r\n      return obj[DatabusUris.JSONLD_ID];\r\n    }\r\n\r\n    return null;\r\n  }\r\n}\r\n\r\n\r\n\r\nif ( true && module && module.exports)\r\n  module.exports = JsonldUtils;\n\n//# sourceURL=webpack://databus-webapp/./js/utils/jsonld-utils.js?");
-
-/***/ }),
-
-/***/ "./js/utils/messages.js":
-/*!******************************!*\
-  !*** ./js/utils/messages.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   DatabusMsg: () => (/* binding */ DatabusMsg)\n/* harmony export */ });\nclass DatabusMsg {\r\n  static messages = {\r\n    err_invalid_group_name: \"Please enter between 3 to 50 characters. \\nRegex: [a-zA-Z0-9_\\\\-\\\\.]{3,50}$\",\r\n    err_no_group_selected: \"Please select a group\",\r\n    err_no_artifact_selected: \"Please select an artifact\",\r\n    \r\n    err_invalid_artifact_name: \"Please enter between 3 to 50 characters. \\nRegex: [a-zA-Z0-9_\\\\-\\\\.]{3,50}$\",\r\n    err_invalid_version_name: \"Please enter between 3 to 50 characters. \\nRegex: [a-zA-Z0-9_\\\\-\\\\.]{3,50}$\",\r\n    err_invalid_version_title: \"The version title is missing.\",\r\n    err_invalid_version_abstract: \"The version abstract is missing.\",\r\n    err_invalid_version_description: \"The version description is missing.\",\r\n    err_invalid_version_license: \"The license is invalid. Please enter a license URI.\",\r\n    err_no_files: \"You have to upload at least one file.\",\r\n    err_not_analyzed: \"This file has not been analzyed yet.\",\r\n    warning_group_exists: \"A group with this name already exists. Publishing will overwrite its metadata.\",\r\n    warning_artifact_exists: \"An artifact with this name already exists. Publishing will overwrite its metadata.\",\r\n    warning_version_exists: \"A version with this name already exists. Publishing will overwrite its metadata. This is not recommended, as other users might use your version identifier as a data dependency.\"\r\n  };\r\n\r\n  static get(key) {\r\n    return this.messages[key] || \"Unknown validation key.\";\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack://databus-webapp/./js/utils/messages.js?");
-
-/***/ }),
-
-/***/ "./js/utils/sparql-examples.js":
-/*!*************************************!*\
-  !*** ./js/utils/sparql-examples.js ***!
-  \*************************************/
-/***/ ((module) => {
-
-eval("/**\n * Query Templates can be defined as object with the fields:\n * > select\n * > body\n * > aggregate\n * \n * The select is a SPARQL select statement. The body is an array of strings with each string being a line of a \n * SPARQL query. The string %QUERY% can be used to insert the query generated by the QueryBuilder. The aggregate\n * is a SPARQL aggregate statement.\n */\nclass SparqlExamples {\n\n  static LIST = `PREFIX databus: <https://dataid.dbpedia.org/databus#>\nSELECT DISTINCT * WHERE {\n  ?s a databus:Artifact .\n}`;\n}\n\nmodule.exports = SparqlExamples;\n\n//# sourceURL=webpack://databus-webapp/./js/utils/sparql-examples.js?");
-
-/***/ }),
-
-/***/ "./js/utils/tab-navigation.js":
-/*!************************************!*\
-  !*** ./js/utils/tab-navigation.js ***!
-  \************************************/
-/***/ ((module) => {
-
-eval("\r\nclass TabNavigation {\r\n\r\n  constructor($scope, $location, tabKeys, onNavigateCallback) {\r\n    this.location = $location;\r\n    this.tabKeys = tabKeys;\r\n    this.activeTab = 0;\r\n    this.onNavigateCallback = onNavigateCallback;\r\n\r\n    var self = this;\r\n    // Watch the location hash and tell the tabnavigation that it changed\r\n    $scope.$watch(function () {\r\n      return $location.hash();\r\n    }, function (newVal, oldVal) {\r\n      self.onLocationHashChanged(newVal, oldVal)\r\n    }, false);\r\n  }\r\n\r\n\r\n  onLocationHashChanged(value, oldVal) {\r\n    for (var i in this.tabKeys) {\r\n      var tabKey = this.tabKeys[i];\r\n      if (value == tabKey) {\r\n        this.activeTab = i;\r\n\r\n        if(this.onNavigateCallback != null) {\r\n          this.onNavigateCallback(this.activeTab);\r\n        }\r\n        return;\r\n      }\r\n    }\r\n\r\n    this.activeTab = 0;\r\n    if(this.onNavigateCallback != null) {\r\n      this.onNavigateCallback(this.activeTab);\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Change the tab - set location hash and scroll up\r\n   * @param {*} value \r\n   */\r\n  navigateTo(value, scrollToTop) {\r\n    this.location.hash(value);\r\n\r\n    if(scrollToTop == true) {\r\n      window.scrollTo(0, 0);\r\n    }\r\n  }\r\n\r\n}\r\n\r\nmodule.exports = TabNavigation;\n\n//# sourceURL=webpack://databus-webapp/./js/utils/tab-navigation.js?");
-
-/***/ }),
-
-/***/ "../server/app/common/utils/api-error.js":
+/***/ "../server/app/common/utils/api-error.js"
 /*!***********************************************!*\
   !*** ../server/app/common/utils/api-error.js ***!
   \***********************************************/
-/***/ ((module) => {
+(module) {
 
-eval("class ApiError extends Error {\r\n    constructor(statusCode, resource, message, body) {\r\n        super(message);\r\n        this.name = \"ApiError\";\r\n        this.statusCode = statusCode;\r\n        this.resource = resource;\r\n        this.body = body;\r\n    }\r\n}\r\n\r\nmodule.exports = ApiError;\n\n//# sourceURL=webpack://databus-webapp/../server/app/common/utils/api-error.js?");
+class ApiError extends Error {
+    constructor(statusCode, resource, message, body) {
+        super(message);
+        this.name = "ApiError";
+        this.statusCode = statusCode;
+        this.resource = resource;
+        this.body = body;
+    }
+}
 
-/***/ }),
+module.exports = ApiError;
 
-/***/ "markdown-it":
+/***/ },
+
+/***/ "./js/collections/databus-collection-manager.js"
+/*!******************************************************!*\
+  !*** ./js/collections/databus-collection-manager.js ***!
+  \******************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ "./js/utils/app-json-formatter.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusCollectionUtils = __webpack_require__(/*! ./databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+const DatabusCollectionWrapper = __webpack_require__(/*! ./databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+
+class DatabusCollectionManager {
+
+  // Daten die wir haben:
+
+  // Liste von Remote Collections (ungeladen) { uri: databus.org/asdf, label: asdffasd }
+  // Liste von Working Copies in der Local Storage
+  // Beispiel:
+  // [0] : { uri: databus.org/asdf, label: asdffasd, content: { ... }, ... }
+  // [1] : { uri: databus.org/asdsdff, label: asdasdfffasd }
+
+
+
+  // On Initizialze:
+  // Fuer alle remove collections -> finde lokale Kopie / erzeuge lokale Kopie
+
+  // On Select / On Set Active
+  // 1: Ist es ein Draft -> uri ist undefined
+  // Ja? -> Collection direkt als Draft Anzeigen
+  // Nein? -> Ist Collection schon geladen? content ist nicht undefined
+  //          Ja? -> Lade async, uberschreibe remote entry
+  //          Nein? -> Lade async, setze remote und local entry
+
+  _isInitialized = false;
+  _initSubscribers = [];
+
+  constructor($http, $interval, storageKey) {
+
+    try {
+      this.storageKeyPrefix = `${encodeURI(DATABUS_RESOURCE_BASE_URL)}`;
+      // window.sessionStorage.removeItem(`${this.storageKeyPrefix}_session`);
+
+      this.sessionInfo = JSON.parse(window.sessionStorage.getItem(`${this.storageKeyPrefix}_session`));
+
+      if (this.sessionInfo == undefined) {
+        this.sessionInfo = {};
+      }
+
+      window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));
+      this.storageKey = `${this.storageKeyPrefix}__collections`;
+      this.local = this.loadCollectionsFromStorage(true);
+      this.remote = {};
+
+    } catch (err) {
+      this.sessionInfo = {};
+    }
+
+
+    this.http = $http;
+    this.interval = $interval;
+  }
+
+  clearSession() {
+    this.sessionInfo = {};
+    window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));
+  }
+
+  get accountName() {
+    return this.sessionInfo != undefined ? this.sessionInfo.accountName : undefined;
+  }
+
+  getLocalCollectionByUri(uri) {
+    for (let guid in this.local) {
+      let localCollection = this.local[guid];
+
+      if (localCollection.uri == uri) {
+        return localCollection;
+      }
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Set up the collection mananger for a specific account.
+   * 1) Load ALL the collections of this account from the remote
+   * 2) Save to remote map
+   * 3) Create local working copies if local has no entry for remote collection
+   * @param {*} accountName 
+   * @returns 
+   */
+  async tryInitialize(accountName) {
+
+    // Needs an account name to set up
+    if (accountName == undefined) {
+      return;
+    }
+
+    // this.remote = this.loadCollectionsFromStorage(false);
+    this.sessionInfo.accountName = accountName;
+
+
+
+    let collectionListResponse = await this.http.get(`/app/account/collections?account=${encodeURIComponent(accountName)}`);
+    let remoteCollections = collectionListResponse.data;
+
+
+    let wasLocalCollectionAdded = false;
+
+    for (let collectionUri in remoteCollections) {
+      let remoteCollection = remoteCollections[collectionUri];
+      let localCollection = this.getLocalCollectionByUri(collectionUri);
+
+      // Create local copy if not exist
+      if (localCollection == undefined) {
+        localCollection = JSON.parse(JSON.stringify(remoteCollection));
+        localCollection.uuid = DatabusCollectionUtils.uuidv4();
+        this.local[localCollection.uuid] = localCollection;
+        wasLocalCollectionAdded = true;
+      }
+
+      this.remote[localCollection.uuid] = remoteCollection;
+      this.remote[localCollection.uuid].isHidden = this.remote[localCollection.uuid].issued == undefined;
+
+      if(this.local[localCollection.uuid].isHidden == undefined) {
+        this.local[localCollection.uuid].isHidden = this.remote[localCollection.uuid].isHidden;
+      }
+    }
+
+    if(wasLocalCollectionAdded) {
+      this.saveLocally();
+    }
+
+    this.findActive();
+
+    /*
+
+    if (loadFromServer) {
+      try {
+        var res = await this.http.get(`/app/account/collections?account=${accountName}`);
+        this.initialize(res.data);
+
+      } catch (e) {
+        console.log(`Failed to initialze collection manager.`);
+        console.log(e);
+      }
+    }
+    */
+
+    var self = this;
+
+    this.interval(function () {
+      var storageHash = window.localStorage.getItem(`${self.storageKey}_hash`);
+
+      if (storageHash != self.currentHash) {
+        self.local = JSON.parse(window.localStorage.getItem(self.storageKey));
+        self.currentHash = storageHash;
+
+        for (let identifier in self.local) {
+          if (identifier === undefined || identifier === "undefined") {
+            delete (self.local[identifier]);
+          } else {
+            //enable Collection Utils for all collections in local storage
+            self.local[identifier] = new DatabusCollectionWrapper(self.local[identifier]);
+          }
+        }
+
+        if (self.onCollectionChangedInDifferentTab != null) {
+          self.onCollectionChangedInDifferentTab();
+        }
+      }
+    }, 300);
+
+
+    this._isInitialized = true;
+    this._notifyInitialized();
+  }
+
+  get isInitialized() {
+    return this._isInitialized;
+  }
+
+  subscribeOnInitialized(callback) {
+    if (this._isInitialized) {
+      callback();
+    } else {
+      this._initSubscribers.push(callback);
+    }
+  }
+
+  _notifyInitialized() {
+    this._initSubscribers.forEach(cb => cb());
+    this._initSubscribers = [];
+  }
+
+  get hasAccountName() {
+    return this.accountName != null;
+  }
+
+  // Setze das remote array und update local array
+  initialize(remoteCollections) {
+    // We keep remote entries and local entries separately to detect diffs
+    this.remote = {};
+
+    // Load everyting from the local browser storage. All entries in the local browser
+    // storage are indexed with a UUID identifier.
+    // Remote collections that are pulled to the local browser storage will
+    // also be given such an identifier
+    // this.local = this.loadCollectionsFromLocalStorage();
+
+    // This map will keep track of all local entries that already claim to have a remote counterpart
+    let localPublished = {};
+
+    for (let identifier in this.local) {
+      if (!identifier.startsWith('___')) {
+        delete this.local[identifier];
+        continue;
+      }
+
+      if (identifier !== this.local[identifier].uuid) {
+        delete this.local[identifier];
+        continue;
+      }
+
+      let localCollection = this.local[identifier];
+
+      if (localCollection.uri !== undefined && remoteCollections !== undefined) {
+        let uri = localCollection.uri;
+        // The local collection already has a URI
+        if (remoteCollections[uri] === undefined) {
+          // There is no remote collection with that URI - delete it! Keep the collection as a draft
+          delete (this.local[identifier].uri);
+          delete (this.local[identifier].issued);
+          delete (this.local[identifier].created);
+        } else {
+          // Remember that the collection with uri already has a working copy
+          localPublished[uri] = true;
+          // Also remember the remote entry as an entry with a local working copy
+          this.remote[identifier] = remoteCollections[uri];
+          // Make sure the unchangeable values are set to the remote entry
+          this.local[identifier].publisher = remoteCollections[uri].publisher;
+          this.local[identifier].issued = remoteCollections[uri].issued;
+          this.local[identifier].created = remoteCollections[uri].created;
+          this.local[identifier].files = remoteCollections[uri].files;
+        }
+      }
+    }
+
+    for (let uri in remoteCollections) {
+      if (localPublished[uri] === undefined) {
+        // We don't have a working copy in our local storage yet, time to create an identifier!
+        let identifier = DatabusCollectionUtils.uuidv4();
+        remoteCollections[uri].uuid = identifier;
+        remoteCollections[uri].isHidden = remoteCollections[uri].issued == undefined;
+        // Create two entries, one in the local map, one in the remote map
+        this.local[identifier] = DatabusCollectionUtils.createCleanCopy(remoteCollections[uri]);
+        this.remote[identifier] = DatabusCollectionUtils.createCleanCopy(remoteCollections[uri]);
+      }
+    }
+
+    for (let identifier in this.local) {
+      // The local collection is now either a draft or a working copy of the remote - wrap it.
+      this.local[identifier] = new DatabusCollectionWrapper(this.local[identifier]);
+      // Sanitize content
+      if (!(this.local[identifier].content instanceof Object)) {
+        this.local[identifier].content = { groups: [], customQueries: [] };
+      }
+    }
+
+    /*
+    let activeIdentifier = this.activeCollectionIdentifier;
+    // Set first collection as active
+
+    if (this.local[activeIdentifier] !== undefined) {
+      this.activeCollectionIdentifier = activeIdentifier;
+    }
+    */
+
+
+
+    // QueryNode.assignParents(this.activeCollection.content.root);
+
+    // Save locally in case we created any local working copies
+
+    this.saveLocally();
+
+    // Call this always in header-controller.js
+    if (this.activeCollection == null) {
+      // select first or create a new draft if we don't have any local drafts yet
+      this.selectFirstOrCreate();
+    }
+
+  }
+
+
+
+  findActive() {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized1.";
+    if (this.activeCollection == undefined) {
+      this.selectFirstOrCreate();
+    }
+  }
+
+
+  loadCollectionsFromStorage(local = true) {
+    let collections;
+
+    if (local) {
+      collections = JSON.parse(window.localStorage.getItem(this.storageKey));
+    } else {
+      collections = JSON.parse(window.sessionStorage.getItem(this.storageKey));
+    }
+
+    if (collections == null) {
+      collections = {};
+    }
+
+    for (let identifier in collections) {
+      if (identifier === undefined || identifier === "undefined") {
+        delete (collections[identifier]);
+      } else if (collections[identifier].accountName == null) {
+        delete (collections[identifier]);
+      } else {
+        //enable Collection Utils for all collections in local storage
+        collections[identifier] = new DatabusCollectionWrapper(collections[identifier]);
+      }
+    }
+
+    return collections;
+  }
+
+  /**
+   * Selects the first collection in the local list or creates a new draft
+   */
+  selectFirstOrCreate(accountName) {
+
+    for (let identifier in this.local) {
+      this.setActive(identifier);
+      break;
+    }
+
+    // Create new collection if current is null
+    if (this.activeCollection == null) {
+      this.createNew(accountName, "Unnamed Collection", "", function (response) { });
+    }
+  }
+
+  setActive(uuid) {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized1.";
+
+    this.convertCollectionContentToTree(uuid);
+
+    let collection = this.local[uuid];
+    // QueryNode.assignParents(collection.content.root);
+
+    this.sessionInfo.activeCollectionIdentifier = uuid;
+    window.sessionStorage.setItem(`${this.storageKeyPrefix}_session`, JSON.stringify(this.sessionInfo));
+
+  }
+
+  get activeCollectionIdentifier() {
+    return this.sessionInfo != null ? this.sessionInfo.activeCollectionIdentifier : null;
+  }
+
+  get activeCollection() {
+    if (this.activeCollectionIdentifier == null) {
+      return null;
+    }
+
+    if (this.local == null) {
+      return null;
+    }
+
+    return this.local[this.activeCollectionIdentifier];
+  }
+
+  convertCollectionContentToTree(uuid) {
+    let collection = this.local[uuid];
+
+    if (collection.content.root !== undefined) {
+      return;
+    }
+
+    collection.content.root = new QueryNode(null, null);
+
+    for (var g in collection.content.groups) {
+      var group = collection.content.groups[g];
+      var groupNode = new QueryNode(group.uri, 'databus:group');
+
+      // add group facets
+      for (var s in group.settings) {
+        var setting = group.settings[s];
+
+        if (setting.value === 'SYSTEM_LATEST_ARTIFACT_VERSION' || setting.value === 'SYSTEM_LATEST_GROUP_VERSION') {
+          setting.value = '$latest';
+        }
+
+        groupNode.setFacet(setting.facet, setting.value, setting.checked);
+      }
+
+      collection.content.root.addChild(groupNode);
+
+
+      for (var a in group.artifacts) {
+        var artifact = group.artifacts[a];
+
+        var artifactNode = new QueryNode(artifact.uri, 'databus:artifact');
+
+        // add artifact facets
+
+        groupNode.addChild(artifactNode);
+      }
+    }
+
+  }
+
+  createSnapshot(source) { // convert each version="latest" to actual latest version
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    let collection = DatabusCollectionWrapper.createNew();
+    collection.accountName = this.accountName;
+    collection.content = DatabusCollectionUtils.createCleanCopy(source.content);
+
+    let root = collection.content.root;
+    for (var g in root.childNodes) {
+      var graph = root.childNodes[g];
+
+      for (var s in graph.facetSettings) {
+        if (graph.facetSettings[s][0].value === '$latest') {
+          this.http.get('/app/utils/facets', {
+            params: { uri: artifact.uri, type: 'group' }
+          }).then(function (result) {
+            let versions = result.data["http://purl.org/dc/terms/hasVersion"].values;
+            let latestVersion = versions.reduce(function (a, b) { return a > b ? a : b; });
+            artifact.facetSettings[s][0].value = latestVersion;
+          });
+        }
+      }
+
+      for (var a in graph.childNodes) {
+        var artifact = graph.childNodes[a];
+
+        for (var s in artifact.facetSettings) {
+          if (artifact.facetSettings[s][0].value === '$latest') {
+            this.http.get('/app/utils/facets', {
+              params: { uri: artifact.uri, type: 'artifact' }
+            }).then(function (result) {
+              let versions = result.data["http://purl.org/dc/terms/hasVersion"].values;
+              let latestVersion = versions.reduce(function (a, b) { return a > b ? a : b; });
+              artifact.facetSettings[s][0].value = latestVersion;
+            });
+          }
+        }
+
+      }
+
+    }
+
+
+    collection.title = `Snapshot of ${source.title}`;
+    collection.description = source.description;
+
+    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
+    this.saveLocally();
+    this.setActive(collection.uuid);
+
+    return collection;
+  }
+
+  saveLocally() {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    if (this.activeCollection != null) {
+      this.activeCollection.hasLocalChanges = this.hasLocalChanges(this.activeCollection);
+    }
+
+    var hash = DatabusCollectionUtils.cyrb53Hash(DatabusCollectionUtils.serialize(this.local));
+    this.currentHash = hash;
+
+    window.localStorage.setItem(`${this.storageKey}_hash`, hash);
+
+    for (let identifier in this.local) {
+      if (this.local[identifier].accountName == null) {
+        delete (this.local[identifier]);
+      }
+    }
+
+    try {
+      //write local collections to local storage
+      window.localStorage.setItem(this.storageKey, DatabusCollectionUtils.serialize(this.local));
+      //write remote collections to session storage
+      window.sessionStorage.setItem(this.storageKey, DatabusCollectionUtils.serialize(this.remote));
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  hasLocalChanges(localCollection) {
+    if (this.remote[localCollection.uuid] === undefined) {
+      return true;
+    }
+
+    let remoteCollection = this.remote[localCollection.uuid];
+
+    if (remoteCollection.isHidden != localCollection.isHidden) {
+      return true;
+    }
+
+    if (localCollection.title !== remoteCollection.title) {
+      return true;
+    }
+
+    if (localCollection.description !== remoteCollection.description) {
+      return true;
+    }
+
+    let serializedRemoteContent = DatabusCollectionUtils.serialize(remoteCollection.content);
+    let serializedLocalContent = DatabusCollectionUtils.serialize(localCollection.content);
+
+    return serializedLocalContent !== serializedRemoteContent;
+  }
+
+  discardLocalChanges() {
+
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    let uuid = this.activeCollection.uuid;
+
+    if (this.remote[uuid] === undefined) {
+      return;
+    }
+
+    let uri = this.activeCollection.uri;
+
+    if (uri == undefined) {
+      return;
+    }
+
+    this.local[uuid].title = this.remote[uuid].title;
+    this.local[uuid].abstract = this.remote[uuid].abstract;
+    this.local[uuid].description = this.remote[uuid].description;
+    this.local[uuid].content = DatabusCollectionUtils.createCleanCopy(this.remote[uuid].content);
+    this.local[uuid].hasLocalChanges = this.hasLocalChanges(this.local[uuid]);
+
+    this.saveLocally();
+  }
+
+  addElement(elementQuery) {
+    this.current.addElement(elementQuery);
+    this.saveLocally();
+
+    if (this.onActiveCollectionChanged != null) {
+      this.onActiveCollectionChanged(this.current);
+    }
+  }
+
+  removeElement(elementGuid) {
+    this.current.removeElement(elementGuid);
+    this.saveLocally();
+
+    if (this.onActiveCollectionChanged != null) {
+      this.onActiveCollectionChanged(this.current);
+    }
+  }
+
+
+
+  createNew(accountName, title, description, callback) {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    let reg = /^\w+[\w\s]*$/;
+
+    if (title === undefined || !reg.test(title)) {
+      callback(false);
+      return;
+    }
+
+    let collection = DatabusCollectionWrapper.createNew(title, description, DATABUS_RESOURCE_BASE_URL, accountName);
+
+    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
+    this.setActive(collection.uuid);
+    this.saveLocally();
+
+    callback(collection);
+  }
+
+  createDraft(callback) {
+    if (!this.hasAccountName) {
+      return;
+    }
+
+    let collection = DatabusCollectionWrapper.createNew('', '');
+    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
+    this.setActive(collection.uuid);
+    this.saveLocally()
+
+    callback(DatabusResponse.COLLECTION_DRAFT_CREATED);
+  }
+
+  createCopy(source) {
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    let collection = DatabusCollectionWrapper.createNew();
+    collection.content = DatabusCollectionUtils.createCleanCopy(source.content);
+    collection.title = `Copy of ${source.title}`;
+    collection.abstract = source.abstract;
+    collection.description = source.description;
+    collection.accountName = this.accountName;
+
+    this.local[collection.uuid] = new DatabusCollectionWrapper(collection);
+    this.saveLocally();
+    this.setActive(collection.uuid);
+
+    return collection;
+  }
+
+
+
+  deleteLocally() {
+    delete this.local[this.activeCollection.uuid];
+    this.saveLocally();
+  }
+
+  /**
+   * Returns the collection or null
+   * @param  {[type]} uri [description]
+   * @return {[type]}      [description]
+   */
+  getCollectionByUri(uri) {
+    if (uri == null)
+      return null;
+
+    for (let identifier in this.local) {
+      if (uri === this.local[identifier].uri) {
+        return this.local[identifier];
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the first collection or null
+   * @return {[type]} [description]
+   */
+  getFirstCollection() {
+    if (this.local.length === 0) {
+      return null;
+    }
+    return this.local[0];
+  }
+
+
+  async changeCollection(username, collectionUri) {
+    try {
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+      this.saveLocally();
+
+      // Keep the identifier of the collection we want to push
+      var pushIdentifier = this.activeCollection.uuid;
+      var publisherUri = `${DATABUS_RESOURCE_BASE_URL}/${username}#this`;
+
+      var ignoreKeys = [
+        'parent',
+        '$$hashKey',
+        'expanded',
+        'files',
+        'eventListeners',
+        'hasLocalChanges',
+        'published',
+        'uuid',
+      ];
+
+      var contentString = encodeURIComponent(DatabusCollectionUtils.serialize(this.activeCollection.content, ignoreKeys));
+
+      // Format collection as json-ld
+      let collectionJsonLd = {
+        "@context": DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT],
+        "@graph": [
+          {
+            "@id": collectionUri,
+            "@type": "Collection",
+            "publisher": publisherUri,
+            "title": this.activeCollection.title,
+            "abstract": this.activeCollection.abstract,
+            "description": this.activeCollection.description,
+            "databus:collectionContent": contentString,
+          }
+        ]
+      };
+
+      if (!this.activeCollection.isHidden) {
+        collectionJsonLd["@graph"][0].issued = DatabusUtils.timeStringNow();
+      }
+
+      var response = null;
+
+      try {
+
+        // var relativeUri = new URL(collectionUri).pathname;
+        // response = await this.http.put(relativeUri, collectionJsonLd);
+
+        response = await this.http.post('/api/register', collectionJsonLd);
+
+      } catch (errResponse) {
+        console.log(errResponse);
+        throw { code: errResponse.data.code };
+      }
+
+      try {
+        var relativeUri = new URL(collectionUri).pathname;
+
+        var response = await this.http({
+          method: 'GET',
+          url: relativeUri,
+          headers: {
+            'Accept': 'application/ld+json',
+            'X-Jsonld-Formatting': 'compact'
+          }
+        });
+
+
+      } catch (errResponse) {
+        console.log(errResponse);
+        throw { code: errResponse.data.code };
+      }
+
+      // Get the remotely saved collection from the payload
+      var remoteGraph = response.data;
+
+      // If the user changed the active collection in the meantime throw an error. This
+      // should be prevented by a loading dialog
+      if (this.activeCollection.uuid != pushIdentifier) {
+        throw { code: DatabusResponse.COLLECTION_INVALID_ARGUMENT };
+      }
+
+      this.local[pushIdentifier].uri = remoteGraph['@id'];
+      this.local[pushIdentifier].hasLocalChanges = false;
+      this.local[pushIdentifier].modified = remoteGraph.modified;
+      this.local[pushIdentifier].issued = remoteGraph.issued;
+      this.local[pushIdentifier].isHidden = remoteGraph.issued == null;
+      // this.local[pushIdentifier].created = remoteGraph.created;
+
+      //Update remote data
+      this.remote[pushIdentifier] = JSON.parse(DatabusCollectionUtils.serialize(this.activeCollection));
+
+      // Update the local data
+      // this.local[pushIdentifier].uri = remoteGraph['@id'];
+      //this.local[pushIdentifier].hasLocalChanges = this.hasLocalChanges(this.local[pushIdentifier]);
+      //this.local[pushIdentifier].modified = this.activeCollection.modified;
+      //this.local[pushIdentifier].issued = this.activeCollection.issued;
+      //this.local[pushIdentifier].created = this.activeCollection.created;
+
+      this.saveLocally();
+
+      return response.data;
+
+    } catch (err) {
+
+      console.log(err);
+      throw {
+        code: err.data !== undefined && err.data.code !== undefined ? err.data.code :
+          DatabusResponse.COLLECTION_UPDATE_ERROR
+      };
+    }
+  }
+
+  async updateCollection(username, collectionTag) {
+
+    if (this.activeCollection.uri != null) {
+      return await this.changeCollection(username, this.activeCollection.uri);
+    } else {
+      var collectionUri = `${DATABUS_RESOURCE_BASE_URL}/${username}/collections/${collectionTag}`;
+
+      for (var uuid in this.local) {
+        if (this.local[uuid].uri == collectionUri) {
+          throw "A collection with the specifed URI already exists.";
+        }
+      }
+
+      return await this.changeCollection(username, collectionUri);
+    }
+  }
+
+
+  /**
+   * Fetches the remote data of the current collection and assigns the field values to the local copy
+   */
+  async fetchCollection(uri) {
+    try {
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+      var req = {
+        method: 'GET',
+        url: uri,
+        headers: { 'Accept': 'application/json' }
+      };
+
+      var getResponse = await this.http(req);
+      var collection = getCollectionByUri(uri);
+
+      this.local[collection.uuid].content = getResponse.data.content;
+      this.local[collection.uuid].created = getResponse.data.created;
+      this.local[collection.uuid].issued = getResponse.data.issued;
+      this.local[collection.uuid].title = getResponse.data.title;
+      this.local[collection.uuid].description = getResponse.data.description;
+      this.local[collection.uuid].files = getResponse.data.files;
+    } catch (errResponse) {
+      console.log(errResponse);
+      return errResponse.data;
+    }
+  }
+
+  async deleteCollection(username, collectionTag) {
+    try {
+      if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+
+
+      // Keep the identifier of the collection we want to push
+      let deleteIdentifier = this.activeCollection.uuid;
+
+      if (this.activeCollection.isDraft) {
+        delete this.local[deleteIdentifier];
+        this.saveLocally();
+        return { code: DatabusResponse.COLLECTION_DELETED };
+      }
+
+      var targetUri = `/${username}/collections/${collectionTag}`;
+
+      let deleteResponse = await this.http.delete(targetUri);
+
+      delete this.remote[deleteIdentifier];
+      delete this.local[deleteIdentifier];
+
+      return deleteResponse.data;
+    } catch (errResponse) {
+      console.log(errResponse);
+      return errResponse.data;
+    }
+  }
+
+  /**
+   * Deletes the active collection from the server but keeps the local storage entry
+   */
+  async unpublishActiveCollection() {
+
+    if (!this.hasAccountName) throw "Databus-Collection-Manager is not initialized.";
+
+    if (this.activeCollection.isDraft) {
+      throw "Cannot unpublish an unpublished draft";
+    }
+
+    // Keep the identifier of the collection we want to push
+    let uuid = this.activeCollection.uuid;
+    let identifier = DatabusUtils.uriToName(this.activeCollection.uri);
+
+    var targetUri = `/${this.accountName}/collections/${identifier}`;
+    await this.http.delete(targetUri);
+
+    delete this.remote[uuid];
+    delete this.local[uuid].uri;
+    delete this.local[uuid].issued;
+    this.saveLocally();
+  }
+}
+
+
+module.exports = DatabusCollectionManager;
+
+/***/ },
+
+/***/ "./js/collections/databus-collection-utils.js"
+/*!****************************************************!*\
+  !*** ./js/collections/databus-collection-utils.js ***!
+  \****************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ "./js/utils/databus-constants.js");
+const DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ "./js/utils/databus-messages.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+class DatabusCollectionUtils {
+
+  static CEDIT_IDENTIFIER_REGEX = /^[a-z0-9_-]{3,50}$/;
+  static CEDIT_TITLE_REGEX = /^[A-Za-z0-9\s_()\.\,\-]{3,200}$/;
+  static CEDIT_ABSTRACT_REGEX = /^[\x00-\xFF\n]{10,}$/;
+  static CEDIT_DESCRIPTION_REGEX = /^[\x00-\xFF\n]{10,}$/;
+
+  static formatMessageWithRegex(message, regex) {
+    var regexString = regex.source;
+    return message.replace("#REGEX#", regexString);
+  }
+
+  static checkCollectionForm(form, collection) {
+
+    var hasError = false;
+
+    form.identifier.error = null;
+    form.title.error = null;
+    form.abstract.error = null;
+    form.description.error = null;
+
+    if (collection.isDraft) {
+
+      // Check the identifier
+      if (!this.CEDIT_IDENTIFIER_REGEX.test(form.identifier.value)) {
+        hasError = true;
+        form.identifier.error = this.formatMessageWithRegex(
+          DatabusMessages.CEDIT_INVALID_IDENTIFIER,
+          this.CEDIT_IDENTIFIER_REGEX
+        );
+      }
+    }
+
+    // Check the title
+    if (!this.CEDIT_TITLE_REGEX.test(collection.title)) {
+      hasError = true;
+      form.title.error = this.formatMessageWithRegex(
+        DatabusMessages.CEDIT_INVALID_TITLE,
+        this.CEDIT_TITLE_REGEX
+      );
+    }
+
+    // Check the abstract
+    if (!this.CEDIT_ABSTRACT_REGEX.test(collection.abstract)) {
+      hasError = true;
+      form.abstract.error = this.formatMessageWithRegex(
+        DatabusMessages.CEDIT_INVALID_ABSTRACT,
+        this.CEDIT_ABSTRACT_REGEX
+      );
+    }
+
+    // Check the description
+    if (!this.CEDIT_DESCRIPTION_REGEX.test(collection.description)) {
+      hasError = true;
+      form.description.error = this.formatMessageWithRegex(
+        DatabusMessages.CEDIT_INVALID_DESCRIPTION,
+        this.CEDIT_DESCRIPTION_REGEX
+      );
+    }
+
+    return !hasError;
+  }
+
+
+
+
+  static checkIdentifier(identifier) {
+    var identifierRegex = /^[a-z0-9_-]{3, 50}$/;
+    return this.checkField(identifier, identifierRegex, 3, 50);
+  }
+
+  static checkText(value, min, max) {
+    var textRegex = /^[\x00-\xFF\n]*$/;
+    return this.checkField(value, textRegex, min, max);
+  }
+
+  static checkLabel(value, min, max) {
+    var labelRegex = /^[A-Za-z0-9\s_()\.\,\-]*$/;
+    return this.checkField(value, labelRegex, min, max);
+  }
+
+  static checkField(value, regex, min, max) {
+    if (value == undefined) {
+      return false;
+    }
+
+    if (max > 0 && value.length > max) {
+      return false;
+    }
+
+    if (value.length < min) {
+      return false;
+    }
+
+    return regex.test(value);
+  }
+
+
+  // Checks whether a collection can be saved
+  static checkCollectionTexts(collection) {
+    var labelReg = /^[\x00-\x7F]*$/;
+    var textReg = /^[\x00-\x7F\n]*$/;
+
+    if (collection.label == undefined || collection.label == "") {
+      return DatabusResponse.COLLECTION_MISSING_LABEL;
+    }
+
+    if (!labelReg.test(collection.label) || collection.label.length > 200) {
+      return DatabusResponse.COLLECTION_INVALID_LABEL;
+    }
+
+    if (collection.description == undefined || collection.description == "") {
+      return DatabusResponse.COLLECTION_MISSING_DESCRIPTION;
+    }
+
+    if (!textReg.test(collection.description) || description.description.length < 50) {
+      return DatabusResponse.COLLECTION_INVALID_DESCRIPTION;
+    }
+
+    return 0;
+  }
+
+
+  // Creates a v4 uuid
+  static uuidv4() {
+    return '___xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  static createQueryString(collection) {
+    var wrapper = new DatabusCollectionWrapper(collection);
+    return wrapper.createQuery();
+  }
+
+  static reduceBinding(binding) {
+    for (var key in binding) {
+      binding[key] = binding[key].value;
+    }
+
+    return binding;
+  }
+
+
+  static formatQuery(query, placeholderMappings) {
+
+    if (placeholderMappings == undefined) {
+      return query;
+    }
+
+    for (var placeholder in placeholderMappings) {
+      var re = new RegExp('%' + placeholder + '%', "g");
+      query = query.replace(re, placeholderMappings[placeholder]);
+    }
+
+    return query;
+  }
+
+  static async getCollectionStatistics($http, collection) {
+
+    var query = QueryBuilder.build({
+      node: collection.content.root,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,
+      template: QueryTemplates.COLLECTION_STATISTICS_TEMPLATE
+    });
+
+    if (query == null) return null;
+
+    var req = {
+      method: 'POST',
+      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+      data: "format=json&timeout=1000000&query=" + encodeURIComponent(query),
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+    }
+
+    var response = await $http(req);
+    var entries = response.data.results.bindings;
+
+    entries = entries.filter(function (e) {
+      return e.file != undefined;
+    });
+
+    if (entries.length === 0) {
+      return null;
+    }
+
+
+    let result = {
+      fileCount: entries.length,
+      licenses: [],
+      files: [],
+      size: 0
+    };
+
+    for (let i in entries) {
+      let element = DatabusCollectionUtils.reduceBinding(entries[i]);
+
+      result.size += parseInt(element.size);
+      result.licenses.push(element.license);
+      result.files.push(element);
+    }
+
+    result.licenses = result.licenses.filter(function (item, pos, self) {
+      return self.indexOf(item) === pos;
+    });
+
+    return result;
+  }
+
+  static async getCollectionFiles($http, collection) {
+
+    if (!collection.hasContent) {
+      return [];
+    }
+
+    let query = QueryBuilder.build({
+      node: collection.content.root,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,
+      template: QueryTemplates.DISTRIBUTIONS_TEMPLATE
+    });
+
+    var req = {
+      method: 'POST',
+      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+      data: "format=json&query=" + encodeURIComponent(query),
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+    }
+
+    var response = await $http(req);
+    var entries = response.data.results.bindings;
+
+    if (entries.length === 0) {
+      return null;
+    }
+
+    var distributions = {};
+    var bindings = [];
+
+    for (var entry of entries) {
+      var uri = entry.distribution.value;
+      var databusUri = DatabusCollectionUtils.navigateUp(uri, 4);
+
+      if (distributions[databusUri] == null) {
+        distributions[databusUri] = [];
+      }
+
+      distributions[databusUri].push(`<${uri}>`);
+    }
+
+    for (var databusUri in distributions) {
+
+      var distributionsString = distributions[databusUri].join('\n');
+
+      var params = {};
+      params.DISTRIBUTIONS = distributionsString;
+
+      let fileQuery = DatabusCollectionUtils.formatQuery(QueryTemplates.COLLECTION_TABLE_QUERY, params);
+
+      var req = {
+        method: 'POST',
+        url: `${databusUri}${DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL}`,
+        data: "format=json&query=" + encodeURIComponent(fileQuery),
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded"
+        },
+      }
+
+      response = await $http(req);
+
+      for (var binding of response.data.results.bindings) {
+        binding.databus = databusUri;
+        bindings.push(binding);
+      }
+    }
+
+    // Postproccess
+    let result = [];
+
+    for (var binding of bindings) {
+      binding = DatabusCollectionUtils.reduceBinding(binding);
+
+      var variant = binding.variant;
+
+      if(variant != undefined) {
+        var variants = variant.split(',');
+
+        var cleanedVariants = [];
+
+        for (var v of variants) {
+          if (v != "" && v != " ") {
+            cleanedVariants.push(v);
+          }
+        }
+
+        binding.variant = cleanedVariants.join(",");
+      }
+
+      result.push(binding);
+    }
+
+
+    /*
+    for (var entry of entries) {
+
+      try {
+        console.log(entry.distribution.value);
+
+        var params = {};
+        params.DISTRIBUTION = entry.distribution.value;
+
+        let fileQuery = DatabusUtils.formatQuery(QueryTemplates.COLLECTION_TABLE_ROW_QUERY, params);
+
+        var req = {
+          method: 'POST',
+          url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+          data: "format=json&query=" + encodeURIComponent(fileQuery),
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+          },
+        }
+
+        response = await $http(req);
+
+        if (response.data.results.bindings.length === 0) {
+          continue;
+        }
+
+        result.push(DatabusCollectionUtils.reduceBinding(response.data.results.bindings[0]));
+
+      } catch(err) {
+        console.log(err);
+      }
+    }
+
+    // Postprocess:
+
+
+
+    for (let i in entries) {
+      let element = DatabusCollectionUtils.reduceBinding(entries[i]);
+      result.push(element);
+    }
+    */
+
+    return result;
+  }
+
+
+
+  static navigateUp(uri, steps) {
+
+    if (steps == undefined) {
+      steps = 1;
+    }
+
+    for (var i = 0; i < steps; i++) {
+      uri = uri.substr(0, uri.lastIndexOf('/'));
+    }
+
+    if (uri.includes('#')) {
+      uri = uri.substr(0, uri.lastIndexOf('#'));
+    }
+
+    return uri;
+  }
+
+  static async getCollectionFileURLs($http, collection) {
+
+    let query = QueryBuilder.build({
+      node: collection.content.root,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,
+      template: QueryTemplates.DEFAULT_FILE_TEMPLATE
+    });
+
+    var req = {
+      method: 'POST',
+      url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+      data: "format=json&query=" + encodeURIComponent(query),
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+    }
+
+    var response = await $http(req);
+    var entries = response.data.results.bindings;
+
+    if (entries.length === 0) {
+      return null;
+    }
+
+    let result = "";
+
+    for (let i in entries) {
+      let element = DatabusCollectionUtils.reduceBinding(entries[i]);
+      result += element.file + '\n';
+    }
+
+    return result;
+  }
+
+  /*
+  static copyData(data) {
+    return JSON.parse(JSON.stringify(data));
+  }*/
+
+  static serialize(collectionObject, ignoreKeys) {
+
+    if (ignoreKeys == undefined) {
+      ignoreKeys = [
+        'parent',
+        '$$hashKey',
+        'expanded',
+        'files',
+        'eventListeners',
+        'hasLocalChanges',
+        'published'
+      ];
+    }
+
+    return JSON.stringify(collectionObject, function (key, value) {
+      if (ignoreKeys.includes(key)) {
+        return undefined;
+      }
+
+      return value;
+    });
+  }
+
+  static cyrb53Hash(str, seed = 0) {
+    let h1 = 0xdeadbeef ^ seed,
+      h2 = 0x41c6ce57 ^ seed;
+    for (let i = 0, ch; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+  };
+
+  static createCleanCopy(jsonData) {
+
+    var data = JSON.parse(DatabusCollectionUtils.serialize(jsonData));
+    return data;
+  }
+
+  static exportToJsonFile(jsonData) {
+
+    var ignoreKeys = [
+      'parent',
+      '$$hashKey',
+      'expanded',
+      'files',
+      'eventListeners',
+      'hasLocalChanges',
+      'published',
+      'uuid'
+    ];
+
+    let dataStr = DatabusCollectionUtils.serialize(jsonData, ignoreKeys);
+    let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = 'data.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+  }
+
+}
+
+module.exports = DatabusCollectionUtils;
+
+
+/***/ },
+
+/***/ "./js/collections/databus-collection-wrapper.js"
+/*!******************************************************!*\
+  !*** ./js/collections/databus-collection-wrapper.js ***!
+  \******************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const QueryNode = __webpack_require__(/*! ../query-builder/query-node */ "./js/query-builder/query-node.js");
+const QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+class DatabusCollectionWrapper {
+
+  /**
+   * Creates a new DatabusCollection from an already existing
+   * @param {[type]} data [description]
+   */
+  constructor(data) {
+    Object.assign(this, data);
+    this.eventListeners = {};
+  }
+
+  addEventListener(name, callback) {
+    if(this.eventListeners[name] == undefined) {
+      this.eventListeners[name] = [];
+    }
+
+    this.eventListeners[name].push(callback);
+  }
+
+  isPublisher(username) {
+    return this.uri != undefined && this.uri.startsWith('https://databus.dbpedia.org/' + username);
+  }
+
+  get isPublished() {
+    return this.issued != undefined;
+  }
+
+  get displayLabelHtml() {
+    var l = '';
+    if(this.isDraft) {
+      l += '<span style="color: #8a8cb3; margin-right:4px">DRAFT:</span>';
+    }
+    l += (this.label != undefined && this.label.length > 0) ? this.label : 'Untitled Collection';
+    return l;
+  }
+
+  get isDraft() {
+    return this.uri === undefined;
+  }
+
+  get hasContent() {
+
+    if(this.content.root.childNodes.length == 0) {
+      return false;
+    }
+
+    for(var childNode of this.content.root.childNodes) {
+      if(childNode.childNodes.length > 0) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  fireEvent(name) {
+    if(this.eventListeners[name] == undefined) {
+      return;
+    }
+
+    for(var c in this.eventListeners[name]) {
+      var callback = this.eventListeners[name][c];
+      callback();
+    }
+  }
+
+
+  static createNew(title, description, source, accountName) {
+    var data = {};
+    data.uuid = DatabusUtils.uuidv4();
+    data.title = title;
+    data.description = description;
+    data.accountName = accountName;
+    data.abstract = description;
+    data.content = {};
+    data.content.root = new QueryNode(null, null);
+    data.content.root.addChild(new QueryNode(source, null));
+
+    return data;
+  }
+
+  /**
+   * Builds a composed query from all elements
+   * @return {[type]} [description]
+   */
+  createQuery() {
+
+    if(this.content.root == undefined) {
+      return null;
+    }
+
+    return QueryBuilder.build({
+      template : QueryTemplates.DEFAULT_FILE_TEMPLATE,
+      resourceBaseUrl : DATABUS_RESOURCE_BASE_URL,
+      node: this.content.root
+    });
+  }
+
+  /**
+   * Downloads the entire collection object as json
+   * @return {[type]} [description]
+   */
+  downloadAsJson(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(angular.toJson(this));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", this.title + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+
+  removeCustomQueryNode(node) {
+    this.content.customQueries = this.content.customQueries.filter(function(n){
+      return node.guid != n.guid;
+    });
+  }
+
+  removeNodeByUri(uri) {
+    QueryNode.removeChildByUri(this.content.root, uri);
+  }
+
+  getParentNode(node) {
+    return QueryNode.findParentNodeRecursive(this.content.root, node);
+  }
+
+  removeGroupNode(groupNode) {
+    this.content.groups = this.content.groups.filter(function(a){
+      return groupNode.uri != a.uri;
+    });
+  }
+
+  addCustomQueryNode(label, query) {
+    this.content.customQueries.push({
+      guid : DatabusUtils.uuidv4(),
+      label : label,
+      query : query,
+    });
+  }
+
+  hasGroup(groupUri) {
+    var group = this.findGroup(groupUri);
+    return group != undefined;
+  }
+
+  hasArtifact(artifactUri) {
+    var groupUri = DatabusUtils.navigateUp(artifactUri);
+
+    var group = this.findGroup(groupUri);
+
+    if(group == undefined) {
+      return false;
+    }
+
+    var artifact = this.findArtifact(group, artifactUri);
+    return artifact != undefined;
+  }
+
+  /**
+   * Adds a new group node with label, uri and settings
+   * @param {[type]} groupUri   [description]
+   * @param {[type]} groupLabel [description]
+   * @param {[type]} settings   [description]
+   */
+  addGroupNode(groupUri, settings) {
+
+    var group = this.findGroup(groupUri);
+
+    if(group == undefined) {
+
+      var publisherUri = DatabusUtils.navigateUp(groupUri);
+
+      var groupLabel = DatabusUtils.uriToName(groupUri);
+      var publisherLabel = DatabusUtils.uriToName(publisherUri);
+
+      group = {};
+      group.uri = groupUri;
+      group.artifacts = [];
+      group.label = publisherLabel + " » " + groupLabel;
+      group.settings = settings;
+      group.expanded = true;
+
+      this.content.groups.push(group);
+
+      this.fireEvent("onGroupAdded");
+    }
+
+    return group;
+  }
+
+  /**
+   * Adds a new artifact node with label uri and settings
+   * This will fail if the appropriate group node has not been
+   * added previously
+   * @param {[type]} artifactUri   [description]
+   * @param {[type]} artifactLabel [description]
+   * @param {[type]} settings      [description]
+   */
+  addArtifactNode(artifactUri, artifactLabel, settings) {
+
+    var groupUri = DatabusUtils.navigateUp(artifactUri);
+    var group = this.addGroupNode(groupUri, [ 
+      {
+        facet: "http://purl.org/dc/terms/hasVersion",
+        value: "SYSTEM_LATEST_ARTIFACT_VERSION",
+        checked: true
+      }]);
+
+    var artifact = this.findArtifact(group, artifactUri);
+
+    if(artifact == undefined) {
+      artifact = {};
+      artifact.uri = artifactUri;
+      artifact.label = artifactLabel;
+      artifact.settings = settings;
+
+      group.artifacts.push(artifact);
+      
+      // TODO: merge facets
+    
+
+      this.fireEvent("onArtifactAdded");
+    }
+  }
+
+  findGroup(groupUri) {
+    for(var g in this.content.groups) {
+      var group = this.content.groups[g];
+
+      if(group.uri == groupUri) {
+        return group;
+      }
+    }
+
+    return null;
+  }
+
+  findArtifact(group, artifactUri) {
+    for(var a in group.artifacts) {
+      var artifact = group.artifacts[a];
+
+      if(artifact.uri == artifactUri) {
+        return artifact;
+      }
+    }
+
+    return null;
+  }
+}
+
+module.exports = DatabusCollectionWrapper;
+
+/***/ },
+
+/***/ "./js/components/account-history/account-history.js"
+/*!**********************************************************!*\
+  !*** ./js/components/account-history/account-history.js ***!
+  \**********************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function AccountHistoryController($http) {
+
+  var ctrl = this;
+  ctrl.utils = new DatabusWebappUtils(null, null);
+
+  
+  ctrl.$onInit = async function() {
+
+    var result = await $http.get(`/app/account/history?accountName=${ctrl.accountName}`);
+
+    ctrl.results = result.data;
+  }
+}
+
+
+module.exports = AccountHistoryController;
+
+/***/ },
+
+/***/ "./js/components/autofill-dropdown/autofill-dropdown.js"
+/*!**************************************************************!*\
+  !*** ./js/components/autofill-dropdown/autofill-dropdown.js ***!
+  \**************************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function AutofillDropdownController($timeout) {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function () {
+    ctrl.displayValues = [];
+  }
+
+  ctrl.showAll = function() {
+    ctrl.showDrop = true;
+    ctrl.displayValues = ctrl.values;
+  }
+
+  ctrl.handleKey = function (e) {
+
+    if (e.which === 9 || e.which === 13) {
+
+      ctrl.showDrop = false;
+
+      if(ctrl.displayValues.length > 0 && ctrl.input != ctrl.displayValues[0]) {
+        e.preventDefault();
+        ctrl.input = ctrl.displayValues[0];
+        ctrl.change();
+      }
+    }
+  }
+
+  ctrl.hideDropDelayed = function () {
+    $timeout(function () {
+      ctrl.showDrop = false;
+    }, 120);
+  }
+
+  ctrl.autoComplete = function () {
+
+    ctrl.showDrop = true;
+    if (ctrl.input == "" || ctrl.input == undefined) {
+      ctrl.displayValues = ctrl.values;
+      return;
+    }
+
+    ctrl.displayValues = [];
+
+    for (var value of ctrl.values) {
+      if (value.includes(ctrl.input) && value != ctrl.input) {
+        ctrl.displayValues.push(value);
+      }
+    }
+
+    if(ctrl.displayValues.length == 0) {
+      ctrl.showDrop = false;
+    }
+  }
+
+  ctrl.change = function () {
+
+    ctrl.autoComplete();
+
+    $timeout(function () {
+      ctrl.onChange();
+    }, 50);;
+  }
+}
+
+module.exports = AutofillDropdownController;
+
+
+
+/***/ },
+
+/***/ "./js/components/better-dropdown/better-dropdown.js"
+/*!**********************************************************!*\
+  !*** ./js/components/better-dropdown/better-dropdown.js ***!
+  \**********************************************************/
+(module) {
+
+
+// hinzufügen eines Controllers zum Modul
+function BetterDropdownController($scope, $timeout, $element) {
+
+
+  const ctrl = this;
+  ctrl.isActive = false;
+
+  ctrl.closeAll = function() {
+    ctrl.rootNode.isActive = false;
+    ctrl.setChildrenActiveState(ctrl.rootNode, false);
+  }
+
+  ctrl.activateNode = function(parent, node) {
+    for(var sibling of parent.children) {
+      sibling.isActive = false;
+      ctrl.setChildrenActiveState(sibling, false);
+    }
+
+    node.isActive = true;
+  }
+
+  ctrl.setChildrenActiveState = function(node, value) {
+    if(node.children == null) {
+      return;
+    }
+
+    for(var child of node.children) {
+      child.isActive = value;
+      ctrl.setChildrenActiveState(child, value);
+    }
+  }
+
+  ctrl.toggleNode = function(node) {
+    node.isActive = !node.isActive;
+
+    if(!node.isActive) {
+      ctrl.setChildrenActiveState(node, false);
+    }
+  }
+
+  ctrl.toggleDropdown = function () {
+    ctrl.isActive = !ctrl.isActive;
+  };
+  ctrl.showDropdown = function () {
+    ctrl.isActive = true;
+  };
+  ctrl.hideDropdown = function () {
+    ctrl.isActive = false;
+  };
+
+  ctrl.showNested = function (parent, node) {
+    if (node.children) {
+      ctrl.cancelShowNested();
+      ctrl.currentTimeout = $timeout(function () {
+        ctrl.activateNode(parent, node);
+      }, 200);
+    }
+  };
+
+  ctrl.cancelShowNested = function() {
+    if(ctrl.currentTimeout != null) {
+      $timeout.cancel(ctrl.currentTimeout);
+      ctrl.currentTimeout = null;
+    }
+  }
+
+  ctrl.toggleNestedDropdown = function (node) {
+    node.showChildren = !node.showChildren;
+  };
+  ctrl.selectNode = function (node) {
+    // Handle the selected node here
+    ctrl.onNodeClicked({ node : node });
+  };
+
+
+
+}
+
+
+module.exports = BetterDropdownController;
+
+
+/***/ },
+
+/***/ "./js/components/collection-data-table/collection-data-table.js"
+/*!**********************************************************************!*\
+  !*** ./js/components/collection-data-table/collection-data-table.js ***!
+  \**********************************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionUtils = __webpack_require__(/*! ../../collections/databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+
+// hinzufügen eines Controllers zum Modul
+function CollectionDataTableController($http, $scope, $location, $sce) {
+
+  var ctrl = this;
+  ctrl.$http = $http;
+
+
+  ctrl.$onInit = function() {
+
+
+    ctrl.isLoading = true;
+    DatabusCollectionUtils.getCollectionFiles(ctrl.$http, ctrl.collection).then(function(result) {
+      ctrl.files = result;
+      ctrl.isLoading = false;
+      $scope.$apply();
+    }, function(err) {
+      ctrl.statistics = null;
+      ctrl.isLoading = false;
+    });
+
+
+    if(ctrl.files == null) {
+      return;
+    }
+
+    ctrl.groupedFiles = ctrl.groupBy(ctrl.files, 'version');
+  }
+
+  ctrl.getRowspan = function(file) {
+
+    return file.distributions.length * 2; 
+    /*
+    var span = file.distributions.length * 2;
+    if(!file.distributions[file.distributions.length - 1].expanded) {
+      span--;
+    }
+
+    return span;*/
+  }
+
+  ctrl.groupBy = function(list, key) {
+
+    var result = {};
+
+    for(var i in list) {
+      var element = list[i];
+      var keyVal = element[key];
+
+      if(result[keyVal] == undefined) {
+        result[keyVal] = {}
+        result[keyVal].value = keyVal;
+        result[keyVal].title = element.title;
+        result[keyVal].uri = keyVal;
+        result[keyVal].distributions = [];
+        result[keyVal].license = element.license;
+      }
+
+      result[keyVal].distributions.push(element);
+    }
+    
+    return result;
+  }
+
+  ctrl.calculateRowSpan = function(file) {
+    var rowspan = 0;
+
+    for(var d in file.distributions) {
+      rowspan += 1; //(file.distributions[d].expanded ? 2 : 1);
+    }
+
+    return rowspan;
+  }
+
+  ctrl.createRelativeUri = function(url) {
+    var u = new URL(url);
+    return u.pathname;
+  }
+
+  ctrl.$doCheck = function() {
+
+    if(ctrl.files == null) {
+      return;
+    }
+
+    if(ctrl.previousFileCount != ctrl.files.length) {
+      ctrl.previousFileCount = ctrl.files.length;
+      ctrl.groupedFiles = ctrl.groupBy(ctrl.files, 'version');
+    }  
+  }
+
+  ctrl.uriToName = function(uri) {
+    return DatabusUtils.uriToName(uri);
+  }
+
+  ctrl.formatUploadSize = function(size) {
+    if(size < 1024) return size + " B";
+    else if (size < 1048576) return Math.round(size / 1024) + " KB";
+    else if (size < 1073741824) return (Math.round(10 * size / 1048576) / 10) + " MB";
+    else return (Math.round(100 * size / 1073741824) / 100) + " GB";
+  }
+}
+
+
+module.exports = CollectionDataTableController;
+
+/***/ },
+
+/***/ "./js/components/collection-editor-widget/collection-editor-widget.js"
+/*!****************************************************************************!*\
+  !*** ./js/components/collection-editor-widget/collection-editor-widget.js ***!
+  \****************************************************************************/
+(module) {
+
+
+// hinzufügen eines Controllers zum Modul
+function CollectionEditorWidgetController(collectionManager, $scope) {
+
+  var ctrl = this;
+  ctrl.$scope = $scope;
+  ctrl.collectionManager = collectionManager;
+
+  ctrl.$onInit = function () {
+
+    // TODO: Change this hacky BS!
+    setTimeout(function () {
+      $(".dropdown-item").click(function (e) {
+        var dropdown = $(this).closest(".dropdown");
+        $(dropdown).removeClass("is-active");
+        e.stopPropagation();
+      });
+
+
+      $("body").click(function () {
+        $(".dropdown").removeClass("is-active");
+      });
+
+      $(".dropdown").click(function (e) {
+        $(".dropdown").removeClass("is-active");
+        $(this).addClass("is-active");
+        e.stopPropagation();
+      });
+    }, 500);
+
+  }
+
+  ctrl.goToEditor = function () {
+    window.location.href = '/app/collection-editor';
+  }
+
+  ctrl.addSelectionToCollection = function (uuid) {
+    var selection = ctrl.selection;
+
+    ctrl.collectionManager.setActive(uuid);
+    var collection = ctrl.collectionManager.activeCollection;
+
+    // Get local bus node
+    var databusNode = QueryNode.findChildByUri(collection.content.root, DATABUS_RESOURCE_BASE_URL);
+
+    if (databusNode == undefined) {
+      databusNode = new QueryNode(DATABUS_RESOURCE_BASE_URL, null);
+      collection.content.root.childNodes.push(databusNode);
+    }
+
+    QueryNode.mergeAddChild(databusNode, selection);
+
+    ctrl.collectionManager.activeCollection.hasLocalChanges
+      = ctrl.collectionManager.hasLocalChanges(ctrl.collectionManager.activeCollection);
+    ctrl.collectionManager.saveLocally();
+  }
+
+}
+
+
+module.exports = CollectionEditorWidgetController;
+
+
+/***/ },
+
+/***/ "./js/components/collection-hierarchy-two/collection-hierarchy.js"
+/*!************************************************************************!*\
+  !*** ./js/components/collection-hierarchy-two/collection-hierarchy.js ***!
+  \************************************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionWrapper = __webpack_require__(/*! ../../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const QueryBuilder = __webpack_require__(/*! ../../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const QueryNode = __webpack_require__(/*! ../../query-builder/query-node */ "./js/query-builder/query-node.js");
+const QueryTemplates = __webpack_require__(/*! ../../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ "./js/utils/databus-constants.js");
+const DatabusFacetsCache = __webpack_require__(/*! ../../utils/databus-facets-cache */ "./js/utils/databus-facets-cache.js");
+const DatabusUris = __webpack_require__(/*! ../../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function CollectionHierarchyControllerTwo($http, $location, $sce, $scope, collectionManager) {
+
+  var ctrl = this;
+
+  ctrl.viewMode = -1;
+  ctrl.$http = $http;
+  ctrl.$scope = $scope;
+  ctrl.facets = new DatabusFacetsCache($http);
+  ctrl.utils = new DatabusWebappUtils($scope, $sce);
+  ctrl.$sce = $sce;
+
+  collectionManager.onCollectionChangedInDifferentTab = function () {
+    ctrl.previousCollectionId = null;
+  }
+
+  ctrl.defaultQuery = `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX dcv:    <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX dcat:   <http://www.w3.org/ns/dcat#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?file WHERE {
+  # Replace this with your custom query:
+  ?file <matches> <condition> .
+} LIMIT 0`;
+  const DATAID_ARTIFACT_PROPERTY = 'databus:artifact';
+  const DATAID_GROUP_PROPERTY = 'databus:group';
+  const KEY_LATEST_VERSION = "$latest";
+
+
+  ctrl.$onInit = function () {
+
+    ctrl.viewMode = -1;
+
+    if (ctrl.collection == null) {
+      return;
+    }
+  }
+
+  ctrl.onAddContentClicked = function (sourceNode) {
+    ctrl.onAddContent({ source: sourceNode.uri });
+
+    ctrl.onChange();
+    ctrl.updateViewModel();
+  }
+
+
+  ctrl.onAddCustomQueryClicked = function (sourceNode) {
+    var node = QueryNode.createFrom(sourceNode);
+    node.addChild(new QueryNode(DatabusUtils.uuidv4(), null));
+    ctrl.onChange();
+  }
+
+  ctrl.toggleCollapsed = function (node, view) {
+    view.collapsed = !view.collapsed;
+
+    if (!view.collapsed) {
+      ctrl.query(node);
+    }
+  }
+
+  ctrl.isDatabus = async function (uri) {
+    var req = {
+      method: 'GET',
+      url: uri,
+      headers: {
+        'Accept': 'application/rdf+turtle'
+      }
+    }
+
+    var res = await ctrl.$http(req);
+    var manifest = await DatabusUtils.parseDatabusManifest(res.data);
+    var expectedUri = new URL(uri);
+
+    if (manifest == undefined || manifest.uri != expectedUri.origin) {
+      return false;
+    }
+
+    return true;
+  }
+
+  ctrl.getDatabusUri = async function (uri) {
+
+    var url = new URL(uri);
+    var segments = url.pathname.split('/');
+    var base = url.origin;
+    var currentUrl = base;
+
+    var isDatabus = await ctrl.isDatabus(currentUrl);
+
+    if (isDatabus) {
+      return currentUrl;
+    }
+
+    for (var i = 0; segments.length; i++) {
+
+      currentUrl += `/${segments[i]}`;
+      var isDatabus = await ctrl.isDatabus(currentUrl);
+
+      if (isDatabus) {
+        return currentUrl;
+      }
+    }
+
+  }
+
+  ctrl.onAddResource = async function (uri) {
+
+    if (uri.endsWith('/')) {
+      uri = uri.substr(0, uri.length - 1);
+    }
+
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+
+    // Resource already in collection
+    if (node != undefined) {
+      return;
+    }
+
+    var databusUri = await ctrl.getDatabusUri(uri);
+
+
+    var databusUriLength = DatabusUtils.getResourcePathLength(databusUri);
+    var resourceUriLength = DatabusUtils.getResourcePathLength(uri);
+    var diff = resourceUriLength - databusUriLength;
+
+    if (diff < 0 && diff > 3 || diff == 1) {
+      return;
+    }
+
+    if (diff == 0) {
+      ctrl.addDatabus(uri);
+    }
+
+    if (diff == 2) {
+      ctrl.addDatabus(databusUri);
+      let databusNode = QueryNode.findChildByUri(ctrl.root, databusUri);
+      ctrl.addGroup(databusNode, uri);
+    }
+
+    if (diff == 3) {
+      ctrl.addDatabus(databusUri);
+      let databusNode = QueryNode.findChildByUri(ctrl.root, databusUri);
+      let groupUri = DatabusUtils.navigateUp(uri);
+      ctrl.addGroup(databusNode, groupUri);
+      let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);
+      ctrl.addArtifact(groupNode, uri);
+    }
+
+    ctrl.onChange();
+    ctrl.updateViewModel();
+    ctrl.$scope.$apply();
+  }
+
+  ctrl.addDatabus = function (uri) {
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+
+    if (node == null) {
+      ctrl.root.childNodes.push(new QueryNode(uri, null));
+    }
+  }
+
+  ctrl.addGroup = function (databusNode, uri) {
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+
+    if (node == null) {
+      databusNode.childNodes.push(new QueryNode(uri, DATAID_GROUP_PROPERTY));
+    }
+  }
+
+  ctrl.addArtifact = function (groupNode, uri) {
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+
+    if (node == null) {
+      groupNode.childNodes.push(new QueryNode(uri, DATAID_ARTIFACT_PROPERTY));
+    }
+  }
+
+  ctrl.addToCollection = function (source, view, result) {
+
+    if (ctrl.isInCollection(result)) {
+      QueryNode.removeChildByUri(ctrl.root, result.id[0].value);
+    }
+    else {
+      if (result.typeName[0].value == 'Group') {
+        let node = new QueryNode(result.id[0].value, DATAID_GROUP_PROPERTY);
+
+        source.childNodes.push(node);
+      }
+
+      if (result.typeName[0].value == 'Artifact') {
+
+        var artifactUri = result.id[0].value;
+        let groupUri = DatabusUtils.navigateUp(artifactUri);
+        let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);
+
+        if (groupNode == null) {
+          groupNode = new QueryNode(groupUri, DATAID_GROUP_PROPERTY);
+          source.childNodes.push(groupNode);
+        }
+
+        let node = new QueryNode(artifactUri, DATAID_ARTIFACT_PROPERTY);
+        groupNode.addChild(node);
+      }
+    }
+
+    for (var res of view.searchResults) {
+      res.inCollection = ctrl.isInCollection(res);
+    }
+
+    ctrl.onChange();
+    ctrl.updateViewModel();
+  }
+
+  ctrl.isLastChild = function (group, artifact) {
+
+    if (group.childNodes == undefined || group.childNodes.length == 0) {
+      return false;
+    }
+
+    return group.childNodes[group.childNodes.length - 1].uri == artifact.uri;
+  }
+
+  ctrl.toggleExpand = function (node) {
+    node.expanded = !node.expanded;
+    ctrl.onChange();
+  }
+
+  ctrl.mergeFacets = function (node, facets) {
+
+    if (node.facets == undefined) {
+      node.facets = JSON.parse(JSON.stringify(facets));
+      return;
+    }
+
+    for (var f in facets) {
+
+      if (node.facets[f] == undefined) {
+        node.facets[f] = JSON.parse(JSON.stringify(facets[f]));
+        continue;
+      }
+
+      for (var value of facets[f].values) {
+        if (!node.facets[f].values.includes(value)) {
+          node.facets[f].values.push(value);
+        }
+      }
+    }
+
+    node.facetLabels = null;
+  }
+
+  ctrl.getAllFilters = function (groupNode, artifactNode) {
+
+    if (artifactNode == null) {
+      var result = Object.keys(groupNode.facetSettings)
+      return DatabusUtils.uniqueList(result);
+    }
+
+    var result = Object.keys(groupNode.facetSettings).concat(Object.keys(artifactNode.facetSettings));
+    return DatabusUtils.uniqueList(result);
+  }
+
+  ctrl.$doCheck = function () {
+
+    if (ctrl.collection == null) {
+      ctrl.previousCollectionId = null;
+      return;
+    }
+
+    if (ctrl.previousCollectionId != ctrl.collection.uuid) {
+      ctrl.previousCollectionId = ctrl.collection.uuid;
+
+      ctrl.activeNode = null;
+      ctrl.viewMode = -1;
+      ctrl.updateViewModel();
+    }
+  }
+
+  ctrl.handleKey = function (e, nodeView) {
+    if (e.which === 9) {
+      nodeView.showSearchResults = false;
+    }
+  }
+
+  ctrl.isInCollection = function (result) {
+    let uri = result.id[0].value;
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+    return node != null;
+  }
+
+  ctrl.updateSearchResults = function (view) {
+
+    if (view == null || view.searchResults == null) {
+      return;
+    }
+
+    for (var res of view.searchResults) {
+      res.inCollection = ctrl.isInCollection(res);
+    }
+  }
+
+  ctrl.searchNode = function (node, nodeView) {
+
+    var baseUrl = new URL(node.uri).origin;
+    var typeFilters = `typeName=Artifact Group`;
+
+    if (node.property == DATAID_GROUP_PROPERTY) {
+      var groupName = DatabusUtils.uriToResourceName(node.uri);
+      var accountName = DatabusUtils.uriToResourceName(DatabusUtils.navigateUp(node.uri));
+      typeFilters = `typeName=Artifact&publisher=${accountName}&group=${groupName}`;
+    }
+
+    var url = `${baseUrl}/api/search?${typeFilters}&typeNameWeight=0&format=JSON_FULL&minRelevance=15&maxResults=10&query=${nodeView.search}`;
+
+    try {
+      $http({ method: 'GET', url: url }).then(function successCallback(response) {
+
+        nodeView.searchResults = [];
+
+        for (var doc of response.data.docs) {
+          doc.inCollection = ctrl.isInCollection(doc);
+          nodeView.searchResults.push(doc);
+        }
+
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    } catch (err) {
+
+    }
+
+  };
+
+  ctrl.toggleExpand = function (view) {
+    view.expanded = !view.expanded;
+  }
+
+
+  ctrl.isValidHttpUrl = function (url) {
+    return DatabusUtils.isValidHttpUrl(url);
+  }
+
+
+  ctrl.updateViewModel = function () {
+    ctrl.collectionWrapper = new DatabusCollectionWrapper(ctrl.collection);
+    ctrl.root = ctrl.collection.content.root;
+
+    ctrl.view = {};
+    ctrl.view.groups = {};
+    ctrl.view.artifacts = {};
+    ctrl.view.sources = {};
+
+    for (var s in ctrl.root.childNodes) {
+
+      var sourceNode = ctrl.root.childNodes[s];
+
+      if (ctrl.view.sources[sourceNode.uri] == undefined) {
+        ctrl.view.sources[sourceNode.uri] = {};
+        ctrl.view.sources[sourceNode.uri].uri = sourceNode.uri;
+        ctrl.view.sources[sourceNode.uri].expanded = true;
+        ctrl.view.sources[sourceNode.uri].addMode = 'artifact';
+        ctrl.view.sources[sourceNode.uri].customQueryLabel = `New Custom Query`;
+        ctrl.view.sources[sourceNode.uri].customQueryInput = ctrl.defaultQuery;
+      }
+
+      for (var g in sourceNode.childNodes) {
+
+        var groupNode = sourceNode.childNodes[g];
+        groupNode.expanded = true;
+
+
+        ctrl.view.groups[groupNode.uri] = {};
+
+        if (DatabusUtils.isValidHttpUrl(groupNode.uri)) {
+
+          ctrl.facets.get(groupNode.uri).then(function (res) {
+            delete res.facets[DatabusUris.DATABUS_ARTIFACT_PROPERTY];
+            ctrl.view.groups[res.uri].facets = res.facets;
+
+            var hasVersionFacets = ctrl.view.groups[res.uri].facets[DatabusUris.DCT_HAS_VERSION];
+
+            if (hasVersionFacets != null && !hasVersionFacets.values.includes(KEY_LATEST_VERSION)) {
+              hasVersionFacets.values.unshift(KEY_LATEST_VERSION);
+            }
+
+            $scope.$apply();
+          });
+
+          ctrl.query(groupNode);
+
+          for (var a in groupNode.childNodes) {
+
+            var artifactNode = groupNode.childNodes[a];
+
+            ctrl.view.artifacts[artifactNode.uri] = {};
+            ctrl.view.artifacts[artifactNode.uri].expanded = false;
+            ctrl.view.artifacts[artifactNode.uri].collapsed = true;
+
+            ctrl.facets.get(artifactNode.uri).then(function (res) {
+              ctrl.view.artifacts[res.uri].facets = res.facets;
+
+              var hasVersionFacets = ctrl.view.artifacts[res.uri].facets[DatabusUris.DCT_HAS_VERSION];
+
+              if (hasVersionFacets != null && !hasVersionFacets.values.includes(KEY_LATEST_VERSION)) {
+                hasVersionFacets.values.unshift(KEY_LATEST_VERSION);
+              }
+
+              $scope.$apply();
+              //var groupUri = DatabusUtils.navigateUp(artifactNode.uri);
+              //ctrl.view.artifacts[artifactNode.uri].facets = result.data;
+              //ctrl.mergeFacets(ctrl.view.groups[groupUri], result.data);
+            });
+
+
+
+            /*en(function(result) {
+
+               = result['http://purl.org/dc/terms/hasVersion'].values.unshift("$latest");
+
+
+              var groupUri = DatabusUtils.navigateUp(artifactNode.uri);
+              ctrl.view.artifacts[artifactNode.uri].facets = result.data;
+              ctrl.mergeFacets(ctrl.view.groups[groupUri], result.data);
+
+            });
+
+
+          
+            */
+          }
+        }
+      }
+    }
+  }
+
+
+
+  ctrl.onArtifactDropdownChanged = function (groupNode) {
+    ctrl.onChange();
+    ctrl.query(groupNode);
+  }
+
+  ctrl.selectAddFilterValue = function (viewNode, value) {
+    viewNode.addFilterValueInput = value;
+    viewNode.showValueDrop = false;
+
+    ctrl.onAddFilterValueInputChanged(viewNode);
+  }
+
+  ctrl.selectAddFilterFacet = function (viewNode, value) {
+    viewNode.addFilterFacetInput = value;
+    viewNode.showFacetDrop = false;
+
+    ctrl.onAddFilterFacetInputChanged(viewNode);
+  }
+
+  ctrl.onAddFilterValueInputChanged = function (viewNode) {
+
+    for (var value of viewNode.facets[viewNode.addFilterFacet].values) {
+
+      if (viewNode.addFilterValueInput == value) {
+        viewNode.addFilterValue = value;
+        return;
+      }
+    }
+
+    viewNode.addFilterValue = null;
+  }
+
+  ctrl.onAddFilterFacetInputChanged = function (viewNode) {
+
+    for (var facet in viewNode.facets) {
+
+      if (viewNode.addFilterFacetInput == viewNode.facets[facet].label) {
+
+        if (viewNode.addFilterFacet != facet) {
+          viewNode.addFilterFacet = facet;
+          viewNode.addFilterValue = [];
+        }
+
+        return;
+      }
+    }
+
+    viewNode.addFilterFacet = null;
+    viewNode.addFilterValue = [];
+  }
+
+  ctrl.includesValue = function (objs, value) {
+    if (objs == undefined) {
+      return false;
+    }
+
+    for (var obj of objs) {
+      if (obj.value == value) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.isLocalDatabusNode = function (node) {
+    return node.uri == DATABUS_RESOURCE_BASE_URL;
+  }
+  ctrl.addFilter = function (node, facet, values, checked) {
+
+    if (values == null) {
+      return;
+    }
+
+    if (node.facetSettings[facet] == undefined) {
+      node.facetSettings[facet] = [];
+    }
+
+    for (var value of values) {
+
+      if (!ctrl.includesValue(node.facetSettings[facet], value.value)) {
+        node.facetSettings[facet].push(value);
+      }
+    }
+
+    ctrl.onChange();
+    ctrl.query(node);
+  }
+
+  ctrl.query = function (node) {
+
+    if (node.childNodes != undefined && node.childNodes.length > 0) {
+
+      node.files = null;
+      for (var child of node.childNodes) {
+        ctrl.query(child);
+      }
+
+      return;
+    }
+
+    var queryNode = QueryNode.createSubTree(node);
+
+    var fullQuery = QueryBuilder.build({
+      node: queryNode,
+      template: QueryTemplates.NODE_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL,
+      root: ctrl.root
+    });
+
+    this.querySparql(fullQuery).then(function (result) {
+      node.files = result;
+      ctrl.$scope.$apply();
+
+    });
+  }
+
+  ctrl.removeFilter = function (node, facet) {
+
+    if (node.facetSettings[facet] == undefined) {
+      return;
+    }
+
+    delete node.facetSettings[facet];
+
+    ctrl.onChange();
+
+    ctrl.query(node);
+  }
+
+  ctrl.onActiveFilterChanged = function (node) {
+    ctrl.onChange();
+    ctrl.query(node);
+  }
+
+  ctrl.getFacetLabels = function (viewNode) {
+
+    if (viewNode.facetLabels != undefined) {
+      return viewNode.facetLabels;
+    }
+    var result = [];
+
+    for (var f in viewNode.facets) {
+      result.push(viewNode.facets[f].label);
+    }
+
+    viewNode.facetLabels = result;
+    return result;
+  }
+
+
+  ctrl.sortBy = function (property) {
+
+    if (ctrl.sortProperty == property) {
+      ctrl.sortReverse = !ctrl.sortReverse;
+    }
+    ctrl.sortProperty = property;
+  }
+
+  ctrl.formatFileSize = function (size) {
+    return DatabusUtils.formatFileSize(size);
+  };
+
+  ctrl.toHTML = function (html) {
+    return $sce.trustAsHtml(html);
+  };
+
+  ctrl.onComponentAdded = function () {
+
+  }
+
+  ctrl.customExpanded = function () {
+    return ctrl.customNode.expanded && ctrl.collection.content.customQueries.length > 0;
+  }
+
+  ctrl.generatedExpanded = function () {
+    return ctrl.generatedNode.expanded && ctrl.collection.content.groups.length > 0;
+  }
+
+  ctrl.publishCollection = function () {
+    ctrl.onPublish();
+  }
+
+  ctrl.delete = function () {
+    ctrl.onDelete();
+  }
+
+  ctrl.goToResource = function (node) {
+    window.location = node.uri;
+  }
+
+  ctrl.formatGroupPrefix = function (uri) {
+    return DatabusUtils.uriToName(DatabusUtils.navigateUp(uri));
+  }
+
+  ctrl.formatArtifactPrefix = function (uri) {
+    var nav = DatabusUtils.navigateUp(uri);
+    var groupName = DatabusUtils.uriToName(nav);
+    var userName = DatabusUtils.uriToName(DatabusUtils.navigateUp(nav));
+
+    return userName + '/' + groupName;
+  }
+
+  ctrl.uriToName = function (uri) {
+    return DatabusUtils.uriToName(uri);
+  }
+
+  ctrl.objSize = function (obj) {
+    return DatabusUtils.objSize(obj);
+  }
+
+  ctrl.showCollectionSearch = function () {
+    ctrl.open = false;
+    ctrl.viewMode = 0;
+    ctrl.activeNode = ctrl.rootNode;
+
+    $location.hash('search');
+  }
+
+  // ctrl.printJSON = function() {
+  //   console.log(JSON.stringify(ctrl.collection));
+  // }
+
+  // SHOW NODES
+  ctrl.showGroupNode = function (groupNode) {
+    ctrl.open = true;
+    ctrl.viewMode = 3;
+    ctrl.activeNode = QueryNode.createFrom(groupNode);
+
+    this.updateQuery();
+  }
+
+  ctrl.showArtifactNode = function (artifactNode, groupNode) {
+
+    ctrl.open = true;
+    ctrl.viewMode = 1;
+    ctrl.activeNode = QueryNode.createFrom(artifactNode);
+
+    this.updateQuery();
+  }
+
+  ctrl.querySparql = async function (query) {
+
+
+    try {
+
+      var req = {
+        method: 'POST',
+        url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+        data: "format=json&query=" + encodeURIComponent(query),
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded"
+        },
+      }
+
+      var updateResponse = await ctrl.$http(req);
+
+      var data = updateResponse.data;
+      var bindings = data.results.bindings;
+
+      for (var b in bindings) {
+        ctrl.reduceBinding(bindings[b]);
+      }
+
+      return bindings;
+
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  ctrl.reduceBinding = function (binding) {
+    for (var key in binding) {
+      binding[key] = binding[key].value;
+    }
+
+    return binding;
+  }
+
+
+
+  ctrl.updateQuery = function () {
+    var queryNode = QueryNode.createSubTree(ctrl.activeNode);
+
+    ctrl.activeFileQuery = QueryBuilder.build({
+      node: queryNode,
+      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+
+    ctrl.activeFullQuery = QueryBuilder.build({
+      node: queryNode,
+      template: QueryTemplates.NODE_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+  }
+
+  ctrl.onActiveNodeChanged = function () {
+    this.updateQuery();
+
+    ctrl.onChange();
+  }
+
+  ctrl.addCustomNode = function (sourceNode, label, desc, query) {
+
+    var node = new QueryNode(label, query);
+    sourceNode.childNodes.push(node);
+
+
+    ctrl.updateViewModel();
+    ctrl.onChange();
+  }
+
+  ctrl.removeNode = function (node) {
+
+    var parent = ctrl.collectionWrapper.getParentNode(node);
+    ctrl.collectionWrapper.removeNodeByUri(node.uri);
+
+    if (parent != null) {
+      ctrl.query(parent);
+    }
+
+    ctrl.onChange();
+  }
+
+  ctrl.showCustomQueryNode = function (customQueryNode) {
+    ctrl.open = true;
+    ctrl.viewMode = 2;
+    ctrl.activeNode = customQueryNode;
+  }
+
+  ctrl.list = function (setting) {
+
+    var allEntries = Object.keys(setting).map(function (key, index) {
+
+      var label = undefined;
+      var entry = setting[key];
+
+      if (entry.value == '') {
+        label = '<i style="color: #a3a3a3;">None</i>';
+      } else if (entry.value == '$latest') {
+        label = 'Latest Version';
+      } else {
+        label = entry.value;
+      }
+
+      if (entry.checked) {
+        return label;
+      } else {
+        return `<s>${label}</s>`;
+      }
+    });
+
+
+    var list = [];
+    var maxLength = 50;
+    var length = 0;
+    var hasOverflow = false;
+
+    for (var entry of allEntries) {
+      if (entry.length + length > maxLength) {
+        hasOverflow = true;
+        break;
+      }
+
+      length += entry.length;
+      list.push(entry);
+    }
+
+    if (hasOverflow) {
+      list.push('...');
+    }
+
+    return ctrl.$sce.trustAsHtml(list.join(', '));
+    // return setting.map(function (v) { return v.value }).join(', ');
+  }
+}
+
+
+module.exports = CollectionHierarchyControllerTwo;
+
+/***/ },
+
+/***/ "./js/components/collection-node/collection-node.js"
+/*!**********************************************************!*\
+  !*** ./js/components/collection-node/collection-node.js ***!
+  \**********************************************************/
+(module) {
+
+// TODO Fabian evtl bug
+
+// hinzufügen eines Controllers zum Modul
+function CollectionNodeController() {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+  }
+
+  ctrl.removeNode = function() {
+    ctrl.onRemoveNode();
+  }
+
+  ctrl.click = function() {
+    ctrl.onClick();
+  }
+}
+
+module.exports = CollectionNodeController;
+
+/***/ },
+
+/***/ "./js/components/collection-search/collection-search.js"
+/*!**************************************************************!*\
+  !*** ./js/components/collection-search/collection-search.js ***!
+  \**************************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function CollectionSearchController(collectionManager, $http, $interval, $sce) {
+
+  var ctrl = this;
+
+  ctrl.results = [];
+  ctrl.collectionManager = collectionManager;
+
+
+
+  
+
+
+
+  ctrl.formatResult = function (result) {
+    return $sce.trustAsHtml(result);
+  }
+
+  ctrl.getDatabusUrls = function () {
+
+    if (ctrl.databusUrls != undefined) {
+      return ctrl.databusUrls;
+    }
+
+    ctrl.databusUrls = [];
+    var root = ctrl.collection.content.root;
+
+    for (var sourceNode of root.childNodes) {
+      ctrl.databusUrls.push(sourceNode.uri);
+    }
+
+    return ctrl.databusUrls;
+  }
+
+  ctrl.$onInit = function () {
+
+    ctrl.searchInput = '';
+    ctrl.filters = {};
+    ctrl.filters.filterArtifact = false;
+    ctrl.filters.filterGroup = false;
+    ctrl.searchCooldown = 1000;
+
+    ctrl.root = QueryNode.createFrom(ctrl.collection.content.root);
+
+    ctrl.collectionWrapper = new DatabusCollectionWrapper(ctrl.collection);
+    ctrl.autoFocus = true;
+  }
+
+  // TODO Fabian
+  ctrl.isInCollection = function (result) {
+    let uri = result.id[0].value;
+    let node = QueryNode.findChildByUri(ctrl.root, uri);
+
+    return node != null;
+  }
+
+
+  ctrl.addToCollection = function (result) {
+
+    var currentSource = ctrl.targetDatabusUrl;
+    var sourceNode = QueryNode.findChildByUri(ctrl.root, currentSource);
+
+    if (result.inCollection) {
+      QueryNode.removeChildByUri(ctrl.root, result.id[0].value);
+    }
+    else {
+      if (result.typeName[0].value == 'Group') {
+        let node = new QueryNode(result.id[0].value, 'databus:group');
+
+        sourceNode.addChild(node);
+        ctrl.onComponentAdded();
+      }
+
+      if (result.typeName[0].value == 'Artifact') {
+
+        var artifactUri = result.id[0].value;
+        let groupUri = DatabusUtils.navigateUp(artifactUri);
+        let groupNode = QueryNode.findChildByUri(ctrl.root, groupUri);
+
+        if (groupNode == null) {
+          groupNode = new QueryNode(groupUri, 'databus:group');
+          sourceNode.addChild(groupNode);
+        }
+
+        let node = new QueryNode(artifactUri, 'databus:artifact');
+        groupNode.addChild(node);
+
+        ctrl.onComponentAdded();
+      }
+    }
+
+    for (let r in ctrl.results) {
+      ctrl.results[r].inCollection = ctrl.isInCollection(ctrl.results[r]);
+    }
+
+    ctrl.collectionManager.saveLocally();
+
+    console.log(ctrl.root);
+  }
+
+  $interval(function () {
+
+    if (ctrl.searchChanged) {
+
+      if (!DatabusUtils.isValidHttpUrl(ctrl.targetDatabusUrl)) {
+        return;
+      }
+
+      var typeFilters = '?typeName=Artifact Group';
+
+      if (ctrl.filters.filterArtifact || ctrl.filters.filterGroup) {
+
+        typeFilters = '?typeName='
+        if (ctrl.filters.filterArtifact) {
+          typeFilters += 'Artifact ';
+        }
+        if (ctrl.filters.filterGroup) {
+          typeFilters += 'Group ';
+        }
+      }
+
+      ctrl.lastQuery = ctrl.searchInput;
+
+      try {
+
+        $http({
+          method: 'GET',
+          url: ctrl.targetDatabusUrl + '/api/search' + typeFilters + '&format=JSON_FULL&minRelevance=10&maxResults=10&query='
+            + ctrl.searchInput,
+        }).then(function successCallback(response) {
+
+          if (ctrl.lastQuery != response.data.query) {
+            return;
+          }
+
+          ctrl.results = response.data.docs;
+
+          for (var r in ctrl.results) {
+            ctrl.results[r].inCollection = ctrl.isInCollection(ctrl.results[r]);
+          }
+
+        }, function errorCallback(response) {
+        });
+      } catch (err) {
+
+      }
+
+      ctrl.searchChanged = false;
+    };
+  }, ctrl.searchCooldown);
+
+  ctrl.search = function () {
+    ctrl.searchChanged = true;
+  };
+}
+
+
+module.exports = CollectionSearchController;
+
+/***/ },
+
+/***/ "./js/components/collection-statistics/collection-statistics.js"
+/*!**********************************************************************!*\
+  !*** ./js/components/collection-statistics/collection-statistics.js ***!
+  \**********************************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionUtils = __webpack_require__(/*! ../../collections/databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function CollectionStatisticsController($http, $scope, $location, $sce) {
+
+  var ctrl = this;
+  ctrl.$http = $http;
+  ctrl.utils = new DatabusWebappUtils($scope, $sce);
+
+
+  ctrl.$onInit = function() {
+    ctrl.isLoading = true;
+    DatabusCollectionUtils.getCollectionStatistics(ctrl.$http, ctrl.collection).then(function(result) {
+      ctrl.statistics = result;
+      ctrl.isLoading = false;
+      $scope.$apply();
+    }, function(err) {
+      ctrl.statistics = null;
+      ctrl.isLoading = false;
+    });
+  }
+
+  ctrl.markdownToHtml = function(markdown) {
+    return ctrl.utils.markdownToHtml(markdown);
+  };
+
+  ctrl.formatUploadSize = function(size) {
+    return DatabusUtils.formatFileSize(size);
+  };
+}
+
+module.exports = CollectionStatisticsController;
+
+
+
+/***/ },
+
+/***/ "./js/components/collection-status/collection-status.js"
+/*!**************************************************************!*\
+  !*** ./js/components/collection-status/collection-status.js ***!
+  \**************************************************************/
+(module) {
+
+
+
+// hinzufügen eines Controllers zum Modul
+function CollectionStatusController($http, $location, $sce) {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+    ctrl.colors = [];
+    ctrl.colors.push('#b54c4c');
+    ctrl.colors.push('#aaa');
+    ctrl.colors.push('#aaa');
+    ctrl.colors.push('#e8ca5f');
+    ctrl.colors.push('#3a3');
+
+    ctrl.labels = [];
+    ctrl.labels.push('Draft');
+    ctrl.labels.push('Hidden, Uncommitted Changes');
+    ctrl.labels.push('Hidden');
+    ctrl.labels.push('Visible, Uncommitted Changes');
+    ctrl.labels.push('Visible');
+  }
+
+  ctrl.$doCheck = function() {
+    if(ctrl.isDraft) {
+      ctrl.status = 0;
+      return;
+    }
+
+    if(ctrl.isPublished) {
+      ctrl.status = ctrl.hasLocalChanges ? 3 : 4;
+    } else {
+      ctrl.status = ctrl.hasLocalChanges ? 1 : 2;
+    }
+  }
+}
+
+module.exports = CollectionStatusController;
+
+
+/***/ },
+
+/***/ "./js/components/databus-alert/databus-alert-controller.js"
+/*!*****************************************************************!*\
+  !*** ./js/components/databus-alert/databus-alert-controller.js ***!
+  \*****************************************************************/
+(module) {
+
+
+// hinzufügen eines Controllers zum Modul
+function DatabusAlertController($scope, $timeout) {
+
+  var ctrl = this;
+
+  $scope.$on('onDatabusAlert', function(e, data) {
+    ctrl.isSuccess = data.isSuccess;
+    ctrl.message = data.message;
+    ctrl.isVisible = false;
+
+    if(ctrl.hidePromise != null) {
+      $timeout.cancel(ctrl.hidePromise);
+    }
+
+    $timeout(function() {
+      ctrl.isVisible = true;
+    }, 0);
+
+    ctrl.hidePromise = $timeout(function() {
+      ctrl.isVisible = false;
+    }, data.ms);
+  });
+
+  ctrl.$onInit = function() {
+
+  }
+
+  ctrl.isSuccess = function() {
+    return ctrl.isSuccess;
+  }
+
+  ctrl.$doCheck = function() {
+    
+  }
+}
+
+module.exports = DatabusAlertController;
+
+
+/***/ },
+
+/***/ "./js/components/databus-alert/databus-alert.js"
+/*!******************************************************!*\
+  !*** ./js/components/databus-alert/databus-alert.js ***!
+  \******************************************************/
+(module) {
+
+
+class DatabusAlert {
+  static alert($scope, isSuccess, message, ms) {
+    if(ms == undefined) {
+      ms = 3000; 
+    }
+    $scope.$broadcast('onDatabusAlert', { isSuccess: isSuccess, message: message, ms: ms});
+  }
+
+  static alertCode($scope, code, ms) {
+    if(ms == undefined) {
+      ms = 3000; 
+    }
+
+    var isSuccess = code >= 200 && code < 400;
+    $scope.$broadcast('onDatabusAlert', { isSuccess: isSuccess, message: message, ms: ms});
+  }
+}
+
+
+module.exports = DatabusAlert;
+
+
+/***/ },
+
+/***/ "./js/components/databus-icon/databus-icon.js"
+/*!****************************************************!*\
+  !*** ./js/components/databus-icon/databus-icon.js ***!
+  \****************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function DatabusIconController() {
+
+  var ctrl = this;
+
+  ctrl.iconMap = {};
+  ctrl.iconMap['databus'] = "m 1.8847 0.3851 v 2.6248 l 14.6656 -0.0005 l 3.1363 4.4338 l -0.001 16.0412 l 2.3606 -0.001 V 0.3851 Z m 9.2176 4.1976 l -2.8418 0.003 l 3.5989 5.2742 l -0.002 13.6233 l 2.352 -0.001 l 0.0083 -14.3005 z m -4.7365 0.001 l -4.4826 0.001 l 0.002 18.898 l 8.3978 -0.002 l 0.0005 -13.1455 z m 6.6256 0 l 2.7991 4.1094 l -0.0198 14.7881 l 2.3515 -0.001 l 0.003 -15.5479 l -2.2793 -3.347 z";
+  ctrl.iconMap['add'] = "M 11 11 M 2 12 L 11 12 L 11 21 L 12 21 L 12 12 L 21 12 L 21 11 L 12 11 L 12 2 L 11 2 L 11 11 L 2 11 L 2 12";
+  ctrl.iconMap['remove'] = "M 11 11 M 2 12 L 21 12 L 21 11 L 2 11 L 2 12";
+  ctrl.iconMap['add-thick'] = "m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z";
+  ctrl.iconMap['close'] = "m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z";
+  ctrl.iconMap['delete'] = "M9 3h6v-1.75c0-.066-.026-.13-.073-.177-.047-.047-.111-.073-.177-.073h-5.5c-.066 0-.13.026-.177.073-.047.047-.073.111-.073.177v1.75zm11 1h-16v18c0 .552.448 1 1 1h14c.552 0 1-.448 1-1v-18zm-10 3.5c0-.276-.224-.5-.5-.5s-.5.224-.5.5v12c0 .276.224.5.5.5s.5-.224.5-.5v-12zm5 0c0-.276-.224-.5-.5-.5s-.5.224-.5.5v12c0 .276.224.5.5.5s.5-.224.5-.5v-12zm8-4.5v1h-2v18c0 1.105-.895 2-2 2h-14c-1.105 0-2-.895-2-2v-18h-2v-1h7v-2c0-.552.448-1 1-1h6c.552 0 1 .448 1 1v2h7z";
+  ctrl.iconMap['goto'] = "M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z";
+  ctrl.iconMap['edit'] = "M8.071 21.586l-7.071 1.414 1.414-7.071 14.929-14.929 5.657 5.657-14.929 14.929zm-.493-.921l-4.243-4.243-1.06 5.303 5.303-1.06zm9.765-18.251l-13.3 13.301 4.242 4.242 13.301-13.3-4.243-4.243z";
+  ctrl.iconMap['edit-thick'] = "M7.127 22.564l-7.126 1.436 1.438-7.125 5.688 5.689zm-4.274-7.104l5.688 5.689 15.46-15.46-5.689-5.689-15.459 15.46z";
+  ctrl.iconMap['goback'] = "M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z";
+  ctrl.iconMap['right'] = "M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z";
+  ctrl.iconMap['left'] = "M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z";
+  ctrl.iconMap['down'] = "M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z";
+  ctrl.iconMap['left-thick'] = "M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z";
+  ctrl.iconMap['help'] = "M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm.053 17c.466 0 .844-.378.844-.845 0-.466-.378-.844-.844-.844-.466 0-.845.378-.845.844 0 .467.379.845.845.845zm.468-2.822h-.998c-.035-1.162.182-2.054.939-2.943.491-.57 1.607-1.479 1.945-2.058.722-1.229.077-3.177-2.271-3.177-1.439 0-2.615.877-2.928 2.507l-1.018-.102c.28-2.236 1.958-3.405 3.922-3.405 1.964 0 3.615 1.25 3.615 3.22 0 1.806-1.826 2.782-2.638 3.868-.422.563-.555 1.377-.568 2.09z";
+  ctrl.iconMap['max'] = "M24 22h-24v-20h24v20zm-7-1v-15h-16v15h16zm1 0h5v-18h-22v2h17v16zm-6-6h-1v-3.241l-7.241 7.241-.759-.759 7.241-7.241h-3.241v-1h5v5z";
+  ctrl.iconMap['min'] = "M24 22h-24v-20h24v20zm-23-9v8h10v-8h-10zm22 8v-18h-22v9h11v9h11zm-4-9h-5v-5h1v3.241l5.241-5.241.759.759-5.241 5.241h3.241v1z";
+  ctrl.iconMap['error'] = "M24 23h-24l12-22 12 22zm-22.315-1h20.63l-10.315-18.912-10.315 18.912zm10.315-2c.466 0 .845-.378.845-.845 0-.466-.379-.844-.845-.844-.466 0-.845.378-.845.844 0 .467.379.845.845.845zm.5-11v8h-1v-8h1z";
+  ctrl.iconMap['info'] = "M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm.5 17h-1v-9h1v9zm-.5-12c.466 0 .845.378.845.845 0 .466-.379.844-.845.844-.466 0-.845-.378-.845-.844 0-.467.379-.845.845-.845z";
+  ctrl.iconMap['eye'] = "M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z";
+  ctrl.iconMap['add-artifact'] = "M 12 0 M 12.016 1.424 L 21.756 12.053 L 12.016 22.563 L 2.204 12.005 L 3.396 10.721 L 2.774 10.058 L 1 12 L 12 24 L 23 12 L 12 0 L 10.153 2.078 L 10.837 2.741 Z M 6 6 L 6 2 L 7 2 L 7 6 L 11 6 L 11 7 L 7 7 L 7 11 L 6 11 L 6 7 L 2 7 L 2 6 L 6 6";
+  ctrl.iconMap['add-button'] = "M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z";
+  ctrl.iconMap['collections'] = "M11.499 12.03v11.971l-10.5-5.603v-11.835l10.5 5.467zm11.501 6.368l-10.501 5.602v-11.968l10.501-5.404v11.77zm-16.889-15.186l10.609 5.524-4.719 2.428-10.473-5.453 4.583-2.499zm16.362 2.563l-4.664 2.4-10.641-5.54 4.831-2.635 10.474 5.775z";
+  ctrl.iconMap['collections-thin'] = "M23 6.066v12.065l-11.001 5.869-11-5.869v-12.131l11-6 11.001 6.066zm-21.001 11.465l9.5 5.069v-10.57l-9.5-4.946v10.447zm20.001-10.388l-9.501 4.889v10.568l9.501-5.069v-10.388zm-5.52 1.716l-9.534-4.964-4.349 2.373 9.404 4.896 4.479-2.305zm-8.476-5.541l9.565 4.98 3.832-1.972-9.405-5.185-3.992 2.177z";
+  ctrl.iconMap['content'] = "M9.484 15.696l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm0-5l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm0-5l-.711-.696-2.552 2.607-1.539-1.452-.698.709 2.25 2.136 3.25-3.304zm10.516 11.304h-8v1h8v-1zm0-5h-8v1h8v-1zm0-5h-8v1h8v-1zm4-5h-24v20h24v-20zm-1 19h-22v-18h22v18z"
+  ctrl.iconMap['menu'] = "M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z";
+  ctrl.iconMap['copy'] = "M17 7h6v16h-16v-6h-6v-16h16v6zm5 1h-14v14h14v-14zm-6-1v-5h-14v14h5v-9h9z";
+  ctrl.iconMap['upload'] = "M9 16h-8v6h22v-6h-8v-1h9v8h-24v-8h9v1zm11 2c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm-7.5 0h-1v-14.883l-4.735 5.732-.765-.644 6.021-7.205 5.979 7.195-.764.645-4.736-5.724v14.884z";
+  ctrl.iconMap['hide'] = "M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z";
+  ctrl.iconMap['download'] = "M6 16h-5v6h22v-6h-5v-1h6v8h-24v-8h6v1zm14 2c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm-7.5-17v14.884l4.736-5.724.764.645-5.979 7.195-6.021-7.205.765-.644 4.735 5.732v-14.883h1z";
+  ctrl.iconMap['import'] = "M16.965 2.381c3.593 1.946 6.035 5.749 6.035 10.119 0 6.347-5.153 11.5-11.5 11.5s-11.5-5.153-11.5-11.5c0-4.37 2.442-8.173 6.035-10.119l.608.809c-3.353 1.755-5.643 5.267-5.643 9.31 0 5.795 4.705 10.5 10.5 10.5s10.5-4.705 10.5-10.5c0-4.043-2.29-7.555-5.643-9.31l.608-.809zm-4.965-2.381v14.826l3.747-4.604.753.666-5 6.112-5-6.101.737-.679 3.763 4.608v-14.828h1z";
+  ctrl.iconMap['filter'] = "M23 0l-9 14.146v7.73l-3.996 2.124v-9.853l-9.004-14.147h22zm-20.249 1l8.253 12.853v8.491l1.996-1.071v-7.419l8.229-12.854h-18.478z";
+  ctrl.iconMap['check'] = "M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z";
+  ctrl.iconMap['settings'] = "M12 8.666c-1.838 0-3.333 1.496-3.333 3.334s1.495 3.333 3.333 3.333 3.333-1.495 3.333-3.333-1.495-3.334-3.333-3.334m0 7.667c-2.39 0-4.333-1.943-4.333-4.333s1.943-4.334 4.333-4.334 4.333 1.944 4.333 4.334c0 2.39-1.943 4.333-4.333 4.333m-1.193 6.667h2.386c.379-1.104.668-2.451 2.107-3.05 1.496-.617 2.666.196 3.635.672l1.686-1.688c-.508-1.047-1.266-2.199-.669-3.641.567-1.369 1.739-1.663 3.048-2.099v-2.388c-1.235-.421-2.471-.708-3.047-2.098-.572-1.38.057-2.395.669-3.643l-1.687-1.686c-1.117.547-2.221 1.257-3.642.668-1.374-.571-1.656-1.734-2.1-3.047h-2.386c-.424 1.231-.704 2.468-2.099 3.046-.365.153-.718.226-1.077.226-.843 0-1.539-.392-2.566-.893l-1.687 1.686c.574 1.175 1.251 2.237.669 3.643-.571 1.375-1.734 1.654-3.047 2.098v2.388c1.226.418 2.468.705 3.047 2.098.581 1.403-.075 2.432-.669 3.643l1.687 1.687c1.45-.725 2.355-1.204 3.642-.669 1.378.572 1.655 1.738 2.1 3.047m3.094 1h-3.803c-.681-1.918-.785-2.713-1.773-3.123-1.005-.419-1.731.132-3.466.952l-2.689-2.689c.873-1.837 1.367-2.465.953-3.465-.412-.991-1.192-1.087-3.123-1.773v-3.804c1.906-.678 2.712-.782 3.123-1.773.411-.991-.071-1.613-.953-3.466l2.689-2.688c1.741.828 2.466 1.365 3.465.953.992-.412 1.082-1.185 1.775-3.124h3.802c.682 1.918.788 2.714 1.774 3.123 1.001.416 1.709-.119 3.467-.952l2.687 2.688c-.878 1.847-1.361 2.477-.952 3.465.411.992 1.192 1.087 3.123 1.774v3.805c-1.906.677-2.713.782-3.124 1.773-.403.975.044 1.561.954 3.464l-2.688 2.689c-1.728-.82-2.467-1.37-3.456-.955-.988.41-1.08 1.146-1.785 3.126";
+  ctrl.iconMap['clipboard'] = "M 17 17 L 7 17 L 7 16 L 17 16 L 17 17 Z M 17 14 L 7 14 L 7 13 L 17 13 L 17 14 Z M 17 11 L 7 11 L 7 10 L 17 10 L 17 11 Z M 16 6 L 8 6 L 7 1 L 17 1 L 16 6 Z M 15.7 2 L 8.25 2 L 8.9 5 L 15.1 5 L 15.7 2 Z M 22 23 L 2 23 L 2 3 L 5.5 3 L 5.7 4 L 3 4 L 3 22 L 21 22 L 21 4 L 18.3 4 L 18.5 3 L 22 3 L 22 23 Z";
+  ctrl.iconMap['sort-desc'] = "M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z";
+  ctrl.iconMap['sort-asc'] = "M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z";
+  ctrl.iconMap['key'] = "M12.451 17.337l-2.451 2.663h-2v2h-2v2h-6v-5l6.865-6.949c1.08 2.424 3.095 4.336 5.586 5.286zm11.549-9.337c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-3-3c0-1.104-.896-2-2-2s-2 .896-2 2 .896 2 2 2 2-.896 2-2z";
+  ctrl.iconMap['gears'] = "M17 10.645v-2.29c-1.17-.417-1.907-.533-2.28-1.431-.373-.9.07-1.512.6-2.625l-1.618-1.619c-1.105.525-1.723.974-2.626.6-.9-.373-1.017-1.116-1.431-2.28h-2.29c-.412 1.158-.53 1.907-1.431 2.28h-.001c-.9.374-1.51-.07-2.625-.6l-1.617 1.619c.527 1.11.973 1.724.6 2.625-.375.901-1.123 1.019-2.281 1.431v2.289c1.155.412 1.907.531 2.28 1.431.376.908-.081 1.534-.6 2.625l1.618 1.619c1.107-.525 1.724-.974 2.625-.6h.001c.9.373 1.018 1.118 1.431 2.28h2.289c.412-1.158.53-1.905 1.437-2.282h.001c.894-.372 1.501.071 2.619.602l1.618-1.619c-.525-1.107-.974-1.723-.601-2.625.374-.899 1.126-1.019 2.282-1.43zm-8.5 1.689c-1.564 0-2.833-1.269-2.833-2.834s1.269-2.834 2.833-2.834 2.833 1.269 2.833 2.834-1.269 2.834-2.833 2.834zm15.5 4.205v-1.077c-.55-.196-.897-.251-1.073-.673-.176-.424.033-.711.282-1.236l-.762-.762c-.52.248-.811.458-1.235.283-.424-.175-.479-.525-.674-1.073h-1.076c-.194.545-.25.897-.674 1.073-.424.176-.711-.033-1.235-.283l-.762.762c.248.523.458.812.282 1.236-.176.424-.528.479-1.073.673v1.077c.544.193.897.25 1.073.673.177.427-.038.722-.282 1.236l.762.762c.521-.248.812-.458 1.235-.283.424.175.479.526.674 1.073h1.076c.194-.545.25-.897.676-1.074h.001c.421-.175.706.034 1.232.284l.762-.762c-.247-.521-.458-.812-.282-1.235s.529-.481 1.073-.674zm-4 .794c-.736 0-1.333-.597-1.333-1.333s.597-1.333 1.333-1.333 1.333.597 1.333 1.333-.597 1.333-1.333 1.333zm-4 3.071v-.808c-.412-.147-.673-.188-.805-.505s.024-.533.212-.927l-.572-.571c-.389.186-.607.344-.926.212s-.359-.394-.506-.805h-.807c-.146.409-.188.673-.506.805-.317.132-.533-.024-.926-.212l-.572.571c.187.393.344.609.212.927-.132.318-.396.359-.805.505v.808c.408.145.673.188.805.505.133.32-.028.542-.212.927l.572.571c.39-.186.608-.344.926-.212.318.132.359.395.506.805h.807c.146-.409.188-.673.507-.805h.001c.315-.131.529.025.924.213l.572-.571c-.186-.391-.344-.609-.212-.927s.397-.361.805-.506zm-3 .596c-.552 0-1-.447-1-1s.448-1 1-1 1 .447 1 1-.448 1-1 1z";
+  ctrl.iconMap['wand'] = "M4.908 2.081l-2.828 2.828 19.092 19.091 2.828-2.828-19.092-19.091zm2.121 6.363l-3.535-3.535 1.414-1.414 3.535 3.535-1.414 1.414zm1.731-5.845c1.232.376 2.197 1.341 2.572 2.573.377-1.232 1.342-2.197 2.573-2.573-1.231-.376-2.196-1.34-2.573-2.573-.375 1.232-1.34 2.197-2.572 2.573zm-5.348 6.954c-.498 1.635-1.777 2.914-3.412 3.413 1.635.499 2.914 1.777 3.412 3.411.499-1.634 1.778-2.913 3.412-3.411-1.634-.5-2.913-1.778-3.412-3.413zm9.553-3.165c.872.266 1.553.948 1.819 1.82.266-.872.948-1.554 1.819-1.82-.871-.266-1.553-.948-1.819-1.82-.266.871-.948 1.554-1.819 1.82zm4.426-6.388c-.303.994-1.082 1.772-2.075 2.076.995.304 1.772 1.082 2.077 2.077.303-.994 1.082-1.772 2.074-2.077-.992-.303-1.772-1.082-2.076-2.076z";
+  ctrl.iconMap['user'] = "M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z";  
+  ctrl.iconMap['version'] = "M 14.9 1 L 12.293 1.005 L 16.507 7.18 L 16.5 23.1 L 18.5 23.1 L 18.5 6.4 L 14.9 1 Z M 10.4 1 L 1.581 1.004 L 1.584 23.13 L 15 23.1 L 15 7.7 L 10.4 1 Z M 16.8 1 L 20 5.8 L 20 23.1 L 22 23.1 L 22 4.9 L 19.3 1 L 16.8 1 Z";
+  ctrl.iconMap['group'] = "M21.698 10.658l2.302 1.342-12.002 7-11.998-7 2.301-1.342 9.697 5.658 9.7-5.658zm-9.7 10.657l-9.697-5.658-2.301 1.343 11.998 7 12.002-7-2.302-1.342-9.7 5.657zm12.002-14.315l-12.002-7-11.998 7 11.998 7 12.002-7z";
+  ctrl.iconMap['artifact'] = "M12,0 L2,12 L12,24 L22,12 L12,0z";
+  
+  ctrl.$onInit = function() {
+    ctrl.path = ctrl.iconMap[ctrl.shape];
+  }
+}
+
+
+module.exports = DatabusIconController;
+
+/***/ },
+
+/***/ "./js/components/entity-api-view/entity-api-view.js"
+/*!**********************************************************!*\
+  !*** ./js/components/entity-api-view/entity-api-view.js ***!
+  \**********************************************************/
+(module) {
+
+function EntityApiViewController() {
+  const ctrl = this;
+
+  ctrl.copyToClipboard = function (text) {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log("Copied to clipboard");
+    });
+  };
+
+  ctrl.register = async function () {
+    ctrl.isRegistering = true;
+    ctrl.isSuccess = false;
+    ctrl.isError = false;
+    
+    if (ctrl.entity && ctrl.entity.register) {
+      try {
+        let response = await ctrl.entity.register();
+        ctrl.log = response.data.log;
+        ctrl.isSuccess = true;
+      } catch(err) {
+        ctrl.log = err.data.log;
+        ctrl.isError = true;
+      }
+    }
+
+    ctrl.isRegistering = false;
+  };
+
+  ctrl.setApiKeyName = function (name) {
+    if (ctrl.entity && ctrl.entity.setApiKeyName) {
+      ctrl.entity.setApiKeyName(name);
+    }
+  };
+}
+
+module.exports = EntityApiViewController;
+
+
+/***/ },
+
+/***/ "./js/components/entity-card/entity-card.js"
+/*!**************************************************!*\
+  !*** ./js/components/entity-card/entity-card.js ***!
+  \**************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function EntityCardController($sce) {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+    if(ctrl.label == null || ctrl.label == "") {
+      ctrl.label = DatabusUtils.uriToTitle(ctrl.uri);
+    }
+  }
+
+  ctrl.formatResult = function(result) {
+    return $sce.trustAsHtml(result);
+  }
+}
+
+
+module.exports = EntityCardController;
+
+/***/ },
+
+/***/ "./js/components/entity-dropdown/entity-dropdown.js"
+/*!**********************************************************!*\
+  !*** ./js/components/entity-dropdown/entity-dropdown.js ***!
+  \**********************************************************/
+(module) {
+
+function EntityDropdownController() {
+  var ctrl = this;
+
+  ctrl.showDrop = false;
+  ctrl.selectedLabel = '';
+  ctrl.searchQuery = '';
+  ctrl.filteredItems = [];
+
+  ctrl.$onInit = function () {
+    ctrl.updateFilteredItems();
+    ctrl.setSelectedLabel();
+  };
+
+  ctrl.$onChanges = function (changes) {
+    if (changes.items || changes.selected) {
+      ctrl.updateFilteredItems();
+
+      if (ctrl.selected &&  Array.isArray(ctrl.items) && !ctrl.items?.some(i => i[ctrl.displayProperty] === ctrl.selected)) {
+        ctrl.selected = null;
+        ctrl.onSelect({ item: null }); 
+      }
+
+      ctrl.setSelectedLabel();
+    }
+  };
+
+  ctrl.toggleDropdown = function () {
+    if (!ctrl.loading && ctrl.items && ctrl.items.length > 0) {
+      ctrl.showDrop = !ctrl.showDrop;
+      ctrl.searchQuery = '';
+      ctrl.updateFilteredItems();
+    }
+  };
+
+  ctrl.selectItem = function (item) {
+    ctrl.selectedLabel = item[ctrl.displayProperty];
+    ctrl.showDrop = false;
+    ctrl.onSelect({ item: item });
+  };
+
+  ctrl.updateFilteredItems = function () {
+    if (!ctrl.items || !ctrl.displayProperty) {
+      ctrl.filteredItems = [];
+      return;
+    }
+
+    ctrl.filteredItems = ctrl.items.filter(function (item) {
+      var val = item[ctrl.displayProperty] || '';
+      return val.toLowerCase().indexOf(ctrl.searchQuery.toLowerCase()) !== -1;
+    });
+  };
+
+  ctrl.setSelectedLabel = function () {
+    if (!ctrl.selected || !ctrl.displayProperty) {
+      ctrl.selectedLabel = ctrl.placeholder || 'Please select...';
+      return;
+    }
+
+    // Attempt to match selected value in the list
+    var match = (ctrl.items || []).find(function (item) {
+      return item[ctrl.displayProperty] === ctrl.selected;
+    });
+
+    if (match) {
+      ctrl.selectedLabel = match[ctrl.displayProperty];
+    } else {
+      // fallback in case selected value is not in the list
+      ctrl.selectedLabel = ctrl.placeholder || 'Please select...';
+      // ctrl.onSelect(null);
+    }
+  };
+}
+
+module.exports = EntityDropdownController;
+
+
+/***/ },
+
+/***/ "./js/components/error-notification/error-notifcation.js"
+/*!***************************************************************!*\
+  !*** ./js/components/error-notification/error-notifcation.js ***!
+  \***************************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const { DatabusMsg } = __webpack_require__(/*! ../../utils/messages */ "./js/utils/messages.js");
+
+function ErrorNotificationController() {
+  var ctrl = this;
+  ctrl.expanded = false;
+
+  ctrl.toggleExpand = function () {
+    ctrl.expanded = !ctrl.expanded;
+  };
+
+  ctrl.get = function(key) {
+    return DatabusMsg.get(key);
+  }
+}
+
+module.exports = ErrorNotificationController;
+
+
+/***/ },
+
+/***/ "./js/components/expandable-arrow/expandable-arrow.js"
+/*!************************************************************!*\
+  !*** ./js/components/expandable-arrow/expandable-arrow.js ***!
+  \************************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function ExpandableArrowController() {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+    if(ctrl.isReadonly == undefined) {
+      ctrl.isReadonly = false;
+    }
+
+    
+  }
+
+  ctrl.change = function() {
+
+    if(!ctrl.isReadonly) {
+      ctrl.expanded = !ctrl.expanded;
+      ctrl.onChange();
+    }
+  }
+}
+
+module.exports = ExpandableArrowController;
+
+
+
+/***/ },
+
+/***/ "./js/components/facets-view/facets-view.js"
+/*!**************************************************!*\
+  !*** ./js/components/facets-view/facets-view.js ***!
+  \**************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const QueryNode = __webpack_require__(/*! ../../query-builder/query-node */ "./js/query-builder/query-node.js");
+const DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ "./js/utils/databus-constants.js");
+const DatabusUris = __webpack_require__(/*! ../../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+/**
+ * Manages an array of facets with respect to a parent facets array.
+ * Provides some convenient\ce methods to write to the facets array and
+ * read from the parents facets.
+ * DO NOT change the parent facets array in here.
+ */
+class FacetSettings {
+
+  /**
+   * Locally manages a facets array with respect to a parent
+   * facets array
+   * @param {[type]} facets       [description]
+   * @param {[type]} parentFacets [description]
+   */
+  constructor(facets, parentFacets) {
+    this.facets = facets;
+    this.parentFacets = parentFacets;
+  }
+
+  /**
+   * Change a setting (key, value) to a state (bool)
+   * @param  {[type]} key    [description]
+   * @param  {[type]} value    [description]
+   * @param  {[type]} setState [description]
+   * @return {[type]}          [description]
+   */
+  changeSetting(key, value, targetState) {
+    var parentState = this.findParentSettingState(key, value);
+
+    if (parentState != targetState) {
+      this.createOrAddSetting(key, value, targetState);
+    } else {
+      this.removeSetting(key, value);
+    }
+
+    return targetState;
+  }
+
+  /**
+   * Find the checked state specified in the parent setting array (if set)
+   * based on a key and value
+   * @param  {[type]} key [description]
+   * @param  {[type]} value [description]
+   * @return {[type]}       [description]
+   */
+  findParentSettingState(key, value) {
+    if (this.parentFacets == undefined) {
+      return false;
+    }
+
+    for (var p in this.parentFacets) {
+      var setting = this.parentFacets[p];
+      if (setting.key == key && setting.value == value) {
+        return setting.checked;
+      }
+    }
+
+    return false;
+  }
+
+  findOwnSettingState(key, value) {
+    for (var p in this.facets) {
+      var setting = this.facets[p];
+      if (setting.key == key && setting.value == value) {
+        return setting.checked;
+      }
+    }
+
+    return false;
+  }
+
+  isOverride(key, value, state) {
+    var parentState = this.findParentSettingState(key, value);
+    return parentState != state;
+  }
+
+  createOrAddSetting(key, value, state) {
+    for (var p in this.facets) {
+      var setting = this.facets[p];
+      if (p == key && setting.value == value) {
+        setting.checked = state;
+        return;
+      }
+    }
+
+    this.facets[key] = { value: value, checked: state };
+  }
+
+  removeSetting(key, value) {
+    for (var p in this.facets) {
+      var setting = this.facets[p];
+      if (setting.key == key && setting.value == value) {
+        this.facets.splice(p, 1);
+        return;
+      }
+    }
+  }
+
+}
+
+function FacetsViewController($http, $scope) {
+
+  var ctrl = this;
+  ctrl.$http = $http;
+  ctrl.maxEntries = 6;
+
+  ctrl.$onInit = function () {
+
+  }
+
+  ctrl.$onChanges = function () {
+    // create the queries...
+    ctrl.isLoading = true;
+
+    // wrap the node in the query node class
+    ctrl.node = QueryNode.createFrom(ctrl.node);
+
+    // Holds the view state as json
+    ctrl.viewModel = {};
+
+    if (ctrl.facets == undefined) {
+      ctrl.facets = [];
+    }
+
+    var queryUri = ctrl.resourceType == 'version' ?
+      ctrl.node.uri + '/' + ctrl.node.facetSettings[DatabusUris.DCT_HAS_VERSION][0].value
+      : ctrl.node.uri;
+
+    // Load the available resource facets
+    // TODO: Remove resource type, can be derived from uri
+    ctrl.$http.get('/app/utils/facets', {
+      params: { uri: queryUri, type: ctrl.resourceType }
+    }).then(function (result) {
+
+      // Facets data has been loaded
+      ctrl.facetsData = result.data;
+
+      // Fix artifact facet values for groups, change URIs into artifact names
+      var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];
+
+      if (artifactFacetData != null) {
+        for (var i in artifactFacetData.values) {
+          artifactFacetData.values[i] = DatabusUtils.uriToName(artifactFacetData.values[i]);
+        }
+      }
+
+      // Facet setting in this view is
+
+      // - SETTING
+      // ---- VALUE
+      // ---- IS_CHECKED
+
+      // Prepare visible facet settings and autofill data based on the facet data returned by the API
+      // Create key base entries (unset, not overriden)
+      for (var key in ctrl.facetsData) {
+
+        var facetData = ctrl.facetsData[key];
+
+        // Create a view data object for each facet
+        ctrl.viewModel[key] = {};
+        ctrl.viewModel[key].key = key;
+        ctrl.viewModel[key].label = facetData.label;
+        ctrl.viewModel[key].visibleFacetSettings = [];
+        ctrl.viewModel[key].autofill = {};
+        ctrl.viewModel[key].autofill.values = facetData.values;
+        ctrl.viewModel[key].autofill.selectedValues = [];
+        ctrl.viewModel[key].autofill.input = '';
+
+
+        for (var v in facetData.values) {
+          var value = facetData.values[v];
+          ctrl.viewModel[key].visibleFacetSettings.push({
+            value: value,
+            checked: false,
+            isOverride: false
+          });
+        }
+
+        ctrl.viewModel[key].visibleFacetSettings.sort(function (a, b) {
+          const valueA = a.value.toUpperCase();
+          const valueB = b.value.toUpperCase();
+          if (valueA > valueB) {
+            return 1;
+          }
+          if (valueA < valueB) {
+            return -1;
+          }
+
+          return 0;
+        });
+
+        // Show latest versions first
+        if (key == DatabusUris.DCT_HAS_VERSION) {
+          ctrl.viewModel[key].visibleFacetSettings.reverse();
+        }
+
+        // Only show the top few
+        var length = ctrl.viewModel[key].visibleFacetSettings.length;
+        ctrl.viewModel[key].visibleFacetSettings.length = Math.min(ctrl.maxEntries, length);
+      }
+
+      // If we show the browser for a version, remove the version facet
+      if (ctrl.resourceType == 'version') {
+        delete ctrl.viewModel[DatabusUris.DCT_HAS_VERSION];
+      }
+
+      // Add the "Latest Version" facet to the visible settings of the version facet
+      if (ctrl.resourceType != 'version' && ctrl.viewModel[DatabusUris.DCT_HAS_VERSION] != undefined) {
+        ctrl.viewModel[DatabusUris.DCT_HAS_VERSION].visibleFacetSettings.unshift({
+          value: DatabusConstants.FACET_LATEST_VERSION_VALUE,
+          checked: false,
+          isOverride: false
+        });
+
+        // Apply the existing settings to the view model
+        var fullFacets = ctrl.node.createFullFacetSettings();
+
+        for (var key in fullFacets) {
+          var facetSettingList = fullFacets[key];
+
+          for (var i in facetSettingList) {
+            var facetSetting = facetSettingList[i];
+
+            var visibleFacetSetting = ctrl.getOrCreateVisibleFacetSetting(key, facetSetting.value);
+
+            if (visibleFacetSetting != null) {
+              visibleFacetSetting.checked = facetSetting.checked;
+              visibleFacetSetting.isOverride = ctrl.node.isOverride(key, facetSetting.value, facetSetting.checked);
+            }
+          }
+        }
+
+        // If we're a group node, check for artifact nodes and add them as facets
+        if (ctrl.resourceType == 'group') {
+
+          for (var i in ctrl.node.childNodes) {
+            var artifactNode = ctrl.node.childNodes[i];
+            var facetValue = DatabusUtils.uriToName(artifactNode.uri)
+            var visibleFacetSetting =
+              ctrl.getOrCreateVisibleFacetSetting(DatabusUris.DATABUS_ARTIFACT_PROPERTY, facetValue);
+            visibleFacetSetting.checked = true;
+            visibleFacetSetting.isOverride = true;
+          }
+
+          if (ctrl.node.childNodes.length == 0) {
+
+
+            ctrl.updateArtifactFilters(ctrl.node);
+
+            var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];
+
+            if (artifactFacetData != null) {
+
+              // Add artifact nodes 
+              for (var i in artifactFacetData.values) {
+                artifactFacetData.values[i] = DatabusUtils.uriToName(artifactFacetData.values[i]);
+              }
+            }
+
+            /*
+            // Add artifact nodes per default
+            for (var v of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {
+              var childUri = ctrl.node.uri + '/' + v.value;
+              var artifactNode = new QueryNode(childUri, 'databus:artifact');
+              QueryNode.addChild(ctrl.node, artifactNode);
+            }*/
+
+
+          }
+        }
+
+        ctrl.onChange();
+        ctrl.onLoaded();
+      }
+
+      ctrl.isLoading = false;
+    });
+  }
+
+  ctrl.updateArtifactFilters = function (groupNode) {
+
+      // Clear all child nodes
+    groupNode.childNodes.length = 0;
+
+    var hasCheckedArtifactFacets = false;
+
+    for (var setting of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {
+      hasCheckedArtifactFacets = hasCheckedArtifactFacets || setting.checked;
+    }
+
+    if (hasCheckedArtifactFacets) {
+
+      for (var setting of ctrl.viewModel[DatabusUris.DATABUS_ARTIFACT_PROPERTY].visibleFacetSettings) {
+        if (setting.checked) {
+          var artifactUri = `${groupNode.uri}/${setting.value}`;
+          if (QueryNode.findChildByUri(groupNode, artifactUri) == null) {
+            var artifactNode = new QueryNode(artifactUri, 'databus:artifact');
+            QueryNode.addChild(groupNode, artifactNode);
+          }
+        }
+      }
+
+    } else {
+
+      var latestVersionSetting = QueryNode.findFacetSetting(groupNode,
+        DatabusUris.DCT_HAS_VERSION,
+        DatabusConstants.FACET_LATEST_VERSION_VALUE);
+
+      if (latestVersionSetting != undefined && latestVersionSetting.checked) {
+
+        var artifactFacetData = ctrl.facetsData[DatabusUris.DATABUS_ARTIFACT_PROPERTY];
+
+        if (artifactFacetData != null) {
+
+          // Add artifact nodes 
+          for (var value of artifactFacetData.values) {
+            var artifactUri = `${groupNode.uri}/${value}`;
+            if (QueryNode.findChildByUri(groupNode, artifactUri) == null) {
+              var artifactNode = new QueryNode(artifactUri, 'databus:artifact');
+              QueryNode.addChild(groupNode, artifactNode);
+            }
+          }
+
+        }
+      }
+    }
+
+  }
+
+
+  ctrl.getFacetLabel = function (value) {
+    if (value == DatabusConstants.FACET_LATEST_VERSION_VALUE) {
+      return DatabusConstants.FACET_LATEST_VERSION_LABEL;
+    }
+
+    return value;
+  }
+  /**
+   * Changes the value of a key value (also applies to facets)
+   * @param  {[type]} key [description]
+   * @param  {[type]} value [description]
+   * @param  {[type]} state [description]
+   * @return {[type]}       [description]
+   */
+  ctrl.changeFacetValueState = function (key, value, targetState) {
+
+    if (ctrl.resourceType == 'group' && key == DatabusUris.DATABUS_ARTIFACT_PROPERTY) {
+
+      var visibleSetting = ctrl.getOrCreateVisibleFacetSetting(key, value);
+
+      if (visibleSetting != null) {
+        visibleSetting.checked = targetState;
+        visibleSetting.isOverride = targetState;
+      }
+
+      ctrl.updateArtifactFilters(ctrl.node);
+
+    }
+    else {
+      // apply change to view model
+      ctrl.node.setFacet(key, value, targetState);
+
+      var visibleSetting = ctrl.getOrCreateVisibleFacetSetting(key, value);
+
+      if (visibleSetting != null) {
+        visibleSetting.checked = targetState;
+        visibleSetting.isOverride = ctrl.node.isOverride(key, value, targetState);
+      }
+    }
+
+    if (ctrl.viewModel[key].autofill.selectedValues.length > 0) {
+      ctrl.complete(ctrl.viewModel[key]);
+    }
+
+    ctrl.onChange();
+  }
+
+  /**
+   * Gets or creates a new entry for a key value
+   * for a given key and value
+   * @param  {[type]} key [description]
+   * @param  {[type]} value [description]
+   * @return {[type]}       [description]
+   */
+  ctrl.getOrCreateVisibleFacetSetting = function (key, value) {
+
+    if (ctrl.viewModel[key] == undefined) {
+      // This is a facet that the node does not have, but a parent has
+
+      var label = DatabusUtils.uriToName(key);
+      label = label[0].toUpperCase() + label.slice(1);
+
+      ctrl.viewModel[key] = {};
+      ctrl.viewModel[key].key = key;
+      ctrl.viewModel[key].label = label;
+      ctrl.viewModel[key].visibleFacetSettings = [];
+      ctrl.viewModel[key].autofill = {};
+      ctrl.viewModel[key].autofill.values = [];
+      ctrl.viewModel[key].autofill.selectedValues = [];
+      ctrl.viewModel[key].autofill.input = '';
+    }
+
+    for (var i in ctrl.viewModel[key].visibleFacetSettings) {
+      var facetSetting = ctrl.viewModel[key].visibleFacetSettings[i];
+      if (facetSetting.value == value) {
+        return facetSetting; // ctrl.facetSettings[key];
+      }
+    }
+
+    var visibleSetting = {
+      value: value,
+    };
+
+    ctrl.viewModel[key].visibleFacetSettings.push(visibleSetting);
+    return visibleSetting;
+  }
+
+  // Get all active facets of a certain key
+  ctrl.getActiveFilters = function (key) {
+    var activeFilters = [];
+
+    for (var f in ctrl.facets[key].items) {
+      var filter = ctrl.facets[key].items[f];
+      if (filter.checked) {
+        activeFilters.push(filter);
+      }
+    }
+
+    return activeFilters;
+  }
+
+  // Checks whether any filter for a key is set
+  ctrl.hasActiveFilters = function (key) {
+    for (var f in ctrl.facets[key].items) {
+      var filter = ctrl.facets[key].items[f];
+      if (filter.checked) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.complete = function (facetData) {
+    facetData.autofill.selectedValues.length = 0;
+    for (var a in facetData.autofill.values) {
+      var e = facetData.autofill.values[a];
+      if (e.toLowerCase().indexOf(facetData.autofill.input.toLowerCase()) >= 0) {
+
+        var include = true;
+
+        for (var v in facetData.visibleFacetSettings) {
+          var visibleSettings = facetData.visibleFacetSettings[v];
+          if (visibleSettings.value == e.toLowerCase()) {
+            include = false;
+          }
+        }
+
+        if (include) {
+          facetData.autofill.selectedValues.push(e);
+        }
+      }
+    }
+  }
+
+  // Clears the autofill lists
+  ctrl.clearAutofill = function () {
+    var self = ctrl;
+    for (var f in self.viewModel) {
+      var data = self.viewModel[f];
+      data.autofill.selectedValues.length = 0;
+    }
+  }
+}
+
+module.exports = FacetsViewController;
+
+
+/***/ },
+
+/***/ "./js/components/file-browser/file-browser.js"
+/*!****************************************************!*\
+  !*** ./js/components/file-browser/file-browser.js ***!
+  \****************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusConstants = __webpack_require__(/*! ../../utils/databus-constants */ "./js/utils/databus-constants.js");
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function FileBrowserController($http, $scope) {
+
+  var ctrl = this;
+
+  ctrl.$http = $http;
+  ctrl.activeTab = 0;
+  ctrl.$scope = $scope;
+
+  ctrl.$onInit = function() {
+
+    ctrl.lastRequestRevision = 0;
+    ctrl.tableLimit = 20;
+    ctrl.sortProperty = 'version.value';
+    ctrl.sortReverse = false;
+    ctrl.isLoading = true;
+    ctrl.queryResult = {};
+  }
+
+  ctrl.sortBy = function(property) {
+
+
+    if(ctrl.sortProperty == property) {
+      ctrl.sortReverse = !ctrl.sortReverse;
+    }
+    ctrl.sortProperty = property;
+  }
+
+  ctrl.getCellValues = function(binding, column) {
+
+    if(binding[column.field] == undefined) {
+      return "";
+    }
+    
+    var value = binding[column.field].value;
+
+    if(column.uriToName) {
+      value = DatabusUtils.uriToName(value);
+    }
+
+
+    return value;
+
+  }
+
+  ctrl.formatUploadSize = function(size) {
+    return DatabusUtils.formatFileSize(size);
+  };
+
+  ctrl.createRelativeUri = function(url) {
+    var u = new URL(url);
+    return u.pathname;
+  }
+
+  ctrl.formatVariant = function(value) {
+    var variants = value.split(', ');
+    value = "";
+    for(variant of variants) {
+      if(variant != undefined && variant != "") {
+        value += variant + ", ";
+      }
+    }
+
+    if(value == "") {
+      return "none";
+    }
+
+    return value.substr(0, value.length - 2);
+  }
+
+  ctrl.querySparql = async function(query) {
+
+    ctrl.isLoading = true;
+    ctrl.totalSize = 0;
+    ctrl.numFiles = 0;
+
+    try {
+
+      var req = {
+        method: 'POST',
+        url: DatabusConstants.DATABUS_SPARQL_ENDPOINT_URL,
+        data: "format=json&query=" + encodeURIComponent(query),
+        headers: {
+          "Content-type" : "application/x-www-form-urlencoded"
+        },
+      }
+
+      var updateResponse = await ctrl.$http(req); 
+
+      var data = updateResponse.data;
+
+      ctrl.isLoading = false;
+
+
+      ctrl.queryResult.bindings = data.results.bindings;
+
+      ctrl.queryResult.uriList = "";
+
+      for(var b in ctrl.queryResult.bindings) {
+        var binding = ctrl.queryResult.bindings[b];
+        binding.size.numericalValue = parseInt(binding.size.value);
+        ctrl.queryResult.uriList += binding.file.value + "\n";
+
+        if(binding.variant != undefined) {
+          binding.variant.value = ctrl.formatVariant(binding.variant.value);          
+        }
+        
+     
+
+
+        ctrl.totalSize += binding.size.numericalValue;
+        ctrl.numFiles++;
+      }
+
+      ctrl.totalSize = ctrl.formatUploadSize(ctrl.totalSize);
+      
+      if(!$scope.$root.$$phase) {
+        ctrl.$scope.$apply();
+      }
+
+    } catch(e) {
+      console.log(e);
+    }
+  }
+
+  /**
+   * On each digest, check whether the settings array has changed, if so create new QUERIES
+   * using the query builders
+   * @return {[type]} [description]
+   */
+  ctrl.$doCheck = function() {
+
+    if(ctrl.query != ctrl.fileQuery) {
+      ctrl.fileQuery = ctrl.query;
+      ctrl.querySparql(ctrl.fullQuery);
+    }
+  }
+}
+
+
+
+module.exports = FileBrowserController;
+
+/***/ },
+
+/***/ "./js/components/multiselect-dropdown/multiselect-dropdown.js"
+/*!********************************************************************!*\
+  !*** ./js/components/multiselect-dropdown/multiselect-dropdown.js ***!
+  \********************************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function MultiselectDropdownController($timeout, $sce) {
+
+  var ctrl = this;
+  ctrl.$sce = $sce;
+  ctrl.searchInput = "";
+
+
+  ctrl.$onInit = function () {
+
+  }
+
+  ctrl.handleKey = function (e) {
+    if (e.which === 9 || e.which === 13) {
+      ctrl.showDrop = false;
+    }
+  }
+
+  ctrl.getLabel = function (value) {
+
+    if (value == '$latest') {
+      return 'Latest Version';
+    }
+
+    if (value == '') {
+      return 'None';
+    }
+
+    return value;
+  }
+
+  ctrl.hasContent = function () {
+    return !((ctrl.input == undefined || ctrl.input.length == 0) && (ctrl.parentInput == undefined ||
+      ctrl.parentInput.length == 0));
+  }
+
+  ctrl.valueComparator = function(v1, v2) {
+    var isV1Included = ctrl.includesValue(ctrl.input, v1.value) 
+      || ctrl.includesValue(ctrl.parentInput, v1.value);
+    var isV2Included = ctrl.includesValue(ctrl.input, v2.value) 
+    || ctrl.includesValue(ctrl.parentInput, v2.value);
+
+    if(isV1Included != isV2Included) {
+      return isV1Included ? -1 : 1;
+    }
+
+    if(v1.value == "None") {
+      return -1;
+    }
+
+
+    if(v2.value == "None") {
+      return 1;
+    }
+
+    return v1.value.localeCompare(v2.value);
+  }
+  
+  
+  ctrl.mergeSettings = function (parentSettings, childSettings) {
+    var mergedSettings = {};
+
+    // Set parent settings state
+    if (parentSettings != undefined) {
+      for (var setting of parentSettings) {
+        mergedSettings[setting.value] = setting.checked;
+      }
+    }
+
+    // Override with child settings
+    for (var s in childSettings) {
+      var setting = childSettings[s];
+      mergedSettings[setting.value] = setting.checked;
+    }
+
+    return mergedSettings;
+  }
+
+  ctrl.list = function () {
+
+    var mergedSettings = ctrl.mergeSettings(ctrl.parentInput, ctrl.input);
+
+    var allEntries = Object.keys(mergedSettings).map(function (key, index) {
+
+      var label = undefined;
+
+      if (key == '') {
+        label = '<i style="color: #a3a3a3;">None</i>';
+      } else {
+        label = ctrl.getLabel(key);
+      }
+
+      if (mergedSettings[key]) {
+        return label;
+      } else {
+        return `<s>${label}</s>`;
+      }
+    });
+
+
+    var list = [];
+    var maxLength = 50;
+    var length = 0;
+    var hasOverflow = false;
+
+    for(var entry of allEntries) {
+      if(entry.length + length > maxLength) {
+        hasOverflow = true;
+        break;
+      }
+
+      length += entry.length;
+      list.push(entry);
+    }
+
+    if(hasOverflow) {
+      list.push('...');
+    }
+    
+    return ctrl.$sce.trustAsHtml(list.join(', '));
+  }
+
+
+  ctrl.hideDropDelayed = function () {
+    $timeout(function () {
+      ctrl.showDrop = false;
+    }, 120);
+  }
+
+  ctrl.includesValue = function (objs, value) {
+    if (objs == undefined) {
+      return false;
+    }
+
+    for (var obj of objs) {
+      if (obj.value == value) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.matchesSearch = function(value) {
+    return value.includes(ctrl.searchInput);
+  }
+
+  ctrl.isChecked = function (objs, value) {
+    if (objs == undefined) {
+      return false;
+    }
+
+    for (var obj of objs) {
+      if (obj.value == value) {
+        return obj.checked;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.veryStupidDelete = function (objs, value) {
+
+    let index = -1;
+    let k = 0;
+
+    if (objs == undefined) {
+      return false;
+    }
+
+    for (var obj of objs) {
+      if (obj.value == value) {
+        index = k;
+        break;
+      }
+
+      k++;
+    }
+
+    objs.splice(k, 1);
+  }
+
+  ctrl.toggle = function (value) {
+
+    if (ctrl.input == undefined) {
+      ctrl.input = [];
+    }
+
+    var isSetByParent = ctrl.parentInput != undefined && ctrl.includesValue(ctrl.parentInput, value);
+
+    if (!ctrl.includesValue(ctrl.input, value)) {
+      ctrl.input.push({ value: value, checked: !isSetByParent });
+
+    } else {
+
+      ctrl.veryStupidDelete(ctrl.input, value);
+    }
+
+    ctrl.change();
+  }
+
+
+  ctrl.change = function () {
+    $timeout(function () {
+      ctrl.onChange();
+    }, 50);;
+  }
+}
+
+
+module.exports = MultiselectDropdownController;
+
+/***/ },
+
+/***/ "./js/components/nav-search/nav-search-controller.js"
+/*!***********************************************************!*\
+  !*** ./js/components/nav-search/nav-search-controller.js ***!
+  \***********************************************************/
+(module) {
+
+
+
+// hinzufügen eines Controllers zum Modul
+function NavSearchController($http, $interval, $sce, searchManager) {
+
+  var ctrl = this;
+
+  // TODO: get search extensions from the logged in user
+
+  ctrl.searchManager = searchManager;
+  ctrl.results = [];
+
+  ctrl.formatResult = function (result) {
+    return $sce.trustAsHtml(result);
+  }
+
+  ctrl.toggleFilter = function (key) {
+    ctrl.filterActive[key] = !ctrl.filterActive[key];
+    ctrl.search();
+  }
+
+  ctrl.navigateTo = function(uri) {
+    window.location = uri;
+  }
+
+  ctrl.hideDropdown = function() {
+
+  }
+
+  ctrl.availableResourceTypes = ['Collection', 'Artifact', 'Group', 'Account', 'Version' ];
+
+  ctrl.$onInit = function () {
+
+    ctrl.searchInput = '';
+    ctrl.isSearching = false;
+    ctrl.searchCooldown = 1000;
+
+
+    ctrl.filterActive = {};
+    ctrl.filterVisible = {};
+
+
+    if (ctrl.settings == undefined) {
+      ctrl.minRelevance = 0.01;
+      ctrl.maxResults = 50;
+      ctrl.searchFilter = "";
+      ctrl.resourceTypes = null;
+      ctrl.placeholder = "Search the Databus..."
+    } else {
+      ctrl.minRelevance = ctrl.settings.minRelevance;
+      ctrl.maxResults = ctrl.settings.maxResults;
+      ctrl.searchFilter = ctrl.settings.filter;
+      ctrl.resourceTypes = ctrl.settings.resourceTypes;
+      ctrl.placeholder = ctrl.settings.placeholder;
+    }
+
+    for (var resourceType of ctrl.availableResourceTypes) {
+      ctrl.filterActive[resourceType] = false;
+      ctrl.filterVisible[resourceType] = ctrl.resourceTypes == null;
+    }
+
+    ctrl.numFilters = 0;
+
+    if (ctrl.resourceTypes != null) {
+      for (var resourceType of ctrl.resourceTypes) {
+        ctrl.filterVisible[resourceType] = true;
+        ctrl.numFilters++;
+      }
+    }
+  }
+
+  ctrl.isAnyFilterActive = function () {
+
+    for (var resourceType of ctrl.availableResourceTypes) {
+
+      if (!ctrl.filterVisible[resourceType]) {
+        continue;
+      }
+
+      if (ctrl.filterActive[resourceType]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.baseQueryFormatter = function(query) {
+    return `?query=${query}${ctrl.searchFilter}${ctrl.baseFilters}${ctrl.typeFilters}`
+  }
+
+  $interval(function () {
+
+    if (ctrl.searchChanged) {
+
+      var baseFilters = `&minRelevance=${ctrl.minRelevance}&maxResults=${ctrl.maxResults}`;
+      var typeFilters = ``;
+      var isAnyFilterActive = ctrl.isAnyFilterActive();
+
+
+      for (var resourceType of ctrl.availableResourceTypes) {
+
+        if (!ctrl.filterVisible[resourceType]) {
+          continue;
+        }
+
+        if (ctrl.filterActive[resourceType] || !isAnyFilterActive) {
+
+          if (typeFilters == ``) {
+            typeFilters = `&typeName=`;
+          }
+
+          typeFilters += ` ${resourceType}`;
+        }
+      }
+
+      ctrl.baseFilters = baseFilters;
+      ctrl.typeFilters = typeFilters;
+      ctrl.searchManager.baseAdapter.queryFormatter = ctrl.baseQueryFormatter;
+
+      ctrl.searchManager.search(ctrl.searchInput).then(function success(results) {
+        
+        for(var result of results) {
+
+          if(result.abstract != null) {
+            result.abstract = result.abstract[result.abstract.length - 1];
+          }
+        }
+        
+        ctrl.results = results;
+
+        
+        ctrl.isSearching = false;
+      }, function error(response) {
+        ctrl.isSearching = false;
+      });
+
+      ctrl.searchChanged = false;
+    };
+  }, ctrl.searchCooldown);
+
+  ctrl.search = function () {
+    ctrl.isSearching = true;
+    ctrl.searchChanged = true;
+  };
+
+};
+
+module.exports = NavSearchController;
+
+
+
+/***/ },
+
+/***/ "./js/components/override-checkbox/override-checkbox.js"
+/*!**************************************************************!*\
+  !*** ./js/components/override-checkbox/override-checkbox.js ***!
+  \**************************************************************/
+(module) {
+
+
+
+// hinzufügen eines Controllers zum Modul
+function OverrideCheckboxController() {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+    if(ctrl.id == undefined) {
+      ctrl.id = ctrl.label;
+    }
+  }
+
+  ctrl.change = function() {
+
+    if(!ctrl.readonly) {
+      ctrl.onChange();
+    }
+  }
+}
+
+module.exports = OverrideCheckboxController;
+
+/***/ },
+
+/***/ "./js/components/search/search-controller.js"
+/*!***************************************************!*\
+  !*** ./js/components/search/search-controller.js ***!
+  \***************************************************/
+(module) {
+
+
+
+// hinzufügen eines Controllers zum Modul
+function SearchController($http, $interval, $sce, searchManager) {
+
+  var ctrl = this;
+
+  // TODO: get search extensions from the logged in user
+
+  ctrl.searchManager = searchManager;
+  ctrl.results = [];
+
+  ctrl.formatResult = function (result) {
+    return $sce.trustAsHtml(result);
+  }
+
+  ctrl.toggleFilter = function (key) {
+    ctrl.filterActive[key] = !ctrl.filterActive[key];
+    ctrl.search();
+  }
+
+  ctrl.availableResourceTypes = ['Collection', 'Artifact', 'Group', 'Account', 'Version' ];
+
+  ctrl.$onInit = function () {
+
+    ctrl.searchInput = '';
+    ctrl.isSearching = false;
+    ctrl.searchCooldown = 300;
+
+    if (ctrl.settings == undefined) {
+      ctrl.minRelevance = 0.01;
+      ctrl.maxResults = 50;
+      ctrl.searchFilter = "";
+      ctrl.resourceTypes = null;
+      ctrl.placeholder = "Search the Databus..."
+    } else {
+      ctrl.minRelevance = ctrl.settings.minRelevance;
+      ctrl.maxResults = ctrl.settings.maxResults;
+      ctrl.searchFilter = ctrl.settings.filter;
+      ctrl.resourceTypes = ctrl.settings.resourceTypes;
+      ctrl.placeholder = ctrl.settings.placeholder;
+    }
+
+    ctrl.filterActive = {};
+    ctrl.filterVisible = {};
+
+    for (var resourceType of ctrl.availableResourceTypes) {
+      ctrl.filterActive[resourceType] = false;
+      ctrl.filterVisible[resourceType] = ctrl.resourceTypes == null;
+    }
+
+    ctrl.numFilters = 0;
+
+    if (ctrl.resourceTypes != null) {
+      for (var resourceType of ctrl.resourceTypes) {
+        ctrl.filterVisible[resourceType] = true;
+        ctrl.numFilters++;
+      }
+    }
+  }
+
+  ctrl.isAnyFilterActive = function () {
+
+    for (var resourceType of ctrl.availableResourceTypes) {
+
+      if (!ctrl.filterVisible[resourceType]) {
+        continue;
+      }
+
+      if (ctrl.filterActive[resourceType]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ctrl.baseQueryFormatter = function(query) {
+    return `?query=${query}${ctrl.searchFilter}${ctrl.baseFilters}${ctrl.typeFilters}`
+  }
+
+  $interval(function () {
+
+    if (ctrl.searchChanged) {
+
+      var baseFilters = `&minRelevance=${ctrl.minRelevance}&maxResults=${ctrl.maxResults}`;
+      var typeFilters = ``;
+      var isAnyFilterActive = ctrl.isAnyFilterActive();
+
+
+      for (var resourceType of ctrl.availableResourceTypes) {
+
+        if (!ctrl.filterVisible[resourceType]) {
+          continue;
+        }
+
+        if (ctrl.filterActive[resourceType] || !isAnyFilterActive) {
+
+          if (typeFilters == ``) {
+            typeFilters = `&typeName=`;
+          }
+
+          typeFilters += ` ${resourceType}`;
+        }
+      }
+
+      ctrl.baseFilters = baseFilters;
+      ctrl.typeFilters = typeFilters;
+      ctrl.searchManager.baseAdapter.queryFormatter = ctrl.baseQueryFormatter;
+
+      ctrl.searchManager.search(ctrl.searchInput).then(function success(results) {
+        ctrl.results = results;
+        ctrl.isSearching = false;
+      }, function error(response) {
+        ctrl.isSearching = false;
+      });
+
+      ctrl.searchChanged = false;
+    };
+  }, ctrl.searchCooldown);
+
+  ctrl.search = function () {
+    ctrl.isSearching = true;
+    ctrl.searchChanged = true;
+  };
+
+};
+
+module.exports = SearchController;
+
+
+
+/***/ },
+
+/***/ "./js/components/table-editor/table-editor.js"
+/*!****************************************************!*\
+  !*** ./js/components/table-editor/table-editor.js ***!
+  \****************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUtils = __webpack_require__(/*! ../../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+// hinzufügen eines Controllers zum Modul
+function TableEditorController() {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+    ctrl.selection = {};
+    ctrl.edit = {};
+
+    if(ctrl.model.groupMode == undefined) {
+      ctrl.model.groupMode = true;
+    }
+
+    ctrl.setupColumns();
+    ctrl.updateViewModel();
+  }
+
+  ctrl.getSpanWidth = function(row, cv) {
+    var span = $(`#${row}_${cv}`);
+    var width = span.width();
+
+    if(width == undefined) {
+      return 0;
+    }
+
+    return width + 22;
+  }
+
+  ctrl.editContentVariant = function(index) {
+
+    ctrl.onEditContentVariant({ index: index});
+  }
+
+  ctrl.setupColumns = function() {
+
+    ctrl.columns = [];
+    ctrl.columns.push({ title:'File', width: 400, isReadonly : true });
+
+    for(var c in ctrl.model.contentVariants) {
+      var cv = ctrl.model.contentVariants[c];
+      ctrl.columns.push({ title: cv.label, width: 120, isReadonly : false });
+    }
+
+    ctrl.columns.push({ title:'Actions', width: 120, isReadonly : true });
+    ctrl.progressWidth = (115 + 200) + 'px';
+  }
+
+  ctrl.toggleGroupMode = function() {
+    ctrl.model.groupMode = ! ctrl.model.groupMode;
+    ctrl.updateViewModel();
+  }
+
+  ctrl.onShowInput = function($event) {
+   
+  }
+
+  ctrl.deselect = function() {
+    ctrl.edit.x = undefined;
+    ctrl.edit.y = undefined;
+    ctrl.selection.x = undefined;
+    ctrl.selection.y = undefined;
+    ctrl.selection.width = 0;
+    ctrl.selection.height = 0;
+  }
+
+  ctrl.selectCell = function($event, x, y) {
+
+    
+    ctrl.edit.x = undefined;
+    ctrl.edit.y = undefined;
+
+    ctrl.edit.x = x;
+    ctrl.edit.y = y; 
+    ctrl.selection.x = x;
+    ctrl.selection.y = y;
+    ctrl.selection.width = 1;
+    ctrl.selection.height = 1;
+   
+  }
+
+  ctrl.analyzeFile = function(file) {
+    ctrl.onAnalyzeFile({ file : file });
+  }
+
+  ctrl.onChangeCv = function(file, cv) {
+
+    var index = ctrl.model.files.findIndex(f => f.uri == file.uri);
+    
+    for(var i = index + 1; i < index + file.rowspan; i++) {
+      ctrl.model.files[i].contentVariants[cv.id] = file.contentVariants[cv.id];
+    }
+    
+    ctrl.model.onChange();
+  }
+
+  ctrl.updateViewModel = function() {
+
+    for(var f in ctrl.model.files) {
+      ctrl.model.files[f].rowspan = 1;
+    }
+
+    /*
+    if(ctrl.model.groupMode) {
+
+      var i = 0;
+      var step = 1;
+
+      while(i + step < ctrl.model.files.length) {
+
+        if(ctrl.model.files[i].name == ctrl.model.files[i + step].name) {
+          // Swallow the cv setting of the next row
+          // ctrl.model.files[i].rowspan++;
+          // ctrl.model.files[i + step].rowspan = 0;
+
+          for(var c in ctrl.model.contentVariants) {
+            var cv = ctrl.model.contentVariants[c];
+            ctrl.model.files[i + step].contentVariants[cv.id] = ctrl.model.files[i].contentVariants[cv.id];
+          }
+
+          step++;
+        } else {
+          i += step;
+          step = 1;
+        }
+      }
+    }*/
+
+
+  }
+  /**
+   * Removes a specific distribution from an artifact
+   * @param {*} artifact 
+   * @param {*} file 
+   */
+  ctrl.removeFileFromArtifact = function(file, index) {
+    ctrl.onRemoveFile({ file : file, index: index});
+  }
+
+  ctrl.$doCheck = function() { 
+
+    var numFiles = DatabusUtils.objSize(ctrl.model.files);
+    if(ctrl.numFiles != numFiles) {
+      ctrl.updateViewModel();
+      ctrl.numFiles = numFiles;
+    }
+
+
+    if(ctrl.columns == undefined) {
+      return;
+    }
+
+    var columnCount = 4;
+
+    for(var c in ctrl.model.contentVariants) {
+      columnCount++;
+    }
+
+    ctrl.progressPosition = 45;
+    for(var i = 0; i < columnCount - 3; i++) {
+      ctrl.progressPosition += ctrl.columns[i].width;
+    }
+    ctrl.progressPosition = ctrl.progressPosition + 'px'
+
+    if(ctrl.columns.length == columnCount) {
+      return;
+    }
+
+    ctrl.setupColumns();
+  }
+
+  ctrl.change = function() {
+
+  }
+};
+
+module.exports = TableEditorController;
+
+/***/ },
+
+/***/ "./js/components/type-tag/type-tag.js"
+/*!********************************************!*\
+  !*** ./js/components/type-tag/type-tag.js ***!
+  \********************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+function TypeTagController() {
+
+  var ctrl = this;
+
+  ctrl.typeMap = {};
+  ctrl.typeMap["Artifact"] = "is-artifact";
+  ctrl.typeMap["Version"] = "is-version";
+  ctrl.typeMap["Group"] = "is-group";
+  ctrl.typeMap["Service"] = "is-service";
+  ctrl.typeMap["Account"] = "is-consumer";
+  ctrl.typeMap["Collection"] = "is-collection";
+  ctrl.typeMap["BlogEntry"] = "is-blog";
+  ctrl.typeMap["Databus"] = "is-version";
+  ctrl.typeMap["Sparql"] = "is-grey";
+
+  ctrl.iconMap = {};
+  ctrl.iconMap["Artifact"] = "M12,0 L1,12 l11,12 l11,-12 L12,0z"; 
+  ctrl.iconMap["Version"] = "M 14.9 1 L 12.293 1.005 L 16.507 7.18 L 16.5 23.1 L 18.5 23.1 L 18.5 6.4 L 14.9 1 Z M 10.4 1 L 1.581 1.004 L 1.584 23.13 L 15 23.1 L 15 7.7 L 10.4 1 Z M 16.8 1 L 20 5.8 L 20 23.1 L 22 23.1 L 22 4.9 L 19.3 1 L 16.8 1 Z";
+  ctrl.iconMap["Group"] = "M21.698 10.658l2.302 1.342-12.002 7-11.998-7 2.301-1.342 9.697 5.658 9.7-5.658zm-9.7 10.657l-9.697-5.658-2.301 1.343 11.998 7 12.002-7-2.302-1.342-9.7 5.657zm12.002-14.315l-12.002-7-11.998 7 11.998 7 12.002-7z";
+  ctrl.iconMap["Service"] = "M24 13.616v-3.232l-2.869-1.02c-.198-.687-.472-1.342-.811-1.955l1.308-2.751-2.285-2.285-2.751 1.307c-.613-.339-1.269-.613-1.955-.811l-1.021-2.869h-3.232l-1.021 2.869c-.686.198-1.342.471-1.955.811l-2.751-1.308-2.285 2.285 1.308 2.752c-.339.613-.614 1.268-.811 1.955l-2.869 1.02v3.232l2.869 1.02c.197.687.472 1.342.811 1.955l-1.308 2.751 2.285 2.286 2.751-1.308c.613.339 1.269.613 1.955.811l1.021 2.869h3.232l1.021-2.869c.687-.198 1.342-.472 1.955-.811l2.751 1.308 2.285-2.286-1.308-2.751c.339-.613.613-1.268.811-1.955l2.869-1.02zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z";
+  ctrl.iconMap["Account"] = "M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z";
+  ctrl.iconMap["Collection"] = "M11.499 12.03v11.971l-10.5-5.603v-11.835l10.5 5.467zm11.501 6.368l-10.501 5.602v-11.968l10.501-5.404v11.77zm-16.889-15.186l10.609 5.524-4.719 2.428-10.473-5.453 4.583-2.499zm16.362 2.563l-4.664 2.4-10.641-5.54 4.831-2.635 10.474 5.775z";
+  ctrl.iconMap["BlogEntry"] = "M21 9.662c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0 2.031c-2.287.194-5.197 1.038-7 1.794v-1.064c1.933-.721 4.598-1.54 7-1.745v1.015zm0-9.951c-2.402.204-5.068 1.024-7 1.745v1.933c1.804-.756 4.713-1.6 7-1.794v-1.884zm-18 2.843c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.031c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.031c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0 2.032c2.402.205 5.067 1.024 7 1.745v1.064c-1.803-.756-4.713-1.6-7-1.794v-1.015zm0-7.054c2.287.194 5.196 1.038 7 1.794v-1.933c-1.932-.72-4.598-1.54-7-1.744v1.883zm9-2.724c-3.063-1.671-7.776-2.755-12-2.963v17c4.289.206 8.195 1.249 12 3 3.805-1.751 7.711-2.794 12-3v-17c-4.224.208-8.937 1.292-12 2.963zm-10-.791c4.264.496 6.86 1.467 9 2.545v12.702c-2.968-1.184-5.939-1.95-9-2.271v-12.976zm20 12.975c-3.061.321-6.032 1.088-9 2.271v-12.701c2.187-1.103 4.757-2.051 9-2.544v12.974z";
+  ctrl.iconMap["Databus"] = "m 0.76949155,0.7702454 v 5.24959 l 29.33129045,-10e-4 6.27262,8.8675006 -0.002,32.0824 4.7212,-0.002 V 0.7702354 Z m 18.43511045,8.3952603 -5.68354,0.006 7.1979,10.5484003 -0.004,27.24663 4.70393,-0.002 0.0167,-28.60108 z m -9.4730904,0.002 -8.96510005,0.002 0.004,37.7960503 16.79563045,-0.004 0.001,-26.29103 z m 13.2512904,0 5.59825,8.2188903 -0.0396,29.57614 4.70307,-0.002 0.006,-31.09587 -4.55858,-6.6940403 z";
+  ctrl.iconMap["Sparql"] = "M383.476,267.343c-2.544-1.346-5.14-2.493-7.743-3.516l1.863-0.15c0,0-16.608-7.354-18.057-60.722  c-1.438-53.372,15.828-62.478,15.828-62.478l-2.48,0.109c13.045-6.69,24.265-17.267,31.669-31.216  c19.295-36.291,5.488-81.362-30.81-100.657C337.436-10.563,292.374,3.207,273.09,39.53c-7.927,14.899-10.178,31.273-7.677,46.733  l-0.851-1.306c0,0,4.373,19.365-41.032,47.55c-45.397,28.2-65.877,14.159-65.877,14.159l1.302,1.925  c-1.298-0.803-2.544-1.624-3.901-2.333c-36.306-19.294-81.38-5.509-100.667,30.804c-19.281,36.309-5.489,81.365,30.813,100.668  c27.064,14.364,58.974,10.36,81.461-7.655l-0.487,0.946c0,0,16.531-13.599,64.16,11.973c37.601,20.178,43.184,39.956,43.899,47.383  c-0.983,27.57,13.388,54.618,39.389,68.433c36.301,19.299,81.374,5.498,100.657-30.804  C433.571,331.704,419.786,286.624,383.476,267.343z M299.542,277.128c-6.018,2.129-23.203,4.487-59.389-14.921  c-39.187-21.04-45.005-38.615-45.855-43.891c0.557-6.401,0.202-12.791-0.891-19.02l0.239,0.359c0,0-3.189-17.096,41.65-44.943  c40.133-24.908,58.376-19.955,61.771-18.653c2.185,1.485,4.45,2.867,6.825,4.131c4.518,2.398,9.174,4.283,13.888,5.672  c5.52,5.257,15.678,20.178,16.733,59.413c1.078,39.535-10.533,54.779-16.865,60.168C311.122,268.399,305.022,272.34,299.542,277.128  z";
+
+  ctrl.$onInit = function() {
+    ctrl.class = ctrl.typeMap[ctrl.type];
+    ctrl.icon = ctrl.iconMap[ctrl.type];
+    ctrl.style = {};
+    ctrl.style.width = ctrl.width + "px";
+    ctrl.style.height = ctrl.height + "px";
+    ctrl.viewBox = "0 0 24 24";
+
+    if(ctrl.type == 'Databus') {
+      ctrl.viewBox = "2 0 42 40";
+    }
+
+    if(ctrl.type == 'Sparql') {
+      ctrl.viewBox = "40 0 430 420";
+    }
+  }
+}
+
+module.exports = TypeTagController;
+
+/***/ },
+
+/***/ "./js/components/uri-breadcrumbs/uri-breadcrumbs.js"
+/*!**********************************************************!*\
+  !*** ./js/components/uri-breadcrumbs/uri-breadcrumbs.js ***!
+  \**********************************************************/
+(module) {
+
+// hinzufügen eines Controllers zum Modul
+// TODO update base
+function UriBreadcrumbsController() {
+
+  var ctrl = this;
+
+  ctrl.$onInit = function() {
+
+    ctrl.entries = [];
+
+    var uri = ctrl.uri;
+
+    if(uri == undefined || uri == null) {
+      return;
+    }
+
+    var url = new URL(uri);
+
+    var extensions = url.pathname.split('/');
+    var pathSoFar = '';
+
+    if(ctrl.absolute == true) {
+      pathSoFar = url.origin;
+    }
+
+    for(var e in extensions) {
+      var extension = extensions[e];
+
+      if(extension == '') {
+        continue;
+      }
+
+      pathSoFar += "/" + extension;
+
+      ctrl.entries.push({
+        label: extension,
+        uri: pathSoFar
+      });
+    }
+  }
+}
+
+module.exports = UriBreadcrumbsController;
+
+
+
+/***/ },
+
+/***/ "./js/components/yasqe-text/yasqe-text.js"
+/*!************************************************!*\
+  !*** ./js/components/yasqe-text/yasqe-text.js ***!
+  \************************************************/
+(module) {
+
+function YasqeTextController($scope, $element) {
+
+  var ctrl = this;
+
+  ctrl.textField = $element.find('#custom-query');
+  ctrl.$scope = $scope;
+
+  ctrl.$onInit = function () {
+
+    ctrl.yasqe = new Yasqe(ctrl.textField[0], {
+      lineNumbers: true,
+      viewportMargin: Infinity,
+      readOnly: ctrl.readOnly,
+      autorefresh: true
+    });
+
+    if (ctrl.autoSize || !ctrl.hasSend) {
+      var styleSheet = document.createElement("style")
+      styleSheet.innerText = "";
+
+      if (ctrl.autoSize) {
+        styleSheet.innerText += ".CodeMirror { height: auto !important; } .CodeMirror-vscrollbar { display: none !important; } .resizeWrapper { display: none !important; }";
+      }
+
+      if (!ctrl.hasSend) {
+        styleSheet.innerText += ".yasqe_buttons { display: none !important; }";
+      }
+
+      ctrl.textField[0].appendChild(styleSheet)
+    }
+
+    ctrl.yasqe.on('query', function() {
+      ctrl.onSend();
+    });
+
+    ctrl.yasqe.on('change', function () {
+      ctrl.query = ctrl.yasqe.getValue();
+      ctrl.valid = !ctrl.yasqe.queryValid;
+
+      if (!$scope.$root.$$phase) {
+        ctrl.$scope.$apply();
+      }
+
+      ctrl.onChange();
+    });
+
+    if (ctrl.query != undefined) {
+      ctrl.yasqe.setValue(ctrl.query);
+    }
+  }
+
+  ctrl.$doCheck = function () {
+    if (ctrl.yasqe != undefined && ctrl.yasqe.getValue() != ctrl.query) {
+      if (ctrl.query != undefined) {
+        ctrl.yasqe.setValue(ctrl.query);
+      }
+    }
+
+    setTimeout(function () {
+      ctrl.yasqe.refresh();
+    }, 10);
+
+  }
+}
+
+module.exports = YasqeTextController;
+
+/***/ },
+
+/***/ "./js/components/yasr-view/yasr-view.js"
+/*!**********************************************!*\
+  !*** ./js/components/yasr-view/yasr-view.js ***!
+  \**********************************************/
+(module) {
+
+function YasrViewController($scope, $element) {
+
+  var ctrl = this;
+
+  ctrl.textField = $element.find('#custom-query');
+  ctrl.$scope = $scope;
+
+  ctrl.$onInit = function () {
+
+
+    ctrl.yasr = new Yasr(ctrl.textField[0], {
+      //lineNumbers: true,
+      //viewportMargin: Infinity,
+      //readOnly: ctrl.readOnly,
+      //autorefresh: true
+      prefixes : {
+        rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
+        dct: 'http://purl.org/dc/terms/',
+        dcat: 'http://www.w3.org/ns/dcat#',
+        databus: 'https://dataid.dbpedia.org/databus#',
+        sec: 'https://w3id.org/security#',
+        cert: 'http://www.w3.org/ns/auth/cert#',
+        foaf: 'http://xmlns.com/foaf/0.1/',
+        dbo: 'http://dbpedia.org/ontology/',
+        "databus-cv": 'https://dataid.dbpedia.org/databus-cv#'
+      }
+
+    });
+
+   
+
+
+    /*
+    if(ctrl.autoSize) {
+
+     var styleSheet = document.createElement("style")
+     styleSheet.innerText = ".CodeMirror { height: auto !important; } .CodeMirror-vscrollbar { display: none !important; } .resizeWrapper { display: none !important; }";
+     ctrl.textField[0].appendChild(styleSheet)
+    }
+
+    ctrl.yasr.on('change', function() {
+      ctrl.query = ctrl.yasqe.getValue();
+      ctrl.valid = !ctrl.yasqe.queryValid;
+
+      if(!$scope.$root.$$phase) {
+        ctrl.$scope.$apply();
+      }
+
+      ctrl.onChange();
+    });
+
+   ctrl.yasqe.setValue(ctrl.query);*/
+  }
+
+
+  ctrl.$doCheck = function () {
+    var dataString = JSON.stringify(ctrl.data);
+    if (ctrl.yasr != undefined && dataString != ctrl.currentDataString) {
+      ctrl.yasr.setResponse(ctrl.data)
+      ctrl.currentDataString = dataString;
+    }
+
+
+    /*
+    setTimeout(function() {
+      ctrl.yasqe.refresh();
+    }, 10);*/
+  }
+}
+
+module.exports = YasrViewController;
+
+/***/ },
+
+/***/ "./js/page-controller/account-controller.js"
+/*!**************************************************!*\
+  !*** ./js/page-controller/account-controller.js ***!
+  \**************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionManager = __webpack_require__(/*! ../collections/databus-collection-manager */ "./js/collections/databus-collection-manager.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+var DEFAULT_IMAGE = "https://picsum.photos/id/223/320/320";
+
+// Controller for the header section
+
+/**
+ * 
+ * @param {*} $scope 
+ * @param {*} $http 
+ * @param {*} $location 
+ * @param {DatabusCollectionManager} collectionManager 
+ * @returns 
+ */
+function AccountPageController($scope, $http, $location, collectionManager) {
+
+  $scope.collectionManager = collectionManager;
+
+
+  // Pick up the profile data
+  $scope.auth = data.auth;
+  $scope.location = $location;
+  $scope.account = data.account;
+
+  // Exit if there is no profile
+  if ($scope.account == undefined) {
+    return;
+  }
+
+
+  // Create a tab navigation object for the tab navigation with locato
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    'data', 'collections', 'settings'
+  ]);
+
+  // Make some util functions available in the template
+  $scope.utils = new DatabusWebappUtils($scope);
+  $scope.accountName = $scope.utils.getAccountName();
+  $scope.account.isOwn = $scope.accountName != null; //.auth.authenticated && $scope.auth.info.accountName == $scope.account.accountName;
+
+
+  $scope.dataSearchInput = '';
+  $scope.dataSearchSettings = {
+    minRelevance: 0.01,
+    maxResults: 10,
+    placeholder: `Search ${$scope.account.accountName}'s data...`,
+    resourceTypes: ['Group', 'Artifact'],
+    filter: `&publisher=${$scope.account.accountName}&typeNameWeight=0`
+  };
+
+  $scope.collectionSearchInput = '';
+  $scope.collectionSearchSettings = {
+    minRelevance: 0.01,
+    maxResults: 10,
+    placeholder: `Search ${$scope.account.accountName}'s collections...`,
+    resourceTypes: ['Collection'],
+    filter: `&publisher=${$scope.account.accountName}&publisherWeight=0&typeNameWeight=0`
+  };
+
+
+  // Wait for additional artifact data to arrive
+  $scope.publishedData = {};
+  $scope.publishedData.isLoading = true;
+
+  $http.get(`/app/account/content?account=${encodeURIComponent($scope.account.accountName)}`)
+    .then(function (response) {
+
+      $scope.publishedData.isLoading = false;
+      $scope.publishedData.groups = response.data.groups;
+      $scope.publishedData.artifacts = response.data.artifacts;
+
+      for (var artifact of $scope.publishedData.artifacts) {
+        artifact.group = DatabusUtils.navigateUp(artifact.uri, 1);
+        artifact.title = DatabusUtils.stringOrFallback(artifact.title, artifact.latestVersionTitle);
+        artifact.abstract = DatabusUtils.stringOrFallback(artifact.abstract, artifact.latestVersionAbstract);
+        artifact.description = DatabusUtils.stringOrFallback(artifact.description, artifact.latestVersionDescription);
+      }
+
+      for (var group of $scope.publishedData.groups) {
+        group.artifacts = $scope.publishedData.artifacts.filter(function (a) {
+          return a.group == group.uri;
+        });
+      }
+
+      // Order by latest version date
+      $scope.recentUploads = $scope.publishedData.artifacts.filter(function (v) {
+        return v.latestVersionDate != null;
+      });
+      $scope.recentUploads.sort(function (a, b) {
+        return new Date(b.latestVersionDate) - new Date(a.latestVersionDate);
+      });
+
+      $scope.recentUploads = $scope.recentUploads.slice(0, 3);
+
+      $scope.refreshFeaturedContent();
+    }, function (err) {
+      console.log(err);
+    });
+
+
+  // Wait for stats data to arrive
+  $scope.statsData = {};
+  $scope.statsData.isLoading = true;
+
+  $http.get(`/app/account/stats?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {
+    $scope.statsData.stats = response.data;
+    $scope.statsData.isLoading = false;
+  }, function (err) {
+    console.log(err);
+  });
+
+  // Wait for activity chart data to arrive
+  $scope.activityData = {};
+  $scope.activityData.isLoading = true;
+
+  $http.get(`/app/account/activity?account=${encodeURIComponent($scope.account.accountName)}`).then(function (response) {
+    $scope.activityData.entries = response.data;
+    $scope.activityData.isLoading = false;
+  }, function (err) {
+    console.log(err);
+  });
+
+  $scope.collectionsData = {};
+  $scope.collectionsData.isLoading = true;
+
+  if (!$scope.account.isOwn) {
+    $http.get(`/app/account/collections?account=${encodeURIComponent($scope.account.accountName)}`)
+      .then(function (response) {
+
+        $scope.collectionsData.collections = response.data;
+        $scope.collectionsData.isLoading = false;
+        $scope.refreshFeaturedContent();
+      }, function (err) {
+        console.log(err);
+      });
+  } else {
+
+    function onCollectionManagerInitialized() {
+      for (let guid in $scope.collectionManager.local) {
+        let collection = $scope.collectionManager.local[guid];
+
+        if(collection.accountName == undefined && collection.uri != undefined) {
+          collection.accountName = DatabusUtils.getFirstSegment(collection.uri);
+        }
+
+        if (collection.accountName == $scope.accountName) {
+          $scope.collectionList.push(collection);
+        }
+      }
+    }
+
+    $scope.collectionList = [];
+
+    if(collectionManager.isInitialized) {
+      onCollectionManagerInitialized();
+    } else {
+      collectionManager.subscribeOnInitialized(onCollectionManagerInitialized);
+    }
+  }
+
+
+
+  $scope.getImageUrl = function () {
+    if ($scope.account.imageUrl == undefined) {
+      return DEFAULT_IMAGE;
+    } else {
+      return $scope.account.imageUrl;
+    }
+  }
+
+  /**
+   * COLLECTION FUNCTIONS 
+   */
+
+  // Collection List Search
+  $scope.collectionSearch = {};
+  $scope.collectionSearch.sortVisible = false;
+  $scope.collectionSearch.sortProperty = 'title';
+  $scope.collectionSearch.sortProperties = [
+    { key: 'title', label: 'Title' },
+    { key: 'issued', label: 'Issued Date' },
+  ];
+  $scope.collectionSearch.sortReverse = false;
+  $scope.collectionSearch.toggleSort = function (value) {
+    if ($scope.collectionSearch.sortProperty == value) {
+      $scope.collectionSearch.sortReverse = !$scope.collectionSearch.sortReverse;
+    } else {
+      $scope.collectionSearch.sortProperty = value;
+    }
+  }
+
+  /**
+   * Pencil icon for edit pressed
+   * @param {*} collection 
+   */
+  $scope.onEditCollectionClicked = function (collection) {
+    $scope.collectionManager.setActive(collection.uuid);
+    window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;
+  }
+
+  /**
+   * Create new collection
+   */
+  $scope.createNewCollection = function () {
+    $scope.collectionManager.createNew($scope.accountName, 'New Collection', 'Replace this description with a description of your choice.',
+      function (collection) {
+        window.location.href = `/app/collection-editor?uuid=${collection.uuid}`;
+      });
+  }
+
+  /**
+   * Create a copy of the clicked collection
+   */
+  $scope.createCopy = function (collection) {
+    let copy = $scope.collectionManager.createCopy(collection);
+    window.location.href = `/app/collection-editor?uuid=${copy.uuid}`;
+  }
+
+
+  $scope.findFeaturedContent = function (uri) {
+
+    for (var g in $scope.publishedData.groups) {
+      var group = $scope.publishedData.groups[g];
+
+      if (uri == group.uri) {
+        return {
+          type: 'Group',
+          title: group.title,
+          uri: uri,
+          description: group.description
+        }
+      }
+
+      for (var a in group.artifacts) {
+        var artifact = group.artifacts[a];
+
+        if (uri == artifact.artifactUri) {
+          return {
+            type: 'Artifact',
+            title: artifact.title,
+            uri: uri,
+            description: artifact.description
+          }
+        }
+      }
+    }
+
+    for (var c in $scope.collectionsData.collections) {
+      var collection = $scope.collectionsData.collections[c];
+
+      if (uri == collection.uri) {
+        return {
+          type: 'Collection',
+          title: collection.title,
+          uri: uri,
+          description: collection.description
+        }
+      }
+    }
+
+  }
+
+  $scope.refreshFeaturedContent = function () {
+    if ($scope.account.featuredContent == undefined) {
+      return;
+    }
+
+    var featuredContentUris = $scope.account.featuredContent.split('\n');
+    $scope.featuredContent = [];
+
+    for (var f in featuredContentUris) {
+      var content = $scope.findFeaturedContent(featuredContentUris[f]);
+
+      if (content != undefined) {
+        $scope.featuredContent.push(content);
+      }
+    }
+  }
+
+  /** ACCOUNT MANAGEMENT FOR OWNER */
+
+}
+
+module.exports = AccountPageController;
+
+/***/ },
+
+/***/ "./js/page-controller/artifact-controller.js"
+/*!***************************************************!*\
+  !*** ./js/page-controller/artifact-controller.js ***!
+  \***************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ "./js/publish/dataid-creator.js");
+const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const QueryNode = __webpack_require__(/*! ../query-builder/query-node */ "./js/query-builder/query-node.js");
+const QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+// hinzufügen eines Controllers zum Modul
+function ArtifactPageController($scope, $http, $sce, $location, collectionManager) {
+
+  $scope.collectionManager = collectionManager;
+  $scope.authenticated = data.auth.authenticated;
+  $scope.auth = data.auth;
+  $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    'files', 'versions', 'edit'
+  ]);
+
+  $scope.versions = data.versions;
+  $scope.artifact = data.artifact;
+  $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.artifact.uri, 2));
+  $scope.canEdit = $scope.accountName != null;
+  $scope.pageTitle = DatabusUtils.stringOrFallback($scope.artifact.title,
+    DatabusUtils.uriToTitle($scope.artifact.uri));
+
+  if (data.auth.authenticated && $scope.canEdit) {
+
+    $scope.formData = {};
+    $scope.formData.group = {};
+    $scope.formData.group.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.artifact.uri));
+    $scope.formData.artifact = {};
+
+    var abstract = DatabusUtils.createAbstractFromDescription($scope.artifact.description);
+    $scope.formData.artifact.generateAbstract = abstract == $scope.artifact.abstract;
+    $scope.formData.artifact.name = $scope.artifact.name;
+    $scope.formData.artifact.title = $scope.artifact.title;
+    $scope.formData.artifact.abstract = $scope.artifact.abstract;
+    $scope.formData.artifact.description = $scope.artifact.description;
+
+    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);
+  }
+
+  $scope.fileSelector = {};
+  $scope.fileSelector.config = {};
+  $scope.fileSelector.config.authenticated = $scope.authenticated;
+  $scope.fileSelector.config.columns = [];
+  $scope.fileSelector.config.columns.push({ field: 'version', label: 'Version', width: '30%' });
+  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '30%' });
+  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '12%' });
+  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '12%' });
+
+  $scope.artifactNode = new QueryNode($scope.artifact.uri, 'databus:artifact');
+  $scope.artifactNode.setFacet('http://purl.org/dc/terms/hasVersion', '$latest', true);
+
+  $scope.groupNode = new QueryNode(DatabusUtils.navigateUp($scope.artifact.uri), 'databus:group');
+  $scope.groupNode.addChild($scope.artifactNode);
+
+  $scope.collectionWidgetSelectionData = {};
+  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;
+
+  $scope.onFacetSettingsChanged = function () {
+    $scope.fileSelector.query = QueryBuilder.build({
+      node: $scope.artifactNode,
+      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+
+    $scope.fileSelector.fullQuery = QueryBuilder.build({
+      node: $scope.artifactNode,
+      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+  }
+
+  $scope.onFacetSettingsChanged();
+
+
+  $scope.onFileSelectionChanged = function (numFiles, totalSize) {
+    $scope.fileSelector.numFiles = numFiles;
+    $scope.fileSelector.totalSize = totalSize;
+  };
+
+  $scope.formatId = function (id) {
+    return DatabusCollectionUtils.formatId(id);
+  };
+
+  $scope.addArtifactNodeToCollection = function () {
+
+    if ($scope.collectionManager.activeCollection == null) {
+      return;
+    }
+
+    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);
+    wrapper.addArtifactNode(
+      $scope.artifact.uri,
+      $scope.artifact.title,
+      $scope.fileSelector.settings);
+
+    $scope.collectionManager.saveLocally();
+    $scope.statusCode = 1;
+  };
+
+  $scope.changeCollection = function (collection) {
+    if (!$scope.authenticated) {
+      return;
+    }
+
+    $scope.collectionManager.setActive(collection.uuid);
+  }
+
+
+  $scope.hideAutofill = function () {
+    $scope.fileSelector.clearAutofill(function () {
+      $scope.$apply();
+    });
+  }
+
+
+  $scope.onDescriptionChanged = function () {
+    if ($scope.formData == null) {
+      return;
+    }
+
+    if (!$scope.formData.artifact.generateAbstract) {
+      return;
+    }
+
+    $scope.formData.artifact.abstract =
+      DatabusUtils.createAbstractFromDescription($scope.formData.artifact.description);
+  }
+
+  $scope.resetEdits = function () {
+    $scope.formData.artifact.title = $scope.artifact.title;
+    $scope.formData.artifact.abstract = $scope.artifact.abstract;
+    $scope.formData.artifact.description = $scope.artifact.description;
+  }
+
+  $scope.saveArtifact = async function () {
+
+    if ($scope.dataidCreator == null) {
+      return;
+    }
+
+    var artifactUpdate = $scope.dataidCreator.createArtifactUpdate();
+
+    var response = await $http.post(`/api/register`, artifactUpdate);
+
+    if (response.status == 200) {
+      $scope.artifact.title = $scope.formData.artifact.title;
+      $scope.artifact.abstract = $scope.formData.artifact.abstract;
+      $scope.artifact.description = $scope.formData.artifact.description;
+
+      $scope.pageTitle = DatabusUtils.stringOrFallback($scope.artifact.title,
+        DatabusUtils.uriToTitle($scope.artifact.uri));
+
+      DatabusAlert.alert($scope, true, "Artifact Saved!");
+      $scope.$apply();
+    }
+  }
+
+
+}
+
+
+module.exports = ArtifactPageController;
+
+
+/***/ },
+
+/***/ "./js/page-controller/collection-controller.js"
+/*!*****************************************************!*\
+  !*** ./js/page-controller/collection-controller.js ***!
+  \*****************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+function CollectionController($scope, $sce, $http, collectionManager) {
+
+  $scope.auth = data.auth;
+  $scope.collection = new DatabusCollectionWrapper(data.collection);
+  $scope.authenticated = data.auth.authenticated;
+  $scope.activeTab = 0;
+  $scope.collectionManager = collectionManager;
+
+  // Make some util functions available in the template
+  $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+  $scope.isOwn = false;
+
+  if ($scope.authenticated) {
+    $scope.collectionAccountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.collection.uri, 2));
+    $scope.isOwn = $scope.accountName === $scope.collectionAccountName;
+  }
+
+
+  $scope.collectionViewModel = {};
+  $scope.collectionViewModel.downloadScript = [];
+  $scope.collectionViewModel.downloadScript.length = 3;
+  $scope.collectionViewModel.downloadScript[0] = `query=$(curl -H "Accept:text/sparql" ${$scope.collection.uri})`;
+  $scope.collectionViewModel.downloadScript[1] = `files=$(curl -X POST -H "Accept: text/csv" --data-urlencode "query=\${query}" ${DATABUS_RESOURCE_BASE_URL}/sparql | tail -n +2 | sed 's/\\r$//' | sed 's/"//g')`;
+  $scope.collectionViewModel.downloadScript[2] = `while IFS= read -r file ; do wget $file; done <<< "$files"`;
+
+  $scope.collectionViewModel.downloadManual = 'To fetch the query via *curl* run \n``` shell\n'
+    + $scope.collectionViewModel.downloadScript[0] + '\n```'
+    + '\n\n\nTo download the files additionally run\n``` shell\n'
+    + $scope.collectionViewModel.downloadScript[1] + '\n'
+    + $scope.collectionViewModel.downloadScript[2]
+    + '\n```';
+
+  $scope.collectionQuery = $scope.collection.createQuery();
+  $scope.collectionManager = collectionManager;
+  $scope.collectionFiles = "";
+
+
+  DatabusCollectionUtils.getCollectionFileURLs($http, $scope.collection).then(function (result) {
+    $scope.collectionFiles = result;
+    $scope.$apply();
+  }, function (err) {
+    console.log(err);
+  });
+
+
+  if ($scope.authenticated) {
+    $scope.username = data.auth.info.username;
+  }
+
+  $scope.formatUploadSize = function (size) {
+    return DatabusUtils.formatFileSize(size);
+  };
+
+
+
+  $scope.editCopy = function () {
+    if (!$scope.collectionManager.isInitialized) {
+      return;
+    }
+
+    let localCopy = $scope.collectionManager.createCopy($scope.collection);
+
+    window.location.href = `/app/collection-editor?uuid${localCopy.uuid}`;
+  }
+
+  $scope.createSnapshot = function () {
+    if (!$scope.collectionManager.isInitialized) {
+      return;
+    }
+
+
+    let collectionSnapshot = $scope.collectionManager.createSnapshot($scope.collection);
+    window.location.href = `/app/collection-editor?uuid${collectionSnapshot.uuid}`;
+  }
+
+  
+  $scope.editCollection = function () {
+
+    if (!$scope.collectionManager.isInitialized) {
+      return;
+    }
+
+    let localCopy = $scope.collectionManager.getCollectionByUri($scope.collection.uri);
+
+    /// TODO Fabian - das sollte nicht passieren!
+    if (localCopy === null) {
+      console.log("editCollection failed. There is no collection with that uri: " + $scope.collection.uri)
+      $scope.editCopy();
+      return;
+    }
+
+    window.location.href = `/app/collection-editor?uuid=${localCopy.uuid}`;
+  }
+
+
+  $scope.downloadAsJson = function () {
+    DatabusCollectionUtils.exportToJsonFile($scope.collection);
+  }
+
+  $scope.queryToClipboard = function () {
+
+    $scope.utils.copyToClipboard($scope.collectionQuery);
+    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);
+
+  }
+
+  $scope.openInYasgui = function () {
+    window.location.href = 'https://databus.dbpedia.org/yasgui?query=' + encodeURIComponent($scope.collectionQuery);
+  }
+
+  $scope.bashScriptToClipboard = function () {
+
+    var bashscript = `${$scope.collectionViewModel.downloadScript[0]}
+${$scope.collectionViewModel.downloadScript[1]}
+${$scope.collectionViewModel.downloadScript[2]}`
+
+    $scope.utils.copyToClipboard(bashscript);
+    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);
+  }
+
+
+  $scope.filesToClipboard = function () {
+    $scope.utils.copyToClipboard($scope.collectionFiles);
+    DatabusAlert.alert($scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);
+  }
+
+}
+
+module.exports = CollectionController;
+
+
+/***/ },
+
+/***/ "./js/page-controller/collections-editor-controller.js"
+/*!*************************************************************!*\
+  !*** ./js/page-controller/collections-editor-controller.js ***!
+  \*************************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const QueryNode = __webpack_require__(/*! ../query-builder/query-node */ "./js/query-builder/query-node.js");
+const DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ "./js/utils/databus-messages.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+/**
+ * Controls the collection editor page
+ * @param {*} $scope 
+ * @param {*} $timeout 
+ * @param {*} $http 
+ * @param {*} $location 
+ * @param {*} collectionManager 
+ * @returns 
+ */
+async function CollectionsEditorController($scope, $timeout, $http, $location, collectionManager) {
+
+  $scope.auth = data.auth;
+  $scope.authenticated = data.auth.authenticated;
+  $scope.baseUrl = DATABUS_RESOURCE_BASE_URL;
+
+  // Check for proper authentication
+  if (!$scope.authenticated) {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  $scope.uuid = params.get('uuid');
+
+  // Make some util functions available in the template
+  $scope.utils = new DatabusWebappUtils($scope);
+  $scope.collectionManager = collectionManager;
+  
+  let collection = $scope.collectionManager.local[$scope.uuid];
+
+  if(collection == null) {
+    // No working copy found
+    return;
+  }
+
+  try {
+      let collection = $scope.collectionManager.local[$scope.uuid];
+      await $scope.collectionManager.tryInitialize(collection.accountName);
+    } catch(err) {
+
+    }
+
+  $scope.collectionManager.setActive($scope.uuid);
+  let activeCollection = $scope.collectionManager.activeCollection;
+  
+  $scope.accountName = $scope.utils.getOwnedAccountName(activeCollection.accountName);
+  $scope.hasAccount = $scope.accountName != undefined;
+
+  //if (!$scope.hasAccount) {
+  //  return;
+  //}
+
+  // Create a tab navigation object for the tab navigation with locato
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    'docu', 'content', 'preview', 'query', 'json', 'import'
+  ]);
+
+  // Make the manager available in the template
+ //  $scope.collectionManager.setActiveCollection($scope.guid);
+
+  // Form data object for input errors and extra fields and toggles
+  $scope.form = {};
+  $scope.form.title = {};
+  $scope.form.identifier = {};
+  $scope.form.identifier.value = "";
+  $scope.form.abstract = {};
+  $scope.form.description = {};
+  $scope.form.isHidden = $scope.collectionManager.activeCollection.issued == undefined;
+  $scope.form.collectionPublishTag = '';
+  var description = $scope.collectionManager.activeCollection.description;
+  var generatedAbstract = DatabusUtils.createAbstractFromDescription(description);
+  $scope.form.generateAbstract = $scope.collectionManager.activeCollection.abstract == generatedAbstract;
+
+  /**
+   * Triggered when the description field gets changed.
+   * Generates an abstract from the description. 
+   * @returns 
+   */
+  $scope.onDescriptionChanged = function () {
+    if ($scope.form == null) {
+      return;
+    }
+
+    if ($scope.form.generateAbstract) {
+      var description = $scope.collectionManager.activeCollection.description;
+      var generatedAbstract = DatabusUtils.createAbstractFromDescription(description);
+      $scope.collectionManager.activeCollection.abstract = generatedAbstract;
+    }
+
+    // Triggers saving to the local storage
+    $scope.onActiveCollectionChanged();
+  }
+
+
+  /**
+   * Called whenever an input field or similar gets changed. Persists the local changes in the local storage
+   */
+  $scope.onActiveCollectionChanged = function () {
+
+    let collection = $scope.collectionManager.activeCollection;
+
+    // Save to storage
+    if ($scope.collectionManager.isInitialized) {
+      $scope.collectionManager.saveLocally();
+    }
+
+    // Refresh query and json representation
+    $scope.collectionQuery = new DatabusCollectionWrapper(collection).createQuery();
+    $scope.collectionJson = $scope.getCollectionJson();
+
+    if (collection != null) {
+      collection.hasLocalChanges = $scope.collectionManager.hasLocalChanges(collection);
+    }
+
+    DatabusCollectionUtils.checkCollectionForm($scope.form, collection)
+  }
+
+  $scope.getStatusMessage = function (code) {
+    return DatabusResponse.Message[code];
+  }
+
+  $scope.getStatusSuccess = function () {
+    return $scope.statusCode >= 2000 && $scope.statusCode < 3000;
+  }
+
+  $scope.resetStatus = function () {
+    $scope.statusCode = 0;
+  }
+
+  $scope.preview = function () {
+    if ($scope.collectionManager.activeCollection.isDraft) {
+      return;
+    }
+
+    var identifier = DatabusUtils.uriToName($scope.collectionManager.activeCollection.uri);
+    window.location.href = `/${$scope.accountName}/collections/${identifier}`;
+  }
+
+  /**
+   * Saves the collection to the remote server
+   * @returns 
+   */
+  $scope.saveCollection = async function () {
+
+    try {
+      // Needs initialized CM
+      if (!$scope.collectionManager.isInitialized) {
+        return;
+      }
+
+      let collection = $scope.collectionManager.activeCollection;
+
+      // Check whether the form values are correct
+      if (!DatabusCollectionUtils.checkCollectionForm($scope.form, collection)) {
+        return;
+      }
+
+      // Look for an existing identifier
+      var identifier = undefined;
+
+      // Either take the identifier from the form (draft) or the collection uri (published)
+      if (collection.isDraft) {
+        identifier = $scope.form.identifier.value;
+      } else {
+        identifier = DatabusUtils.uriToName($scope.collectionManager.activeCollection.uri);
+      }
+
+      $scope.isSaving = true;
+      $scope.collectionManager.updateCollection($scope.accountName, identifier).then(function (response) {
+        DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_SAVED);
+        $scope.isSaving = false;
+        $scope.$apply();
+      }).catch(function (err) {
+        console.log(err);
+        DatabusAlert.alert($scope, false, DatabusMessages.CEDIT_COLLECTION_SAVE_FAILED);
+        $scope.isSaving = false;
+        $scope.$apply();
+      });
+
+    } catch (err) {
+      console.log(err);
+      DatabusAlert.alert($scope, false, err);
+    }
+  }
+
+  $scope.unpublishCollection = async function () {
+
+    if ($scope.collectionManager.activeCollection.isDraft) {
+      return;
+    }
+
+    try {
+      await $scope.collectionManager.unpublishActiveCollection();
+      DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_UNPUBLISHED);
+    } catch (err) {
+      DatabusAlert.alert($scope, false, err);
+      console.log(err);
+    }
+  }
+
+  $scope.showDeleteModal = function () {
+    $scope.deleteModalVisible = true;
+  }
+
+  $scope.hideDeleteModal = function () {
+    $scope.deleteModalVisible = false;
+  }
+
+  $scope.deleteCollection = function () {
+    if (!$scope.collectionManager.isInitialized) {
+      return;
+    }
+
+    $scope.deleteModalVisible = false;
+
+    $scope.collectionManager.deleteCollection($scope.username, $scope.form.identifier.value).then(function (response) {
+      $scope.statusCode = response.code;
+      $scope.collectionManager.selectFirstOrCreate();
+      $scope.setActiveCollection($scope.collectionManager.activeCollection);
+      $scope.$apply();
+      $timeout($scope.resetStatus, $scope.modalTime);
+    }).catch(function (err) {
+      $scope.statusCode = err.code;
+      $scope.$apply();
+      $timeout($scope.resetStatus, $scope.modalTime);
+    });
+  }
+
+
+  $scope.deleteLocally = function () {
+    if (!$scope.collectionManager.isInitialized) {
+      return;
+    }
+
+    if (!$scope.collectionManager.activeCollection.isDraft) {
+      return;
+    }
+
+    $scope.collectionManager.deleteLocally();
+    window.location.href = `/${$scope.accountName}/collections`;
+  }
+
+  $scope.downloadAsJson = function () {
+    DatabusCollectionUtils.exportToJsonFile($scope.collectionManager.activeCollection);
+  }
+
+  /**
+   * Discard local changes of the active collection and revert to the remote collection state
+   * @returns 
+   */
+  $scope.discardChanges = function () {
+
+    if (!$scope.collectionManager.activeCollection.hasLocalChanges) {
+      return;
+    }
+
+    if ($scope.collectionManager.activeCollection.isDraft) {
+      return;
+    }
+
+    $scope.collectionManager.discardLocalChanges();
+    DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_LOCAL_CHANGES_DISCARDED);
+  }
+
+
+  $scope.showLoadFromJson = function () {
+    $scope.isLoadFromJsonVisible = true;
+  }
+
+  $scope.hideLoadFromJson = function () {
+    $scope.isLoadFromJsonVisible = false;
+  }
+
+  $scope.loadFromJsonString = '';
+
+  $scope.loadFromJson = function (loadFromJsonString) {
+    try {
+
+      
+      var toLoad = JSON.parse(loadFromJsonString);
+
+      var target = $scope.collectionManager.activeCollection;
+
+      if (toLoad.label != undefined) {
+        target.title = toLoad.label;
+      }
+
+      if (toLoad.title != undefined) {
+        target.title = toLoad.title;
+      }
+
+      target.description = toLoad.description;
+      target.abstract = toLoad.abstract;
+
+      if (toLoad.content.generatedQuery != undefined || toLoad.content.customQueries) {
+        // Datbaus 1.0 Syntax detected
+        var replacedJson = loadFromJsonString
+          .replace("dataid:", "databus:")
+          .replace("http://dataid.dbpedia.org/ns/cv#",
+          DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX);
+
+        var toLoad = JSON.parse(replacedJson);
+        var databusNode = new QueryNode(DATABUS_RESOURCE_BASE_URL, null);
+
+        target.content.root = new QueryNode(null, null);
+        target.content.root.addChild(databusNode);
+
+        for(var groupNode of toLoad.content.generatedQuery.root.childNodes) {
+          databusNode.addChild(groupNode);
+        }
+
+        for(var customNode of toLoad.content.customQueries) {
+
+          var label = customNode.label;
+          var query = customNode.query;
+
+          databusNode.addChild(new QueryNode(label, query));
+        }
+
+      } else {
+        target.content = toLoad.content;
+      }
+
+      DatabusAlert.alert($scope, true, DatabusMessages.CEDIT_COLLECTION_IMPORTED);
+      $scope.isLoadFromJsonVisible = false;
+    } catch (e) {
+      $scope.statusCode = DatabusMessages.CEDIT_COLLECTION_IMPORT_FAILED;
+      console.log(e);
+    }
+  }
+
+  $scope.getCollectionJson = function () {
+    var copy = DatabusCollectionUtils.createCleanCopy($scope.collectionManager.activeCollection);
+    delete copy.uuid;
+    return copy;
+  }
+
+  $scope.onActiveCollectionChanged();
+}
+
+module.exports = CollectionsEditorController;
+
+/***/ },
+
+/***/ "./js/page-controller/frontpage-controller.js"
+/*!****************************************************!*\
+  !*** ./js/page-controller/frontpage-controller.js ***!
+  \****************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+/**
+ * Controller of the front page
+ * @param  {scope} $scope      [description]
+ * @param  {http} $http       [description]
+ * @param  {sce} $sce        [description]
+ */
+function FrontPageController($scope, $sce, $http) {
+
+  $scope.databusName = DATABUS_NAME;
+
+  $scope.auth = data.auth;
+
+  $scope.activityChartData = {};
+  $scope.activityChartData.isLoading = true;
+  $scope.utils = new DatabusWebappUtils();
+
+  $scope.searchQuery = "";
+  $scope.searchSettings = {
+    minRelevance: 20,
+    maxResults: 25,
+    placeholder: `Search the Databus...`,
+    resourceTypes: undefined,
+    filter: `&typeNameWeight=0`
+  };
+
+  $http.get(`/app/index/activity`).then(function (response) {
+    $scope.activityChartData.entries = response.data;
+    $scope.activityChartData.isLoading = false;
+  }, function (err) {
+    console.log(err);
+  });
+
+  $scope.uploadRankingData = {};
+  $scope.uploadRankingData.isLoading = true;
+
+  $http.get(`/app/index/ranking`).then(function (response) {
+    $scope.uploadRankingData.data = response.data;
+    $scope.uploadRankingData.isLoading = false;
+  }, function (err) {
+    console.log(err);
+  });
+
+  $scope.recentUploadsData = {};
+  $scope.recentUploadsData.isLoading = true;
+
+  $http.get(`/app/index/recent`).then(function (response) {
+    $scope.recentUploadsData.data = response.data;
+    $scope.recentUploadsData.isLoading = false;
+  }, function (err) {
+    console.log(err);
+  });
+
+   // Login function
+   $scope.login = function () {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  $scope.goToPage = function(path) {
+    window.location = path;
+  }
+
+  $scope.account = function() {
+    window.location = '/app/account';
+  }
+
+  for(var d in $scope.uploadRankingData) {
+    $scope.uploadRankingData[d].uploadSize = DatabusUtils.formatFileSize($scope.uploadRankingData[d].uploadSize);
+  }
+
+  for(var d in $scope.recentUploadsData) {
+    $scope.recentUploadsData[d].date = DatabusUtils.formatDate($scope.recentUploadsData[d].date);
+  }
+}
+
+
+module.exports = FrontPageController;
+
+
+/***/ },
+
+/***/ "./js/page-controller/group-controller.js"
+/*!************************************************!*\
+  !*** ./js/page-controller/group-controller.js ***!
+  \************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ "./js/publish/dataid-creator.js");
+const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const QueryNode = __webpack_require__(/*! ../query-builder/query-node */ "./js/query-builder/query-node.js");
+const QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ "./js/utils/databus-constants.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+function GroupPageController($scope, $http, $sce, $interval, $location, collectionManager) {
+
+  $scope.group = data.group;
+  // $scope.accountName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.group.uri));
+  $scope.auth = data.auth;
+
+  $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    'files', 'artifacts', 'edit'
+  ]);
+
+  $scope.dataSearchInput = "";
+  $scope.dataSearchSettings = {
+    minRelevance: 0.01,
+    maxResults: 10,
+    placeholder: `Search ${$scope.accountName}'s data...`,
+    resourceTypes: ['Artifact'],
+    filter: `&publisher=${$scope.accountName}&typeNameWeight=0&group=${$scope.group.name}`
+  };
+
+
+  $scope.group.hasData = false;
+  $scope.group.hasArtifacts = false;
+  $scope.isLoading = true;
+
+  $http({
+    method: 'GET',
+    url: `/app/group/get-artifacts?uri=${encodeURIComponent($scope.group.uri)}`
+  }).then(function successCallback(response) {
+
+    $scope.artifacts = response.data;
+
+    for (var artifact of $scope.artifacts) {
+      if (artifact.latestVersionDate != undefined) {
+        $scope.group.hasData = true;
+      }
+
+      artifact.title = DatabusUtils.stringOrFallback(artifact.title, artifact.latestVersionTitle);
+      artifact.abstract = DatabusUtils.stringOrFallback(artifact.abstract, artifact.latestVersionAbstract);
+      artifact.description = DatabusUtils.stringOrFallback(artifact.description, artifact.latestVersionDescription);
+    }
+
+    $scope.group.hasArtifacts = $scope.artifacts.length > 0;
+    $scope.isLoading = false;
+  }, function errorCallback(response) {
+    $scope.isLoading = false;
+  });
+
+
+  $scope.pageTitle = DatabusUtils.stringOrFallback($scope.group.title,
+    DatabusUtils.uriToTitle($scope.group.uri));
+
+
+  $scope.canEdit = $scope.accountName != null;
+
+  if (data.auth.authenticated && $scope.canEdit) {
+
+    var abstract = DatabusUtils.createAbstractFromDescription($scope.group.description);
+    $scope.formData = {};
+    $scope.formData.group = {};
+    $scope.formData.group.generateAbstract = abstract == $scope.group.abstract;
+    $scope.formData.group.name = $scope.group.name;
+    $scope.formData.group.title = $scope.group.title;
+    $scope.formData.group.abstract = $scope.group.abstract;
+    $scope.formData.group.description = $scope.group.description;
+
+    $scope.dataidCreator = new DataIdCreator($scope.formData,  $scope.accountName);
+  }
+
+  $scope.onDescriptionChanged = function () {
+    if ($scope.formData == null) {
+      return;
+    }
+
+    if (!$scope.formData.group.generateAbstract) {
+      return;
+    }
+
+    $scope.formData.group.abstract =
+      DatabusUtils.createAbstractFromDescription($scope.formData.group.description);
+  }
+
+  $scope.resetEdits = function () {
+    $scope.formData.group.title = $scope.group.title;
+    $scope.formData.group.abstract = $scope.group.abstract;
+    $scope.formData.group.description = $scope.group.description;
+  }
+
+  $scope.saveGroup = async function () {
+
+    if ($scope.dataidCreator == null) {
+      return;
+    }
+
+    var groupUpdate = $scope.dataidCreator.createGroupUpdate();
+
+    var relativeUri = new URL($scope.group.uri).pathname;
+    var response = await $http.post('/api/register', groupUpdate);
+
+    if (response.status == 200) {
+      $scope.group.title = $scope.formData.group.title;
+      $scope.group.abstract = $scope.formData.group.abstract;
+      $scope.group.description = $scope.formData.group.description;
+
+
+      $scope.pageTitle = DatabusUtils.stringOrFallback($scope.group.title,
+        DatabusUtils.uriToTitle($scope.group.uri));
+
+      DatabusAlert.alert($scope, true, "Group Saved!");
+      $scope.$apply();
+    }
+  }
+
+  $scope.facetsView = {};
+  $scope.facetsView.resourceUri = $scope.group.uri;
+  $scope.facetsView.settings = [];
+  $scope.facetsView.parentSettings = null;
+  $scope.authenticated = data.auth.authenticated;
+  $scope.selection = [];
+
+  $scope.input = {};
+  $scope.input.search = '';
+  $scope.searchCooldown = 500;
+  $scope.searchChanged = true;
+  $scope.searchReady = true;
+
+  $scope.fileSelector = {};
+  $scope.fileSelector.config = {};
+  $scope.fileSelector.config.authenticated = $scope.authenticated;
+  $scope.fileSelector.config.columns = [];
+  $scope.fileSelector.config.columns.push({ field: 'artifact', label: 'Artifact', width: '30%', uriToName: true });
+  $scope.fileSelector.config.columns.push({ field: 'version', label: 'Version', width: '21%' });
+  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '16%' });
+  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '9%' });
+  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '6%' });
+
+  $scope.groupNode = new QueryNode($scope.group.uri, 'databus:group');
+  $scope.groupNode.setFacet('http://purl.org/dc/terms/hasVersion', DatabusConstants.FACET_LATEST_VERSION_VALUE, true);
+
+  $scope.onFacetSettingsChanged = function () {
+    $scope.fileSelector.query = QueryBuilder.build({
+      node: $scope.groupNode,
+      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+
+    $scope.fileSelector.fullQuery = QueryBuilder.build({
+      node: $scope.groupNode,
+      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+  }
+
+  // $scope.onFacetSettingsChanged();
+
+  $scope.collectionWidgetSelectionData = {};
+  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;
+
+  $scope.onFileQueryResult = function (args) {
+    if (args == null) return;
+    $scope.collectionWidgetSelectionData.query = args.query;
+  }
+
+  $scope.collectionManager = collectionManager;
+
+  $scope.findArtifact = function (uri) {
+    return $scope.artifacts.find(function (a) { a.uri === uri; });
+  }
+
+  $scope.formatResult = function (result) {
+    return $sce.trustAsHtml(result);
+  }
+
+
+  $scope.formatLicense = function (licenseUri) {
+    var licenseName = DatabusUtils.uriToName(licenseUri);
+
+    var html = '<div class="license-icon">' + licenseName + '</div>'
+    return $sce.trustAsHtml(html);
+  }
+
+  for (var a in $scope.artifacts) {
+    $scope.artifacts[a].date = $scope.formatDate($scope.artifacts[a].date);
+    $scope.artifacts[a].licenseTag = $scope.formatLicense($scope.artifacts[a].license);
+  }
+
+  $scope.setSelectionStateAll = function (val) {
+    if (val) {
+      for (var a in $scope.artifacts) {
+        $scope.select($scope.artifacts[a]);
+      }
+    } else {
+      for (var a in $scope.artifacts) {
+        $scope.deselect($scope.artifacts[a]);
+      }
+    }
+  }
+
+  $scope.toggleSelect = function (artifact) {
+    if ($scope.isSelected(artifact)) {
+      $scope.deselect(artifact);
+    } else {
+      $scope.select(artifact);
+    }
+  }
+
+  $scope.select = function (artifact) {
+    artifact.isSelected = true;
+    $scope.selection.push(artifact.uri);
+  }
+
+  $scope.deselect = function (artifact) {
+    artifact.isSelected = false;
+    $scope.selection = $scope.selection.filter(function (value, index, arr) {
+      return value !== artifact.uri;
+    });
+  }
+
+  $scope.isSelected = function (artifact) {
+    for (var s in $scope.selection) {
+      if ($scope.selection[s] === artifact.uri) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  $scope.changeCollection = function (collection) {
+    $scope.collectionManager.setActive(collection.uuid);
+    $scope.search();
+  }
+
+  $scope.showCollectionModal = function () {
+    $('#add-to-collection-modal').addClass('is-active');
+  }
+
+  $scope.hideCollectionModal = function () {
+    $('#add-to-collection-modal').removeClass('is-active');
+  }
+
+  $scope.markdownToHtml = function (markdown) {
+
+    var converter = window.markdownit();
+    return $sce.trustAsHtml(converter.render(markdown));
+  };
+
+
+  $scope.invokeSearch = function () {
+    if ($scope.searchReady) {
+      $scope.search();
+      $scope.searchReady = false;
+    } else {
+      $scope.searchChanged = true;
+    }
+  }
+
+  $interval(function () {
+    if ($scope.searchChanged) {
+      $scope.search();
+      $scope.searchChanged = false;
+    }
+    $scope.searchReady = true;
+  }, $scope.searchCooldown);
+
+
+  $scope.addSelectionToCollection = function () {
+
+    if ($scope.collectionManager.activeCollection == null) {
+      return;
+    }
+
+    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);
+
+    for (var s in $scope.selection) {
+      var artifact = $scope.artifacts.find(function (a) { return a.uri === $scope.selection[s]; });
+      wrapper.addArtifactNode(artifact.uri, artifact.label);
+    }
+    $scope.collectionManager.saveLocally();
+    $scope.search();
+  }
+
+  $scope.updateArtifactState = function (wrapper, artifact) {
+    artifact.alreadyAdded = wrapper.hasArtifact(artifact.uri);
+    artifact.isSelected = artifact.alreadyAdded || $scope.selection.includes(artifact.uri);
+  }
+
+
+
+  $scope.search = function () {
+
+    $scope.searchResult = [];
+
+    var typeFilters = `&publisher=${$scope.accountName}&publisherWeight=0&typeName=Artifact&typeNameWeight=0&group=${$scope.group.name}&minRelevance=0.1`;
+
+    $http({
+      method: 'GET',
+      url: '/api/search?query=' + $scope.input.search + typeFilters
+    }).then(function successCallback(response) {
+
+      for (var r in response.data.docs) {
+        var result = response.data.docs[r];
+
+        for (var artifact of $scope.artifacts) {
+          if (result.id[0] == artifact.uri) {
+            $scope.searchResult.push(artifact);
+          }
+        }
+      }
+    }, function errorCallback(response) {
+    });
+  }
+}
+
+module.exports = GroupPageController;
+
+/***/ },
+
+/***/ "./js/page-controller/header-controller.js"
+/*!*************************************************!*\
+  !*** ./js/page-controller/header-controller.js ***!
+  \*************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+var DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+
+// Controller for the header section
+function HeaderController($scope, $http, collectionManager, searchManager) {
+
+  $scope.auth = data.auth;
+  $scope.authenticated = data.auth.authenticated;
+
+  $scope.utils = new DatabusWebappUtils($scope);
+  $scope.accountName = $scope.utils.getAccountName();
+  
+
+  // Check for cookie settings
+  $scope.databusCookieConsentKey = 'databus_cookie_consent';
+  let cookieConsent = window.localStorage.getItem($scope.databusCookieConsentKey);
+  $scope.showCookieDialogue = cookieConsent === undefined;
+
+  $scope.collectionManager = collectionManager;
+
+  if ($scope.authenticated) {
+
+    $scope.collectionManager.tryInitialize($scope.accountName);
+    // Collection Manager Init
+    // Initialize search manager
+    searchManager.initialize();
+  } else {
+    $scope.collectionManager.clearSession();
+  }
+
+  $scope.hideAccountMenu = function() {
+    $scope.isAccountMenuActive = false;
+  }
+
+  $scope.showAccountMenu = function() {
+    $scope.isAccountMenuActive = true;
+  }
+
+  // Finds a display name for the account
+  $scope.getAccountName = function () {
+    if ($scope.auth.info.accountName) {
+      return $scope.auth.info.accountName;
+    }
+
+    if ($scope.auth.info.oidc_email) {
+      return $scope.auth.info.oidc_email;
+    }
+
+    if ($scope.auth.info.oidc_name) {
+      return $scope.auth.info.oidc_name;
+    }
+
+    return null;
+  }
+
+  $scope.isMenuActive = false;
+  $scope.isAccountMenuActive = false;
+
+  // Coookieees
+  $scope.giveCookieConsent = function () {
+    window.localStorage.setItem($scope.databusCookieConsentKey, true);
+    $scope.showCookieDialogue = false;
+  }
+
+  // Login function
+  $scope.login = function () {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  // Logout function
+  $scope.logout = function () {
+    $scope.hideAccountMenu();
+    window.location = '/app/logout?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  // ???
+  $scope.size = function () {
+    if ($scope.collectionManager == null) {
+      return "";
+    }
+
+    var first = $scope.collectionManager.current;
+    return first != null ? first.elements.length : "";
+  }
+}
+
+module.exports = HeaderController;
+
+
+/***/ },
+
+/***/ "./js/page-controller/profile-controller.js"
+/*!**************************************************!*\
+  !*** ./js/page-controller/profile-controller.js ***!
+  \**************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const SearchAdapter = __webpack_require__(/*! ../search/search-adapter */ "./js/search/search-adapter.js");
+const DatabusMessages = __webpack_require__(/*! ../utils/databus-messages */ "./js/utils/databus-messages.js");
+const DatabusConstants = __webpack_require__(/*! ../utils/databus-constants */ "./js/utils/databus-constants.js");
+const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ "./js/utils/app-json-formatter.js");
+
+function ProfileController($scope, $http) {
+
+  $scope.account = data.account;
+  $scope.auth = data.auth;
+
+  if (data.owner != null) {
+    $scope.account.apiKeys = data.owner.apiKeys;
+  }
+  $scope.auth = data.auth;
+  $scope.preferredDatabusUsername = "";
+  $scope.createApiKeyName = ""
+  $scope.createAccountError = "";
+  $scope.createApiKeyError = "";
+  $scope.addWebIdUri = "";
+  $scope.deleteAccountName = "";
+  $scope.grantAccessUri = "";
+  $scope.adapters = SearchAdapter.list;
+  $scope.utils = new DatabusWebappUtils($scope);
+
+  $scope.accountName = $scope.utils.getAccountName();
+
+  $scope.personUri = `${DATABUS_RESOURCE_BASE_URL}/${$scope.accountName}${DatabusConstants.WEBID_THIS}`;
+
+  $scope.putProfile = function (accountName) {
+
+    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${accountName}`;
+    var accountJsonLd = AppJsonFormatter.createAccountData(
+      accountUri,
+      accountName,
+      null,
+      null);
+
+    $http.post(`/api/register`, accountJsonLd).then(function (result) {
+      window.location.reload(true);
+    }, function (err) {
+      console.log(err);
+      $scope.createAccountError = err.data;
+    });
+  }
+
+
+  if ($scope.account == undefined) {
+
+    $scope.createProfile = function () {
+
+      if ($scope.isSubmitting) {
+        return;
+      }
+
+      $scope.isSubmitting = true;
+
+      if (!$scope.auth.authenticated) {
+        return;
+      }
+
+      var accountName = $scope.preferredDatabusUsername;
+
+      if (accountName == undefined || !DatabusUtils.isValidAccountName(accountName)) {
+        $scope.createAccountError = "Enter a valid account name."
+        $scope.showAccountNameHints = true;
+        return;
+      }
+
+      $scope.showAccountNameHints = false;
+      $scope.putProfile(accountName);
+    }
+
+    return;
+  }
+
+  $scope.addApiKey = async function () {
+    // Validate the name input only
+
+    if (!$scope.createApiKeyName) {
+      DatabusAlert.alert("API key name must be provided.");
+      return;
+    }
+
+    let account = $scope.account;
+
+    const postData = {
+      accountName: account.accountName,
+      keyname: $scope.createApiKeyName
+    };
+
+    try {
+      // Send POST request to create the API key
+      let response = await $http.post('/api/account/api-key/create', postData);
+
+      if (response.data && response.data.apikey && response.data.keyname) {
+        // Append new key to the list
+        account.apiKeys.push({
+          keyname: response.data.keyname,
+          apikey: response.data.apikey
+        });
+
+        // Clear the name input field
+        $scope.createApiKeyName = '';
+
+        DatabusAlert.alert($scope, true, "API key created.");
+      } else {
+        DatabusAlert.alert($scope, false, "Failed to create API key.");
+      }
+
+    } catch (error) {
+      console.error('Error creating API key:', error);
+      const message = error.data || error.message || "Unknown error occurred.";
+      DatabusAlert.alert($scope, false, message);
+    }
+  };
+
+
+  $scope.deleteApiKey = async function (apiKey) {
+    try {
+
+      let account = $scope.account;
+      // Find index of the account using accountName
+      const index = account.apiKeys.findIndex(key => key.keyname === apiKey.keyname);
+
+      if (index === -1) {
+        throw new Error(`API key with name "${apiKey.keyname}" not found.`);
+      }
+
+      console.log("Deleting API key with keyname:", apiKey.keyname);
+
+      // Send delete request to server
+      await $http.post(`/api/account/api-key/delete`, { accountName: account.accountName, keyname: apiKey.keyname });
+      account.apiKeys.splice(index, 1);
+
+      // Show success alert
+      DatabusAlert.alert($scope, true, "API key deleted.");
+
+    } catch (err) {
+      console.error(err);
+
+
+
+      const message = err.data || err.message || "Unknown error occurred.";
+      DatabusAlert.alert($scope, false, message);
+    }
+  };
+
+  $scope.addSecretary = function (account) {
+    if (!$scope.editData.secretaries) {
+      $scope.editData.secretaries = [];
+    }
+
+    $scope.editData.secretaries.push({
+      accountName: '',
+      hasWriteAccessTo: []
+    });
+  };
+
+  $scope.removeSecretary = function (account, index) {
+    $scope.editData.secretaries.splice(index, 1);
+  };
+
+  $scope.addNamespace = function (account, secIndex) {
+    $scope.editData.secretaries[secIndex].hasWriteAccessTo.push('');
+  };
+
+  $scope.removeNamespace = function (account, secIndex, nsIndex) {
+    $scope.editData.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);
+  };
+
+
+  $scope.onCreateApiKeyNameChanged = function () {
+    var hasError = !DatabusUtils.isValidResourceLabel($scope.createApiKeyName, 3, 20);
+    $scope.createApiKeyError = hasError ? " API key name must have between 3 and 20 characters and match [A-Za-z0-9\\s_()\\.\\,\\-]*" : "";
+  }
+
+
+  $scope.removeSearchExtension = function (uri) {
+    $http.post(`/api/account/mods/search-extensions/remove?uri=${encodeURIComponent(uri)}`)
+      .then(function (result) {
+        console.log(result);
+        DatabusAlert.alert($scope, true, result.data);
+
+        $scope.account.searchExtensions = $scope.account.searchExtensions.filter(function (e) {
+          return e.endpointUri != uri;
+        });
+
+      }, function (err) {
+        console.log(err);
+        DatabusAlert.alert($scope, false, err.data);
+      });
+  }
+
+  $scope.addSearchExtension = function () {
+    var uri = $scope.modsSettings.searchExtensionURI;
+    var adapter = $scope.modsSettings.searchExtensionAdapter.name;
+
+    $http.post(`/api/account/mods/search-extensions/add?uri=${encodeURIComponent(uri)}&adapter=${adapter}`)
+      .then(function (result) {
+        console.log(result);
+        DatabusAlert.alert($scope, true, result.data);
+        $scope.account.searchExtensions.push({
+          endpointUri: uri,
+          adapter: adapter
+        });
+      }, function (err) {
+        console.log(err);
+        DatabusAlert.alert($scope, false, err.data);
+      });
+  }
+
+  $scope.grantAccess = function () {
+    $http.post(`/api/account/access/grant?uri=${encodeURIComponent($scope.grantAccessUri)}`).then(function (result) {
+      $scope.account.authorizedAccounts.push($scope.grantAccessUri);
+    }, function (err) {
+      console.log(err);
+      $scope.grantAccessError = err.data;
+    });
+  }
+
+  $scope.revokeAccess = function (uri) {
+    $http.post(`/api/account/access/revoke?uri=${encodeURIComponent(uri)}`).then(function (result) {
+      $scope.account.authorizedAccounts = $scope.account.webIds.filter(function (value, index, arr) {
+        return value != uri;
+      });
+    }, function (err) {
+      console.log(err);
+      $scope.grantAccessError = err.data;
+    });
+  }
+
+  $scope.connectWebid = function () {
+
+    $http.post(`/api/account/webid/add?uri=${encodeURIComponent($scope.addWebIdUri)}`).then(function (result) {
+      $scope.account.webIds.push($scope.addWebIdUri);
+      DatabusAlert.alert($scope, true, DatabusMessages.ACCOUNT_WEBID_LINKED);
+
+    }, function (err) {
+      console.log(err);
+      $scope.addWebIdError = err.data;
+    });
+  }
+
+  $scope.removeWebId = function (webIdToRemove) {
+
+    $http.post(`/api/account/webid/remove?uri=${encodeURIComponent(webIdToRemove)}`).then(function (result) {
+
+      $scope.account.webIds = $scope.account.webIds.filter(function (value, index, arr) {
+        return value != webIdToRemove;
+      });
+
+    }, function (err) {
+      console.log(err);
+      $scope.addWebIdError = err.data;
+    });
+  }
+
+
+  $scope.deleteAccount = async function () {
+    let account = $scope.account;
+    let name = $scope.deleteAccountName;
+
+    try {
+      let response = await $http.post(`/api/account/delete`, { accountName: name });
+
+      window.location = `/app/user`;
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
+
+  }
+
+  $scope.updateAccount = async function () {
+
+    if (!$scope.auth.authenticated) {
+      return;
+    }
+
+    let account = {};
+    account.uri = $scope.editData.uri;
+
+    account.accountName = $scope.editData.accountName;
+    account.label = $scope.editData.label;
+    account.status = $scope.editData.about;
+    account.imageUrl = $scope.editData.imageUrl;
+    account.secretaries = $scope.editData.secretaries;
+
+
+    try {
+      await $http.post(`/api/account/update`, account);
+      DatabusAlert.alert($scope, true, "Account saved.");
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
+  }
+
+
+  // We have profile data in $scope.account!
+
+  if (!$scope.account.isOwn) {
+    return;
+  }
+
+  $scope.modsSettings = {}
+  $scope.modsSettings.searchExtensionURI = "";
+  $scope.modsSettings.searchExtensionAdapter = $scope.adapters[0];
+
+
+  $scope.editData = DatabusUtils.createCleanCopy($scope.account);
+
+  $scope.resetEdits = function () {
+    $scope.editData = DatabusUtils.createCleanCopy($scope.account);
+  }
+
+}
+
+module.exports = ProfileController;
+
+/***/ },
+
+/***/ "./js/page-controller/publish-wizard-controller.js"
+/*!*********************************************************!*\
+  !*** ./js/page-controller/publish-wizard-controller.js ***!
+  \*********************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const PublishSession = __webpack_require__(/*! ../publish/publish-session */ "./js/publish/publish-session.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+// Controller for the header section
+async function PublishWizardController($scope, $http, $interval, focus, $q, $location) {
+
+  $scope.login = function () {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  $scope.utils = new DatabusWebappUtils($scope);
+
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    '', 'group', 'artifact', 'version'
+  ]);
+
+
+  $scope.createAccount = function () {
+    window.location = '/app/user';
+  }
+
+  // Login function
+  $scope.login = function () {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  $scope.authenticated = data.auth.authenticated;
+  $scope.loadRequestCount = 0;
+  $scope.texts = data.texts;
+
+  $scope.nerdMode = {};
+  $scope.nerdMode.enabled = false;
+  $scope.nerdMode.customJson = "";
+  $scope.nerdMode.logLevelOptions = ['error', 'info', 'debug'];
+  $scope.nerdMode.logLevel = 'error';
+
+  // controller does not work without authentication
+  if (!$scope.authenticated) {
+    return;
+  }
+
+  let accounts = data.auth.info.accounts;
+  $scope.hasAccount = accounts != undefined && accounts.length > 0;
+
+  $scope.accounts = [];
+
+  for(let account of accounts) {
+    $scope.accounts.push({
+      accountName: account.accountName,
+      apiKeys: account.apiKeys
+    });
+  }
+
+  if (!$scope.hasAccount) {
+    return;
+  }
+
+  // $scope.session = await PublishSession.createOrResume($http, data.auth.sub, $scope.accounts);
+
+  $scope.session = new PublishSession($http, $interval, $scope.accounts, $scope.apiKeys);
+
+}
+  /**
+   * Fetches existing groups and artifacts
+  
+  $scope.getContentForAccount = async function (accountName) {
+
+    $scope.isAccountDataLoading = true;
+    var uri = `/app/account/content?account=${encodeURIComponent(accountName)}`;
+    var response = await $http.get(uri);
+    $scope.isAccountDataLoading = false;
+
+    // Put account artifacts, groups and name in one object
+    var accountData = response.data;
+    accountData.accountName = accountName;
+
+    accountData.publisherUris = [];
+    for (var p of data.publisherData) {
+      accountData.publisherUris.push(p.publisherUri);
+    }
+
+    $scope.session = new PublishSession($http);
+
+    /*
+    $scope.$watch('session', function () {
+      $scope.session.onChange();
+    }, true);
+
+    $scope.$apply();
+   
+  }
+
+  // $scope.getContentForAccount(data.auth.info.accounts[0]);
+
+  /**
+   * LICENSES
+  
+
+  
+
+  $scope.addFile = function (input) {
+
+    var session = $scope.session;
+
+    if (input == undefined || input.length == 0) {
+      return;
+    }
+
+    $scope.loadRequestCount++;
+
+    $http.get('/app/publish-wizard/fetch-file?url=' + encodeURIComponent(input)).then(function (response) {
+
+      $scope.loadRequestCount--;
+      if (response.data == null || response.data == "" || response.status != 200) {
+        return;
+      }
+
+      session.addFile(response.data);
+
+    }, function (err) { });
+  }
+
+  $scope.objSize = function (obj) {
+    return DatabusUtils.objSize(obj);
+  }
+
+  $scope.removeFile = function (fileGroup) {
+    var files = $scope.session.formData.version.files;
+    files.splice(files.findIndex(f => f.uri == fileGroup.uri), 1);
+    $scope.session.formData.version.isConfigDirty = true;
+  }
+
+  $scope.hasError = function (errorList, error) {
+    return errorList.includes(error);
+  }
+
+  // Fetch links using the fetch-links API of the Databus
+  $scope.fetchFiles = function (parentUri) {
+
+    $http.get('/app/publish-wizard/fetch-resource-page?url=' + encodeURIComponent(parentUri)).then(function (response) {
+      for (var i in response.data) {
+        var uri = response.data[i];
+        $scope.addFile(uri);
+      }
+    }, function (err) {
+    });
+  }
+
+  $scope.addFiles = function (input) {
+    var lines = input.split('\n');
+
+    for (var line of lines) {
+      if (line != undefined && line.length > 0) {
+        $scope.addFile(line);
+      }
+    }
+  }
+
+  $scope.createTractate = function () {
+    $scope.creatingTractate = true;
+    $http.post('/api/tractate/v1/canonicalize', $scope.session.inputs.dataid).then(function (response) {
+      $scope.session.formData.signature.tractate = response.data;
+      $scope.creatingTractate = false;
+    }, function (err) {
+      $scope.creatingTractate = false;
+      console.log(err);
+    });
+  }
+
+
+  $scope.customPublish = async function () {
+    var options = {}
+    options.headers = {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json',
+    }
+
+
+    $scope.isPublishing = true;
+    $http.post(`/api/publish?fetch-file-properties=true&log-level=${$scope.nerdMode.logLevel}`, $scope.nerdMode.customJson, options)
+      .then(function (response) {
+        $scope.publishLog = response.data.log;
+        $scope.isPublishing = false;
+      }, function (err) {
+        $scope.publishLog = err.data.log;
+        $scope.isPublishing = false;
+        console.log(err);
+      });
+  }
+
+
+  $scope.publish = async function () {
+    var options = {}
+    options.headers = {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json',
+    }
+
+    $scope.isPublishing = true;
+    $http.post('/api/publish?fetch-file-properties=true&log-level=info', $scope.session.inputs.all, options)
+      .then(function (response) {
+        $scope.publishLog = response.data.log;
+        $scope.isPublishing = false;
+      }, function (err) {
+        $scope.publishLog = err.data.log;
+        $scope.isPublishing = false;
+        console.log(err);
+      });
+  } */
+
+
+
+
+module.exports = PublishWizardController;
+
+/***/ },
+
+/***/ "./js/page-controller/sparql-editor-controller.js"
+/*!********************************************************!*\
+  !*** ./js/page-controller/sparql-editor-controller.js ***!
+  \********************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+var DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const SparqlExamples = __webpack_require__(/*! ../utils/sparql-examples */ "./js/utils/sparql-examples.js");
+
+// Controller for the header section
+function SparqlEditorController($scope, $http, $location) {
+
+
+  $scope.storageKey = `${DATABUS_RESOURCE_BASE_URL}/sparql`;
+
+  $scope.auth = data.auth;
+  $scope.authenticated = data.auth.authenticated;
+  $scope.utils = new DatabusWebappUtils($scope);
+
+
+  $scope.editor = {};
+
+
+
+  $scope.$on('$locationChangeSuccess', function () {
+    var hash = $location.hash();
+
+    if (hash && hash.startsWith('query')) {
+      var tabIndex = parseInt(hash.replace('query', '')) - 1;
+
+      // Only change if the tab exists and is different from current
+      if (!isNaN(tabIndex) &&
+        tabIndex >= 0 &&
+        tabIndex < $scope.queryData.pages.length &&
+        $scope.queryData.activeTab !== tabIndex) {
+        $scope.goToTab(tabIndex);
+        $scope.$applyAsync();
+      }
+    }
+  });
+
+  $scope.editor.exampleQueries = {};
+  $scope.editor.exampleQueries.label = "Databus Example Queries";
+  $scope.editor.exampleQueries.children = [];
+
+  var simpleQueries = {
+    label: "Simple Queries",
+    children: []
+  };
+
+  var intermediateQueries = {
+    label: "Intermediate Queries",
+    children: []
+  };
+
+  simpleQueries.children.push({
+    label: "Select all Databus Groups",
+    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX sec: <https://w3id.org/security#>
+PREFIX cert: <http://www.w3.org/ns/auth/cert#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT * WHERE {
+  ?s a databus:Group .
+}`
+  });
+
+  simpleQueries.children.push({
+    label: "Select all Databus Artifacts",
+    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX sec: <https://w3id.org/security#>
+PREFIX cert: <http://www.w3.org/ns/auth/cert#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT * WHERE {
+  ?s a databus:Artifact .
+}`
+  });
+
+  simpleQueries.children.push({
+    label: "Select all Databus Versions",
+    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX sec: <https://w3id.org/security#>
+PREFIX cert: <http://www.w3.org/ns/auth/cert#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT * WHERE {
+  ?s a databus:Version .
+}`
+  });
+
+  intermediateQueries.children.push({
+    label: "Latest Version of Artifact",
+    query: `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX sec: <https://w3id.org/security#>
+PREFIX cert: <http://www.w3.org/ns/auth/cert#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX databus-cv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?version WHERE
+{
+  GRAPH ?g
+  {
+    ?version databus:artifact <INSERT_ARTIFACT_URI_HERE> .
+    ?version dct:hasVersion ?v . 
+  }
+} 
+ORDER BY DESC (STR(?v)) LIMIT 1`
+  });
+
+
+  $scope.editor.exampleQueries.children.push(simpleQueries);
+  $scope.editor.exampleQueries.children.push(intermediateQueries);
+
+  $scope.onExampleQueryClicked = function (node) {
+
+    if (node.query == null) {
+      return;
+    }
+
+    $scope.createQueryPage();
+
+    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
+
+    queryPage.query = node.query;
+    $scope.saveToStorage();
+  }
+
+  $scope.goToTab = function (index) {
+    $scope.queryData.activeTab = index;
+    $scope.saveToStorage();
+
+    $location.hash(`query${index + 1}`);
+
+
+    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
+
+    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {
+      $scope.editor.result = $scope.resultCache[queryPage.name];
+    } else {
+      $scope.editor.result = null;
+    }
+  }
+
+  $scope.saveToStorage = function () {
+    localStorage.setItem($scope.storageKey, JSON.stringify($scope.queryData));
+  }
+
+  $scope.deleteQueryPage = function ($index) {
+
+    // Delete result cache entry
+    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
+    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {
+      delete $scope.resultCache[queryPage.name];
+      $scope.saveResultCache();
+    }
+
+    $scope.queryData.pages.splice($index, 1);
+
+    if ($scope.queryData.pages.length == 0) {
+      $scope.initialize();
+    }
+    else {
+      var validTab = Math.min($scope.queryData.activeTab, $scope.queryData.pages.length - 1);
+
+      if (validTab != $scope.queryData.activeTab) {
+        $scope.goToTab(validTab);
+      }
+    }
+  }
+
+  $scope.createQueryPage = function () {
+
+    var queryName = null;
+    var queryNameIndex = 1;
+
+    // find unoccupied name
+    while (queryNameIndex < 100000) {
+
+      // Create a candidate
+      var hasName = true;
+      queryName = `Query ${queryNameIndex}`;
+
+      // Check if already in use
+      for (var queryPage of $scope.queryData.pages) {
+        if (queryPage.name == queryName) {
+          hasName = false;
+        }
+      }
+
+      // Found name, stop searching.
+      if (hasName) {
+        break;
+      }
+
+      queryNameIndex++;
+    }
+
+    $scope.queryData.pages.push({
+      name: queryName,
+      query: simpleQueries.children[0].query,
+      endpoint: defaultEndpoint
+    });
+
+    $scope.goToTab($scope.queryData.pages.length - 1);
+
+    $scope.saveToStorage();
+  }
+
+  $scope.saveResultCache = function () {
+    sessionStorage.setItem($scope.storageKey, JSON.stringify($scope.resultCache));
+  }
+
+  $scope.initialize = function () {
+    $scope.queryData = {};
+    $scope.queryData.activeTab = 0;
+    $scope.queryData.pages = [];
+    $scope.createQueryPage();
+
+    $scope.resultCache = {};
+    $scope.saveResultCache();
+  }
+
+  var defaultEndpoint = `${DATABUS_RESOURCE_BASE_URL}/sparql`;
+
+  var queryDataString = localStorage.getItem($scope.storageKey);
+  var resultCacheString = sessionStorage.getItem($scope.storageKey);
+
+
+  $scope.queryData = null;
+  $scope.resultCache = JSON.parse(resultCacheString);
+
+  try {
+    $scope.queryData = JSON.parse(queryDataString);
+
+    if ($scope.queryData == null || $scope.queryData.pages.length == 0) {
+      $scope.initialize();
+    }
+
+    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
+
+    if ($scope.resultCache != null && $scope.resultCache[queryPage.name] != null) {
+      $scope.editor.result = $scope.resultCache[queryPage.name];
+    } else {
+      $scope.editor.result = null;
+    }
+
+  }
+
+
+  catch (e) {
+    // Could not parse query data, create new!
+    $scope.initialize();
+  }
+
+  var initialHash = $location.hash();
+  if (initialHash && initialHash.startsWith('query')) {
+    var initialTab = parseInt(initialHash.replace('query', '')) - 1;
+    if (!isNaN(initialTab) &&
+      initialTab >= 0 &&
+      initialTab < $scope.queryData.pages.length) {
+      $scope.queryData.activeTab = initialTab;
+    }
+  }
+
+  $scope.editor.query = $scope.editor.exampleQueries[0];
+
+  $scope.send = async function () {
+
+    var queryPage = $scope.queryData.pages[$scope.queryData.activeTab];
+
+    try {
+
+      var res = await $http({
+        method: 'POST',
+        url: queryPage.endpoint,
+        data: queryPage.query,
+        headers: {
+          'Content-Type': 'application/sparql-query',
+          'Accept': 'application/sparql-results+json'
+        }
+      });
+
+      if ($scope.resultCache == null) {
+        $scope.resultCache = {};
+      }
+
+      $scope.resultCache[queryPage.name] = res.data;
+      $scope.saveResultCache();
+
+      delete queryPage.err;
+      $scope.editor.result = res.data;
+    } catch (err) {
+      console.log(err);
+      queryPage.err = err;
+    }
+
+    $scope.$apply();
+  }
+
+  $scope.insertExampleQuery = function (query) {
+    $scope.editor.query = query;
+  }
+
+}
+
+module.exports = SparqlEditorController;
+
+
+/***/ },
+
+/***/ "./js/page-controller/user-settings-controller.js"
+/*!********************************************************!*\
+  !*** ./js/page-controller/user-settings-controller.js ***!
+  \********************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ "./js/utils/jsonld-utils.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+
+function UserSettingsController($scope, $http, $sce, $location) {
+  $scope.auth = data.auth;
+  $scope.accounts = data.accounts;
+
+  $scope.inputs = {};
+
+  $scope.inputs.newAccountLabel = "";
+  $scope.inputs.newAccountName = "";
+  $scope.inputs.newApiKeyName = "";
+
+  $scope.tabNavigation = new TabNavigation($scope, $location, [
+    ''
+  ], function (index) {
+    $scope.activeAccount = $scope.accounts[index - 1];
+  });
+
+  $scope.$watchCollection('accounts', function (newAccounts) {
+    const accountNames = newAccounts.map(a => a.accountName);
+    $scope.tabNavigation.tabKeys = [''].concat(accountNames);
+
+    const currentHash = $location.hash();
+
+    $scope.tabNavigation.onLocationHashChanged(currentHash, currentHash)
+
+    if (currentHash && !$scope.tabNavigation.tabKeys.includes(currentHash)) {
+      $location.hash('');
+    }
+  });
+
+  // Iterate over each account and load its data
+  $scope.accounts.forEach(function (account) {
+    // Set loading state
+    account.loading = true;
+
+    var requestParams = {
+      method: 'GET',
+      url: '/' + encodeURIComponent(account.accountName),
+      headers: {
+        'Accept': 'application/ld+json',
+        'X-Jsonld-Formatting': 'flatten'
+      }
+    }
+
+    // Perform HTTP GET request to fetch additional data
+    $http(requestParams)
+      .then(function (response) {
+        // Set loading to false when data is received
+        account.loading = false;
+
+        // Store additional info (stub)
+        var graphs = response.data;
+        var personGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSON);
+
+        account.uri = `${DATABUS_RESOURCE_BASE_URL}/${account.accountName}`;
+        account.label =  JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_NAME);
+        account.status = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_STATUS);
+        account.imageUrl = JsonldUtils.getProperty(personGraph, DatabusUris.FOAF_IMG);
+        account.secretaries = [];
+
+        let accountGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ACCOUNT);
+        let secretaryIds = JsonldUtils.getRefArrayProperty(accountGraph, DatabusUris.DATABUS_SECRETARY_PROPERTY);
+
+        for (let secretaryId of secretaryIds) {
+          let secretaryGraph = JsonldUtils.getGraphById(graphs, secretaryId);
+
+          let secretary = {};
+          secretary.accountName = DatabusUtils.uriToName(JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY));
+          secretary.hasWriteAccessTo = JsonldUtils.getRefArrayProperty(secretaryGraph, DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO);
+
+          account.secretaries.push(secretary);
+        }
+
+      })
+      .catch(function (error) {
+        // Handle error and set loading to false
+        account.loading = false;
+        console.error('Failed to load account data for', account.name, error);
+      });
+  });
+
+  // Button click handler to add account
+  $scope.addAccount = async function () {
+
+    try {
+
+      await $http.post(`/api/account/create`, {
+        name: $scope.inputs.newAccountName,
+        label: $scope.inputs.newAccountLabel
+      });
+
+      $scope.accounts.push({
+        label: $scope.inputs.newAccountLabel,
+        accountName: $scope.inputs.newAccountName,
+        uri: `${DATABUS_RESOURCE_BASE_URL}/${$scope.inputs.newAccountName}`
+      });
+
+      DatabusAlert.alert($scope, true, "Account created.");
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
+  };
+
+  // Button click handler to save account
+  $scope.saveAccount = async function (account) {
+    try {
+      await $http.post(`/api/account/update`, account);
+      DatabusAlert.alert($scope, true, "Account saved.");
+
+    } catch (err) {
+      console.error(err);
+      DatabusAlert.alert($scope, false, err.data);
+    }
+
+  };
+
+  // Button click handler to delete account
+  $scope.deleteAccount = async function (account) {
+    try {
+      // Find index of the account using accountName
+      const index = $scope.accounts.findIndex(acc => acc.accountName === account.accountName);
+
+      if (index === -1) {
+        throw new Error(`Account with name "${account.accountName}" not found.`);
+      }
+
+      console.log("Deleting account with accountName:", account.accountName);
+
+      // Send delete request to server
+      await $http.post(`/api/account/delete`, account);
+
+      // Show success alert
+      DatabusAlert.alert($scope, true, "Account deleted.");
+
+      // Remove account from local array
+      $scope.accounts.splice(index, 1);
+
+    } catch (err) {
+      console.error(err);
+      const message = err.data || err.message || "Unknown error occurred.";
+      DatabusAlert.alert($scope, false, message);
+    }
+  };
+
+
+
+
+  $scope.goToUserSettings = function (accountName) {
+    window.location.href = '/' + encodeURIComponent(accountName) + '#settings';
+  }
+
+  $scope.addWriteAccessUrl = function (account) {
+    account.writeAccess.push('');
+  };
+
+  $scope.removeWriteAccessUrl = function (account, index) {
+    account.writeAccess.splice(index, 1);
+  };
+
+  $scope.addApiKey = async function (account) {
+    // Validate the name input only
+
+    if (!$scope.inputs.newApiKeyName) {
+      DatabusAlert.alert("API key name must be provided.");
+      return;
+    }
+
+    const postData = {
+      accountName: account.accountName,
+      name: $scope.inputs.newApiKeyName
+    };
+
+    try {
+      // Send POST request to create the API key
+      let response = await $http.post('/api/account/api-key/create', postData);
+
+      if (response.data && response.data.apikey && response.data.keyname) {
+        // Append new key to the list
+        account.apiKeys.push({
+          keyname: response.data.keyname,
+          apikey: response.data.apikey
+        });
+
+        // Clear the name input field
+        $scope.inputs.newApiKeyName = '';
+
+        DatabusAlert.alert($scope, true, "API key created.");
+      } else {
+        DatabusAlert.alert($scope, false, "Failed to create API key.");
+      }
+
+    } catch (error) {
+      console.error('Error creating API key:', error);
+      const message = err.data || err.message || "Unknown error occurred.";
+      DatabusAlert.alert($scope, false, message);
+    }
+  };
+
+
+  $scope.deleteApiKey = async function (account, apiKey) {
+    try {
+      // Find index of the account using accountName
+      const index = account.apiKeys.findIndex(key => key.keyname === apiKey.keyname);
+
+      if (index === -1) {
+        throw new Error(`API key with name "${apiKey.keyname}" not found.`);
+      }
+
+      console.log("Deleting API key with keyname:", apiKey.keyname);
+
+      // Send delete request to server
+      await $http.post(`/api/account/api-key/delete`, { accountName: account.accountName, keyname: apiKey.keyname });
+      account.apiKeys.splice(index, 1);
+
+      // Show success alert
+      DatabusAlert.alert($scope, true, "API key deleted.");
+
+    } catch (err) {
+      console.error(err);
+
+
+
+      const message = err.data || err.message || "Unknown error occurred.";
+      DatabusAlert.alert($scope, false, message);
+    }
+  };
+
+  $scope.addSecretary = function (account) {
+    if (!account.secretaries) {
+      account.secretaries = [];
+    }
+
+    account.secretaries.push({
+      accountName: '',
+      hasWriteAccessTo: []
+    });
+  };
+
+  $scope.removeSecretary = function (account, index) {
+    account.secretaries.splice(index, 1);
+  };
+
+  $scope.addNamespace = function (account, secIndex) {
+    account.secretaries[secIndex].hasWriteAccessTo.push('');
+  };
+
+  $scope.removeNamespace = function (account, secIndex, nsIndex) {
+    account.secretaries[secIndex].hasWriteAccessTo.splice(nsIndex, 1);
+  };
+}
+
+module.exports = UserSettingsController;
+
+/***/ },
+
+/***/ "./js/page-controller/version-controller.js"
+/*!**************************************************!*\
+  !*** ./js/page-controller/version-controller.js ***!
+  \**************************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusWebappUtils = __webpack_require__(/*! ../utils/databus-webapp-utils */ "./js/utils/databus-webapp-utils.js");
+const JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ "./js/utils/jsonld-utils.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const QueryNode = __webpack_require__(/*! ../query-builder/query-node */ "./js/query-builder/query-node.js");
+const TabNavigation = __webpack_require__(/*! ../utils/tab-navigation */ "./js/utils/tab-navigation.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DataIdCreator = __webpack_require__(/*! ../publish/dataid-creator */ "./js/publish/dataid-creator.js");
+const QueryTemplates = __webpack_require__(/*! ../query-builder/query-templates */ "./js/query-builder/query-templates.js");
+const DatabusCollectionWrapper = __webpack_require__(/*! ../collections/databus-collection-wrapper */ "./js/collections/databus-collection-wrapper.js");
+const QueryBuilder = __webpack_require__(/*! ../query-builder/query-builder */ "./js/query-builder/query-builder.js");
+const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ "./js/utils/app-json-formatter.js");
+
+function VersionPageController($scope, $http, $sce, $location, collectionManager) {
+
+  $scope.navigation = new TabNavigation($scope, $location, [
+    'files', 'mods', 'edit'
+  ]);
+
+  $scope.auth = data.auth;
+  $scope.utils = new DatabusWebappUtils($scope, $sce);
+  $scope.accountName = $scope.utils.getAccountName();
+
+  $scope.collectionManager = collectionManager;
+  $scope.authenticated = data.auth.authenticated;
+  $scope.versionGraph = data.graph;
+  $scope.version = AppJsonFormatter.formatVersionData(data.graph);
+
+  $scope.queryResult = {};
+  $scope.addToCollectionQuery = "";
+  $scope.collectionModalVisible = false;
+
+  $scope.publisherName = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 3));
+  $scope.canEdit = $scope.accountName != null;
+
+  if (data.auth.authenticated && $scope.canEdit) {
+
+    $scope.licenseQuery = "";
+    $scope.filterLicenses = function (licenseQuery) {
+
+      if (data.licenseData == null) {
+        return;
+      }
+
+      // billo-suche mit lowercase und tokenization 
+      var tokens = licenseQuery.toLowerCase().split(' ');
+      $scope.filteredLicenseList = data.licenseData.results.bindings.filter(function (l) {
+        for (var token of tokens) {
+          if (!l.title.value.toLowerCase().includes(token)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+    }
+
+    $scope.filterLicenses("");
+
+    $scope.formData = {};
+
+    $scope.formData.group = {};
+    $scope.formData.group.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 2));
+
+    $scope.formData.artifact = {};
+    $scope.formData.artifact.name = DatabusUtils.uriToName(DatabusUtils.navigateUp($scope.version.uri, 1));
+
+    var abstract = DatabusUtils.createAbstractFromDescription($scope.version.description);
+
+    $scope.formData.version = {};
+    $scope.formData.version.generateAbstract = abstract == $scope.version.abstract;
+    $scope.formData.version.name = $scope.version.name;
+    $scope.formData.version.title = $scope.version.title;
+    $scope.formData.version.abstract = $scope.version.abstract;
+    $scope.formData.version.description = $scope.version.description;
+    $scope.formData.version.license = $scope.version.license;
+    $scope.formData.version.attribution = $scope.version.attribution;
+    $scope.formData.version.wasDerivedFrom = $scope.version.wasDerivedFrom;
+
+    $scope.formData.signature = {};
+    $scope.formData.signature.autoGenerateSignature = true;
+    $scope.formData.signature.selectedPublisherUri = $scope.version.publisher;
+
+    $scope.dataidCreator = new DataIdCreator($scope.formData, data.auth.info.accountName);
+  }
+
+  $scope.onDescriptionChanged = function () {
+    if ($scope.formData == null) {
+      return;
+    }
+
+    if (!$scope.formData.version.generateAbstract) {
+      return;
+    }
+
+    $scope.formData.version.abstract =
+      DatabusUtils.createAbstractFromDescription($scope.formData.version.description);
+  }
+
+  $scope.resetEdits = function () {
+    $scope.formData.version.title = $scope.version.title;
+    $scope.formData.version.abstract = $scope.version.abstract;
+    $scope.formData.version.description = $scope.version.description;
+  }
+
+  $scope.saveVersion = async function () {
+
+    try {
+      if ($scope.dataidCreator == null) {
+        return;
+      }
+      var relativeUri = new URL($scope.version.uri).pathname;
+
+      var response = await $http({
+        method: 'GET',
+        url: relativeUri,
+        headers: {
+          'Accept': 'application/ld+json',
+          'X-Jsonld-Formatting': 'flatten'
+        }
+      });
+
+      var graphs = response.data;
+      var versionGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_VERSION);
+
+      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_TITLE, DatabusUris.XSD_STRING,
+        $scope.formData.version.title);
+      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_ABSTRACT, DatabusUris.XSD_STRING,
+        $scope.formData.version.abstract);
+      JsonldUtils.setLiteral(versionGraph, DatabusUris.DCT_DESCRIPTION, DatabusUris.XSD_STRING,
+        $scope.formData.version.description);
+      JsonldUtils.setLink(versionGraph, DatabusUris.DCT_LICENSE, $scope.formData.version.license);
+      JsonldUtils.setLiteral(versionGraph, DatabusUris.DATABUS_ATTRIBUTION, DatabusUris.XSD_STRING,
+        $scope.formData.version.attribution);
+
+      if ($scope.formData.version.wasDerivedFrom) {
+        JsonldUtils.setLink(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM,
+          $scope.formData.version.wasDerivedFrom);
+      }
+
+      var response = await $http.put(`/api/register`, graphs);
+
+      if (response.status == 200) {
+        $scope.version.title = $scope.formData.version.title;
+        $scope.version.abstract = $scope.formData.version.abstract;
+        $scope.version.description = $scope.formData.version.description;
+        $scope.version.license = $scope.formData.version.license;
+        $scope.version.attribution = $scope.formData.version.attribution;
+        $scope.version.wasDerivedFrom = $scope.formData.version.wasDerivedFrom;
+
+        DatabusAlert.alert($scope, true, "Version Saved!");
+        $scope.$apply();
+      }
+    } catch (err) {
+      DatabusAlert.alert($scope, false, "Failed to save version!");
+    }
+  }
+
+  $scope.modsAmountMinimized = 5;
+  $scope.modsMaxAmount = $scope.modsAmountMinimized;
+
+  $scope.showAllMods = function () {
+    $scope.modsMaxAmount = 10000000;
+  }
+
+  $scope.hideAllMods = function () {
+    $scope.modsMaxAmount = $scope.modsAmountMinimized;
+  }
+
+  $scope.fileSelector = {};
+  $scope.fileSelector.config = {};
+  $scope.fileSelector.config.authenticated = $scope.authenticated;
+  $scope.fileSelector.config.columns = [];
+  $scope.fileSelector.config.columns.push({ field: 'variant', label: 'Variant', width: '45%' });
+  $scope.fileSelector.config.columns.push({ field: 'format', label: 'Format', width: '15%' });
+  $scope.fileSelector.config.columns.push({ field: 'compression', label: 'Compression', width: '15%' });
+
+  $scope.artifactNode = new QueryNode($scope.version.artifact, 'databus:artifact');
+  $scope.artifactNode.setFacet('http://purl.org/dc/terms/hasVersion', $scope.version.name, true);
+
+  $scope.groupNode = new QueryNode(DatabusUtils.navigateUp($scope.version.artifact), 'databus:group');
+  $scope.groupNode.addChild($scope.artifactNode);
+
+  $scope.collectionWidgetSelectionData = {};
+  $scope.collectionWidgetSelectionData.groupNode = $scope.groupNode;
+
+  $scope.onFacetSettingsChanged = function () {
+    $scope.fileSelector.query = QueryBuilder.build({
+      node: $scope.artifactNode,
+      template: QueryTemplates.DEFAULT_FILE_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+
+    $scope.fileSelector.fullQuery = QueryBuilder.build({
+      node: $scope.artifactNode,
+      template: QueryTemplates.GROUP_PAGE_FILE_BROWSER_TEMPLATE,
+      resourceBaseUrl: DATABUS_RESOURCE_BASE_URL
+    });
+  }
+
+  $scope.onFacetSettingsChanged();
+
+  $scope.hideAutofill = function () {
+    $scope.fileSelector.clearAutofill(function () {
+      $scope.$apply();
+    });
+  }
+
+  $scope.onFileSelectionChanged = function (numFiles, totalSize, query) {
+    $scope.addToCollectionQuery = query;
+  }
+
+  $scope.showCollectionModal = function () {
+    $scope.collectionModalVisible = true;
+  }
+
+  $scope.hideCollectionModal = function () {
+    $scope.collectionModalVisible = false;
+  }
+
+  $scope.addFilter = function (selected, key) {
+    $scope.fileSelector.addFilter(selected, key);
+    $scope.updateQueryBuilder();
+  }
+
+  $scope.addQueryToCollection = function () {
+    $scope.collectionManager.addElement($scope.queryBuilder.query);
+    $scope.hideCollectionModal();
+  };
+
+  $scope.addQueryToCollection = function () {
+
+    if ($scope.collectionManager.activeCollection == null) {
+      return;
+    }
+
+    var wrapper = new DatabusCollectionWrapper($scope.collectionManager.activeCollection);
+    wrapper.addCustomQueryNode('Select ' + $scope.versionData.label + ' files', $scope.addToCollectionQuery);
+    $scope.collectionManager.saveLocally();
+    $scope.collectionModalVisible = false;
+  }
+
+  $scope.formatMods = function (results) {
+    var mods = results.replace(",", "&nbsp;");
+    return $sce.trustAsHtml(mods);
+  }
+
+  $scope.formatModFile = function (uri) {
+    return DatabusUtils.uriToName(uri);
+  }
+
+  $scope.downloadMetadataAsFile = async function () {
+    var response = await $http({
+      method: 'GET',
+      url: $scope.version.uri,
+      headers: {
+        'Accept': 'application/ld+json',
+      }
+    });
+
+    $scope.download(`${$scope.version.name}.jsonld`, JSON.stringify(response.data, null, 3));
+  }
+
+  $scope.download = function (filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
+
+}
+
+module.exports = VersionPageController;
+
+/***/ },
+
+/***/ "./js/publish/artifact-data.js"
+/*!*************************************!*\
+  !*** ./js/publish/artifact-data.js ***!
+  \*************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const EntityHandler = __webpack_require__(/*! ./entity-handler */ "./js/publish/entity-handler.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const GroupData = __webpack_require__(/*! ./group-data */ "./js/publish/group-data.js");
+
+class ArtifactData extends EntityHandler {
+  constructor($http, accounts, apiKeys) {
+    super('databus_registration_artifact_data', $http, null, accounts, apiKeys);
+  }
+
+  initialize(data) {
+    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);
+
+    if (validAccount) {
+      Object.assign(this, data);
+    } else {
+      this.accountName = this.accounts[0]?.name;
+    }
+
+    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
+    }
+
+
+    this.sendmode ??= 'register';
+    this.onAccountNameChanged();
+    this.onGroupNameChanged();
+  }
+
+   validate() {
+    this.errors = [];
+    this.warnings = [];
+
+    if (!DatabusUtils.isValidArtifactName(this.name)) {
+      this.errors.push('err_invalid_artifact_name');
+    }
+
+    if (!DatabusUtils.isValidGroupName(this.groupName)) {
+      this.errors.push('err_no_group_selected');
+    }
+
+    const exists = this.artifactList?.some(a => a.name === this.name);
+    if (exists) {
+      this.warnings.push('warning_artifact_exists');
+    }
+  }
+  
+  getURI() {
+    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.groupName}/${this.name}`;
+  }
+
+  getSaveData() {
+    return {
+      accountName: this.accountName,
+      groupName: this.groupName,
+      name: this.name,
+      title: this.title,
+      abstract: this.abstract,
+      description: this.description,
+      sendmode: this.sendmode,
+      apiKeyName: this.apiKeyName,
+    };
+  }
+
+
+  async setGroupName(groupName) {
+    if (this.groupName !== groupName) {
+      this.groupName = groupName;
+      await this.onGroupNameChanged();
+    }
+  }
+
+  async onGroupNameChanged() {
+    this.isLoadingArtifacts = true;
+    this.artifactList = await this.sparqlClient.getArtifacts(this.accountName, this.groupName);
+    this.isLoadingArtifacts = false;
+    this.onChange();
+  }
+
+ 
+
+  updateOutputs() {
+    const groupUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}/${GroupData.getStringOrMissing(this.groupName)}`;
+
+    this.postBody = {
+      "@context": this.getContext(),
+      "@graph": [
+        {
+          "@id": `${groupUri}/${GroupData.getStringOrMissing(this.name)}`,
+          "@type": "Artifact",
+          "title": this.getValidString(this.title),
+          "abstract": this.getValidString(this.abstract),
+          "description": this.getValidString(this.description),
+        }
+      ]
+    };
+
+    const payload = JSON.stringify(this.postBody, null, 2);
+    const apiKey = this.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;
+
+    this.curlCommand = [
+      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\`,
+      `  -H "X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}" \\`,
+      `  -H "Content-Type: application/json" \\`,
+      `  -d '${payload}'`
+    ].join('\n');
+  }
+}
+
+module.exports = ArtifactData;
+
+
+/***/ },
+
+/***/ "./js/publish/databus-sparql-client.js"
+/*!*********************************************!*\
+  !*** ./js/publish/databus-sparql-client.js ***!
+  \*********************************************/
+(module) {
+
+class DatabusSparqlClient {
+
+    constructor($http) {
+        this.$http = $http;
+    }
+
+    /**
+     * Generic SPARQL query runner.
+     * @param {string} query - SPARQL query string.
+     * @returns {Promise<Array>} - Query result bindings.
+     */
+    async runQuery(query) {
+        const config = {
+            method: 'POST',
+            url: `/sparql`,
+            headers: {
+                'Accept': 'application/sparql-results+json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: `query=${encodeURIComponent(query)}`
+        };
+
+        try {
+            const response = await this.$http(config);
+            return response.data.results.bindings || [];
+        } catch (err) {
+            console.error('SPARQL query failed:', err);
+            return [];
+        }
+    }
+
+    /**
+     * Fetches groups for a given Databus account.
+     * @param {string} accountName - The account name (e.g., 'myaccount').
+     * @returns {Promise<Array>} - List of groups with basic metadata.
+     */
+    async getGroups(accountName) {
+        const query = `
+            PREFIX databus: <https://dataid.dbpedia.org/databus#>
+
+            SELECT DISTINCT ?group WHERE {
+                ?group a databus:Group .
+                ?group databus:account <${DATABUS_RESOURCE_BASE_URL}/${accountName}> .
+            }
+        `;
+
+        const bindings = await this.runQuery(query);
+
+        return bindings.map(binding => ({
+            uri: binding.group.value,
+            name: binding.group.value.split('/').pop(),
+        }));
+    }
+
+    async getArtifacts(accountName, groupName) {
+        const query = `
+            PREFIX databus: <https://dataid.dbpedia.org/databus#>
+
+            SELECT DISTINCT ?group WHERE {
+                ?group a databus:Artifact .
+                ?group databus:group <${DATABUS_RESOURCE_BASE_URL}/${accountName}/${groupName}> .
+            }
+        `;
+
+        const bindings = await this.runQuery(query);
+
+        return bindings.map(binding => ({
+            uri: binding.group.value,
+            name: binding.group.value.split('/').pop(),
+        }));
+    }
+
+    async getVersions(accountName, groupName, artifactName) {
+        const query = `
+            PREFIX databus: <https://dataid.dbpedia.org/databus#>
+
+            SELECT DISTINCT ?group WHERE {
+                ?group a databus:Version .
+                ?group databus:artifact <${DATABUS_RESOURCE_BASE_URL}/${accountName}/${groupName}/${artifactName}> .
+            }
+        `;
+
+        const bindings = await this.runQuery(query);
+
+        return bindings.map(binding => ({
+            uri: binding.group.value,
+            name: binding.group.value.split('/').pop(),
+        }));
+    }
+}
+
+module.exports = DatabusSparqlClient;
+
+
+/***/ },
+
+/***/ "./js/publish/dataid-creator.js"
+/*!**************************************!*\
+  !*** ./js/publish/dataid-creator.js ***!
+  \**************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+class DataIdCreator {
+
+  constructor(formData, accountName) {
+    this.accountName = accountName;
+    this.formData = formData;
+  }
+
+  createInputs() {
+    var group = this.createGroupUpdate();
+    var artifact = this.createArtifactUpdate();
+    var dataid = this.createVersionUpdate();
+
+    var result = {
+      "@context": this.getContext(),
+      "@graph": []
+    };
+
+    if (group != undefined) {
+      for (var graph of group["@graph"]) {
+        result["@graph"].push(graph);
+      }
+    }
+
+    if (artifact != undefined) {
+      for (var graph of artifact["@graph"]) {
+        result["@graph"].push(graph);
+      }
+    }
+
+    if (dataid != undefined) {
+      for (var graph of dataid["@graph"]) {
+        result["@graph"].push(graph);
+      }
+    }
+
+    return {
+      context: this.getContext(),
+      group: group,
+      artifact: artifact,
+      dataid: dataid,
+      all: result
+    };
+  }
+
+  getValidString(value) {
+    if(value == undefined || value.length == 0) {
+      return undefined;
+    }
+
+    return value;
+  }
+
+  getContext() {
+    if(DATABUS_CONTEXT_URL != undefined && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {
+      return DATABUS_CONTEXT_URL;
+    }
+
+    return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];
+  }
+
+  createGroupUpdate() {
+
+    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;
+
+    return {
+      "@context": this.getContext(),
+      "@graph": [
+        {
+          "@id": `${accountUri}/${this.formData.group.name}`,
+          "@type": "Group",
+          "title": this.getValidString(this.formData.group.title),
+          "abstract": this.getValidString(this.formData.group.abstract),
+          "description": this.getValidString(this.formData.group.description)
+        }
+      ]
+    };
+  }
+
+  createArtifactUpdate() {
+    
+    if (this.formData.artifact.generateMetadata == 'none') {
+      return undefined;
+    }
+
+    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;
+
+    return {
+      "@context": this.getContext(),
+      "@graph": [
+        {
+          "@id": `${accountUri}/${this.formData.group.name}/${this.formData.artifact.name}`,
+          "@type": "Artifact",
+          "title": this.getValidString(this.formData.artifact.title),
+          "abstract": this.getValidString(this.formData.artifact.abstract),
+          "description": this.getValidString(this.formData.artifact.description)
+        }
+      ]
+    };
+  }
+
+  createVersionUpdate() {
+
+    if (this.formData.version.generateMetadata == 'none') {
+      return undefined;
+    }
+
+    var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}`;
+    var versionUri = `${accountUri}/${this.formData.group.name}/${this.formData.artifact.name}/${this.formData.version.name}`
+
+    var artifact = this.formData.artifact;
+    var version = this.formData.version;
+
+    var graph = {
+      "@type": [ "Version", "Dataset" ],
+      "@id": versionUri,
+      "publisher": this.formData.signature.selectedPublisherUri,
+      "hasVersion": version.name,
+      "title": version.title,
+      "abstract": version.abstract,
+      "description": version.description,
+      "license": version.license,
+      "attribution": version.attribution,
+      "wasDerivedFrom": version.wasDerivedFrom,
+      "distribution": []
+    }
+
+    if (this.formData.signature.selectedPublisherUri == this.formData.signature.defaultPublisherUri) {
+      delete graph.publisher;
+    }
+
+    if (!this.formData.signature.autoGenerateSignature) {
+      graph["proof"] = {
+        '@type': "DatabusTractateV1",
+        'signature': this.formData.signature.userSignature
+      };
+    }
+
+    var customVariants = [];
+
+    for (var fg in version.files) {
+
+      var file = version.files[fg];
+
+      var variantSuffix = '';
+      for (var c in version.contentVariants) {
+        var cv = version.contentVariants[c];
+        var value = file.contentVariants[cv.id];
+
+        if (value == undefined || value == "") {
+          continue;
+        }
+
+        variantSuffix += '_' + cv.id + '=' + value;
+      }
+
+      var fileName = artifact.name; 
+
+      var distributionUri = `${versionUri}#${fileName}`;
+      var fileUri = `${versionUri}/${fileName}${variantSuffix}`;
+
+      distributionUri += variantSuffix;
+
+      if (file.formatExtension != 'none') {
+        distributionUri += '.' + file.formatExtension;
+        fileUri += '.' + file.formatExtension;
+      }
+
+      if (file.compression != 'none') {
+        distributionUri += '.' + file.compression;
+        fileUri += '.' + file.compression;
+      }
+
+      var distribution = {
+        "@type": "Part",
+        "formatExtension": file.formatExtension,
+        "compression": file.compression,
+        "downloadURL": file.uri,
+        "byteSize": file.byteSize,
+        "sha256sum": file.sha256sum,
+      };
+
+      for (var c in version.contentVariants) {
+        var cv = version.contentVariants[c];
+        var value = file.contentVariants[cv.id];
+
+        if (value == undefined || value == "") {
+          continue;
+          // value = "";
+        }
+
+        distribution['dcv:' + cv.id] = value;
+
+        if (!customVariants.includes(cv.id)) {
+          customVariants.push(cv.id);
+        }
+      }
+
+      graph.distribution.push(distribution);
+    }
+
+    var result = {
+      "@context": this.getContext(),
+      "@graph": [graph]
+    }
+
+    return result;
+  }
+}
+
+module.exports = DataIdCreator;
+
+
+/***/ },
+
+/***/ "./js/publish/entity-handler.js"
+/*!**************************************!*\
+  !*** ./js/publish/entity-handler.js ***!
+  \**************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ "./js/publish/databus-sparql-client.js");
+
+class EntityHandler {
+  constructor(storageKey, $http, $interval, accounts, apiKeys) {
+    this.storageKey = storageKey;
+    this.$http = $http;
+    this.$interval = $interval;
+    this.accounts = accounts;
+    this.apiKeys = apiKeys;
+    this.sparqlClient = new DatabusSparqlClient($http);
+
+    const data = this._loadFromSession();
+    this.initialize(data);
+  }
+
+  _loadFromSession() {
+    try {
+      const raw = window.sessionStorage.getItem(this.storageKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      console.error("Failed to load session data:", e);
+      return null;
+    }
+  }
+
+  save() {
+    try {
+      const data = this.getSaveData();
+      const json = JSON.stringify(data);
+      window.sessionStorage.setItem(this.storageKey, json);
+    } catch (e) {
+      console.error("Failed to save session data:", e);
+    }
+  }
+
+  // Abstract methods
+  initialize(data) {
+    throw new Error("Method 'initialize(data)' must be implemented.");
+  }
+
+  getSaveData() {
+    throw new Error("Method 'getSaveData()' must be implemented.");
+  }
+
+  validate() {
+    throw new Error("Method 'validate()' must be implemented.");
+  }
+
+  updateOutputs() {
+    throw new Error("Method 'updateOutputs()' must be implemented.");
+  }
+
+  getURI() {
+    throw new Error("Method 'updateOutputs()' must be implemented.");
+  }
+
+  getValidString(value) {
+    return value?.length > 0 ? value : undefined;
+  }
+
+  static getStringOrMissing(value) {
+    return value?.length > 0 ? value : '!!!missing!!!';
+  }
+
+  hasError(errorKey) {
+    return this.errors?.includes(errorKey) ?? false;
+  }
+
+  setSendMode(sendmode) {
+    this.sendmode = sendmode;
+    this.onChange();
+  }
+
+  getContext() {
+    if (DATABUS_CONTEXT_URL && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {
+      return DATABUS_CONTEXT_URL;
+    }
+    return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];
+  }
+
+  async setAccountName(accountName) {
+    if (this.accountName !== accountName) {
+      this.accountName = accountName;
+      await this.onAccountNameChanged();
+    }
+  }
+
+  async onAccountNameChanged() {
+    this.isLoadingGroups = true;
+    this.groupList = await this.sparqlClient.getGroups(this.accountName);
+    this.isLoadingGroups = false;
+    this.onChange();
+  }
+
+  async setAccountName(accountName) {
+    if (this.accountName !== accountName) {
+      this.accountName = accountName;
+      
+      this.activeAccount = this.accounts?.find(a => a.accountName === this.accountName);
+      await this.onAccountNameChanged();
+    }
+  }
+
+  getAccount() {
+    return this.activeAccount;
+    
+  }
+
+  onChange() {
+    this.updateOutputs();
+    this.validate();
+    this.save();
+  }
+
+  getApiKey() {
+    return this.getAccount()?.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;
+  }
+
+  setApiKeyName(keyname) {
+    this.apiKeyName = keyname;
+    this.onChange();
+  }
+
+  async register() {
+    try {
+      const response = await this.$http({
+        method: 'POST',
+        url: `/api/register?log-level=info`,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: this.postBody
+      });
+
+      return response;
+    } catch (err) {
+      console.error('Entity registration failed:', err);
+      throw err;
+    }
+  }
+}
+
+module.exports = EntityHandler;
+
+
+/***/ },
+
+/***/ "./js/publish/group-data.js"
+/*!**********************************!*\
+  !*** ./js/publish/group-data.js ***!
+  \**********************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const EntityHandler = __webpack_require__(/*! ./entity-handler */ "./js/publish/entity-handler.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ "./js/publish/databus-sparql-client.js");
+
+class GroupData extends EntityHandler {
+  constructor($http, accounts, apiKeys) {
+    super('databus_registration_group_data', $http, null, accounts, apiKeys);
+   
+  }
+
+  initialize(data) {
+    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);
+    
+    if (validAccount) {
+      Object.assign(this, data);
+    } else {
+      this.accountName = this.accounts[0]?.name;
+    }
+
+    if(this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
+    }
+
+    this.sendmode ??= 'register';
+    this.onAccountNameChanged();
+  }
+
+  getSaveData() {
+    return {
+      accountName: this.accountName,
+      name: this.name,
+      title: this.title,
+      abstract: this.abstract,
+      description: this.description,
+      sendmode: this.sendmode,
+      apiKeyName: this.apiKeyName,
+    };
+  }
+
+  getURI() {
+    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.name}`;
+  }
+
+  validate() {
+    this.errors = [];
+    this.warnings = [];
+
+    if (!DatabusUtils.isValidGroupName(this.name)) {
+      this.errors.push('err_invalid_group_name');
+    }
+
+    if(this.sendmode == 'curl' && !this.apiKeyName) {
+      this.errors.push('err_no_api_key');
+    }
+
+    const exists = this.groupList?.some(g => g.name === this.name);
+    if (exists) {
+      this.warnings.push('warning_group_exists');
+    }
+  }
+
+  updateOutputs() {
+    const accountUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}`;
+
+    this.postBody = {
+      "@context": this.getContext(),
+      "@graph": [
+        {
+          "@id": `${accountUri}/${GroupData.getStringOrMissing(this.name)}`,
+          "@type": "Group",
+          "title": this.getValidString(this.title),
+          "abstract": this.getValidString(this.abstract),
+          "description": this.getValidString(this.description),
+        }
+      ]
+    };
+
+    const payload = JSON.stringify(this.postBody, null, 2);
+    const apiKey = this.getApiKey();
+
+    this.curlCommand = [
+      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\`,
+      `  -H "X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}" \\`,
+      `  -H "Content-Type: application/json" \\`,
+      `  -d '${payload}'`
+    ].join('\n');
+  }
+}
+
+module.exports = GroupData;
+
+
+/***/ },
+
+/***/ "./js/publish/publish-data.js"
+/*!************************************!*\
+  !*** ./js/publish/publish-data.js ***!
+  \************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+
+/**
+ * Handles shasum creation (and possibly other file stats)
+ */
+class PublishData {
+
+  constructor(data) {
+
+    if (data != null) {
+      this.account = data.account ?? {};
+      this.group = data.group ?? {};
+      this.artifact = data.artifact ?? {};
+      this.version = data.version ?? {};
+      this.files = data.files ?? {};
+      this.signature = data.signature;
+    }
+
+    if (data == null) {
+
+      this.account = {};
+      this.group = {};
+      this.artifact = {};
+      this.version = {};
+      this.files = {};
+      this.signature = undefined;
+
+      this.group.generateMetadata = 'create';
+      this.group.generateAbstract = true;
+      this.artifact.generateMetadata = 'create';
+      this.artifact.generateAbstract = true;
+      this.version.generateMetadata = 'create';
+      this.version.generateAbstract = true;
+      this.version.useArtifactTitle = true;
+      this.signature = this.createSignatureData();
+    }
+  }
+
+  createSignatureData() {
+    var signature = {};
+    signature.publisherUris = [];
+
+    signature.publisherUris = this.account.publisherUris;
+    signature.defaultPublisherUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}#this`
+    signature.selectedPublisherUri = signature.defaultPublisherUri;
+    signature.autoGenerateSignature = true;
+    signature.autoGenerateSignatureLocked = false;
+    signature.userSignature = '';
+
+    return signature;
+  }
+
+  hasError(error) {
+
+  }
+
+  clearErrors() {
+    this.group.errors = [];
+    this.artifact.errors = [];
+    this.version.errors = [];
+    this.files.errors = [];
+    this.group.warnings = [];
+    this.artifact.warnings = [];
+    this.version.warnings = [];
+  }
+  /**
+   * Validates the tree
+   */
+  validate() {
+
+    var hasErrors = false;
+    this.group.errors = [];
+    this.artifact.errors = [];
+    this.version.errors = [];
+    this.files.errors = [];
+    this.group.warnings = [];
+    this.artifact.warnings = [];
+    this.version.warnings = [];
+
+
+    if (!DatabusUtils.isValidGroupName(this.group.name)) {
+      this.group.errors.push('err_invalid_group_title');
+      hasErrors = true;
+    }
+
+    var self = this;
+
+    var existingGroup = this.account.groups.filter(function (value) {
+      return value.name == self.group.name;
+    });
+
+    if (existingGroup.length > 0 && this.group.generateMetadata == 'create') {
+      this.group.warnings.push('warning_group_exists');
+    }
+
+    var existingArtifact = this.account.artifacts.filter(function (value) {
+      return value.groupName == self.group.name && value.name == self.artifact.name;
+    });
+
+    if (existingArtifact.length > 0 && this.artifact.generateMetadata == 'create') {
+      this.artifact.warnings.push('warning_artifact_exists');
+    }
+
+    if (this.group.generateAbstract) {
+      this.group.abstract = DatabusUtils.createAbstractFromDescription(this.group.description);
+    }
+
+    if (this.version.generateAbstract) {
+      this.version.abstract = DatabusUtils.createAbstractFromDescription(this.version.description);
+    }
+
+    if (this.version.useArtifactTitle) {
+      this.version.title = this.artifact.title;
+    }
+
+    if (this.artifact.generateAbstract) {
+      this.artifact.abstract = DatabusUtils.createAbstractFromDescription(this.artifact.description);
+    }
+
+    if (this.group.publishGroupOnly) {
+      this.hasConfigurationError = hasErrors;
+      return;
+    }
+
+    if (this.artifact.generateMetadata != 'none') {
+      if (!DatabusUtils.isValidArtifactName(this.artifact.name)) {
+        this.artifact.errors.push('err_invalid_artifact_title');
+        hasErrors = true;
+      }
+    }
+
+    var versionUri = `${DATABUS_RESOURCE_BASE_URL}/${this.account.accountName}/${this.group.name}/${this.artifact.name}/${this.version.name}`;
+
+    var existingVersion = this.account.versions.filter(function (value) {
+      return value == versionUri;
+    });
+
+    if (existingVersion.length > 0) {
+      this.version.warnings.push('warning_version_exists');
+    }
+
+    if (this.version.generateMetadata != 'none') {
+
+      if (!DatabusUtils.isValidVersionIdentifier(this.version.name)) {
+        this.version.errors.push('err_invalid_version_title');
+        hasErrors = true;
+      }
+
+      if (!DatabusUtils.isValidUrl(this.version.license)) {
+        this.version.errors.push('err_invalid_version_license');
+        hasErrors = true;
+      }
+
+      if (!DatabusUtils.isValidResourceText(this.version.abstract, 1)) {
+        this.version.errors.push('err_invalid_version_abstract');
+        hasErrors = true;
+      }
+
+      if (!DatabusUtils.isValidResourceText(this.version.description, 1)) {
+        this.version.errors.push('err_invalid_version_description');
+        hasErrors = true;
+      }
+
+
+      if (DatabusUtils.objSize(this.version.files) == 0) {
+        this.files.errors.push('err_no_files');
+        hasErrors = true;
+      }
+
+      if (this.version.isConfigDirty) {
+
+
+        var files = [];
+        for (var f in this.version.files) {
+          this.version.files[f].errors = [];
+          files.push(this.version.files[f]);
+        }
+
+        this.cvSplit(this.version, files, 0);
+        this.version.isConfigDirty = false;
+      }
+    }
+
+    this.hasConfigurationError = hasErrors;
+  }
+
+  addFile(file) {
+
+
+    if (this.version.files == undefined) {
+      this.version.files = [];
+    }
+
+
+    for (var f in this.version.files) {
+      if (file.url == this.version.files[f].url) {
+        return;
+      }
+    }
+
+    var uri = file.url;
+    var uriParts = uri.split('/');
+    var name = uriParts.pop();
+    var nameComponents = name.split('.');
+    name = nameComponents[0];
+
+    if (name.length > 50) {
+      name = name.substr(0, 50) + '...';
+    }
+
+    name = decodeURIComponent(name);
+    // Files with uri as key!!
+
+    this.version.files.push({
+      id: uri,
+      uri: file.url,
+      name: name,
+      contentVariants: file.contentVariants != null ? file.contentVariants : {},
+      compression: file.compression,
+      formatExtension: file.formatExtension,
+      rowspan: 1,
+    });
+
+    this.version.files.sort(function (a, b) {
+      var nameA = a.name;
+      var nameB = b.name;
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    this.version.isConfigDirty = true;
+  }
+
+  addContentVariant(variant) {
+
+    if (variant == undefined || variant == '') {
+      return;
+    }
+
+    if (this.version.contentVariants == undefined) {
+      this.version.contentVariants = [];
+    }
+
+    for (var c in this.version.contentVariants) {
+      if (this.version.contentVariants[c].id == variant) {
+        return;
+      }
+    }
+
+    this.version.contentVariants.push({
+      label: variant,
+      id: variant,
+      fillRegex: '',
+      toLower: true,
+      pruneWhitespaces: true
+    });
+
+    this.version.isConfigDirty = true;
+  }
+
+
+  removeContentVariant(variant) {
+
+    this.version.contentVariants = this.version.contentVariants.filter(function (d) {
+      return d.id != variant.id;
+    });
+
+    for (var f in this.version.files) {
+      var file = this.version.files[f];
+      delete file.contentVariants[variant.id];
+    }
+
+    this.version.isConfigDirty = true;
+  }
+
+  fill(variant) {
+
+    var val = variant.fillRegex;
+
+    for (var file of this.version.files) {
+
+      if (variant.toLower) {
+        val = val.toLowerCase();
+      }
+
+      if (variant.pruneWhitespaces) {
+        val = val.replaceAll(' ', '');
+      }
+
+      if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+        && file.contentVariants[variant.id].length > 0) {
+        continue;
+      }
+
+      file.contentVariants[variant.id] = val;
+    }
+
+    this.version.isConfigDirty = true;
+  }
+
+  fillByRegex(variant) {
+    var regex = new RegExp(variant.fillRegex);
+
+    for (var f in this.version.files) {
+      var file = this.version.files[f];
+      var matches = file.name.match(regex);
+
+      if (matches != null) {
+        var val = matches[0];
+
+        if (variant.toLower) {
+          val = val.toLowerCase();
+        }
+
+        if (variant.pruneWhitespaces) {
+          val = val.replaceAll(' ', '');
+        }
+
+        if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+          && file.contentVariants[variant.id].length > 0) {
+          continue;
+        }
+
+        file.contentVariants[variant.id] = val;
+      }
+    }
+
+    this.version.isConfigDirty = true;
+  }
+
+  createVersionName(v) {
+    if (v == 0) {
+      this.version.name = new Date().toISOString().slice(0, 10);
+    }
+
+    if (v == 1) {
+      this.version.name = new Date().toISOString().slice(0, 13);
+    }
+  }
+
+  getRowIndex(files, name) {
+    var k = 1;
+    for (var f in files) {
+      if (files[f].name == name) {
+        return k;
+      }
+
+      k++;
+    }
+
+    return -1;
+  }
+
+
+  cvSplit(artifact, files, cvIndex) {
+
+    if (files.length <= 1) {
+      return;
+    }
+
+    if (artifact.contentVariants == undefined) {
+      artifact.contentVariants = [];
+    }
+    // if end of cvs, assign errors to all files if files.length > 1
+    if (cvIndex - 2 >= artifact.contentVariants.length) {
+
+      if (files.length > 1) {
+
+        var cvHints = [];
+
+        if (artifact.contentVariants.length == 0) {
+          cvHints.push('No content variants have been added yet. Add content variants in the files panel in order to tag your files.');
+        } else {
+          for (var c in artifact.contentVariants) {
+            var cv = artifact.contentVariants[c];
+            var value = files[0].contentVariants[cv.id];
+
+            if (value == undefined || value == '') {
+              value = 'none';
+            }
+
+            cvHints.push(cv.id + ': ' + value);
+          }
+        }
+
+        for (var f in files) {
+
+          var index = 0;
+
+          if (f == 0) {
+            var index = this.getRowIndex(artifact.files, files[1].name);
+          } else {
+            var index = this.getRowIndex(artifact.files, files[0].name);
+          }
+
+          var errorMessage = 'The Databus requires any two files to be distinguishable by either their format, compression or any content variant. You have added a file with the exact same format, compression and content variants at row '
+            + index + ' (' +
+            cvHints.join(', ') + ').';
+
+          files[f].errors.push({ key: 'err_duplicate_file', message: errorMessage });
+        }
+      }
+
+      return;
+    }
+
+    // else create buckets and sort files into buckets
+    var buckets = {};
+
+    for (var f in files) {
+      var file = files[f];
+
+      var key = null;
+
+      if (cvIndex == 0) {
+        key = file.formatExtension;
+      } else if (cvIndex == 1) {
+        key = file.compression;
+      } else {
+        key = file.contentVariants[artifact.contentVariants[cvIndex - 2].id];
+      }
+
+      if (key == undefined || key == '') {
+        key = '$_none$';
+      }
+
+      if (buckets[key] == undefined) {
+        buckets[key] = [];
+      }
+
+      buckets[key].push(file);
+    }
+
+    // iterate buckets and call recursively
+    for (var b in buckets) {
+      this.cvSplit(artifact, buckets[b], cvIndex + 1);
+    }
+  }
+
+
+  getOrCreateFileGroup(fileGroupId, name) {
+
+    if (this.version.files == null) {
+      this.version.files = {};
+    }
+
+    if (this.version.files[fileGroupId] == undefined) {
+
+      this.version.files[fileGroupId] = {
+        id: fileGroupId,
+        name: name,
+        contentVariants: {},
+        distributions: [],
+        artifactId: undefined,
+        groupId: undefined,
+      };
+    }
+
+    return this.version.files[fileGroupId];
+  }
+
+}
+
+module.exports = PublishData;
+
+/***/ },
+
+/***/ "./js/publish/publish-session.js"
+/*!***************************************!*\
+  !*** ./js/publish/publish-session.js ***!
+  \***************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const JsonldUtils = __webpack_require__(/*! ../utils/jsonld-utils */ "./js/utils/jsonld-utils.js");
+const PublishData = __webpack_require__(/*! ./publish-data */ "./js/publish/publish-data.js");
+const DataIdCreator = __webpack_require__(/*! ./dataid-creator */ "./js/publish/dataid-creator.js");
+const DatabusSparqlClient = __webpack_require__(/*! ./databus-sparql-client */ "./js/publish/databus-sparql-client.js");
+const GroupHandler = __webpack_require__(/*! ./group-data */ "./js/publish/group-data.js");
+const ArtifactHandler = __webpack_require__(/*! ./artifact-data */ "./js/publish/artifact-data.js");
+const VersionHandler = __webpack_require__(/*! ./version-handler */ "./js/publish/version-handler.js");
+
+class PublishSession {
+
+    static sessionStorageKey = 'databus_upload';
+    static sessionStorageIgnoreKeys = [
+        '$$hashKey',
+        'eventListeners',
+        'hasLocalChanges',
+        'fileFilterInput',
+        'fileSuggestions',
+        'progress',
+        'streamQueue'
+    ];
+
+
+    constructor($http, $interval, accounts, apiKeys) {
+
+        this.$http = $http;
+        this.accounts = accounts;
+        this.sparqlClient = new DatabusSparqlClient($http);
+        this.formData = new PublishData();
+
+        this.group = new GroupHandler($http, accounts, apiKeys);
+        this.artifact = new ArtifactHandler($http, accounts, apiKeys);
+        this.version = new VersionHandler($http, $interval, accounts, apiKeys);
+
+        this.reset();
+    }
+
+
+
+    reset() {
+        this.accountData = {};
+        this.groupData = {};
+        this.artifactData = {};
+        this.versionData = {};
+    }
+
+    update() {
+        this.validate();
+        this.save();
+    }
+
+    async selectAccount(account) {
+        this.accountData = {
+            name: account.name,
+            isValid: true
+        };
+
+        // Fetch groups for account here:
+        this.groups = await this.sparqlClient.getGroups(this.accountData.name);
+        
+
+        this.save();
+    }
+
+    async selectGroup(targetGroup) {
+
+        if (targetGroup == null) {
+            return;
+        }
+
+        var group = this.formData.group;
+        var artifact = this.formData.artifact;
+
+        group.name = targetGroup.name;
+        group.title = targetGroup.title;
+        group.abstract = targetGroup.abstract;
+        group.description = targetGroup.description;
+
+        if (this.currentGroup == null || this.currentGroup.name != targetGroup.name) {
+            this.currentGroup = targetGroup;
+
+            if (this.formData.artifact.generateMetadata == 'existing') {
+                this.currentArtifact = null;
+                this.setCreateNewArtifact('create');
+            }
+        }
+    }
+
+    createNewGroup() {
+        this.formData.group.name = "";
+        this.formData.group.title = "";
+        this.formData.group.abstract = "";
+        this.formData.group.description = "";
+
+        this.save();
+    }
+
+    selectArtifact(targetArtifact) {
+        if (targetArtifact == null) {
+            return;
+        }
+
+        var artifact = this.formData.artifact;
+        artifact.name = targetArtifact.name;
+        artifact.title = targetArtifact.title;
+        artifact.abstract = targetArtifact.abstract;
+        artifact.description = targetArtifact.description;
+        this.currentArtifact = targetArtifact;
+
+        this.availableVersions = this.accountData.versions.filter(function (v) {
+            return v.startsWith(targetArtifact.uri);
+        });
+    }
+
+    selectVersion = function (versionUri) {
+
+        try {
+            var relativeUri = new URL(versionUri).pathname;
+            var options = {
+                method: 'GET',
+                url: relativeUri,
+                headers: {
+                    'Accept': 'application/ld+json',
+                    'X-Jsonld-Formatting': 'flatten'
+                }
+            };
+
+            var version = this.formData.version;
+            version.isLoading = true;
+
+            var self = this;
+
+            this.$http(options).then(function (response) {
+
+                var version = self.formData.version;
+                version.isLoading = false;
+
+                var versionData = response.data;
+                var versionGraph = JsonldUtils.getTypedGraph(versionData, DatabusUris.DATABUS_VERSION);
+
+                version.name = DatabusUtils.uriToName(versionGraph[DatabusUris.JSONLD_ID]);
+                version.title = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_TITLE);
+                version.abstract = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ABSTRACT);
+                version.description = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_DESCRIPTION);
+                version.attribution = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ATTRIBUTION);
+                version.license = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_LICENSE);
+                version.derivedFrom = JsonldUtils.getProperty(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM);
+                version.contentVariants = [];
+
+                var contentVariantGraphs = JsonldUtils.getTypedGraphs(versionData, DatabusUris.RDF_PROPERTY);
+
+                for (var contentVariantGraph of contentVariantGraphs) {
+
+                    var variantName = DatabusUtils.uriToName(contentVariantGraph[DatabusUris.JSONLD_ID]);
+                    self.formData.addContentVariant(variantName);
+                }
+
+                // Add Files!
+                var fileGraphs = JsonldUtils.getTypedGraphs(versionData, DatabusUris.DATABUS_PART);
+                version.files = [];
+
+                for (var fileGraph of fileGraphs) {
+
+                    var fileUri = JsonldUtils.getProperty(fileGraph, DatabusUris.DCAT_DOWNLOAD_URL);
+
+
+
+                    var file = {
+                        id: fileUri,
+                        url: fileUri,
+                        name: DatabusUtils.uriToName(fileUri),
+                        compression: JsonldUtils.getProperty(fileGraph, DatabusUris.DATABUS_COMPRESSION),
+                        formatExtension: JsonldUtils.getProperty(fileGraph, DatabusUris.DATABUS_FORMAT_EXTENSION),
+                        contentVariants: {}
+                    }
+
+                    for (var contentVariant of version.contentVariants) {
+                        var variantUri = `${DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX}${contentVariant.id}`;
+                        var variantValue = JsonldUtils.getProperty(fileGraph, variantUri);
+
+                        if (variantValue != null) {
+                            file.contentVariants[contentVariant.id] = variantValue;
+                        }
+                    }
+
+                    self.formData.addFile(file);
+                }
+
+
+                // Save the preset values
+                delete version.preset;
+                version.preset = JSON.parse(JSON.stringify(version));
+            });
+
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    addFile(file) {
+        this.formData.addFile(file);
+    }
+
+
+    setCreateNewGroup(value) {
+        this.formData.group.generateMetadata = value;
+        if (value == 'create') {
+            this.formData.group.name = "";
+            this.formData.group.title = "";
+            this.formData.group.abstract = "";
+            this.formData.group.description = "";
+            this.formData.group.generateAbstract = true;
+            this.currentGroup = null;
+
+            if (this.formData.artifact.generateMetadata == 'existing') {
+                this.setCreateNewArtifact('create');
+            }
+        } else if (value == 'existing') {
+            var hasGroups = DatabusUtils.objSize(this.accountData.groups) > 0;
+
+            if (!hasGroups) {
+                this.setCreateNewGroup('create');
+                return;
+            }
+
+            if (this.currentGroup == null) {
+                for (var group of this.accountData.groups) {
+                    this.selectGroup(group);
+                    break;
+                }
+            }
+        }
+    }
+
+    setCreateNewArtifact(value) {
+        this.formData.artifact.generateMetadata = value;
+
+        if (value == 'create') {
+
+            this.availableVersions = [];
+            this.formData.artifact.name = "";
+            this.formData.artifact.title = "";
+            this.formData.artifact.description = "";
+            this.currentArtifact = null;
+
+            if (this.formData.version.generateMetadata == 'existing') {
+                this.setCreateNewVersion('create');
+            }
+
+        } else if (value == 'existing') {
+
+            if (!this.currentGroup.hasArtifacts) {
+                this.setCreateNewArtifact('create');
+                return;
+            }
+
+            if (this.currentArtifact == null) {
+                this.selectArtifact(this.currentGroup.artifacts[0]);
+            }
+        } else {
+
+            this.availableVersions = [];
+            if (this.formData.version.generateMetadata != 'none') {
+                this.setCreateNewVersion('none');
+            }
+        }
+    }
+
+    setCreateNewVersion(value) {
+        this.formData.version.generateMetadata = value;
+
+        if (value == 'create') {
+
+
+        } else if (value == 'existing') {
+
+            if (this.availableVersions.length == 0) {
+                this.setCreateNewVersion('create');
+                return;
+            }
+
+            this.selectVersion(this.availableVersions[0]);
+        }
+
+    }
+    currentGroupHasArtifacts() {
+        if (this.formData.group.generateMetadata == 'create') {
+            return false;
+        }
+
+        return this.currentGroup.artifacts != null && this.currentGroup.artifacts.length > 0;
+    }
+
+    initializeField(source, name, defaultValue) {
+        this[name] = source != null ? source[name] : defaultValue;
+    }
+
+    save() {
+
+        let data = {
+            accountData: this.accountData,
+            groupData: this.groupData,
+            artifactData: this.artifactData,
+            versionData: this.versionData,
+            formData: this.formData,
+        }
+
+
+        try {
+            var sessionDataString = JSON.stringify(data, function (key, value) {
+                if (PublishSession.sessionStorageIgnoreKeys.includes(key)) {
+                    return undefined;
+                }
+                return value;
+            });
+
+            window.sessionStorage.setItem(PublishSession.sessionStorageKey, sessionDataString);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static resume($http, sub, accountData) {
+
+        var sessionData = JSON.parse(window.sessionStorage.getItem(PublishSession.sessionStorageKey));
+
+        if (sessionData == null || sessionData.sub == null) {
+            return null;
+        }
+
+        if (sub != sessionData.sub) {
+            return null;
+        }
+
+        var publishSession = new PublishSession($http, sessionData, accountData);
+
+        return publishSession;
+    }
+
+    onChange() {
+        this.validate();
+        this.inputs = this.dataIdCreator.createInputs();
+        this.save();
+
+        if (this.dataIdCreator != undefined) {
+            this.inputs = this.dataIdCreator.createInputs();
+
+            this.isReadyForUpload =
+                !this.formData.artifact.errors.length > 0 &&
+                !this.formData.group.errors.length > 0 &&
+                !this.formData.version.errors.length > 0 &&
+                !this.formData.files.errors.length > 0;
+        }
+    }
+
+    onChangeGroup() {
+
+        let group = this.formData.group;
+
+        group.errors = [];
+        group.warnings = [];
+
+        if (!DatabusUtils.isValidGroupName(group.name)) {
+            group.errors.push('err_invalid_group_name');
+        }
+
+        var existingGroup = this.groups.filter(function (value) {
+            return value.name == self.group.name;
+        });
+
+        if (existingGroup.length > 0 && group.mode == 'create') {
+            group.warnings.push('warning_group_exists');
+        }
+
+        this.save();
+    }
+
+    getValidString(value) {
+        if (value == undefined || value.length == 0) {
+            return undefined;
+        }
+
+        return value;
+    }
+
+    updateGroupBody() {
+        var accountUri = `${DATABUS_RESOURCE_BASE_URL}/${this.accountData.name}`;
+
+        this.groupBody = {
+            "@context": this.getContext(),
+            "@graph": [
+                {
+                    "@id": `${accountUri}/${this.formData.group.name}`,
+                    "@type": "Group",
+                    "title": this.getValidString(this.formData.group.title),
+                    "abstract": this.getValidString(this.formData.group.abstract),
+                    "description": this.getValidString(this.formData.group.description)
+                }
+            ]
+        };
+    }
+
+    getContext() {
+        if (DATABUS_CONTEXT_URL != undefined && DatabusUtils.isValidHttpUrl(DATABUS_CONTEXT_URL)) {
+            return DATABUS_CONTEXT_URL;
+        }
+
+        return DATABUS_CONTEXT[DatabusUris.JSONLD_CONTEXT];
+    }
+
+    onChangeArtifact() {
+
+        let artifact = this.formData.artifact;
+
+        artifact.errors = [];
+        artifact.warnings = [];
+
+        if (!DatabusUtils.isValidArtifactName(artifact.name)) {
+            artifact.errors.push('err_invalid_artifact_name');
+        }
+
+        if (this.artifacts != null) {
+            var existingArtifact = this.artifacts.filter(function (value) {
+                return value.name == self.group.name;
+            });
+
+            if (existingArtifact.length > 0 && artifact.mode == 'create') {
+                artifact.warnings.push('warning_group_exists');
+            }
+        }
+
+        this.save();
+
+    }
+}
+
+module.exports = PublishSession;
+
+
+/***/ },
+
+/***/ "./js/publish/version-handler.js"
+/*!***************************************!*\
+  !*** ./js/publish/version-handler.js ***!
+  \***************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const EntityHandler = __webpack_require__(/*! ./entity-handler */ "./js/publish/entity-handler.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusUris = __webpack_require__(/*! ../utils/databus-uris */ "./js/utils/databus-uris.js");
+const GroupData = __webpack_require__(/*! ./group-data */ "./js/publish/group-data.js");
+
+class VersionHandler extends EntityHandler {
+  constructor($http, $interval, accounts, apiKeys) {
+    super('databus_registration_version_data', $http, $interval, accounts, apiKeys);
+  }
+
+  initialize(data) {
+    const validAccount = data && this.accounts.some(acc => acc.accountName === data.accountName);
+
+    if (validAccount) {
+      Object.assign(this, data);
+    } else {
+      this.accountName = this.accounts[0]?.name;
+    }
+
+    if (this.apiKeyName == null && this.apiKeys != null && this.apiKeys.length > 0) {
+      this.apiKeyName = this.apiKeys[0].keyname;
+    }
+
+    this.pageIndex ??= 0;
+    this.sendmode ??= 'register';
+    this.files ??= [];
+    this.contentVariants ??= [];
+
+    if (!this.contentVariants.some(v => v.id == 'formatExtension')) {
+      this.contentVariants.push({
+        label: 'Format',
+        id: 'formatExtension',
+        custom: false
+      });
+    }
+
+    if (!this.contentVariants.some(v => v.id == 'compression')) {
+      this.contentVariants.push({
+        label: 'Compression',
+        id: 'compression',
+        custom: false
+      });
+    }
+
+    let self = this;
+
+    this.$interval(function () {
+      if (self.hasLicenseQueryChanged) {
+
+        self.$http.get(`/app/publish-wizard/licenses?limit=30&keyword=${self.licenseQuery}`)
+          .then(function (response) {
+            self.filteredLicenseList = response.data.results.bindings;
+          });
+
+        self.hasLicenseQueryChanged = false;
+      }
+
+    }, 300);
+
+    this.licenseQuery = "";
+    this.filterLicenses();
+    this.onAccountNameChanged();
+    this.onGroupNameChanged();
+    this.onArtifactNameChanged();
+  }
+
+  getURI() {
+    return `${DATABUS_RESOURCE_BASE_URL}/${this.accountName}/${this.groupName}/${this.artifactName}/${this.name}`;
+  }
+
+  setLicense(license) {
+    this.license = license;
+    this.onChange();
+  }
+
+  filterLicenses() {
+    this.hasLicenseQueryChanged = true;
+  }
+
+  validate() {
+    this.errors = [];
+    this.warnings = [];
+
+    if (!DatabusUtils.isValidVersionIdentifier(this.name)) {
+      this.errors.push('err_invalid_version_name');
+    }
+
+    if (!DatabusUtils.isValidGroupName(this.groupName)) {
+      this.errors.push('err_no_group_selected');
+    }
+
+    if (!DatabusUtils.isValidArtifactName(this.artifactName)) {
+      this.errors.push('err_no_artifact_selected');
+    }
+
+    if (!DatabusUtils.isValidResourceLabel(this.title)) {
+      this.errors.push('err_invalid_version_title');
+    }
+
+    if (!DatabusUtils.isValidResourceText(this.abstract, 1)) {
+      this.errors.push('err_invalid_version_abstract');
+    }
+
+    if (!DatabusUtils.isValidResourceText(this.description, 1)) {
+      this.errors.push('err_invalid_version_description');
+    }
+
+    if (!DatabusUtils.isValidUrl(this.license)) {
+      this.errors.push('err_invalid_version_license');
+    }
+
+    if (this.files.length == 0) {
+      this.errors.push('err_no_files');
+    }
+
+    for (let file of this.files) {
+      file.errors = [];
+    }
+
+    this.fileErrors = [];
+
+    this.cvSplit(this.files, 0);
+
+    for (let file of this.files) {
+      for (let error of file.errors) {
+        this.errors.push(error);
+        this.fileErrors.push(error);
+      }
+    }
+
+    const exists = this.artifactList?.some(a => a.name === this.name);
+    if (exists) {
+      this.warnings.push('warning_artifact_exists');
+    }
+  }
+
+  getSaveData() {
+    return {
+      accountName: this.accountName,
+      groupName: this.groupName,
+      artifactName: this.artifactName,
+      name: this.name,
+      title: this.title,
+      abstract: this.abstract,
+      description: this.description,
+      sendmode: this.sendmode,
+      apiKeyName: this.apiKeyName,
+      wasDerivedFrom: this.wasDerivedFrom,
+      attribution: this.attribution,
+      license: this.license,
+      pageIndex: this.pageIndex,
+      contentVariants: this.contentVariants,
+      files: this.files
+    };
+  }
+
+
+  async setGroupName(groupName) {
+    if (this.groupName !== groupName) {
+      this.groupName = groupName;
+      await this.onGroupNameChanged();
+    }
+  }
+
+  async onGroupNameChanged() {
+    this.isLoadingArtifacts = true;
+    this.artifactList = await this.sparqlClient.getArtifacts(this.accountName, this.groupName);
+    this.isLoadingArtifacts = false;
+    this.onChange();
+  }
+
+  async setArtifactName(artifactName) {
+    if (this.artifactName !== artifactName) {
+      this.artifactName = artifactName;
+      await this.onArtifactNameChanged();
+    }
+  }
+
+  async onArtifactNameChanged() {
+    this.isLoadingVersions = true;
+    this.versionList = await this.sparqlClient.getVersions(this.accountName, this.groupName, this.artifactName);
+    this.isLoadingVersions = false;
+    this.onChange();
+  }
+
+
+  updateOutputs() {
+
+    const artifactUri = `${DATABUS_RESOURCE_BASE_URL}/${GroupData.getStringOrMissing(this.accountName)}/${GroupData.getStringOrMissing(this.groupName)}/${GroupData.getStringOrMissing(this.artifactName)}`;
+    let versionUri = `${artifactUri}/${GroupData.getStringOrMissing(this.name)}`;
+
+    let graph = {
+      "@id": versionUri,
+      "@type": "Version",
+      "title": this.getValidString(this.title),
+      "abstract": this.getValidString(this.abstract),
+      "description": this.getValidString(this.description),
+      "license": this.getValidString(this.license),
+      "attribution": this.getValidString(this.attribution),
+      "wasDerivedFrom": this.getValidString(this.wasDerivedFrom),
+    }
+
+    graph.distribution = [];
+
+
+    let customVariants = [];
+
+    for (var fg in this.files) {
+
+      var file = this.files[fg];
+
+      var variantSuffix = '';
+      for (var c in this.contentVariants) {
+        var cv = this.contentVariants[c];
+        var value = file.contentVariants[cv.id];
+
+        if (value == undefined || value == "") {
+          continue;
+        }
+
+        variantSuffix += '_' + cv.id + '=' + value;
+      }
+
+      let fileName = this.artifactName;
+
+      var distributionUri = `${versionUri}#${fileName}`;
+      var fileUri = `${versionUri}/${fileName}${variantSuffix}`;
+
+      distributionUri += variantSuffix;
+
+      let formatExtension = this.getValidString(file.contentVariants['formatExtension']);
+
+      if (formatExtension == undefined) {
+        formatExtension = 'none';
+      }
+
+      if (formatExtension != 'none') {
+        distributionUri += '.' + formatExtension;
+        fileUri += '.' + formatExtension;
+      }
+
+      let compression = this.getValidString(file.contentVariants['compression']);
+
+      if (compression == undefined) {
+        compression = 'none';
+      }
+
+      if (compression != 'none') {
+        distributionUri += '.' + compression;
+        fileUri += '.' + compression;
+      }
+
+      var distribution = {
+        "@type": "Part",
+        "formatExtension": formatExtension,
+        "compression": compression,
+        "downloadURL": file.uri,
+        "byteSize": file.byteSize,
+        "sha256sum": file.sha256sum,
+      };
+
+      for (var c in this.contentVariants) {
+        var cv = this.contentVariants[c];
+
+        if (!cv.custom) {
+          continue;
+        }
+
+        var value = file.contentVariants[cv.id];
+
+        if (value == undefined || value == "") {
+          continue;
+        }
+
+        distribution['dcv:' + cv.label] = value;
+
+        if (!customVariants.includes(cv.id)) {
+          customVariants.push(cv.id);
+        }
+      }
+
+      graph.distribution.push(distribution);
+    }
+
+
+
+
+    this.postBody = {
+      "@context": this.getContext(),
+      "@graph": [
+        graph
+      ]
+    };
+
+
+
+    const payload = JSON.stringify(this.postBody, null, 2);
+    const apiKey = this.apiKeys?.find(k => k.keyname === this.apiKeyName)?.apikey;
+
+    this.curlCommand = [
+      `curl -X POST ${DATABUS_RESOURCE_BASE_URL}/api/register \\`,
+      `  -H "X-API-KEY: ${GroupData.getStringOrMissing(apiKey)}" \\`,
+      `  -H "Content-Type: application/json" \\`,
+      `  -d '${payload}'`
+    ].join('\n');
+  }
+
+  createVersionName(v) {
+    if (v == 0) {
+      this.name = new Date().toISOString().slice(0, 10);
+    }
+
+    if (v == 1) {
+      this.name = new Date().toISOString().slice(0, 13);
+    }
+
+    this.onChange();
+  }
+
+  changePage(diff) {
+    this.pageIndex = Math.max(0, this.pageIndex + diff);
+    this.onChange();
+  };
+
+  addContentVariant(variant) {
+
+    if (variant == undefined || variant == '') {
+      return;
+    }
+
+    if (this.contentVariants == undefined) {
+      this.contentVariants = [];
+    }
+
+    for (var c in this.contentVariants) {
+      if (this.contentVariants[c].id == variant) {
+        return;
+      }
+    }
+
+    this.contentVariants.push({
+      label: variant,
+      id: DatabusUtils.uuidv4(),
+      fillRegex: '',
+      toLower: true,
+      pruneWhitespaces: true,
+      custom: true,
+    });
+
+    this.onChange();
+  }
+
+
+  removeContentVariant(variant) {
+    this.contentVariants = this.contentVariants.filter(function (d) {
+      return d.id != variant.id;
+    });
+
+    for (var f in this.files) {
+      var file = this.files[f];
+      delete file.contentVariants[variant.id];
+    }
+
+    this.editContentVariant = null;
+    this.onChange();
+  }
+
+  addFiles(input) {
+    var lines = input.split('\n');
+    for (var line of lines) {
+      if (line != undefined && line.length > 0) {
+        this.addFile(line);
+      }
+    }
+  }
+
+  addFile(file) {
+
+    if (typeof file === 'string') {
+      file = { url: file };
+    }
+
+    if (this.files == undefined) {
+      this.files = [];
+    }
+
+    // Check if already added
+    for (var f in this.files) {
+      if (file.url == this.files[f].url) {
+        return;
+      }
+    }
+
+    var uri = file.url;
+    var uriParts = uri.split('/');
+    var name = uriParts.pop();
+    var nameComponents = name.split('.');
+    name = nameComponents[0];
+
+    if (name.length > 50) {
+      name = name.substr(0, 50) + '...';
+    }
+
+    name = decodeURIComponent(name);
+    // Files with uri as key!!
+
+    this.files.push({
+      id: uri,
+      uri: file.url,
+      name: name,
+      contentVariants: file.contentVariants != null ? file.contentVariants : {},
+      rowspan: 1,
+    });
+
+    this.files.sort(function (a, b) {
+      var nameA = a.name;
+      var nameB = b.name;
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    let k = 1;
+
+    for (let file of this.files) {
+      file.rowIndex = k++;
+    }
+
+    this.onChange();
+  }
+
+  removeFile = function (file, index) {
+    this.files.splice(index, 1);
+    this.onChange();
+  }
+
+
+  fill(variant) {
+
+    var val = variant.fillRegex;
+
+    for (var file of this.files) {
+
+      if (variant.toLower) {
+        val = val.toLowerCase();
+      }
+
+      if (variant.pruneWhitespaces) {
+        val = val.replaceAll(' ', '');
+      }
+
+      if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+        && file.contentVariants[variant.id].length > 0) {
+        continue;
+      }
+
+      file.contentVariants[variant.id] = val;
+    }
+
+    this.onChange();
+  }
+
+  fillByRegex(variant) {
+    var regex = new RegExp(variant.fillRegex);
+
+    for (var file of this.files) {
+      var matches = file.name.match(regex);
+
+      if (matches != null) {
+        var val = matches[0];
+
+        if (variant.toLower) {
+          val = val.toLowerCase();
+        }
+
+        if (variant.pruneWhitespaces) {
+          val = val.replaceAll(' ', '');
+        }
+
+        if (!variant.overwrite && file.contentVariants[variant.id] != undefined
+          && file.contentVariants[variant.id].length > 0) {
+          continue;
+        }
+
+        file.contentVariants[variant.id] = val;
+      }
+    }
+
+    this.onChange();
+  }
+
+  getRowIndex(files, name) {
+    var k = 1;
+    for (var f in files) {
+      if (files[f].name == name) {
+        return k;
+      }
+
+      k++;
+    }
+
+    return -1;
+  }
+
+
+  cvSplit(files, cvIndex) {
+
+    if (files.length <= 1) {
+      return;
+    }
+
+    if (this.contentVariants == undefined) {
+      this.contentVariants = [];
+    }
+    // if end of cvs, assign errors to all files if files.length > 1
+    if (cvIndex - 2 >= this.contentVariants.length) {
+
+      if (files.length > 1) {
+
+        var cvHints = [];
+
+        if (this.contentVariants.length == 0) {
+          cvHints.push('No content variants have been added yet. Add content variants in the files panel in order to tag your files.');
+        } else {
+          for (var c in this.contentVariants) {
+            var cv = this.contentVariants[c];
+            var value = files[0].contentVariants[cv.id];
+
+            if (value == undefined || value == '') {
+              value = 'none';
+            }
+
+            cvHints.push(cv.id + ': ' + value);
+          }
+        }
+
+        for (let file of files) {
+
+          var errorMessage = 'Row ' + file.rowIndex + ' (' +
+            cvHints.join(', ') + ').';
+
+          file.errors.push({ key: 'err_duplicate_file', message: errorMessage });
+        }
+      }
+
+      return;
+    }
+
+    // else create buckets and sort files into buckets
+    var buckets = {};
+
+    for (var f in files) {
+      var file = files[f];
+
+      var key = null;
+
+      if (cvIndex == 0) {
+        key = file.formatExtension;
+      } else if (cvIndex == 1) {
+        key = file.compression;
+      } else {
+        key = file.contentVariants[this.contentVariants[cvIndex - 2].id];
+      }
+
+      if (key == undefined || key == '') {
+        key = '$_none$';
+      }
+
+      if (buckets[key] == undefined) {
+        buckets[key] = [];
+      }
+
+      buckets[key].push(file);
+    }
+
+    // iterate buckets and call recursively
+    for (var b in buckets) {
+      this.cvSplit(buckets[b], cvIndex + 1);
+    }
+  }
+
+  onEditContentVariant(index) {
+    this.editContentVariant = this.contentVariants[index];
+  }
+
+}
+
+module.exports = VersionHandler;
+
+
+/***/ },
+
+/***/ "./js/query-builder/query-builder.js"
+/*!*******************************************!*\
+  !*** ./js/query-builder/query-builder.js ***!
+  \*******************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const QueryNode = __webpack_require__(/*! ./query-node */ "./js/query-builder/query-node.js");
+
+class QueryBuilder {
+
+  static build(config) {
+    var builder = new QueryBuilder();
+    return builder.createQuery(config.node, config.template, config.resourceBaseUrl, config.root);
+  }
+
+
+  isValidHttpUrl(string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
+  uniqueList(arr) {
+    var u = {}, a = [];
+    for (var i = 0, l = arr.length; i < l; ++i) {
+      if (!u.hasOwnProperty(arr[i])) {
+        a.push(arr[i]);
+        u[arr[i]] = 1;
+      }
+    }
+    return a;
+  }
+
+  createQuery(node, template, resourceBaseUrl, root) {
+
+    this.result = '';
+    this.baseNode = node;
+    this.root = root != undefined ? root : node;
+    this.cvCounter = 0;
+    this.resourceBaseUrl = resourceBaseUrl;
+    this.select = template.select;
+    this.template = template.body;
+    this.templateInsertionKey = template.placeholder != undefined ? template.placeholder : `%QUERY%`;
+    this.prefixes = template.prefixes;
+    this.aggregate = template.aggregate;
+    this.stringSuffix = '';
+
+    this.appendLine(this.select, 0);
+    this.appendLine(`{`, 0);
+    this.createNodeSubquery(node, template.indent, false);
+    this.appendLine(`}`, 0);
+
+    if (this.aggregate != undefined) {
+      this.appendLine(this.aggregate, 0);
+    }
+
+    this.prependPrefixes();
+    return this.result;
+  }
+
+  removeAndCollectPrefixes(query) {
+    var lines = query.split('\n');
+    var result = "";
+
+    for (var line of lines) {
+      if (line.toLowerCase().startsWith('prefix')) {
+        this.prefixes.push(line);
+      } else {
+        result += line + '\n';
+      }
+    }
+
+    return result.substring(0, result.length - 1);
+  }
+
+  prependPrefixes() {
+
+    this.prefixes = this.uniqueList(this.prefixes);
+
+    for (var line of this.prefixes) {
+      this.prependLine(line, 0);
+    }
+  }
+
+  appendTemplateHeader(indent) {
+    for (var line of this.template) {
+
+      if (line == this.templateInsertionKey) {
+        break;
+      }
+
+      this.appendLine(line, indent);
+    }
+  }
+
+  appendTemplateFooter(indent) {
+    var write = false;
+
+    for (var line of this.template) {
+
+      if (write) {
+        this.appendLine(line, indent);
+      }
+
+      if (line == this.templateInsertionKey) {
+        write = true;
+      }
+    }
+  }
+
+  appendTemplate(node, indent) {
+
+    this.appendTemplateHeader(indent);
+    this.createNodeSubquery(node, indent + 1, true);
+
+    if (node.property == null && node.childNodes.length == 0) {
+      this.appendLine(`?distribution a dataid:Nonsense .`, indent + 1)
+    }
+
+    this.appendTemplateFooter(indent);
+  }
+
+  /**
+   * Create a subquery for any query node. The subquery consist of the node facets and
+   * a UNION of child node queries (this function is called revursively on the child nodes)
+   * @param {*} node 
+   */
+  createNodeSubquery(node, indent, hasService) {
+    // Initialize empty result
+
+    if (hasService == undefined) {
+      hasService = false;
+    }
+
+    // Get source...
+    var sourceUri = this.findSourceUri(node);
+
+    if (!hasService && sourceUri != null) {
+
+      if (sourceUri != this.resourceBaseUrl) {
+        this.appendLine(`SERVICE <${sourceUri}/sparql>`, indent);
+        this.appendLine(`{`, indent);
+
+        this.appendTemplate(node, indent + 1);
+        this.appendLine(`}`, indent);
+
+      } else {
+        this.appendTemplate(node, indent);
+      }
+
+      return;
+    }
+
+    if (node.uri != null) {
+
+      if (!this.isValidHttpUrl(node.uri)) {
+
+        // Custom query node
+        var query = this.removeAndCollectPrefixes(node.property);
+        var lines = query.split('\n');
+        for (var line of lines) {
+          this.appendLine(line, indent);
+        }
+
+        return;
+      }
+    }
+
+    // If a node property was set, add it as a restriction
+    if (node.property != undefined) {
+      this.appendLine(`?dataset ${node.property} <${node.uri}> .`, indent);
+      // If no property was set, we are dealing with a source node
+    } else {
+
+    }
+
+    // Create the node facets sub query 
+    this.createNodeFacetsSubquery(node, indent);
+
+    // Call recursively on the children and UNION the results
+
+    var k = 0;
+
+    for (var i in node.childNodes) {
+      if (k > 0) this.appendLine('UNION', indent);
+
+      if (node.childNodes[i].childNodes == null) {
+        return;
+      }
+
+      if (node.childNodes[i].property == undefined && node.childNodes[i].childNodes.length == 0) {
+        continue;
+      }
+
+      this.appendLine('{', indent);
+      this.createNodeSubquery(node.childNodes[i], indent + 1, hasService);
+      this.appendLine('}', indent);
+      k++
+    }
+
+    return this.result;
+  }
+
+  findSourceUri(node) {
+    if (node.uri == null) {
+      return null;
+    }
+
+    if (!this.isValidHttpUrl(node.uri)) {
+      return null;
+    }
+
+    var url = new URL(node.uri);
+    return url.origin;
+  }
+
+  /**
+   * Create restrictions that only occur on this node and none of its children
+   * Added restriction have to be enriched with their parent node settings
+   * @param {*} groupNode 
+   */
+  createNodeFacetsSubquery(node, indent) {
+
+    var facetUris = this.findAllNodeFacets(node);
+
+    // Iterate over all the facet settings of the node
+    for (var i in facetUris) {
+
+      var facetUri = facetUris[i];
+
+      // We only add facets to the node if the facet is not overriden by any child nodes
+      if (!this.hasFacetOverride(node, facetUri)) {
+
+        // We create the subquery while merging the facet settings from this node to the root of the query tree
+        this.createFacetSubquery(node, facetUri, indent);
+      }
+    }
+  }
+
+  // Check whether any child node of the passed node overrides a specific facet
+  hasFacetOverride(node, facetUri) {
+
+    // If we don't have any children, there are no overrides
+    if (node.childNodes.length == 0) {
+      return false;
+    }
+
+    // ======= SPECIAL TREATMENT OF VERSION/LATEST =======
+    // Treat as if overriden (leaf nodes already excluded)
+    // ===================================================
+    if (facetUri == 'http://purl.org/dc/terms/hasVersion') {
+      for (var i in node.facetSettings[facetUri]) {
+        if (node.facetSettings[facetUri][i].value == '$latest') {
+          return true;
+        }
+      }
+    }
+
+    // Iterate through the child nodes
+    for (var i in node.childNodes) {
+      var childNode = node.childNodes[i];
+
+      // If the child node overrides the facet then yes, we have an override
+      if (childNode.facetSettings[facetUri] != undefined) {
+        return true;
+      }
+
+      // If any of the child node's children has an override, we have an override
+      if (this.hasFacetOverride(childNode, facetUri)) {
+        return true;
+      }
+    }
+
+    // Nothing found in the children? No override!
+    return false;
+  }
+
+  /**
+   * Generates the sub query for a specific node and facet
+   * @param {*} node 
+   * @param {*} facetUri 
+   */
+  createFacetSubquery(node, facetUri, indent) {
+    var first = true;
+
+
+    // If we add a facet setting, we have to include the facets of all the ancestor nodes
+    var settings = this.createEnrichedSettings(node, facetUri);
+    settings = settings.filter(function (s) {
+      return s.checked;
+    });
+
+    if (settings.length == 1) {
+      var facetSettingEntry = settings[0];
+      if (!facetSettingEntry.checked) return;
+
+      if (facetSettingEntry.value == '$latest' && facetUri == 'http://purl.org/dc/terms/hasVersion') {
+        // Add the special latest version facet value restriction.
+        this.appendLine('{', indent);
+        this.appendLine('?distribution dct:hasVersion ?version {', indent + 1);
+        this.appendLine('SELECT (?v as ?version) { ', indent + 2);
+        this.appendLine('GRAPH ?g2 { ', indent + 3);
+        this.appendLine(`?dataset ${node.property} <${node.uri}> . `, indent + 4);
+        this.appendLine('?dataset dct:hasVersion ?v . ', indent + 4);
+        this.appendLine('}', indent + 3);
+        this.appendLine('} ORDER BY DESC (STR(?version)) LIMIT 1 ', indent + 2);
+        this.appendLine('}', indent + 1);
+        this.appendLine('}', indent);
+      }
+      else {
+        // Add the facet value restriction
+        this.appendLine(`{ ?distribution <${facetUri}> '${facetSettingEntry.value}'${this.stringSuffix} . }`, indent);
+      }
+    }
+    else if (settings.length > 1) {
+
+      // More than one value for this facet
+
+      if (facetUri == 'http://purl.org/dc/terms/hasVersion') {
+
+        // Iterate..
+        for (var i in settings) {
+
+          var facetSettingEntry = settings[i];
+          if (!facetSettingEntry.checked) continue;
+
+          if (!first) this.appendLine("UNION", indent);
+
+          if (facetSettingEntry.value == '$latest' && facetUri == 'http://purl.org/dc/terms/hasVersion') {
+            // Add the special latest version facet value restriction.
+            this.appendLine('{', indent);
+            this.appendLine('?distribution dct:hasVersion ?version {', indent + 1);
+            this.appendLine('SELECT (?v as ?version) { ', indent + 2);
+            this.appendLine('GRAPH ?g2 { ', indent + 3);
+            this.appendLine(`?dataset ${node.property} <${node.uri}> . `, indent + 4);
+            this.appendLine('?dataset dct:hasVersion ?v . ', indent + 4);
+            this.appendLine('}', indent + 3);
+            this.appendLine('} ORDER BY DESC (STR(?version)) LIMIT 1 ', indent + 2);
+            this.appendLine('}', indent + 1);
+            this.appendLine('}', indent);
+          }
+          else {
+            // Add the facet value restriction
+            this.appendLine(`{ ?distribution <${facetUri}> '${facetSettingEntry.value}'${this.stringSuffix} . }`, indent);
+          }
+
+          // If we have more than one value for this facet we need a UNION
+          first = false;
+        }
+
+      } else {
+        this.appendLine('{', indent);
+        this.appendLine(`?distribution <${facetUri}> ?c${this.cvCounter} .`, indent + 1);
+        this.appendLine(`VALUES ?c${this.cvCounter} {`, indent + 1);
+
+        for (var i in settings) {
+          var facetSettingEntry = settings[i];
+          if (!facetSettingEntry.checked) continue;
+          this.appendLine(`'${facetSettingEntry.value}'${this.stringSuffix}`, indent + 2);
+        }
+        this.appendLine(`}`, indent + 1);
+        this.appendLine(`}`, indent);
+        this.cvCounter++;
+      }
+    }
+  }
+
+  /**
+   * Create a list of all the node facets and all overriden ancestor facets that might not be explicitly
+   * included in the node facet list
+   * @param {*} node 
+   */
+  findAllNodeFacets(node) {
+    var facetUris = [];
+
+    for (var facetUri in node.facetSettings) {
+      facetUris.push(facetUri);
+    }
+
+    var parentNode = QueryNode.findParentNodeRecursive(this.root, node); // node.parent;
+
+    while (parentNode != undefined) {
+
+      for (var facetUri in parentNode.facetSettings) {
+
+        // check the base node -> if current node is the base, include all parent facets
+        // on the way too the root
+        if (node != this.baseNode && !this.hasFacetOverride(parentNode, facetUri)) {
+          continue;
+        }
+
+
+        if (facetUris.includes(facetUri)) {
+          continue;
+        }
+
+        facetUris.push(facetUri);
+      }
+
+      parentNode = QueryNode.findParentNodeRecursive(this.root, parentNode); // parentNode.parent;
+    }
+
+    return facetUris;
+  }
+
+  /**
+   * For a given facet, add up all the active settings up to the root node of the
+   * query tree. Node settings override ancestor node settings.
+   * @param {*} node 
+   * @param {*} facetUri 
+   */
+  createEnrichedSettings(node, facetUri) {
+    var result = [];
+    for (var i in node.facetSettings[facetUri]) {
+      result.push(node.facetSettings[facetUri][i]);
+    }
+
+    var parentNode = QueryNode.findParentNodeRecursive(this.root, node); // node.parent;
+
+    while (parentNode != undefined) {
+
+      for (var i in parentNode.facetSettings[facetUri]) {
+        var parentSetting = parentNode.facetSettings[facetUri][i];
+        var hasSetting = false;
+        for (var j in result) {
+          if (result[j].value == parentSetting.value) {
+            hasSetting = true;
+            break;
+          }
+        }
+
+        if (!hasSetting) {
+          result.push(parentSetting);
+        }
+      }
+
+      parentNode = QueryNode.findParentNodeRecursive(this.root, parentNode); //parentNode.parent;
+    }
+
+
+    return result;
+  }
+
+  /**
+   * Appens a line to the global result prepending a specified number of tab characters
+   * @param {*} line 
+   * @param {*} indent 
+   */
+  appendLine(line, indent) {
+    for (var i = 0; i < indent; i++) this.result += '\t';
+    this.result += line;
+    this.result += '\n';
+  }
+
+  /**
+   * Appens a line to the global result prepending a specified number of tab characters
+   * @param {*} line 
+   * @param {*} indent 
+   */
+  prependLine(line, indent) {
+    var text = '';
+    for (var i = 0; i < indent; i++) text += '\t';
+    text += line;
+    this.result = text + '\n' + this.result;
+  }
+}
+
+module.exports = QueryBuilder;
+
+
+/***/ },
+
+/***/ "./js/query-builder/query-node.js"
+/*!****************************************!*\
+  !*** ./js/query-builder/query-node.js ***!
+  \****************************************/
+(module) {
+
+/**
+ * A query node is a node in a query tree. A query tree can be built for any hierarchical selection
+ * on the databus, such as publishers, groups, artifacts and collections.
+ * Each node may declare a range of restrictions. Restrictions can then be overriden again by
+ * any child node in the hierarchy.
+ * 
+ * EXAMPLE: Group node says: Select everything in English. One specific artifact child node of the
+ * group node then states: I don't want to select English, I will select German. 
+ * 
+ * A query tree can then be translated into a SPARQL query that tries to use as few statements as possible
+ * to fetch the desired data
+ */
+class QueryNode {
+
+  /**
+   * Creates a new QueryNode with a resource URI and a property. The property will be added to the
+   * query as a forced and non-overrideable restriction
+   * @param {*} uri 
+   * @param {*} property 
+   */
+  constructor(uri, property) {
+    this.uri = uri;
+    this.property = property;
+    this.childNodes = [];
+    this.facetSettings = {};
+  }
+
+  // Set or unset a facet of the query node
+  setFacet(key, value, checked) {
+
+    var list = this.facetSettings[key];
+
+    if(list == undefined) {
+      this.facetSettings[key] = [];
+      list = this.facetSettings[key];
+    }
+
+    if(!this.isOverride(key, value, checked)) {
+      
+      for(var i = 0; i < list.length; i++) {
+        if(list[i].value == value) {
+          list.splice(i, 1);
+        }
+      }
+
+      if(list.length == 0) {
+        delete this.facetSettings[key];
+      }
+      
+      return;
+    }
+
+    for(var i in list) {
+      if(list[i].value == value) {
+        list[i].checked = checked;
+        return;
+      }
+    }
+   
+    list.push({ value : value, checked : checked });
+  }
+
+  
+
+  /**
+   * Check whether a certain facet setting is an override in the hierarchy
+   * @param {*} key 
+   * @param {*} value 
+   * @param {*} checked 
+   */
+  isOverride(key, value, checked) {
+
+    if(checked == undefined) {
+      var setting = QueryNode.findFacetSetting(this, key, value);
+      checked = setting != null ? setting.checked : false;
+    }
+
+    var parentSetting = QueryNode.findInheritedSetting(this.parent, key, value);
+
+    if(parentSetting == undefined) {
+      return checked;
+    }
+
+    return parentSetting.checked != checked;
+  }
+
+  /**
+   * Add a child node to this node
+   * @param {*} node 
+   */
+  addChild(node) {
+    this.childNodes.push(node);
+    // node.parent = this;
+  }
+
+  static removeChildByUri(node, uri) {
+    for(var i = 0; i < node.childNodes.length; i++) {
+      if(node.childNodes[i].uri == uri) {
+        node.childNodes.splice(i, 1);
+        return;
+      }
+
+      QueryNode.removeChildByUri(node.childNodes[i], uri);
+    }
+  }
+
+  static findChildByUri(node, uri) {
+    for(let i = 0; i < node.childNodes.length; i++) {
+      if(node.childNodes[i].uri === uri) {
+        node.childNodes[i] = QueryNode.createFrom(node.childNodes[i]);
+        return node.childNodes[i];
+      }
+
+      let result = QueryNode.findChildByUri(node.childNodes[i], uri);
+
+      if(result != null) {
+        return result;
+      }
+    }
+
+    return null;  
+  }
+
+  hasFacetSetting(key, value) {
+    for(var i in this.facetSettings[key]) {
+
+      var setting = this.facetSettings[key][i];
+
+      if(setting.value == value) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+   /**
+   * Create a settings object with all the facet settings active for this node (inluding inherited settings)
+   * @param {*} node 
+   */
+  createFullFacetSettings() {
+    
+    var fullSettings = {};
+
+    for(var facetUri in this.facetSettings) {
+      fullSettings[facetUri] = JSON.parse(JSON.stringify(this.facetSettings[facetUri]));
+    }
+
+    var parentNode = this.parent;
+
+    while(parentNode != undefined) {
+
+      for(var facetUri in parentNode.facetSettings) {
+
+        if(fullSettings[facetUri] == undefined) {
+          fullSettings[facetUri] = [];
+        }
+        
+        for(var i in parentNode.facetSettings[facetUri]) {
+
+          var parentSetting = parentNode.facetSettings[facetUri][i];
+
+          if(!this.hasFacetSetting(facetUri, parentSetting.value)) {
+            fullSettings[facetUri].push(JSON.parse(JSON.stringify(parentSetting)));
+          }
+        }
+      }
+
+      parentNode = parentNode.parent;
+    }
+
+    return fullSettings;
+  }
+
+  static serialize(queryNode) {
+    // QueryNode.clearParents(queryNode);
+    var result = JSON.stringify(queryNode);
+    // QueryNode.assignParents(queryNode);
+    return result;
+  }
+
+
+  static addChild(node, child) {
+    node.childNodes.push(child);
+    // child.parent = node;
+  }
+
+  static mergeAddChild(root, child) {
+    var existingNode = QueryNode.findChildByUri(root, child.uri);
+
+    if(existingNode == null) {
+      QueryNode.addChild(root, child); 
+      return true;
+    }
+
+    if(child.childNodes.length == 0) {
+      return false;
+    }
+
+    for(var i in child.childNodes) {
+      QueryNode.mergeAddChild(existingNode, child.childNodes[i]);
+    }
+  }
+
+  /*
+  static clearParents(queryNode) {
+    queryNode.parent = null;
+    for(var i = 0; i < queryNode.childNodes.length; i++) {
+      QueryNode.clearParents(queryNode.childNodes[i]);
+    }
+  }
+
+  static assignParents(queryNode) {
+    for(var i = 0; i < queryNode.childNodes.length; i++) {
+      queryNode.childNodes[i].parent = queryNode;
+      QueryNode.assignParents(queryNode.childNodes[i]);
+    }
+  }
+*/
+
+  static expandAll(queryNode) {
+    queryNode.expanded = true;
+    for(var i = 0; i < queryNode.childNodes.length; i++) {
+      QueryNode.expandAll(queryNode.childNodes[i]);
+    }
+  }
+
+  static findParentNodeRecursive(parent, node) {
+
+    if(node.uri == null) {
+      return null;
+    }
+    
+    if(parent.childNodes == null || parent.childNodes.length == 0) {
+      return null;
+    }
+
+    for(var child of parent.childNodes) {
+      if(child.uri == node.uri) {
+        return parent;
+      }
+    }     
+    
+    for(var child of parent.childNodes) {
+      var recParent = QueryNode.findParentNodeRecursive(child, node);
+
+      if(recParent != null) {
+        return recParent;
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Copy constructor to use the QueryNode class inside of angular components
+   * @param {*} obj 
+   */
+  static createFrom(obj) {
+    var tmpNode = new QueryNode(obj.uri, obj.property);
+    tmpNode.childNodes = obj.childNodes;
+    tmpNode.facetSettings = obj.facetSettings;
+    // tmpNode.parent = obj.parent;
+    tmpNode.files = obj.files;
+    return tmpNode;
+  }
+
+  static createSubTree(obj) {
+    var node = QueryNode.createFrom(obj);
+    node.facetSettings = node.createFullFacetSettings();
+    // node.parent = null;
+    return node;
+  }
+
+  /**
+   * Search a specific node for a certain facet setting
+   * @param {*} node 
+   * @param {*} key 
+   * @param {*} value 
+   */
+  static findFacetSetting(node, key, value) {
+    if(node == undefined || node.facetSettings == undefined) {
+      return undefined;
+    }
+
+    var settingsList = node.facetSettings[key];
+
+    if(settingsList == undefined) {
+      return undefined;
+    }
+
+    for(var i in settingsList) {
+      var setting = settingsList[i];
+
+      if(setting.value == value) {
+        return setting;
+      }
+    }
+
+    return undefined;
+  }
+
+  static findInheritedSetting(node, key, value) {
+    
+    if(node == null) {
+      return undefined;
+    }
+
+    var setting = QueryNode.findFacetSetting(node, key, value);
+
+    if(setting == undefined) {
+      return QueryNode.findInheritedSetting(node.parent, key, value);
+    }
+
+    return setting;
+  }
+}
+
+module.exports = QueryNode;
+
+
+/***/ },
+
+/***/ "./js/query-builder/query-templates.js"
+/*!*********************************************!*\
+  !*** ./js/query-builder/query-templates.js ***!
+  \*********************************************/
+(module) {
+
+/**
+ * Query Templates can be defined as object with the fields:
+ * > select
+ * > body
+ * > aggregate
+ * 
+ * The select is a SPARQL select statement. The body is an array of strings with each string being a line of a 
+ * SPARQL query. The string %QUERY% can be used to insert the query generated by the QueryBuilder. The aggregate
+ * is a SPARQL aggregate statement.
+ */
+ class QueryTemplates {
+
+  static DEFAULT_PREFIXES = [
+    `PREFIX databus: <https://dataid.dbpedia.org/databus#>`,
+    `PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>`,
+    `PREFIX dct:    <http://purl.org/dc/terms/>`,
+    `PREFIX dcat:   <http://www.w3.org/ns/dcat#>`,
+    `PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>`,
+    `PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>`
+  ];
+
+  static COLLECTION_TABLE_ROW_QUERY = `
+PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX dcat:   <http://www.w3.org/ns/dcat#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?file SAMPLE(?version) SAMPLE(?title) SAMPLE(?abstract) SAMPLE(?license) SAMPLE(?size) SAMPLE(?format) SAMPLE(?compression) (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE {
+  <%DISTRIBUTION%> databus:file ?file .
+  <%DISTRIBUTION%> databus:formatExtension ?format .
+  <%DISTRIBUTION%> databus:compression ?compression .
+  <%DISTRIBUTION%> dcat:byteSize ?size .
+  ?version dcat:distribution <%DISTRIBUTION%> .
+  ?version dct:title ?title .
+  ?version dct:abstract ?abstract.
+  ?version dct:license ?license .
+
+  OPTIONAL { <%DISTRIBUTION%> ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }
+} GROUP BY ?file
+`;
+
+static COLLECTION_TABLE_QUERY = `
+PREFIX databus: <https://dataid.dbpedia.org/databus#>
+PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX dcat:   <http://www.w3.org/ns/dcat#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?distribution SAMPLE(?file) AS ?file SAMPLE(?version) AS ?version SAMPLE(?title) AS ?title SAMPLE(?abstract) AS ?abstract SAMPLE(?license) AS ?license SAMPLE(?size) AS ?size SAMPLE(?format) AS ?format SAMPLE(?compression) AS ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE {
+  VALUES ?distribution {
+    %DISTRIBUTIONS%
+  }
+  ?distribution databus:file ?file .
+  ?distribution databus:formatExtension ?format .
+  ?distribution databus:compression ?compression .
+  ?distribution dcat:byteSize ?size .
+  ?version dcat:distribution ?distribution .
+  ?version dct:title ?title .
+  ?version dct:abstract ?abstract.
+  ?version dct:license ?license .
+  OPTIONAL { ?distribution ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }
+} GROUP BY ?distribution
+`;
+
+  static COLLECTION_STATISTICS_TEMPLATE = {
+    indent: 1,
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    select: `SELECT DISTINCT ?dataset ?file ?license ?size WHERE`,
+    body: [
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `\t?distribution databus:file ?file .`,
+      `\tOPTIONAL { ?dataset dct:license ?license . }`,
+      `\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,
+      `}`
+    ]
+  };
+
+  static COLLECTION_FILES_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT DISTINCT ?version ?dataset ?distribution ?title ?description (GROUP_CONCAT(DISTINCT ?file; SEPARATOR=", ") AS ?files) ?license ?size ?format (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,
+    body: [
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?distribution databus:file ?file .`,
+      `\t?distribution databus:formatExtension ?format .`,
+      `\tOPTIONAL { ?distribution ?p  ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,
+      `\tOPTIONAL { ?dataset dct:license ?license . }`,
+      `\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `\t?dataset dct:hasVersion ?version .`,
+      `\t?dataset dct:title ?title .`,
+      `\t?dataset dct:description ?description.`,
+      `}`
+    ],
+    aggregate: `GROUP BY ?version ?dataset ?distribution ?title ?description ?license ?size ?format`
+  };
+
+  /**
+   * Selects files with additional information for group pages
+   */
+   static GROUP_PAGE_FILE_BROWSER_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT DISTINCT ?file ?version ?artifact ?license ?size ?format ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,
+    body: [
+
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `\t?distribution databus:file ?file .`,
+      `\t?distribution databus:formatExtension ?format .`,
+      `\t?distribution databus:compression ?compression .`,
+      `\t?dataset dct:license ?license .`,
+      `\t?dataset dct:hasVersion ?version .`,
+      `\t?dataset databus:artifact ?artifact .`,
+      `\tOPTIONAL { ?distribution ?p ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,
+      `\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,
+      `}`
+    ],
+    aggregate: `GROUP BY ?file ?version ?artifact ?license ?size ?format ?compression`
+  };
+
+  /**
+   * Selects files with additional information
+   */
+  static NODE_FILE_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT DISTINCT ?file ?license ?size ?format ?compression (GROUP_CONCAT(DISTINCT ?var; SEPARATOR=', ') AS ?variant) WHERE`,
+    body: [
+
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `\t?distribution databus:file ?file .`,
+      `\t?distribution databus:formatExtension ?format .`,
+      `\t?distribution databus:compression ?compression .`,
+      `\t?dataset dct:license ?license .`,
+      `\tOPTIONAL { ?distribution ?p ?var. ?p rdfs:subPropertyOf databus:contentVariant . }`,
+      `\tOPTIONAL { ?distribution dcat:byteSize ?size . }`,
+      `}`
+    ],
+    aggregate: `GROUP BY ?file ?license ?size ?format ?compression`
+  };
+
+  /**
+   * The default selection (only file)
+   */
+  static DEFAULT_FILE_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT ?file WHERE`,
+    body: [
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `\t?distribution databus:file ?file .`,
+      `}`,
+    ]
+  };
+
+  static DISTRIBUTIONS_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT ?distribution WHERE`,
+    body: [
+      `GRAPH ?g`,
+      `{`,
+      `%QUERY%`,
+      `\t?dataset dcat:distribution ?distribution .`,
+      `}`,
+    ]
+  };
+
+  /**
+   * The default selection (only file)
+   */
+   static CUSTOM_QUERY_FILE_TEMPLATE = {
+    prefixes: QueryTemplates.DEFAULT_PREFIXES,
+    indent: 1,
+    select: `SELECT ?file WHERE`,
+    body: [
+      `{`,
+      `%QUERY%`,
+      `}`,
+    ]
+  };
+}
+
+module.exports = QueryTemplates;
+
+/***/ },
+
+/***/ "./js/search/search-adapter.js"
+/*!*************************************!*\
+  !*** ./js/search/search-adapter.js ***!
+  \*************************************/
+(module) {
+
+
+
+
+
+class SearchAdapter {
+
+    static list = [
+        { 
+            name: 'lookup',
+            label: 'Lookup',
+            factory: this.lookup
+        }
+        /*
+        {
+            name: 'virtuoso',
+            label: 'Virtuoso SPARQL',
+            factory: this.virtuoso
+        }
+        */
+    ];
+
+    constructor($http, endpoint, queryFormatter, resultFormatter) {
+        this.http = $http;
+        this.endpoint = endpoint;
+        this.queryFormatter = queryFormatter;
+        this.resultFormatter = resultFormatter;
+    }
+
+    static inferResourceTypes(docs) {
+        // TODO:
+    }
+    
+
+    static lookup($http, endpoint) {
+        return new SearchAdapter($http, endpoint, function(query) {
+            return `?query=${query}&format=json`;
+        }, function(response) {
+            var docs = response.data.docs;
+            SearchAdapter.inferResourceTypes(docs);
+            return docs;
+        });
+    }
+
+    static virtuoso($http, endpoint) {
+        var virtuosoAdapter = new SearchAdapter($http, endpoint, function (query) {
+            var querySelector = /(?<=\?|&)query=[^(&#)]*/;
+
+            // TODO: get the query input from the query
+        }, function (results) {
+            // TODO: format virtuoso search results
+        });
+
+        return virtuosoAdapter;
+    }
+
+   
+
+    async search(query) {
+        try {
+            if (this.queryFormatter != null) {
+                query = this.queryFormatter(query);
+            }
+
+            var results = await this.http.get(`${this.endpoint}${query}`);
+
+            if (this.resultFormatter != null) {
+                return this.resultFormatter(results);
+            }
+
+            return results;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    }
+}
+
+module.exports = SearchAdapter;
+
+/***/ },
+
+/***/ "./js/search/search-manager.js"
+/*!*************************************!*\
+  !*** ./js/search/search-manager.js ***!
+  \*************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const AppJsonFormatter = __webpack_require__(/*! ../utils/app-json-formatter */ "./js/utils/app-json-formatter.js");
+const SearchAdapter = __webpack_require__(/*! ./search-adapter */ "./js/search/search-adapter.js");
+
+class SearchManager {
+
+    constructor($http, $interval) {
+        this.http = $http;
+        this.searchExtensions = [];
+
+        this.baseAdapter = SearchAdapter.lookup(this.http, `/api/search`);
+        this.searchExtensions.push({
+            endpointUri: `/api/search`,
+            adapterName: `lookup`,
+            adapter: this.baseAdapter
+        });
+    }
+
+    mergeResults(results, documents) {
+        for(var document of documents) {
+            results.push(document);
+        }
+
+        return results;
+    }
+
+    async search(queryUrl, documentFilter) {
+
+        var results = [];
+
+        for (var searchExtension of this.searchExtensions) {
+
+            try {
+
+                var documents = await searchExtension.adapter.search(queryUrl);
+
+                if(documentFilter != undefined) {
+                    documents = documents.filter(documentFilter);
+                }
+                
+                results = this.mergeResults(results, documents);
+
+            } catch(err) {
+
+            }
+        }
+
+        return results;
+    }
+
+    async initialize() {
+
+        var auth = data.auth;
+
+        if (!auth.authenticated) {
+            return;
+        }
+
+        if(auth.info.accountName == undefined) {
+            return;
+        }
+
+        /*
+
+        var options = {
+            method: 'GET',
+            url: `/${ auth.info.accountName }`,
+            headers: {
+                'Accept': 'application/ld+json',
+                'X-Jsonld-Formatting': 'flatten',
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+            }
+        }
+
+        var response = await this.http(options);
+        var accountData = AppJsonFormatter.formatAccountData(response.data);
+        var extensions = JSON.parse(JSON.stringify(accountData.searchExtensions));
+
+        for (var searchExtension of extensions) {
+
+            switch (searchExtension.adapterName) {
+                case 'lookup':
+                    searchExtension.adapter = SearchAdapter.lookup(this.http, searchExtension.endpointUri);
+                    break;
+            }
+
+            this.searchExtensions.push(searchExtension);
+
+        })*/
+    }
+}
+
+module.exports = SearchManager;
+
+
+/***/ },
+
+/***/ "./js/utils/app-json-formatter.js"
+/*!****************************************!*\
+  !*** ./js/utils/app-json-formatter.js ***!
+  \****************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusConstants = __webpack_require__(/*! ./databus-constants */ "./js/utils/databus-constants.js");
+const DatabusUris = __webpack_require__(/*! ./databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ./databus-utils */ "./js/utils/databus-utils.js");
+const JsonldUtils = __webpack_require__(/*! ./jsonld-utils */ "./js/utils/jsonld-utils.js");
+
+/**
+ * Translates expanded jsonld into web-app compatible json
+ */
+class AppJsonFormatter {
+
+  static async createAccountGraphs(uri, name, label, img, secretaries, status) {
+    var name = UriUtils.uriToName(uri);
+  
+    var rsaKeyGraph = {};
+    rsaKeyGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.CERT_RSA_PUBLIC_KEY;
+    rsaKeyGraph[DatabusUris.RDFS_LABEL] = DatabusConstants.WEBID_SHARED_PUBLIC_KEY_LABEL;
+    rsaKeyGraph[DatabusUris.CERT_MODULUS] = signer.getModulus();
+    rsaKeyGraph[DatabusUris.CERT_EXPONENT] = 65537;
+  
+    var personUri = `${uri}${DatabusConstants.WEBID_THIS}`;
+
+    var personGraph = {};
+    personGraph[DatabusUris.JSONLD_ID] = personUri;
+    personGraph[DatabusUris.JSONLD_TYPE] = [ DatabusUris.FOAF_PERSON, DatabusUris.DBP_DBPEDIAN ];
+    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(uri);
+    personGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = uri;
+    personGraph[DatabusUris.CERT_KEY] = [ rsaKeyGraph ];
+    personGraph[DatabusUris.FOAF_NAME] = label;
+
+    if(img != null) {
+      personGraph[DatabusUris.FOAF_IMG] = img;
+    }
+
+     if(status != null) {
+      personGraph[DatabusUris.FOAF_STATUS] = status;
+    }
+
+    var profileUri = `${uri}${DatabusConstants.WEBID_DOCUMENT}`;
+  
+    var profileDocumentGraph = {};
+    profileDocumentGraph[DatabusUris.JSONLD_ID] = profileUri;
+    profileDocumentGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSONAL_PROFILE_DOCUMENT;
+    profileDocumentGraph[DatabusUris.FOAF_MAKER] = JsonldUtils.refTo(personUri);
+    profileDocumentGraph[DatabusUris.FOAF_PRIMARY_TOPIC] = JsonldUtils.refTo(personUri);
+  
+    var accountGraph = {}
+    accountGraph[DatabusUris.JSONLD_ID] = uri;
+    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
+    accountGraph[DatabusUris.FOAF_ACCOUNT_NAME] = name;
+    accountGraph[DatabusUris.DATABUS_NAME] = name;
+
+    if(secretaries != null) {
+
+      accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY] = [];
+
+      for(var secretary of secretaries) {
+
+        let secretaryAccountUri = `${secretary.accountName}`;
+
+        let secretaryGraph = {};
+        secretaryGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_SECRETARY;
+        secretaryGraph[DatabusUris.DATABUS_ACCOUNT_PROPERTY] = JsonldUtils.refTo(secretaryAccountUri);
+
+        if(secretary.hasWriteAccessTo != undefined) {
+          secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO] = [];
+
+          for(var writeAccess of secretary.hasWriteAccessTo) {
+            secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO].push(JsonldUtils.refTo(writeAccess));
+          }
+        }
+
+        accountGraph[DatabusUris.DATABUS_SECRETARY_PROPERTY].push(secretaryGraph);
+      }
+    }
+
+    let expandedGraphs = [
+      accountGraph,
+      personGraph,
+      profileDocumentGraph
+    ];
+    
+    return await jsonld.compact(expandedGraphs, JsonldLoader.DEFAULT_CONTEXT_URL);
+  }
+  
+  static createAccountData(accountUri, accountLabel, accountStatus, accountImage) {
+
+    var personUri = `${accountUri}${DatabusConstants.WEBID_THIS}`;
+
+    var accountJsonLd = {};
+
+    var accountGraph = {};
+    accountGraph[DatabusUris.JSONLD_ID] = accountUri;
+    accountGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.DATABUS_ACCOUNT;
+
+    var personGraph = {};
+    personGraph[DatabusUris.JSONLD_ID] = personUri;
+    personGraph[DatabusUris.JSONLD_TYPE] = DatabusUris.FOAF_PERSON;
+    personGraph[DatabusUris.FOAF_NAME] = accountLabel;
+    personGraph[DatabusUris.FOAF_ACCOUNT] = JsonldUtils.refTo(accountUri);
+
+    if (accountStatus != null) {
+      personGraph[DatabusUris.FOAF_STATUS] = accountStatus;
+    }
+
+    if (accountImage != null) {
+      personGraph[DatabusUris.FOAF_IMG] = JsonldUtils.refTo(accountImage);
+    }
+
+
+    return [
+      accountGraph,
+      personGraph
+    ];
+  }
+
+  static formatGroupData(graphs) {
+    var result = {};
+
+    // ?uri ?title ?abstract ?description
+    var groupGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_GROUP);
+
+    result.uri = groupGraph[DatabusUris.JSONLD_ID];
+    result.title = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_TITLE);
+    result.abstract = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_ABSTRACT);
+    result.description = JsonldUtils.getProperty(groupGraph, DatabusUris.DCT_DESCRIPTION);
+    result.name = DatabusUtils.uriToResourceName(result.uri);
+    return result;
+  }
+
+  static formatArtifactData(graphs) {
+    var result = {};
+    // ?uri ?title ?abstract ?description
+    var artifactGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ARTIFACT);
+
+    result.uri = artifactGraph[DatabusUris.JSONLD_ID];
+    result.title = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_TITLE);
+    result.abstract = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_ABSTRACT);
+    result.description = JsonldUtils.getProperty(artifactGraph, DatabusUris.DCT_DESCRIPTION);
+    result.name = DatabusUtils.uriToResourceName(result.uri);
+    return result;
+
+
+  }
+
+  static formatAccountData(graphs) {
+    var result = {};
+
+    var accountGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_ACCOUNT);
+    var personGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.FOAF_PERSON);
+
+    result.uri = accountGraph[DatabusUris.JSONLD_ID];
+    result.accountName = DatabusUtils.uriToResourceName(result.uri);
+    result.label = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_NAME);
+    result.imageUrl = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_IMG);
+    result.about = JsonldUtils.getFirstProperty(personGraph, DatabusUris.FOAF_STATUS);
+    result.webIds = [];
+    result.searchExtensions = [];
+
+    var extensionGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SEARCH_EXTENSION);
+
+    for (var extensionGraph of extensionGraphs) {
+      result.searchExtensions.push({
+        endpointUri: JsonldUtils.getProperty(extensionGraph, DatabusUris.DATABUS_SEARCH_EXTENSION_ENDPOINT),
+        adapterName: JsonldUtils.getProperty(extensionGraph, DatabusUris.DATABUS_SEARCH_EXTENSION_ADAPTER),
+      });
+    }
+
+    for (var graph of graphs) {
+
+      if (graph[DatabusUris.JSONLD_ID] == personGraph[DatabusUris.JSONLD_ID]) {
+        continue;
+      }
+
+      if (graph[DatabusUris.FOAF_ACCOUNT] != undefined) {
+        result.webIds.push(graph[DatabusUris.JSONLD_ID]);
+      }
+    }
+
+    result.secretaries = [];
+    var secretaryGraphs = JsonldUtils.getTypedGraphs(graphs, DatabusUris.DATABUS_SECRETARY);
+
+    for (var secretaryGraph of secretaryGraphs) {
+      var secretaryData = {
+        accountName: JsonldUtils.getProperty(secretaryGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY),
+        hasWriteAccessTo: []
+      };
+
+      var writeAccessUris = secretaryGraph[DatabusUris.DATABUS_HAS_WRITE_ACCESS_TO];
+
+      if (Array.isArray(writeAccessUris)) {
+        for (var item of writeAccessUris) {
+          if (typeof item === 'object' && item['@id']) {
+            secretaryData.hasWriteAccessTo.push(item['@id']);
+          } else if (typeof item === 'string') {
+            secretaryData.hasWriteAccessTo.push(item);
+          }
+        }
+      }
+
+      result.secretaries.push(secretaryData);
+    }
+
+    return result;
+  }
+
+  static formatVersionData(versionGraph) {
+
+
+    var version = {};
+    version.uri = versionGraph[DatabusUris.JSONLD_ID];
+    version.title = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_TITLE);
+    version.abstract = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ABSTRACT);
+    version.description = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_DESCRIPTION);
+    version.artifact = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ARTIFACT_PROPERTY);
+    version.license = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_LICENSE);
+    version.attribution = JsonldUtils.getProperty(versionGraph, DatabusUris.DATABUS_ATTRIBUTION);
+    version.wasDerivedFrom = JsonldUtils.getProperty(versionGraph, DatabusUris.PROV_WAS_DERIVED_FROM);
+    version.issued = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_ISSUED);
+    version.name = JsonldUtils.getProperty(versionGraph, DatabusUris.DCT_HAS_VERSION);
+
+    return version;
+  }
+
+  static formatCollectionData(graphs) {
+    var collectionGraph = JsonldUtils.getTypedGraph(graphs, DatabusUris.DATABUS_COLLECTION);
+
+    var result = {};
+
+    result.uri = collectionGraph[DatabusUris.JSONLD_ID];
+    result.title = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_TITLE);
+    result.abstract = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ABSTRACT);
+    result.description = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_DESCRIPTION);
+    result.issued = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_ISSUED);
+    result.publisher = JsonldUtils.getProperty(collectionGraph, DatabusUris.DCT_PUBLISHER);
+    result.account = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_ACCOUNT_PROPERTY);
+
+    var content = JsonldUtils.getProperty(collectionGraph, DatabusUris.DATABUS_COLLECTION_CONTENT)
+    result.content = DatabusUtils.tryParseJson(unescape(content));
+
+    return result;
+  }
+}
+
+module.exports = AppJsonFormatter;
+
+
+/***/ },
+
+/***/ "./js/utils/databus-constants.js"
+/*!***************************************!*\
+  !*** ./js/utils/databus-constants.js ***!
+  \***************************************/
+(module) {
+
+
+
+class DatabusConstants {
+    static FACET_DEFAULT_SUBQUERY =
+        "\n\t{ " +
+        "\n\t\t?distribution <%FACET%> '%VALUE%'^^<http://www.w3.org/2001/XMLSchema#string> . " +
+        "\n\t} ";
+
+    static FACET_DEFAULT_SUBQUERY_PLACEHOLDER_FACET = "%FACET%";
+    static FACET_DEFAULT_SUBQUERY_PLACEHOLDER_VALUE = "%VALUE%";
+    static FACET_LATEST_VERSION_VALUE = "$latest";
+    static FACET_LATEST_VERSION_LABEL = "Latest Version";
+
+    static WEBID_THIS = "#this";
+    static WEBID_DOCUMENT = "#doc";
+    static WEBID_SHARED_PUBLIC_KEY_LABEL = "Shared Databus Public Key";
+
+    static FACET_LASTEST_ARTIFACT_VERSION_SUBQUERY =
+        "\n\t{" +
+        "\n\t\t?distribution dct:hasVersion ?latestVersion " +
+        "\n\t\t{" +
+        "\n\t\t\tSELECT (?version as ?latestVersion) WHERE { " +
+        "\n\t\t\t\t?dataset databus:artifact <%ARTIFACT_URI%> . " +
+        "\n\t\t\t\t?dataset dct:hasVersion ?version . " +
+        "\n\t\t\t} ORDER BY DESC (?version) LIMIT 1 " +
+        "\n\t\t} " +
+        "\n\t}";
+
+    static FACET_LASTEST_GROUP_VERSION_SUBQUERY =
+        "\n\t{" +
+        "\n\t\t?distribution dct:hasVersion ?latestVersion " +
+        "\n\t\t{" +
+        "\n\t\t\tSELECT (?version as ?latestVersion) WHERE { " +
+        "\n\t\t\t\t?dataset databus:group <%ARTIFACT_URI%> . " +
+        "\n\t\t\t\t?dataset dct:hasVersion ?version . " +
+        "\n\t\t\t} ORDER BY DESC (?version) LIMIT 1 " +
+        "\n\t\t} " +
+        "\n\t}";
+
+    static FACET_SUBQUERY_UNION = "\n\tUNION";
+    static DATABUS_SPARQL_ENDPOINT_URL = "/sparql";
+}
+
+module.exports = DatabusConstants;
+
+/***/ },
+
+/***/ "./js/utils/databus-facets-cache.js"
+/*!******************************************!*\
+  !*** ./js/utils/databus-facets-cache.js ***!
+  \******************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const { DATABUS_CONTENT_VARIANT_PREFIX } = __webpack_require__(/*! ./databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUris = __webpack_require__(/*! ./databus-uris */ "./js/utils/databus-uris.js");
+const DatabusUtils = __webpack_require__(/*! ./databus-utils */ "./js/utils/databus-utils.js");
+
+class DatabusFacetsCache {
+
+  constructor($http) {
+    this._facets = {};
+    this._http = $http;
+    this._regex = new RegExp('%RESOURCE_URI%', "g");
+
+    this.pathLengthToQueryMap = {
+      2: DatabusFacetsCache.GET_GROUP_FACETS,
+      3: DatabusFacetsCache.GET_ARTIFACT_FACETS
+    }
+
+    this._facetMetadata = {};
+    
+    this._facetMetadata[DatabusUris.DCT_HAS_VERSION] = "Version";
+    this._facetMetadata[DatabusUris.DATABUS_FORMAT_EXTENSION] = "Format";
+    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + "lang"] = "Language";
+    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + "domain"] = "Domain";
+    this._facetMetadata[DatabusUris.DATABUS_CONTENT_VARIANT_PREFIX + "tag"] = "Tag";
+    this._facetMetadata[DatabusUris.DATABUS_COMPRESSION] = "Compression";
+    
+  }
+
+  async get(resource) {
+
+    if (this._facets[resource] != undefined) {
+      return {
+        uri : resource,
+        facets: this._facets[resource]
+      };
+    }
+
+    var url = new URL(resource);
+    var origin = url.origin;
+    var pathLength = DatabusUtils.getResourcePathLength(resource);
+
+    var query = this.pathLengthToQueryMap[pathLength];
+
+
+    if (query == undefined) {
+      return null;
+    }
+
+    query = query.replace(this._regex, resource);
+
+    var req = {
+      method: 'POST',
+      url: `${origin}/sparql?query=`,
+      data: `format=json&query=${encodeURIComponent(query)}`,
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+    }
+
+    var response = await this._http(req);
+
+    var result = {};
+
+    for (var binding of response.data.results.bindings) {
+
+      var property = binding.property.value;
+
+      if (result[property] == undefined) {
+        result[property] = {};
+
+        var label = this._facetMetadata[property] != undefined ? this._facetMetadata[property] : 
+          DatabusUtils.uriToName(property);
+
+        result[binding.property.value].label = label;
+        result[binding.property.value].values = []
+      }
+
+      result[binding.property.value].values.push(binding.value.value);
+    }
+
+    this._facets[resource] = result;
+    
+    return {
+      uri : resource,
+      facets: this._facets[resource]
+    };
+  }
+
+
+  static GET_GROUP_FACETS = `
+  PREFIX databus: <https://dataid.dbpedia.org/databus#>
+  PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+  PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+  
+  SELECT DISTINCT ?property ?value WHERE {
+    {
+      GRAPH ?g {
+        ?dataset databus:group <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution dct:hasVersion ?value .
+        BIND(dct:hasVersion AS ?property)
+      }
+    }
+    UNION
+    {
+      GRAPH ?g {
+        ?dataset databus:group <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution databus:formatExtension ?value .
+        BIND(databus:formatExtension AS ?property)
+      }
+    }
+    UNION
+    {
+      GRAPH ?g {
+        ?dataset databus:group <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution databus:compression ?value .
+        BIND(databus:compression AS ?property)
+      }
+    }
+    UNION
+    {
+      GRAPH ?g {
+        ?dataset databus:group <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution ?property ?value .
+        ?property rdfs:subPropertyOf databus:contentVariant .
+      }
+    }
+  }
+  `;
+
+  static GET_ARTIFACT_FACETS = `
+  PREFIX databus: <https://dataid.dbpedia.org/databus#>
+  PREFIX dcv: <https://dataid.dbpedia.org/databus-cv#>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+  PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+  
+  SELECT DISTINCT ?property ?value WHERE {
+    GRAPH ?g {
+    {
+        BIND(dct:hasVersion AS ?property)
+        ?dataset databus:artifact <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution dct:hasVersion ?value .
+    }
+    UNION
+    {
+        BIND(databus:formatExtension AS ?property)
+        ?dataset databus:artifact <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution databus:formatExtension ?value .
+    }
+    UNION
+    {
+        BIND(databus:compression AS ?property)
+        ?dataset databus:artifact <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution databus:compression ?value .
+    }
+    UNION
+    {
+        ?dataset databus:artifact <%RESOURCE_URI%> .
+        ?dataset dcat:distribution ?distribution . 
+        ?distribution ?property ?value .
+        ?property rdfs:subPropertyOf databus:contentVariant .
+      }
+    }
+  }`;
+
+
+
+}
+
+module.exports = DatabusFacetsCache;
+
+/***/ },
+
+/***/ "./js/utils/databus-messages.js"
+/*!**************************************!*\
+  !*** ./js/utils/databus-messages.js ***!
+  \**************************************/
+(module) {
+
+
+class DatabusMessages {
+
+  // Collection Editor
+  static CEDIT_INVALID_IDENTIFIER = 'The identifier must match the following regular expression: #REGEX#';
+  static CEDIT_INVALID_TITLE = 'The title must match the following regular expression: #REGEX#';
+  static CEDIT_INVALID_ABSTRACT = 'The abstract must match the following regular expression: #REGEX#';
+  static CEDIT_INVALID_DESCRIPTION = 'The description must match the following regular expression: #REGEX#';
+  static CEDIT_COLLECTION_IMPORT_FAILED = 'Failed to import the collection';
+  static CEDIT_COLLECTION_IMPORTED = 'Collection imported successfully';
+  static CEDIT_COLLECTION_SAVED = 'Collection saved successfully';
+  static CEDIT_COLLECTION_SAVE_FAILED = 'Failed to save the collection';
+  static CEDIT_COLLECTION_UNPUBLISHED = 'Collection unpublished successfully';
+  static CEDIT_LOCAL_CHANGES_DISCARDED = 'Local changes discarded';
+
+  // Generic
+  static GENERIC_COPIED_TO_CLIPBOARD = 'Copied to clipboard!';
+
+  // Account 
+  static ACCOUT_PROFILE_SAVED = 'Profile changes have been saved';
+
+  static ACCOUNT_API_KEY_CREATED = 'API key created';
+
+  static ACCOUNT_WEBID_LINKED = 'External WebId has been linked to your profile';
+
+  
+}
+
+  module.exports = DatabusMessages;
+
+
+/***/ },
+
+/***/ "./js/utils/databus-uris.js"
+/*!**********************************!*\
+  !*** ./js/utils/databus-uris.js ***!
+  \**********************************/
+(module) {
+
+
+class DatabusUris {
+
+  // JSONLD
+  static JSONLD_TYPE = '@type';
+  static JSONLD_ID = '@id';
+  static JSONLD_VALUE = '@value';
+  static JSONLD_LANGUAGE = '@language';
+  static JSONLD_CONTEXT = '@context';
+  static JSONLD_GRAPH = '@graph';
+
+  // Databus
+  static DATABUS_DATABUS = 'https://dataid.dbpedia.org/databus#Databus';
+  static DATABUS_PART = 'https://dataid.dbpedia.org/databus#Part';
+  static DATABUS_VERSION = 'https://dataid.dbpedia.org/databus#Version';
+  static DATABUS_GROUP = 'https://dataid.dbpedia.org/databus#Group';
+  static DATABUS_ACCOUNT = 'https://dataid.dbpedia.org/databus#Account';
+  static DATABUS_ARTIFACT = 'https://dataid.dbpedia.org/databus#Artifact';
+  static DATABUS_VERSION_PROPERTY = 'https://dataid.dbpedia.org/databus#version';
+  static DATABUS_GROUP_PROPERTY = 'https://dataid.dbpedia.org/databus#group';
+  static DATABUS_ACCOUNT_PROPERTY = 'https://dataid.dbpedia.org/databus#account';
+  static DATABUS_HAS_ARTIFACT = 'https://dataid.dbpedia.org/databus#hasArtifact';
+  static DATABUS_HAS_VERSION = 'https://dataid.dbpedia.org/databus#hasVersion';
+  static DATABUS_NAME = 'https://dataid.dbpedia.org/databus#name';
+  
+  static DATABUS_SECRETARY_PROPERTY = 'https://dataid.dbpedia.org/databus#secretary';
+  static DATABUS_SECRETARY = 'https://dataid.dbpedia.org/databus#Secretary';
+  static DATABUS_HAS_WRITE_ACCESS_TO = 'https://dataid.dbpedia.org/databus#hasWriteAccessTo';
+
+  static DATABUS_ARTIFACT_PROPERTY = 'https://dataid.dbpedia.org/databus#artifact';
+  static DATABUS_FORMAT = 'https://dataid.dbpedia.org/databus#format';
+  static DATABUS_FORMAT_EXTENSION = 'https://dataid.dbpedia.org/databus#formatExtension';
+  static DATABUS_CONTENT_VARIANT = 'https://dataid.dbpedia.org/databus#contentVariant';
+  static DATABUS_CONTENT_VARIANT_PREFIX = 'https://dataid.dbpedia.org/databus-cv#';
+  static DATABUS_SHASUM = 'https://dataid.dbpedia.org/databus#sha256sum';
+  static DATABUS_COLLECTION = 'https://dataid.dbpedia.org/databus#Collection';
+  static DATABUS_FILE = 'https://dataid.dbpedia.org/databus#file';
+  static DATABUS_COMPRESSION = 'https://dataid.dbpedia.org/databus#compression';
+  static DATABUS_ATTRIBUTION = 'https://dataid.dbpedia.org/databus#attribution';
+  static DATABUS_PREVIEW = 'https://dataid.dbpedia.org/databus#preview';
+  static DATABUS_COLLECTION_CONTENT = 'https://dataid.dbpedia.org/databus#collectionContent';
+  static DATABUS_TRACTATE_V1 = 'https://dataid.dbpedia.org/databus#DatabusTractateV1';
+  static DATABUS_PLUGIN = 'https://dataid.dbpedia.org/databus#Plugin';
+  static DATABUS_SEARCH_EXTENSION = 'https://dataid.dbpedia.org/databus#SearchExtension';
+  static DATABUS_SEARCH_EXTENSION_ADAPTER = 'https://dataid.dbpedia.org/databus#searchExtensionAdapter';
+  static DATABUS_SEARCH_EXTENSION_ENDPOINT = 'https://dataid.dbpedia.org/databus#searchExtensionEndpoint';
+  static DATABUS_EXTENDS = 'https://dataid.dbpedia.org/databus#extends';
+  
+  // DCT
+  static DCT_PUBLISHER = 'http://purl.org/dc/terms/publisher';
+  static DCT_HAS_VERSION = 'http://purl.org/dc/terms/hasVersion';
+  static DCT_ISSUED = 'http://purl.org/dc/terms/issued';
+  static DCT_CREATED = 'http://purl.org/dc/terms/created';
+  static DCT_MODIFIED = 'http://purl.org/dc/terms/modified';
+  static DCT_DISTRIBUTION = 'http://purl.org/dc/terms/distribution';
+  static DCT_SUBJECT = 'http://purl.org/dc/terms/subject';
+  static DCT_CREATOR = 'http://purl.org/dc/terms/creator'
+  static DCT_TITLE = 'http://purl.org/dc/terms/title'
+  static DCT_ABSTRACT = 'http://purl.org/dc/terms/abstract'
+  static DCT_DESCRIPTION = 'http://purl.org/dc/terms/description'
+  static DCT_LICENSE = 'http://purl.org/dc/terms/license';
+
+  // DCAT
+  static DCAT_DOWNLOAD_URL = 'http://www.w3.org/ns/dcat#downloadURL';
+  static DCAT_BYTESIZE = 'http://www.w3.org/ns/dcat#byteSize';
+  static DCAT_DISTRIBUTION = 'http://www.w3.org/ns/dcat#distribution';
+
+
+  // SEC
+  static SEC_PROOF = 'https://w3id.org/security#proof';
+  static SEC_SIGNATURE = 'https://w3id.org/security#signature';
+
+  // RDF
+  static RDF_PROPERTY = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#Property';
+
+  // RDFS
+  static RDFS_SUB_PROPERTY_OF = 'http://www.w3.org/2000/01/rdf-schema#subPropertyOf';
+  static RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+
+  // XSD
+  static XSD_DATE_TIME = 'http://www.w3.org/2001/XMLSchema#dateTime';
+  static XSD_DECIMAL = 'http://www.w3.org/2001/XMLSchema#decimal';
+  static XSD_STRING = 'http://www.w3.org/2001/XMLSchema#string';
+
+  // SHACL
+  static SHACL_VALIDATION_REPORT = 'http://www.w3.org/ns/shacl#ValidationReport';
+  static SHACL_VALIDATION_RESULT = 'http://www.w3.org/ns/shacl#ValidationResult';
+  static SHACL_CONFORMS = 'http://www.w3.org/ns/shacl#conforms';
+  static SHACL_RESULT_MESSAGE = 'http://www.w3.org/ns/shacl#resultMessage';
+
+  // FOAF
+  static FOAF_PERSONAL_PROFILE_DOCUMENT = 'http://xmlns.com/foaf/0.1/PersonalProfileDocument';
+  static FOAF_ACCOUNT = 'http://xmlns.com/foaf/0.1/account';
+  static FOAF_NAME = 'http://xmlns.com/foaf/0.1/name';
+  static FOAF_STATUS = 'http://xmlns.com/foaf/0.1/status';
+  static FOAF_PERSON = 'http://xmlns.com/foaf/0.1/Person';
+  static FOAF_PRIMARY_TOPIC = 'http://xmlns.com/foaf/0.1/primaryTopic';
+  static FOAF_MAKER = 'http://xmlns.com/foaf/0.1/maker';
+  static FOAF_ACCOUNT_NAME = 'http://xmlns.com/foaf/0.1/accountName';
+  static FOAF_IMG = 'http://xmlns.com/foaf/0.1/img';
+
+  // S4AC
+  static S4AC_ACCESS_POLICY = 'http://ns.inria.fr/s4ac/v2#AccessPolicy';
+  static S4AC_ACCESS_CREATE = 'http://ns.inria.fr/s4ac/v2#Create';
+  static S4AC_HAS_ACCESS_PRIVILEGE = 'http://ns.inria.fr/s4ac/v2#hasAccessPrivilege';
+
+  // CERT
+  static CERT_KEY = 'http://www.w3.org/ns/auth/cert#key';
+  static CERT_MODULUS = 'http://www.w3.org/ns/auth/cert#modulus';
+  static CERT_EXPONENT = 'http://www.w3.org/ns/auth/cert#exponent';
+  static CERT_RSA_PUBLIC_KEY = 'http://www.w3.org/ns/auth/cert#RSAPublicKey';
+
+  // PROV
+  static PROV_WAS_DERIVED_FROM = 'http://www.w3.org/ns/prov-o#wasDerivedFrom';
+
+  // DBP
+  static DBP_DBPEDIAN = 'http://dbpedia.org/ontology/DBpedian';
+}
+
+module.exports = DatabusUris;
+
+
+/***/ },
+
+/***/ "./js/utils/databus-utils.js"
+/*!***********************************!*\
+  !*** ./js/utils/databus-utils.js ***!
+  \***********************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusCollectionUtils = __webpack_require__(/*! ../collections/databus-collection-utils */ "./js/collections/databus-collection-utils.js");
+var markdownit = __webpack_require__(/*! markdown-it */ "markdown-it");
+const moment = __webpack_require__(/*! moment/moment */ "moment/moment");
+const DatabusUris = __webpack_require__(/*! ./databus-uris */ "./js/utils/databus-uris.js");
+const ApiError = __webpack_require__(/*! ../../../server/app/common/utils/api-error */ "../server/app/common/utils/api-error.js");
+
+class DatabusUtils {
+
+  static stringOrFallback(value, fallback) {
+    if (value != null && value.length > 0) {
+      return value;
+    }
+
+    return fallback;
+  }
+
+  static resemblesTrue(value) {
+    if (typeof value === 'boolean') {
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      return ['true', '1', 'yes', 'on'].includes(normalized);
+    }
+
+    if (typeof value === 'number') {
+      return value === 1;
+    }
+
+    return false;
+  }
+
+  static isValidResourceIdentifier(identifier, min) {
+    var identifierRegex = /^[a-z-]+$/;
+    return this.checkField(identifier, identifierRegex, min, 50);
+  }
+
+  static formatQuery(query, placeholderMappings) {
+
+    if (placeholderMappings == undefined) {
+      return query;
+    }
+
+    for (var placeholder in placeholderMappings) {
+      var re = new RegExp('%' + placeholder + '%', "g");
+      query = query.replace(re, placeholderMappings[placeholder]);
+    }
+
+    return query;
+  }
+
+  static isValidVersionIdentifier(identifier) {
+    var labelRegex = /^[A-Za-z0-9_\.\-]*$/;
+    return this.checkField(identifier, labelRegex, 3, 50);
+  }
+
+  static isValidResourceText(value, min, max) {
+    var textRegex = /^[\x00-\x7F\n]*$/;
+    return this.checkField(value, textRegex, min, max);
+  }
+
+  static isValidAccountName(identifier) {
+    var labelRegex = /^[a-z][0-9a-z_\-]+[0-9a-z]$/;
+    return this.checkField(identifier, labelRegex, 3, 15);
+  }
+
+  static timeStringNow() {
+    return new Date(Date.now()).toISOString();
+  }
+
+  static isValidGroupName(name) {
+    var labelRegex = /[a-zA-Z0-9_\-\.]{3,50}$/;
+    return this.checkField(name, labelRegex, 3, 50);
+  }
+
+  static isValidArtifactName(name) {
+    var labelRegex = /[a-zA-Z0-9_\-\.]{3,50}$/;
+    return this.checkField(name, labelRegex, 3, 50);
+  }
+
+  static isValidUrl(value) {
+    var textRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+    return textRegex.test(value);
+  }
+
+  static isValidResourceLabel(value, min, max) {
+    var labelRegex = /^[A-Za-z0-9\s_()\.\,\-]*$/;
+    return this.checkField(value, labelRegex, min, max);
+  }
+
+  static objSize(obj) {
+    var size = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+  }
+
+  static uniqueList(arr) {
+    var u = {}, a = [];
+    for (var i = 0, l = arr.length; i < l; ++i) {
+      if (!u.hasOwnProperty(arr[i])) {
+        a.push(arr[i]);
+        u[arr[i]] = 1;
+      }
+    }
+    return a;
+  }
+
+
+  static formatFileSize(size) {
+    if (size == undefined) {
+      return '0 KB'
+    }
+
+    if (size < 1024) return size + " B";
+    else if (size < 1048576) return Math.round(size / 1024) + " KB";
+    else if (size < 1073741824) return (Math.round(10 * size / 1048576) / 10) + " MB";
+    else return (Math.round(100 * size / 1073741824) / 100) + " GB";
+  };
+
+  static checkField(value, regex, min, max) {
+    if (value == undefined) {
+      return false;
+    }
+
+    if (max > 0 && value.length > max) {
+      return false;
+    }
+
+    if (value.length < min) {
+      return false;
+    }
+
+    return regex.test(value);
+  }
+
+  // Creates a v4 uuid
+  static uuidv4() {
+    return '___xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  static tryParseJson(str) {
+    return JSON.parse(str);
+  }
+
+  static uriToTitle(uri) {
+    if (uri == null) {
+      return null;
+    }
+
+    var result = uri.substr(uri.lastIndexOf('/') + 1);
+    result = result.substr(result.lastIndexOf('#') + 1);
+
+    return result.charAt(0).toUpperCase() + result.slice(1);
+  }
+
+  static uriToName(uri) {
+    if (uri == null) {
+      return null;
+    }
+
+    var result = uri.substr(uri.lastIndexOf('/') + 1);
+    result = result.substr(result.lastIndexOf('#') + 1);
+
+    if (result.includes('.')) {
+      result = result.substr(0, result.lastIndexOf('.'));
+    }
+
+    return result;
+  }
+
+  static uriToResourceName(uri) {
+    if (uri == null) {
+      return null;
+    }
+
+    var result = uri.substr(uri.lastIndexOf('/') + 1);
+
+    if (result.includes('#')) {
+      result = result.substr(0, result.indexOf('#'));
+    }
+
+    return result;
+  }
+
+  static isValidHttpUrl(string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
+  static isValidHttpsUrl(string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "https:";
+  }
+
+
+  static navigateUp(uri, steps) {
+
+    if (steps == undefined) {
+      steps = 1;
+    }
+
+    for (var i = 0; i < steps; i++) {
+      uri = uri.substr(0, uri.lastIndexOf('/'));
+    }
+
+    if (uri.includes('#')) {
+      uri = uri.substr(0, uri.lastIndexOf('#'));
+    }
+
+    return uri;
+  }
+
+  static copyStringToClipboard(str) {
+    // Create new element
+    var el = document.createElement('textarea');
+    // Set value (string to be copied)
+    el.value = str;
+    // Set non-editable to avoid focus and move outside of view
+    el.setAttribute('readonly', '');
+    el.style = { position: 'absolute', left: '-9999px' };
+    document.body.appendChild(el);
+    // Select text inside element
+    el.select();
+    // Copy text to clipboard
+    document.execCommand('copy');
+    // Remove temporary element
+    document.body.removeChild(el);
+  }
+
+  static serialize(collectionObject, ignoreKeys) {
+
+    if (ignoreKeys == undefined) {
+      ignoreKeys = [
+        'parent',
+        '$$hashKey',
+        'expanded',
+        'files',
+        'eventListeners',
+        'hasLocalChanges',
+        'published'
+      ];
+    }
+
+    return JSON.stringify(collectionObject, function (key, value) {
+      if (ignoreKeys.includes(key)) {
+        return undefined;
+      }
+
+      return value;
+    });
+  }
+
+  static createCleanCopy(jsonData) {
+    var data = JSON.parse(DatabusCollectionUtils.serialize(jsonData));
+    return data;
+  }
+
+  static lineCount(text) {
+    return (text.match(/^\s*\S/gm) || "").length
+  }
+
+
+  static getResourcePathLength(uri) {
+    var parts = DatabusUtils.splitResourceUri(uri);
+
+    if (parts.length == 1 && parts[0] == "") {
+      return 0;
+    }
+
+    return parts.length;
+  }
+
+  static splitResourceUri(uri) {
+
+    var url = new URL(uri);
+    uri = url.pathname;
+
+    if (uri.startsWith('/')) {
+      uri = uri.substr(1);
+    }
+    if (uri.endsWith('/')) {
+      uri = uri.substr(0, uri.length - 1);
+    }
+
+    return uri.split('/');
+  }
+
+  static formatDate(date) {
+    return moment(date).format('MMM Do YYYY') + " (" + moment(date).fromNow() + ")";
+  }
+
+  static exportToJsonFile(jsonData) {
+
+    var ignoreKeys = [
+      'parent',
+      '$$hashKey',
+      'expanded',
+      'files',
+      'eventListeners',
+      'hasLocalChanges',
+      'published',
+      'uuid'
+    ];
+
+    let dataStr = DatabusCollectionUtils.serialize(jsonData, ignoreKeys);
+    let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = 'data.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+  }
+
+  static async parseN3(data, maxQuads) {
+    return new Promise((resolve, reject) => {
+
+      const quads = [];
+      const prefixes = [];
+
+      const parser = new N3.Parser();
+
+      parser.parse(data, (e, q, p) => {
+        if (e) {
+          reject(e);
+          return;
+        }
+
+        if (quads.length > maxQuads || q == null) {
+          resolve({ quads: quads, prefixes: prefixes });
+        }
+
+        if (q) {
+          quads.push(q);
+        }
+      });
+    });
+  }
+
+  static async parseDatabusManifest(data) {
+
+    var parsedData = await DatabusUtils.parseN3(data, 100);
+
+    for (var quad of parsedData.quads) {
+
+      if (quad.predicate.id == `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
+        && quad.object.id == DatabusUris.DATABUS_DATABUS) {
+
+        return {
+          uri: quad.subject.id
+        }
+      }
+    }
+
+    return undefined;
+  }
+
+  static getFirstSegment(uri) {
+    try {
+      const url = new URL(uri);
+      return url.pathname.split('/').filter(Boolean)[0] || null;
+    } catch {
+      return null;
+    }
+  }
+
+  static parseMarkdown(markdown) {
+
+    if (markdown == null) {
+      return null;
+    }
+
+    var markdownParser = markdownit();
+    return markdownParser.parse(markdown);
+  }
+
+  static renderMarkdown(markdown) {
+
+    if (markdown == null) {
+      return null;
+    }
+
+    var markdownParser = markdownit();
+    return markdownParser.render(markdown);
+  }
+
+  /**
+   * Create a dct:abstract from the content of a dct:description
+   * @param {*} description 
+   */
+  static createAbstractFromDescription(description) {
+
+    if (description == null) {
+      return null;
+    }
+
+    try {
+      var tokens = this.parseMarkdown(description);
+
+
+      var paragraphFound = false;
+      var result = "";
+
+      if (tokens == null) {
+        return result;
+      }
+
+      var firstParagraphText = null;
+
+      for (var i = 0; i < tokens.length; i++) {
+
+        var token = tokens[i];
+        var appendText = null;
+
+        if (token.type == 'inline' && tokens[i - 1].type == 'paragraph_open' && token.level == 1) {
+          result = token.content;
+          break;
+        }
+
+      }
+
+      return result;
+
+    } catch (err) {
+      console.log(err);
+      return undefined;
+    }
+  }
+
+  /**
+   * Find groups files that are not distinguishable
+   * @param {Array of file URIs} files 
+   * @param {Array of content variant names} contentVariants 
+   * @param {Index in the array of content variants} index 
+   * @returns 
+   */
+  static cvSplit(distributionGraphs, contentVariantUris, contentVariantIndex) {
+
+    var errorList = [];
+
+    if (distributionGraphs.length <= 1) {
+      return errorList;
+    }
+
+    if (contentVariantIndex >= contentVariantUris.length) {
+
+      // Check buckets for double entries if (files.length > 1) {
+      if (distributionGraphs.length > 1) {
+
+        var error = {};
+        error.downloadURLs = [];
+
+        for (var distribution of distributionGraphs) {
+
+          error.downloadURLs.push(distribution[DatabusUris.DCAT_DOWNLOAD_URL][0][DatabusUris.JSONLD_ID]);
+        }
+
+        error[DatabusUris.DATABUS_FORMAT_EXTENSION] =
+          distributionGraphs[0][DatabusUris.DATABUS_FORMAT_EXTENSION][0][DatabusUris.JSONLD_VALUE];
+
+        error[DatabusUris.DATABUS_COMPRESSION] =
+          distributionGraphs[0][DatabusUris.DATABUS_COMPRESSION][0][DatabusUris.JSONLD_VALUE];
+
+        for (var contentVariantUri of contentVariantUris) {
+          error[contentVariantUri] = distributionGraphs[0][contentVariantUri] != null ?
+            distributionGraphs[0][contentVariantUri][0][DatabusUris.JSONLD_VALUE] : 'none'
+        }
+
+        errorList.push(error);
+      }
+    } else {
+
+      var contentVariantUri = contentVariantUris[contentVariantIndex];
+
+      // else create buckets and sort files into buckets
+      var buckets = {};
+
+      for (var distribution of distributionGraphs) {
+
+        var variantValue = distribution[contentVariantUri];
+
+        if (variantValue != undefined) {
+          variantValue = variantValue[0]['@value'];
+        }
+
+        if (variantValue == undefined || variantValue == '') {
+          variantValue = '$_none$';
+        }
+
+        if (buckets[variantValue] == undefined) {
+          buckets[variantValue] = [];
+        }
+
+        buckets[variantValue].push(distribution);
+      }
+
+
+      // iterate buckets and call recursively
+      for (var b in buckets) {
+
+        for (var error of DatabusUtils.cvSplit(buckets[b],
+          contentVariantUris, contentVariantIndex + 1, errorList)) {
+          errorList.push(error);
+        }
+      }
+    }
+
+    return errorList;
+  }
+
+}
+
+module.exports = DatabusUtils;
+
+
+/***/ },
+
+/***/ "./js/utils/databus-webapp-utils.js"
+/*!******************************************!*\
+  !*** ./js/utils/databus-webapp-utils.js ***!
+  \******************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const DatabusAlert = __webpack_require__(/*! ../components/databus-alert/databus-alert */ "./js/components/databus-alert/databus-alert.js");
+const DatabusUtils = __webpack_require__(/*! ../utils/databus-utils */ "./js/utils/databus-utils.js");
+const DatabusMessages = __webpack_require__(/*! ./databus-messages */ "./js/utils/databus-messages.js");
+
+class DatabusWebappUtils {
+
+  constructor($scope, $sce) {
+    this.scope = $scope;
+    this.sce = $sce;
+  }
+
+  goTo(page) {
+    window.location = page;
+  }
+  
+  createAccount() {
+    window.location = '/app/account';
+  }
+
+  
+  getAccountName() {
+
+    let accountName = window.location.pathname.split('/')[1];
+
+    if(accountName.length < 4) {
+      return null;
+    }
+
+    return this.getOwnedAccountName(accountName);
+  }
+
+  getOwnedAccountName(accountName) {
+    if(!this.scope.auth.authenticated || this.scope.auth.info == null) {
+      return null;
+    }
+
+    let userInfo = this.scope.auth.info;
+
+    if(!Array.isArray(userInfo.accounts) || userInfo.accounts.length == 0) {
+      return null;
+    }
+
+    let account = userInfo.accounts.find(a => a.accountName == accountName);
+
+    if(account == null) {
+      return null;
+    }
+
+    return account.accountName;
+  }
+
+  login() {
+    window.location = '/app/login?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  logout() {
+    window.location = '/app/logout?redirectUrl=' + encodeURIComponent(window.location);
+  }
+
+  formatDateFromNow(date) {
+    return moment(date).fromNow();
+  }
+
+  markdownToHtml(markdown) {
+
+    if(this.sce == null) {
+      return markdown;
+    }
+
+    var markdown = DatabusUtils.renderMarkdown(markdown);
+
+    return this.sce.trustAsHtml(markdown);
+  };
+
+  formatDate(date) {
+    return DatabusUtils.formatDate(date); // moment(date).format('MMM Do YYYY') + " (" + moment(date).fromNow() + ")";
+  }
+
+  formatLongDate(longString) {
+    var number = new Number(longString);
+    var dateTime = new Date(number);
+    return this.formatDate(dateTime);
+  }
+
+  formatFileSize (size) {
+    return DatabusUtils.formatFileSize(size);
+  }
+
+  getPathname(uri) {
+    var url = new URL(uri);
+    return url.pathname;
+  }
+
+  objSize(obj) {
+    return DatabusUtils.objSize(obj);
+  }
+
+  navigateUp(uri) {
+    return DatabusUtils.navigateUp(uri);
+  }
+
+  uriToName(uri) {
+    return DatabusUtils.uriToName(uri); 
+  }
+
+  uriToResourceName(uri) {
+    return DatabusUtils.uriToResourceName(uri);
+  }
+
+  isValidHttpsUrl(url) {
+    return DatabusUtils.isValidHttpsUrl(url);
+  }
+
+  copyToClipboard(str) {
+
+    if(typeof str === 'object') {
+      str = JSON.stringify(str, null, 3);
+    }
+
+    // Create new element
+    var el = document.createElement('textarea');
+    // Set value (string to be copied)
+    el.value = str;
+    // Set non-editable to avoid focus and move outside of view
+    el.setAttribute('readonly', '');
+    el.style = { position: 'absolute', left: '-9999px' };
+    document.body.appendChild(el);
+    // Select text inside element
+    el.select();
+    // Copy text to clipboard
+    document.execCommand('copy');
+    // Remove temporary element
+    document.body.removeChild(el);
+
+    DatabusAlert.alert(this.scope, true, DatabusMessages.GENERIC_COPIED_TO_CLIPBOARD);
+  }
+}
+
+module.exports = DatabusWebappUtils;
+
+
+/***/ },
+
+/***/ "./js/utils/jsonld-utils.js"
+/*!**********************************!*\
+  !*** ./js/utils/jsonld-utils.js ***!
+  \**********************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+/* module decorator */ module = __webpack_require__.nmd(module);
+const DatabusUris = __webpack_require__(/*! ./databus-uris */ "./js/utils/databus-uris.js");
+
+
+class JsonldUtils {
+
+  static refTo(uri) {
+    var result = {};
+    result[DatabusUris.JSONLD_ID] = uri;
+    return result;
+  }
+
+  static getTypedGraph(graphs, graphType) {
+
+    for (var g in graphs) {
+      var graph = graphs[g];
+
+      if (graph[DatabusUris.JSONLD_TYPE] != undefined && graph[DatabusUris.JSONLD_TYPE].includes(graphType)) {
+        return graph;
+      }
+    }
+
+    return null;
+  }
+
+  static setLiteral(graph, property, type, value) {
+    graph[property] = [];
+
+    var entry = {};
+    entry[DatabusUris.JSONLD_TYPE] = type;
+    entry[DatabusUris.JSONLD_VALUE] = value;
+
+    graph[property].push(entry);
+  }
+
+  static setLink(graph, property, uri) {
+    graph[property] = [];
+
+    var entry = {};
+    entry[DatabusUris.JSONLD_ID] = uri;
+
+    graph[property].push(entry);
+  }
+
+  static getGraphById = function (graphs, id) {
+    return graphs.find(g => g[DatabusUris.JSONLD_ID] === id);
+  };
+
+  static getRefArrayProperty = function (graph, propertyUri) {
+    const val = graph[propertyUri];
+    if (!val) return [];
+    return val.map(v => v[DatabusUris.JSONLD_ID]);
+  };
+
+  static getProperty(graph, property) {
+    if (graph[property] == undefined) {
+      return null;
+    }
+
+    if (graph[property].length == 1) {
+      var value = graph[property][0];
+
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+
+      return null;
+    } else {
+      var result = [];
+
+      for (var value of graph[property]) {
+
+        if (value[DatabusUris.JSONLD_VALUE] != null) {
+          result.push(value[DatabusUris.JSONLD_VALUE]);
+        }
+
+        if (value[DatabusUris.JSONLD_ID] != null) {
+          result.push(value[DatabusUris.JSONLD_ID]);
+        }
+      }
+
+      if (result.length > 0) {
+        return result;
+      }
+    }
+
+    return null;
+  }
+
+  static getFirstProperty(graph, property) {
+    if (graph[property] == undefined) {
+      return null;
+    }
+
+    const values = graph[property];
+
+    if (values.length === 0) {
+      return null;
+    }
+
+    if (values.length === 1) {
+      const value = values[0];
+
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+
+      return null;
+    }
+
+    for (const value of values) {
+      if (value[DatabusUris.JSONLD_VALUE] != null) {
+        return value[DatabusUris.JSONLD_VALUE];
+      }
+
+      if (value[DatabusUris.JSONLD_ID] != null) {
+        return value[DatabusUris.JSONLD_ID];
+      }
+    }
+
+    return null;
+  }
+
+
+  static getGraphById(graphs, id) {
+    for (var g in graphs) {
+      var graph = graphs[g];
+
+      if (graph[DatabusUris.JSONLD_ID] != undefined && graph[DatabusUris.JSONLD_ID] == id) {
+        return graph;
+      }
+    }
+
+    return null;
+  }
+
+  static getTypedGraphs(graphs, graphType) {
+    var result = [];
+
+    for (var g in graphs) {
+      var graph = graphs[g];
+
+      if (graph[DatabusUris.JSONLD_TYPE] != undefined &&
+        graph[DatabusUris.JSONLD_TYPE].includes(graphType)) {
+        result.push(graph);
+      }
+    }
+
+    return result;
+  }
+
+  static getSubPropertyGraphs(graphs, propertyUri) {
+
+    var result = [];
+
+    for (var graph of graphs) {
+      if (graph[DatabusUris.RDFS_SUB_PROPERTY_OF] == undefined) {
+        continue;
+      }
+
+      for (var property of graph[DatabusUris.RDFS_SUB_PROPERTY_OF]) {
+        if (property[DatabusUris.JSONLD_ID] == propertyUri) {
+          result.push(graph);
+        }
+      }
+    }
+
+    return result;
+  }
+
+
+  static getFirstObject(graph, key) {
+    var obj = graph[key];
+
+    if (obj == undefined || obj.length < 1) {
+      return null;
+    }
+
+    return obj[0];
+  }
+
+  static getFirstObjectUri(graph, property) {
+    // Get the object    
+    const obj = graph[property];
+
+    // Not found -> null
+    if (!obj) {
+      return null;
+    }
+
+    // If it is an array...
+    if (Array.isArray(obj)) {
+      for (const item of obj) {
+        if (item && typeof item === 'object' && DatabusUris.JSONLD_ID in item) {
+          return item[DatabusUris.JSONLD_ID];
+        }
+      }
+    } else if (typeof obj === 'object' && DatabusUris.JSONLD_ID in obj) {
+      return obj[DatabusUris.JSONLD_ID];
+    }
+
+    return null;
+  }
+}
+
+
+
+if ( true && module && module.exports)
+  module.exports = JsonldUtils;
+
+/***/ },
+
+/***/ "./js/utils/messages.js"
+/*!******************************!*\
+  !*** ./js/utils/messages.js ***!
+  \******************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DatabusMsg: () => (/* binding */ DatabusMsg)
+/* harmony export */ });
+class DatabusMsg {
+  static messages = {
+    err_invalid_group_name: "Please enter between 3 to 50 characters. \nRegex: [a-zA-Z0-9_\\-\\.]{3,50}$",
+    err_no_group_selected: "Please select a group",
+    err_no_artifact_selected: "Please select an artifact",
+    
+    err_invalid_artifact_name: "Please enter between 3 to 50 characters. \nRegex: [a-zA-Z0-9_\\-\\.]{3,50}$",
+    err_invalid_version_name: "Please enter between 3 to 50 characters. \nRegex: [a-zA-Z0-9_\\-\\.]{3,50}$",
+    err_invalid_version_title: "The version title is missing.",
+    err_invalid_version_abstract: "The version abstract is missing.",
+    err_invalid_version_description: "The version description is missing.",
+    err_invalid_version_license: "The license is invalid. Please enter a license URI.",
+    err_no_files: "You have to upload at least one file.",
+    err_not_analyzed: "This file has not been analzyed yet.",
+    warning_group_exists: "A group with this name already exists. Publishing will overwrite its metadata.",
+    warning_artifact_exists: "An artifact with this name already exists. Publishing will overwrite its metadata.",
+    warning_version_exists: "A version with this name already exists. Publishing will overwrite its metadata. This is not recommended, as other users might use your version identifier as a data dependency."
+  };
+
+  static get(key) {
+    return this.messages[key] || "Unknown validation key.";
+  }
+}
+
+
+/***/ },
+
+/***/ "./js/utils/sparql-examples.js"
+/*!*************************************!*\
+  !*** ./js/utils/sparql-examples.js ***!
+  \*************************************/
+(module) {
+
+/**
+ * Query Templates can be defined as object with the fields:
+ * > select
+ * > body
+ * > aggregate
+ * 
+ * The select is a SPARQL select statement. The body is an array of strings with each string being a line of a 
+ * SPARQL query. The string %QUERY% can be used to insert the query generated by the QueryBuilder. The aggregate
+ * is a SPARQL aggregate statement.
+ */
+class SparqlExamples {
+
+  static LIST = `PREFIX databus: <https://dataid.dbpedia.org/databus#>
+SELECT DISTINCT * WHERE {
+  ?s a databus:Artifact .
+}`;
+}
+
+module.exports = SparqlExamples;
+
+/***/ },
+
+/***/ "./js/utils/tab-navigation.js"
+/*!************************************!*\
+  !*** ./js/utils/tab-navigation.js ***!
+  \************************************/
+(module) {
+
+
+class TabNavigation {
+
+  constructor($scope, $location, tabKeys, onNavigateCallback) {
+    this.location = $location;
+    this.tabKeys = tabKeys;
+    this.activeTab = 0;
+    this.onNavigateCallback = onNavigateCallback;
+
+    var self = this;
+    // Watch the location hash and tell the tabnavigation that it changed
+    $scope.$watch(function () {
+      return $location.hash();
+    }, function (newVal, oldVal) {
+      self.onLocationHashChanged(newVal, oldVal)
+    }, false);
+  }
+
+
+  onLocationHashChanged(value, oldVal) {
+    for (var i in this.tabKeys) {
+      var tabKey = this.tabKeys[i];
+      if (value == tabKey) {
+        this.activeTab = i;
+
+        if(this.onNavigateCallback != null) {
+          this.onNavigateCallback(this.activeTab);
+        }
+        return;
+      }
+    }
+
+    this.activeTab = 0;
+    if(this.onNavigateCallback != null) {
+      this.onNavigateCallback(this.activeTab);
+    }
+  }
+
+  /**
+   * Change the tab - set location hash and scroll up
+   * @param {*} value 
+   */
+  navigateTo(value, scrollToTop) {
+    this.location.hash(value);
+
+    if(scrollToTop == true) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+}
+
+module.exports = TabNavigation;
+
+/***/ },
+
+/***/ "markdown-it"
 /*!*****************************!*\
   !*** external "markdownit" ***!
   \*****************************/
-/***/ ((module) => {
+(module) {
 
 "use strict";
 module.exports = self["markdownit"];
 
-/***/ }),
+/***/ },
 
-/***/ "moment/moment":
+/***/ "moment/moment"
 /*!*************************!*\
   !*** external "moment" ***!
   \*************************/
-/***/ ((module) => {
+(module) {
 
 "use strict";
 module.exports = self["moment"];
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -743,6 +13324,12 @@ module.exports = self["moment"];
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -800,11 +13387,791 @@ module.exports = self["moment"];
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./js/angular-application.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!***********************************!*\
+  !*** ./js/angular-application.js ***!
+  \***********************************/
+const AccountPageController = __webpack_require__(/*! ./page-controller/account-controller */ "./js/page-controller/account-controller.js");
+const ArtifactPageController = __webpack_require__(/*! ./page-controller/artifact-controller */ "./js/page-controller/artifact-controller.js");
+const FrontPageController = __webpack_require__(/*! ./page-controller/frontpage-controller */ "./js/page-controller/frontpage-controller.js");
+const HeaderController = __webpack_require__(/*! ./page-controller/header-controller */ "./js/page-controller/header-controller.js");
+const CollectionController = __webpack_require__(/*! ./page-controller/collection-controller */ "./js/page-controller/collection-controller.js");
+const CollectionsEditorController = __webpack_require__(/*! ./page-controller/collections-editor-controller */ "./js/page-controller/collections-editor-controller.js");
+const GroupPageController = __webpack_require__(/*! ./page-controller/group-controller */ "./js/page-controller/group-controller.js");
+const ProfileController = __webpack_require__(/*! ./page-controller/profile-controller */ "./js/page-controller/profile-controller.js");
+const PublishWizardController = __webpack_require__(/*! ./page-controller/publish-wizard-controller */ "./js/page-controller/publish-wizard-controller.js");
+const VersionPageController = __webpack_require__(/*! ./page-controller/version-controller */ "./js/page-controller/version-controller.js");
+const UserSettingsController = __webpack_require__(/*! ./page-controller/user-settings-controller */ "./js/page-controller/user-settings-controller.js");
+const DatabusCollectionManager = __webpack_require__(/*! ./collections/databus-collection-manager */ "./js/collections/databus-collection-manager.js");
+const SearchManager = __webpack_require__(/*! ./search/search-manager */ "./js/search/search-manager.js");
+const SearchController = __webpack_require__(/*! ./components/search/search-controller */ "./js/components/search/search-controller.js");
+const DatabusAlertController = __webpack_require__(/*! ./components/databus-alert/databus-alert-controller */ "./js/components/databus-alert/databus-alert-controller.js");
+const EntityCardController = __webpack_require__(/*! ./components/entity-card/entity-card */ "./js/components/entity-card/entity-card.js");
+const OverrideCheckboxController = __webpack_require__(/*! ./components/override-checkbox/override-checkbox */ "./js/components/override-checkbox/override-checkbox.js");
+const AutofillDropdownController = __webpack_require__(/*! ./components/autofill-dropdown/autofill-dropdown */ "./js/components/autofill-dropdown/autofill-dropdown.js");
+const DatabusIconController = __webpack_require__(/*! ./components/databus-icon/databus-icon */ "./js/components/databus-icon/databus-icon.js");
+const TypeTagController = __webpack_require__(/*! ./components/type-tag/type-tag */ "./js/components/type-tag/type-tag.js");
+const CollectionEditorWidgetController = __webpack_require__(/*! ./components/collection-editor-widget/collection-editor-widget */ "./js/components/collection-editor-widget/collection-editor-widget.js");
+const CollectionHierarchyControllerTwo = __webpack_require__(/*! ./components/collection-hierarchy-two/collection-hierarchy */ "./js/components/collection-hierarchy-two/collection-hierarchy.js");
+const UriBreadcrumbsController = __webpack_require__(/*! ./components/uri-breadcrumbs/uri-breadcrumbs */ "./js/components/uri-breadcrumbs/uri-breadcrumbs.js");
+const TableEditorController = __webpack_require__(/*! ./components/table-editor/table-editor */ "./js/components/table-editor/table-editor.js");
+const MultiselectDropdownController = __webpack_require__(/*! ./components/multiselect-dropdown/multiselect-dropdown */ "./js/components/multiselect-dropdown/multiselect-dropdown.js");
+const FileBrowserController = __webpack_require__(/*! ./components/file-browser/file-browser */ "./js/components/file-browser/file-browser.js");
+const FacetsViewController = __webpack_require__(/*! ./components/facets-view/facets-view */ "./js/components/facets-view/facets-view.js");
+const ExpandableArrowController = __webpack_require__(/*! ./components/expandable-arrow/expandable-arrow */ "./js/components/expandable-arrow/expandable-arrow.js");
+const YasqeTextController = __webpack_require__(/*! ./components/yasqe-text/yasqe-text */ "./js/components/yasqe-text/yasqe-text.js");
+const YasrViewController = __webpack_require__(/*! ./components/yasr-view/yasr-view */ "./js/components/yasr-view/yasr-view.js");
+const CollectionStatisticsController = __webpack_require__(/*! ./components/collection-statistics/collection-statistics */ "./js/components/collection-statistics/collection-statistics.js");
+const CollectionNodeController = __webpack_require__(/*! ./components/collection-node/collection-node */ "./js/components/collection-node/collection-node.js");
+const CollectionSearchController = __webpack_require__(/*! ./components/collection-search/collection-search */ "./js/components/collection-search/collection-search.js");
+const CollectionStatusController = __webpack_require__(/*! ./components/collection-status/collection-status */ "./js/components/collection-status/collection-status.js");
+const CollectionDataTableController = __webpack_require__(/*! ./components/collection-data-table/collection-data-table */ "./js/components/collection-data-table/collection-data-table.js");
+const AccountHistoryController = __webpack_require__(/*! ./components/account-history/account-history */ "./js/components/account-history/account-history.js");
+const SparqlEditorController = __webpack_require__(/*! ./page-controller/sparql-editor-controller */ "./js/page-controller/sparql-editor-controller.js");
+const BetterDropdownController = __webpack_require__(/*! ./components/better-dropdown/better-dropdown */ "./js/components/better-dropdown/better-dropdown.js");
+const NavSearchController = __webpack_require__(/*! ./components/nav-search/nav-search-controller */ "./js/components/nav-search/nav-search-controller.js");
+const EntityDropdownController = __webpack_require__(/*! ./components/entity-dropdown/entity-dropdown */ "./js/components/entity-dropdown/entity-dropdown.js");
+const EntityApiViewController = __webpack_require__(/*! ./components/entity-api-view/entity-api-view */ "./js/components/entity-api-view/entity-api-view.js");
+const ErrorNotificationController = __webpack_require__(/*! ./components/error-notification/error-notifcation */ "./js/components/error-notification/error-notifcation.js");
+
+var databusApplication = angular.module("databusApplication", [])
+  .controller("HeaderController", ["$scope", "$http", "collectionManager", HeaderController])
+  .factory('collectionManager', [ "$interval", "$http", function ($interval, $http) { return new DatabusCollectionManager($http, $interval, 'databus_collections'); }])
+  .factory('searchManager', [ "$interval", "$http", function ($interval, $http) { return new SearchManager($http, $interval); }])
+  .factory('focus', ["$timeout", "$window", function ($timeout, $window) {
+    return function (id) {
+      $timeout(function () {
+        var element = $window.document.getElementById(id);
+        if (element)
+          element.focus();
+      });
+    };
+  }])
+  .controller("UserSettingsController", [ "$scope", "$http", "$sce", "$location", UserSettingsController])
+  .controller("HeaderController", ["$scope", "$http", "collectionManager", "searchManager", HeaderController])
+  .controller("AccountPageController", ["$scope", "$http", "$location", "collectionManager", AccountPageController])
+  .controller("FrontPageController", ["$scope", "$sce", "$http", FrontPageController])
+  .controller("ArtifactPageController", ["$scope", "$http", "$sce", "$location", "collectionManager", ArtifactPageController])
+  .controller("CollectionController", ["$scope", "$sce", "$http", "collectionManager", CollectionController])
+  .controller("CollectionsEditorController", ["$scope", "$timeout", "$http", "$location", "collectionManager", CollectionsEditorController])
+  .controller("GroupPageController", ["$scope", "$http", "$sce", "$interval", "$location", "collectionManager", GroupPageController])
+  .controller("ProfileController", ["$scope", "$http", ProfileController])
+  .controller("SparqlEditorController", ["$scope", "$http", "$location", SparqlEditorController])
+  .controller("PublishWizardController", ["$scope", "$http", "$interval", "focus", "$q", "$location", PublishWizardController])
+  .controller("VersionPageController", ["$scope", "$http", "$sce", "$location", "collectionManager", VersionPageController])
+  .directive('uploadRanking', function () {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: '/website/templates/upload-ranking.html',
+      scope: {
+        data: '=data'
+      }
+    }
+  });
+ 
+function config($locationProvider) {
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false,
+    rewriteLinks: false
+  });
+};
+
+databusApplication.filter('collectionfilter', function() {
+  return function(input, search) {
+    if (!input) return input;
+    
+    var expected = '';
+
+    if (search != null) {
+      expected = ('' + search).toLowerCase();
+    }
+
+    var result = [];
+
+    angular.forEach(input, function(value, key) {
+      if(value.title == undefined) {
+        return;
+      }
+      
+      if(value.title.toLowerCase().includes(expected)) {
+        result.push(value); 
+      }
+    });
+
+    return result;
+  }
+});
+
+databusApplication.config(['$locationProvider', config]);
+
+// Components
+databusApplication.component('overrideCheckbox', {
+  templateUrl: '/js/components/override-checkbox/override-checkbox.html',
+  controller: OverrideCheckboxController,
+  bindings: {
+    checkValue: '<',
+    label: '<',
+    id: '<',
+    readonly: '<',
+    isOverride: '<',
+    onChange: '&'
+  }
+});
+
+databusApplication.component('errorTag', {
+  controller: ErrorNotificationController,
+  templateUrl: '/js/components/error-notification/error-notification.html',
+  bindings: {
+    entity: '<',
+    key: '@',
+    texts: '<'
+  }
+});
+
+databusApplication.component('entityDropdown', {
+  bindings: {
+    placeholder: '@',
+    items: '<',
+    displayProperty: '@',
+    loading: '<',
+    selected: '<',
+    onSelect: '&'
+  },
+  controller: EntityDropdownController,
+  templateUrl: '/js/components/entity-dropdown/entity-dropdown.html'
+});
+
+databusApplication.component('entityApiView', {
+    bindings: {
+      entity: '<',
+      apiKeys: '<',
+      texts: '<',
+      publishLog: '<'
+    },
+    controller: EntityApiViewController,
+    templateUrl: '/js/components/entity-api-view/entity-api-view.html'
+  });
+
+
+
+databusApplication.component('accountHistory', {
+  templateUrl: '/js/components/account-history/account-history.html',
+  controller: [ '$http', AccountHistoryController ],
+  bindings: {
+    accountName: '<'
+  }
+});
+
+// Components
+databusApplication.component('databusAlert', {
+  templateUrl: '/js/components/databus-alert/databus-alert.html',
+  controller: [ '$scope', '$timeout', DatabusAlertController ],
+});
+
+databusApplication.component('entityCard', {
+  templateUrl: '/js/components/entity-card/entity-card.html',
+  controller: ['$sce', EntityCardController ],
+  bindings: {
+    label: '<',
+    uri: '<',
+    desc: '<',
+    date: '<',
+    type: '<',
+    imageUrl: '<',
+    absolute: '<'
+  }
+});
+
+databusApplication.component('search', {
+  templateUrl: '/js/components/search/search.html',
+  controller: ['$http', '$interval', '$sce', 'searchManager', SearchController],
+  bindings: {
+    searchInput: '=',
+    settings: '<',
+  }
+});
+
+
+databusApplication.component('navSearch', {
+  templateUrl: '/js/components/nav-search/nav-search.html',
+  controller: ['$http', '$interval', '$sce', 'searchManager', NavSearchController],
+  bindings: {
+    searchInput: '=',
+    settings: '<',
+  }
+});
+
+/*
+databusApplication.component('databusSearch', {
+  templateUrl: '/js/components/databus-search/databus-search.html',
+  controller: ['$http', '$interval', '$sce', DatabusSearchController],
+  bindings: {
+    filters: '=',
+    input: '='
+  }
+});*/
+
+databusApplication.component('autofillDropdown', {
+  templateUrl: '/js/components/autofill-dropdown/autofill-dropdown.html',
+  controller: ['$timeout', AutofillDropdownController ],
+  bindings: {
+    input: '=',
+    values: '<',
+    isDisabled: '<',
+    placeholder: '@',
+    onChange: '&'
+  }
+});
+
+
+databusApplication.component('databusIcon', {
+  templateUrl: '/js/components/databus-icon/databus-icon.html',
+  controller: DatabusIconController,
+  bindings: {
+    size: '<',
+    shape: '<',
+    onClick: '&',
+    isClickable: '<',
+    color: '<'
+  }
+});
+
+databusApplication.component('typeTag', {
+  templateUrl: '/js/components/type-tag/type-tag.html',
+  controller: TypeTagController,
+  bindings: {
+    type: '<',
+    height: '<',
+    width: '<',
+  }
+});
+
+/*
+
+databusApplication.component('collectionEditor', {
+  templateUrl: '/js/components/collection-editor/collection-editor.html',
+  controller: ['$http', '$location', '$sce', CollectionEditorController],
+  bindings: {
+    collection: '=',
+    readonly: '<',
+    onPublish: '&',
+    onDelete: '&',
+    loggedIn: '<'
+  }
+});*/
+
+databusApplication.component('collectionEditorWidget', {
+  templateUrl: '/js/components/collection-editor-widget/collection-editor-widget.html',
+  controller: ['collectionManager', '$scope', CollectionEditorWidgetController ],
+  bindings: {
+    selection: '<',
+    collection: '=',
+  }
+});
+
+/*
+databusApplication.component('collectionHierarchy', {
+  templateUrl: '/js/components/collection-hierarchy/collection-hierarchy.html',
+  controller: ['$http', '$location', '$sce', CollectionHierarchyController],
+  bindings: {
+    collection: '=',
+    readonly: '<',
+    onPublish: '&',
+    onDelete: '&',
+    loggedIn: '<',
+    onChange: '&'
+  }
+});*/
+
+databusApplication.component('collectionHierarchyTwo', {
+  templateUrl: '/js/components/collection-hierarchy-two/collection-hierarchy.html',
+  controller: ['$http', '$location', '$sce', '$scope', 'collectionManager', CollectionHierarchyControllerTwo ],
+  bindings: {
+    collection: '=',
+    onChange: '&',
+    onAddContent: '&'
+  }
+});
+
+databusApplication.component('collectionNode', {
+  templateUrl: '/js/components/collection-node/collection-node.html',
+  controller: CollectionNodeController,
+  bindings: {
+    node: '<',
+    readonly: '<',
+    onRemoveNode: '&',
+    onClick: '&',
+    count: '<',
+    isExpandable: '<'
+  }
+});
+
+databusApplication.component('collectionSearch', {
+  templateUrl: '/js/components/collection-search/collection-search.html',
+  controller: ['collectionManager', '$http', '$interval', '$sce', CollectionSearchController ],
+  bindings: {
+    collection: '=',
+    targetDatabusUrl: '<',
+    onComponentAdded: '&'
+  }
+});
+
+databusApplication.component('collectionStatistics', {
+  templateUrl: '/js/components/collection-statistics/collection-statistics.html',
+  controller: ['$http', '$scope', '$location', '$sce', CollectionStatisticsController ],
+  bindings: {
+    collection: '<'
+  }
+});
+
+databusApplication.component('collectionStatus', {
+  templateUrl: '/js/components/collection-status/collection-status.html',
+  controller: ['$http', '$location', '$sce', CollectionStatusController ],
+  bindings: {
+    hasLocalChanges: '<',
+    isPublished: '<',
+    isDraft: '<',
+  }
+});
+
+/*
+
+databusApplication.component('editLabel', {
+  templateUrl: '/js/components/edit-label/edit-label.html',
+  controller: ['$element', EditLabelController],
+  bindings: {
+    text: '=',
+    singleLine: '<',
+    onBlur: '&',
+    onChange: '&'
+  }
+});*/
+
+databusApplication.component('expandableArrow', {
+  templateUrl: '/js/components/expandable-arrow/expandable-arrow.html',
+  controller: ExpandableArrowController,
+  bindings: {
+    expanded: '=',
+    onChange: '&',
+    isReadonly: '<'
+  }
+});
+
+databusApplication.component('facetsView', {
+  templateUrl: '/js/components/facets-view/facets-view.html',
+  controller: ['$http', '$scope', FacetsViewController ],
+  bindings: {
+    node: '=',
+    readonly: '<',
+    resourceType: '@',
+    onChange: '&',
+    onLoaded: '&'
+  }
+});
+
+databusApplication.component('facetsViewHorizontal', {
+  templateUrl: '/js/components/facets-view/facets-view-horizontal.html',
+  controller: ['$http', '$scope', FacetsViewController ],
+  bindings: {
+    node: '=',
+    readonly: '<',
+    resourceType: '@',
+    onChange: '&',
+    onLoaded: '&'
+  }
+});
+
+databusApplication.component('fileBrowser', {
+  templateUrl: '/js/components/file-browser/file-browser.html',
+  controller: ['$http', '$scope', FileBrowserController ],
+  bindings: {
+    resourceUri: '<',
+    resourceType: '@',
+    node: '<',
+    facetSettings: '<',
+    parentFacetSettings: '<',
+    query: '<',
+    fullQuery: '<',
+    config: '<'
+  }
+});
+
+/*
+
+databusApplication.component('multiselectArtifactDropdown', {
+  templateUrl: '/js/components/multiselect-artifact-dropdown/multiselect-artifact-dropdown.html',
+  controller: ['$timeout', '$sce', MultiselectArtifactDropdownController],
+  bindings: {
+    data: '<',
+    node: '<',
+    values: '<',
+    isDisabled: '<',
+    icon: '<',
+    onChange: '&'
+  }
+});*/
+
+databusApplication.component('multiselectDropdown', {
+  templateUrl: '/js/components/multiselect-dropdown/multiselect-dropdown.html',
+  controller: ['$timeout', '$sce', MultiselectDropdownController],
+  bindings: {
+    parentInput: '<',
+    input: '=',
+    values: '<',
+    isDisabled: '<',
+    placeholder: '@',
+    onChange: '&'
+  }
+});
+
+databusApplication.component('tableEditor', {
+  templateUrl: '/js/components/table-editor/table-editor.html',
+  controller: TableEditorController,
+  bindings: {
+    model: '=',
+    onRemoveFile: '&',
+    onEditContentVariant: '&',
+    onAnalyzeFile: '&',
+    analysisProcesses: '<'
+  }
+});
+
+databusApplication.component('uriBreadcrumbs', {
+  templateUrl: '/js/components/uri-breadcrumbs/uri-breadcrumbs.html',
+  controller: UriBreadcrumbsController,
+  bindings: {
+    uri: '<',
+    absolute: '<'
+  }
+});
+
+
+databusApplication.component('yasqeText', {
+  templateUrl: '/js/components/yasqe-text/yasqe-text.html',
+  controller: ['$scope', '$element', YasqeTextController ],
+  bindings: {
+    query: '=',
+    autoSize: '<',
+    readOnly: '<',
+    onChange: '&',
+    onSend: '&',
+    hasSend: '<'
+  }
+});
+
+databusApplication.component('betterDropdown', {
+  templateUrl: '/js/components/better-dropdown/better-dropdown.html',
+  controller: ['$scope', '$interval', '$element', BetterDropdownController ],
+  bindings: {
+    rootNode: '=',
+    onNodeClicked: '&',
+    icon: '<',
+    label: '<'
+  }
+});
+
+
+databusApplication.component('yasrView', {
+  templateUrl: '/js/components/yasr-view/yasr-view.html',
+  controller: ['$scope', '$element', YasrViewController ],
+  bindings: {
+    data: '=',
+    autoSize: '<',
+    readOnly: '<',
+    onChange: '&'
+  }
+});
+
+databusApplication.component('collectionDataTable', {
+  templateUrl: '/js/components/collection-data-table/collection-data-table.html',
+  controller: ['$http', '$scope', '$location', '$sce', CollectionDataTableController],
+  bindings: {
+    collection: '<'
+  }
+});
+
+
+databusApplication.directive('selectOnClick', ['$window', function ($window) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      element.on('click', function () {
+        if (!$window.getSelection().toString() && this.readonly == false) {
+          // Required for mobile Safari
+          this.setSelectionRange(0, this.value.length)
+        }
+      });
+    }
+  };
+}]);
+
+databusApplication.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {
+  return {
+    //scope: true,   // optionally create a child scope
+    link: function (scope, element, attrs) {
+      var model = $parse(attrs.focusMe);
+      scope.$watch(model, function (value) {
+        if (value === true) {
+          $timeout(function () {
+            element[0].focus();
+          });
+        }
+      });
+    }
+  };
+}]);
+
+databusApplication.directive('eventFocus', function (focus) {
+  return function (scope, elem, attr) {
+    elem.on(attr.eventFocus, function () {
+      focus(attr.eventFocusId);
+    });
+
+    // Removes bound events in the element itself
+    // when the scope is destroyed
+    scope.$on('$destroy', function () {
+      elem.off(attr.eventFocus);
+    });
+  };
+});
+
+
+
+databusApplication.directive('uploaderRanking', function () {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<div><table class="table is-size-6 is-fullwidth"><thead><tr><th>User</th><th>Uploads</th><th>Derived Data</th></tr></thead><tbody><tr ng-repeat="row in data"><td><a href="{{ row.accountUri }}">{{ row.account }}</a></td><td>{{ row.numUploads }}</td><td>{{ row.uploadSize }}</td></tr></tbody></table></div>',
+    scope: {
+      data: '=data',
+    }
+  }
+});
+
+
+databusApplication.directive('groupsTable', function () {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<div><table class="table is-size-6 is-fullwidth"><thead><tr><th>Group Id</th><th># Artifacts</th></tr></thead><tbody><tr ng-repeat="row in data"><td><a href="{{ row.uri }}">{{ row.label }}</a></td><td>{{ row.artifactCount }}</td></tr></tbody></table></div>',
+    scope: {
+      data: '=data',
+    }
+  }
+});
+
+
+databusApplication.directive('activityChart', function () {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<svg class="chart"></svg>',
+    scope: {
+      data: '=data',
+      height: '=height'
+    },
+    link: function (scope, element, attrs) {
+
+      var svgHeight = scope.height;
+
+      for (d in scope.data) {
+        scope.data[d].date = new Date(scope.data[d].date);
+      }
+
+      var svg = d3.select(element[0])
+        .attr("id", "graph")
+        .attr("width", "107%")
+        .attr("height", svgHeight);
+
+      var bounds = svg.node().getBoundingClientRect();
+      var svgWidth = bounds.width;
+
+      var margin = { top: 20, right: 50, bottom: 60, left: 50 };
+      var width = svgWidth - margin.left - margin.right;
+      var height = svgHeight - margin.top - margin.bottom;
+
+      var g = svg.append("g")
+        .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")"
+        );
+
+      var x = d3.scaleTime().rangeRound([0, width]);
+      var y = d3.scaleLinear().rangeRound([height, 0]);
+
+      var line = d3.line()
+        .x(function (d) { return x(d.date) })
+        .y(function (d) { return y(d.value) })
+
+      x.domain(d3.extent(scope.data, function (d) { return d.date }));
+      y.domain(d3.extent(scope.data, function (d) { return d.value }));
+
+      g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("y", 0)
+        .attr("x", 9)
+        .attr("dy", ".35em")
+        .attr("transform", "rotate(90)")
+        .style("text-anchor", "start");
+
+      g.append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "1em")
+        .attr("font-size", "1.1em")
+        .attr("text-anchor", "end")
+        .text("Uploaded Data (GByte)");
+
+      var path = g.append("path")
+        .datum(scope.data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr("stroke-width", 2)
+        .attr("d", line);
+    }
+  }
+});
+
+databusApplication.directive('onFinishRender', ['$timeout', '$parse', function ($timeout, $parse) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attr) {
+      if (scope.$last === true) {
+        $timeout(function () {
+          scope.$emit('ngRepeatFinished');
+          if (!!attr.onFinishRender) {
+            $parse(attr.onFinishRender)(scope);
+          }
+        });
+      }
+    }
+  }
+}]);
+
+databusApplication.directive('clickOutside', [
+  '$document', '$parse', '$timeout',
+  clickOutside
+]);
+
+/**
+     * @ngdoc directive
+     * @name angular-click-outside.directive:clickOutside
+     * @description Directive to add click outside capabilities to DOM elements
+     * @requires $document
+     * @requires $parse
+     * @requires $timeout
+     **/
+ function clickOutside($document, $parse, $timeout) {
+  return {
+      restrict: 'A',
+      link: function($scope, elem, attr) {
+
+          // postpone linking to next digest to allow for unique id generation
+          $timeout(function() {
+              var classList = (attr.outsideIfNot !== undefined) ? attr.outsideIfNot.split(/[ ,]+/) : [],
+                  fn;
+
+              function eventHandler(e) {
+                  var i,
+                      element,
+                      r,
+                      id,
+                      classNames,
+                      l;
+
+                  // check if our element already hidden and abort if so
+                  if (angular.element(elem).hasClass("ng-hide")) {
+                      return;
+                  }
+
+                  // if there is no click target, no point going on
+                  if (!e || !e.target) {
+                      return;
+                  }
+
+                  // loop through the available elements, looking for classes in the class list that might match and so will eat
+                  for (element = e.target; element; element = element.parentNode) {
+                      // check if the element is the same element the directive is attached to and exit if so (props @CosticaPuntaru)
+                      if (element === elem[0]) {
+                          return;
+                      }
+                      
+                      // now we have done the initial checks, start gathering id's and classes
+                      id = element.id,
+                      classNames = element.className,
+                      l = classList.length;
+
+                      // Unwrap SVGAnimatedString classes
+                      if (classNames && classNames.baseVal !== undefined) {
+                          classNames = classNames.baseVal;
+                      }
+
+                      // if there are no class names on the element clicked, skip the check
+                      if (classNames || id) {
+
+                          // loop through the elements id's and classnames looking for exceptions
+                          for (i = 0; i < l; i++) {
+                              //prepare regex for class word matching
+                              r = new RegExp('\\b' + classList[i] + '\\b');
+
+                              // check for exact matches on id's or classes, but only if they exist in the first place
+                              if ((id !== undefined && id === classList[i]) || (classNames && r.test(classNames))) {
+                                  // now let's exit out as it is an element that has been defined as being ignored for clicking outside
+                                  return;
+                              }
+                          }
+                      }
+                  }
+
+                  // if we have got this far, then we are good to go with processing the command passed in via the click-outside attribute
+                  $timeout(function() {
+                      fn = $parse(attr['clickOutside']);
+                      fn($scope, { event: e });
+                  });
+              }
+
+              // if the devices has a touchscreen, listen for this event
+              if (_hasTouch()) {
+                  $document.on('touchstart', eventHandler);
+              }
+
+              // still listen for the click event even if there is touch to cater for touchscreen laptops
+              $document.on('click', eventHandler);
+
+              // when the scope is destroyed, clean up the documents event handlers as we don't want it hanging around
+              $scope.$on('$destroy', function() {
+                  if (_hasTouch()) {
+                      $document.off('touchstart', eventHandler);
+                  }
+
+                  $document.off('click', eventHandler);
+              });
+
+              /**
+               * @description Private function to attempt to figure out if we are on a touch device
+               * @private
+               **/
+              function _hasTouch() {
+                  // works on most browsers, IE10/11 and Surface
+                  return 'ontouchstart' in window || navigator.maxTouchPoints;
+              };
+          });
+      }
+  };
+}
+
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=main.js.map

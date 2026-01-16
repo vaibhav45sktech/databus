@@ -1,11 +1,7 @@
-devenv
-docs
-examples
-server/dav
-server/index
-server/keypair
-server/sqlite
-.git
-node_modules
+**/.git
+**/.DS_Store
+**/node_modules
 server/node_modules
-
+public/node_modules
+search/node_modules
+data

@@ -294,7 +294,7 @@ ORDER BY DESC (STR(?v)) LIMIT 1`
         data: queryPage.query,
         headers: {
           'Content-Type': 'application/sparql-query',
-          'Accept': 'application/sparql-results+json'
+          'Accept': 'application/sparql-results+json, application/ld+json, text/turtle, application/rdf+xml, */*'
         }
       });
 
